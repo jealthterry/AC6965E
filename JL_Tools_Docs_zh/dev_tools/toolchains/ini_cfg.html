@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.3. isd_config.ini 配置文件说明 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>4. 工具链相关说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="faqs/index.html">4.1. 常见问题以及处理方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linux_lib.html">4.2. LINUX下安装杰理工具链和编译静态库</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>4.3. isd_config.ini 配置文件说明</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">4.3.1. 各个配置段说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2"><button class="toctree-expand" title="Open/close menu" type="button"></button>4.3.2. 选项</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#extra-cfg-param">4.3.2.1. <code class="docutils literal notranslate"><span class="pre">[EXTRA_CFG_PARAM]</span></code>段选项说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sys-cfg-param">4.3.2.2. <code class="docutils literal notranslate"><span class="pre">[SYS_CFG_PARAM]</span></code>段选项说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tool-config">4.3.2.3. <code class="docutils literal notranslate"><span class="pre">[TOOL_CONFIG]</span></code>段选项说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#chip-version">4.3.2.4. <code class="docutils literal notranslate"><span class="pre">[CHIP_VERSION]</span></code>段选项说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reserved-config">4.3.2.5. <code class="docutils literal notranslate"><span class="pre">[RESERVED_CONFIG]</span></code>段选项说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reserved-expand-config">4.3.2.6. [RESERVED_EXPAND_CONFIG] 段选项说明（可选）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="otp_cfg.html">4.4. FLASH 参数配置说明</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">4. </span>工具链相关说明</a> »</li>
+<li><span class="section-number">4.3. </span>isd_config.ini 配置文件说明</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/dev_tools/toolchains/ini_cfg.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="isd-config-ini">
+<h1><span class="section-number">4.3. </span>isd_config.ini 配置文件说明<a class="headerlink" href="#isd-config-ini" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2><span class="section-number">4.3.1. </span>各个配置段说明<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<div class="wy-table-responsive"><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>段名</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[EXTRA_CFG_PARAM]</span></code></p></td>
+<td><p>用于配置生成flash.bin前所需要的信息。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">[SYS_CFG_PARAM]</span></code></p></td>
+<td><p>用于配置系统所需要的参数，该配置的所有选项都会进过转后然后存入flash.bin中。</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[TOOL_CONFIG]</span></code></p></td>
+<td><p>用于配置相关工具信息。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">[CHIP_VERSION]</span></code></p></td>
+<td><p>用于配置芯片版本相关信息。</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[RESERVED_CONFIG]</span></code></p></td>
+<td><p>用于配置预留区域信息的区域，如果<code class="docutils literal notranslate"><span class="pre">[EXTRA_CFG_PARAM]</span></code>区域有设置RESERVED_OPT配置项，则当前区域最多只能配置6个。</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">[RESERVED_EXPAND_CONFIG]</span></code></p></td>
+<td><p>用于配置预留区域信息的区域，与<code class="docutils literal notranslate"><span class="pre">[RESERVED_CONFIG]</span></code>，该区域是为了预防<code class="docutils literal notranslate"><span class="pre">[RESERVED_CONFIG]</span></code>区域不够而添加的。</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="id2">
+<h2><span class="section-number">4.3.2. </span>选项<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p><b>默认值指的是，当选项不出现的时候的值。</b></p><b>
+</b><p><b>有效值指的是，对应配置值接收指定的值。</b></p>
+<section id="extra-cfg-param">
+<h3><span class="section-number">4.3.2.1. </span><code class="docutils literal notranslate"><span class="pre">[EXTRA_CFG_PARAM]</span></code>段选项说明<a class="headerlink" href="#extra-cfg-param" title="Permalink to this heading"></a></h3>
+<div class="wy-table-responsive"><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>选项</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>有效值</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NEED_RESERVED_4K</p></td>
+<td><p>布尔</p></td>
+<td><p>YES</p></td>
+<td><p>YES/NO</p></td>
+<td><p>预留部分空间用于保存SDK需要的配置，<font color="red">默认不修改</font>，如需修改请联系杰理工程师</p></td>
+</tr>
+<tr class="row-odd"><td><p>NEED_RESERVED_AREA</p></td>
+<td><p>布尔</p></td>
+<td><p>YES</p></td>
+<td><p>YES/NO</p></td>
+<td><p>预留区域是否一定要配置BTIF区域的限制 <br/> 没有蓝牙配置的芯片型号的会配置为NO，例如AD14N, AD15N</p></td>
+</tr>
+<tr class="row-even"><td><p>NEW_FLASH_FS</p></td>
+<td><p>布尔</p></td>
+<td><p></p></td>
+<td><p>YES/NO</p></td>
+<td><p>是否使用新的文件系统（BR22)，该配置与双备份配置互斥</p></td>
+</tr>
+<tr class="row-odd"><td><p>BR22_TWS_DB</p></td>
+<td><p>布尔</p></td>
+<td><p></p></td>
+<td><p>YES/NO</p></td>
+<td><p>是否使用BR22双备份flash结构，该配置与单备份配置互斥（需要配合FLASH_SIZE、BR22_TWS_VERSION一起使用）</p></td>
+</tr>
+<tr class="row-even"><td><p>BR22_TWS_VERSION</p></td>
+<td><p>立即数</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>双备份的版本号（一般配合BR22_TWS_DB一起使用）</p></td>
+</tr>
+<tr class="row-odd"><td><p>FLASH_SIZE</p></td>
+<td><p>立即数</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>指定当前FLASH的大小（一般配合BR22_TWS_DB一起使用）</p></td>
+</tr>
+<tr class="row-even"><td><p>CHECK_OTA_BIN</p></td>
+<td><p>布尔</p></td>
+<td><p></p></td>
+<td><p>YES/NO</p></td>
+<td><p>可以指定 YES 或者 NO；如果不指定，则默认会在单备份(BR22_TWS_DB 表示双备份)情况下检查 ota.bin 并计算大小。如果是 NO 则不检查 ota.bin</p></td>
+</tr>
+<tr class="row-odd"><td><p>CHIP_NAME</p></td>
+<td><p>字符串</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>芯片名称</p></td>
+</tr>
+<tr class="row-even"><td><p>ENTRY</p></td>
+<td><p>立即数</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>SDK的入口地址</p></td>
+</tr>
+<tr class="row-odd"><td><p>RESERVED_OPT</p></td>
+<td><p>立即数</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p>预留区域是否需要提前预留</p></td>
+</tr>
+<tr class="row-even"><td><p>PID</p></td>
+<td><p>字符串</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>芯片的pid(少于等于16个byte的字符串)</p></td>
+</tr>
+<tr class="row-odd"><td><p>VID</p></td>
+<td><p>字符串</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>芯片的vid(少于等于4个byte的字符串)</p></td>
+</tr>
+<tr class="row-even"><td><p>DOWNLOAD_MODEL</p></td>
+<td><p>字符串</p></td>
+<td><p></p></td>
+<td><p>USB/SERIAL</p></td>
+<td><p>下载模式，可选择USB下载或者串口下载（默认使用USB下载）</p></td>
+</tr>
+<tr class="row-odd"><td><p>COMPACT_SETTING</p></td>
+<td><p>布尔</p></td>
+<td><p>NO</p></td>
+<td><p>YES/NO</p></td>
+<td><p>是否允许文件起始位置不按4K对齐</p></td>
+</tr>
+<tr class="row-even"><td><p>EXPAND_BIN</p></td>
+<td><p>布尔</p></td>
+<td><p>NO</p></td>
+<td><p>YES/NO</p></td>
+<td><p>是否生成jl_isd_expand.bin。将jl_isd.bin扩展到方案实际占用flash的大小(jl_isd.bin后面追加0xFF)。</p></td>
+</tr>
+<tr class="row-odd"><td><p>SDK_VERSION</p></td>
+<td><p>字符串</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>当前SDK的版本信息，<font color="red">此参数由编译脚本自动配置</font></p></td>
+</tr>
+<tr class="row-even"><td><p>SPECIAL_OPT</p></td>
+<td><p>立即数</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p>FLASH格式，默认不修改，如需修改请联系杰理工程师</p></td>
+</tr>
+<tr class="row-odd"><td><p>FORCE_4K_ALIGN</p></td>
+<td><p>布尔</p></td>
+<td><p></p></td>
+<td><p>YES/NO</p></td>
+<td><p>默认的FLASH BIN格式，默认不修改，如需修改请联系杰理工程师</p></td>
+</tr>
+<tr class="row-even"><td><p>UFW_ELEMENT</p></td>
+<td><p>格式</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>UFW文件中FLASH BIN的格式和顺序，默认不修改，如需修改请联系杰理工程师</p></td>
+</tr>
+<tr class="row-odd"><td><p>AREA_ALIGN</p></td>
+<td><p>立即数</p></td>
+<td><p></p></td>
+<td><p>1/0x10</p></td>
+<td><p>离线生成FLASH BIN的对齐方式，默认不修改，如需修改请联系杰理工程师</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="sys-cfg-param">
+<h3><span class="section-number">4.3.2.2. </span><code class="docutils literal notranslate"><span class="pre">[SYS_CFG_PARAM]</span></code>段选项说明<a class="headerlink" href="#sys-cfg-param" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>该区域的配置是自定一配置，对应配置会转化后存入flash.bin中供固件使用。<br/></p></li>
+<li><p>目前已有配置：</p></li>
+</ul>
+<div class="wy-table-responsive"><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>配置</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SPI=2_3_0_0</p></td>
+<td><p>配置spi参数，等号右边的参数含义是 <code class="docutils literal notranslate"><span class="pre">datawidth_clk_mode_port</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>OSC=btosc</p></td>
+<td><p>使用的参数，指定系统始终源,<font color="red">一般注释掉</font></p></td>
+</tr>
+<tr class="row-even"><td><p>OSC_FREQ=12MHz</p></td>
+<td><p>使用的参数，指定FREQ频率，可填写12MHz或24MHz，<font color="red">一般注释掉</font></p></td>
+</tr>
+<tr class="row-odd"><td><p>SYS_CLK=24MHz</p></td>
+<td><p>使用的参数，指定CLK频率，可填写24MHz或48MHz，<font color="red">一般注释掉</font></p></td>
+</tr>
+<tr class="row-even"><td><p>UTTX=PA05</p></td>
+<td><p>串口tx</p></td>
+</tr>
+<tr class="row-odd"><td><p>UTBD=1000000</p></td>
+<td><p>串口波特率</p></td>
+</tr>
+<tr class="row-even"><td><p>UTRX=PB01</p></td>
+<td><p>串口升级，可填写PB00、PB05、PA05，<font color="red">一般注释掉</font></p></td>
+</tr>
+<tr class="row-odd"><td><p>RESET=PB01_08_0</p></td>
+<td><p>指定重启按键引脚和重启参数，等号右边的含义是 port口_长按时间_有效电平（长按时间有00、01、02、04、08、16六个值可选，单位为秒，当长按时间为00时，则关闭长按复位功能。）</p></td>
+</tr>
+<tr class="row-even"><td><p>EX_FLASH=PB07_2A_PB11</p></td>
+<td><p>用于isd_download.exe工具烧写外部flash时指定外部升级参数，<br/>CS引脚为PB07<br/>使用SPI1的C端<br/>如果norflash电源为vddio，填NULL即可，否则填写对应的引脚号，<br/>需要配合packres.exe工具使用</p></td>
+</tr>
+<tr class="row-odd"><td><p>EOFFSET=0</p></td>
+<td><p><font color="red">请勿随便修改</font>，如需要修改请联系杰理工程师，<font color="red">注意：此功能需要UBOOT支持</font></p></td>
+</tr>
+<tr class="row-even"><td><p>AUTH_CODE=0</p></td>
+<td><p><font color="red">默认关闭</font>， 如需开启请联系杰理工程师，<font color="red">根据SDK实际情况填写该值</font></p></td>
+</tr>
+<tr class="row-odd"><td><p>POWERON_TIMES=0</p></td>
+<td><p>芯片在烧写完毕后第一次上电时间，单位：ms，最长可配置60S，<font color="red">默认不填写，仅AC695X、AC635N、AC6083型号在2.27.2及以上版本支持</font>， 如需开启请联系杰理工程师</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="tool-config">
+<h3><span class="section-number">4.3.2.3. </span><code class="docutils literal notranslate"><span class="pre">[TOOL_CONFIG]</span></code>段选项说明<a class="headerlink" href="#tool-config" title="Permalink to this heading"></a></h3>
+<div class="wy-table-responsive"><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>配置</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1TO2_MIN_VER=2.24.0</p></td>
+<td><p>允许加载当前配置生成的FW/UFW文件的一拖二烧写器最低版本是2.24.0，<font color="red">不能修改</font>，如需修改请联系杰理工程师<font color="red">，根据SDK实际情况填写该值</font></p></td>
+</tr>
+<tr class="row-odd"><td><p>1TO8_MIN_VER=3.0.34</p></td>
+<td><p>允许加载当前配置生成的FW/UFW文件的一拖八烧写器最低版本是3.0.34，<font color="red">不能修改</font>，如需修改请联系杰理工程师<font color="red">，根据SDK实际情况填写该值</font></p></td>
+</tr>
+<tr class="row-even"><td><p>BTBOX_MIN_VER=1.2.4.f</p></td>
+<td><p>允许加载当前配置生成的UFW文件的蓝牙测试盒最低版本是1.2.4.f，<font color="red">不能修改</font>，如需修改请联系杰理工程师<font color="red">，根据SDK实际情况填写该值</font></p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="chip-version">
+<h3><span class="section-number">4.3.2.4. </span><code class="docutils literal notranslate"><span class="pre">[CHIP_VERSION]</span></code>段选项说明<a class="headerlink" href="#chip-version" title="Permalink to this heading"></a></h3>
+<div class="wy-table-responsive"><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>配置</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SUPPORTED_LIST=A,B,C</p></td>
+<td><p>允许当前配置生成的FW/UFW烧写到A、B、C版芯片中，<font color="red">不能修改</font>，如需修改请联系杰理工程师 <font color="red">根据SDK实际情况填写该值</font></p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="reserved-config">
+<span id="target-reserved-config-introduce"></span><h3><span class="section-number">4.3.2.5. </span><code class="docutils literal notranslate"><span class="pre">[RESERVED_CONFIG]</span></code>段选项说明<a class="headerlink" href="#reserved-config" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>该区域用于配置预留区域，可单独存在，其中VM和PRCT这两个区域是特殊区域，VM是用于表示VM相关的信息，PRCT是用于表示保护区域的信息。<br/></p></li>
+<li><p>如果<code class="docutils literal notranslate"><span class="pre">[EXTRA_CFG_PARAM]</span></code>区域中有<b><code class="docutils literal notranslate"><span class="pre">RESERVED_OPT</span></code></b>的配置，那么当前区域不能配置超过6项。<br/></p></li>
+<li><p>VM、PROC和BIIF这三个配置必须在预留配置区域（<code class="docutils literal notranslate"><span class="pre">[RESERVED_CONFIG]</span></code>或<code class="docutils literal notranslate"><span class="pre">[RESERVED_EXPAND_CONFIG]</span></code>其中一个区域）中有对应的配置，不然会报错。</p></li>
+<li><p>每个配置项目都遵循下面的固定格式：</p></li>
+</ul>
+<div class="wy-table-responsive"><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>配置</p></th>
+<th class="head"><p>配置说明</p></th>
+<th class="head"><p>值说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>XXXX_ADR</p></td>
+<td><p>区域起始地址，XXXX为预留区域名字</p></td>
+<td><p>AUTO：由工具自动分配起始地址(PROC与VM配置不支持)<br/>如果填写立即数即代表绝对地址<br/>VM配置如果填写0则代表自动分配</p></td>
+</tr>
+<tr class="row-odd"><td><p>XXXX_LEN</p></td>
+<td><p>区域长度，XXXX为预留区域名字</p></td>
+<td><p>CODE_LEN：代码长度(只针对PROC配置)<br/>如果填写立即数即代表指定长度</p></td>
+</tr>
+<tr class="row-even"><td><p>XXXX_OPT</p></td>
+<td><p>区域操作属性，XXXX为预留区域名字</p></td>
+<td><p>0:  下载代码时擦除指定区域<br/>1:  下载代码时不操作指定区域<br/>2:  下载代码时给指定区域加上保护</p></td>
+</tr>
+<tr class="row-odd"><td><p>XXXX_FILE(可选)</p></td>
+<td><p>下代码时指定的文件会下载到对应的区域，XXXX为预留区域名字</p></td>
+<td><p><br/>1、指定的文件名(该文件必须要与isd_download.exe同在一个目录)<br/>2、如果需要找到该区域，则需要根据XXXX(该预留区域名字)来的定位到对应的预留区域头，根据头中的地址信息获取到数据对应的位置</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="reserved-expand-config">
+<h3><span class="section-number">4.3.2.6. </span>[RESERVED_EXPAND_CONFIG] 段选项说明（可选）<a class="headerlink" href="#reserved-expand-config" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>该区域就是<code class="docutils literal notranslate"><span class="pre">[RESERVED_CONFIG]</span></code>区域的扩展，也是用于配置预留配置信息，格式也遵循<code class="docutils literal notranslate"><span class="pre">[RESERVED_CONFIG]</span></code>中配置项的规则。<br/></p></li>
+<li><p>该区域没有个数限制，如果只配置了<code class="docutils literal notranslate"><span class="pre">[RESERVED_EXPAND_CONFIG]</span></code>区域没有配置[RESERVED_CONFIG]区域，那么<code class="docutils literal notranslate"><span class="pre">[EXTRA_CFG_PARAM]</span></code>区域中的<b>RESERVED_OPT</b>的配置则无效。<br/></p></li>
+<li><p>该区域可以与<code class="docutils literal notranslate"><span class="pre">[RESERVED_CONFIG]</span></code>区域同时存在，这种情况下<code class="docutils literal notranslate"><span class="pre">[EXTRA_CFG_PARAM]</span></code>区域中的<b><code class="docutils literal notranslate"><span class="pre">RESERVED_OPT</span></code></b>的配置还是会生效。</p></li>
+</ul>
+</section>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="linux_lib.html" class="btn btn-neutral float-left" title="4.2. LINUX下安装杰理工具链和编译静态库" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="otp_cfg.html" class="btn btn-neutral float-right" title="4.4. FLASH 参数配置说明" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 09, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/toolchains/ini_cfg.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/toolchains/ini_cfg.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

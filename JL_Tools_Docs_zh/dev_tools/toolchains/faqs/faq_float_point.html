@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.1.4. 浮点数相关FAQ — JL Project Documentation</title>
+<link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../../index.html"><img id="jl-logo" src="../../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>4. 工具链相关说明</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>4.1. 常见问题以及处理方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="faq_printf_float_point.html">4.1.1. 为什么<code class="docutils literal notranslate"><span class="pre">printf</span></code>无法输出浮点数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_vsprintf.html">4.1.2. 为什么找不到 vsprintf, sprintf, vprintf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_warn_implicit_fun.html">4.1.3. 关于调用了未声明函数的警告</a></li>
+<li class="toctree-l3 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>4.1.4. 浮点数相关FAQ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c">4.1.4.1. C代码中能否正常使用浮点数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">4.1.4.2. 哪些芯片支持单精度硬件浮点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">4.1.4.3. 为什么我的代码没有生成单精度硬件浮点指令</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">4.1.4.4. 为什么我的代码中有双精度运算</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">4.1.4.5. 为什么出现了浮点异常</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">4.1.4.6. 为什么浮点函数好像不正常</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="faq_how_to_merge_libs.html">4.1.5. 如何合并<code class="docutils literal notranslate"><span class="pre">.a</span></code>文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_how_to_merge_ofiles.html">4.1.6. 如何将缩减 <code class="docutils literal notranslate"><span class="pre">.a</span></code> 文件里面 <code class="docutils literal notranslate"><span class="pre">.o</span></code> 文件的个数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_program_used_memory/index.html">4.1.7. 如何查看程序的空间使用情况</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_stack_size_limit_exceeded.html">4.1.8. 为什么链接时提示 stack size limit exceeded 警告</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_why_build_failed.html">4.1.9. 常见的编译出错原因</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_how_to_reduce_compilation_time.html">4.1.10. 如何在Windows系统减少编译时间</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../linux_lib.html">4.2. LINUX下安装杰理工具链和编译静态库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ini_cfg.html">4.3. isd_config.ini 配置文件说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../otp_cfg.html">4.4. FLASH 参数配置说明</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="../index.html"><span class="section-number">4. </span>工具链相关说明</a> »</li>
+<li><a href="index.html"><span class="section-number">4.1. </span>常见问题以及处理方法</a> »</li>
+<li><span class="section-number">4.1.4. </span>浮点数相关FAQ</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../../JL_Tools_Docs_en/dev_tools/toolchains/faqs/faq_float_point.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="faq">
+<h1><span class="section-number">4.1.4. </span>浮点数相关FAQ<a class="headerlink" href="#faq" title="Permalink to this heading"></a></h1>
+<section id="c">
+<h2><span class="section-number">4.1.4.1. </span>C代码中能否正常使用浮点数<a class="headerlink" href="#c" title="Permalink to this heading"></a></h2>
+<p>C代码中总是可以使用浮点数运算的。数学库<code class="docutils literal notranslate"><span class="pre">libm</span></code>也是支持的（<code class="docutils literal notranslate"><span class="pre">tan</span></code>,<code class="docutils literal notranslate"><span class="pre">sin</span></code>等函数所在的库）。区别在于：</p>
+<ol class="arabic simple">
+<li><p>有一些芯片没有<strong>硬件浮点</strong>（也就是指，单条硬件指令实现的浮点运算），这种情况下，编译器会生成软件实现的浮点运算（即libcompiler_rt.a库中的<code class="docutils literal notranslate"><span class="pre">__adddf3</span></code>之类的函数）。</p></li>
+<li><p>有一些芯片支持<strong>单精度硬件浮点</strong>（也就是指，对于单精度<code class="docutils literal notranslate"><span class="pre">float</span></code>相关的运算，有单条指令硬件指令实现的浮点运算），这种情下，对于单精度运算，编译器会生成相关的指令。但是双精度浮点运算，仍然会使用软件实现的方式（例如，双精度浮点加法<code class="docutils literal notranslate"><span class="pre">__adddf3</span></code>）。</p></li>
+<li><p>硬件浮点和软件浮点的差异主要在于运算速度和生成的代码大小。结果是一致的。软件实现的运算速度更慢、代码更大。</p></li>
+</ol>
+</section>
+<section id="id1">
+<h2><span class="section-number">4.1.4.2. </span>哪些芯片支持单精度硬件浮点<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>目前只有部分 pi32v2 架构的芯片支持单精度硬件浮点。其中，r3,r4版本的指令集的芯片是支持的。也就是编译的时候，指定了<code class="docutils literal notranslate"><span class="pre">-mcpu=r3</span></code>,<code class="docutils literal notranslate"><span class="pre">-mcpu=r4</span></code>参数的芯片。</p>
+</section>
+<section id="id2">
+<h2><span class="section-number">4.1.4.3. </span>为什么我的代码没有生成单精度硬件浮点指令<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>这个一般有多种情况</p>
+<ol class="arabic simple">
+<li><p>当前编译选项未指定<code class="docutils literal notranslate"><span class="pre">-mcpu=r3</span></code>参数。</p></li>
+<li><p>如果是库，需要检查库编译时候，是否添加了<code class="docutils literal notranslate"><span class="pre">-mcpu=r3</span></code>参数。（<strong>注意，库和SDK可能会被程序员错误地设置成了不同的-mcpu参数</strong>，参考：<a class="reference internal" href="../../faqs/howto_convert_sdk_to_lib.html"><span class="doc std std-doc">在已经有了标准 SDK 工程的情况下，如何获得编译库的工程</span></a> 获取与SDK参数保持一致的库工程）</p></li>
+<li><p>代码本身并没有使用单精度浮点指令。</p>
+<ol class="arabic simple">
+<li><p>注意，浮点常数默认是<code class="docutils literal notranslate"><span class="pre">double</span></code>。在常数末尾加上f后，才是单精度。例如，<code class="docutils literal notranslate"><span class="pre">1.0</span></code>是一个<code class="docutils literal notranslate"><span class="pre">double</span></code>，<code class="docutils literal notranslate"><span class="pre">1.0f</span></code>是一个<code class="docutils literal notranslate"><span class="pre">float</span></code>。后者才是单精度浮点数</p></li>
+<li><p>当单精度和双精度混合运算的时候，会先把单精度提升为双精度再进行双精度运算。</p></li>
+</ol>
+</li>
+</ol>
+</section>
+<section id="id3">
+<h2><span class="section-number">4.1.4.4. </span>为什么我的代码中有双精度运算<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>一般情况下，我们会在仅支持硬件单精度浮点运算的芯片上，尽量避免使用双精度。但是有些情况下仍然会出现了双精度的运算，例如，发现调用了<code class="docutils literal notranslate"><span class="pre">__adddf3</span></code>之类的双精度软件实现函数。这主要有下面几点原因：</p>
+<ol class="arabic simple">
+<li><p>浮点常数默认是<code class="docutils literal notranslate"><span class="pre">double</span></code>。在常数末尾加上f后，才是单精度。例如，<code class="docutils literal notranslate"><span class="pre">1.0</span></code>是一个<code class="docutils literal notranslate"><span class="pre">double</span></code>，<code class="docutils literal notranslate"><span class="pre">1.0f</span></code>是一个<code class="docutils literal notranslate"><span class="pre">float</span></code>。后者才是单精度浮点数。</p></li>
+<li><p>当单精度和双精度混合运算的时候，会先把单精度提升为双精度再进行双精度运算。</p></li>
+<li><p>当给带有可变长参数（即，<code class="docutils literal notranslate"><span class="pre">...</span></code>）的函数传参时，会提升为双精度。例如，对<code class="docutils literal notranslate"><span class="pre">int</span></code>
+<code class="docutils literal notranslate"><span class="pre">printf(const</span> <span class="pre">char</span> <span class="pre">*fmt,</span> <span class="pre">...)</span></code>;这样的函数，执行<code class="docutils literal notranslate"><span class="pre">float</span> <span class="pre">a</span> <span class="pre">=</span> <span class="pre">1.0f;</span> <span class="pre">printf("%f\n",</span> <span class="pre">a);</span></code>的时候，<code class="docutils literal notranslate"><span class="pre">a</span></code>会被提升为<code class="docutils literal notranslate"><span class="pre">double</span></code>后再传递。
+注意，如果函数未声明，默认参数列表是可边长的，参考：<a class="reference internal" href="faq_warn_implicit_fun.html"><span class="doc std std-doc">关于调用了未声明函数的警告</span></a></p></li>
+</ol>
+</section>
+<section id="id4">
+<h2><span class="section-number">4.1.4.5. </span>为什么出现了浮点异常<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>芯片的浮点异常是可以打开或者关闭的。默认情况下，编译器会假设芯片没有开启浮点异常。也就是说，当出现浮点运算有问题的时候，只会产生NaN。例如，除零的时候，结果是NaN，但是不发生异常。</p>
+<p>但是有时候为了调试，可能会打开浮点异常。这个时候，除零之类的错误将会导致异常中断。为了配合这种情况，编译参数需要对应加上<code class="docutils literal notranslate"><span class="pre">-mllvm</span> <span class="pre">-floating-point-may-trap</span></code>，链接参数需要对应加上<code class="docutils literal notranslate"><span class="pre">--plugin-opt=-floating-point-may-trap</span></code>。这两个参数的作用是告诉编译器浮点数运算可能会导致异常，有一些优化不能做。</p>
+</section>
+<section id="id5">
+<h2><span class="section-number">4.1.4.6. </span>为什么浮点函数好像不正常<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>确认是否出现调用了未声明的问题，参考 <a class="reference internal" href="faq_warn_implicit_fun.html"><span class="doc std std-doc">关于调用了未声明函数的警告</span></a></p></li>
+</ul>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="faq_warn_implicit_fun.html" class="btn btn-neutral float-left" title="4.1.3. 关于调用了未声明函数的警告" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="faq_how_to_merge_libs.html" class="btn btn-neutral float-right" title="4.1.5. 如何合并.a文件" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 09, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/toolchains/faqs/faq_float_point.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/toolchains/faqs/faq_float_point.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../../_static/offline.js"></script>
+</body>
+</html>

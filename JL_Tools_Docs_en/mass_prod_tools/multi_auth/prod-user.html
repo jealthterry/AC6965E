@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.3. What Manufacturers Need to Do — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>4. Multi-Algorithm Authorization Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">4.1. Introduction to Multi-Algorithm Authorization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algo-user.html">4.2. What Algorithm Providers Need to Do</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>4.3. What Manufacturers Need to Do</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">4.3.1. Apply for an account</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#authroization-id">4.3.2. Negotiate and assign the Authroization_ID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">4.3.3. Integrate and call the library files provided by the algorithm companies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">4.3.4. Download the credential file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fw">4.3.5. Generate the FW file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">4.3.6. Deploy the FW file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#target-multi-auth-prod-user-revoke-counts">4.3.7. Reclaim unused authorized counts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="website-readme.html">4.4. Using the Jieli Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authrun-tmpl-list.html">4.5. Supported Chip Models and Authorization Executable Project Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="add_authrun_to_fw.html">4.6. How to Generate a FW Containing Only the Authorization Executable</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">4. </span>Multi-Algorithm Authorization Guide</a> »</li>
+<li><span class="section-number">4.3. </span>What Manufacturers Need to Do</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/multi_auth/prod-user.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">4.3. </span>What Manufacturers Need to Do<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">4.3.1. </span>Apply for an account<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>If you do not yet have a multi-algorithm authorization server account, first contact your algorithm provider and ask them to help you obtain one. For more information, see <a class="reference internal" href="website-readme.html"><span class="doc std std-doc">Using the Jieli Server</span></a></p>
+</section>
+<section id="authroization-id">
+<h2><span class="section-number">4.3.2. </span>Negotiate and assign the Authroization_ID<a class="headerlink" href="#authroization-id" title="Permalink to this heading"></a></h2>
+<p>Agree on an Authroization_ID with each algorithm company you use, avoiding ID conflicts (that is, the IDs of the algorithms must not repeat)</p>
+<ul class="simple">
+<li><p>Within one SDK, this ID must not be duplicated</p></li>
+<li><p>The ID must be in the range 64 to 999</p></li>
+</ul>
+<p>For example, suppose manufacturer user-C needs to use the algorithms of algorithm companies algo-A and algo-B in the same SDK.</p>
+<p>Then they must be given different IDs; for example, the ID of algo-A can be 0x1 and that of algo-B 0x2.</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">4.3.3. </span>Integrate and call the library files provided by the algorithm companies<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>Once the algorithm company has finished developing the algorithm, it provides a .a library file containing the corresponding algorithm functions. You need to integrate the .a library file into your SDK so that you can call the functions in these algorithm library files.</p>
+<p>If you are not sure how to integrate third-party library functions, see <a class="reference internal" href="../../dev_tools/faqs/howto_add_3rd_libs.html"><span class="doc std std-doc">How to Add a Third-Party Library to an SDK Project</span></a>.</p>
+<p>After the algorithm company's algorithm library has been integrated into the SDK, the SDK cannot run the algorithm library properly unless the chip has been authorized.<br/> You then need to add the algorithm credential files to the FW and program the chip once with the programmer, using the FW that contains the credential files. While programming the chip, the programmer authorizes it. Once programming succeeds, the chip authorization is complete.</p>
+<p>The credential file is the file with which the programmer requests authorized programming from the multi-algorithm authorization server. For more information, read the sections below.</p>
+</section>
+<section id="id4">
+<h2><span class="section-number">4.3.4. </span>Download the credential file<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>After providing the algorithm library, the algorithm company sells you authorized counts through the Jieli multi-algorithm authorization server.</p>
+<p>Once the algorithm company has successfully sold you authorizations, you can see the number of counts sold on the Jieli multi-algorithm authorization server.</p>
+<ol class="arabic simple">
+<li><p>Log in to the server with your multi-algorithm authorization server account.</p></li>
+<li><p>Under [My purchased files] (我购买的文件), you can see the authorizations you have purchased. Under [Download credential] (下载凭证), download the corresponding <strong>credential file</strong> (i.e., the <code class="docutils literal notranslate"><span class="pre">.tkn</span></code> file). This <strong>credential file</strong> (i.e., the <code class="docutils literal notranslate"><span class="pre">.tkn</span></code> file) contains the <code class="docutils literal notranslate"><span class="pre">Authroization_ID</span></code>, the authorization data size and other information, which are used to check for conflicts when the FW file is generated.</p></li>
+</ol>
+<p><strong>Because the actual .authrun file cannot be given directly to the manufacturer who generates the final FW file, a credential file is needed as a layer of isolation</strong></p>
+<p><strong>Note that this credential file (i.e., the <code class="docutils literal notranslate"><span class="pre">.tkn</span></code> file) does not contain the actual file content; its purpose is to tell the programmer to fetch the file and the authorization from the server during deployment</strong></p>
+<p><img alt="" data-action="zoom" src="../../_images/how_to_download_token_file.jpg"/>
+<img alt="" data-action="zoom" src="../../_images/how_to_download_token_file2.jpg"/></p>
+</section>
+<section id="fw">
+<h2><span class="section-number">4.3.5. </span>Generate the FW file<a class="headerlink" href="#fw" title="Permalink to this heading"></a></h2>
+<p>When building the FW file, specify the credential files of all algorithms used in this SDK. To do so, modify the <code class="docutils literal notranslate"><span class="pre">isd_config.ini</span></code> file in the download directory, then run <code class="docutils literal notranslate"><span class="pre">download.bat</span></code> to regenerate the fw/ufw file.</p>
+<p>This involves four steps:</p>
+<ol class="arabic simple">
+<li><p>Find the location of the download directory, i.e., the directory where <code class="docutils literal notranslate"><span class="pre">isd_config.ini</span></code> is located</p></li>
+<li><p>Copy the <code class="docutils literal notranslate"><span class="pre">.tkn</span></code> files downloaded in the previous step to the download directory <br/>(i.e., the working directory of isd_download.exe, which is usually the directory containing isd_config.ini or one of its subdirectories; check the download.bat script for the exact location)</p></li>
+<li><p>Modify the <code class="docutils literal notranslate"><span class="pre">isd_config.ini</span></code> file accordingly</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note:<br/> 1. If <code class="docutils literal notranslate"><span class="pre">isd_config.ini</span></code> is generated from the <code class="docutils literal notranslate"><span class="pre">isd_config.c</span></code> file, also modify <code class="docutils literal notranslate"><span class="pre">isd_config.c</span></code>, so that your changes to the <code class="docutils literal notranslate"><span class="pre">isd_config.ini</span></code> file are not overwritten by the next build.</p>
+<p>2. Some models (see <a class="reference internal" href="authrun-tmpl-list.html#target-support-mul-auth-chip-type"><span class="std std-ref">Chip models supported by the programmer for multi-algorithm authorization</span></a>) require isd_download version 4.2.54 or later, and the following fields must be configured in isd_config.ini:<br/> [EXTRA_CFG_PARAM]<br/> OTP_CFG_SIZE=512;<br/> 3. The SDK of the fw file must support the multi-algorithm function; see <a class="reference internal" href="algo-user.html#target-mul-auth-how-to-use"><span class="std std-ref">Add authorization data verification to the algorithm library (.a file)</span></a>.<br/> If the SDK reports the link error <code class="docutils literal notranslate"><span class="pre">sys_cfg_read_otp</span> <span class="pre">undefined</span></code>, update the corresponding patch as described in <a class="reference internal" href="authrun-tmpl-list.html#target-support-mul-auth-sdk-patch"><span class="std std-ref">SDK patches that support multi-algorithm authorization</span></a>; if you cannot find a patch, follow <a class="reference internal" href="authrun-tmpl-list.html#target-request-mul-auth-sdk-patch"><span class="std std-ref">Requesting a multi-algorithm authorization patch</span></a>.<br/> Otherwise, the multi-algorithm authorization function does not take effect after programming</p>
+</div>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modify the corresponding ini configuration to specify the tkn files</span><span class="w"></span>
+<span class="c1"># In this example, the algorithms of two algorithm companies are used</span><span class="w"></span>
+<span class="c1"># file-fileVbOtr4aFOpxuXTkd20221020093416.tkn</span><span class="w"></span>
+<span class="c1"># file-fileX6cwshC2yDJIqA2p20221020093439.tkn</span><span class="w"></span>
+<span class="c1"># These are the two corresponding credential files</span><span class="w"></span>
+<span class="k">[FW_ADDITIONAL]</span><span class="w"></span>
+<span class="na">FILE_LIST</span><span class="o">=</span><span class="s">(file=ota.bin:type=100),\</span><span class="w"></span>
+<span class="w">          </span><span class="na">(file</span><span class="o">=</span><span class="s">file-fileVbOtr4aFOpxuXTkd20221020093416.tkn:type=0xec),\</span><span class="w"></span>
+<span class="w">          </span><span class="na">(file</span><span class="o">=</span><span class="s">file-fileX6cwshC2yDJIqA2p20221020093439.tkn:type=0xec)</span><span class="w"></span>
+
+<span class="c1">#  Note:</span><span class="w"></span>
+<span class="c1">#  1. Nothing may follow the \ character at the end of a line, not even spaces</span><span class="w"></span>
+<span class="c1">#  2. The characters (:,)\ must all be half-width English characters (remember to switch the input method)</span><span class="w"></span>
+<span class="c1">#  3. Do not add a comma , after the last list element </span><span class="w"></span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">download.bat</span></code> in the download directory to regenerate the fw/ufw file</p></li>
+</ol>
+</section>
+<section id="id5">
+<h2><span class="section-number">4.3.6. </span>Deploy the FW file<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<p>When the FW file is deployed in the factory and the file is found to require authorization, a connection is made to the Jieli server to deduct authorized counts and authorize the chips.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If there are multiple authorization bin files, the authorized count is the smallest of their remaining counts.</p>
+<p>If the [Log in to fmfile.jieliapp.com] (登录到fmfile.jieliapp.com) window shown below does not pop up, there are two possible reasons:</p>
+<ol class="arabic simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">.tkn</span></code> files were not added when the fw/ufw you are deploying was generated.</p></li>
+<li><p>Your programmer version is too old (2.27.4 or later is required)</p></li>
+</ol>
+</div>
+<p><img alt="" data-action="zoom" src="../../_images/pc_sel1.png"/>
+<img alt="" data-action="zoom" src="../../_images/pc_sel2.png"/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the following error pops up: [No machine code available] (没有可用的机器码)</p>
+<p><img alt="" data-action="zoom" src="../../_images/err_no_auth_code.jpg"/></p>
+<p>There are several possible reasons:</p>
+<ol class="arabic simple">
+<li><p>The <strong>hardware version</strong> of your programmer is too old and the hardware must be replaced. Contact the place where you bought the programmer to have it replaced (hardware version V5.2 or later is required; see <a class="reference internal" href="../burner_1tuo2/intro_basic.html#target-1tuo2-hosts-info"><span class="std std-ref">Introduction to the programmer main unit</span></a> and <a class="reference internal" href="../burner_1tuo2/auth_data.html"><span class="doc std std-doc">Programming Third-Party Data (Authentication Codes)</span></a>).</p></li>
+<li><p>You may have used too many machine codes, so no spare machine codes are available. Remove some machine codes as described in <a class="reference internal" href="#target-multi-auth-prod-user-revoke-counts"><span class="std std-ref">Reclaim unused authorized counts</span></a> below.</p></li>
+</ol>
+</div>
+</section>
+<section id="target-multi-auth-prod-user-revoke-counts">
+<span id="id6"></span><h2><span class="section-number">4.3.7. </span>Reclaim unused authorized counts<a class="headerlink" href="#target-multi-auth-prod-user-revoke-counts" title="Permalink to this heading"></a></h2>
+<p>Sometimes some authorized counts may remain unused in a programmer. These counts can be reclaimed to the server and then allocated to other programmers.</p>
+<p><img alt="" data-action="zoom" src="../../_images/revoke_2.jpg"/>
+<img alt="" data-action="zoom" src="../../_images/revoke_1.jpg"/></p>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="algo-user.html" class="btn btn-neutral float-left" title="4.2. What Algorithm Providers Need to Do" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="website-readme.html" class="btn btn-neutral float-right" title="4.4. Using the Jieli Server" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/multi_auth/prod-user.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/multi_auth/prod-user.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

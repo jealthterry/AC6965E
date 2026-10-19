@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3.11. Viewing Bluetooth Device Information (SDK Version/Battery Level/Checksum) — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>3. Jieli 1-to-2 Bluetooth Test Box User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_base_introduction.html">3.1. Test Box Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html">3.2. PC Tool Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_upgrade.html">3.3. Test Box Firmware Upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wireless_upgrade.html">3.4. Wireless Upgrade of Bluetooth Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wired_upgrade.html">3.5. Wired Upgrade of Bluetooth Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_test_process.html">3.6. Bluetooth Device Test Procedure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mass_production.html">3.7. Test Box Batch Upgrade and Test Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ear_storage.html">3.8. Using Earphone Storage Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_transparent.html">3.9. PC Passthrough Commands and Custom Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mes_log.html">3.10. Test Box MES Log Output</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>3.11. Viewing Bluetooth Device Information (SDK Version/Battery Level/Checksum)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">3.11.1. Feature overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.11.2. Operation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ufw_crc_compare.html">3.12. Test Box UFW File Checksum Matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_error_status.html">3.13. Status Indicators and Error Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_fixture_install.html">3.14. Connecting the Test Box to a Fixture over UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_function.html">3.15. Other Common Features: Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_problem.html">3.16. Frequently Asked Questions (FAQ)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_version_info.html">3.17. Version Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">3. </span>Jieli 1-to-2 Bluetooth Test Box User Manual</a> »</li>
+<li><span class="section-number">3.11. </span>Viewing Bluetooth Device Information (SDK Version/Battery Level/Checksum)</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/testbox_1tuo2/tb_view_bt_info.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="sdk">
+<h1><span class="section-number">3.11. </span>Viewing Bluetooth Device Information (SDK Version/Battery Level/Checksum)<a class="headerlink" href="#sdk" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2><span class="section-number">3.11.1. </span>Feature overview<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>To help the production line quickly check information such as the firmware version of the current Bluetooth device, the test box provides a Bluetooth device information view mode.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Supports displaying multiple items of information: Bluetooth address, SDK version, battery level and checksum</p></li>
+<li><p>Supports cycling through multiple items of information on the display</p></li>
+<li><p>Supports viewing over a wired or wireless connection</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id2">
+<h2><span class="section-number">3.11.2. </span>Operation<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Test box PC tool settings</p></li>
+</ol>
+<p>[1] Connect the test box to the PC and press and hold the rightmost button on the test box to enter PC configuration mode; the test box shows "LOADING";</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_mass_image1.png"/></p>
+<p>[2] On the "Function settings" (功能设置) page of the PC tool, under "Bluetooth test configuration" (蓝牙测试配置), go to "Connection display content configuration" (连接显示内容配置) and check the content to be displayed.</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_view_btinfo_image1.png"/></p>
+<p><font color="red" face="黑体" size="4">Scenario 1: to view over a wireless connection, set the fixed device name for the connection</font></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_view_btinfo_image2.png"/></p>
+<p><font color="red" face="黑体" size="4">Scenario 2: to view over a wired connection, set the "Test enable" (测试使能) switch of UART mode</font></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_view_btinfo_image3.png"/></p>
+<p>[3] Click "Save settings to test box" (保存设置到测试盒);</p>
+<ol class="arabic simple" start="2">
+<li><p>Test box DIP switch settings</p></li>
+</ol>
+<p>To view the current Bluetooth frequency offset, turn on DIP switch 4 to enable the Bluetooth frequency offset test function.</p>
+<ol class="arabic simple" start="3">
+<li><p>Procedure</p></li>
+</ol>
+<p><font color="red" face="黑体" size="4">Scenario 1: viewing over a wireless connection</font></p>
+<p>[1] Power on the device under test, place it near the test box and wait for the test box to connect.</p>
+<p>[2] Once the test box is connected, it displays the corresponding device information; when there are several items to display, it cycles through them.</p>
+<p><font color="red" face="黑体" size="4">Scenario 2: viewing over a wired connection</font></p>
+<p>[1] Place the device under test in the test box's UART fixture (see "<a class="reference internal" href="tb_fixture_install.html#target-fixture-install"><span class="std std-ref">Connecting the Test Box to a Fixture over UART</span></a>") and wait for the test box to connect.</p>
+<p>[2] Once the test box is connected, it displays the corresponding device information; when there are several items to display, it cycles through them.</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_view_btinfo_image4.png"/></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_view_btinfo_image5.png"/></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_view_btinfo_image6.png"/></p>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="tb_mes_log.html" class="btn btn-neutral float-left" title="3.10. Test Box MES Log Output" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="tb_ufw_crc_compare.html" class="btn btn-neutral float-right" title="3.12. Test Box UFW File Checksum Matching" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_view_bt_info.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_view_bt_info.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

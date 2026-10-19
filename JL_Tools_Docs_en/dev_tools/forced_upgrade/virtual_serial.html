@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6.5. Virtual Serial Port — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>6. Jieli Forced Upgrade Tool 4.0 User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_and_download.html">6.1. Upgrading and Downloading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="led_status.html">6.2. LED Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toggle_switch.html">6.3. Tool DIP Switches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool_firmware_update.html">6.4. Updating the Tool's Own Firmware</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>6.5. Virtual Serial Port</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2"><button class="toctree-expand" title="Open/close menu" type="button"></button>6.5.1. Set up the virtual serial port</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">6.5.1.1. Download and install the virtual serial port driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">6.5.1.2. Create a virtual serial port</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">6.5.1.3. Bind a physical device</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">6.5.1.4. Display the binding information</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">6.5.2. Serial communication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">6.5.3. Serial download</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">6. </span>Jieli Forced Upgrade Tool 4.0 User Guide</a> »</li>
+<li><span class="section-number">6.5. </span>Virtual Serial Port</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/dev_tools/forced_upgrade/virtual_serial.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">6.5. </span>Virtual Serial Port<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<p>Some chips have to be downloaded over a serial port. In this case, you need to use the virtual serial port function.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To enable this function, turn on DIP switch 7, power off, and then reconnect the Forced Upgrade Tool to the computer</p>
+</div>
+<section id="id2">
+<h2><span class="section-number">6.5.1. </span>Set up the virtual serial port<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<section id="id3">
+<h3><span class="section-number">6.5.1.1. </span>Download and install the virtual serial port driver<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<p>Download the <a class="reference external" href="https://pkgman.jieliapp.com/s/serdrv" rel="noopener" target="_blank">Forced Upgrade Tool 4.0 serial port driver (click here to download)</a>. When the download is complete, double-click the file to run it and follow the steps to install it</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After installing the driver, restart the computer</p>
+</div>
+</section>
+<section id="id4">
+<h3><span class="section-number">6.5.1.2. </span>Create a virtual serial port<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<p><img alt="" data-action="zoom" src="../../_images/fu_image8.png"/></p>
+<p>Click "Add new virtual serial port" (添加新的虚拟串口)</p>
+<p><img alt="" data-action="zoom" src="../../_images/fu_image9.png"/></p>
+</section>
+<section id="id5">
+<h3><span class="section-number">6.5.1.3. </span>Bind a physical device<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<p>Once it is created, a new virtual serial port appears on the left. Click it to show its information on the right. A newly created virtual serial port is not bound to any physical serial port, so its "Bound unique ID" (绑定的唯一ID) is "NOT SET". After a physical device is plugged in, the corresponding online physical device is shown in the "New device to bind" (绑定的新设备) drop-down list on the right.</p>
+<p><img alt="" data-action="zoom" src="../../_images/fu_image10.png"/>
+<img alt="" data-action="zoom" src="../../_images/fu_image11.png"/></p>
+</section>
+<section id="id6">
+<h3><span class="section-number">6.5.1.4. </span>Display the binding information<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<p>Select the ID of the physical device you want to bind, then click "Bind" (绑定). After the binding succeeds, select the virtual serial port again; the bound ID now shows the corresponding device ID.</p>
+<p><img alt="" data-action="zoom" src="../../_images/fu_image12.png"/>
+<img alt="" data-action="zoom" src="../../_images/fu_image13.png"/></p>
+</section>
+</section>
+<section id="id7">
+<h2><span class="section-number">6.5.2. </span>Serial communication<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h2>
+<p>Once the port is bound correctly and the corresponding Forced Upgrade Tool is connected, you can open the corresponding virtual serial port with a serial port tool.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some serial port tools may have compatibility problems with our virtual serial port tool. SSCOM has been tested and works.</p>
+</div>
+</section>
+<section id="id8">
+<h2><span class="section-number">6.5.3. </span>Serial download<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h2>
+<p>See <a class="reference internal" href="upgrade_and_download.html#target-forceupgrade-serial-update"><span class="std std-ref">Serial upgrade</span></a></p>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="tool_firmware_update.html" class="btn btn-neutral float-left" title="6.4. Updating the Tool&#x27;s Own Firmware" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="../faqs/index.html" class="btn btn-neutral float-right" title="7. Other Common Issues and Solutions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 09, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/forced_upgrade/virtual_serial.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/forced_upgrade/virtual_serial.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.1.6. 如何将缩减 .a 文件里面 .o 文件的个数 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../../index.html"><img id="jl-logo" src="../../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>4. 工具链相关说明</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>4.1. 常见问题以及处理方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="faq_printf_float_point.html">4.1.1. 为什么<code class="docutils literal notranslate"><span class="pre">printf</span></code>无法输出浮点数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_vsprintf.html">4.1.2. 为什么找不到 vsprintf, sprintf, vprintf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_warn_implicit_fun.html">4.1.3. 关于调用了未声明函数的警告</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_float_point.html">4.1.4. 浮点数相关FAQ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_how_to_merge_libs.html">4.1.5. 如何合并<code class="docutils literal notranslate"><span class="pre">.a</span></code>文件</a></li>
+<li class="toctree-l3 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>4.1.6. 如何将缩减 <code class="docutils literal notranslate"><span class="pre">.a</span></code> 文件里面 <code class="docutils literal notranslate"><span class="pre">.o</span></code> 文件的个数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">4.1.6.1. 使用方式</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="faq_program_used_memory/index.html">4.1.7. 如何查看程序的空间使用情况</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_stack_size_limit_exceeded.html">4.1.8. 为什么链接时提示 stack size limit exceeded 警告</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_why_build_failed.html">4.1.9. 常见的编译出错原因</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_how_to_reduce_compilation_time.html">4.1.10. 如何在Windows系统减少编译时间</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../linux_lib.html">4.2. LINUX下安装杰理工具链和编译静态库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ini_cfg.html">4.3. isd_config.ini 配置文件说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../otp_cfg.html">4.4. FLASH 参数配置说明</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="../index.html"><span class="section-number">4. </span>工具链相关说明</a> »</li>
+<li><a href="index.html"><span class="section-number">4.1. </span>常见问题以及处理方法</a> »</li>
+<li><span class="section-number">4.1.6. </span>如何将缩减 <code class="docutils literal notranslate"><span class="pre">.a</span></code> 文件里面 <code class="docutils literal notranslate"><span class="pre">.o</span></code> 文件的个数</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../../JL_Tools_Docs_en/dev_tools/toolchains/faqs/faq_how_to_merge_ofiles.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="a-o">
+<h1><span class="section-number">4.1.6. </span>如何将缩减 <code class="docutils literal notranslate"><span class="pre">.a</span></code> 文件里面 <code class="docutils literal notranslate"><span class="pre">.o</span></code> 文件的个数<a class="headerlink" href="#a-o" title="Permalink to this heading"></a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">.a</span></code> 即静态库文件。<code class="docutils literal notranslate"><span class="pre">.a</span></code> 文件是一种归档格式，里面是若干个 <code class="docutils literal notranslate"><span class="pre">.o</span></code> 文件。</p>
+<p>如果 <code class="docutils literal notranslate"><span class="pre">.a</span></code> 里面的 <code class="docutils literal notranslate"><span class="pre">.o</span></code> 文件较多，且这些 <code class="docutils literal notranslate"><span class="pre">.o</span></code> 都是 LTO 模式编译得到的时候（即，编译时添加了 <code class="docutils literal notranslate"><span class="pre">-flto</span></code> 参数），可能会在链接的过程中遇到 <code class="docutils literal notranslate"><span class="pre">Too</span> <span class="pre">many</span> <span class="pre">open</span> <span class="pre">files</span></code> 的错误。</p>
+<p>这个时候，可以考虑将 <code class="docutils literal notranslate"><span class="pre">.a</span></code> 文件里面的多个 <code class="docutils literal notranslate"><span class="pre">.o</span></code> 文件合并。</p>
+<p>可以使用我们提供的<a class="reference external" href="https://pkgman.jieliapp.com/s/merge-ofiles" rel="noopener" target="_blank">缩减脚本（点击此处下载）</a>。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>需要首先确保工具链版本是 2.4.8 或以上。工具链下载地址参考：<a class="reference internal" href="../../../other_info/index.html"><span class="doc std std-doc">工具最新版本</span></a></p>
+</div>
+<section id="id1">
+<h2><span class="section-number">4.1.6.1. </span>使用方式<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>安装 <a class="reference external" href="https://pkgman.jieliapp.com/s/py3" rel="noopener" target="_blank">python3（点击此处下载）</a> 环境，注意要将 python 添加到 PATH 中：</p></li>
+</ol>
+<p><img alt="" data-action="zoom" src="../../../_images/python_add_to_path.jpg"/></p>
+<ol class="arabic simple" start="2">
+<li><p>解压下载的合并脚本，如下图所示：</p></li>
+</ol>
+<p><img alt="" data-action="zoom" src="../../../_images/mergeofiles_step1.jpg"/></p>
+<ol class="arabic simple" start="3">
+<li><p>界面如下图所示，点击按钮选择文件即可：</p></li>
+</ol>
+<p><img alt="" data-action="zoom" src="../../../_images/mergeofiles_step2.jpg"/></p>
+<ol class="arabic simple" start="4">
+<li><p>完成后，会提示生成文件的保存路径</p></li>
+</ol>
+<p><img alt="" data-action="zoom" src="../../../_images/mergeofiles_step3.jpg"/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果希望用命令行来合并，可以使用下面的命令：</p>
+<p><code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">merge_arhive_ofiles.py</span> <span class="pre">input1.a</span> <span class="pre">--output</span> <span class="pre">new.a</span></code>
+这个命令，将 <code class="docutils literal notranslate"><span class="pre">input1.a</span></code> 的 <code class="docutils literal notranslate"><span class="pre">.o</span></code> 文件合并生成 <code class="docutils literal notranslate"><span class="pre">new.a</span></code></p>
+</div>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="faq_how_to_merge_libs.html" class="btn btn-neutral float-left" title="4.1.5. 如何合并.a文件" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="faq_program_used_memory/index.html" class="btn btn-neutral float-right" title="4.1.7. 如何查看程序的空间使用情况" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 09, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/toolchains/faqs/faq_how_to_merge_ofiles.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/toolchains/faqs/faq_how_to_merge_ofiles.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../../_static/offline.js"></script>
+</body>
+</html>

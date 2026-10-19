@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.11. 其它常见功能配置和使用说明 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>1. 杰理科技一拖二烧录器用户手册</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">1.1. 烧录器简要介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html">1.2. 手动烧录、校验、查空芯片操作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html">1.3. 机台自动烧录操作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html">1.4. 远程升级烧录器固件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html">1.5. 各型号芯片PC端烧录配置项介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html">1.6. 状态指示和报错提示说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html">1.7. 授权烧录次数限制功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html">1.8. 第三方数据（认证码）烧录功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html">1.9. 蓝牙地址及名字自增功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_burn.html">1.10. 芯片烧录接线和供电说明</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.11. 其它常见功能配置和使用说明</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#flashspi">1.11.1. flash的SPI参数配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1.11.2. 自定义资源文件烧录</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flash">1.11.3. flash参数烧录和保护参数生效测试配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ldoldo">1.11.4. 无ldo和带ldo的上层板烧录</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">1.11.5. 芯片性能测试</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">1.11.6. 芯片软关机功耗测试</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">1.11.7. 烧录时间优化提升</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rs232">1.11.8. 通过RS232串口控制蓝牙地址烧录</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">1.11.9. 通过串口打印烧录信息</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v">1.11.10. 烧录器9V电源焊接线</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">1.11.11. 单独擦除芯片flash功能</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ad698n-ac638n-dac-os"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.11.12. AD698N/AC638N DAC OS测试</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">1.11.12.1. 测试说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">1.11.12.2. 操作步骤</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="faqs.html">1.12. 常见错误处理</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">1. </span>杰理科技一拖二烧录器用户手册</a> »</li>
+<li><span class="section-number">1.11. </span>其它常见功能配置和使用说明</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/mass_prod_tools/burner_1tuo2/commom_funcs.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">1.11. </span>其它常见功能配置和使用说明<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="flashspi">
+<h2><span class="section-number">1.11.1. </span>flash的SPI参数配置<a class="headerlink" href="#flashspi" title="Permalink to this heading"></a></h2>
+<p>如要把isd_config.ini同级目录下的文件“file1.bin”，”file2.bin”等一个或者多个文件通过烧录器烧录到芯片flash指定位置,数据供SDK使用<br/></p>
+<p>请参考《<a class="reference internal" href="../common_function/common_isd_config_ini.html#target-flash-spi-params-cfg"><span class="std std-ref">flash的SPI参数配置</span></a>》</p>
+</section>
+<section id="id2">
+<h2><span class="section-number">1.11.2. </span>自定义资源文件烧录<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>如要把isd_config.ini同级目录下的文件“file1.bin”，”file2.bin”等一个或者多个文件通过烧录器烧录到芯片flash指定位置,数据供SDK使用<br/></p>
+<p>请参考《<a class="reference internal" href="../common_function/common_isd_config_ini.html#target-refile-config-introduce"><span class="std std-ref">自定义资源文件烧录配置</span></a>》</p>
+</section>
+<section id="flash">
+<h2><span class="section-number">1.11.3. </span>flash参数烧录和保护参数生效测试配置<a class="headerlink" href="#flash" title="Permalink to this heading"></a></h2>
+<p>如要芯片flash指定地址区域要带数据保护功能，可以通过下载目录的isd_config.ini文件配置flash写保护功能，烧录器把保护参数写到flash，供SDK配置flash写保护功能<br/></p>
+<p>请参考《<a class="reference internal" href="../common_function/common_isd_config_ini.html#target-protect-cfg-introduce"><span class="std std-ref">flash参数烧录和保护参数生效测试配置</span></a>》</p>
+</section>
+<section id="ldoldo">
+<h2><span class="section-number">1.11.4. </span>无ldo和带ldo的上层板烧录<a class="headerlink" href="#ldoldo" title="Permalink to this heading"></a></h2>
+<p>一拖二烧录器支持上层烧录板带LDO转换电路即6.5V转4.2V,5V等电压进行烧录，<br/></p>
+<p>也支持不带LDO转换电路进行烧录(<strong>节省物料</strong>)，即烧录器直接输出对应型号芯片正常烧录需要的电压<br/></p>
+<p>上层板烧录接线请参考《<a class="reference internal" href="pcba_burn.html"><span class="doc std std-doc">芯片烧录接线和供电说明</span></a>》</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>烧录座带LDO转换电路是因为以前考虑部分未校准的芯片会流到客户手中，导致芯片需要烧录器进行校准；或者部分芯片的efuse烧录需要6.5V，3.3V等特定电压；
+<br/></p>
+<p>当前的烧录器带有芯片校准检测功能，如果芯片未校准烧录会报错！并且efuse对应的key，lvd等烧录不再需要特定电压；</p>
+<p>所以，烧录座可以去掉LDO电路，做成芯片最小系统样式进行烧录！这样烧录座更简单，既可以省物料又可以做成通用烧录座！</p>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">1.11.5. </span>芯片性能测试<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>烧录器在烧录芯片的同时，会对芯片各个模块进行性能测试。部署fw烧录文件时，</p>
+<p>一拖二烧录器部署参考《<a class="reference internal" href="basic_usage.html#target-deploy-fw-file-to-1tuo2"><span class="std std-ref">部署目标芯片程序到烧录器</span></a>》，<br/></p>
+<p>会有<strong>配置</strong>选项对芯片筛选测试项进行配置，正常情况默认配置即可，也可以根据客户实际生产情况进行配置。</p>
+<p>各个筛选配置项说明参考 《<a class="reference internal" href="config_opt.html#target-chip-config-introduce"><span class="std std-ref">各型号芯片常用配置项介绍</span></a>》</p>
+</section>
+<section id="id4">
+<h2><span class="section-number">1.11.6. </span>芯片软关机功耗测试<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>一拖二烧录器自带功耗测试功能，如AC696X支持软关机功耗测试功能，使用方式如下：</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>1.对“功耗测试(uA):xxx”配置项进行配置；</p>
+<p>2.默认关闭测试：选择 OFF,不对芯片进行软关机功耗测试；</p>
+<p>3.开启测试：输入具体数值，如输入“10”，对芯片进行软关机功耗测试,芯片功能实测值大于10uA烧录报错当不良片处理；</p>
+<p>4.注意：<br/>
+（1）功耗测试烧录座不需要带LDO转换电路,如带ldo转换电路，请不要勾选；<br/>
+（2）卡值请留点余量，如要筛选大于2uA的芯片，请设置5uA以<br/></p>
+</div>
+<p>对应芯片型号如需功耗测试功能请联系杰理工程师 <font color="red">！</font></p><font color="red">
+</font></section><font color="red">
+<section id="id5">
+<h2><span class="section-number">1.11.7. </span>烧录时间优化提升<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<p>烧录时间提升方法有:</p>
+<p>1.勾选部署fw文件的配置项中的<strong>空片烧录</strong>,勾选空片烧录配置项，将省去读整片芯片flash进行校验是否为空的流程</p>
+<p>2.<strong>如果量测芯片长期无生产质量问题</strong>，可以把不必要的<strong>芯片筛选测试项</strong>关闭，只烧录程序烧录速度会大大提升</p>
+</section>
+<section id="rs232">
+<h2><span class="section-number">1.11.8. </span>通过RS232串口控制蓝牙地址烧录<a class="headerlink" href="#rs232" title="Permalink to this heading"></a></h2>
+<p>1.烧录器V2.27.9版本固件，可使用RS232串口通过“PC蓝牙地址烧录工具”控制烧录器烧录蓝牙地址，防止蓝牙地址出现重复和掉失情况，方便对蓝牙地址数据的管控；</p>
+<p>2.该功能，PC “配置”界面需要勾选 “串口控制烧录”，并使用RS232串口线连接“PC蓝牙地址烧录工具”和烧录器；</p>
+<p>3.该功能，需要使用客户自己的数据库管理蓝牙地址，烧录从数据库拿地址进行烧录</p>
+<p>4.该功能当前仅支持AC695X、AC635N、AC6083、AE695N、AC632N、AE632N芯片型号，其它型号有需要，可以联系杰理技术支持；</p>
+</section>
+<section id="id6">
+<h2><span class="section-number">1.11.9. </span>通过串口打印烧录信息<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
+<p>1.目的：收集量产烧录信息，方便生产管理</p>
+<p>2.当前支持打印的烧录信息</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>固件版本</strong></p></th>
+<th class="head"><p><strong>fw程序文件校验码</strong></p></th>
+<th class="head"><p><strong>芯片型号</strong></p></th>
+<th class="head"><p><strong>芯片版本</strong></p></th>
+<th class="head"><p><strong>flash id</strong></p></th>
+<th class="head"><p><strong>授权次数</strong></p></th>
+<th class="head"><p><strong>烧录成功/失败次数</strong></p></th>
+<th class="head"><p><strong>烧录时间</strong></p></th>
+<th class="head"><p><strong>错误码及报错信息</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>burn_ver,V2.27.8</p></td>
+<td><p>fw_crc,7C35-CE54BED6</p></td>
+<td><p>chip_name,AD15N</p></td>
+<td><p>chip_ver,B</p></td>
+<td><p>flash_id,0x5e3213</p></td>
+<td><p>auth_times,0,used_times,0</p></td>
+<td><p>pass_times,16,fail_times,8</p></td>
+<td><p>burn_time,2095</p></td>
+<td><p>burn_pass[1],E00-burn_ok</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>3.串口硬件接线</p>
+<p>烧录器“调试串口TX” 接 “串口模块RX”，“烧录器调试串口GND”接“串口模块GND”，如下图所示。</p>
+<p><img alt="" data-action="zoom" src="../../_images/common_funcs_log_img1.png"/></p>
+<p>3.上位机串口配置</p>
+<p><img alt="" data-action="zoom" src="../../_images/common_funcs_log_img2.png"/></p>
+<p>建议使用稳定性较好，且能过滤杂波的上位机串口助手</p>
+<p>4.保存log信息为.csv文件进行分析</p>
+<p>可以将串口助手收集到的log保存为.csv文件，进行数据分析处理</p>
+</section>
+<section id="v">
+<h2><span class="section-number">1.11.10. </span>烧录器9V电源焊接线<a class="headerlink" href="#v" title="Permalink to this heading"></a></h2>
+<p>当烧录器内置时，焊接外拉线外置让产线方便在产生问题时复位，接线如图所示。</p>
+<p><img alt="" data-action="zoom" src="../../_images/common_funcs_log_img3.png"/></p>
+</section>
+<section id="id7">
+<h2><span class="section-number">1.11.11. </span>单独擦除芯片flash功能<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>任意fw文件对应的下载目录的isd_config.ini文件进行如下配置，配置后点击下载目录的download.bat生成新的fw文件；</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">BURNER_PASSTHROUGH_CFG</span><span class="p">]</span>
+<span class="n">ERASE_FLASH_MODE</span><span class="o">=</span><span class="n">YES</span><span class="p">;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>把上述的fw文件部署到烧录器；</p></li>
+<li><p>任意一种烧录模式，校验模式，查空模式下，按<code class="docutils literal notranslate"><span class="pre">开始按键</span></code>，即可实现单独对芯片进行擦除，擦除后校验整片flash数据是否是全FF,显示屏成功计数累加1表示擦除成功；</p></li>
+</ol>
+</section>
+<section id="ad698n-ac638n-dac-os">
+<h2><span class="section-number">1.11.12. </span>AD698N/AC638N DAC OS测试<a class="headerlink" href="#ad698n-ac638n-dac-os" title="Permalink to this heading"></a></h2>
+<section id="id8">
+<h3><span class="section-number">1.11.12.1. </span>测试说明<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>DAC OS测试为一拖二烧录器的一个筛选测试项，主要用于筛选芯片DAC二极管特性异常的芯片；</p></li>
+<li><p>DAC OS测试，需要上层板上带有DAC OS测试电路，并在使用前需要对上层板的“电压基准源进行校准”；</p></li>
+<li><p>烧录报错提示情况</p>
+<ul class="simple">
+<li><p><strong>E06_DAC_OS_ERR</strong>: 为DAC OS测试不过芯片，需要筛选出来进一步分析；</p></li>
+<li><p><strong>E06_OS_INIT_ERR</strong>: DAC模块初始化异常，请重试，多次烧录报错请检查硬件电路；</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id9">
+<h3><span class="section-number">1.11.12.2. </span>操作步骤<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>DAC OS上层板基准源调节<br/></p>
+<ul class="simple">
+<li><p>【1】远程升级支持DAC OS测试的烧录器固件，烧录器固件版本为<strong>V2.25.5</strong>及以上版本；</p></li>
+<li><p>【2】更新芯片程序fw文件时，在烧录配置项中勾选“DAC OS”测试项；</p></li>
+<li><p>【3】把带有支持DAC OS测试电路的上层板安装到烧录器；</p></li>
+<li><p>【4】对烧录器上电开机；</p></li>
+<li><p>【5】使用万用表量取支持DAC OS测试的上层板测试点<strong>+3.3V</strong>和测试点<strong>-1.25V</strong>两点间电压，并调节电位器使万用表测量电压达到<strong>4.55V</strong>;至此完成DAC OS上层板基准源调节，如<a class="reference internal" href="#img-dac-os-upper-board"><span class="std std-ref">DAC OS上层板基准源调节</span></a>所示。</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>步骤【3】和步骤【4】一定不能颠倒过来操作</p>
+</div>
+<figure class="align-default" id="img-dac-os-upper-board">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image68.png"/>
+<figcaption>
+<p><span class="caption-text">DAC OS上层板基准源调节</span><a class="headerlink" href="#img-dac-os-upper-board" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>走正常烧录、校验、查空流程，即可实现芯片烧录、校验、查空兼DAC OS测试。</p></li>
+</ol>
+</section>
+</section>
+</font></section><font color="red">
+</font>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="pcba_burn.html" class="btn btn-neutral float-left" title="1.10. 芯片烧录接线和供电说明" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="faqs.html" class="btn btn-neutral float-right" title="1.12. 常见错误处理" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/commom_funcs.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/commom_funcs.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

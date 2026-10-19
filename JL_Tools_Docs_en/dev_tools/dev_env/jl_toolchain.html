@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.1.2. Installing the Jieli Toolchain — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>1. Development Environment Installation</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#windows"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.1. Windows environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="code_blocks.html">1.1.1. Installing Code::Blocks</a></li>
+<li class="toctree-l3 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.1.2. Installing the Jieli Toolchain</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#windows">1.1.2.1. Windows operating system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#linux">1.1.2.2. Linux operating system</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="jl_toolchain_update.html">1.1.3. Updating the Jieli Toolchain</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#linux">1.2. Linux environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#macos">1.3. MacOS environment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">1. </span>Development Environment Installation</a> »</li>
+<li><span class="section-number">1.1.2. </span>Installing the Jieli Toolchain</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/dev_tools/dev_env/jl_toolchain.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">1.1.2. </span>Installing the Jieli Toolchain<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Jieli toolchain <strong>no longer requires you to apply for and import a license file</strong>; you can use it directly once it is installed.</p>
+</div>
+<p>Currently, building the SDK is supported only on the Windows and Linux operating systems. The installation procedure for each is as follows:</p>
+<section id="windows">
+<h2><span class="section-number">1.1.2.1. </span>Windows operating system<a class="headerlink" href="#windows" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>After making sure that CodeBlocks is installed on this machine, you can install the Jieli toolchain. Click the link <a class="reference external" href="https://pkgman.jieliapp.com/s/win-toolchain" rel="noopener" target="_blank">Windows toolchain (click here to download)</a> to download the toolchain</p></li>
+<li><p>Double-click the downloaded file and follow the prompts to install it.</p></li>
+</ul>
+</section>
+<section id="linux">
+<h2><span class="section-number">1.1.2.2. </span>Linux operating system<a class="headerlink" href="#linux" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>On Linux, the SDK can only be built with make. Toolchain download link: <a class="reference external" href="https://pkgman.jieliapp.com/s/linux-toolchain" rel="noopener" target="_blank">Linux toolchain (click here to download)</a>. Extract it to the <code class="docutils literal notranslate"><span class="pre">/opt/jieli</span></code> directory and make sure that <code class="docutils literal notranslate"><span class="pre">/opt/jieli/common/bin/clang</span></code> exists (pay attention to the directory levels)</p></li>
+<li><p>Linux limits the number of open files, and the link step opens a large number of files, which may cause linking to fail. Make sure the result of <code class="docutils literal notranslate"><span class="pre">ulimit</span> <span class="pre">-n</span></code> is large enough (greater than 8096 is recommended); you can set a larger value with <code class="docutils literal notranslate"><span class="pre">ulimit</span> <span class="pre">-n</span> <span class="pre">8096</span></code>.</p></li>
+</ul>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="code_blocks.html" class="btn btn-neutral float-left" title="1.1.1. Installing Code::Blocks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="jl_toolchain_update.html" class="btn btn-neutral float-right" title="1.1.3. Updating the Jieli Toolchain" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 09, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/dev_env/jl_toolchain.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/dev_env/jl_toolchain.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

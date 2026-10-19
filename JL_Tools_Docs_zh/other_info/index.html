@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1. 工具最新版本 — JL Project Documentation</title>
+<link rel="stylesheet" href="../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../index.html"><img id="jl-logo" src="../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev_tools/dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_tools/build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_tools/codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_tools/toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_tools/post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_tools/forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_tools/faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mass_prod_tools/burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mass_prod_tools/burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mass_prod_tools/testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mass_prod_tools/multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mass_prod_tools/private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mass_prod_tools/common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mass_prod_tools/faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>1. 工具最新版本</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">1.1. 开发工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">1.2. 量产工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#target-other-tool-download-link">1.3. 认证工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">1.4. 其它工具</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#id7"><button class="toctree-expand" title="Open/close menu" type="button"></button>3. 常见问题</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="faqs/how_to_update_using_jlxproj.html">3.1. 如何使用 .jlxproj 文件来升级工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faqs/how_to_update_softwares.html">3.2. 如何更新工具</a></li>
+</ul>
+</li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><span class="section-number">1. </span>工具最新版本</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../JL_Tools_Docs_en/other_info/index.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">1. </span>工具最新版本<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<p>表格更新时间：2026-10-14 15:35:58</p>
+<section id="id2">
+<h2><span class="section-number">1.1. </span>开发工具<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p>工具</p></th>
+<th class="head"><p>最新版本</p></th>
+<th class="head"><p>下载地址</p></th>
+<th class="head"><p>备注</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>包管理器</p></td>
+<td><p>2.0.2</p></td>
+<td><p><a class="reference external" href="https://pkgman.jieliapp.com/s/pkgman" rel="noopener" target="_blank">包管理器</a></p></td>
+<td><p>用于打开 .jlxproj 文件<br/>下载杰理相关工具</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>强制升级工具4.0串口驱动</p></td>
+<td><p>-</p></td>
+<td><p><a class="reference external" href="https://pkgman.jieliapp.com/s/serdrv" rel="noopener" target="_blank"></a></p></td>
+<td><p>见 <a class="reference internal" href="../dev_tools/forced_upgrade/virtual_serial.html"><span class="doc std std-doc">虚拟串口</span></a></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>Code::Blocks（Windows版）</p></td>
+<td><p>-</p></td>
+<td><p><a class="reference external" href="https://pkgman.jieliapp.com/s/codeblocks" rel="noopener" target="_blank">备用链接</a></p></td>
+<td><p>最新版本可以参考 Code::Blocks 官网</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>工具链（Windows版）</p></td>
+<td><p>2.5.3</p></td>
+<td><p><a class="reference external" href="https://pkgman.jieliapp.com/s/win-toolchain" rel="noopener" target="_blank">工具链（Windows版）</a></p></td>
+<td><p>安装参考：<a class="reference internal" href="../dev_tools/dev_env/index.html"><span class="doc std std-doc">开发环境安装说明</span></a></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>工具链（Linux版）</p></td>
+<td><p>2.5.3</p></td>
+<td><p><a class="reference external" href="https://pkgman.jieliapp.com/s/linux-toolchain" rel="noopener" target="_blank">工具链（Linux版）</a></p></td>
+<td><p>安装参考：<a class="reference internal" href="../dev_tools/dev_env/index.html"><span class="doc std std-doc">开发环境安装说明</span></a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>下载目录工具（Windows版）</p></td>
+<td><p></p></td>
+<td><p><a class="reference external" href="https://pkgman.jieliapp.com/s/downtool" rel="noopener" target="_blank">下载目录工具（Windows版）</a><br/>更新方式：<a class="reference internal" href="faqs/how_to_update_using_jlxproj.html"><span class="doc std std-doc">如何使用 .jlxproj 文件来升级工具</span></a></p></td>
+<td><p>isd_download.exe<br/>fw_add.exe<br/>ufw_maker.exe<br/>fat_comm.exe<br/>packres.exe</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>下载目录工具（Linux版）</p></td>
+<td><p></p></td>
+<td><p><a class="reference external" href="https://pkgman.jieliapp.com/s/linux-postbuild" rel="noopener" target="_blank">下载目录工具（Linux版）</a></p></td>
+<td><p>isd_download<br/>fw_add<br/>ufw_maker<br/>fat_comm<br/>packres<br/>remove_tailing_zeros</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>配置工具</p></td>
+<td><p>2.0.47</p></td>
+<td><p><a class="reference internal" href="faqs/how_to_update_softwares.html#target-update-sdk-config-efftool"><span class="std std-ref">在下载目录入口文件处更新</span></a></p></td>
+<td><p>SDK_Config</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>调音工具</p></td>
+<td><p>0.1.58</p></td>
+<td><p><a class="reference internal" href="faqs/how_to_update_softwares.html#target-update-sdk-config-efftool"><span class="std std-ref">在下载目录入口文件处更新</span></a></p></td>
+<td><p>efftool</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>fw 编辑工具</p></td>
+<td><p>2.0.59</p></td>
+<td><p><a class="reference internal" href="faqs/how_to_update_softwares.html#target-update-sdk-config-efftool"><span class="std std-ref">在下载目录入口文件处更新</span></a></p></td>
+<td><p>sdktool</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>ANC Designer</p></td>
+<td><p>0.1.28</p></td>
+<td><p><a class="reference internal" href="faqs/how_to_update_softwares.html#target-update-sdk-config-efftool"><span class="std std-ref">在下载目录入口文件处更新</span></a></p></td>
+<td><p>ancdesigner</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="id3">
+<h2><span class="section-number">1.2. </span>量产工具<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>工具</p></th>
+<th class="head"><p>最新版本</p></th>
+<th class="head"><p>下载地址</p></th>
+<th class="head"><p>备注</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>一拖二烧录器</p></td>
+<td><p>2.28.6</p></td>
+<td><p><a class="reference internal" href="../mass_prod_tools/burner_1tuo2/remote_update.html"><span class="doc std std-doc">软件上远程更新</span></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>一拖八烧录器</p></td>
+<td><p>3.1.32</p></td>
+<td><p><a class="reference internal" href="../mass_prod_tools/burner_1tuo8/remote_update.html"><span class="doc std std-doc">软件上远程更新</span></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>蓝牙测试盒</p></td>
+<td><p>1.3.5</p></td>
+<td><p><a class="reference internal" href="../mass_prod_tools/testbox_1tuo2/tb_upgrade.html"><span class="doc std std-doc">软件上远程更新</span></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="target-other-tool-download-link">
+<span id="id4"></span><h2><span class="section-number">1.3. </span>认证工具<a class="headerlink" href="#target-other-tool-download-link" title="Permalink to this heading"></a></h2>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>工具</p></th>
+<th class="head"><p>版本</p></th>
+<th class="head"><p>下载地址</p></th>
+<th class="head"><p>备注</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Fcc Assist</p></td>
+<td><p>1.0.4.1</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/FCC_assist_1.0.4.1.zip" rel="noopener" target="_blank">下载</a></p></td>
+<td><p>不带WIFI版本</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fcc Assist</p></td>
+<td><p>1.1.8</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/FCC_assist_1.1.8.zip" rel="noopener" target="_blank">下载</a></p></td>
+<td><p>带WIFI版本</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="id5">
+<h2><span class="section-number">1.4. </span>其它工具<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<p>注意：下面链接里的是：<code class="docutils literal notranslate"><span class="pre">固件相关工具更新.jlxproj</span></code>，需要通过这个文件来下载最新的工具。</p>
+<p>使用<code class="docutils literal notranslate"><span class="pre">固件相关工具更新.jlxproj</span></code>，获取最新工具的方式参考：<a class="reference internal" href="faqs/how_to_update_using_jlxproj.html"><span class="doc std std-doc">如何使用 .jlxproj 文件来升级工具</span></a></p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>工具</p></th>
+<th class="head"><p>最新版本</p></th>
+<th class="head"><p>下载地址</p></th>
+<th class="head"><p>备注</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>固件文件相关pc工具<br/>（一拖一PC下载工具）</p></td>
+<td><p>-</p></td>
+<td><p><a class="reference external" href="https://pkgman.jieliapp.com/s/fwtool" rel="noopener" target="_blank">固件文件相关pc工具</a></p></td>
+<td><p>校验码查看工具<br/> 固件升级程序（<a class="reference internal" href="../firmware_tools/download/firmware_upgrade/index.html"><span class="doc std std-doc">说明</span></a>）</p></td>
+</tr>
+<tr class="row-odd"><td><p>认证码格式转换工具</p></td>
+<td><p>-</p></td>
+<td><p>包含在<a class="reference external" href="https://pkgman.jieliapp.com/s/fwtool" rel="noopener" target="_blank">固件文件相关pc工具</a> <br/> <a class="reference external" href="https://pkgman.jieliapp.com/s/authcsv_linux" rel="noopener" target="_blank">Linux版本点此下载</a></p></td>
+<td><p>license_to_auth_csv.exe</p></td>
+</tr>
+<tr class="row-even"><td><p>扫码枪更新蓝牙名等配置工具</p></td>
+<td><p>-</p></td>
+<td><p>包含在<a class="reference external" href="https://pkgman.jieliapp.com/s/fwtool" rel="noopener" target="_blank">固件文件相关pc工具</a></p></td>
+<td><p>配置信息更新工具.exe</p></td>
+</tr>
+<tr class="row-odd"><td><p>蓝牙地址二维码打印工具</p></td>
+<td><p>-</p></td>
+<td><p>包含在<a class="reference external" href="https://pkgman.jieliapp.com/s/fwtool" rel="noopener" target="_blank">固件文件相关pc工具</a></p></td>
+<td><p>MacBarCode.exe</p></td>
+</tr>
+<tr class="row-even"><td><p>FindMy产测工具套件</p></td>
+<td><p>-</p></td>
+<td><p><a class="reference external" href="https://pkgman.jieliapp.com/s/findmy_tools" rel="noopener" target="_blank">下载</a></p></td>
+<td><p><a class="reference internal" href="../other_tools/findmy_tool/index.html"><span class="doc std std-doc">文档链接</span></a></p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+</section>
+<section id="id6">
+<h1><span class="section-number">2. </span>文档链接<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h1>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>文档</p></th>
+<th class="head"><p>链接</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>一拖八烧录器文档</p></td>
+<td><p><a class="reference internal" href="../mass_prod_tools/burner_1tuo8/index.html"><span class="doc std std-doc">杰理科技一拖八烧录器用户手册</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>一拖二烧录器文档</p></td>
+<td><p><a class="reference internal" href="../mass_prod_tools/burner_1tuo2/index.html"><span class="doc std std-doc">杰理科技一拖二烧录器用户手册</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>1T2蓝牙测试盒使用说明</p></td>
+<td><p><a class="reference internal" href="../mass_prod_tools/testbox_1tuo2/index.html"><span class="doc std std-doc">杰理科技一拖二蓝牙测试盒用户手册</span></a></p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="id7">
+<h1><span class="section-number">3. </span>常见问题<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faqs/how_to_update_using_jlxproj.html">3.1. 如何使用 .jlxproj 文件来升级工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faqs/how_to_update_softwares.html">3.2. 如何更新工具</a></li>
+</ul>
+</div>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="../other_tools/findmy_tool/index.html" class="btn btn-neutral float-left" title="3. FindMy 产测工具套件" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="faqs/how_to_update_using_jlxproj.html" class="btn btn-neutral float-right" title="3.1. 如何使用 .jlxproj 文件来升级工具" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/other_info/index.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/other_info/index.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../_static/offline.js"></script>
+</body>
+</html>

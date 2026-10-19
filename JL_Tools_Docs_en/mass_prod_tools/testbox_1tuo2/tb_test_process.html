@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3.6. Bluetooth Device Test Procedure — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>3. Jieli 1-to-2 Bluetooth Test Box User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_base_introduction.html">3.1. Test Box Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html">3.2. PC Tool Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_upgrade.html">3.3. Test Box Firmware Upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wireless_upgrade.html">3.4. Wireless Upgrade of Bluetooth Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wired_upgrade.html">3.5. Wired Upgrade of Bluetooth Devices</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>3.6. Bluetooth Device Test Procedure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.6.1. Classic Bluetooth device test procedure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3.6.2. Quick test procedure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ble">3.6.3. BLE test procedure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">3.6.4. Wired TWS pair test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">3.6.5. Built-in touch sensitivity test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">3.6.6. Using the wireless microphone test mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mass_production.html">3.7. Test Box Batch Upgrade and Test Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ear_storage.html">3.8. Using Earphone Storage Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_transparent.html">3.9. PC Passthrough Commands and Custom Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mes_log.html">3.10. Test Box MES Log Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_view_bt_info.html">3.11. Viewing Bluetooth Device Information (SDK Version/Battery Level/Checksum)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ufw_crc_compare.html">3.12. Test Box UFW File Checksum Matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_error_status.html">3.13. Status Indicators and Error Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_fixture_install.html">3.14. Connecting the Test Box to a Fixture over UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_function.html">3.15. Other Common Features: Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_problem.html">3.16. Frequently Asked Questions (FAQ)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_version_info.html">3.17. Version Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">3. </span>Jieli 1-to-2 Bluetooth Test Box User Manual</a> »</li>
+<li><span class="section-number">3.6. </span>Bluetooth Device Test Procedure</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/testbox_1tuo2/tb_test_process.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">3.6. </span>Bluetooth Device Test Procedure<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">3.6.1. </span>Classic Bluetooth device test procedure<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>1. Enable the test functions according to your actual needs and set the DIP switches accordingly, e.g. whether to test calls and frequency offset</p>
+<p>2. The test box can connect to two devices at the same time for testing. It is recommended to power on 4 or more devices under test at the same time so that they are waiting to be connected</p>
+<p>3. After a device is connected, 1 shows the test status (an audio icon indicates the music playback test and a phone icon indicates the call test), 2 shows the device name, 3 shows the device's frequency offset, and 4 shows the previous/next track, pause and volume up/down buttons</p>
+<p>4. After the music playback test, press the pause button on the device to enter the call test, and speak into the device's MIC to test the call. When the test is finished, press the hang-up button to disconnect and search for the next device</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image6.png"/></p>
+</section>
+<section id="id3">
+<h2><span class="section-number">3.6.2. </span>Quick test procedure<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>1. Turn on the quick test function with the DIP switch</p>
+<p>2. Power on 4 or more devices at the same time so that they are waiting to be connected</p>
+<p>3. After the test box connects to a device, it sends a command to put the device into quick test mode; customers should make the device indicate entry into this mode with a flashing LED</p>
+<p>4. The device turns on MIC amplification: speak into the MIC, and the sound comes out of the device's speaker</p>
+<p>5. Press a button on the device; it plays a key tone</p>
+<p>6. When the test is finished, power off the device</p>
+</section>
+<section id="ble">
+<h2><span class="section-number">3.6.3. </span>BLE test procedure<a class="headerlink" href="#ble" title="Permalink to this heading"></a></h2>
+<p>1. Turn on the BLE test function with the DIP switch and choose whether to test the master or the slave (for the DIP switch settings, see the section "<a class="reference internal" href="tb_base_introduction.html#target-dip-switch-description"><span class="std std-ref">DIP switch functions</span></a>")</p>
+<p>2. If automatic frequency offset correction is required, turn on the frequency offset correction DIP switch</p>
+<p>3. After the test box connects to a device, it sends a command to put the device into BLE test mode; once connected, a frequency offset test is performed by default</p>
+<p>4. After the frequency offset test, the test box shows the Bluetooth name (for the master test, only the master MAC address is shown) and the frequency offset value (if automatic frequency offset correction is enabled, the calibrated frequency offset is shown after calibration)</p>
+<p>5. When a button on the device is pressed, the test box shows the button number</p>
+<p>6. When the test is finished, press the test button for the corresponding channel on the test box to disconnect the device and wait for the next device to connect</p>
+</section>
+<section id="id4">
+<h2><span class="section-number">3.6.4. </span>Wired TWS pair test<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<ul>
+<li><p><strong>Requirements</strong></p>
+<p>1. Test boxes with hardware version v2.2 or later and firmware version v2.1.6 or later support the TWS pair test interface.</p>
+<p>2. For TWS devices whose LDO pin supports UART communication (shared with the UART IO) and whose LDOIN capacitor is smaller than 103, the test box can be connected to the TWS devices through the test box UART adapter board.</p>
+</li>
+<li><p><strong>Supported features</strong></p>
+<ol class="arabic simple">
+<li><p>Supports fast online pairing of earbud pairs</p></li>
+<li><p>Supports fast connection and testing of earbud pairs</p></li>
+</ol>
+</li>
+<li><p><strong>Usage</strong></p>
+<ol class="arabic">
+<li><p>Turn on the TWS pairing or TWS pair test switch in the PC interface, click "Save to test box" (保存到测试盒) and then restart the test box; the test box enters the "TWS pair search" (对耳搜索) screen.</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image31.png"/></p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image32.png"/></p>
+</li>
+<li><p>If only the "TWS pairing enable" (对耳配对使能) switch is turned on, no connection test is performed after successful TWS pairing; the screen is shown below.</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image33.png"/></p>
+</li>
+<li><p>If only the "TWS pair test enable" (对耳测试使能) switch is turned on, no TWS pairing is performed; only the connection test is performed.</p></li>
+<li><p>If both "TWS pairing enable" (对耳配对使能) and "TWS pair test enable" (对耳测试使能) are turned on, pairing is performed during the connection test. If pairing succeeds, "TWS paired" (对耳已配对) is displayed during the connection.</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image34.png"/></p>
+</li>
+</ol>
+</li>
+<li><p><strong>TWS pairing check (对耳配对判断)</strong></p>
+<ol class="arabic simple">
+<li><p>This option takes effect only when "TWS pairing enable" (对耳配对使能) is 1.</p></li>
+<li><p>When set to 1, if the TWS SDK version supports returning pairing information, pairing succeeds only when the earbuds pair successfully and return correct pairing information; if incorrect pairing information is returned, an error is reported (the error screens are shown below: figure a shows the screen when only TWS pairing is enabled; figure b shows the screen when both TWS pairing and TWS pair test are enabled).</p></li>
+<li><p>When set to 0, no pairing information is returned and checked during TWS pairing.</p></li>
+</ol>
+</li>
+</ul>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image34_1.png"/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the earphone SDK version does not yet support returning pairing information, set this option to 0; otherwise, TWS pairing cannot be performed and an error is reported. The error screens are shown below: figure c shows the screen when only TWS pairing is enabled; figure d shows the screen when both TWS pairing and TWS pair test are enabled.</p>
+</div>
+<ul class="simple">
+<li><p><strong>TWS pairing Bluetooth name match enable (对耳配对蓝牙名匹配使能)</strong></p>
+<ol class="arabic simple">
+<li><p>This option takes effect only when "TWS pairing enable" (对耳配对使能) is 1.</p></li>
+<li><p>When set to 1, if the TWS SDK version supports Bluetooth name matching, pairing succeeds only if the left and right earbuds have the same Bluetooth name; if their Bluetooth names differ, an error is reported (the error screens are shown below: figure a shows the screen when only TWS pairing is enabled; figure b shows the screen when both TWS pairing and TWS pair test are enabled).</p></li>
+<li><p>When set to 0, the Bluetooth names of the left and right earbuds are not checked during TWS pairing.</p></li>
+</ol>
+</li>
+</ul>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image34_2.png"/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the earphone SDK version does not yet support Bluetooth name matching, set this option to 0; otherwise, TWS pairing cannot be performed.</p>
+</div>
+<ul class="simple">
+<li><p><strong>TWS out-of-case Bluetooth disconnect enable (对耳离仓蓝牙断开使能)</strong></p>
+<ol class="arabic simple">
+<li><p>This option takes effect only when "TWS pair test enable" (对耳测试使能) is 1.</p></li>
+<li><p>When set to 1, after an earphone has established a Bluetooth connection with the test box, the test box actively disconnects the Bluetooth connection when the earphone is taken out of the case.</p></li>
+<li><p>When set to 0, after an earphone has established a Bluetooth connection with the test box, the Bluetooth connection is kept when the earphone is taken out of the case.</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="id5">
+<h2><span class="section-number">3.6.5. </span>Built-in touch sensitivity test<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>V1.2.6.d adds the built-in touch sensitivity test enable option</strong> (<code class="docutils literal notranslate"><span class="pre">this</span> <span class="pre">option</span> <span class="pre">requires</span> <span class="pre">SDK</span> <span class="pre">support</span></code>)</p></li>
+</ol>
+<p><img alt="" data-action="zoom" src="../../_images/tb_test_process_image1.png"/></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>When "Built-in touch sensitivity test enable" (内置触摸灵敏度测试使能) is set to 0, this test item is disabled.</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>When "Built-in touch sensitivity test enable" (内置触摸灵敏度测试使能) is set to 1, once the test box has established a classic Bluetooth connection, the test box LCD prompts you to perform the corresponding actions for the built-in touch sensitivity test.</p></li>
+</ul>
+</div></blockquote>
+<p>2. Test procedure</p>
+<ul class="simple">
+<li><p>Test scenario 1: set "Test enable" (测试使能) under "Wired UART mode configuration" (有线串口模式配置) to 1, so that the classic Bluetooth connection is established through UART communication.</p></li>
+</ul>
+<p>[1] After the Bluetooth connection is established, "Please take out of case" (请出仓) is displayed; take the earphone out of the UART communication case.</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_test_process_image2.png"/></p>
+<p>[2] After the earphone is taken out, the test box LCD prompts "Please double-tap" (请双击). Double-tap once within 5s; when the double-tap is recognized, the test result "√" is shown;</p>
+<p>If recognition fails, an error or timeout is returned: the test box shows "Timeout" (超时) or "Error" (错误), accompanied by a single beep. The test result is shown with the corresponding test parameters (the first value is the touch change amount and the second is the change as a percentage)</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_test_process_image3.png"/></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_test_process_image4.png"/></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_test_process_image5.png"/></p>
+<ul class="simple">
+<li><p>Test scenario 2: set "Test enable" (测试使能) under "Wired UART mode configuration" (有线串口模式配置) to 0, so that the classic Bluetooth connection is established by over-the-air wireless search. After the Bluetooth connection is established, the test proceeds as in step 2 of test scenario 1.</p></li>
+</ul>
+</section>
+<section id="id6">
+<h2><span class="section-number">3.6.6. </span>Using the wireless microphone test mode<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>V1.2.6.e adds the wireless microphone test mode enable option</strong> (<code class="docutils literal notranslate"><span class="pre">this</span> <span class="pre">option</span> <span class="pre">requires</span> <span class="pre">SDK</span> <span class="pre">support</span></code>)</p></li>
+</ol>
+<p><img alt="" data-action="zoom" src="../../_images/tb_test_process_image6.png"/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Wireless microphone solutions developed with the adapter series SDK use a non-standard Bluetooth connection and therefore cannot connect directly to the test box for frequency offset testing and wireless upgrade, so this option was added;</p>
+<p>Select the mode that corresponds to the SDK's application type. Each mode relates to a specific SDK configuration; you must select the mode that matches the SDK configuration in order to establish a wireless connection with the test box.</p>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Option description</p></li>
+</ol>
+<p>The default value is "WIRELESS_MIC_MODE_NONE", i.e. wireless microphone test mode is not started. The other options must match the corresponding SDK configuration, as shown in the table below:</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>CONFIG_ADATER_APP_SEL</p></th>
+<th class="head"><p>CONFIG_ADAPTER_WIRELESS_ROLE_SEL</p></th>
+<th class="head"><p>WIRELESS_MIC_BT_MODE</p></th>
+<th class="head"><p>config_rf_oob</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>WIRELESS_MIC_1T1_TX_BT_MODE_1_OOB_1</p></td>
+<td><p>CONFIG_ADAPTER_APP_WIRELESS_MIC_1T1</p></td>
+<td><p>tx_1t1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>WIRELESS_MIC_1T1_RX_BT_MODE_1_OOB_1</p></td>
+<td><p>CONFIG_ADAPTER_APP_WIRELESS_MIC_1T1</p></td>
+<td><p>rx_1t1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>WIRELESS_MIC_1T1_TX_BT_MODE_1_OOB_0</p></td>
+<td><p>CONFIG_ADAPTER_APP_WIRELESS_MIC_1T1</p></td>
+<td><p>tx_1t1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>WIRELESS_MIC_1T1_RX_BT_MODE_1_OOB_0</p></td>
+<td><p>CONFIG_ADAPTER_APP_WIRELESS_MIC_1T1</p></td>
+<td><p>rx_1t1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>WIRELESS_MIC_2T1_TX_BT_MODE_0_OOB_0</p></td>
+<td><p>CONFIG_ADAPTER_APP_WIRELESS_MIC_2T1</p></td>
+<td><p>tx_2t1</p></td>
+<td><p>When ENABLE is configured,<br/>enter the value of WIRELESS_24G_CODE_ID<br/>in hexadecimal in the 2.4G access code setting (2.4G接入码配置);<br/>when DISABLE, set the 2.4G access code to 0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>WIRELESS_MIC_2T1_RX_BT_MODE_0_OOB_0</p></td>
+<td><p>CONFIG_ADAPTER_APP_WIRELESS_MIC_2T1</p></td>
+<td><p>rx_2t1</p></td>
+<td><p>When ENABLE is configured,<br/>enter the value of WIRELESS_24G_CODE_ID<br/>in hexadecimal in the 2.4G access code setting (2.4G接入码配置);<br/>when DISABLE, set the 2.4G access code to 0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>WIRELESS_MIC_DUPLEX_DONGLE</p></td>
+<td><p>CONFIG_ADAPTER_APP_WIRELESS_DUPLEX</p></td>
+<td><p>duplex_dongle</p></td>
+<td><p>When ENABLE is configured,<br/>enter the value of WIRELESS_24G_CODE_ID<br/>in hexadecimal in the 2.4G access code setting (2.4G接入码配置);<br/>when DISABLE, set the 2.4G access code to 0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>WIRELESS_MIC_DUPLEX_EARPHONE</p></td>
+<td><p>CONFIG_ADAPTER_APP_WIRELESS_DUPLEX</p></td>
+<td><p>duplex_earphone</p></td>
+<td><p>When ENABLE is configured,<br/>enter the value of WIRELESS_24G_CODE_ID<br/>in hexadecimal in the 2.4G access code setting (2.4G接入码配置);<br/>when DISABLE, set the 2.4G access code to 0</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="tb_wired_upgrade.html" class="btn btn-neutral float-left" title="3.5. Wired Upgrade of Bluetooth Devices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="tb_mass_production.html" class="btn btn-neutral float-right" title="3.7. Test Box Batch Upgrade and Test Cases" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_test_process.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_test_process.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

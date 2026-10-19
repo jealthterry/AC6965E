@@ -1,0 +1,1214 @@
+{
+ "batch": "b03",
+ "pages": [
+  {
+   "page": "dev_tools/toolchains/faqs/faq_why_build_failed.html",
+   "page_title": "4.1.9. 常见的编译出错原因",
+   "units": [
+    {
+     "id": "u7cf9b21e8a",
+     "role": "p",
+     "zh": "这个 ⟦1⟧xxx.a⟦/1⟧ 文件，并不是和当前的 SDK 使用同样的指令集，检查是使用杰理的编译器生成的。"
+    },
+    {
+     "id": "u40bea36d1d",
+     "role": "h2",
+     "zh": "提示 ⟦1⟧clang.exe: error: no input files⟦/1⟧"
+    },
+    {
+     "id": "u8d0a917c8b",
+     "role": "p",
+     "zh": "在编译的时候，提示如下图的错误："
+    },
+    {
+     "id": "uccd5ace95b",
+     "role": "p",
+     "zh": "这个错误通常是由于编译命令长度超过命令行长度限制导致。"
+    },
+    {
+     "id": "udb0c8b8731",
+     "role": "p",
+     "zh": "当遇到这些报错的时候，可以考虑下面的操作："
+    },
+    {
+     "id": "u87b0870816",
+     "role": "p",
+     "zh": "可以通过缩短编译命令长度来解决这个问题。"
+    },
+    {
+     "id": "u691aa696cb",
+     "role": "p",
+     "zh": "如将include目录通过文件参数的形式传递给clang。"
+    },
+    {
+     "id": "u5cf18c810b",
+     "role": "p",
+     "zh": "注意：include_dir.txt中每一行结束不能有斜杠符号⟦1⟧\\⟦/1⟧。"
+    },
+    {
+     "id": "u793cba1479",
+     "role": "p",
+     "zh": "Makefile方式编译请参考下图："
+    },
+    {
+     "id": "u5b383a102f",
+     "role": "p",
+     "zh": "codeblock方式编译请参考下图："
+    },
+    {
+     "id": "u0793cfce4e",
+     "role": "p",
+     "zh": "存储include目录的文件同Makfile,codeblock工程放在同一目录，如下图："
+    },
+    {
+     "id": "u2e9b7f976e",
+     "role": "h2",
+     "zh": "提示 ⟦1⟧cannot find xxxx.o: No such file or directory⟦/1⟧"
+    },
+    {
+     "id": "uc9cd051e9f",
+     "role": "p",
+     "zh": "这个错误可能是由于codeblock工程所在的路径太长导致。"
+    },
+    {
+     "id": "u0f0bfc618d",
+     "role": "p",
+     "zh": "当遇到这个报错的时候，可以考虑下面的操作："
+    },
+    {
+     "id": "u04825f3849",
+     "role": "p",
+     "zh": "缩短codeblock工程所在的路径长度， 如将codeblock工程复制到盘符根目录下。"
+    },
+    {
+     "id": "ua198df7a0f",
+     "role": "h2",
+     "zh": "链接脚本自定义的报错"
+    },
+    {
+     "id": "ucf7961ec66",
+     "role": "p",
+     "zh": "有些时候，会在链接脚本中，添加了一些检查，例如 ⟦1⟧ASSERT(exp, message)⟦/1⟧ 之类的语句。当⟦2⟧exp⟦/2⟧不成立的时候，链接器就会输出⟦3⟧message⟦/3⟧。 一般来说，这些是为了检查下面一些情况："
+    },
+    {
+     "id": "u72a844c0cb",
+     "role": "p",
+     "zh": "确认代码、数据等大小是否在芯片支持的范围内，没有越界（超过物理上限）"
+    },
+    {
+     "id": "u1dc5d94786",
+     "role": "p",
+     "zh": "确认代码、数据等的（起始地址、或者大小）对齐方式是否满足要求"
+    },
+    {
+     "id": "ufa86083128",
+     "role": "p",
+     "zh": "例如，下面图："
+    },
+    {
+     "id": "uc7f2a97207",
+     "role": "p",
+     "zh": "在当前的代码目录下，全局搜索报错的字符串，找到对应的链接脚本（一般是 ⟦1⟧sdk.ld.c⟦/1⟧）"
+    },
+    {
+     "id": "u2bcd9e7fd4",
+     "role": "p",
+     "zh": "确认对应的是什么条件不成立，并对应修改"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/toolchains/faqs/faq_how_to_reduce_compilation_time.html",
+   "page_title": "4.1.10. 如何在Windows系统减少编译时间",
+   "units": [
+    {
+     "id": "u577ccb3d96",
+     "role": "p",
+     "zh": "SDK的编译时间长短，会受到系统设置和安全软件（如果杀毒软件，文件加密软件）的影响。"
+    },
+    {
+     "id": "u4aef73d65a",
+     "role": "p",
+     "zh": "如果您在Windows上遇到SDK编译慢的问题，可参考以下说明对系统配置进行修改，减少编译时间。"
+    },
+    {
+     "id": "ud934f20efa",
+     "role": "h2",
+     "zh": "修改杀毒软件配置"
+    },
+    {
+     "id": "u7ba5fb3654",
+     "role": "p",
+     "zh": "在SDK编译过程中，您可以打开Windows⟦1⟧任务管理器⟦/1⟧，查看哪些进程CPU使用率较高。"
+    },
+    {
+     "id": "uc0f3e8ae2e",
+     "role": "p",
+     "zh": "如下图，Windows系统自带杀毒软件进程⟦1⟧MsMpEng.exe⟦/1⟧的CPU使用率最高"
+    },
+    {
+     "id": "u87dd443cf5",
+     "role": "p",
+     "zh": "那么您可以尝试修改杀毒软件安全策略减少时间。"
+    },
+    {
+     "id": "u74827b60eb",
+     "role": "p",
+     "zh": "由于支持Windows系统的杀毒软件太多，本文仅以Windows系统自带杀毒软件为例说明如何修改杀毒软件的安全策略"
+    },
+    {
+     "id": "ua8889ab363",
+     "role": "p",
+     "zh": "关闭杀毒软件⟦1⟧实时保护⟦/1⟧功能"
+    },
+    {
+     "id": "u6ed0862f11",
+     "role": "p",
+     "zh": "如果您的开发环境是相对封闭安全的，那么您可以直接关闭杀毒软件的⟦1⟧实时保护⟦/1⟧功能。"
+    },
+    {
+     "id": "u07306f7782",
+     "role": "p",
+     "zh": "在Windows安全中心，打开⟦1⟧“病毒和威胁防护”设置⟦/1⟧，关闭⟦2⟧实时保护⟦/2⟧。如下图："
+    },
+    {
+     "id": "u75a44c2eda",
+     "role": "p",
+     "zh": "关闭⟦1⟧实时保护⟦/1⟧后，以小编用的测试电脑为例，在命令行中编译⟦2⟧AC792N SDK⟦/2⟧的⟦3⟧wifi_camera⟦/3⟧工程为例，"
+    },
+    {
+     "id": "u6785c7d2c8",
+     "role": "p",
+     "zh": "编译时间减少了约20%。"
+    },
+    {
+     "id": "u03f1237717",
+     "role": "p",
+     "zh": "⟦1⟧打开实时保护⟦/1⟧的编译时间如下⟦2/⟧"
+    },
+    {
+     "id": "u25d8f06286",
+     "role": "p",
+     "zh": "!!! Build succeeded !!!⟦1/⟧ make[1]: Leaving directory ‘E:/ac792/sdk/apps/wifi_camera/board/wl83’⟦2/⟧ 开始时间：2025/12/31 周三 14:57:28⟦3/⟧ 结束时间：2025/12/31 周三 14:59:52⟦4/⟧ 总共耗时：0小时2分24秒(共144秒)⟦5/⟧"
+    },
+    {
+     "id": "u2ac86177e7",
+     "role": "p",
+     "zh": "⟦1⟧关闭实时保护⟦/1⟧的编译时间如下"
+    },
+    {
+     "id": "u759f9f1c7b",
+     "role": "p",
+     "zh": "!!! Build succeeded !!!⟦1/⟧ make[1]: Leaving directory ‘E:/ac792/sdk/apps/wifi_camera/board/wl83’⟦2/⟧ 开始时间：2025/12/31 周三 15:05:23⟦3/⟧ 结束时间：2025/12/31 周三 15:07:14⟦4/⟧ 总共耗时：0小时1分51秒(共111秒)"
+    },
+    {
+     "id": "u453de116a5",
+     "role": "p",
+     "zh": "将编译器进程和SDK目录添加到杀毒软件白名单"
+    },
+    {
+     "id": "u235c1b54b1",
+     "role": "p",
+     "zh": "如果您的开发环境需要经常连接互联网，那么建议您加将⟦1⟧编译器进程⟦/1⟧和⟦2⟧SDK目录⟦/2⟧添加到杀毒软件白名单。 如下图："
+    },
+    {
+     "id": "uaac35fb9df",
+     "role": "p",
+     "zh": "在Windows安全中心，打开⟦1⟧“病毒和威胁防护”设置⟦/1⟧，找到⟦2⟧排除项⟦/2⟧设置， 点击⟦3⟧添加或删除排除项⟦/3⟧。 如下图："
+    },
+    {
+     "id": "ua413116ed6",
+     "role": "p",
+     "zh": "将编译器clang.exe进程和SDK路径添加到排除项中。如下图："
+    },
+    {
+     "id": "u88ca82ca4d",
+     "role": "p",
+     "zh": "添加排除项后，编译时间减少了约17%。"
+    },
+    {
+     "id": "u88dde45d9f",
+     "role": "p",
+     "zh": "⟦1⟧添加排除项⟦/1⟧后的编译时间如下:"
+    },
+    {
+     "id": "u0a11d662bc",
+     "role": "p",
+     "zh": "!!! Build succeeded !!!⟦1/⟧ make[1]: Leaving directory ‘E:/ac792/sdk/apps/wifi_camera/board/wl83’⟦2/⟧ 开始时间：2025/12/31 周三 15:52:57⟦3/⟧ 结束时间：2025/12/31 周三 15:54:57⟦4/⟧ 总共耗时：0小时2分0秒(共120秒)"
+    },
+    {
+     "id": "u0bd76acb97",
+     "role": "h2",
+     "zh": "禁用⟦1⟧Microsoft PC Manager Service⟦/1⟧服务"
+    },
+    {
+     "id": "u10555c9787",
+     "role": "p",
+     "zh": "在安装了某些特定的Windows更新后，SDK编译可能会变得非常慢，可以参考以下步骤处理。"
+    },
+    {
+     "id": "u028754aa3c",
+     "role": "p",
+     "zh": "在系统服务中找到⟦1⟧Microsoft PC Manager Service⟦/1⟧，停止并禁用此服务。如下图："
+    },
+    {
+     "id": "ub87172fcd5",
+     "role": "p",
+     "zh": "停止⟦1⟧Microsoft PC Manager Service⟦/1⟧后，"
+    },
+    {
+     "id": "ub3f686ee03",
+     "role": "p",
+     "zh": "在⟦1⟧任务管理器⟦/1⟧中， 确认服务相关进程⟦2⟧MSPCManagerService.exe⟦/2⟧,⟦3⟧MSPCManagerCore.exe⟦/3⟧,⟦4⟧MSPCManager.exe⟦/4⟧已不存在。"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/toolchains/linux_lib.html",
+   "page_title": "4.2. LINUX下安装杰理工具链和编译静态库",
+   "units": [
+    {
+     "id": "u99cad7c9a4",
+     "role": "h2",
+     "zh": "Linux环境"
+    },
+    {
+     "id": "ufb84418a9b",
+     "role": "p",
+     "zh": "系统要求如下⟦1/⟧"
+    },
+    {
+     "id": "u43d55ae71f",
+     "role": "cell",
+     "zh": "说明"
+    },
+    {
+     "id": "ube6578864d",
+     "role": "cell",
+     "zh": "Linux版本"
+    },
+    {
+     "id": "u487e271087",
+     "role": "cell",
+     "zh": "Ubuntu 16.04(建议)"
+    },
+    {
+     "id": "uf79dde7df8",
+     "role": "cell",
+     "zh": "Make版本"
+    },
+    {
+     "id": "u484340cfb8",
+     "role": "cell",
+     "zh": "GNU Make 4.1(建议)"
+    },
+    {
+     "id": "u0ce2cadf23",
+     "role": "h2",
+     "zh": "工具链"
+    },
+    {
+     "id": "ufea8708f58",
+     "role": "p",
+     "zh": "Linux工具链下载⟦1/⟧"
+    },
+    {
+     "id": "uedd83dd479",
+     "role": "p",
+     "zh": "点击此处下载linux版本工具链"
+    },
+    {
+     "id": "u2d59012343",
+     "role": "p",
+     "zh": "Linux工具链安装⟦1/⟧"
+    },
+    {
+     "id": "u6bbeeaf1e6",
+     "role": "p",
+     "zh": "解压jieli-linux-toolchains-*.tar.xz⟦1/⟧"
+    },
+    {
+     "id": "u4ec135bd20",
+     "role": "p",
+     "zh": "将解压后的所有目录和文件复制到/opt/jieli目录下, 如下图：⟦1/⟧ ⟦2/⟧"
+    },
+    {
+     "id": "ue86e267667",
+     "role": "h2",
+     "zh": "静态库编译"
+    },
+    {
+     "id": "u05d9e43d0d",
+     "role": "p",
+     "zh": "静态库DEMO下载 ⟦1/⟧"
+    },
+    {
+     "id": "ua6d664195b",
+     "role": "cell",
+     "zh": "指令集"
+    },
+    {
+     "id": "uc4b9b9b686",
+     "role": "cell",
+     "zh": "适用芯片型号"
+    },
+    {
+     "id": "u575c738009",
+     "role": "cell",
+     "zh": "下载连接"
+    },
+    {
+     "id": "ue072b23ff9",
+     "role": "cell",
+     "zh": "点击此处下载"
+    },
+    {
+     "id": "u60b98da595",
+     "role": "p",
+     "zh": "make编译静态库DEMO ⟦1/⟧"
+    },
+    {
+     "id": "u9f96675057",
+     "role": "p",
+     "zh": "在linux系统中启动终端(terminal), 进入demo源码目录，执行make即可，如下图：⟦1/⟧ ⟦2/⟧"
+    },
+    {
+     "id": "ube032fdb48",
+     "role": "p",
+     "zh": "cmake编译静态库DEMO ⟦1/⟧"
+    },
+    {
+     "id": "uafff6510b7",
+     "role": "p",
+     "zh": "在linux系统中启动终端(terminal), 进入demo源码目录，执行以下步骤即可，如下图：⟦1/⟧"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/toolchains/ini_cfg.html",
+   "page_title": "4.3. isd_config.ini 配置文件说明",
+   "units": [
+    {
+     "id": "u78f48c0c5c",
+     "role": "h2",
+     "zh": "各个配置段说明"
+    },
+    {
+     "id": "u9bc9f31174",
+     "role": "cell",
+     "zh": "段名"
+    },
+    {
+     "id": "ua263abc13d",
+     "role": "cell",
+     "zh": "用于配置生成flash.bin前所需要的信息。"
+    },
+    {
+     "id": "u3e79e9aa69",
+     "role": "cell",
+     "zh": "用于配置系统所需要的参数，该配置的所有选项都会进过转后然后存入flash.bin中。"
+    },
+    {
+     "id": "u33aa9bcd57",
+     "role": "cell",
+     "zh": "用于配置相关工具信息。"
+    },
+    {
+     "id": "uc39deec1ef",
+     "role": "cell",
+     "zh": "用于配置芯片版本相关信息。"
+    },
+    {
+     "id": "u60190e0a37",
+     "role": "cell",
+     "zh": "用于配置预留区域信息的区域，如果⟦1⟧[EXTRA_CFG_PARAM]⟦/1⟧区域有设置RESERVED_OPT配置项，则当前区域最多只能配置6个。"
+    },
+    {
+     "id": "u4b8a54fc1d",
+     "role": "cell",
+     "zh": "用于配置预留区域信息的区域，与⟦1⟧[RESERVED_CONFIG]⟦/1⟧，该区域是为了预防⟦2⟧[RESERVED_CONFIG]⟦/2⟧区域不够而添加的。"
+    },
+    {
+     "id": "uca05611e22",
+     "role": "h2",
+     "zh": "选项"
+    },
+    {
+     "id": "u3cf8f81626",
+     "role": "p",
+     "zh": "默认值指的是，当选项不出现的时候的值。"
+    },
+    {
+     "id": "u094009d3b2",
+     "role": "p",
+     "zh": "有效值指的是，对应配置值接收指定的值。"
+    },
+    {
+     "id": "ufe5805b618",
+     "role": "h3",
+     "zh": "⟦1⟧[EXTRA_CFG_PARAM]⟦/1⟧段选项说明"
+    },
+    {
+     "id": "u503f807a9b",
+     "role": "cell",
+     "zh": "类型"
+    },
+    {
+     "id": "ub312dd9a1f",
+     "role": "cell",
+     "zh": "默认值"
+    },
+    {
+     "id": "ue7745cd142",
+     "role": "cell",
+     "zh": "有效值"
+    },
+    {
+     "id": "ub90db4544a",
+     "role": "cell",
+     "zh": "布尔"
+    },
+    {
+     "id": "u2747b4ade4",
+     "role": "cell",
+     "zh": "预留部分空间用于保存SDK需要的配置，⟦1⟧默认不修改⟦/1⟧，如需修改请联系杰理工程师"
+    },
+    {
+     "id": "u74fdbb1230",
+     "role": "cell",
+     "zh": "预留区域是否一定要配置BTIF区域的限制 ⟦1/⟧ 没有蓝牙配置的芯片型号的会配置为NO，例如AD14N, AD15N"
+    },
+    {
+     "id": "uf473a0fa0d",
+     "role": "cell",
+     "zh": "是否使用新的文件系统（BR22)，该配置与双备份配置互斥"
+    },
+    {
+     "id": "u66fbb9a115",
+     "role": "cell",
+     "zh": "是否使用BR22双备份flash结构，该配置与单备份配置互斥（需要配合FLASH_SIZE、BR22_TWS_VERSION一起使用）"
+    },
+    {
+     "id": "ucf3f852778",
+     "role": "cell",
+     "zh": "立即数"
+    },
+    {
+     "id": "ub6b89b23c1",
+     "role": "cell",
+     "zh": "双备份的版本号（一般配合BR22_TWS_DB一起使用）"
+    },
+    {
+     "id": "ufec2ae4e77",
+     "role": "cell",
+     "zh": "指定当前FLASH的大小（一般配合BR22_TWS_DB一起使用）"
+    },
+    {
+     "id": "ua194a3c59f",
+     "role": "cell",
+     "zh": "可以指定 YES 或者 NO；如果不指定，则默认会在单备份(BR22_TWS_DB 表示双备份)情况下检查 ota.bin 并计算大小。如果是 NO 则不检查 ota.bin"
+    },
+    {
+     "id": "u174320aee7",
+     "role": "cell",
+     "zh": "字符串"
+    },
+    {
+     "id": "u41f750d49b",
+     "role": "cell",
+     "zh": "芯片名称"
+    },
+    {
+     "id": "u50328cf59c",
+     "role": "cell",
+     "zh": "SDK的入口地址"
+    },
+    {
+     "id": "u21f5c002f8",
+     "role": "cell",
+     "zh": "预留区域是否需要提前预留"
+    },
+    {
+     "id": "u7deb94a633",
+     "role": "cell",
+     "zh": "芯片的pid(少于等于16个byte的字符串)"
+    },
+    {
+     "id": "u14ffb57546",
+     "role": "cell",
+     "zh": "芯片的vid(少于等于4个byte的字符串)"
+    },
+    {
+     "id": "ufb91744f60",
+     "role": "cell",
+     "zh": "下载模式，可选择USB下载或者串口下载（默认使用USB下载）"
+    },
+    {
+     "id": "ua9c64c25a0",
+     "role": "cell",
+     "zh": "是否允许文件起始位置不按4K对齐"
+    },
+    {
+     "id": "ue058398c4d",
+     "role": "cell",
+     "zh": "是否生成jl_isd_expand.bin。将jl_isd.bin扩展到方案实际占用flash的大小(jl_isd.bin后面追加0xFF)。"
+    },
+    {
+     "id": "ua2e608ee8b",
+     "role": "cell",
+     "zh": "当前SDK的版本信息，⟦1⟧此参数由编译脚本自动配置⟦/1⟧"
+    },
+    {
+     "id": "u77106384bd",
+     "role": "cell",
+     "zh": "FLASH格式，默认不修改，如需修改请联系杰理工程师"
+    },
+    {
+     "id": "uc64a63dda7",
+     "role": "cell",
+     "zh": "默认的FLASH BIN格式，默认不修改，如需修改请联系杰理工程师"
+    },
+    {
+     "id": "u20a74820c0",
+     "role": "cell",
+     "zh": "格式"
+    },
+    {
+     "id": "u231916f6c3",
+     "role": "cell",
+     "zh": "UFW文件中FLASH BIN的格式和顺序，默认不修改，如需修改请联系杰理工程师"
+    },
+    {
+     "id": "u25476a7868",
+     "role": "cell",
+     "zh": "离线生成FLASH BIN的对齐方式，默认不修改，如需修改请联系杰理工程师"
+    },
+    {
+     "id": "u676502f2db",
+     "role": "h3",
+     "zh": "⟦1⟧[SYS_CFG_PARAM]⟦/1⟧段选项说明"
+    },
+    {
+     "id": "u271c1f446b",
+     "role": "p",
+     "zh": "该区域的配置是自定一配置，对应配置会转化后存入flash.bin中供固件使用。⟦1/⟧"
+    },
+    {
+     "id": "u83dc0fe92b",
+     "role": "p",
+     "zh": "目前已有配置："
+    },
+    {
+     "id": "ub1aa77c813",
+     "role": "cell",
+     "zh": "配置"
+    },
+    {
+     "id": "u654422a42b",
+     "role": "cell",
+     "zh": "配置spi参数，等号右边的参数含义是 ⟦1⟧datawidth_clk_mode_port⟦/1⟧"
+    },
+    {
+     "id": "u1b9ce45304",
+     "role": "cell",
+     "zh": "使用的参数，指定系统始终源,⟦1⟧一般注释掉⟦/1⟧"
+    },
+    {
+     "id": "u66c3692929",
+     "role": "cell",
+     "zh": "使用的参数，指定FREQ频率，可填写12MHz或24MHz，⟦1⟧一般注释掉⟦/1⟧"
+    },
+    {
+     "id": "ua96bb6d572",
+     "role": "cell",
+     "zh": "使用的参数，指定CLK频率，可填写24MHz或48MHz，⟦1⟧一般注释掉⟦/1⟧"
+    },
+    {
+     "id": "u68438ceb0a",
+     "role": "cell",
+     "zh": "串口tx"
+    },
+    {
+     "id": "u06b21e7706",
+     "role": "cell",
+     "zh": "串口波特率"
+    },
+    {
+     "id": "ufe5df6f239",
+     "role": "cell",
+     "zh": "串口升级，可填写PB00、PB05、PA05，⟦1⟧一般注释掉⟦/1⟧"
+    },
+    {
+     "id": "u11ac6841ea",
+     "role": "cell",
+     "zh": "指定重启按键引脚和重启参数，等号右边的含义是 port口_长按时间_有效电平（长按时间有00、01、02、04、08、16六个值可选，单位为秒，当长按时间为00时，则关闭长按复位功能。）"
+    },
+    {
+     "id": "ud43bcf84c4",
+     "role": "cell",
+     "zh": "用于isd_download.exe工具烧写外部flash时指定外部升级参数，⟦1/⟧CS引脚为PB07⟦2/⟧使用SPI1的C端⟦3/⟧如果norflash电源为vddio，填NULL即可，否则填写对应的引脚号，⟦4/⟧需要配合packres.exe工具使用"
+    },
+    {
+     "id": "uf281a8aad4",
+     "role": "cell",
+     "zh": "⟦1⟧请勿随便修改⟦/1⟧，如需要修改请联系杰理工程师，⟦2⟧注意：此功能需要UBOOT支持⟦/2⟧"
+    },
+    {
+     "id": "u91ba4ea117",
+     "role": "cell",
+     "zh": "⟦1⟧默认关闭⟦/1⟧， 如需开启请联系杰理工程师，⟦2⟧根据SDK实际情况填写该值⟦/2⟧"
+    },
+    {
+     "id": "u2b22bf4777",
+     "role": "cell",
+     "zh": "芯片在烧写完毕后第一次上电时间，单位：ms，最长可配置60S，⟦1⟧默认不填写，仅AC695X、AC635N、AC6083型号在2.27.2及以上版本支持⟦/1⟧， 如需开启请联系杰理工程师"
+    },
+    {
+     "id": "ud7a2450b6d",
+     "role": "h3",
+     "zh": "⟦1⟧[TOOL_CONFIG]⟦/1⟧段选项说明"
+    },
+    {
+     "id": "ucaf22110f5",
+     "role": "cell",
+     "zh": "允许加载当前配置生成的FW/UFW文件的一拖二烧写器最低版本是2.24.0，⟦1⟧不能修改⟦/1⟧，如需修改请联系杰理工程师⟦2⟧，根据SDK实际情况填写该值⟦/2⟧"
+    },
+    {
+     "id": "ucdc34be44d",
+     "role": "cell",
+     "zh": "允许加载当前配置生成的FW/UFW文件的一拖八烧写器最低版本是3.0.34，⟦1⟧不能修改⟦/1⟧，如需修改请联系杰理工程师⟦2⟧，根据SDK实际情况填写该值⟦/2⟧"
+    },
+    {
+     "id": "ucf3bc79cc0",
+     "role": "cell",
+     "zh": "允许加载当前配置生成的UFW文件的蓝牙测试盒最低版本是1.2.4.f，⟦1⟧不能修改⟦/1⟧，如需修改请联系杰理工程师⟦2⟧，根据SDK实际情况填写该值⟦/2⟧"
+    },
+    {
+     "id": "uddda8dae5e",
+     "role": "h3",
+     "zh": "⟦1⟧[CHIP_VERSION]⟦/1⟧段选项说明"
+    },
+    {
+     "id": "ubbff413e53",
+     "role": "cell",
+     "zh": "允许当前配置生成的FW/UFW烧写到A、B、C版芯片中，⟦1⟧不能修改⟦/1⟧，如需修改请联系杰理工程师 ⟦2⟧根据SDK实际情况填写该值⟦/2⟧"
+    },
+    {
+     "id": "u99b02f18ac",
+     "role": "h3",
+     "zh": "⟦1⟧[RESERVED_CONFIG]⟦/1⟧段选项说明"
+    },
+    {
+     "id": "u3eaaa85b34",
+     "role": "p",
+     "zh": "该区域用于配置预留区域，可单独存在，其中VM和PRCT这两个区域是特殊区域，VM是用于表示VM相关的信息，PRCT是用于表示保护区域的信息。⟦1/⟧"
+    },
+    {
+     "id": "u9b34716841",
+     "role": "p",
+     "zh": "如果⟦1⟧[EXTRA_CFG_PARAM]⟦/1⟧区域中有⟦2⟧⟦3⟧RESERVED_OPT⟦/3⟧⟦/2⟧的配置，那么当前区域不能配置超过6项。⟦4/⟧"
+    },
+    {
+     "id": "uf790fcdcb3",
+     "role": "p",
+     "zh": "VM、PROC和BIIF这三个配置必须在预留配置区域（⟦1⟧[RESERVED_CONFIG]⟦/1⟧或⟦2⟧[RESERVED_EXPAND_CONFIG]⟦/2⟧其中一个区域）中有对应的配置，不然会报错。"
+    },
+    {
+     "id": "ue517abde9a",
+     "role": "p",
+     "zh": "每个配置项目都遵循下面的固定格式："
+    },
+    {
+     "id": "u7a439ce93b",
+     "role": "cell",
+     "zh": "配置说明"
+    },
+    {
+     "id": "uaab4c14d89",
+     "role": "cell",
+     "zh": "值说明"
+    },
+    {
+     "id": "u4a84531d25",
+     "role": "cell",
+     "zh": "区域起始地址，XXXX为预留区域名字"
+    },
+    {
+     "id": "uc58c953028",
+     "role": "cell",
+     "zh": "AUTO：由工具自动分配起始地址(PROC与VM配置不支持)⟦1/⟧如果填写立即数即代表绝对地址⟦2/⟧VM配置如果填写0则代表自动分配"
+    },
+    {
+     "id": "u4a24ac0556",
+     "role": "cell",
+     "zh": "区域长度，XXXX为预留区域名字"
+    },
+    {
+     "id": "u1d73100816",
+     "role": "cell",
+     "zh": "CODE_LEN：代码长度(只针对PROC配置)⟦1/⟧如果填写立即数即代表指定长度"
+    },
+    {
+     "id": "ua525ab3b44",
+     "role": "cell",
+     "zh": "区域操作属性，XXXX为预留区域名字"
+    },
+    {
+     "id": "uf92140975a",
+     "role": "cell",
+     "zh": "0: 下载代码时擦除指定区域⟦1/⟧1: 下载代码时不操作指定区域⟦2/⟧2: 下载代码时给指定区域加上保护"
+    },
+    {
+     "id": "u686d46b491",
+     "role": "cell",
+     "zh": "XXXX_FILE(可选)"
+    },
+    {
+     "id": "ucddb2f2bff",
+     "role": "cell",
+     "zh": "下代码时指定的文件会下载到对应的区域，XXXX为预留区域名字"
+    },
+    {
+     "id": "u0eed6c6503",
+     "role": "cell",
+     "zh": "⟦1/⟧1、指定的文件名(该文件必须要与isd_download.exe同在一个目录)⟦2/⟧2、如果需要找到该区域，则需要根据XXXX(该预留区域名字)来的定位到对应的预留区域头，根据头中的地址信息获取到数据对应的位置"
+    },
+    {
+     "id": "ue191cf83fa",
+     "role": "h3",
+     "zh": "[RESERVED_EXPAND_CONFIG] 段选项说明（可选）"
+    },
+    {
+     "id": "ubbb2905c53",
+     "role": "p",
+     "zh": "该区域就是⟦1⟧[RESERVED_CONFIG]⟦/1⟧区域的扩展，也是用于配置预留配置信息，格式也遵循⟦2⟧[RESERVED_CONFIG]⟦/2⟧中配置项的规则。⟦3/⟧"
+    },
+    {
+     "id": "ufe8002a45f",
+     "role": "p",
+     "zh": "该区域没有个数限制，如果只配置了⟦1⟧[RESERVED_EXPAND_CONFIG]⟦/1⟧区域没有配置[RESERVED_CONFIG]区域，那么⟦2⟧[EXTRA_CFG_PARAM]⟦/2⟧区域中的⟦3⟧RESERVED_OPT⟦/3⟧的配置则无效。⟦4/⟧"
+    },
+    {
+     "id": "uee9c59708e",
+     "role": "p",
+     "zh": "该区域可以与⟦1⟧[RESERVED_CONFIG]⟦/1⟧区域同时存在，这种情况下⟦2⟧[EXTRA_CFG_PARAM]⟦/2⟧区域中的⟦3⟧⟦4⟧RESERVED_OPT⟦/4⟧⟦/3⟧的配置还是会生效。"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/toolchains/otp_cfg.html",
+   "page_title": "4.4. FLASH 参数配置说明",
+   "units": [
+    {
+     "id": "u0adc946fb0",
+     "role": "p",
+     "zh": "适用场景：sdk需要开启写保护功能，DTR功能，多算法授权功能。⟦1/⟧ 需要增加OTP_CFG配置，即增加VOTP区，下载flash_params.bin 或 flash_params_v3.bin， 请按照以下说明更新SDK。"
+    },
+    {
+     "id": "ubcf585f99d",
+     "role": "h2",
+     "zh": "支持OTP_CFG工具的最低版本"
+    },
+    {
+     "id": "ud6a3ab38ff",
+     "role": "p",
+     "zh": "SDK需要支持OTP_CFG配置，相关工具需要更新到以下版本(或之后版本)。"
+    },
+    {
+     "id": "ud821211e5e",
+     "role": "cell",
+     "zh": "工具"
+    },
+    {
+     "id": "u476654762d",
+     "role": "cell",
+     "zh": "最低版本"
+    },
+    {
+     "id": "u7ec982919d",
+     "role": "cell",
+     "zh": "如何更新,请点击此处查看"
+    },
+    {
+     "id": "u8244072096",
+     "role": "cell",
+     "zh": "一拖二烧录器"
+    },
+    {
+     "id": "u0493856080",
+     "role": "cell",
+     "zh": "一拖八烧录器"
+    },
+    {
+     "id": "ue99ebd0a49",
+     "role": "h2",
+     "zh": "VOTP，OTP 区域说明"
+    },
+    {
+     "id": "u8fb168dfa4",
+     "role": "p",
+     "zh": "VOTP：属于flash空间的某个区域，存储写保护参数，DTR参数和操作OTP的参数：cmd, addr，size等，支持烧写器和强制升级工具烧写⟦1/⟧ OTP： 跟flash空间分开，存储多算法授权数据，只支持烧写器烧写，lock otp 功能暂不支持⟦2/⟧ 在sdk里调用 syscfg_read_otp 或 sys_cfg_read_otp 函数，会先找到VOTP存储的cmd, addr ,size参数，再用这些参数来访问OTP存储的多算法授权数据"
+    },
+    {
+     "id": "uf846c77883",
+     "role": "h2",
+     "zh": "SDK修改点"
+    },
+    {
+     "id": "ue39d258686",
+     "role": "h3",
+     "zh": "isd_config.ini文件"
+    },
+    {
+     "id": "ufc065b778a",
+     "role": "p",
+     "zh": "在isd_config.ini的⟦1⟧EXTRA_CFG_PARAM⟦/1⟧配置段中增加⟦2⟧OTP_CFG_SIZE⟦/2⟧配置⟦3/⟧"
+    },
+    {
+     "id": "uc18720d9c9",
+     "role": "p",
+     "zh": "如下图:⟦1/⟧ ⟦2/⟧"
+    },
+    {
+     "id": "u2fd69d7ecb",
+     "role": "p",
+     "zh": "如需同时启用FLASH写保护功能，需要在isd_config.ini中增加以下配置⟦1/⟧"
+    },
+    {
+     "id": "u297c38824f",
+     "role": "p",
+     "zh": "启用FLASH写保护功能，使用支持写保护功能的烧录器烧录时，会将芯片FLASH对应的写保护参数烧录到OTP_CFG区域中"
+    },
+    {
+     "id": "u2111afb505",
+     "role": "p",
+     "zh": "如果是使用flash_params_v3.bin 参数，还需要在isd_config.ini中增加以下配置⟦1/⟧"
+    },
+    {
+     "id": "u1632eb9a3c",
+     "role": "p",
+     "zh": "需要根据flash spec来确认是否支持DTR和WPS功能"
+    },
+    {
+     "id": "u7fa77c8c49",
+     "role": "p",
+     "zh": "[EXTRA_CFG_PARAM] NORFLASH_DTR_EN = 0;#给0是不使能DTR，给1是使能⟦1/⟧ NORFLASH_WPS_EN = 0;#给0是不使能WPS，给1是使能⟦2/⟧"
+    },
+    {
+     "id": "u2de22c7b1d",
+     "role": "h3",
+     "zh": "download.bat文件"
+    },
+    {
+     "id": "ube83a8e3ff",
+     "role": "p",
+     "zh": "启用OTP_CFG(VOTP)后，jl_isd.bin文件格式将升级为新格式。⟦1/⟧ fw_add.exe/ufw_maker.exe是无法识别的。⟦2/⟧ 如果download.bat是通过fw_add.exe/ufw_maker.exe生成最终的FW/UFW文件，⟦3/⟧ 那么需要删除download.bat中的fw_add.exe/ufw_maker.exe相关语句。"
+    },
+    {
+     "id": "ud81ca17718",
+     "role": "p",
+     "zh": "删除fw_add.exe/ufw_maker.exe相关语句后，⟦1/⟧ 在isd_download.exe后增加⟦2⟧-output-fw⟦/2⟧和⟦3⟧-output-ufw⟦/3⟧参数，生成最终的FW/UFW文件。⟦4/⟧ 如下图：⟦5/⟧ ⟦6/⟧"
+    },
+    {
+     "id": "u7a60af6e29",
+     "role": "h3",
+     "zh": "开启使用写保护功能，DTR功能，多算法授权功能"
+    },
+    {
+     "id": "u2f5088c6b4",
+     "role": "p",
+     "zh": "如果需要在开发调试阶段使用开使用写保护功能，DTR功能，多算法授权功能，⟦1/⟧ 可以通过isd_download.exe参数⟦2⟧-flash-params⟦/2⟧指定FLASH写保护参数配置文件。⟦3/⟧ 如下图:⟦4/⟧"
+    },
+    {
+     "id": "u271b1ff1a8",
+     "role": "p",
+     "zh": "⟦1/⟧ ⟦2⟧注⟦/2⟧：flash_params.bin 适用的芯片：br27、br28 、br29、br50 、br52、 br56、bd47、bd49、bd45、br42、br46、CD09、br60、br62 ⟦3/⟧ flash_params_v3.bin 适用的芯片：br35、sh58、sh59、mc03 及后续新的芯片⟦4/⟧"
+    },
+    {
+     "id": "u6fa7a79ac7",
+     "role": "p",
+     "zh": "FLASH VOTP参数更新，支持以下2种方式："
+    },
+    {
+     "id": "ud266ec2faa",
+     "role": "p",
+     "zh": "1、FLASH VOTP参数数据，从以下链接可以获取：⟦1/⟧ ⟦2⟧20260828_flash_params.bin (点击此处下载_2026_08_28)⟦/2⟧⟦3/⟧ ⟦4⟧20260828_flash_params_v3.bin(点击此处下载_2026_08_28)⟦/4⟧⟦5/⟧"
+    },
+    {
+     "id": "u20a3ca11e7",
+     "role": "p",
+     "zh": "2、在isd_config.ini的⟦1⟧EXTRA_CFG_PARAM⟦/1⟧配置段中增加以下配置，支持从服务器自动更新参数"
+    },
+    {
+     "id": "uc0879d02c0",
+     "role": "p",
+     "zh": "设置FLASH VOTP参数配置文件，连接样机后，⟦1/⟧ 执行download.bat批处理后，则会将开发板/样机中FLASH对应的写保护，DTR，多算法授权的参数下载到VOTP区域，并且有相关打印信息输出，如下图：⟦2/⟧"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/post_build/index.html",
+   "page_title": "5. 下载目录工具说明",
+   "units": [
+    {
+     "id": "ue3480686cd",
+     "role": "p",
+     "zh": "本章节是下载目录中各工具的使用说明"
+    },
+    {
+     "id": "u0ec5ed4a6d",
+     "role": "li",
+     "zh": "5.1. fat_image_tool工具介绍"
+    },
+    {
+     "id": "u81251c984e",
+     "role": "li",
+     "zh": "5.2. FLASH参数说明"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/post_build/fat_image_tool/index.html",
+   "page_title": "5.1. fat_image_tool工具介绍",
+   "units": [
+    {
+     "id": "u2ada55d352",
+     "role": "p",
+     "zh": "fat_image_tool是一个用于生成FAT文件系统镜像数据的命令行工具。 该工具随SDK发布。"
+    },
+    {
+     "id": "u7d277837a4",
+     "role": "p",
+     "zh": "fat_image_tool支持以下参数："
+    },
+    {
+     "id": "u400f8fb9d4",
+     "role": "cell",
+     "zh": "参数"
+    },
+    {
+     "id": "udbde6d84d1",
+     "role": "cell",
+     "zh": "安静模式，不显示镜像文件生成过程的输出信息"
+    },
+    {
+     "id": "u6891d8c762",
+     "role": "cell",
+     "zh": "是否支持长文件名，默认不支持"
+    },
+    {
+     "id": "ue0e84e76cd",
+     "role": "cell",
+     "zh": "文件系统类型，支持的文件系统如下：⟦1/⟧ FAT32、FAT16、FAT12、AUTO ⟦2/⟧缺省值为 AUTO，自动根据文件数量和大小选择合适的文件系统类型"
+    },
+    {
+     "id": "uda889b8fb2",
+     "role": "cell",
+     "zh": "根目录最大文件个数，缺省值为 512"
+    },
+    {
+     "id": "ud73fac8354",
+     "role": "cell",
+     "zh": "设置文件系统最大容量，缺省值为 AUTO，工具根据所有文件的总大小设置合适的容量"
+    },
+    {
+     "id": "u6a346f6255",
+     "role": "cell",
+     "zh": "设置卷标，缺省值为空"
+    },
+    {
+     "id": "u1d0efbb8eb",
+     "role": "cell",
+     "zh": "设置用于生成FAT文件系统镜像的文件目录， 如果为空，那么生成一个没有任何文件的镜像"
+    },
+    {
+     "id": "uc4351d4605",
+     "role": "cell",
+     "zh": "设置每个簇的扇区个数， 缺省值为 1， 每个扇区的大小是512字节"
+    },
+    {
+     "id": "u18a0a89443",
+     "role": "cell",
+     "zh": "输出的镜像文件名"
+    },
+    {
+     "id": "uea9feee6d5",
+     "role": "h2",
+     "zh": "示例脚本"
+    },
+    {
+     "id": "u68e27c3f19",
+     "role": "p",
+     "zh": "使用image_files目录下的文件生成FAT镜像"
+    },
+    {
+     "id": "uf0e613fc66",
+     "role": "p",
+     "zh": "生成一个没有任何文件的FAT32镜像"
+    },
+    {
+     "id": "u9a6e4ddd09",
+     "role": "h2",
+     "zh": "常见错误处理方式"
+    },
+    {
+     "id": "ue59c4ab268",
+     "role": "p",
+     "zh": "出现错误时，通常为指定的参数无法文件系统镜像数据，请根据文件目录实际情况调整参数。"
+    },
+    {
+     "id": "u3d0cbe36f3",
+     "role": "p",
+     "zh": "如根目录文件个数超过512时， 需要通过⟦1⟧--n-root⟦/1⟧参数修改根目录文件上限。"
+    },
+    {
+     "id": "u6915906b91",
+     "role": "p",
+     "zh": "如文件比较大时，需要通过⟦1⟧--sectors-per-cluster⟦/1⟧修改每个簇的扇区个数。"
+    },
+    {
+     "id": "ua4bcf27f43",
+     "role": "p",
+     "zh": "如指定了文件系统为FAT12，但是所有文件大小总和超过了FAT12上限，需要通过⟦1⟧--type⟦/1⟧设置文件系列类型为FAT16或者FAT32。"
+    },
+    {
+     "id": "ucbcbc1a340",
+     "role": "p",
+     "zh": "FAT类型文件卷大小范围："
+    },
+    {
+     "id": "u018f3f4677",
+     "role": "cell",
+     "zh": "FAT类型"
+    },
+    {
+     "id": "u972b378e59",
+     "role": "cell",
+     "zh": "卷大小范围"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/post_build/flash_params/index.html",
+   "page_title": "5.2. FLASH参数说明",
+   "units": [
+    {
+     "id": "u5806fd35f7",
+     "role": "h2",
+     "zh": "介绍"
+    },
+    {
+     "id": "u6a5354498c",
+     "role": "p",
+     "zh": "FLASH参数是SDK用于使能FLASH写保护功能和多算法授权用的一组参数。"
+    },
+    {
+     "id": "u3d3acb47bc",
+     "role": "p",
+     "zh": "如SDK支持FLASH写保护功能和多算法授权，那么需要配置芯片FLASH ID对应的FLASH参数，才可以使能FLASH写保护功能和多算法授权。"
+    },
+    {
+     "id": "u71e05f9afb",
+     "role": "p",
+     "zh": "一般情况下FLASH参数是由烧写器写入到芯片的FLASH中的。"
+    },
+    {
+     "id": "u5c5287f016",
+     "role": "p",
+     "zh": "但是您可能需要在开发调试阶段，完成以下操作："
+    },
+    {
+     "id": "u073ef8bd3a",
+     "role": "p",
+     "zh": "启动FLASH写保护参数功能⟦1/⟧"
+    },
+    {
+     "id": "ue02287c3ef",
+     "role": "p",
+     "zh": "重新激活多算法授权功能（如：烧写器烧录多算法授权数据后，多算法授权功能失效）"
+    },
+    {
+     "id": "uf38e20a135",
+     "role": "p",
+     "zh": "可以通过isd_download.exe的参数-flash-params指定FLASH参数文件。"
+    },
+    {
+     "id": "u69983bbc0e",
+     "role": "p",
+     "zh": "常用的FLASH参数都已存放的FLASH参数文件中， FLASH参数文件可以通过以下链接获取："
+    },
+    {
+     "id": "ua42e0bf148",
+     "role": "p",
+     "zh": "⟦1⟧V0_V1版本FLASH参数文件(点击此处下载)⟦/1⟧⟦2/⟧ ⟦3⟧V3版本FLASH参数文件(点击此处下载)⟦/3⟧⟦4/⟧"
+    },
+    {
+     "id": "u485e0f7278",
+     "role": "p",
+     "zh": "如您发现由未支持的FLASH ID型号，请联系杰理工程师。"
+    },
+    {
+     "id": "uc018a2d94b",
+     "role": "h2",
+     "zh": "FLASH参数版本说明"
+    },
+    {
+     "id": "ue499bce706",
+     "role": "p",
+     "zh": "默认情况下，各个芯片型号SDK适用的FLASH参数版本如下："
+    },
+    {
+     "id": "u051be59700",
+     "role": "cell",
+     "zh": "FLASH参数版本"
+    },
+    {
+     "id": "u6dc1a40750",
+     "role": "cell",
+     "zh": "适用芯片型号的SDK"
+    },
+    {
+     "id": "uc6f45987c4",
+     "role": "cell",
+     "zh": "AC695X、AC635N、AC6083、AE695N ⟦1/⟧ AC696X、AC636N、AC608N ⟦2/⟧ AC104N、AD14N ⟦3/⟧ AD15N、AE15N ⟦4/⟧ AD17N"
+    },
+    {
+     "id": "u77802ea24c",
+     "role": "cell",
+     "zh": "JL703N ⟦1/⟧ AC701N、JL701N ⟦2/⟧ AC706N ⟦3/⟧ JL708N ⟦4/⟧ JL709N、AC689N ⟦5/⟧ AC710N、JL710N、AW36N ⟦6/⟧ AW31N ⟦7/⟧ AW30N、AE30N ⟦8/⟧ AW32N ⟦9/⟧ AC704N ⟦10/⟧ AC705N ⟦11/⟧ AC82N、AD18N ⟦12/⟧ AC680N ⟦13/⟧ AC112N"
+    },
+    {
+     "id": "u377b143177",
+     "role": "cell",
+     "zh": "AC707N、AW34N ⟦1/⟧ AD24N ⟦2/⟧ AD23N ⟦3/⟧ AD21N、AC75N"
+    },
+    {
+     "id": "ued5443ce4f",
+     "role": "h2",
+     "zh": "如何在SDK中设置FLASH参数文件"
+    },
+    {
+     "id": "ud9fd3f2bc8",
+     "role": "p",
+     "zh": "下载FLASH参数文件后，找到SDK中的download.bat文件， 在isd_download.exe后添加-flash-params参数，如下图："
+    },
+    {
+     "id": "u06d36e78c1",
+     "role": "p",
+     "zh": "如果您的download.bat文件是由download.c或者download_bat.c文件生成，⟦1/⟧ 那么请在download.c或者download_bat.c中添加-flash-params参数⟦2/⟧"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/post_build/flash_params/index.html",
+   "page_title": "5.2. FLASH参数说明",
+   "units": [
+    {
+     "id": "u7e07dffce4",
+     "role": "h2",
+     "zh": "V0版本芯片型号启用FLASH写保护功能"
+    }
+   ]
+  }
+ ]
+}

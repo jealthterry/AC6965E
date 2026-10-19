@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.5. PC-Side Programming Options for Each Chip Model — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>2. Jieli 1-to-8 Programmer User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">2.1. Programmer Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html">2.2. Manual Programming, Verification and Blank Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html">2.3. Automated Programming with a Handler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html">2.4. Remote Upgrade of the Programmer Firmware</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>2.5. PC-Side Programming Options for Each Chip Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">2.5.1. Opening and selecting configuration items</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.5.2. Common configuration items for each chip model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mac"><button class="toctree-expand" title="Open/close menu" type="button"></button>2.5.3. Programming MAC addresses and authentication codes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">2.5.3.1. Important options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">2.5.3.2. Normal programming scenario (programming with a fixture)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">2.5.3.3. Handling failed devices</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html">2.6. Status Indicators and Error Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pc_err.html">2.7. PC Tool Error Messages and Solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="change_board_interval.html">2.8. Board-Change Interval Setting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="burn_vol.html">2.9. Programming Voltages for Different Chips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html">2.10. Authorized Programming Count Limit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html">2.11. Programming Third-Party Data (Authentication Codes)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html">2.12. Bluetooth Address and Name Auto-Increment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_curr_test.html">2.13. Current and Power Consumption Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_battery.html">2.14. Programming Devices with Batteries Attached</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freq_bias.html">2.15. Frequency Offset Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mic_test.html">2.16. MIC Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usual_uart_update.html">2.17. Upgrading Battery-Powered Devices over a Custom-IO Single/Two-Wire UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extern_flash_burn.html">2.18. Upgrading Internal and External Flash Together</a></li>
+<li class="toctree-l2"><a class="reference internal" href="erase.html">2.19. Partial (Non-Full-Chip) Erase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html">2.20. Other Common Features: Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faqs.html">2.21. Troubleshooting Common Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">2. </span>Jieli 1-to-8 Programmer User Manual</a> »</li>
+<li><span class="section-number">2.5. </span>PC-Side Programming Options for Each Chip Model</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/burner_1tuo8/config_opt.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="pc">
+<h1><span class="section-number">2.5. </span>PC-Side Programming Options for Each Chip Model<a class="headerlink" href="#pc" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want these checkbox options to be fixed in the FW/UFW file so that you do not have to select them again for every deployment, see <a class="reference internal" href="../common_function/set_burn_tool_option.html"><span class="doc std std-doc">How to Set Programming Options When Generating a Programming File</span></a></p>
+</div>
+<section id="id1">
+<h2><span class="section-number">2.5.1. </span>Opening and selecting configuration items<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>Before you update the target chip programming firmware, the PC tool's update control panel offers many options that can or must be configured. Normally the defaults are fine, but you can also choose settings according to your needs.</p>
+<p>For example, see the relevant steps in the "<a class="reference internal" href="basic_usage.html#target-deploy-fw-file-to-1tuo8"><span class="std std-ref">Update the target chip firmware on the programmer</span></a>" section.</p>
+<p>Open the control panel (version V3.0.3 2) for updating the AC897N chip firmware</p>
+<p>The options you can see are <strong>Board-change interval (换板时间), Port current upper limit (端口电流允许上限), USB port voltage (USB端口电压), Erase the entire FLASH before programming (烧录前擦除整个FLASH), Calibration query (校准查询), RX current test (RX电流测试), DAC, LVD voltage (LVD电压), LgHg, Bluetooth configuration (蓝牙配置) and Current test items (电流测试项)</strong>.</p>
+<p>This is shown in <a class="reference internal" href="#img-config-opt-ui-1tuo8"><span class="std std-ref">Chip programming configuration window</span></a>.</p>
+<p>After loading the target chip fw file, configure each option, then click "Deploy" (部署) to update the programmer with the target chip firmware and the configuration information.</p>
+<figure class="align-default" id="img-config-opt-ui-1tuo8">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image42.png"/>
+<figcaption>
+<p><span class="caption-text">Chip programming configuration window</span><a class="headerlink" href="#img-config-opt-ui-1tuo8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The configuration window may differ between programmer firmware versions. Keep the programmer firmware updated to the latest version.</p>
+</div>
+</section>
+<section id="id2">
+<h2><span class="section-number">2.5.2. </span>Common configuration items for each chip model<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>The programming options of different chip models are basically the same; an option with the same name has the same actual function on different chips.</p>
+<p>The following table describes some common options for each chip series; configure them as actually needed when programming.</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>No.</p></th>
+<th class="head"><p>Configuration item</p></th>
+<th class="head"><p>Configuration Items</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Board-change interval (换板时间)</p></td>
+<td><p>Default: 1000mS. The time from when a successfully programmed device on the current channel disconnects until programming can start again; the channel cannot program within this time;<br/>Purpose: in mass production, when some device chips fail and are programmed a second time, this reduces repeated programming of device chips that have already been programmed successfully</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Port current upper limit (端口电流允许上限)</p></td>
+<td><p>Range: 0~300mA, default: 100mA;<br/>Purpose: if the current drawn by a device plugged into a USB programming port of the programmer exceeds the set value, the programmer software turns off the power of the USB port to protect the programmer's hardware circuits</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>USB port voltage (USB端口电压)</p></td>
+<td><p>Range: 3.2V~6.3V;<br/>Purpose: set it to the programming voltage required by the device chip</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Erase the entire FLASH before programming (internal FLASH) (烧录前擦除整个FLASH（内置FLASH）)</p></td>
+<td><p>Checked by default. Checked: the FLASH is erased whether the chip is blank or non-blank (already programmed);<br/> Unchecked: the FLASH is not erased if the chip is blank. This option controls whether the chip FLASH is erased</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Calibration query (校准查询)</p></td>
+<td><p>Checked by default;<br/>Checked: during programming, the chip's ADC reference source calibration parameters are queried; <br/>if the chip has not been calibrated, an error is reported and programming cannot continue, so that actual use is not affected;</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>RX current test (RX电流测试)</p></td>
+<td><p>Checked: a Bluetooth receive performance test is performed to screen out chips whose Bluetooth receive parameters do not meet the requirements</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>DAC</p></td>
+<td><p>Checked: an audio DAC module performance test is performed to screen out chips whose DAC parameters do not meet the requirements;<br/>DAC has related parameter settings; the defaults are usually fine</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>LVD voltage (LVD电压)</p></td>
+<td><p>Sets the chip's low-voltage reset voltage. When reprogramming, set the same value, otherwise an error is reported and programming cannot continue. Choose the LVD voltage according to your actual design and the SDK documentation</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>LgHg</p></td>
+<td><p>The default parameters are fine. A Bluetooth performance test is performed, and an error is reported if a measured parameter is below the set value; used to screen out chips whose Bluetooth performance does not meet the requirements</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>Bluetooth configuration (蓝牙配置)</p></td>
+<td><p><strong>Update Bluetooth address (更新蓝牙地址): <strong>check it and</strong> enter the Bluetooth address range</strong>; when chips are programmed, the Bluetooth addresses in the set range are programmed into the chips one by one in ascending order, starting from the lowest address;<br/> <strong>Overwrite Bluetooth address (覆盖蓝牙地址)</strong>:<br/>  Checked: if a Bluetooth address has already been programmed into the chip, it is overwritten and a new Bluetooth address is programmed into the chip.<br/>  Unchecked: if the chip already has a Bluetooth address, the existing address is used, to avoid wasting Bluetooth addresses when reprogramming;<br/> <strong>Update Bluetooth name (更新蓝牙名字)</strong>: in SDK development, the Bluetooth address can be appended to the Bluetooth name in a specified format to auto-increment the Bluetooth name;<br/> see the "<a class="reference internal" href="btname_addr.html"><span class="doc std std-doc">Bluetooth Address and Name Auto-Increment</span></a>" section;</p></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+<td><p>Current test items (电流测试项)</p></td>
+<td><p>Current tests at power-up, startup, standby and power-off can be performed: set the normal current range to screen out chips whose current does not meet the requirements during programming;<br/>see the "<a class="reference internal" href="pcba_curr_test.html"><span class="doc std std-doc">Current and Power Consumption Test</span></a>" section;</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>SFC verification (SFC校验)</p></td>
+<td><p>Select the speaker solution or another solution according to your design; <br/>during programming, the firmware data is verified in SFC mode under the voltage test conditions of the selected solution, <br/>to screen out chips that fail the firmware data verification</p></td>
+</tr>
+<tr class="row-even"><td><p>13</p></td>
+<td><p>Crystal-less solution (LRC_TRIM) (免晶振方案)</p></td>
+<td><p>If checked, performs LRC clock calibration on chips that do not need an external crystal, so that the chip's LRC clock source is used as the system clock</p></td>
+</tr>
+<tr class="row-odd"><td><p>14</p></td>
+<td><p>USB/ISP</p></td>
+<td><p>Checked: the firmware is programmed in ISP mode, which solves the problem of the programmer not detecting or recognizing an inserted device during programming</p></td>
+</tr>
+<tr class="row-even"><td><p>15</p></td>
+<td><p>IQ_TRIM</p></td>
+<td><p>Checked: Bluetooth calibration parameters are tested</p></td>
+</tr>
+<tr class="row-odd"><td><p>16</p></td>
+<td><p>Battery type (电池方案)</p></td>
+<td><p>Sets the chip's LVD (low-voltage reset) voltage according to the operating voltage of the battery type used by the chip;<br/>Options:<br/>Lithium battery (3.0V~4.4V): LVD voltage 2.3V;<br/>Two dry cells (1.8V~3.2V): LVD low-voltage reset disabled;<br/>Coin cell (2.2V~3.6V): LVD voltage 1.8V;<br/>(<strong>The configured value is programmed into OTP, which can be programmed only once: after programming with one option, you cannot program again with another option, so choose carefully</strong>)</p></td>
+</tr>
+<tr class="row-even"><td><p>17</p></td>
+<td><p>Device with battery attached (样机带电池)</p></td>
+<td><p>Checked: finished devices with a battery already soldered on can be programmed; see the "<a class="reference internal" href="pcba_battery.html"><span class="doc std std-doc">Programming Devices with Batteries Attached</span></a>" section;</p></td>
+</tr>
+<tr class="row-odd"><td><p>18</p></td>
+<td><p>LOOPBACK</p></td>
+<td><p>If checked, tests Bluetooth performance parameters to screen out chips whose parameters do not meet the requirements</p></td>
+</tr>
+<tr class="row-even"><td><p>19</p></td>
+<td><p>Short-press reset (短按复位功能)</p></td>
+<td><p>Checked: the corresponding configuration value is programmed into the chip to enable the short-press reset function of the corresponding pin;<br/><strong>This option can be programmed only once, so choose carefully</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>20</p></td>
+<td><p>Long-press reset (长按复位功能)</p></td>
+<td><p>Checked: the corresponding configuration value is programmed into the chip to enable the long-press reset function of the corresponding pin;<br/><strong>This option can be programmed only once, so choose carefully</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>21</p></td>
+<td><p>Force authentication code update (强制更新认证码)</p></td>
+<td><p>Checked: when a non-blank chip is programmed, any authentication code already programmed into the chip is overwritten and a new authentication code is programmed;<br/>usually left unchecked (default), so that if the chip already has an authentication code, the existing one is used and no authentication codes are wasted;<br/>see the "<a class="reference internal" href="auth_data.html"><span class="doc std std-doc">Programming Third-Party Data (Authentication Codes)</span></a>" section;</p></td>
+</tr>
+<tr class="row-odd"><td><p>22</p></td>
+<td><p>Frequency offset test (频偏测试)</p></td>
+<td><p>Checked: together with a test box, frequency offset calibration is performed after the device chip firmware is programmed, which removes the separate frequency offset calibration step for devices and improves production efficiency;<br/>see the "<a class="reference internal" href="freq_bias.html"><span class="doc std std-doc">Frequency Offset Calibration</span></a>" section;</p></td>
+</tr>
+<tr class="row-even"><td><p>23</p></td>
+<td><p>BTPLL</p></td>
+<td><p>Checked: BTPLL clock parameters are tested to screen out chips whose parameters do not meet the requirements</p></td>
+</tr>
+<tr class="row-odd"><td><p>24</p></td>
+<td><p>Bare chip programming (裸片烧录)</p></td>
+<td><p>Checked: for programming chips that are encapsulated directly with black epoxy and already mounted on the board; the LVD and VDDIO voltage levels of such chips are different;<br/><strong>This option can be programmed only once, so choose carefully</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>25</p></td>
+<td><p>DACVDD</p></td>
+<td><p>Checked: used to screen out chips with an abnormal DACVDD that produce noise</p></td>
+</tr>
+<tr class="row-odd"><td><p>26</p></td>
+<td><p>LNA_BIAS</p></td>
+<td><p>If checked, tests Bluetooth calibration parameters to screen out chips whose Bluetooth parameters do not meet the requirements</p></td>
+</tr>
+<tr class="row-even"><td><p>27</p></td>
+<td><p>USB screening mode (USB筛选模式)</p></td>
+<td><p>Normal programming and strict screening modes are available. For AC695X designs, choose the mode depending on whether the design uses the USB pins, to screen out chips with faulty USB pins</p></td>
+</tr>
+<tr class="row-odd"><td><p>28</p></td>
+<td><p>Full RAM test (RAM全面测试)</p></td>
+<td><p>Checked: thoroughly screens out chips whose RAM does not work properly</p></td>
+</tr>
+<tr class="row-even"><td><p>29</p></td>
+<td><p>MIC test options (MIC测试选项)</p></td>
+<td><p>There are many settings; see the "<a class="reference internal" href="mic_test.html"><span class="doc std std-doc">MIC Test</span></a>" section;</p></td>
+</tr>
+<tr class="row-odd"><td><p>30</p></td>
+<td><p>Erase VM (擦除VM)</p></td>
+<td><p>This option can be selected only when the full-chip erase option is unchecked;<br/>Checked: the VM area is erased<br/>Unchecked: the VM area is preserved</p></td>
+</tr>
+<tr class="row-even"><td><p>31</p></td>
+<td><p>UMDC</p></td>
+<td><p>Bluetooth-related test item, checked by default</p></td>
+</tr>
+<tr class="row-odd"><td><p>32</p></td>
+<td><p>Release IO latch (释放IO锁存)</p></td>
+<td><p>Checked: the IO states are unlocked during an upgrade with the battery attached, and all chip IOs are reset to the high-impedance state</p></td>
+</tr>
+<tr class="row-even"><td><p>33</p></td>
+<td><p>Erase the entire external FLASH (擦除整个外置FLASH)</p></td>
+<td><p>This option is unchecked by default;<br/>it is mainly used when the design of the chip to be programmed includes both internal FLASH and external FLASH, to control whether the entire external FLASH is erased directly;<br/>Case 1: if this option is unchecked, the programmer checks whether the FLASH is blank and, if it is not, erases an area matching the actual size of the firmware data<br/>(because the whole FLASH chip has to be checked for blankness, and some FLASH erases faster than it reads, a full-chip<br/>erase is sometimes faster than a partial erase, so decide whether to check this option according to your situation).<br/>Case 2: if this option is checked, the programmer does not check whether the FLASH is blank and erases the entire FLASH directly before programming.<br/>Case 3: if the chip used in the design has no internal FLASH, only external FLASH, that FLASH is treated as internal FLASH, and its erase behavior is controlled by the [Erase the entire FLASH before programming (internal FLASH)] (烧录前擦除整个FLASH（内置FLASH）) option.</p></td>
+</tr>
+<tr class="row-odd"><td><p>34</p></td>
+<td><p>Disable HD1 (ports 1-8) (关闭HD1)</p></td>
+<td><p>This option only affects the IO state of the 8 USB programming ports of the 1-to-8 programmer. It is mainly for some fixture setups: if, with the devices placed on the fixture <br/>and programmed with the 1-to-8 programmer, a device is not recognized for programming or the last programming stage fails with a timeout, and the communication wiring between the 1-to-8 programmer and the devices has been checked and is fine, <br/>try checking this option to see whether it solves the problem. Normally this option does not need to be checked</p></td>
+</tr>
+<tr class="row-even"><td><p>35</p></td>
+<td><p>Flash LVD voltage match (Flash Lvd电压匹配)</p></td>
+<td><p>Checked: checks whether the minimum operating voltage supported by the chip's Flash matches the selected lvd voltage;<br/>(1) if the selected lvd voltage is greater than or equal to the minimum operating voltage supported by the Flash, programming is allowed;<br/>(2) otherwise, programming is not allowed, and the programmer reports an error showing the minimum operating voltage of the chip's flash;<br/>(3) if this error is reported, uncheck the option and select the lvd voltage level you need; it is generally recommended to program with the highest lvd voltage level</p></td>
+</tr>
+<tr class="row-odd"><td><p>36</p></td>
+<td><p>Reference source (参考源)</p></td>
+<td><p>This option takes effect only when <strong>Crystal-less solution (LRC_TRIM)</strong> (免晶振方案) is checked. If some devices are not recognized for programming or communication fails, you can try unchecking this option and programming again;<br/> whether the <strong>Reference source</strong> (参考源) option is checked or not does not affect the configuration and firmware data programmed into the chip</p></td>
+</tr>
+<tr class="row-even"><td><p>37</p></td>
+<td><p>Program external Flash? (是否烧录外部Flash)</p></td>
+<td><p>When the programming file contains, in addition to the internal FLASH firmware, external FLASH data and the external FLASH IO configuration, or only the external FLASH IO configuration, the deployment window<br/> shows <strong>Program external Flash?</strong> (是否烧录外部Flash). It is checked by default and the external FLASH is programmed. When it is unchecked, the external FLASH data is not deployed to the programmer, so the external FLASH data is not programmed either;<br/> only the internal FLASH is programmed. If, apart from the internal FLASH firmware, the programming file contains only the IO configuration for the external FLASH, <strong>Program external Flash?</strong> (是否烧录外部Flash) generally must be unchecked</p></td>
+</tr>
+<tr class="row-odd"><td><p>38</p></td>
+<td><p>Charging enable (充电使能)</p></td>
+<td><p>This option controls the VBAT output in the initial power-up phase of the chip and is checked by default. Some designs connect VBAT and VDDIO together,<br/> so the VBAT voltage output in the initial power-up phase may need to be turned off; in that case you may need to uncheck this option for programming. Configure it according to your actual application</p></td>
+</tr>
+<tr class="row-even"><td><p>39</p></td>
+<td><p>USB_VCC</p></td>
+<td><p>This option is grayed out (inactive) by default. It has two drop-down choices, ON and OFF, and becomes available only when [Device with battery attached] (样机带电池) or [USB-device with battery attached] (USB-样机带电池) is checked.<br/> It sets whether the power of the programmer's programming ports is on or off during an upgrade with the battery attached; set it on or off according to the actual situation. If the upgrade with the battery attached<br/> has to be triggered through the USB power pin, set it to on. Some devices have many components or large capacitors and draw a large current, so it should not be on; in that case<br/> you can set it to off or leave the power wire of the programming port unconnected to the device.</p></td>
+</tr>
+<tr class="row-odd"><td><p>40</p></td>
+<td><p>MAC/authentication code (EFUSE) (MAC/认证码)</p></td>
+<td><p>This option writes the authentication code or MAC address to EFUSE. It is generally used in FLASH designs: when the FLASH capacity is insufficient, you can choose to program the MAC address or the<br/>authentication code into EFUSE to keep FLASH space free for the application.</p></td>
+</tr>
+<tr class="row-even"><td><p>41</p></td>
+<td><p>Skip calibration items (跳过校准项)</p></td>
+<td><p>On some chip models, the frequency offset calibration value or data such as the Bluetooth name is stored in efuse. If, after a FW file is first programmed, you perform frequency offset calibration with a Bluetooth test box or<br/>change the Bluetooth name, and then reprogram with the original FW, programming fails. In that case, select [Skip calibration items] (跳过校准项) for programming.</p></td>
+</tr>
+<tr class="row-odd"><td><p>42</p></td>
+<td><p>LRC_TRIM (AD15N model)</p></td>
+<td><p>If the device has no battery attached and the programmer controls power on/off for programming, with LRC=-1 configured in isd_config.ini and the [LRC_TRIM] option checked, the LRC is<br/>recalibrated and written to flash. If programming with the battery attached is checked, with LRC=-1 configured in the fw file's isd_config.ini and the [LRC_TRIM] option checked, the LRC is not<br/>recalibrated; the programmer only checks whether there is a calibration value in flash and, if there is, reads it back and writes it to flash again when the firmware is reprogrammed,<br/>that is, the original LRC calibration value in flash is preserved.</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="mac">
+<h2><span class="section-number">2.5.3. </span>Programming MAC addresses and authentication codes<a class="headerlink" href="#mac" title="Permalink to this heading"></a></h2>
+<section id="id3">
+<h3><span class="section-number">2.5.3.1. </span>Important options<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Overwrite Bluetooth address</strong> (覆盖蓝牙地址): when checked, each successful programming of a device consumes one MAC address.</p></li>
+<li><p><strong>Force update authentication code</strong> (强制更新认证码): when checked, each successful programming of a device consumes one authentication code.</p></li>
+</ul>
+<p>Core principle: as long as you make sure that each device is ultimately programmed successfully only once, the number of MAC addresses (or authentication codes) consumed corresponds exactly, one to one, to the number of successfully programmed devices. Programming failures do not affect the count: no matter how many times a device<br/>has failed before, it consumes only one MAC address or authentication code once it is finally programmed successfully.</p>
+</section>
+<section id="id4">
+<h3><span class="section-number">2.5.3.2. </span>Normal programming scenario (programming with a fixture)<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<p>When programming with a fixture, the same board may be reprogrammed repeatedly, so to avoid consuming MAC addresses and authentication codes repeatedly, <strong>usually do not check</strong> [Overwrite Bluetooth address] (覆盖蓝牙地址) and [Force update authentication code] (强制更新认证码).</p>
+<p>When programming MAC addresses or authentication codes with the 1-to-8 programmer, make sure that <strong>the number of successfully programmed devices corresponds exactly, one to one, to the number of MAC addresses (or authentication codes) consumed</strong>. Use programmer version 3.1.33<br/>or later. The key points are as follows:</p>
+<ol class="arabic simple">
+<li><p><strong>Successfully programmed devices</strong>: because [Overwrite Bluetooth address] (覆盖蓝牙地址) and [Force update authentication code] (强制更新认证码) are unchecked, programming them successfully again does not consume new MAC addresses or authentication codes.</p></li>
+<li><p><strong>Devices that fail programming</strong>: a device that still fails after several attempts must be <strong>marked immediately and removed from the current programmer</strong>. Do not leave it on the current programmer for further attempts, and do not plug it into another channel at random for programming,<br/>otherwise the number of devices will no longer match the number of MAC addresses/authentication codes.</p></li>
+</ol>
+</section>
+<section id="id5">
+<h3><span class="section-number">2.5.3.3. </span>Handling failed devices<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<p>Devices that failed programming should be <strong>collected and handled separately</strong> in one of the following ways:</p>
+<ul class="simple">
+<li><p>Redeploy the firmware (FW) to a new programmer and then program them;</p></li>
+<li><p>Or handle them with a programmer that has completed the count for this batch.</p></li>
+</ul>
+<p>When handling them, check the option that corresponds to what is being programmed:</p>
+<ul class="simple">
+<li><p>Programming MAC addresses → check [Overwrite Bluetooth address] (覆盖蓝牙地址)</p></li>
+<li><p>Programming authentication codes → check [Force update authentication code] (强制更新认证码)</p></li>
+</ul>
+<p>For each device, <strong>make sure it is programmed successfully only once</strong>; do not program it a second time after it has been programmed successfully.</p>
+</section>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="remote_update.html" class="btn btn-neutral float-left" title="2.4. Remote Upgrade of the Programmer Firmware" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="status_errors.html" class="btn btn-neutral float-right" title="2.6. Status Indicators and Error Messages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo8/config_opt.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo8/config_opt.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

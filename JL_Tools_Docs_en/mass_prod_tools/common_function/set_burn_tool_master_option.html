@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6.2. How to Set Expert Options When Generating a Programming File — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>6. General Features: Configuration and Use</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="common_isd_config_ini.html">6.1. Common isd_config.ini Settings and Programming-Related Features</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>6.2. How to Set Expert Options When Generating a Programming File</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ini">6.2.1. How to modify the INI expert configuration options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">6.2.2. Which expert options can be configured in the INI file</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="set_burn_tool_option.html">6.3. How to Set Programming Options When Generating a Programming File</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">6. </span>General Features: Configuration and Use</a> »</li>
+<li><span class="section-number">6.2. </span>How to Set Expert Options When Generating a Programming File</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/common_function/set_burn_tool_master_option.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">6.2. </span>How to Set Expert Options When Generating a Programming File<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="ini">
+<h2><span class="section-number">6.2.1. </span>How to modify the INI expert configuration options<a class="headerlink" href="#ini" title="Permalink to this heading"></a></h2>
+<p>To set specific programming options, you can set the values of those options in the INI configuration file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ISD_DOWNLOAD.EXE in the download directory must be updated to version 4.2.53 or later.</p>
+</div>
+<p>Open the <code class="docutils literal notranslate"><span class="pre">isd_config.ini</span></code> file in the SDK download directory and add the configuration section <code class="docutils literal notranslate"><span class="pre">[MASTER_CONFIG_OPTIONS]</span></code>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Note: In some SDKs, the <code class="docutils literal notranslate"><span class="pre">isd_config.ini</span></code> file is generated by preprocessing <code class="docutils literal notranslate"><span class="pre">isd_config.c</span></code>.</p>
+<p>If you edit <code class="docutils literal notranslate"><span class="pre">isd_config.ini</span></code> directly and then rebuild, you may find that <code class="docutils literal notranslate"><span class="pre">isd_config.ini</span></code> has been changed back. Check whether this is the case for the SDK you are using. If it is, you need to modify <code class="docutils literal notranslate"><span class="pre">isd_config.c</span></code> instead.</p>
+<p>For convenience, the following text continues to use the <code class="docutils literal notranslate"><span class="pre">isd_config.ini</span></code> file as the example.</p>
+</div>
+<p>Configure the default values of the specified programming options according to your actual needs. The <code class="docutils literal notranslate"><span class="pre">LVD_LEVEL</span></code> setting and the <code class="docutils literal notranslate"><span class="pre">LVD_RST_EN</span></code> enable are used as an example below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">LVD_RST_EN</span><span class="o">=</span><span class="n">TRUE</span>
+<span class="n">LVD_LEVEL</span><span class="o">=</span><span class="mf">2.5</span><span class="n">v</span>
+</pre></div>
+</div>
+<p>In addition, the expert mode options of each chip have different associated options, which must be configured together; otherwise an error occurs.<br/> For example, for the AD17N chip the associated options are <code class="docutils literal notranslate"><span class="pre">LVD_RST_EN,</span> <span class="pre">LVD_LEVEL,</span> <span class="pre">MAIN_IOVDD_LEVEL,</span> <span class="pre">WEAK_IOVDD_LEVEL</span></code>. If you configure some of the associated options, you must also configure the rest.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">LVD_RST_EN</span><span class="o">=</span><span class="n">TRUE</span>
+<span class="n">LVD_LEVEL</span><span class="o">=</span><span class="mf">2.5</span><span class="n">v</span>
+<span class="n">MAIN_IOVDD_LEVEL</span><span class="o">=</span><span class="mf">3.4</span><span class="n">v</span>
+<span class="n">WEAK_IOVDD_LEVEL</span><span class="o">=</span><span class="mf">3.4</span><span class="n">v</span>
+</pre></div>
+</div>
+<p>Incorrect values also cause errors. Set enable-type options to <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> or <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>, and set voltage-type options to the required voltage value. Make sure the configured voltage matches one of the voltage levels supported by the chip; do not configure a wrong value.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For older SDKs, the following additional steps are required: (<strong>for newer SDKs, you only need to modify <code class="docutils literal notranslate"><span class="pre">isd_config.ini</span></code></strong>)</p>
+<ol class="arabic simple">
+<li><p>For the AC690X, AC691X, AC692X SDK V1, AC61N, AC62N, AC64N and AC81N SDKs, use <strong>fw_add.exe (version 1.0.15 or later)</strong> to add the <code class="docutils literal notranslate"><span class="pre">isd_config.ini</span></code> file to the FW file. Example command:</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">fw_add.exe</span> <span class="pre">-fw</span> <span class="pre">&lt;original.fw&gt;</span> <span class="pre">-out</span> <span class="pre">&lt;modified_output.fw&gt;</span> <span class="pre">-add</span> <span class="pre">isd_config.ini</span> <span class="pre">-type</span> <span class="pre">0x34</span></code></p>
+<ol class="arabic simple" start="2">
+<li><p>For the AC13N SDK, use the -ini parameter of <strong>bin_to_fw_v2.exe (version 2.0.8 or later)</strong> to add the <code class="docutils literal notranslate"><span class="pre">isd_config.ini</span></code> file to the FW file. Example command:</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">bin_to_fw_v2.exe</span> <span class="pre">-flash</span> <span class="pre">&lt;bin_file.bin&gt;</span> <span class="pre">-key</span> <span class="pre">&lt;key_file.key&gt;</span> <span class="pre">-log</span> <span class="pre">info.log</span> <span class="pre">-chip</span> <span class="pre">AD13N</span> <span class="pre">-out</span> <span class="pre">&lt;output_file.fw&gt;</span> <span class="pre">-ini</span> <span class="pre">isd_config.ini</span></code></p>
+<ol class="arabic simple" start="3">
+<li><p><strong>AC1X series and AC3X series chips are not supported at present.</strong></p></li>
+</ol>
+</div>
+</section>
+<section id="id2">
+<h2><span class="section-number">6.2.2. </span>Which expert options can be configured in the INI file<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>Expert mode is intended for configuration by expert-level engineers; for details, see the EFUSE documentation provided by the IC team. For the expert options supported by each chip model and their allowed values, see the configuration description of the corresponding chip below.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ol class="arabic simple">
+<li><p>TRUE: the option is checked in the UI; the corresponding efuse bit is programmed to 1</p></li>
+<li><p>FALSE: the option is unchecked in the UI; the corresponding efuse bit is programmed to 0</p></li>
+<li><p>Specific voltage values corresponding to the LVD and IOVDD level settings</p></li>
+<li><p>PINR: corresponds to long-press reset; MCLR corresponds to short-press reset</p></li>
+<li><p>In general, EN_ACT=FALSE; must be configured for the other bit settings to take effect</p></li>
+</ol>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><br/>Note: <br/>1. The option IDs and option values in the INI file are case-sensitive. <br/>2. Update isd_download.exe to version 4.2.56 or later, preferably to the latest version. <br/>3. The storage medium is one-time programmable: once an option has been programmed to FALSE, it cannot be programmed back to TRUE. Jieli engineers must carefully check the efuse reference documentation before configuring.</p>
+<p><br/>4. In general, EN_ACT, LVD_RST_EN and IOVDD_LEVEL are associated options: if you configure other options in the [MASTER_CONFIG_OPTIONS] section, the configuration must also include the associated options. If the [MASTER_CONFIG_OPTIONS] section is not configured, you can select the corresponding LVD voltage level for programming on the "Configuration" (配置) screen of the FW file deployment interface. <br/>5. Some models do not require the associated options to be configured; for example, on the JL708N chip, LVD_LEVEL and IOVDD_LEVEL have their own LVD_ACT and IOV_ACT activation enable bits. <br/> <br/>6. To disable the LVD reset function, configure as follows (EN_ACT and LVD_RST_EN must be set to FALSE):<br/> [MASTER_CONFIG_OPTIONS]<br/> EN_ACT=FALSE <br/> LVD_RST_EN=FALSE<br/> LVD_LEVEL=2.5v <br/> IOVDD_LEVEL=3.0v <br/></p>
+</div>
+<p>The expert mode configuration fields supported by each chip series are listed below:</p>
+<ul class="simple">
+<li><p>AC111N</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">LVD_RST_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">LVD_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">LVD_LEVEL</span><span class="o">=</span><span class="mf">2.5</span><span class="n">v</span><span class="p">;</span>  <span class="c1"># {"1.8v", "1.9v", "2.0v", "2.1v", "2.2v", "2.3v", "2.4v", "2.5v"};</span>
+<span class="n">IOV_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">IOVDD_LEVEL</span><span class="o">=</span><span class="mf">3.0</span><span class="n">v</span><span class="p">;</span>  <span class="c1"># {"2.1v", "2.2v", "2.3v", "2.4v", "2.5v", "2.6v", "2.7v", "2.8v","2.9v", "3.0v", "3.1v", "3.2v", "3.3v", "3.4v", "3.5v", "3.6v"};</span>
+<span class="n">MCLR_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">PINR_RESET_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FAST_PU_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">DCVDD_CAPLESS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">DCVDD_OVP_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">DCDC_ZCD_RES</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span> <span class="c1"># {"0", "1", "2", "3"};</span>
+<span class="n">DCVDD_OVP_FLT_SEL</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span> <span class="c1"># {"0", "1", "2", "3"};</span>
+<span class="n">DCVDD_OVP_S</span><span class="o">=</span><span class="mi">7</span><span class="p">;</span> <span class="c1"># {"0", "1", "2", "3", "4", "5", "6", "7"};</span>
+<span class="n">VPWR_DET_HYST</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">MASKROM_SOFTWARE_USE2</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">XOSC_LOWPOWER_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">XOSC_PIN_MODE</span><span class="o">=</span><span class="n">double</span><span class="p">;</span><span class="c1">#double,single,auto</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AC112N</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">EN_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">LVD_RST_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">LVD_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">LVD_LEVEL</span><span class="o">=</span><span class="mf">2.5</span><span class="n">v</span><span class="p">;</span>  <span class="c1"># {"1.8v", "1.9v", "2.0v", "2.1v", "2.2v", "2.3v", "2.4v", "2.5v"};</span>
+<span class="n">IOV_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">IOVDD_LEVEL</span><span class="o">=</span><span class="mf">3.0</span><span class="n">v</span><span class="p">;</span>  <span class="c1"># {"2.1v", "2.2v", "2.3v", "2.4v", "2.5v", "2.6v", "2.7v", "2.8v","2.9v", "3.0v", "3.1v", "3.2v", "3.3v", "3.4v", "3.5v", "3.6v"};</span>
+<span class="n">MCLR_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">PINR_RESET_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FAST_PU_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">DCVDD_CAPLESS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">DCVDD_OVP_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">DCVDD_OVP_FLT_SEL</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span> <span class="c1"># {"0", "1", "2", "3"};</span>
+<span class="n">DCVDD_OVP_S</span><span class="o">=</span><span class="mi">7</span><span class="p">;</span> <span class="c1"># {"0", "1", "2", "3", "4", "5", "6", "7"};</span>
+<span class="n">VPWR_DET_HYST</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">MASKROM_SOFTWARE_USE2</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">XOSC_LOWPOWER_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">XOSC_PIN_MODE</span><span class="o">=</span><span class="n">double</span><span class="p">;</span><span class="c1">#double,single,auto</span>
+
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AC680N</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">EN_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span> 
+<span class="n">LVD_RST_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">LVD_LEVEL</span><span class="o">=</span><span class="mf">2.5</span><span class="n">v</span><span class="p">;</span>    <span class="c1">#{"1.8v","1.9v","2.0v","2.1v","2.2v","2.3v","2.4v","2.5v"};</span>
+<span class="n">IOVDD_LEVEL</span><span class="o">=</span><span class="mf">3.0</span><span class="n">v</span><span class="p">;</span>  <span class="c1"># {"2.1v","2.2v","2.3v","2.4v","2.5v","2.6v","2.7v","2.8v","2.9v","3.0v","3.1v","3.2v","3.3v","3.4v","3.5v","3.6v"};</span>
+<span class="n">MCLR_EN_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">PINR_IO_ENABLE</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">EXTERNAL_XOSC_MODE</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">MASKROM_SOFTWARE_USE2</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">XOSC_ALP_MODE</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">DCVD_CAP_ENB</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">XOSC_PIN_MODE</span><span class="o">=</span><span class="n">double</span><span class="p">;</span><span class="c1">#single,double</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AC701N, JL701N</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">ICHARGE_CURRENT_MIN</span><span class="o">=</span><span class="mi">75</span>   <span class="c1">#Set the specific limit value</span>
+<span class="n">ICHARGE_CURRENT_MAX</span><span class="o">=</span><span class="mi">88</span>   <span class="c1">#Set the specific limit value</span>
+<span class="n">ICHARGE_SELECT</span><span class="o">=</span><span class="mi">8</span>   <span class="c1">#0~15</span>
+<span class="n">IFULL_SELECT</span><span class="o">=</span><span class="mi">1</span>     <span class="c1">#0~7</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AC706N</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">EN_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span> 
+<span class="n">LVD_RST_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">LVD_LEVEL</span><span class="o">=</span><span class="mf">2.5</span><span class="n">v</span><span class="p">;</span> <span class="c1">#{"1.8v","1.9v","2.0v","2.1v","2.2v","2.3v","2.4v","2.5v"};</span>
+<span class="n">IOVDD_LEVEL</span><span class="o">=</span><span class="mf">3.0</span><span class="n">v</span><span class="p">;</span> <span class="c1">#{"2.1v","2.2v","2.3v","2.4v","2.5v","2.6v","2.7v","2.8v","2.9v","3.0v","3.1v","3.2v","3.3v","3.4v","3.5v","3.6v"};</span>
+<span class="n">MCLR_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AC707N, AW34N</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">EN_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">LVD_RST_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">LVD_ACT</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">LVD_LEVEL</span><span class="o">=</span><span class="mf">2.5</span><span class="n">v</span><span class="p">;</span>    <span class="c1">#{"1.8v","1.9v","2.0v","2.1v","2.2v","2.3v","2.4v","2.5v"};</span>
+<span class="n">IOV_ACT</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">IOVDD_LEVEL</span><span class="o">=</span><span class="mf">3.0</span><span class="n">v</span><span class="p">;</span>  <span class="c1"># {"2.1v","2.2v","2.3v","2.4v","2.5v","2.6v","2.7v","2.8v","2.9v","3.0v","3.1v","3.2v","3.3v","3.4v","3.5v","3.6v"};</span>
+<span class="n">MCLR_EN_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">SFC_BOOT_CTRL</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">PINR_RESET_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FAST_PU_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FLASH_IO_SELECT</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FLASH_SELECT</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">XOSC_PIN_MODE</span><span class="o">=</span><span class="n">single</span><span class="p">;</span>   <span class="c1">#auto,single,double; </span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AC704N</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">EN_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span> 
+<span class="n">LVD_RST_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">LVD_LEVEL</span><span class="o">=</span><span class="mf">2.5</span><span class="n">v</span><span class="p">;</span>    <span class="c1">#{"1.8v","1.9v","2.0v","2.1v","2.2v","2.3v","2.4v","2.5v"};</span>
+<span class="n">IOVDD_LEVEL</span><span class="o">=</span><span class="mf">3.0</span><span class="n">v</span><span class="p">;</span>  <span class="c1"># {"2.1v","2.2v","2.3v","2.4v","2.5v","2.6v","2.7v","2.8v","2.9v","3.0v","3.1v","3.2v","3.3v","3.4v","3.5v","3.6v"};</span>
+<span class="n">MCLR_EN_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">PINR_IO_ENABLE</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">MASKROM_SOFTWARE_USE2</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">MASKROM_SOFTWARE_USE3</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">DCVD_LOAD_EN_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">DCDC_INDUCTOR</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">XOSC_PIN_MODE</span><span class="o">=</span><span class="n">auto</span><span class="p">;</span><span class="c1">#Can be set to auto-detect, double-pin or single-pin: auto,double,single</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AC705N</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">EN_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span> 
+<span class="n">LVD_RST_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">LVD_LEVEL</span><span class="o">=</span><span class="mf">2.5</span><span class="n">v</span><span class="p">;</span>    <span class="c1">#{"1.8v","1.9v","2.0v","2.1v","2.2v","2.3v","2.4v","2.5v"};</span>
+<span class="n">IOVDD_LEVEL</span><span class="o">=</span><span class="mf">3.0</span><span class="n">v</span><span class="p">;</span>  <span class="c1"># {"2.1v","2.2v","2.3v","2.4v","2.5v","2.6v","2.7v","2.8v","2.9v","3.0v","3.1v","3.2v","3.3v","3.4v","3.5v","3.6v"};</span>
+<span class="n">MCLR_EN_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">PINR_IO_ENABLE</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="c1">#MASKROM_SOFTWARE_USE1=TRUE; (not configured; check the documentation to decide whether to program it)</span>
+<span class="n">MASKROM_SOFTWARE_USE2</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">MASKROM_SOFTWARE_USE3</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">DCVD_LOAD_EN_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="c1">#XOSC_INIT_MODE=TRUE; (not configured; check the documentation to decide whether to program it)</span>
+<span class="c1">#XOSC_PIN_MODE=TRUE; (not configured; check the documentation to decide whether to program it)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>JL708N</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">LVD_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>  
+<span class="n">LVD_LEVEL</span><span class="o">=</span><span class="mf">2.6</span><span class="n">v</span> <span class="c1">#{"1.6v", "1.7v", "1.8v", "1.9v", "2.1v", "2.2v", "2.3v", "2.4v", "2.5v", "2.6v", "2.7v", "2.8v", "2.9v", "3.0v", "3.2v", "3.3v"};</span>
+<span class="n">IOV_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>   
+<span class="n">IOVDD_LEVEL</span><span class="o">=</span><span class="mf">3.0</span><span class="n">v</span><span class="p">;</span> <span class="c1">#{"2.1v","2.2v","2.3v","2.4v","2.5v","2.6v","2.7v","2.8v","2.9v","3.0v","3.1v","3.2v","3.3v","3.4v","3.5v","3.6v"}; </span>
+<span class="n">FLASH_1V8_SELECT</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">SFC_BOOT_CTRL</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">PINR_RESET_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">ANC_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>JL709N, AC689N</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">EN_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>  
+<span class="n">LVD_RST_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>  
+<span class="n">LVD_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>  
+<span class="n">LVD_LEVEL</span><span class="o">=</span><span class="mf">2.6</span><span class="n">v</span><span class="p">;</span> <span class="c1"># {"1.5v", "1.6v", "1.7v", "1.8v", "1.9v", "2.0v", "2.1v", "2.2v","2.3v", "2.4v", "2.5v", "2.6v", "2.7v", "2.8v", "2.9v", "3.0v"};</span>
+<span class="n">IOV_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>   
+<span class="n">IOVDD_LEVEL</span><span class="o">=</span><span class="mf">3.0</span><span class="n">v</span><span class="p">;</span> <span class="c1">#{"2.1v","2.2v","2.3v","2.4v","2.5v","2.6v","2.7v","2.8v","2.9v","3.0v","3.1v","3.2v","3.3v","3.4v","3.5v","3.6v"}; </span>
+<span class="n">MCLR_EN_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">SFC_BOOT_CTRL</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">PINR_RESET_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">ANC_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AC710N</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">EN_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">LVD_RST_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">LVD_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">LVD_LEVEL</span><span class="o">=</span><span class="mf">2.5</span><span class="n">v</span><span class="p">;</span>  <span class="c1"># {"1.8v", "1.9v", "2.0v", "2.1v", "2.2v", "2.3v", "2.4v", "2.5v"};</span>
+<span class="n">IOV_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">IOVDD_LEVEL</span><span class="o">=</span><span class="mf">3.0</span><span class="n">v</span><span class="p">;</span>  <span class="c1"># {"2.1v", "2.2v", "2.3v", "2.4v", "2.5v", "2.6v", "2.7v", "2.8v","2.9v", "3.0v", "3.1v", "3.2v", "3.3v", "3.4v", "3.5v", "3.6v"};</span>
+<span class="n">FLASH_RESET</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">MCLR_EN_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">SFC_BOOT_CTRL</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">PINR_RESET_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FAST_PU_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FLASH_SELECT</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">XOSC_PIN_MODE</span><span class="o">=</span><span class="n">double</span><span class="p">;</span>   <span class="c1">#auto,single,double; </span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AW33N</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">EN_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">LVD_RST_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">LVD_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">LVD_LEVEL</span><span class="o">=</span><span class="mf">2.5</span><span class="n">v</span><span class="p">;</span>  <span class="c1">#{"1.6v", "1.7v", "1.8v", "1.9v", "2.0v", "2.1v", "2.2v", "2.3v", "2.4v", "2.5v", "2.6v"};</span>
+<span class="n">IOV_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">IOVDD_LEVEL</span><span class="o">=</span><span class="mf">3.0</span><span class="n">v</span><span class="p">;</span>  <span class="c1">#{"2.1v", "2.2v", "2.3v", "2.4v", "2.5v", "2.6v", "2.7v", "2.8v","2.9v", "3.0v", "3.1v", "3.2v", "3.3v", "3.4v", "3.5v", "3.6v"};</span>
+<span class="n">MCLR_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">PINR_RESET_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FAST_PU_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">SFC_BOOT_CTRL</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FLASH_RESET</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">XOSC_PIN_MODE</span><span class="o">=</span><span class="n">double</span><span class="p">;</span><span class="c1">#double,single</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AW32N</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">EN_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">LVD_RST_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">LVD_LEVEL</span><span class="o">=</span><span class="mf">2.5</span><span class="n">v</span><span class="p">;</span>    <span class="c1">#{"1.8v","1.9v","2.0v","2.1v","2.2v","2.3v","2.4v","2.5v"};</span>
+<span class="n">IOVDD_LEVEL</span><span class="o">=</span><span class="mf">3.0</span><span class="n">v</span><span class="p">;</span>  <span class="c1"># {"2.1v","2.2v","2.3v","2.4v","2.5v","2.6v","2.7v","2.8v","2.9v","3.0v","3.1v","3.2v","3.3v","3.4v","3.5v","3.6v"};</span>
+<span class="n">MCLR_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FAST_PU_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">PINR_IO_ENABLE</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">MASKROM_SOFTWARE_USE</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">CAPLESS_MODE_SEL</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">XOSC_PIN_MODE</span><span class="o">=</span><span class="n">single</span><span class="p">;</span>   <span class="c1">#single or double; efuse is not programmed</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AW31N</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">EN_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span> 
+<span class="n">LVD_RST_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span> 
+<span class="n">LVD_LEVEL</span><span class="o">=</span><span class="mf">2.5</span><span class="n">v</span><span class="p">;</span>     <span class="c1">#{"1.8v","1.9v","2.0v","2.1v","2.2v","2.3v","2.4v","2.5v"};</span>
+<span class="n">IOVDD_LEVEL</span><span class="o">=</span><span class="mf">3.0</span><span class="n">v</span><span class="p">;</span>   <span class="c1"># {"2.1v","2.2v","2.3v","2.4v","2.5v","2.6v","2.7v","2.8v","2.9v","3.0v","3.1v","3.2v","3.3v","3.4v","3.5v","3.6v"};</span>
+<span class="n">MCLR_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span> 
+<span class="n">FAST_PU_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span> 
+<span class="n">PINR_IO_ENABLE</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span> 
+<span class="n">MASKROM_SOFTWARE_USE</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span> 
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AW30N</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">EN_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span> 
+<span class="n">LVD_RST_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">LVD_LEVEL</span><span class="o">=</span><span class="mf">2.5</span><span class="n">v</span><span class="p">;</span>    <span class="c1">#{"1.8v","1.9v","2.0v","2.1v","2.2v","2.3v","2.4v","2.5v"};</span>
+<span class="n">IOVDD_LEVEL</span><span class="o">=</span><span class="mf">3.0</span><span class="n">v</span><span class="p">;</span>  <span class="c1"># {"2.1v","2.2v","2.3v","2.4v","2.5v","2.6v","2.7v","2.8v","2.9v","3.0v","3.1v","3.2v","3.3v","3.4v","3.5v","3.6v"};</span>
+<span class="n">MCLR_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FAST_PU</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">PINR_IO_ENABLE</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">MASKROM_SOFTWARE_USE</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AC82N, AD18N</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">EN_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>  
+<span class="n">LVD_RST_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">LVD_LEVEL</span><span class="o">=</span><span class="mf">2.5</span><span class="n">v</span><span class="p">;</span>  <span class="c1">#{"1.8v","1.9v","2.0v","2.1v","2.2v","2.3v","2.4v","2.5v"};</span>
+<span class="n">IOVDD_LEVEL</span><span class="o">=</span><span class="mf">3.0</span><span class="n">v</span><span class="p">;</span> <span class="c1">#{"2.1v","2.2v","2.3v","2.4v","2.5v","2.6v","2.7v","2.8v","2.9v","3.0v","3.1v","3.2v","3.3v","3.4v","3.5v","3.6v"};</span>
+<span class="n">MCLR_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FAST_PU</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">PINR_RESET_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">MASKROM_SOFTWARE_USE</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AD17N</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">EN_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span> 
+<span class="n">LVD_RST_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">LVD_LEVEL</span><span class="o">=</span><span class="mf">2.5</span><span class="n">v</span><span class="p">;</span>    <span class="c1">#{"1.8v","1.9v","2.0v","2.1v","2.2v","2.3v","2.4v","2.5v"};</span>
+<span class="n">MAIN_IOVDD_LEVEL</span><span class="o">=</span><span class="mf">3.0</span><span class="n">v</span><span class="p">;</span> <span class="c1"># {"2.0v","2.2v","2.4v","2.6v","2.8v","3.0v","3.2v","3.4v"};</span>
+<span class="n">WEAK_IOVDD_LEVEL</span><span class="o">=</span><span class="mf">2.6</span><span class="n">v</span><span class="p">;</span> <span class="c1"># {"2.0v","2.2v","2.4v","2.6v","2.8v","3.0v","3.2v","3.4v"}; </span>
+<span class="n">MCLR_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FAST_PU</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">SKIP_FLASH_RESET_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">SFC_FAST_BOOT_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FLASH_POWER_NOT_VDDIO</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AD21N</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">EN_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">LVD_RST_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">LVD_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">LVD_LEVEL</span><span class="o">=</span><span class="mf">2.4</span><span class="n">v</span><span class="p">;</span>  <span class="c1">#{"1.7v", "1.8v","1.9v","2.0v","2.1v","2.2v","2.3v","2.4v"};</span>
+<span class="n">IOV_ACT</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">IOVDD_LEVEL</span><span class="o">=</span><span class="mf">3.0</span><span class="n">v</span><span class="p">;</span>  <span class="c1">#{"2.1v", "2.2v", "2.3v", "2.4v", "2.5v", "2.6v", "2.7v", "2.8v","2.9v", "3.0v", "3.1v", "3.2v", "3.3v", "3.4v", "3.5v", "3.6v"};</span>
+<span class="n">FLASH_RESET</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">MCLR_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">SFC_BOOT_CTRL</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">PINR_RESET_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FAST_PU_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">X32K_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FLASH_IO_SELECT</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AD23N</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">EN_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">LVD_RST_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">LVD_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">LVD_LEVEL</span><span class="o">=</span><span class="mf">2.4</span><span class="n">v</span><span class="p">;</span>  <span class="c1">#{"1.7v", "1.8v","1.9v","2.0v","2.1v","2.2v","2.3v","2.4v"};</span>
+<span class="n">IOV_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">IOVDD_LEVEL</span><span class="o">=</span><span class="mf">3.0</span><span class="n">v</span><span class="p">;</span>  <span class="c1">#{"2.1v", "2.2v", "2.3v", "2.4v", "2.5v", "2.6v", "2.7v", "2.8v","2.9v", "3.0v", "3.1v", "3.2v", "3.3v", "3.4v", "3.5v", "3.6v"};</span>
+<span class="n">FLASH_RESET</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">MCLR_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">SFC_BOOT_CTRL</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">PINR_RESET_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FAST_PU_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FLASH_IO_SELECT</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AD24N</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">EN_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">LVD_RST_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">LVD_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">LVD_LEVEL</span><span class="o">=</span><span class="mf">2.4</span><span class="n">v</span><span class="p">;</span>  <span class="c1"># {"1.7v", "1.8v","1.9v","2.0v","2.1v","2.2v","2.3v","2.4v"};</span>
+<span class="n">IOV_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">IOVDD_LEVEL</span><span class="o">=</span><span class="mf">3.0</span><span class="n">v</span><span class="p">;</span>  <span class="c1"># {"2.1v", "2.2v", "2.3v", "2.4v", "2.5v", "2.6v", "2.7v", "2.8v","2.9v", "3.0v", "3.1v", "3.2v", "3.3v", "3.4v", "3.5v", "3.6v"};</span>
+<span class="n">FLASH_RESET</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">MCLR_EN_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">SFC_BOOT_CTRL</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">PINR_RESET_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FAST_PU_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FLASH_IO_SELECT</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AC129N,AD12N</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">EN_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span> 
+<span class="n">LVD_RST_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">LVD_LEVEL</span><span class="o">=</span><span class="mf">2.5</span><span class="n">v</span><span class="p">;</span>   <span class="c1">#{"1.8v","1.9v","2.0v","2.1v","2.2v","2.3v","2.4v","2.5v"};</span>
+<span class="n">IOVDD_LEVEL</span><span class="o">=</span><span class="mf">3.0</span><span class="n">v</span><span class="p">;</span> <span class="c1">#{"2.1v","2.2v","2.3v","2.4v","2.5v","2.6v","2.7v","2.8v","2.9v","3.0v","3.1v","3.2v","3.3v","3.4v","3.5v","3.6v"};</span>
+<span class="n">MCLR_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">PINR_IO_ENABLE</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">MASKROM_SOFTWARE_USE_FAST_UP</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">MASKROM_SOFTWARE_USE_RUN_FLASH</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AC792N</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">EN_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span> 
+<span class="n">LVD_RST_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">LVD_LEVEL</span><span class="o">=</span><span class="mf">2.6</span><span class="n">v</span><span class="p">;</span>   <span class="c1">#{"1.9v","2.0v","2.1v","2.2v","2.3v","2.4v","2.5v","2.6v"};</span>
+<span class="n">IOVDD_LEVEL</span><span class="o">=</span><span class="mf">3.3</span><span class="n">v</span><span class="p">;</span> <span class="c1">#{"2.4v","2.8v","2.9v","3.0v","3.1v","3.2v","3.3v","3.4v"};                   </span>
+<span class="n">MCLR_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FAST_PU</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">PINR_IO_ENABLE</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">MASKROM_SOFTWARE_USE</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">AVDD18_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">AVDD28_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AC200N</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">LVD_RST_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">LVD_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">LVD_LEVEL</span><span class="o">=</span><span class="mf">2.5</span><span class="n">v</span><span class="p">;</span>  <span class="c1"># {"1.8v", "1.9v", "2.0v", "2.1v", "2.2v", "2.3v", "2.4v", "2.5v"};</span>
+<span class="n">IOV_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">IOVDD_LEVEL</span><span class="o">=</span><span class="mf">3.0</span><span class="n">v</span><span class="p">;</span>  <span class="c1">#{"2.1v", "2.2v", "2.3v", "2.4v", "2.5v", "2.6v", "2.7v", "2.8v","2.9v", "3.0v", "3.1v", "3.2v", "3.3v", "3.4v", "3.5v", "3.6v"};</span>
+<span class="n">MCLR_EN_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span> <span class="c1">#TRUE: disable short-press reset; FALSE: enable short-press reset</span>
+<span class="n">PINR_RESET_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span><span class="c1">#TRUE: enable long-press reset; FALSE: disable long-press reset</span>
+<span class="n">FAST_PU_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">USB_UPGRADE_MODE</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">SFC_FAST_BOOT_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">NEED_FLASH_RESET</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">SAFE_STARTUP</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AC210N</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">EN_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">LVD_RST_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">LVD_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">LVD_LEVEL</span><span class="o">=</span><span class="mf">2.5</span><span class="n">v</span><span class="p">;</span>  <span class="c1"># {"1.8v", "1.9v", "2.0v", "2.1v", "2.2v", "2.3v", "2.4v", "2.5v"};</span>
+<span class="n">IOV_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">IOVDD_LEVEL</span><span class="o">=</span><span class="mf">3.0</span><span class="n">v</span><span class="p">;</span>  <span class="c1">#{"2.1v", "2.2v", "2.3v", "2.4v", "2.5v", "2.6v", "2.7v", "2.8v","2.9v", "3.0v", "3.1v", "3.2v", "3.3v", "3.4v", "3.5v", "3.6v"};</span>
+<span class="n">MCLR_EN_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">PINR_RESET_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FAST_PU_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">DCVDD_CAPLESS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">DCVDD_OVP_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">DCVDD_OVP_FLT_SEL</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span><span class="c1">#{"0", "1", "2", "3"};</span>
+<span class="n">DCVDD_OVP_S</span><span class="o">=</span><span class="mi">7</span><span class="p">;</span><span class="c1">#{"0", "1", "2", "3", "4", "5", "6", "7"};</span>
+<span class="n">X32K_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">SFC_BOOT_CTRL</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FLASH_RESET</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">SECURE_BOOT</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">MASKROM_PU_CLK_SEL</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">XOSC_PIN_MODE</span><span class="o">=</span><span class="n">double</span><span class="p">;</span><span class="c1">#double,single</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AC300N</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">EN_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">LVD_RST_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">LVD_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">LVD_LEVEL</span><span class="o">=</span><span class="mf">2.5</span><span class="n">v</span><span class="p">;</span>  <span class="c1"># {"1.8v", "1.9v", "2.0v", "2.1v", "2.2v", "2.3v", "2.4v", "2.5v"};</span>
+<span class="n">IOV_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">IOVDD_LEVEL</span><span class="o">=</span><span class="mf">3.0</span><span class="n">v</span><span class="p">;</span>  <span class="c1">#{"2.1v", "2.2v", "2.3v", "2.4v", "2.5v", "2.6v", "2.7v", "2.8v","2.9v", "3.0v", "3.1v", "3.2v", "3.3v", "3.4v", "3.5v", "3.6v"};</span>
+<span class="n">MCLR_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">PINR_RESET_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FAST_PU_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">VAD_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">DCVDD_OVP_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">DCVDD_OVP_FLT_SEL</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span><span class="c1">#{"0", "1", "2", "3"};</span>
+<span class="n">DCVDD_OVP_S</span><span class="o">=</span><span class="mi">7</span><span class="p">;</span><span class="c1">#{"0", "1", "2", "3", "4", "5", "6", "7"};</span>
+<span class="n">X32K_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">VPWR_DET_HYST</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">XOSC_ADAPTIVE_LOW_POWER</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">MASKROM_PU_CLK_SEL</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">SAFE_STARTUP</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">USB_UPDATE_MODE</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">SFC_STARTUP_SEL</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FLASH_RESET</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">XOSC_PIN_MODE</span><span class="o">=</span><span class="n">double</span><span class="p">;</span><span class="c1">#double,single</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AC711N</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">MASTER_CONFIG_OPTIONS</span><span class="p">]</span>
+<span class="n">LVD_RST_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">LVD_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">LVD_LEVEL</span><span class="o">=</span><span class="mf">2.5</span><span class="n">v</span><span class="p">;</span>  <span class="c1"># {"1.8v", "1.9v", "2.0v", "2.1v", "2.2v", "2.3v", "2.4v", "2.5v"};</span>
+<span class="n">IOV_ACT</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">IOVDD_LEVEL</span><span class="o">=</span><span class="mf">3.0</span><span class="n">v</span><span class="p">;</span>  <span class="c1">#{"2.1v", "2.2v", "2.3v", "2.4v", "2.5v", "2.6v", "2.7v", "2.8v","2.9v", "3.0v", "3.1v", "3.2v", "3.3v", "3.4v", "3.5v", "3.6v"};</span>
+<span class="n">MCLR_EN</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">PINR_RESET_EN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FAST_PU_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">DVDD_CAPLESS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">DCVDD18_CAPLESS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">SFC_FAST_BOOT_DIS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FLASH_RESET</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">SAFE_STARTUP</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">XOSC_LOWPWR_MODE</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">VPWR_DET_HYST</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FLASH_SELECT</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">XOSC_PIN_MODE</span><span class="o">=</span><span class="n">double</span><span class="p">;</span><span class="c1">#double,single</span>
+</pre></div>
+</div>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="common_isd_config_ini.html" class="btn btn-neutral float-left" title="6.1. Common isd_config.ini Settings and Programming-Related Features" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="set_burn_tool_option.html" class="btn btn-neutral float-right" title="6.3. How to Set Programming Options When Generating a Programming File" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/common_function/set_burn_tool_master_option.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/common_function/set_burn_tool_master_option.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

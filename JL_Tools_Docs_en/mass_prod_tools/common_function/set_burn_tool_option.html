@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6.3. How to Set Programming Options When Generating a Programming File — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>6. General Features: Configuration and Use</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="common_isd_config_ini.html">6.1. Common isd_config.ini Settings and Programming-Related Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="set_burn_tool_master_option.html">6.2. How to Set Expert Options When Generating a Programming File</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>6.3. How to Set Programming Options When Generating a Programming File</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ini">6.3.1. How to specify programming options in the INI file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#key-flash">6.3.2. How to generate a programming file that contains only the programming options and KEY (without FLASH programming information)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">6.3.3. Which programming options can be configured in the INI file</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">6. </span>General Features: Configuration and Use</a> »</li>
+<li><span class="section-number">6.3. </span>How to Set Programming Options When Generating a Programming File</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/common_function/set_burn_tool_option.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">6.3. </span>How to Set Programming Options When Generating a Programming File<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="ini">
+<h2><span class="section-number">6.3.1. </span>How to specify programming options in the INI file<a class="headerlink" href="#ini" title="Permalink to this heading"></a></h2>
+<p>To set specific programming options, you can set the values of those options in the INI configuration file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ISD_DOWNLOAD.EXE in the download directory must be updated to version 4.0.17 or later.</p>
+</div>
+<p>Open the <code class="docutils literal notranslate"><span class="pre">isd_config.ini</span></code> file in the SDK download directory and add the configuration section <code class="docutils literal notranslate"><span class="pre">[BURNER_OPTIONS]</span></code>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Note: In some SDKs, the <code class="docutils literal notranslate"><span class="pre">isd_config.ini</span></code> file is generated by preprocessing <code class="docutils literal notranslate"><span class="pre">isd_config.c</span></code>.</p>
+<p>If you edit <code class="docutils literal notranslate"><span class="pre">isd_config.ini</span></code> directly and then rebuild, you may find that <code class="docutils literal notranslate"><span class="pre">isd_config.ini</span></code> has been changed back. Check whether this is the case for the SDK you are using. If it is, you need to modify <code class="docutils literal notranslate"><span class="pre">isd_config.c</span></code> instead.</p>
+<p>For convenience, the following text continues to use the <code class="docutils literal notranslate"><span class="pre">isd_config.ini</span></code> file as the example.</p>
+</div>
+<p>Configure the default values of the specified programming options according to your actual needs. The LVD voltage is used as an example below:</p>
+<p><img alt="" data-action="zoom" src="../../_images/faqs_image3.png"/></p>
+<p>To prevent the factory from changing the configured programming option values during programming, add the setting <code class="docutils literal notranslate"><span class="pre">GUI_DISABLED=TRUE</span></code> to the <code class="docutils literal notranslate"><span class="pre">[BURNER_OPTIONS]</span></code> section, as shown below:</p>
+<p><img alt="" data-action="zoom" src="../../_images/faqs_image4.png"/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For older SDKs, the following additional steps are required: (<strong>for newer SDKs, you only need to modify <code class="docutils literal notranslate"><span class="pre">isd_config.ini</span></code></strong>)</p>
+<ol class="arabic simple">
+<li><p>For the AC690X, AC691X, AC692X SDK V1, AC61N, AC62N, AC64N and AC81N SDKs, use <strong>fw_add.exe (version 1.0.15 or later)</strong> to add the <code class="docutils literal notranslate"><span class="pre">isd_config.ini</span></code> file to the FW file. Example command:</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">fw_add.exe</span> <span class="pre">-fw</span> <span class="pre">&lt;original.fw&gt;</span> <span class="pre">-out</span> <span class="pre">&lt;modified_output.fw&gt;</span> <span class="pre">-add</span> <span class="pre">isd_config.ini</span> <span class="pre">-type</span> <span class="pre">0x34</span></code></p>
+<ol class="arabic simple" start="2">
+<li><p>For the AC13N SDK, use the -ini parameter of <strong>bin_to_fw_v2.exe (version 2.0.8 or later)</strong> to add the <code class="docutils literal notranslate"><span class="pre">isd_config.ini</span></code> file to the FW file. Example command:</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">bin_to_fw_v2.exe</span> <span class="pre">-flash</span> <span class="pre">&lt;bin_file.bin&gt;</span> <span class="pre">-key</span> <span class="pre">&lt;key_file.key&gt;</span> <span class="pre">-log</span> <span class="pre">info.log</span> <span class="pre">-chip</span> <span class="pre">AD13N</span> <span class="pre">-out</span> <span class="pre">&lt;output_file.fw&gt;</span> <span class="pre">-ini</span> <span class="pre">isd_config.ini</span></code></p>
+<ol class="arabic simple" start="3">
+<li><p><strong>AC1X series and AC3X series chips are not supported at present.</strong></p></li>
+</ol>
+</div>
+</section>
+<section id="key-flash">
+<h2><span class="section-number">6.3.2. </span>How to generate a programming file that contains only the programming options and KEY (without FLASH programming information)<a class="headerlink" href="#key-flash" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ISD_DOWNLOAD.EXE in the download directory must be updated to version 4.2.32 or later.</p>
+</div>
+<ol class="arabic simple">
+<li><p>Go to the SDK download directory.</p></li>
+<li><p>Run the command <code class="docutils literal notranslate"><span class="pre">isd_download.exe</span> <span class="pre">isd_config.ini</span> <span class="pre">-package-only</span> <span class="pre">-dev</span> <span class="pre">&lt;dev</span> <span class="pre">name&gt;</span> <span class="pre">-key</span> <span class="pre">&lt;your</span> <span class="pre">key</span> <span class="pre">file&gt;</span> <span class="pre">-output-fw</span> <span class="pre">&lt;output</span> <span class="pre">fw</span> <span class="pre">file&gt;</span></code></p></li>
+</ol>
+<p>Using the AD14N SDK v1.0.16 as an example, the steps are as follows:</p>
+<ol class="arabic simple">
+<li><p>Go to the SDK download directory <img alt="" data-action="zoom" src="../../_images/sdk_ad14n_sdk_dir.jpg"/></p></li>
+<li><p>Make sure that <code class="docutils literal notranslate"><span class="pre">isd_download.exe</span></code> in the SDK download directory is version <code class="docutils literal notranslate"><span class="pre">4.2.32</span></code> or later. If it is not, double-click <code class="docutils literal notranslate"><span class="pre">下载目录工具更新.jlxproj</span></code> in the directory to update <code class="docutils literal notranslate"><span class="pre">isd_download.exe</span></code> to the latest version. If <code class="docutils literal notranslate"><span class="pre">下载目录工具更新.jlxproj</span></code> does not exist in the SDK download directory, <a class="reference external" href="https://pkgman.jieliapp.com/s/win-toolchain" rel="noopener" target="_blank">click here to download it</a>.</p></li>
+<li><p>Add the programming options to be configured to isd_config.ini</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">isd_download.exe</span> <span class="pre">isd_config.ini</span> <span class="pre">-package-only</span> <span class="pre">-dev</span> <span class="pre">sh54</span> <span class="pre">-key</span> <span class="pre">ad14n.lkey</span> <span class="pre">-output-fw</span> <span class="pre">jl_ini.fw</span></code> from the command line. <code class="docutils literal notranslate"><span class="pre">jl_ini.fw</span></code> is the programming file that contains the programming options and KEY.</p></li>
+</ol>
+<p><img alt="" data-action="zoom" src="../../_images/sdk_ad14n_make_ini_fw.jpg"/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are not sure of the <code class="docutils literal notranslate"><span class="pre">-dev</span></code> parameter of the current SDK, open <code class="docutils literal notranslate"><span class="pre">download.bat</span></code> in the SDK download directory to check it.<br/> Replace ad14n.lkey with your own KEY file.</p>
+</div>
+</section>
+<section id="id2">
+<h2><span class="section-number">6.3.3. </span>Which programming options can be configured in the INI file<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The programming options supported by each chip model and their allowed values are as shown in the programmer UI. The option IDs and option values in the INI file are case-sensitive.</p>
+</div>
+<p>In 1-to-2 programmer versions after V2.26.5 and 1-to-8 programmer versions after V3.1.11, once the options dialog is open, you can hover the mouse over an option to see its ID directly, as shown below:</p>
+<p><img alt="" data-action="zoom" src="../../_images/faqs_image5.png"/></p>
+<p><img alt="" data-action="zoom" src="../../_images/faqs_image6.png"/></p>
+<p>All currently supported programming options are listed below:</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Option name in the programmer UI</strong></p></th>
+<th class="head"><p><strong>Option ID in the INI file</strong></p></th>
+<th class="head"><p><strong>Allowed values</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Charging current level (mA) (充电电流档位)</p></td>
+<td><p>ac_channel</p></td>
+<td><p>80 ~ 360</p></td>
+<td><p>Per the values actually selectable in the programmer UI</p></td>
+</tr>
+<tr class="row-odd"><td><p>Analog signal recalibration (模拟信号再校准)</p></td>
+<td><p>asr</p></td>
+<td><p>ON<br/>OFF<br/></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>Audio power supply test (音频电源测试)</p></td>
+<td><p>AUDIO_POWER_TEST</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-odd"><td><p>Device with battery attached (样机带电池)</p></td>
+<td><p>BATTERY_SUPPLY</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-even"><td><p>Battery type (电池方案)</p></td>
+<td><p>BATTERY_TYPE</p></td>
+<td><p>LITHIUM<br/>DRY<br/>BUTTON<br/></p></td>
+<td><p>LITHIUM: option value "Lithium battery" (锂电池)<br/>DRY: option value "Dry battery" (干电池)<br/>BUTTON: option value "Button cell" (纽扣电池)<br/></p></td>
+</tr>
+<tr class="row-odd"><td><p>BTPLL</p></td>
+<td><p>BTPLL</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-even"><td><p>Switching charging current level (mA) (开关充电电流档位)</p></td>
+<td><p>buck_ac_channel</p></td>
+<td><p>100 ~ 600</p></td>
+<td><p>Per the values actually selectable in the programmer UI</p></td>
+</tr>
+<tr class="row-odd"><td><p>Programming voltage level (烧录电压挡位)</p></td>
+<td><p>BURN_VOLTAGE</p></td>
+<td><p>5.5v ~ 7.0v</p></td>
+<td><p>Per the values actually available in the programmer UI for each chip model</p></td>
+</tr>
+<tr class="row-even"><td><p>Charging detection (LDOIN requires a 5V supply) (充电检测)</p></td>
+<td><p>CHECK_LDOIN</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-odd"><td><p>Calibration query (校准查询)</p></td>
+<td><p>CHECK_TRIM</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-even"><td><p>CHARGE_CURRENT</p></td>
+<td><p>CHRAGE_CURRENT</p></td>
+<td><p>20 ~ 40</p></td>
+<td><p>Per the values that can actually be entered in the programmer UI<br/>(This option exists only in certain special versions)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Current test (电流测试)</p></td>
+<td><p>CURRENT_TEST</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-even"><td><p>DAC</p></td>
+<td><p>DAC</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-odd"><td><p>DAC OS</p></td>
+<td><p>DAC_OS_TEST</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-even"><td><p>DAC_TRIM_LEAKAGE</p></td>
+<td><p>DAC_TRIM_LEAKAGE</p></td>
+<td><p>0 ~ 65535</p></td>
+<td><p>Per the values that can actually be entered in the programmer UI</p></td>
+</tr>
+<tr class="row-odd"><td><p>DACVDD</p></td>
+<td><p>DACVDD</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-even"><td><p>Unpackaged chip (DIE) (未封装的芯片)</p></td>
+<td><p>DIE_CASE</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-odd"><td><p>Erase entire FLASH before programming (烧录前擦除整个FLASH)</p></td>
+<td><p>ERASE_FLASH</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-even"><td><p>FM</p></td>
+<td><p>FM</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-odd"><td><p>Frequency offset test (频偏测试)</p></td>
+<td><p>FREQ_OFFSET_COR</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-even"><td><p>Calibration signal frequency point configuration (校频波频点配置)</p></td>
+<td><p>FREQ_WAVE_POINT</p></td>
+<td><p>0 ~ 9</p></td>
+<td><p>Per the values that can actually be entered in the programmer UI</p></td>
+</tr>
+<tr class="row-odd"><td><p>IQ_TRIM</p></td>
+<td><p>IQ_TRIM</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-even"><td><p>LDOIN TEST</p></td>
+<td><p>LDOIN_TEST</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-odd"><td><p>LgHg</p></td>
+<td><p>LGHG</p></td>
+<td><p>-20 ~ 127</p></td>
+<td><p>Per the values actually available in the programmer UI</p></td>
+</tr>
+<tr class="row-even"><td><p>Linear charging current level (mA) (线性充电电流档位)</p></td>
+<td><p>line_ac_channel</p></td>
+<td><p>80 ~ 360</p></td>
+<td><p>Per the values actually selectable in the programmer UI</p></td>
+</tr>
+<tr class="row-odd"><td><p>LNA</p></td>
+<td><p>LNA</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-even"><td><p>LNA_BIAS</p></td>
+<td><p>LNA_BIAS</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-odd"><td><p>Enable PA9 long-press reset (使能PA9长按复位功能)</p></td>
+<td><p>LONG_RESET_EN</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-even"><td><p>LOOPBACK</p></td>
+<td><p>LOOPBACK</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-odd"><td><p>Crystal-less solution (LRC_TRIM) (免晶振方案)</p></td>
+<td><p>LRC_TRIM</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-even"><td><p>LVD voltage (LVD电压)</p></td>
+<td><p>LVD</p></td>
+<td><p>&lt;1.5v<br/>1.9v ~ 2.6v<br/>Disable<br/></p></td>
+<td><p>Per the values actually available in the programmer UI for each chip model</p></td>
+</tr>
+<tr class="row-odd"><td><p>LVD Action</p></td>
+<td><p>LVD_ACTION</p></td>
+<td><p>Default<br/>Efuse<br/>FastEfuse<br/></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>LVD voltage (LVD电压)</p></td>
+<td><p>LVD_DIE</p></td>
+<td><p>1.8v · 2.1v<br/>Disable<br/></p></td>
+<td><p><strong>Valid for AD14N and AD15N when "Unpackaged chip (DIE)" (未封装的芯片) is checked</strong>;<br/>Allowed values: per the values actually available in the programmer UI</p></td>
+</tr>
+<tr class="row-odd"><td><p>LVD2.6V</p></td>
+<td><p>LVD26</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-even"><td><p>MIC channel (MIC通道)</p></td>
+<td><p>MIC_CHANNEL</p></td>
+<td><p>0 ~ 2</p></td>
+<td><p>(This option exists only in certain special versions)</p></td>
+</tr>
+<tr class="row-odd"><td><p>MIC test threshold upper limit (MIC测试阈值上限)</p></td>
+<td><p>MIC_MAX_VALUE</p></td>
+<td><p>0 ~ 32768</p></td>
+<td><p>Per the values that can actually be entered in the programmer UI<br/>(This option exists only in certain special versions)</p></td>
+</tr>
+<tr class="row-even"><td><p>MIC test threshold lower limit (MIC测试阈值下限)</p></td>
+<td><p>MIC_MIN_VALUE</p></td>
+<td><p>0 ~ 32768</p></td>
+<td><p>Per the values that can actually be entered in the programmer UI<br/>(This option exists only in certain special versions)</p></td>
+</tr>
+<tr class="row-odd"><td><p>MIC test time (MIC测试时间)</p></td>
+<td><p>MIC_TEST_TIME</p></td>
+<td><p>0 ~ 32768</p></td>
+<td><p>Per the values that can actually be entered in the programmer UI<br/>(This option exists only in certain special versions)</p></td>
+</tr>
+<tr class="row-even"><td><p>MIC_0 power supply mode (MIC_0 供电方式)</p></td>
+<td><p>MIC0_POWER_MODE</p></td>
+<td><p>BIAS<br/>LDO<br/></p></td>
+<td><p>Per the values that can actually be entered in the programmer UI<br/>(This option exists only in certain special versions)</p></td>
+</tr>
+<tr class="row-odd"><td><p>MIC_0 bias resistor (MIC_0 偏置电阻)</p></td>
+<td><p>MIC0_R_VALUE</p></td>
+<td><p>1.18k ~ 8.50k</p></td>
+<td><p>Per the values that can actually be entered in the programmer UI<br/>(This option exists only in certain special versions)</p></td>
+</tr>
+<tr class="row-even"><td><p>MIC_1 power supply mode (MIC_1 供电方式)</p></td>
+<td><p>MIC1_POWER_MODE</p></td>
+<td><p>BIAS<br/>LDO<br/></p></td>
+<td><p>Per the values that can actually be entered in the programmer UI<br/>(This option exists only in certain special versions)</p></td>
+</tr>
+<tr class="row-odd"><td><p>MIC_1 bias resistor (MIC_1 偏置电阻)</p></td>
+<td><p>MIC1_R_VALUE</p></td>
+<td><p>1.18k ~ 8.50k</p></td>
+<td><p>Per the values that can actually be entered in the programmer UI<br/>(This option exists only in certain special versions)</p></td>
+</tr>
+<tr class="row-even"><td><p>MIC test frequency lower limit (MIC测试频率下限)</p></td>
+<td><p>MIN_MIN_FREQ</p></td>
+<td><p>0 ~ 20000</p></td>
+<td><p>Per the values that can actually be entered in the programmer UI<br/>(This option exists only in certain special versions)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Check this if there is no P26 (VPP) pin</p></td>
+<td><p>NO_P26_VPP</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-even"><td><p>Board-change interval (ms) (换板时间)</p></td>
+<td><p>OPERATION_TIME</p></td>
+<td><p>0 ~ 10000</p></td>
+<td><p>1 ~ 10 s</p></td>
+</tr>
+<tr class="row-odd"><td><p>OPTION_EN</p></td>
+<td><p>OPTION_EN</p></td>
+<td><p>0 ~ 65535</p></td>
+<td><p>Per the values that can actually be entered in the programmer UI<br/></p></td>
+</tr>
+<tr class="row-even"><td><p>Force authentication code update (强制更新认证码)</p></td>
+<td><p>OVERWRITE_AUTH_CODE</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-odd"><td><p>PA</p></td>
+<td><p>PA</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-even"><td><p>Enable PA7 short-press reset (使能PA7短按复位功能)</p></td>
+<td><p>PA7_RESET_EN</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-odd"><td><p>Enable PB1 long-press reset (使能PB1长按复位功能)</p></td>
+<td><p>PB1_RESET_EN</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-even"><td><p>Enable PB10 short-press reset (使能PB10短按复位功能)</p></td>
+<td><p>PB10_RESET_EN</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-odd"><td><p>Maximum standby current (uA) (待机电流最大值)</p></td>
+<td><p>POWER_DOWN_MAX</p></td>
+<td><p>0 ~ 255</p></td>
+<td><p>Per the values that can actually be entered in the programmer UI</p></td>
+</tr>
+<tr class="row-even"><td><p>Minimum standby current (uA) (待机电流最小值)</p></td>
+<td><p>POWER_DOWN_MIN</p></td>
+<td><p>0 ~ 255</p></td>
+<td><p>Per the values that can actually be entered in the programmer UI</p></td>
+</tr>
+<tr class="row-odd"><td><p>Standby current test (待机电流测试)</p></td>
+<td><p>POWER_DOWN_TEST</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-even"><td><p>Maximum shutdown current (uA) (关机电流最大值)</p></td>
+<td><p>POWER_OFF_MAX</p></td>
+<td><p>0 ~ 100</p></td>
+<td><p>Per the values that can actually be entered in the programmer UI</p></td>
+</tr>
+<tr class="row-odd"><td><p>Minimum shutdown current (uA) (关机电流最小值)</p></td>
+<td><p>POWER_OFF_MIN</p></td>
+<td><p>0 ~ 255</p></td>
+<td><p>Per the values that can actually be entered in the programmer UI</p></td>
+</tr>
+<tr class="row-even"><td><p>Shutdown current test</p></td>
+<td><p>POWER_OFF_TEST</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-odd"><td><p>Maximum power-on current (uA) (开机电流最大值)</p></td>
+<td><p>POWER_ON_MAX</p></td>
+<td><p>0 ~ 255</p></td>
+<td><p>Per the values that can actually be entered in the programmer UI</p></td>
+</tr>
+<tr class="row-even"><td><p>Minimum power-on current (uA) (开机电流最小值)</p></td>
+<td><p>POWER_ON_MIN</p></td>
+<td><p>0 ~ 255</p></td>
+<td><p>Per the values that can actually be entered in the programmer UI</p></td>
+</tr>
+<tr class="row-odd"><td><p>Power-on current test (开机电流测试)</p></td>
+<td><p>POWER_ON_TEST</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-even"><td><p>Power consumption test (1~255uA) (功耗测试)</p></td>
+<td><p>power_test</p></td>
+<td><p>1 ~ 255<br/>OFF<br/></p></td>
+<td><p>Per the values that can actually be entered in the programmer UI</p></td>
+</tr>
+<tr class="row-odd"><td><p>Maximum power-up current (mA) (上电电流最大值)</p></td>
+<td><p>POWER_UP_MAX</p></td>
+<td><p>0 ~ 255</p></td>
+<td><p>Per the values that can actually be entered in the programmer UI</p></td>
+</tr>
+<tr class="row-even"><td><p>Minimum power-up current (mA) (上电电流最小值)</p></td>
+<td><p>POWER_UP_MIN</p></td>
+<td><p>0 ~ 255</p></td>
+<td><p>Per the values that can actually be entered in the programmer UI</p></td>
+</tr>
+<tr class="row-odd"><td><p>Power-up current test (上电电流测试)</p></td>
+<td><p>POWER_UP_TEST</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-even"><td><p>Full RAM test (RAM全面测试)</p></td>
+<td><p>RAM_FULL_TEST</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-odd"><td><p>Reset after success (成功后复位)</p></td>
+<td><p>REBOOT_AFTER_SUCCESS</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-even"><td><p>REF_TRIM (reference voltage calibration)</p></td>
+<td><p>REF_TRIM</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-odd"><td><p>RX (RX current test)</p></td>
+<td><p>RX</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-even"><td><p>SARADC_FLUC</p></td>
+<td><p>SARADC_FLUC</p></td>
+<td><p>0 ~ 65535</p></td>
+<td><p>Per the values that can actually be entered in the programmer UI</p></td>
+</tr>
+<tr class="row-odd"><td><p>SFC verification (SFC校验)</p></td>
+<td><p>SFC_CHECK/SDK_TYPE</p></td>
+<td><p>SOUNDBOX<br/>OTHER<br/></p></td>
+<td><p>SOUNDBOX: option value "Speaker solution" (音箱方案)<br/>OTHER: option value "Other solution" (其他方案)<br/>The ID can be either SFC_CHECK or SDK_TYPE, but not both at the same time.<br/></p></td>
+</tr>
+<tr class="row-even"><td><p>Enable PB2 short-press reset (使能PB2短按复位功能)</p></td>
+<td><p>SHORT_RESET_EN</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-odd"><td><p>SPI_CLK</p></td>
+<td><p>SPI_CLK</p></td>
+<td><p>20M<br/>10M<br/>8M<br/>4M<br/></p></td>
+<td><p>Per the values actually selectable in the programmer UI</p></td>
+</tr>
+<tr class="row-even"><td><p>Whether to TRIM (是否TRIM)</p></td>
+<td><p>TRIM</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-odd"><td><p>TX</p></td>
+<td><p>TX</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-even"><td><p>Serial port baud rate</p></td>
+<td><p>UART_BAUDRATE</p></td>
+<td><p>0 ~ INT_MAX</p></td>
+<td><p>Valid for UART upgrades</p></td>
+</tr>
+<tr class="row-odd"><td><p>UART type (串口类型)</p></td>
+<td><p>UART_TYPE</p></td>
+<td><p>DP(TX),DM(RX)<br/>DP(TX&amp;RX)<br/></p></td>
+<td><p>Valid for UART upgrades</p></td>
+</tr>
+<tr class="row-even"><td><p>USB screening mode (USB筛选模式)</p></td>
+<td><p>USB_CHECK_MODE</p></td>
+<td><p>NORMAL<br/>STRICT<br/></p></td>
+<td><p>NORMAL: "Normal programming mode" (正常烧录模式)<br/>STRICT: "Strict screening mode" (严格筛选模式)<br/></p></td>
+</tr>
+<tr class="row-odd"><td><p>Whether DP/DM is used in the solution (方案中是否用到DP/DM)</p></td>
+<td><p>USB_DPDM</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-even"><td><p>USB/ISP</p></td>
+<td><p>USB_ISP</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+<tr class="row-odd"><td><p>Maximum allowed port current (mA) (端口电流允许上限)</p></td>
+<td><p>USB_PORT_CURRENT_THRESHOLD</p></td>
+<td><p>0 ~ 300</p></td>
+<td><p>Per the values that can actually be entered in the programmer UI</p></td>
+</tr>
+<tr class="row-even"><td><p>USB port voltage (V) (USB端口电压)</p></td>
+<td><p>USB_PORT_VOLTAGE</p></td>
+<td><p>3.2 ~ 6.7</p></td>
+<td><p>Per the values actually selectable in the programmer UI</p></td>
+</tr>
+<tr class="row-odd"><td><p>VBAT voltage (V) (VBAT电压)</p></td>
+<td><p>vbat</p></td>
+<td><p>4.2<br/>4.35<br/></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>VOUT(mV)</p></td>
+<td><p>vout</p></td>
+<td><p>4600<br/>5000<br/></p></td>
+<td><p>Per the values that can actually be entered in the programmer UI</p></td>
+</tr>
+<tr class="row-odd"><td><p>VPPIO test (VPPIO测试)</p></td>
+<td><p>VPPIO_TEST</p></td>
+<td><p>TRUE<br/>FALSE<br/></p></td>
+<td><p>TRUE: option checked<br/>FALSE: option unchecked<br/></p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="set_burn_tool_master_option.html" class="btn btn-neutral float-left" title="6.2. How to Set Expert Options When Generating a Programming File" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="../faqs/index.html" class="btn btn-neutral float-right" title="7. Common Errors and Solutions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/common_function/set_burn_tool_option.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/common_function/set_burn_tool_option.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

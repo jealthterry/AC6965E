@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.4. FLASH Parameter Configuration — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>4. About the Toolchain</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="faqs/index.html">4.1. Common Issues and Solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linux_lib.html">4.2. Installing the Jieli Toolchain and Building Static Libraries on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ini_cfg.html">4.3. The isd_config.ini Configuration File</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>4.4. FLASH Parameter Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#otp-cfg">4.4.1. Minimum tool versions supporting OTP_CFG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#votp-otp">4.4.2. VOTP and OTP areas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sdk"><button class="toctree-expand" title="Open/close menu" type="button"></button>4.4.3. SDK changes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#isd-config-ini">4.4.3.1. The isd_config.ini file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#download-bat">4.4.3.2. The download.bat file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dtr">4.4.3.3. Enabling the write protection, DTR and multi-algorithm authorization features</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">4. </span>About the Toolchain</a> »</li>
+<li><span class="section-number">4.4. </span>FLASH Parameter Configuration</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/dev_tools/toolchains/otp_cfg.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="flash">
+<h1><span class="section-number">4.4. </span>FLASH Parameter Configuration<a class="headerlink" href="#flash" title="Permalink to this heading"></a></h1>
+<p>Applicable scenario: the SDK needs to enable the write protection, DTR or multi-algorithm authorization feature.<br/> You need to add the OTP_CFG configuration, that is, add a VOTP area, and download flash_params.bin or flash_params_v3.bin. Update the SDK as described below.</p>
+<section id="otp-cfg">
+<h2><span class="section-number">4.4.1. </span>Minimum tool versions supporting OTP_CFG<a class="headerlink" href="#otp-cfg" title="Permalink to this heading"></a></h2>
+<p>For the SDK to support the OTP_CFG configuration, the related tools must be updated to the following versions (or later).</p>
+<div class="wy-table-responsive"><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tool</p></th>
+<th class="head"><p>Minimum version</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>isd_download.exe</p></td>
+<td><p>4.2.54</p></td>
+<td><p><a class="reference external" href="../../other_info/index.html">How to update: click here</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>1-to-2 programmer</p></td>
+<td><p>2.27.7</p></td>
+<td><p><a class="reference external" href="../../mass_prod_tools/burner_1tuo2/remote_update.html">How to update: click here</a></p></td>
+</tr>
+<tr class="row-even"><td><p>1-to-8 programmer</p></td>
+<td><p>3.1.22</p></td>
+<td><p><a class="reference external" href="../../mass_prod_tools/burner_1tuo8/remote_update.html">How to update: click here</a></p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="votp-otp">
+<h2><span class="section-number">4.4.2. </span>VOTP and OTP areas<a class="headerlink" href="#votp-otp" title="Permalink to this heading"></a></h2>
+<p>VOTP: an area within the flash space that stores the write protection parameters, the DTR parameters and the parameters for accessing the OTP (cmd, addr, size, etc.). It can be programmed by a programmer or by the Forced Upgrade Tool.<br/> OTP: separate from the flash space; it stores the multi-algorithm authorization data and can be programmed only by a programmer. The lock otp feature is not supported yet.<br/> When the SDK calls the syscfg_read_otp or sys_cfg_read_otp function, it first finds the cmd, addr and size parameters stored in the VOTP, then uses these parameters to access the multi-algorithm authorization data stored in the OTP</p>
+<p><img alt="" data-action="zoom" src="../../_images/batch_votp_otp.png"/></p>
+</section>
+<section id="sdk">
+<h2><span class="section-number">4.4.3. </span>SDK changes<a class="headerlink" href="#sdk" title="Permalink to this heading"></a></h2>
+<section id="isd-config-ini">
+<h3><span class="section-number">4.4.3.1. </span>The isd_config.ini file<a class="headerlink" href="#isd-config-ini" title="Permalink to this heading"></a></h3>
+<ul>
+<li><p>Add the <code class="docutils literal notranslate"><span class="pre">OTP_CFG_SIZE</span></code> setting to the <code class="docutils literal notranslate"><span class="pre">EXTRA_CFG_PARAM</span></code> section of isd_config.ini<br/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>[EXTRA_CFG_PARAM]<br/>
+OTP_CFG_SIZE=256;</p>
+</div>
+<p>As shown below:<br/> <img alt="" data-action="zoom" src="../../_images/config_votp_cfg_size.png"/></p>
+</li>
+<li><p>To also enable the FLASH write protection feature, add the following setting to isd_config.ini<br/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>[BURNER_PASSTHROUGH_CFG]<br/>
+FLASH_WRITE_PROTECT=YES;</p>
+</div>
+<p>As shown below:<br/> <img alt="" data-action="zoom" src="../../_images/config_flash_write_protect1.png"/></p>
+<p>When the FLASH write protection feature is enabled and the chip is programmed with a programmer that supports write protection, the write protection parameters for the chip's FLASH are programmed into the OTP_CFG area</p>
+</li>
+<li><p>If the flash_params_v3.bin parameters are used, also add the following settings to isd_config.ini<br/></p></li>
+<li><p>Check the flash spec to confirm whether the DTR and WPS features are supported</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>[EXTRA_CFG_PARAM] NORFLASH_DTR_EN = 0;#0 disables DTR, 1 enables it<br/> NORFLASH_WPS_EN = 0;#0 disables WPS, 1 enables it<br/></p>
+</div>
+</li>
+</ul>
+</section>
+<section id="download-bat">
+<h3><span class="section-number">4.4.3.2. </span>The download.bat file<a class="headerlink" href="#download-bat" title="Permalink to this heading"></a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>After OTP_CFG (VOTP) is enabled, the jl_isd.bin file is upgraded to a new format,<br/> which fw_add.exe/ufw_maker.exe cannot recognize.<br/> If download.bat generates the final FW/UFW files with fw_add.exe/ufw_maker.exe,<br/> delete the statements related to fw_add.exe/ufw_maker.exe from download.bat.</p>
+</div>
+<p>After deleting the statements related to fw_add.exe/ufw_maker.exe,<br/> add the <code class="docutils literal notranslate"><span class="pre">-output-fw</span></code> and <code class="docutils literal notranslate"><span class="pre">-output-ufw</span></code> options after isd_download.exe to generate the final FW/UFW files.<br/> As shown below:<br/> <img alt="" data-action="zoom" src="../../_images/batch_output_fw_ufw.png"/></p>
+</section>
+<section id="dtr">
+<span id="target-flash-protect-debug"></span><h3><span class="section-number">4.4.3.3. </span>Enabling the write protection, DTR and multi-algorithm authorization features<a class="headerlink" href="#dtr" title="Permalink to this heading"></a></h3>
+<p>If you need to use the write protection, DTR or multi-algorithm authorization feature during development and debugging,<br/> you can specify the FLASH write protection parameter configuration file with the isd_download.exe option <code class="docutils literal notranslate"><span class="pre">-flash-params</span></code>.<br/> As shown below:<br/></p>
+<p><img alt="" data-action="zoom" src="../../_images/batch_set_flash_params1.png"/> <strong>Note</strong>: flash_params.bin applies to the chips br27, br28, br29, br50, br52, br56, bd47, bd49, bd45, br42, br46, CD09, br60 and br62 <br/> flash_params_v3.bin applies to the chips br35, sh58, sh59, mc03 and later new chips<br/></p>
+<p>The FLASH VOTP parameters can be updated in the following 2 ways:</p>
+<ul>
+<li><p>1. The FLASH VOTP parameter data can be obtained from the following links:<br/> <a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/20260828_flash_params.bin" rel="noopener" target="_blank">20260828_flash_params.bin (click here to download_2026_08_28)</a><br/> <a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/20260828_flash_params_v3.bin" rel="noopener" target="_blank">20260828_flash_params_v3.bin (click here to download_2026_08_28)</a><br/></p></li>
+<li><p>2. Add the following setting to the <code class="docutils literal notranslate"><span class="pre">EXTRA_CFG_PARAM</span></code> section of isd_config.ini to support automatic parameter updates from the server</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>[EXTRA_CFG_PARAM]<br/>
+REMOTE_FLASH_PARAMS=YES;</p>
+</div>
+</li>
+</ul>
+<p>After the FLASH VOTP parameter configuration file is set and the device is connected,<br/> running the download.bat batch file downloads the write protection, DTR and multi-algorithm authorization parameters for the FLASH on the development board/device to the VOTP area and prints related information, as shown below:<br/></p>
+<p><img alt="" data-action="zoom" src="../../_images/batch_download.png"/></p>
+</section>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="ini_cfg.html" class="btn btn-neutral float-left" title="4.3. The isd_config.ini Configuration File" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="../post_build/index.html" class="btn btn-neutral float-right" title="5. Download Directory Tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 09, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/toolchains/otp_cfg.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/toolchains/otp_cfg.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

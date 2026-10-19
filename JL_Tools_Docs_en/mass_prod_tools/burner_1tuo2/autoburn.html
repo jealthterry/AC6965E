@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.3. Automated Programming with a Handler — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>1. Jieli 1-to-2 Programmer User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">1.1. Programmer Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html">1.2. Manual Programming, Verification and Blank Check</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.3. Automated Programming with a Handler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1.3.1. Introduction to automated programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#io"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.3.2. IO control signals for automated programming</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">1.3.2.1. IO control signal lines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">1.3.2.2. IO control signal timing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id5"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.3.3. Automated programming procedure</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">1.3.3.1. Preparing for automated programming</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">1.3.3.2. Automated programming flow</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html">1.4. Remote Upgrade of the Programmer Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html">1.5. PC-Side Programming Options for Each Chip Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html">1.6. Status Indicators and Error Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html">1.7. Authorized Programming Count Limit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html">1.8. Programming Third-Party Data (Authentication Codes)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html">1.9. Bluetooth Address and Name Auto-Increment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_burn.html">1.10. Chip Programming Wiring and Power Supply</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html">1.11. Other Common Features: Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faqs.html">1.12. Troubleshooting Common Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">1. </span>Jieli 1-to-2 Programmer User Manual</a> »</li>
+<li><span class="section-number">1.3. </span>Automated Programming with a Handler</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/burner_1tuo2/autoburn.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">1.3. </span>Automated Programming with a Handler<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">1.3.1. </span>Introduction to automated programming<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Purpose</p>
+<p>Manual programming is slow. Automated programming with a handler greatly increases programming speed and solves the problem of low manual programming efficiency.</p>
+</li>
+<li><p>How it works</p></li>
+</ol>
+<p>The handler controls automated programming through IO signals on the programmer, replacing the work of two manual programming steps: <code class="docutils literal notranslate"><span class="pre">starting</span> <span class="pre">programming</span></code> (pressing the Start button by hand) and <code class="docutils literal notranslate"><span class="pre">determining</span> <span class="pre">the</span> <span class="pre">programming</span> <span class="pre">result</span></code> (visually checking the red and green lights on the Start button). A robotic arm places the chip in the adapter socket and starts programming; the handler monitors the programming status indicated by the IO signals in real time, then evaluates and handles the programming result.</p>
+</section>
+<section id="io">
+<h2><span class="section-number">1.3.2. </span>IO control signals for automated programming<a class="headerlink" href="#io" title="Permalink to this heading"></a></h2>
+<section id="id3">
+<h3><span class="section-number">1.3.2.1. </span>IO control signal lines<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<p>Connect the handler's automated programming control lines to the "automated programming IO control signal lines" (自动烧录IO控制信号线) of the adapter board; see the "<a class="reference internal" href="intro_basic.html#target-introduction-and-installation-pinboard"><span class="std std-ref">Adapter board introduction and installation</span></a>" section. The programmer has control signal lines for two channels. Each channel has a <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">signal</span> <span class="pre">line</span></code>, a <code class="docutils literal notranslate"><span class="pre">Busy</span> <span class="pre">signal</span> <span class="pre">line</span></code>, an <code class="docutils literal notranslate"><span class="pre">Ok</span> <span class="pre">signal</span> <span class="pre">line</span></code>, <code class="docutils literal notranslate"><span class="pre">V3.3V</span></code> and <code class="docutils literal notranslate"><span class="pre">GND</span></code>. The control signal lines are described in the table below.</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>No.</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Start (Start button)</strong></p></th>
+<th class="head"><p><strong>Busy (green light)</strong></p></th>
+<th class="head"><p><strong>Ok (red light)</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Signal description</p></td>
+<td><p>Handler to programmer</p></td>
+<td><p>Programmer output to handler</p></td>
+<td><p>Programmer output to handler</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Initial state</p></td>
+<td><p>High</p></td>
+<td><p>Low (green light off)</p></td>
+<td><p>Low (red light off)<br/>or high (red light on)</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Start programming</p></td>
+<td><p>Low (for more than 1mS, then pulled high)</p></td>
+<td><p>/</p></td>
+<td><p>/</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Programming in progress</p></td>
+<td><p>/</p></td>
+<td><p>High (green light on)</p></td>
+<td><p>Low (red light off)</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Programming succeeded</p></td>
+<td><p>High</p></td>
+<td><p>Low (green light off)</p></td>
+<td><p>Low (red light off)</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>Programming failed</p></td>
+<td><p>High</p></td>
+<td><p>Low (green light off)</p></td>
+<td><p>High (red light on)</p></td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ol class="arabic simple">
+<li><p><strong>Start signal line</strong>: when the input IO pin of the Start button is held low for more than 1mS, the programmer starts programming. A low time of 2mS~20mS is recommended; a somewhat longer low time does no harm. When the Start button is pressed, the <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">signal</span></code> is low; when it is released, the signal is high. <br/> <br/></p></li>
+<li><p><strong>Busy signal line</strong>: when the Start signal has been pulled low for 1mS or longer, the IO pin of the <code class="docutils literal notranslate"><span class="pre">Busy</span> <span class="pre">signal</span> <span class="pre">line</span></code> outputs a high level (rising edge) and the programmer starts programming; this corresponds to the green light on the Start button turning on. When programming ends, the IO pin of the <code class="docutils literal notranslate"><span class="pre">Busy</span> <span class="pre">signal</span> <span class="pre">line</span></code> outputs a low level (falling edge), which corresponds to the green light on the Start button turning off. <br/> <br/></p></li>
+<li><p><strong>ok signal line</strong>: on the rising edge of the <code class="docutils literal notranslate"><span class="pre">Busy</span> <span class="pre">signal</span> <span class="pre">line</span></code>, i.e. when programming starts, the <code class="docutils literal notranslate"><span class="pre">ok</span> <span class="pre">signal</span> <span class="pre">line</span></code> is pulled low (its initial state is either low or high). The falling edge of the <code class="docutils literal notranslate"><span class="pre">Busy</span> <span class="pre">signal</span> <span class="pre">line</span></code> marks the end of programming: if programming succeeded, the <code class="docutils literal notranslate"><span class="pre">ok</span> <span class="pre">signal</span> <span class="pre">line</span></code> is pulled low (the red light on the Start button is off); if programming failed, the <code class="docutils literal notranslate"><span class="pre">ok</span> <span class="pre">signal</span> <span class="pre">line</span></code> is pulled high (the red light on the Start button is on). <br/> <br/></p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">V3.3V</span></code> pin of the control signal interface is a 3.3V power supply provided by the programmer; connect it as required by the handler's control module. The <code class="docutils literal notranslate"><span class="pre">GND</span></code> pin of the control interface must be connected to the GND of the handler's control module; <br/> <br/></p></li>
+<li><p>For a more intuitive understanding, see the automated programming section "IO control signal timing".</p></li>
+</ol>
+</div>
+</section>
+<section id="id4">
+<h3><span class="section-number">1.3.2.2. </span>IO control signal timing<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<p>The timing of the automated programming IO control signals is shown in the figure below. Read it together with the description of the IO control signal lines above.</p>
+<p><img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image_autotd.png"/></p>
+</section>
+</section>
+<section id="id5">
+<h2><span class="section-number">1.3.3. </span>Automated programming procedure<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<section id="id6">
+<h3><span class="section-number">1.3.3.1. </span>Preparing for automated programming<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Before programming chip firmware automatically, make sure you have carried out the relevant operations in "<a class="reference internal" href="basic_usage.html"><span class="doc std std-doc">Manual Programming, Verification and Blank Check</span></a>" to prevent problems during programming. The preparation includes:</p>
+<ul class="simple">
+<li><p>Power on the programmer before programming and wait for the normal ready screen (see the "<a class="reference internal" href="basic_usage.html#target-1tuo2-power-on"><span class="std std-ref">Power on the programmer</span></a>" section)</p></li>
+<li><p>Confirm that the programmer firmware is the required version, or update it (see the "<a class="reference internal" href="basic_usage.html#target-1tuo2-fw-confirmation-and-update"><span class="std std-ref">Checking and updating the programmer firmware version</span></a>" section; check this from time to time)</p></li>
+<li><p>Confirm that the target chip firmware in the programmer is the firmware to be programmed, or update it (see the "<a class="reference internal" href="basic_usage.html#target-deploy-fw-file-to-1tuo2"><span class="std std-ref">Deploying the target chip firmware to the programmer</span></a>" section)</p></li>
+<li><p>Confirm that the programmer's working mode is Programming mode, or set it (see the "<a class="reference internal" href="basic_usage.html#target-1tuo2-set-mode"><span class="std std-ref">Programmer working modes: introduction and setup</span></a>" section)</p></li>
+</ul>
+</li>
+<li><p>Set up the programming environment of the automated programming handler.</p>
+<ul class="simple">
+<li><p>Install the programming socket for the corresponding model on the programmer; see "<a class="reference internal" href="intro_basic.html#target-introduction-and-installation-pinboard"><span class="std std-ref">Adapter board introduction and installation</span></a>".</p></li>
+<li><p>Install on the handler the <code class="docutils literal notranslate"><span class="pre">socket</span> <span class="pre">into</span> <span class="pre">which</span> <span class="pre">the</span> <span class="pre">robotic</span> <span class="pre">arm</span> <span class="pre">places</span> <span class="pre">the</span> <span class="pre">chips</span></code>, which is connected to the programmer</p></li>
+<li><p>Wire the handler's IO control signal lines as described in "IO control signals for automated programming" above.</p></li>
+<li><p>Set up loading and unloading for tray-packed or tape-and-reel chips; unloading separates good parts that were programmed successfully from defective parts that failed programming.</p></li>
+<li><p>Debug the overall programming flow of the automated programming environment.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id7">
+<h3><span class="section-number">1.3.3.2. </span>Automated programming flow<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Once the preparation is complete, you can program chips automatically. The automated programming flow of the handler is roughly as shown in <a class="reference internal" href="#img-auto-burn-1tuo2"><span class="std std-ref">Automated programming flow</span></a>:</p></li>
+</ol>
+<figure class="align-default" id="img-auto-burn-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image27.png"/>
+<figcaption>
+<p><span class="caption-text">Automated programming flow</span><a class="headerlink" href="#img-auto-burn-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic" start="2">
+<li><p>The table below describes the automated programming flow.</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Workflow</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Preparing for automated programming</p></td>
+<td><p>See the previous section, "Preparing for automated programming"</p></td>
+</tr>
+<tr class="row-odd"><td><p>Machine places the chip</p></td>
+<td><p>Corresponds to the manual step of picking up a chip and placing it in the dedicated programming socket</p></td>
+</tr>
+<tr class="row-even"><td><p>Handler sends the Start signal to start programming</p></td>
+<td><p>When the handler drives the input IO pin of the <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">button</span></code> low for more than 1mS,<br/>the programmer starts programming; this corresponds to briefly pressing the <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">button</span></code> by hand</p></td>
+</tr>
+<tr class="row-odd"><td><p>Determining the programming result</p></td>
+<td><p>The handler reads the Busy (green light) and Ok (red light) signals of the Start button<br/>and uses the IO signal states to determine whether programming succeeded or failed</p></td>
+</tr>
+<tr class="row-even"><td><p>Robotic arm removes the chip</p></td>
+<td><p>If programming succeeded, the machine removes the chip and places it in the good-parts area for taping;<br/>if programming failed, the robotic arm removes the chip and places it in the defective-parts area</p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+</ol>
+</section>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="basic_usage.html" class="btn btn-neutral float-left" title="1.2. Manual Programming, Verification and Blank Check" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="remote_update.html" class="btn btn-neutral float-right" title="1.4. Remote Upgrade of the Programmer Firmware" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/autoburn.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/autoburn.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

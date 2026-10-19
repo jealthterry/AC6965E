@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6.3. Tool DIP Switches — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>6. Jieli Forced Upgrade Tool 4.0 User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_and_download.html">6.1. Upgrading and Downloading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="led_status.html">6.2. LED Status</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>6.3. Tool DIP Switches</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">6.3.1. Lower four DIP switches (only one can be on at a time)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">6.3.2. Upper four DIP switches (several can be on at the same time)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tool_firmware_update.html">6.4. Updating the Tool's Own Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual_serial.html">6.5. Virtual Serial Port</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">6. </span>Jieli Forced Upgrade Tool 4.0 User Guide</a> »</li>
+<li><span class="section-number">6.3. </span>Tool DIP Switches</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/dev_tools/forced_upgrade/toggle_switch.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">6.3. </span>Tool DIP Switches<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">6.3.1. </span>Lower four DIP switches (only one can be on at a time)<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<div class="wy-table-responsive"><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Lower four DIP switches</strong></p></th>
+<th class="head"><p><strong>KEY</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>None on</strong></p></td>
+<td><p>usbkey</p></td>
+<td><p>Can upgrade almost all chips</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Switch 1</strong></p></td>
+<td><p>usbkey</p></td>
+<td><p>Automatic upgrade with cyclic power-off and intermittent sending of usbkey</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Switch 2</strong></p></td>
+<td><p>ispkey</p></td>
+<td><p>Upgrade of chips that require test, such as the crystal-less upgrade of ac608n</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Switch 3</strong></p></td>
+<td><p>usbkey</p></td>
+<td><p>Automatic upgrade without power-off, with usbkey sent continuously</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Switch 4</strong></p></td>
+<td><p>Reserved</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="id3">
+<h2><span class="section-number">6.3.2. </span>Upper four DIP switches (several can be on at the same time)<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Whether the tool communicates with the PC is determined by DIP switch 7</p>
+<ul class="simple">
+<li><p>Off: the tool cannot communicate with the PC, so none of the following operations work; the serial port cannot be used either.</p></li>
+<li><p>Switch 7 on: the tool initializes its USB function, can act as a serial port tool and can receive commands from the PC.</p></li>
+</ul>
+</li>
+<li><p>The default state of DP and DM on the tool's output is determined by DIP switch 5</p>
+<ul class="simple">
+<li><p>Off: DP and DM on the tool's output are high-impedance by default.</p></li>
+<li><p>Switch 5 on: DP and DM on the tool's output are used for the serial port function by default.</p></li>
+</ul>
+</li>
+<li><p>When the tool receives a set-baud-rate command from the PC</p></li>
+</ol>
+<div class="wy-table-responsive"><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Baud rate</strong></p></th>
+<th class="head"><p><strong>Serial port</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1 or 111</p></td>
+<td><p>Duplex mode</p></td>
+<td><p>Duplex mode by default</p></td>
+</tr>
+<tr class="row-odd"><td><p>2 or 112</p></td>
+<td><p>Single-wire mode</p></td>
+<td><p>TX used for both transmit and receive</p></td>
+</tr>
+<tr class="row-even"><td><p>3 or 113</p></td>
+<td><p>Single-wire mode</p></td>
+<td><p>TX used for both transmit and receive. In addition, when the baud rate is set to 9600 or less, TX sends uartkey. (Currently used for chips that support single-wire UART upgrade)</p></td>
+</tr>
+</tbody>
+</table></div>
+<ol class="arabic simple" start="4">
+<li><p>When the tool receives a JTAG operation command from the PC: DP and DM on the tool's output are used for JTAG communication.</p></li>
+<li><p>When the tool receives an upgrade command from the PC: equivalent to pressing the upgrade button; the tool enters the upgrade process.</p></li>
+<li><p>When the tool receives a flash operation command from the PC: DP and DM on the tool's output are used for flash operations (they automatically return to the default state when the flash operation ends).<br/> The RX pin on the tool connects to the CS pin of the flash.<br/> DP on the tool's output connects to the CLK pin of the flash.<br/> The DM pin on the tool's output connects to both the DO and DO pins of the flash.<br/> <code class="docutils literal notranslate"><span class="pre">RX</span> <span class="pre">--&gt;</span> <span class="pre">CS</span></code><br/> <code class="docutils literal notranslate"><span class="pre">DP</span> <span class="pre">--&gt;</span> <span class="pre">CS</span></code><br/> <code class="docutils literal notranslate"><span class="pre">DM</span> <span class="pre">--&gt;</span> <span class="pre">DO</span></code><br/> <code class="docutils literal notranslate"><span class="pre">DM</span> <span class="pre">--&gt;</span> <span class="pre">DO</span></code><br/></p></li>
+</ol>
+<p>These pins are brought out on the tool's 10-pin JTAG connector:<br/> <code class="docutils literal notranslate"><span class="pre">TCK</span> <span class="pre">--&gt;</span> <span class="pre">DP</span></code><br/> <code class="docutils literal notranslate"><span class="pre">TDO</span> <span class="pre">--&gt;</span> <span class="pre">DM</span></code><br/> <code class="docutils literal notranslate"><span class="pre">TDI</span> <span class="pre">--&gt;</span> <span class="pre">DM</span></code><br/> <code class="docutils literal notranslate"><span class="pre">TMS</span> <span class="pre">--&gt;</span> <span class="pre">RX</span></code><br/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Also remember to supply 3.3V to the flash and to connect a common ground.</p>
+<p>To operate on the on-chip flash of SH50, turn on DIP switch 6; the tool then enumerates as SH50 Burn v1.0.0.</p>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>For the tool's own needs: switch 8 on means that after entering upgrade mode, the tool does not exit upgrade mode automatically.</p></li>
+</ol>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="led_status.html" class="btn btn-neutral float-left" title="6.2. LED Status" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="tool_firmware_update.html" class="btn btn-neutral float-right" title="6.4. Updating the Tool&#x27;s Own Firmware" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 09, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/forced_upgrade/toggle_switch.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/forced_upgrade/toggle_switch.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

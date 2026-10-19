@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1. TWS配对地址分析工具 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>1. TWS配对地址分析工具</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">1.1. 工具介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">1.2. 分析方法</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><span class="section-number">1. </span>TWS配对地址分析工具</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/other_tools/tws_mac_tool/index.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="tws">
+<h1><span class="section-number">1. </span>TWS配对地址分析工具<a class="headerlink" href="#tws" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2><span class="section-number">1.1. </span>工具介绍<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">TWS配对地址分析工具</span></code>用于读取解析TWS耳机配对地址信息。<br/></p>
+<ul class="simple">
+<li><p>本工具需要联网使用，并且需要经过杰理科技授权才能使用。*</p></li>
+</ul>
+<p>在您还未经过杰理科技授权时打开工具会提示以下信息。<br/>
+请按照工具提示，将相关信息发送给杰理科技<code class="docutils literal notranslate"><span class="pre">lvjianbing@zh-jieli.com</span></code>申请工具的使用权限。<br/></p>
+<p><img alt="" data-action="zoom" src="../../_images/first_run.jpg"/></p>
+<p>再通过授权后，再次运行工具，将不再提示需要授权，界面如下图：</p>
+<p><img alt="" data-action="zoom" src="../../_images/tws_mac_tool.jpg"/></p>
+<p>此时，将样机通过<code class="docutils literal notranslate"><span class="pre">杰理强制升级工具4.0</span></code>将样机与电脑连接后，选择当前样机与电脑的<code class="docutils literal notranslate"><span class="pre">连接方式</span></code>和样机<code class="docutils literal notranslate"><span class="pre">芯片型号</span></code>后，<br/>
+点击<code class="docutils literal notranslate"><span class="pre">分析</span></code>按钮，工具将显示样机中所有<code class="docutils literal notranslate"><span class="pre">TWS配对地址</span></code>信息。如下图：</p>
+<p><img alt="" data-action="zoom" src="../../_images/example_1.jpg"/></p>
+</section>
+<section id="id2">
+<h2><span class="section-number">1.2. </span>分析方法<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>（1）如果耳机正常配对，L耳机上的本地地址是R耳机上的远端地址；R耳机的本地地址是L耳机的远端地址。L和R耳机配对其生成的公共地址，在L耳机和R耳机上其公共地址是相同的。<br/>
+（2）如果软件选择使用左耳地址作为公共地址，那么公共地址与L耳机的本地地址一样。<br/>
+（3）耳机的配对信息上可能出现多个远端地址和公共地址，说明这个耳机还有与其他耳机配对过，里面存在其他耳机的本地地址。<br/>
+（4）配对记录从上往下是从旧到新，最新一条配对记录就是样机当前的配对状态。<br/></p>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="../../mass_prod_tools/faqs/key_error.html" class="btn btn-neutral float-left" title="7.4. KEY错误或不匹配" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="../pc_config_update_tool/index.html" class="btn btn-neutral float-right" title="2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/other_tools/tws_mac_tool/index.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/other_tools/tws_mac_tool/index.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

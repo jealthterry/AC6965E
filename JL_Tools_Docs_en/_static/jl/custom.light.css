@@ -1,0 +1,90 @@
+/* DC6261 E1595D */
+.icon.icon-home{ color: #E1595D; }
+.fa{ color: #E1595D; }
+/*logo*/
+#jl-logo{
+    width: 100%;
+    height: 54px;
+    border-radius: 0px;
+    margin-top: 10px;
+    background-color: #E9E9E9 !important;
+}
+/*搜索框*/
+.wy-side-nav-search{
+    background-color: #E9E9E9 !important;
+}
+/*侧边栏*/
+.wy-nav-side{
+    background-color: #E1595D;
+}
+/*一级标题*/
+.wy-nav-side .caption-text{
+    color: #C9C9C9; /*文字颜色*/
+    font-size: 18px;
+    margin-left: -5px;
+}
+/*二级标题*/
+.wy-nav-side .reference.internal{
+    color: #dAdAdA; /*文字颜色*/
+    background-color: #E1595D;
+}
+.wy-nav-side .reference.internal.current{
+    color: #E1595D !important;
+    background-color: #F5F6F7 !important;
+}
+.wy-menu-vertical li.toctree-l2.current>a, 
+.wy-menu-vertical li.toctree-l3.current>a, 
+.wy-menu-vertical li.toctree-l2.current li.toctree-l3>a,
+.wy-menu-vertical li.toctree-l2.current li.toctree-l3.current li.toctree-l4>a{
+    color: #dAdAdA !important;
+    background-color: #E1595D !important;
+}
+.wy-nav-side .reference.internal:hover{
+    color: #E1595D !important;
+    background-color: #F5F6F7 !important;
+}
+.wy-menu-vertical li.toctree-l1.current>a{
+    border-top: 0px;
+    border-bottom: 0px;
+}
+.toctree-expand{
+    color: #FFFFFF !important;
+}
+
+/*三级菜单*/
+.toctree-12{
+    background-color: #F5F6F7 !important;
+}
+.wy-nav-content-wrap{
+    background-color: rgba(0,0,0,.05);
+}
+.wy-nav-content{
+    background-color: #fcfcfc;
+}
+.wy-breadcrumbs li{
+    display:-webkit-inline-box;
+}
+h1,h2,h3,h4,p,dt,li{
+    color: #222;
+}
+.admonition.note>p,
+.admonition.note>dl>dt,
+.admonition.note>dl>dd>ul>li,
+.admonition.note>dl>dd p,
+blockquote>div>p{
+    color: #222 ;
+}
+.admonition.important>p,
+.admonition.important>dl>dt,
+.admonition.important>dl>dd>ul>li,
+.admonition.important>dl>dd p,
+blockquote>div>p{
+    color: #222 ;
+}
+
+.rst-content table.docutils:not(.field-list) tr:nth-child(2n-1) td,
+.wy-table-backed, .wy-table-odd td, 
+.wy-table-striped tr:nth-child(2n-1) td{
+    background-color: #fcfcfc;
+}
+

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.6. How to Generate a FW Containing Only the Authorization Executable — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>4. Multi-Algorithm Authorization Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">4.1. Introduction to Multi-Algorithm Authorization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algo-user.html">4.2. What Algorithm Providers Need to Do</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prod-user.html">4.3. What Manufacturers Need to Do</a></li>
+<li class="toctree-l2"><a class="reference internal" href="website-readme.html">4.4. Using the Jieli Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authrun-tmpl-list.html">4.5. Supported Chip Models and Authorization Executable Project Templates</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>4.6. How to Generate a FW Containing Only the Authorization Executable</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#authrunfw">4.6.1. Copy the programming-time authorization executable .authrun to the FW output directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ini">4.6.2. Create a new ini file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bat">4.6.3. Create a new bat script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">4.6.4. Update the tools in the FW file output directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">4.6.5. Generate the FW file</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">4. </span>Multi-Algorithm Authorization Guide</a> »</li>
+<li><span class="section-number">4.6. </span>How to Generate a FW Containing Only the Authorization Executable</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/multi_auth/add_authrun_to_fw.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="fw">
+<h1><span class="section-number">4.6. </span>How to Generate a FW Containing Only the Authorization Executable<a class="headerlink" href="#fw" title="Permalink to this heading"></a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This document applies only to special cases. Do not send the <code class="docutils literal notranslate"><span class="pre">.authrun</span></code> file directly to customers, as this would leak the file.</p>
+<p>In general, follow the procedure in <a class="reference internal" href="algo-user.html"><span class="doc std std-doc">What Algorithm Providers Need to Do</span></a>.</p>
+<p>If the algorithm provider needs to do the programming itself, it can use the steps on this page to skip the authorization process.</p>
+<p>Do not send the <code class="docutils literal notranslate"><span class="pre">.authrun</span></code> file directly to customers</p>
+</div>
+<p>This article uses the AC696X earphone SDK v0.3.1 as an example to show how to generate a FW that contains only the authorization executable.</p>
+<p>A FW file generated this way lets the algorithm provider program the authorization data itself in advance (without programming the firmware). It is suitable when the algorithm provider authorizes the chips first and then ships them.</p>
+<p>To generate a FW containing only the authorization executable for other AC696X SDKs and for AC695X SDKs, follow the steps below.</p>
+<section id="authrunfw">
+<h2><span class="section-number">4.6.1. </span>Copy the programming-time authorization executable <code class="docutils literal notranslate"><span class="pre">.authrun</span></code> to the FW output directory<a class="headerlink" href="#authrunfw" title="Permalink to this heading"></a></h2>
+<p>After generating the programming-time authorization executable <code class="docutils literal notranslate"><span class="pre">.authrun</span></code>, copy the <code class="docutils literal notranslate"><span class="pre">.authrun</span></code> file to the directory where the SDK generates the FW file, as shown below:<br/> <img alt="" data-action="zoom" src="../../_images/add_authrun_to_fw_00.jpg"/></p>
+</section>
+<section id="ini">
+<h2><span class="section-number">4.6.2. </span>Create a new ini file<a class="headerlink" href="#ini" title="Permalink to this heading"></a></h2>
+<p>Make a copy of isd_config.ini in the FW file output directory and name it isd_config_authrun.ini, as shown below:<br/> <img alt="" data-action="zoom" src="../../_images/add_authrun_to_fw_01.jpg"/></p>
+<p>Add <code class="docutils literal notranslate"><span class="pre">.authrun</span></code> to FW_ADDITIONAL/FILE_LIST, and also add DOWNLOAD_ONLY_AUTHRUN=YES; under [BURNER_PASSTHROUGH_CFG], as shown below:<br/> <img alt="" data-action="zoom" src="../../_images/add_authrun_to_fw_02.jpg"/></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This document applies only to special cases. Do not send the <code class="docutils literal notranslate"><span class="pre">.authrun</span></code> file directly to customers, as this would leak the file.</p>
+<p>In general, follow the procedure in <a class="reference internal" href="algo-user.html"><span class="doc std std-doc">What Algorithm Providers Need to Do</span></a>.</p>
+<p>If the algorithm provider needs to do the programming itself, it can use the steps on this page to skip the authorization process.</p>
+<p>Do not send the <code class="docutils literal notranslate"><span class="pre">.authrun</span></code> file directly to customers.<br/> The isd_config.ini file in the customer's download directory must also include the following section (it identifies that this FW supports multiple algorithms, so that the programmer programs the flash configuration information into the chip):</p>
+<p>[BURNER_PASSTHROUGH_CFG]<br/>
+DOWNLOAD_ONLY_AUTHRUN=YES;</p>
+</div>
+</section>
+<section id="bat">
+<h2><span class="section-number">4.6.3. </span>Create a new bat script<a class="headerlink" href="#bat" title="Permalink to this heading"></a></h2>
+<p>Make a copy of download.bat in the FW file output directory and name it download_authrun.bat, as shown below:<br/> <img alt="" data-action="zoom" src="../../_images/add_authrun_to_fw_03.jpg"/></p>
+<p>Delete all commands in download_authrun.bat except isd_download.exe.<br/> Delete all of the -uboot, -app and -res parameters after isd_download.exe.<br/> Then add isd_config_authrun.ini after isd_download.exe.<br/> As shown below:<br/> <img alt="" data-action="zoom" src="../../_images/add_authrun_to_fw_04.jpg"/></p>
+</section>
+<section id="id1">
+<h2><span class="section-number">4.6.4. </span>Update the tools in the FW file output directory<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>Run <code class="docutils literal notranslate"><span class="pre">下载目录工具更新.jlxproj</span></code> in the FW file output directory to update the tools. Make sure that the version of isd_download.exe is <code class="docutils literal notranslate"><span class="pre">4.2.39</span></code> or later, as shown below:<br/> <img alt="" data-action="zoom" src="../../_images/add_authrun_to_fw_05.jpg"/></p>
+<p>For how to update the tools, see <a class="reference internal" href="../../other_info/faqs/how_to_update_softwares.html"><span class="doc std std-doc">How to Update the Tools</span></a></p>
+</section>
+<section id="id2">
+<h2><span class="section-number">4.6.5. </span>Generate the FW file<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>Run <code class="docutils literal notranslate"><span class="pre">download_authrun.bat</span></code> to generate a FW file that contains only the <code class="docutils literal notranslate"><span class="pre">.authrun</span></code> file, as shown below:<br/> <img alt="" data-action="zoom" src="../../_images/add_authrun_to_fw_06.jpg"/> <img alt="" data-action="zoom" src="../../_images/add_authrun_to_fw_07.jpg"/></p>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="authrun-tmpl-list.html" class="btn btn-neutral float-left" title="4.5. Supported Chip Models and Authorization Executable Project Templates" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="../private_data_auth/index.html" class="btn btn-neutral float-right" title="5. Private Data Authorization Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/multi_auth/add_authrun_to_fw.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/multi_auth/add_authrun_to_fw.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

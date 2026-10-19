@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.2.4. Replacing Prompt Tones — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>1. Firmware File Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../download/index.html">1.1. Firmware File Download</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.2. Firmware Editing Tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="overview.html">1.2.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="edit_permissions.html">1.2.2. Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bt_name_edit.html">1.2.3. Changing the Bluetooth Name</a></li>
+<li class="toctree-l3 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.2.4. Replacing Prompt Tones</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">1.2.4.1. Replacing the prompt tone configuration data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">1.2.4.2. Hiding the prompt tone configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">1.2.4.3. Multilingual prompt tones</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eq_cfg_edit.html">1.2.5. Replacing the EQ Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reserved_area_edit.html">1.2.6. Replacing Reserved-Area Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="custom_file_edit.html">1.2.7. Replacing Custom Files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mac_update/index.html">1.3. Configuration Update Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faqs/index.html">1.4. FAQs and Solutions</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="../index.html"><span class="section-number">1. </span>Firmware File Tools</a> »</li>
+<li><a href="index.html"><span class="section-number">1.2. </span>Firmware Editing Tool</a> »</li>
+<li><span class="section-number">1.2.4. </span>Replacing Prompt Tones</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/firmware_tools/firmware_edit/tone_edit.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">1.2.4. </span>Replacing Prompt Tones<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">1.2.4.1. </span>Replacing the prompt tone configuration data<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>After selecting the correct license file, you can change the prompt tones by replacing the prompt tone data, as shown below:</p>
+<p><img alt="" data-action="zoom" src="../../_images/editing_tone.jpg"/></p>
+<p>Click the prompt tone <code class="docutils literal notranslate"><span class="pre">Open</span></code> (打开) button and select a new prompt tone file, then click the <code class="docutils literal notranslate"><span class="pre">Save</span></code> (保存) button in the <code class="docutils literal notranslate"><span class="pre">upper-right</span> <span class="pre">corner</span></code> to save the prompt tone data and generate a new firmware file, as shown below:</p>
+<p><img alt="" data-action="zoom" src="../../_images/editing_tone_save.jpg"/></p>
+</section>
+<section id="id3">
+<h2><span class="section-number">1.2.4.2. </span>Hiding the prompt tone configuration<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>If you do not want the prompt tones in the selected firmware file to be modified, add the prompt tone file name <code class="docutils literal notranslate"><span class="pre">tone</span></code> to the blacklist in the <code class="docutils literal notranslate"><span class="pre">edit_cfg.ini</span> <span class="pre">file</span></code> and then regenerate the firmware file, as shown below:</p>
+<p><img alt="" data-action="zoom" src="../../_images/editing_tone_black_list.jpg"/></p>
+<p>After the firmware file is regenerated, <code class="docutils literal notranslate"><span class="pre">Prompt</span> <span class="pre">tone</span> <span class="pre">configuration</span></code> (提示音配置) no longer appears in the <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">list</span></code> (文件列表), as shown below:</p>
+<p><img alt="" data-action="zoom" src="../../_images/editing_tone_hidden.jpg"/></p>
+</section>
+<section id="id4">
+<h2><span class="section-number">1.2.4.3. </span>Multilingual prompt tones<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>If the SDK supports multilingual prompt tones, the prompt tone configuration of each language is displayed in the interface after the firmware file is loaded, as shown below:</p>
+<p><img alt="" data-action="zoom" src="../../_images/editing_tone_multi_lang.jpg"/></p>
+<p>If you do not want the prompt tones in a multilingual firmware file to be modified, add the prompt tone file names <code class="docutils literal notranslate"><span class="pre">tone_en</span></code> and <code class="docutils literal notranslate"><span class="pre">tone_zh</span></code> to the blacklist in the <code class="docutils literal notranslate"><span class="pre">edit_cfg.ini</span> <span class="pre">file</span></code> and then regenerate the firmware file, as shown below:</p>
+<p><img alt="" data-action="zoom" src="../../_images/editing_tone_multi_lang_hidden.jpg"/></p>
+<p>After the firmware file is regenerated, the multilingual <code class="docutils literal notranslate"><span class="pre">Prompt</span> <span class="pre">tone</span> <span class="pre">configuration</span></code> (提示音配置) entries no longer appear in the <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">list</span></code> (文件列表).</p>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="bt_name_edit.html" class="btn btn-neutral float-left" title="1.2.3. Changing the Bluetooth Name" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="eq_cfg_edit.html" class="btn btn-neutral float-right" title="1.2.5. Replacing the EQ Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 09, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/firmware_tools/firmware_edit/tone_edit.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/firmware_tools/firmware_edit/tone_edit.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

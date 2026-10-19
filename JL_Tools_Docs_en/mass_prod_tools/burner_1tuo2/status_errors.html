@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.6. Status Indicators and Error Messages — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>1. Jieli 1-to-2 Programmer User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">1.1. Programmer Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html">1.2. Manual Programming, Verification and Blank Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html">1.3. Automated Programming with a Handler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html">1.4. Remote Upgrade of the Programmer Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html">1.5. PC-Side Programming Options for Each Chip Model</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.6. Status Indicators and Error Messages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#led"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.6.1. LED indicators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">1.6.1.1. Power indicator light</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">1.6.1.2. Working mode indicator lights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">1.6.1.3. Start button indicator lights</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">1.6.2. Buzzer prompt tones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#oled"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.6.3. OLED display</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">1.6.3.1. Power-on display</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">1.6.3.2. Normal screen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">1.6.3.3. Programming success display</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">1.6.3.4. Programming failure display</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">1.6.3.5. Upgrade mode display</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">1.6.3.6. Mode setting display</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">1.6.4. OLED error messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pc">1.6.5. PC tool error messages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html">1.7. Authorized Programming Count Limit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html">1.8. Programming Third-Party Data (Authentication Codes)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html">1.9. Bluetooth Address and Name Auto-Increment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_burn.html">1.10. Chip Programming Wiring and Power Supply</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html">1.11. Other Common Features: Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faqs.html">1.12. Troubleshooting Common Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">1. </span>Jieli 1-to-2 Programmer User Manual</a> »</li>
+<li><span class="section-number">1.6. </span>Status Indicators and Error Messages</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/burner_1tuo2/status_errors.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">1.6. </span>Status Indicators and Error Messages<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="led">
+<h2><span class="section-number">1.6.1. </span>LED indicators<a class="headerlink" href="#led" title="Permalink to this heading"></a></h2>
+<section id="id2">
+<h3><span class="section-number">1.6.1.1. </span>Power indicator light<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<p>Press the latching power switch and the red power indicator light turns on. The power indicator light is shown in <a class="reference internal" href="#img-vol-ind-light-1tuo2"><span class="std std-ref">Power indicator light</span></a>.</p>
+<figure class="align-default" id="img-vol-ind-light-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image33.png"/>
+<figcaption>
+<p><span class="caption-text">Power indicator light</span><a class="headerlink" href="#img-vol-ind-light-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id3">
+<h3><span class="section-number">1.6.1.2. </span>Working mode indicator lights<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>The working mode indicator lights are shown in <a class="reference internal" href="#img-workmode-light-1tuo2"><span class="std std-ref">Working mode indicator lights</span></a>.</p>
+<figure class="align-default" id="img-workmode-light-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image34.png"/>
+<figcaption>
+<p><span class="caption-text">Working mode indicator lights</span><a class="headerlink" href="#img-workmode-light-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Working mode indicator light states</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>No.</strong></p></th>
+<th class="head"><p><strong>Working mode</strong></p></th>
+<th class="head"><p><strong>LED1</strong></p></th>
+<th class="head"><p><strong>LED2</strong></p></th>
+<th class="head"><p><strong>LED3</strong></p></th>
+<th class="head"><p><strong>LED4</strong></p></th>
+<th class="head"><p><strong>LED5</strong></p></th>
+<th class="head"><p><strong>LED6</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Programming mode</p></td>
+<td><p>On</p></td>
+<td><p>On</p></td>
+<td><p>On</p></td>
+<td><p>Off</p></td>
+<td><p>Off</p></td>
+<td><p>/</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Verification mode</p></td>
+<td><p>On</p></td>
+<td><p>Off</p></td>
+<td><p>On</p></td>
+<td><p>Off</p></td>
+<td><p>Off</p></td>
+<td><p>/</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Blank check mode</p></td>
+<td><p>On</p></td>
+<td><p>Off</p></td>
+<td><p>Off</p></td>
+<td><p>On</p></td>
+<td><p>Off</p></td>
+<td><p>/</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Sound mode</p></td>
+<td><p>/</p></td>
+<td><p>/</p></td>
+<td><p>/</p></td>
+<td><p>/</p></td>
+<td><p>/</p></td>
+<td><p>On</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Mute mode</p></td>
+<td><p>/</p></td>
+<td><p>/</p></td>
+<td><p>/</p></td>
+<td><p>/</p></td>
+<td><p>/</p></td>
+<td><p>Off</p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+</ol>
+</section>
+<section id="id4">
+<h3><span class="section-number">1.6.1.3. </span>Start button indicator lights<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>The Start button indicator lights are shown in <a class="reference internal" href="#img-start-btn-light-1tuo2"><span class="std std-ref">Start button indicator lights</span></a></p>
+<figure class="align-default" id="img-start-btn-light-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image35.png"/>
+<figcaption>
+<p><span class="caption-text">Start button indicator lights</span><a class="headerlink" href="#img-start-btn-light-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Start button indicator light states</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>No.</strong></p></th>
+<th class="head"><p><strong>Programming status</strong></p></th>
+<th class="head"><p><strong>Green LED</strong></p></th>
+<th class="head"><p><strong>Red LED</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Normal</p></td>
+<td><p>Off</p></td>
+<td><p>Off</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Programming in progress</p></td>
+<td><p>On</p></td>
+<td><p>Off</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Programming succeeded</p></td>
+<td><p>Off</p></td>
+<td><p>Off</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Programming failed</p></td>
+<td><p>Off</p></td>
+<td><p>On</p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+</ol>
+</section>
+</section>
+<section id="id5">
+<h2><span class="section-number">1.6.2. </span>Buzzer prompt tones<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>No.</strong></p></th>
+<th class="head"><p><strong>Situation</strong></p></th>
+<th class="head"><p><strong>Tone type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Power-on</p></td>
+<td><p>1 short beep</p></td>
+<td><p>Programmer powered on normally</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Power-on</p></td>
+<td><p>2 or more beeps</p></td>
+<td><p>Power-on error; check the information on the display to identify the error</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>During programming</p></td>
+<td><p>1 short beep</p></td>
+<td><p>Programming complete; indicates that programming succeeded</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>During programming</p></td>
+<td><p>2 or more beeps</p></td>
+<td><p>Programming error; check the information on the display to identify the error</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="oled">
+<h2><span class="section-number">1.6.3. </span>OLED display<a class="headerlink" href="#oled" title="Permalink to this heading"></a></h2>
+<section id="id6">
+<h3><span class="section-number">1.6.3.1. </span>Power-on display<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<p>The display shows the Jieli logo, then the programmer version information for 2s, and then the normal screen, as shown in <a class="reference internal" href="#img-vol-on-display-1tuo2"><span class="std std-ref">Power-on display</span></a>.</p>
+<figure class="align-default" id="img-vol-on-display-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image36.png"/>
+<figcaption>
+<p><span class="caption-text">Power-on display</span><a class="headerlink" href="#img-vol-on-display-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id7">
+<h3><span class="section-number">1.6.3.2. </span>Normal screen<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
+<p>The normal screen of the display is shown in <a class="reference internal" href="#img-normal-ui-1tuo2"><span class="std std-ref">Working screen layout</span></a>.</p>
+<figure class="align-default" id="img-normal-ui-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image37.png"/>
+<figcaption>
+<p><span class="caption-text">Working screen layout</span><a class="headerlink" href="#img-normal-ui-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Note: the working mode is shown only on V5.0 programmers.</p>
+</section>
+<section id="id8">
+<h3><span class="section-number">1.6.3.3. </span>Programming success display<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+<p>The success count of the corresponding channel on the display increases by 1 (see the channel 1 programming success count in <a class="reference internal" href="#img-normal-ui-1tuo2"><span class="std std-ref">Working screen layout</span></a>).</p>
+</section>
+<section id="id9">
+<h3><span class="section-number">1.6.3.4. </span>Programming failure display<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Format of the error messages shown on the display</p>
+<p>Channel: E[error number]-[Chinese message]</p>
+<p>For example: 1: E02-Communication failed (通信失败)</p>
+</li>
+<li><p>Error display</p>
+<p>Example: if channel 1 reports "Operation timed out" (操作超时) and channel 2 reports "Communication failed" (通信失败), the display looks as shown in <a class="reference internal" href="#img-err-display-ui-1tuo2"><span class="std std-ref">Error message display</span></a>.</p>
+<figure class="align-default" id="img-err-display-ui-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image38.png"/>
+<figcaption>
+<p><span class="caption-text">Error message display</span><a class="headerlink" href="#img-err-display-ui-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+</section>
+<section id="id10">
+<h3><span class="section-number">1.6.3.5. </span>Upgrade mode display<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h3>
+<p>When you upgrade the programmer firmware or update the target chip firmware, the display shown in <a class="reference internal" href="#img-enter-upgrade-mode-1tuo2"><span class="std std-ref">Display on entering upgrade mode</span></a> appears after the programmer is connected to the PC over USB.</p>
+<figure class="align-default" id="img-enter-upgrade-mode-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image39.png"/>
+<figcaption>
+<p><span class="caption-text">Display on entering upgrade mode</span><a class="headerlink" href="#img-enter-upgrade-mode-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id11">
+<h3><span class="section-number">1.6.3.6. </span>Mode setting display<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h3>
+<p>On V5.0 programmers, press and hold the standalone button (see the pictures in <a class="reference internal" href="intro_basic.html#target-1tuo2-hosts-info"><span class="std std-ref">Introduction to the programmer main unit</span></a>) for 3s to enter the mode setting display, then briefly press the button to cycle through the modes (Programming - Verification - Blank check). The display is shown in <a class="reference internal" href="#img-mode-set-ui-1tuo2"><span class="std std-ref">Mode setting display</span></a>.</p>
+<figure class="align-default" id="img-mode-set-ui-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image40.png"/>
+<figcaption>
+<p><span class="caption-text">Mode setting display</span><a class="headerlink" href="#img-mode-set-ui-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="id12">
+<h2><span class="section-number">1.6.4. </span>OLED error messages<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h2>
+<p>The tables below describe the error messages shown on the display.</p>
+<p>Power-on error messages:</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Error code</strong></p></th>
+<th class="head"><p><strong>Error message</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p></p></td>
+<td><p>No programming file (无烧写文件)</p></td>
+<td><p>After a remote upgrade, the programmer reports that there is no programming file when it is powered on again;<br/>in this case, use the PC tool to update the programmer with the .key, .fw or .ufw file for the chips to be programmed</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>No SYNC file (无SYNC文件)</p></td>
+<td><p>The programmer firmware does not contain the sync file for the chip selected for programming; this normally does not occur with official release firmware;<br/>Solution:<br/>report it to Jieli technical support promptly</p></td>
+</tr>
+<tr class="row-even"><td><p>E17</p></td>
+<td><p>VPP error (VPP异常)</p></td>
+<td><p>During power-on, the 6.5V voltage output by the programmer to the top board or adapter board deviates too much;<br/>if it is outside 6.45V~6.75V, a VPP error is reported;<br/>Solution:<br/>measure the 6.5V voltage with an oscilloscope, or try replacing the CAT5171 component</p></td>
+</tr>
+<tr class="row-odd"><td><p>E30</p></td>
+<td><p>ADC error (ADC错误)</p></td>
+<td><p>The ADC chip cs1237 of the programmer's current test module failed to initialize, so its chip ID cannot be read;<br/>Solution:<br/> try replacing the cs1237 part and check the soldering</p></td>
+</tr>
+<tr class="row-even"><td><p>E31</p></td>
+<td><p>Memory error (内存错误)</p></td>
+<td><p>The programmer's EPPROM chip failed to initialize; after long use, the EPPROM chip may be damaged;<br/>Solution:<br/>try replacing the EPPROM part and check the soldering</p></td>
+</tr>
+<tr class="row-odd"><td><p>ERR-INIT:</p></td>
+<td><p>no_test_config</p></td>
+<td><p>The PC has no configuration options at all, or there is a software bug;<br/>Solution:<br/>report it to Jieli technical support promptly</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>chip_name_match</p></td>
+<td><p>After a .key, .fw or .ufw file is updated to the programmer and the programmer is powered on again,<br/>the programmer cannot match the chip model name selected by the user;<br/>Solution:<br/>report it to Jieli technical support promptly</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>no_file_type</p></td>
+<td><p>The programmer firmware failed to parse the file;<br/>Solution:<br/>report it to Jieli technical support promptly</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>file_len_min</p></td>
+<td><p>The file transferred from the PC is too small (less than 4 bytes);<br/>sdram space of less than 4 bytes is not allocated automatically; this normally does not occur with the standard firmware</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>sdram_usedup</p></td>
+<td><p>When files such as the .fw file, authentication code files and resource files are too large and are loaded together for programming,<br/>the programmer's sdram does not have enough space to store them;<br/>Solution:<br/>do not configure overly large files, such as authentication code files</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>load_to_sdram</p></td>
+<td><p>Failed to read the flash data into the main controller's sdram;<br/>Solution:<br/>try replacing the programmer's external flash or the main controller</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>key_mask</p></td>
+<td><p>The key file sent from the PC to the programmer has an incorrect format;<br/>Solution:<br/>report it to Jieli technical support promptly</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>auth_code_init</p></td>
+<td><p>The authentication code data has an incorrect format;<br/>Solution:<br/>check the data format according to the programmer user manual and convert the data format again</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>efuse_bin_len</p></td>
+<td><p>For models such as AC702N/JL702N, the data in the efuse.bin file in the download directory exceeds 123 bytes;<br/>Solution:<br/>check the size of the efuse.bin file in the download directory</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>uplog_crc_err</p></td>
+<td><p>CRC error in the uplog file sent from the PC to the programmer; this normally does not occur</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>resfile_num_over</p></td>
+<td><p>More than 16 resource files are configured in the .ini file in the download directory;<br/>Solution:<br/>if you need more than 16 resource files, contact Jieli technical support to request a special programmer version</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>pc_cfg_crc_err</p></td>
+<td><p>CRC error in the configuration data sent from the PC to the programmer;<br/>Solution:<br/>report it to Jieli technical support promptly</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>bt_addr_init</p></td>
+<td><p>The Bluetooth address auto-increment range configured in the PC tool is too large (more than 2^32 addresses);<br/>or the configured start and end addresses are reversed</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>params_len_over</p></td>
+<td><p>A parameter keyword configured in the .ini file in the download directory is too long,<br/>exceeding 256 bytes; this normally does not occur</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>flash_efuse_cfg</p></td>
+<td><p>For AC702N/JL702N, the [BURNER_PASSTHROUGH_CFG] section of the .ini file in the download directory<br/>does not configure REQUIRE_TARGET_FEATURE=FLASH/EFUSE;<br/>Solution:<br/>configure it again</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>lighting_mode</p></td>
+<td><p>For AC128N and AD16N, the lighting_mode parameter configured in the .ini file in the download directory has an incorrect format</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>lighting2typec</p></td>
+<td><p>For AC128N and AD16N, the lighting2typec parameter configured in the .ini file in the download directory has an incorrect format</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>lighting_ot</p></td>
+<td><p>For AC128N and AD16N, the lighting_ot parameter configured in the .ini file in the download directory has an incorrect format</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>flash_do_reset</p></td>
+<td><p>For AC128N and AD16N, the flash_do_reset parameter configured in the .ini file in the download directory has an incorrect format</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>sfc_boot</p></td>
+<td><p>For AC128N and AD16N, the sfc_boot parameter configured in the .ini file in the download directory has an incorrect format</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>otp_boot</p></td>
+<td><p>For AC128N and AD16N, the otp_boot parameter configured in the .ini file in the download directory has an incorrect format</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>bflt_len_over</p></td>
+<td><p>Multi-algorithm authorization: the data length of the bflt file sent from the PC to the programmer exceeds 8k;<br/>Solution:<br/>report it to Jieli technical support promptly</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>bflt_num_err</p></td>
+<td><p>Multi-algorithm authorization: the number of bflt files sent from the PC to the programmer is wrong (more than 32);<br/>Solution:<br/>report it to Jieli technical support promptly</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>flash_wp_cfg</p></td>
+<td><p>Error in the FLASH_WRITE_PROTECT =YES/NO setting in the [BURNER_PASSTHROUGH_CFG] section of the .ini file in the download directory;<br/>Solution:<br/>check that it is configured as FLASH_WRITE_PROTECT =YES/NO</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>init_err_default</p></td>
+<td><p>Initialization error in other cases;<br/>Solution:<br/>report it to Jieli technical support promptly</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>init_errcode:X</p></td>
+<td><p>Initialization error in other cases, where X is the corresponding error code;<br/>Solution:<br/>report it to Jieli technical support promptly</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>Programming error messages:</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Error code</strong></p></th>
+<th class="head"><p><strong>Error message</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>E00</p></td>
+<td><p>Blank (空片)</p></td>
+<td><p>In Blank check mode, indicates that the chip has never been programmed with firmware, KEY or other data</p></td>
+</tr>
+<tr class="row-odd"><td><p>E02</p></td>
+<td><p>Communication failed (通信失败)</p></td>
+<td><p>When chip programming is started manually or automatically, the programmer fails to communicate with the target chip;<br/>Solution:<br/>1. Check that a chip is present; 2. Check that the chip pins are placed correctly;<br/>3. Check that the chip model being programmed matches; 4. Check the socket and the wiring</p></td>
+</tr>
+<tr class="row-even"><td><p>E03</p></td>
+<td><p>Flash data verification failures</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>Verification failed (校验失败)</p></td>
+<td><p>The programmer is in Verification mode: the firmware data of the .fw file updated to the programmer does not match the firmware data<br/>already programmed into the chip;<br/>Solution:<br/>1. Check whether the same fw file was used for programming and verification;<br/>2. Confirm whether the last programming of this chip succeeded</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>res_verify</p></td>
+<td><p>Verification of the resource files failed, either after they were programmed or in Verification mode;<br/>Solution:<br/>1. Check whether the same fw file was used for programming and verification;<br/>2. Try programming/verifying several times to see whether it succeeds</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>mac_verify</p></td>
+<td><p>Verification of the Bluetooth address after programming failed;<br/>Solution:<br/>try programming several times to see whether it succeeds;<br/>if it does not, there may be a bug in the programmer firmware or a flash problem</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>auco_vy</p></td>
+<td><p>Verification of the authentication code data after programming failed;<br/>Solution:<br/>try programming several times to see whether it succeeds;<br/>if it does not, there may be a bug in the programmer firmware or a flash problem</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>wp_verify</p></td>
+<td><p>Verification of the flash protection parameters failed, either after they were programmed or in Verification mode;<br/>Solution:<br/>1. Check whether the ini configuration of the fw files used for programming and verification is the same;<br/>2. Try programming/verifying several times to see whether it succeeds</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>lrc_verify</p></td>
+<td><p>Verification of the LRC calibration value stored in the FLASH VTOP area failed after it was written; this error normally does not occur</p></td>
+</tr>
+<tr class="row-odd"><td><p>E04</p></td>
+<td><p>Key operation failures</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>forbid-nil</p></td>
+<td><p>In the user mode of programming-level authorization mode, programming blank chips is not allowed;<br/>Solution:<br/>check whether the chip is blank</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>forbidrkey</p></td>
+<td><p>In programming-level authorization mode, the rkey part must match;<br/>Solution:<br/>contact Jieli technical support to check the rkey format</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>forbid-key</p></td>
+<td><p>In programming-level authorization mode, the key already in the chip differs from the key to be programmed, so programming is prohibited</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>key_file</p></td>
+<td><p>Error in the key file data; this problem normally does not occur</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>Key error (key错误)</p></td>
+<td><p>During a second programming in Programming mode, the chip key is not blank, overwriting is not supported, and the keys do not match;<br/>Solution:<br/>1. This is mainly because the key of the fw file does not match the key originally programmed into the chip;<br/>add the key file that matches the chip in download.bat;<br/>2. Confirm whether the chip was first programmed with the key of this fw file; 3. There may be a second-level authorization problem or an efuse programming defect</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>key_write</p></td>
+<td><p>Key verification after programming the key failed;<br/>Solution:<br/>retry several times, observe the programming results, and check whether an E04-key_check error occurs</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>key_verify</p></td>
+<td><p>In Verification mode, the key of the fw file does not match the key originally programmed into the chip;<br/>Solution:<br/>1. Check that the key file loaded with the fw file to be verified is correct;<br/>2. Confirm whether the chip was first programmed with the key of this fw file</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>key_diff</p></td>
+<td><p>When programming the lkey on AC128N or AD16N, the rkey read back does not match the lkey,<br/>or an old key was programmed before the rkey, so the rkey cannot be programmed;<br/>Solution:<br/>1. Check whether this is the first programming;<br/>2. Check whether an old key has already been programmed</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>l3key_diff</p></td>
+<td><p>When verifying the lkey on AC128N or AD16N, the lkey of the fw file does not match the lkey originally programmed into the chip;<br/>Solution:<br/>1. Check that the key file loaded with the fw file to be verified is correct;<br/>2. Confirm whether the chip was first programmed with the key of this fw file</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>l3key_error</p></td>
+<td><p>When programming the lkey on AC128N or AD16N, the lkey read from the chip does not match the lkey of the fw file;<br/>Solution:<br/>1. Check that the key file loaded with the fw file to be verified is correct;<br/>2. Confirm whether the chip was first programmed with the lkey of this fw file</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>r3key_error</p></td>
+<td><p>When verifying the rkey on AC128N or AD16N, the rkey read from the chip does not match the deployed rkey;<br/>Solution:<br/>1. Check whether this is the first programming;<br/>2. Confirm whether the chip was first programmed with this rkey</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>l3key_nblank</p></td>
+<td><p>When programming the rkey on AC128N or AD16N, the lkey read from the chip is not blank;<br/>Solution:<br/>1. Check whether this is the first programming;<br/>2. If it is not the first programming, check whether you still need to continue programming with the previously programmed fw</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>r3key_nblank</p></td>
+<td><p>When programming the rkey on AC128N or AD16N, the rkey read from the chip is not blank and does not match the deployed rkey;<br/>Solution:<br/>1. Check whether this is the first programming;<br/>2. Confirm whether the chip was first programmed with this rkey</p></td>
+</tr>
+<tr class="row-odd"><td><p>E05</p></td>
+<td><p>File failed (文件失败)</p></td>
+<td><p>The programmer cannot obtain the 256/4096-aligned firmware file data sent from the PC; this error normally does not occur</p></td>
+</tr>
+<tr class="row-even"><td><p>E07</p></td>
+<td><p>Chip test item failures, etc.</p></td>
+<td><p>If the failure rate is low and the failure reproduces consistently on repeated programming tests, treat the chip as defective; if the failure rate is too high, report it to Jieli technical support promptly</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>sfc_test</p></td>
+<td><p>sfc test item failed: the flash data is read at high speed through the SFC module to screen out chips that fail verification at a specific frequency</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>rx_test</p></td>
+<td><p>rx test item failed: tests the chip's LNA current to screen out chips with damaged transistors inside the LNA;<br/>screens out chips that show a short receive range or connection problems</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>btpll</p></td>
+<td><p>btpll test item failed: tests whether the local oscillator frequency (carrier) generated by the local oscillator is correct,<br/>screening out chips whose Bluetooth module parameters do not meet the requirements, i.e. chips with an abnormal BTPLL</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>ram_test</p></td>
+<td><p>ram test item failed: used to screen out chips with an abnormal RAM module, which fail to boot or boot abnormally</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>eq_ram</p></td>
+<td><p>ram test item failed: used to screen out chips with an abnormal eq_ram module, which show read/write errors in the eq_ram module</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>iqtrim</p></td>
+<td><p>iqtrim test item failed: tests whether the chip's transmit-to-receive path works properly, screening out chips with abnormal transmit/receive paths</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>loop_back</p></td>
+<td><p>loop_back test item failed: screens out chips with abnormal LNA/PA current, a damaged BTPLL that loses lock, or other Bluetooth-related faults</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>dacvdd</p></td>
+<td><p>dacvdd test item failed: screens out chips with abnormal dacvdd caused by mixed materials during packaging</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>umdc</p></td>
+<td><p>umdc test item failed: tested together with LOOP_BACK to screen out chips whose Bluetooth parameters do not meet the requirements</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>dac</p></td>
+<td><p>dac test item failed: tests the various voltages of the DAC module to screen out chips whose DAC parameters do not meet the requirements</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>ighg</p></td>
+<td><p>ighg test item failed: used to screen out chips whose Bluetooth performance parameters do not meet the requirements</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>fdiv</p></td>
+<td><p>fdiv test item failed: used to screen out chips with an abnormal floating-point divider</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>io_test</p></td>
+<td><p>io test item failed: used to screen out chips at risk of crossed bonding wires, i.e. chips with abnormal IO</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>dc_err</p></td>
+<td><p>DC test item failed: used to screen out chips with abnormal LDO levels in the DCVDD power domain</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>btdc_sp</p></td>
+<td><p>DC test item failed: used to screen out chips with abnormal LDO levels or an abnormal ADC in the DCVDD power domain</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>btdc_auadc</p></td>
+<td><p>btdc test item failed: used to screen out chips with an abnormal audio ADC module in the DCVDD power domain</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>bias_err</p></td>
+<td><p>bias test item failed: tests the LNA_BIAS voltage difference to screen out chips whose Bluetooth parameters do not meet the specifications</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>rom_240m</p></td>
+<td><p>rom test item failed: tests ROM data reads and writes under conditions such as a 240M system clock,<br/>screening out chips with ROM read/write errors</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>ftmax_240m</p></td>
+<td><p>ftmax test item failed: tests whether the ftmax module works properly,<br/>screening out chips with an abnormal ftmax module</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>osc_adet_U</p></td>
+<td><p>Crystal amplitude test item failed: tests the crystal oscillation amplitude characteristics; the chip failed the crystal amplitude test item</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>otp_blank</p></td>
+<td><p>The OTP of this chip has already been programmed with data; the chip is not blank</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>lrc_trim</p></td>
+<td><p>The chip's LRC clock deviation is too large; contact Jieli for further analysis</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>otp_verify</p></td>
+<td><p>Chip OTP data verification error. Possible causes:<br/>1. The data of the fw file differs from the fw file used last time;<br/> 2. The programming socket is wired incorrectly or the wrong socket is used, causing abnormal data signals during verification; 3. AC98N chips require a V2.0 or later programming socket</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>otp_burn</p></td>
+<td><p>An error occurred while programming the chip's OTP, or data verification failed after programming</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>burn_vol</p></td>
+<td><p>The chip's supply voltage deviates too much. Measure whether the chip's IOVDD and VBAT voltages are within the normal range,<br/>or, for some chips, whether the 8.5V OTP programming voltage deviates too much</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>xxx nA</p></td>
+<td><p>During the soft power-off power consumption test, if the measured value is greater than the "Power consumption test" (功耗测试) limit configured when the fw file was deployed,<br/>the display shows the measured value xxx nA, which means the test failed</p></td>
+</tr>
+<tr class="row-odd"><td><p>E08</p></td>
+<td><p>Programming failed</p></td>
+<td><p>Verification after programming the firmware data failed;<br/>Possible causes:<br/>1. Abnormal communication between the chip and the programmer;<br/>2. A problem with the chip's RAM or flash;<br/>3. The SPI=2_3_0_0; parameter in isd_config.ini does not match the chip's flash<br/>Solution:<br/>1. Reprogram several times and check the programming wiring and handler contact problems; check whether the SPI=2_3_0_0; parameter in isd_config.ini matches the chip's flash;<br/>2. Try running the chip test items and observe the results</p></td>
+</tr>
+<tr class="row-even"><td><p>E09</p></td>
+<td><p>Operation timed out (操作超时)</p></td>
+<td><p>The root cause is that the programmer cannot communicate with the chip;<br/>Possible causes:<br/>abnormal chip clock, abnormal UART communication, flash erase timeout, the programming code on the chip hanging, etc.;<br/>Solution:<br/>reprogram several times and check the programming wiring and the contact between the handler and the chip; or try replacing the chip</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>uart_ot<br/>/read_basic</p></td>
+<td><p>Timeout while reading the chip's basic information over UART. Possible causes:<br/>1. Abnormal UART communication between the programmer and the chip; if this error occurs when programming SOP chips, keep the communication lines short, add ground wires and pay attention to power supply filtering;<br/>2. A crystal-less design is being programmed, the programming adapter board has no crystal, and the [Crystal-less solution] (免晶振方案) option was not checked for programming.<br/>3. Programming is done with a crystal, but the crystal frequency is wrong or the crystal on the adapter board is not soldered properly.<br/>Alternatively, if only a small number of chips report this error during programming, the chips themselves may be faulty.<br/>4. Other possible causes</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>erase_ot</p></td>
+<td><p>Flash erase timeout<br/>Possible causes:<br/>abnormal flash, timeout waiting for the busy flag; the flash capacity is too large and erasing takes too long;</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>write_ot</p></td>
+<td><p>Flash write timeout. Cause: abnormal UART communication between the programmer and the chip, so the chip does not receive the data to be programmed;</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>verify_ot</p></td>
+<td><p>Flash verification timeout. Cause: abnormal UART communication between the programmer and the chip, so the programmer cannot obtain the verification result;</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>ram_ot</p></td>
+<td><p>The program hangs during the RAM test, causing abnormal UART communication between the programmer and the chip;</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>ictest_ot</p></td>
+<td><p>A test item may occasionally crash and therefore fail to respond to the programmer in time;<br/>Solution: uncheck all test items and test them one by one to find which item causes the timeout error</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>pc_start</p></td>
+<td><p>When the PC controls Bluetooth address programming over an RS232 serial port, the serial communication between the PC and the programmer timed out</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>mac_get</p></td>
+<td><p>When the PC controls Bluetooth address programming over an RS232 serial port, the serial communication between the PC and the programmer timed out</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>pc_end</p></td>
+<td><p>When the PC controls Bluetooth address programming over an RS232 serial port, the serial communication between the PC and the programmer timed out</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>mac_write</p></td>
+<td><p>When the PC controls Bluetooth address programming over an RS232 serial port, the UART communication between the programmer and the chip timed out</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>mac_verify</p></td>
+<td><p>When the PC controls Bluetooth address programming over an RS232 serial port, the UART communication between the programmer and the chip timed out</p></td>
+</tr>
+<tr class="row-even"><td><p>E10</p></td>
+<td><p>Calibration error (校准异常)</p></td>
+<td><p>Calibration values such as the chip voltage or the LRC clock of a crystal-less design do not meet the requirements, or writing the calibration values to the storage medium failed;</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>charge_cfg</p></td>
+<td><p>The charging current level, full-charge level or power consumption limit configured in the ini file does not meet the specifications</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>chg_select</p></td>
+<td><p>The charging current level configured in the ini file cannot be calibrated into the configured current range</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>chg_trim</p></td>
+<td><p>The calibrated charging current level deviates too much, by more than ±2 levels from the configured center value</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>charge_ot</p></td>
+<td><p>Abnormal communication between the programmer and the chip while adjusting the charging current level</p></td>
+</tr>
+<tr class="row-odd"><td><p>E12</p></td>
+<td><p>cp_fail</p></td>
+<td><p>Indicates a chip that has not undergone CP (wafer probe test) or that failed the CP test;<br/>if this error is reported during development, you can uncheck the "REF_TRIM" configuration item and program the chip; in mass production, treat the chip as defective</p></td>
+</tr>
+<tr class="row-even"><td><p>E15</p></td>
+<td><p>Wrong capacity (容量不对)</p></td>
+<td><p>The data size of the fw programming file is larger than the flash capacity;<br/>Solution:<br/>1. When building the fw file, check how much flash capacity the actual firmware data needs;<br/>2. Check whether chips from different batches are being programmed together,<br/>i.e. both 256-aligned and 4096-aligned chips are present, and the 4096-aligned chips may not have enough capacity;</p></td>
+</tr>
+<tr class="row-odd"><td><p>E17</p></td>
+<td><p>Supply voltage errors</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>VPP error (VPP异常)</p></td>
+<td><p>While the programmer supplies power to the chip, the 6.5V voltage output by the programmer to the top board or adapter board deviates too much;<br/>if it is outside 6.45V~6.75V, a VPP error is reported;<br/>Solution:<br/>1. Check whether the programmer's main control board is loose or whether the top board has a short circuit <br/>2. Measure the 6.5V voltage with an oscilloscope, try replacing the CAT5171 component, or send the programmer for repair</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>vddio_vol</p></td>
+<td><p>During programming, the chip's vddio voltage exceeds 3.8V;<br/>Solution:<br/>1. Check whether the chip is shorted to the power supply;<br/>2. For chips whose vddio is bonded internally to the power supply, use a dedicated socket with a 3.3V supply</p></td>
+</tr>
+<tr class="row-even"><td><p>E18</p></td>
+<td><p>Abnormal current (电流异常)</p></td>
+<td><p>The power-up current of the chip to be programmed exceeds the set value (50mA);<br/>Solution:<br/>1. Check the chip contact; the programming socket may have a short circuit;<br/>2. The chip itself is defective; try replacing the chip</p></td>
+</tr>
+<tr class="row-odd"><td><p>E19</p></td>
+<td><p>Function error (功能异常)</p></td>
+<td><p>This error is reported when the chip starts programming, verification or blank check, because the mode that is set is not one of the three working modes (programming, verification, blank check);<br/>Solution:<br/>1. Check that the working mode is set correctly; 2. Check whether poor contact in the DIP switch caused the programmer to detect the mode incorrectly;</p></td>
+</tr>
+<tr class="row-even"><td><p>E21</p></td>
+<td><p>version:X</p></td>
+<td><p>The chip version specified by the fw file updated to the programmer (configured in the .ini file) does not match the version (X) of the chip currently being programmed;<br/>Solution:<br/>(see <a class="reference internal" href="../faqs/version_err.html"><span class="doc std std-doc">Version Mismatch Error</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>E24</p></td>
+<td><p>read_efuse</p></td>
+<td><p>Timeout reading the efuse hardware storage medium, or the data read is abnormal; this error does not normally occur</p></td>
+</tr>
+<tr class="row-even"><td><p>E24</p></td>
+<td><p>en_act</p></td>
+<td><p>When programming with an LVD or expert-mode configuration, the TRUE/FALSE values configured for the first and second programming differ.<br/>For the configuration, see <a class="reference internal" href="../common_function/set_burn_tool_master_option.html"><span class="doc std std-doc">How to Set Expert Options When Generating a Programming File</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>E24</p></td>
+<td><p>lvd_rst</p></td>
+<td><p>When programming with an LVD or expert-mode configuration, the LVD voltage levels selected for the first and second programming differ.<br/>For the configuration, see <a class="reference internal" href="../common_function/set_burn_tool_master_option.html"><span class="doc std std-doc">How to Set Expert Options When Generating a Programming File</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>E24</p></td>
+<td><p>lvd_level</p></td>
+<td><p>Same as en_act</p></td>
+</tr>
+<tr class="row-odd"><td><p>E24</p></td>
+<td><p>lvd_act</p></td>
+<td><p>Same as en_act</p></td>
+</tr>
+<tr class="row-even"><td><p>E24</p></td>
+<td><p>iov_act</p></td>
+<td><p>Same as en_act</p></td>
+</tr>
+<tr class="row-odd"><td><p>E24</p></td>
+<td><p>iovdd_lel</p></td>
+<td><p>When programming with an LVD or expert-mode configuration, the IOVDD voltage levels selected for the first and second programming differ.<br/>For the configuration, see <a class="reference internal" href="../common_function/set_burn_tool_master_option.html"><span class="doc std std-doc">How to Set Expert Options When Generating a Programming File</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>E24</p></td>
+<td><p>mclr_en</p></td>
+<td><p>The value (checked or unchecked) of the "Short-press reset" (短按复位) option differs between the first and second programming, or the TRUE/FALSE values of the expert-mode configuration differ. For the second programming, use the same configuration values as for the first programming</p></td>
+</tr>
+<tr class="row-odd"><td><p>E24</p></td>
+<td><p>fast_pu</p></td>
+<td><p>Same as en_act</p></td>
+</tr>
+<tr class="row-even"><td><p>E24</p></td>
+<td><p>pinr_en</p></td>
+<td><p>The value (checked or unchecked) of the "Long-press reset" (长按复位) option differs between the first and second programming, or the TRUE/FALSE values of the expert-mode configuration differ. For the second programming, use the same configuration values as for the first programming</p></td>
+</tr>
+<tr class="row-odd"><td><p>E24</p></td>
+<td><p>mfast_pu</p></td>
+<td><p>Same as en_act</p></td>
+</tr>
+<tr class="row-even"><td><p>E24</p></td>
+<td><p>run_flash</p></td>
+<td><p>Same as en_act</p></td>
+</tr>
+<tr class="row-odd"><td><p>E24</p></td>
+<td><p>skip_flash</p></td>
+<td><p>Same as en_act</p></td>
+</tr>
+<tr class="row-even"><td><p>E24</p></td>
+<td><p>sfc_fast</p></td>
+<td><p>Same as en_act</p></td>
+</tr>
+<tr class="row-odd"><td><p>E24</p></td>
+<td><p>f_power</p></td>
+<td><p>Same as en_act</p></td>
+</tr>
+<tr class="row-even"><td><p>E24</p></td>
+<td><p>wiovdd_lel</p></td>
+<td><p>When programming with an LVD or expert-mode configuration, the weak IOVDD voltage levels selected for the first and second programming differ.<br/>For the configuration, see <a class="reference internal" href="../common_function/set_burn_tool_master_option.html"><span class="doc std std-doc">How to Set Expert Options When Generating a Programming File</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>E24</p></td>
+<td><p>mclr_dis</p></td>
+<td><p>Same as en_act</p></td>
+</tr>
+<tr class="row-even"><td><p>E24</p></td>
+<td><p>maskrom_use</p></td>
+<td><p>Same as en_act</p></td>
+</tr>
+<tr class="row-odd"><td><p>E24</p></td>
+<td><p>f_1v8_s</p></td>
+<td><p>Same as en_act</p></td>
+</tr>
+<tr class="row-even"><td><p>E24</p></td>
+<td><p>sfc_boot</p></td>
+<td><p>Same as en_act</p></td>
+</tr>
+<tr class="row-odd"><td><p>E24</p></td>
+<td><p>anc_en</p></td>
+<td><p>Same as en_act</p></td>
+</tr>
+<tr class="row-even"><td><p>E24</p></td>
+<td><p>dcvd_load</p></td>
+<td><p>Same as en_act</p></td>
+</tr>
+<tr class="row-odd"><td><p>E24</p></td>
+<td><p>xosc_init</p></td>
+<td><p>Same as en_act</p></td>
+</tr>
+<tr class="row-even"><td><p>E24</p></td>
+<td><p>xosc_pin</p></td>
+<td><p>Same as en_act</p></td>
+</tr>
+<tr class="row-odd"><td><p>E24</p></td>
+<td><p>flash_io</p></td>
+<td><p>Same as en_act</p></td>
+</tr>
+<tr class="row-even"><td><p>E24</p></td>
+<td><p>flash_sel</p></td>
+<td><p>Same as en_act</p></td>
+</tr>
+<tr class="row-odd"><td><p>E24</p></td>
+<td><p>xosc_ext</p></td>
+<td><p>Same as en_act</p></td>
+</tr>
+<tr class="row-even"><td><p>E24</p></td>
+<td><p>upgd_mode</p></td>
+<td><p>Same as en_act</p></td>
+</tr>
+<tr class="row-odd"><td><p>E24</p></td>
+<td><p>ecc_verify</p></td>
+<td><p>Same as en_act</p></td>
+</tr>
+<tr class="row-even"><td><p>E24</p></td>
+<td><p>x32k_dis</p></td>
+<td><p>Same as en_act</p></td>
+</tr>
+<tr class="row-odd"><td><p>E24</p></td>
+<td><p>charger_en</p></td>
+<td><p>Programming the charge enable setting failed; possible causes:<br/>1. The chip is not blank, and the "Charge enable" (充电使能) checkbox setting in the PC tool used for the earlier programming differs from the current setting;<br/>2. Error programming the hardware storage medium</p></td>
+</tr>
+<tr class="row-even"><td><p>E25</p></td>
+<td><p>Configuration error (配置错误)</p></td>
+<td><p>Configuration items such as the lvd voltage and long/short-press reset have different values in the first and second programming;<br/> Solution: check whether the lvd and long/short-press reset settings differ between the first and second programming</p></td>
+</tr>
+<tr class="row-odd"><td><p>E28</p></td>
+<td><p>Blank check failures</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>Not blank/Blank check failed (非空片/查空失败)</p></td>
+<td><p>Indicates that the chip has already been programmed: the flash is not blank and contains data, but the data is incomplete, i.e. the crc checksum of a corresponding fw file cannot be found</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>key_blank</p></td>
+<td><p>Indicates that the chip key is not blank: key file data has already been programmed into the chip</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>CRC16: xxxx</p></td>
+<td><p>Indicates that the chip has already been programmed: the chip flash is not blank and the CRC checksum data is complete, i.e. the checksum of the fw file programmed last time is xxxx</p></td>
+</tr>
+<tr class="row-odd"><td><p>E29</p></td>
+<td><p>efuse.bin operation failures</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>chip_id_b</p></td>
+<td><p>Version B chips do not support programming the efuse.bin file of this fw file (wrong length)</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>chip_id_c</p></td>
+<td><p>Version C chips do not support programming the efuse.bin file of this fw file (wrong length)</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>ini_no_cfg</p></td>
+<td><p>The [BURNER_PASSTHROUGH_CFG] section of the .ini file in the download directory<br/>does not configure REQUIRE_TARGET_FEATURE=FLASH/EFUSE;<br/>Solution:<br/>Reconfigure it</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>sdk_bit_wr</p></td>
+<td><p>Programming the hardware storage bit for FLASH/ROM mode failed;<br/>Solution:<br/>Check whether a blank chip is being programmed, and whether the other mode was programmed last time</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>ef_bin_wr</p></td>
+<td><p>Programming the efuse.bin file data into the hardware storage medium failed;<br/>Solution:<br/>Check whether a blank chip is being programmed, and whether a different fw file was programmed last time</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>sdkbit_vy</p></td>
+<td><p>Verification of the hardware storage bit for FLASH/ROM mode failed;<br/>Solution:<br/>Check whether the FLASH/ROM mode in the ini is set to the mode programmed last time</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>sdkbit_bl</p></td>
+<td><p>The hardware storage bit for FLASH/ROM mode is not blank</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>ef_bin_bl</p></td>
+<td><p>The hardware storage bits for efuse.bin are not blank</p></td>
+</tr>
+<tr class="row-even"><td><p>E31</p></td>
+<td><p>Memory error (内存错误)</p></td>
+<td><p>Error in the data recorded in the epprom;<br/>Solution:<br/>Power-cycle the programmer and try again; if that does not help, replace the epprom chip</p></td>
+</tr>
+<tr class="row-odd"><td><p>E33</p></td>
+<td><p>Long/short-press reset enable errors</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>XXXresetw</p></td>
+<td><p>XXX is a chip pin, e.g. PA7/PB1/PB10/PC1. Programming the hardware storage bit for the long/short-press reset enable failed <br/>Make sure the configuration for the second programming is the same as for the first programming<br/>If the error occurs with the option both checked and unchecked, the efuse is defective</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>XXXresetv</p></td>
+<td><p>XXX is a chip pin, e.g. PA7/PB1/PB10/PC1. Verification of the hardware storage bit for the long/short-press reset enable failed <br/>Make sure the configuration for the second programming is the same as for the first programming<br/>If the error occurs with the option both checked and unchecked, the efuse is defective</p></td>
+</tr>
+<tr class="row-even"><td><p>E34</p></td>
+<td><p>lvd operation failures</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>lvd_match</p></td>
+<td><p>The lvd level selected in the PC tool does not exist in the programmer's list; this error does not normally occur</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>lvd_write</p></td>
+<td><p>Programming the lvd level failed; possible causes:<br/>1. The chip is not blank, and the level programmed earlier differs from the level currently configured for programming;<br/>2. Error programming the hardware storage medium</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>lvd_verify</p></td>
+<td><p>Verification of the lvd level failed; possible cause:<br/>The level programmed earlier differs from the level currently configured for verification;</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>lvdInvalid</p></td>
+<td><p>The lvd level configured in the PC tool is invalid; when version F-G chips are programmed with the default LVD2.6V, E34-LvdInvalid is reported;<br/>AC696X/AC636N models:<br/>Levels that can be programmed on version A-E chips: 1.9V;2.0V;2.1V;2.2V;2.3V;2.4V;2.5V;2.6V;<br/>Levels that can be programmed on version F-G chips: &lt;1.5V;1.9V;2.0V;2.1V;2.2V;2.3V;2.4V;2.5V</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>die_case</p></td>
+<td><p>The die option is checked in the PC tool and programming the lvd failed;<br/>Possible causes:<br/>1. The chip is not blank, and the level programmed earlier differs from the level currently configured for programming;<br/>2. Error programming the hardware storage medium</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>flvd:xxx</p></td>
+<td><p>xxx: the minimum operating voltage of the chip flash;<br/> Solution:<br/> (1) Configure an lvd voltage level greater than or equal to the displayed value, and redeploy the fw file for programming;<br/> (2) If no level is greater than the displayed value, it is recommended to select the highest lvd voltage level, uncheck the "Flash Lvd voltage match" (Flash Lvd电压匹配) option and redeploy for programming</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>fl:xxxxxx</p></td>
+<td><p>xxxxxx: the chip's flash ID is xxxxxx, and the lvd and flash operating voltage parameter library has no parameters for this flash ID<br/> Solution:<br/> (1) Uncheck the "Flash Lvd voltage match" (Flash Lvd电压匹配) option and redeploy for programming;<br/> (2) Report the issue to Jieli technical support</p></td>
+</tr>
+<tr class="row-even"><td><p>E35</p></td>
+<td><p>Serial port error (串口异常)</p></td>
+<td><p>Abnormal serial communication between the programmer and the chip; possible causes:<br/> 1. Abnormal hardware wiring or poor contact <br/> 2. A fw file has been deployed, but the chip has no internal flash</p></td>
+</tr>
+<tr class="row-odd"><td><p>E36</p></td>
+<td><p>Sync failed (同步失败)</p></td>
+<td><p>Sync failed means that the first handshake signal between the programmer and the chip could not be sent or was not answered. Possible causes:<br/>1. Abnormal serial communication between the programmer and the chip; if this error occurs when programming SOP chips: keep the communication lines short, add a ground wire and pay attention to power supply filtering;<br/>2. Abnormal chip clock:<br/>A crystal-less design is being programmed and the programming adapter board has no crystal, but the [Crystal-less design] (免晶振方案) option was not checked for programming;<br/>The design uses a crystal, but the crystal frequency is wrong, or the crystal on the adapter board is not soldered properly;<br/>3. The programming socket has an LDO conversion circuit, but the PC tool is configured to program at 4.2V;<br/> 4. Abnormal flash access, the programming firmware running on the chip hangs, etc.; <br/>Solution:<br/>1. Reprogram several times, troubleshoot according to the possible causes, or try replacing the chip;<br/>2. If only a small number of chips report this error during programming, handle them as defective chips for further analysis</p></td>
+</tr>
+<tr class="row-even"><td><p>E37</p></td>
+<td><p>Read ID failed (读id失败)</p></td>
+<td><p>The flash ID of the target chip to be programmed cannot be read;<br/>Possible causes:<br/>1. The chip has no flash; 2. If programming fails with this error repeatedly, the flash is faulty</p></td>
+</tr>
+<tr class="row-odd"><td><p>E37</p></td>
+<td><p>auco_addr</p></td>
+<td><p>When programming authentication codes to a specified address, the address generated from the isd_congfig.ini configuration exceeds the capacity of the flash; check that the configuration is correct</p></td>
+</tr>
+<tr class="row-even"><td><p>E38</p></td>
+<td><p>otp_w1_err</p></td>
+<td><p>AC128N,AD16N otp: blank check passed; programming -&gt; reverse-order verification 1 failed</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>otp_w2_err</p></td>
+<td><p>AC128N,AD16N otp: blank check passed; programming -&gt; reverse-order verification 1 -&gt; reverse-order verification 2 failed</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>otp_w3_err</p></td>
+<td><p>AC128N,AD16N otp: blank check failed; reverse-order verification 1 failed</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>otp_verify</p></td>
+<td><p>AC128N,AD16N otp: reverse-order verification 1 failed</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>otp_blank</p></td>
+<td><p>AC128N,AD16N otp: data not blank, blank check failed</p></td>
+</tr>
+<tr class="row-odd"><td><p>E39</p></td>
+<td><p>auco_addr</p></td>
+<td><p>Invalid authentication code address configuration. Troubleshooting:<br/>1. Check whether the large-capacity authentication code setting AUTH_CODE_ADDR = $(AUCO_ADR) is correct; AUCO_ADR is the address configured for the resource area;<br/>2. Small-capacity authentication code data cannot be larger than 128 bytes</p></td>
+</tr>
+<tr class="row-even"><td><p>E42</p></td>
+<td><p>efcfg_w_err</p></td>
+<td><p>AC128N,AD16N: programming the hardware-storage-related configuration failed; <br/>Possible causes:<br/>1. The chip is not blank, and the ini configuration of the fw currently used differs from that of the fw programmed last time;<br/>2. Error programming the hardware storage medium</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>efcfg_v_err</p></td>
+<td><p>AC128N,AD16N: verification of the hardware-storage-related configuration failed; <br/>Possible causes:<br/>1. The chip is not blank, and the ini configuration of the fw currently used differs from that of the fw programmed last time;<br/>2. Error programming or reading the hardware storage medium</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>ef_r_diff</p></td>
+<td><p>AC128N,AD16N: strict verification of the hardware-storage-related configuration failed; <br/>Treat the chip as defective; if the defect rate is too high, promptly contact Jieli technical support</p></td>
+</tr>
+<tr class="row-odd"><td><p>E44</p></td>
+<td><p>xxxxxx</p></td>
+<td><p>The programmer does not support adding flash write protection parameters for chips with flash ID xxxxxx;<br/>Solution:<br/>1. Remove this feature from the ini configuration (OTP_CFG_SIZE=512;); 2. Report the issue to Jieli technical support</p></td>
+</tr>
+<tr class="row-even"><td><p>E44</p></td>
+<td><p>wp_test</p></td>
+<td><p>The flash write protection test performed after configuring write protection failed;<br/>Solution:<br/>1. Update the programmer to the latest firmware version and try testing several more chips; 2. Report the issue to Jieli technical support</p></td>
+</tr>
+<tr class="row-odd"><td><p>E44</p></td>
+<td><p>wp_min_addr</p></td>
+<td><p>The minimum flash write protection address unit is larger than the program area, so data in areas such as vm may be protected and become impossible to modify;<br/>Solution:<br/>1. Remove the flash write protection feature; 2. The program should not be too small</p></td>
+</tr>
+<tr class="row-even"><td><p>E46</p></td>
+<td><p>lrc_wflash</p></td>
+<td><p>Writing the lrc clock calibration value of the crystal-less design to the specified flash location after calibration failed;<br/>Solution:<br/>Report the issue to Jieli technical support</p></td>
+</tr>
+<tr class="row-odd"><td><p>E49</p></td>
+<td><p>Blank check overflow (查空溢出)</p></td>
+<td><p>The blank check count has been used up; the maximum number of blank checks is limited to 50,<br/>to avoid accidentally switching to blank check mode during mass-production programming. To continue blank checking, power-cycle the programmer</p></td>
+</tr>
+<tr class="row-even"><td><p>E51</p></td>
+<td><p>Certificates exhausted (证书耗尽)</p></td>
+<td><p>All the imported authentication codes have been used up;<br/>Solution:<br/>Re-import the serial numbers of the authentication codes to be programmed</p></td>
+</tr>
+<tr class="row-odd"><td><p>E54</p></td>
+<td><p>Run failed (运行失败)</p></td>
+<td><p>With the authorization feature enabled, the authorization module program failed to run;<br/>Solution:<br/>1. Check whether this programmer supports the authorization feature; 2. Report the issue to Jieli technical support</p></td>
+</tr>
+<tr class="row-even"><td><p>E55</p></td>
+<td><p>Match failed (匹配失败)</p></td>
+<td><p>The authorized machine code of the fw file does not match;<br/>Solution:<br/>Check whether the fw file was authorized for this programmer; see the "Authorized Programming Count Limit" section</p></td>
+</tr>
+<tr class="row-odd"><td><p>E56</p></td>
+<td><p>Update failed (更新失败)</p></td>
+<td><p>The authorization module failed to record the programming count;<br/>Solution:<br/>1. Try power-cycling the programmer; 2. Report the issue to Jieli technical support</p></td>
+</tr>
+<tr class="row-even"><td><p>E57</p></td>
+<td><p>Count overflow (次数溢出)</p></td>
+<td><p>The authorized count has been used up; the corresponding fw file must be authorized for a new count before it can be programmed with this programmer again;</p></td>
+</tr>
+<tr class="row-odd"><td><p>E58</p></td>
+<td><p>Multi-algorithm authorization failed</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>custom_data</p></td>
+<td><p>Writing the multi-algorithm authorization configuration to flash failed;<br/>Solution:<br/>Report the issue to Jieli technical support</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>auth_run</p></td>
+<td><p>The multi-algorithm authorization .authrun file failed to run;<br/>Solution:<br/>Report the issue to Jieli technical support</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>auth_write</p></td>
+<td><p>Writing the multi-algorithm authorization data to flash failed;<br/>Solution:<br/>Report the issue to Jieli technical support</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>id:xxxxx</p></td>
+<td><p>Multi-algorithm authorization is not supported for chips with this flash ID;<br/>Solution:<br/>Report the issue to Jieli technical support so that support for chips with this flash ID can be added</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>bss_size</p></td>
+<td><p>The bss section of the program in the multi-algorithm authorization .authrun file is too large;<br/>Solution:<br/>Reduce the size of the bss section</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>otp_csize</p></td>
+<td><p>The OTP_CFG_SIZE space configured in isd_config.ini is not large enough; for example, if it is currently set to "OTP_CFG_SIZE=128", change 128 to 256 or larger</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>buf_size</p></td>
+<td><p>A single multi-algorithm authorization .authrun file is too large and there is no space to store it (maximum 12k);<br/>Solution:<br/>Modify the algorithm project to reduce the code size</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>enc_data</p></td>
+<td><p>The algorithm data for multi-algorithm authorization is too long (over 256);<br/>Solution:<br/>Reduce the algorithm data length to less than 256</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>otp_lock</p></td>
+<td><p>The otp_lock flags of the different algorithm files for multi-algorithm authorization are inconsistent;<br/>Solution:<br/>Change the otp_lock flags so that they are consistent</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>otp_cfg</p></td>
+<td><p>The flash parameters must be written to the votp area; configure the following fields in the isd_config.ini file in the download directory:<br/>[EXTRA_CFG_PARAM] <br/> OTP_CFG_SIZE=512;</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>auth_run</p></td>
+<td><p>The multi-algorithm authorization .authrun file failed to run;<br/>Solution:<br/>Report the issue to Jieli technical support</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>data_check</p></td>
+<td><p>The chip already contains multi-algorithm authorization data that differs from the data to be programmed;<br/>Solution:<br/>Check the "Multi-algorithm forced update" (多算法强制更新) option in the PC tool</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>auth_write</p></td>
+<td><p>Writing the multi-algorithm authorization data to flash failed;<br/>Solution:<br/>Monitor the defect rate and report it to Jieli technical support</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>no_equal</p></td>
+<td><p>The algorithm data generated by the current run differs from the data already programmed into the chip, i.e. the data already present in the chip</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>otp_lrc</p></td>
+<td><p>Error writing the lrc calibration value to otp</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>work_mode</p></td>
+<td><p>This chip model does not yet support programming multi-algorithm authorization data on its own<br/>Solution:<br/>Load it together with the program data and program them together, or report the issue to Jieli technical support</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>otp_da_ot</p></td>
+<td><p>In blank check mode, reading the otp algorithm data format timed out</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>otp_da_err</p></td>
+<td><p>In blank check mode, the format of the otp algorithm data already programmed into the chip is invalid</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>“d:x”</p></td>
+<td><p>This error occurs in blank check mode, where<br/>d: indicates that the chip contains d valid authorization data items;<br/>x indicates the checksum + customer ID + data length of the first authorization data item:<br/> u32 u8Crc: 8 + u32 u12Id: 12 + u32 u12len: 12;<br/>Example: E58-2:1013D47: indicates that 2 algorithm data items have already been programmed into the chip; the crc of the first algorithm data item is 0x47, its length is 0x10=32 and the customer ID is 0x13d=317</p></td>
+</tr>
+<tr class="row-odd"><td><p>E59</p></td>
+<td><p>sdk_ver</p></td>
+<td><p>The sdk version of this fw file does not match the flash ID of the chip to be programmed</p></td>
+</tr>
+<tr class="row-even"><td><p>E60</p></td>
+<td><p>dacos test failures</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>dacos_init</p></td>
+<td><p>Initialization of the cs1237 chip in the dacos test module failed;<br/>Possible cause:<br/> The DACOS test item is checked in the PC tool, but the programming socket has no DACOS test circuit or the test circuit is faulty</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>dacos_test</p></td>
+<td><p>The DACOS test item is checked in the PC tool, so DACOS is tested during programming;<br/>chips with abnormal DAC diode characteristics are the ones to be screened out</p></td>
+</tr>
+<tr class="row-odd"><td><p>E61</p></td>
+<td><p>level init</p></td>
+<td><p>Programming-level authorization initialization error;<br/>Solution:<br/>Report the issue to Jieli technical support</p></td>
+</tr>
+<tr class="row-even"><td><p>E62</p></td>
+<td><p>Programming-level authorization count overflow (烧录级别授权次数溢出)</p></td>
+<td><p>The authorized count has been used up; the corresponding fw file must be authorized for a new count before it can be programmed with this programmer again;</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>Other errors</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>E63</p></td>
+<td><p>err_ft</p></td>
+<td><p>The chip flash failed the ft test item; the flash may be faulty;<br/>Solution:<br/>Monitor the defect rate and report it to Jieli technical support</p></td>
+</tr>
+<tr class="row-odd"><td><p>E64</p></td>
+<td><p>priv_nocfg</p></td>
+<td><p>The chip flash contains private data, but the current fw file is not configured with the private data authorization feature</p></td>
+</tr>
+<tr class="row-even"><td><p>E64</p></td>
+<td><p>priv_err</p></td>
+<td><p>The chip flash contains private data, but the flash address and data length for private data authorization in the current fw file do not match</p></td>
+</tr>
+<tr class="row-odd"><td><p>E65</p></td>
+<td><p>ckey_check</p></td>
+<td><p>key2024 does not match the key already programmed into the chip</p></td>
+</tr>
+<tr class="row-even"><td><p>E65</p></td>
+<td><p>ckey_write</p></td>
+<td><p>After key2024 is programmed into the chip, the data read back differs from the data to be programmed</p></td>
+</tr>
+<tr class="row-odd"><td><p>E65</p></td>
+<td><p>ckey_verify</p></td>
+<td><p>key2024 failed verification against the key already programmed into the chip (mismatch)</p></td>
+</tr>
+<tr class="row-even"><td><p>E69</p></td>
+<td><p>LDOIN ERR</p></td>
+<td><p>This error belongs to an optional test item.<br/>This test item requires the programming top board or adapter board to be powered from VBAT and the capacitor on the board's LDOIN pin to be changed to 102.<br/>Without these modifications, this error is reported.<br/>If you do not want to make the modifications, you can also avoid the error by removing LDOIN TEST from the configuration.</p></td>
+</tr>
+<tr class="row-odd"><td><p>E72</p></td>
+<td><p>DC ERR</p></td>
+<td><p>This error belongs to the DC TEST checkbox; chips that report it should be treated as defective</p></td>
+</tr>
+<tr class="row-even"><td><p>E35</p></td>
+<td><p>NOT_FOUND</p></td>
+<td><p>AC531N supports authorization-based efuse programming; parsing the .tkn file failed, possibly due to a format problem;<br/>Solution:<br/>Report the issue to Jieli technical support</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>PERMITTED</p></td>
+<td><p>The efuse bits that are allowed to be programmed do not match the configured bits, so the programmer refuses to program;<br/>Solution:<br/>1. Check the configuration corresponding to efuse.bin; 2. Report the issue to Jieli technical support</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>AC98N programming failures:</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Error code</strong></p></th>
+<th class="head"><p><strong>Error message</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>E03</p></td>
+<td><p>flash_vy</p></td>
+<td><p>During the AC98N trim process, verification of the trim code in the chip flash failed; further analysis is required</p></td>
+</tr>
+<tr class="row-odd"><td><p>E06</p></td>
+<td><p>otp_ver</p></td>
+<td><p>During AC98N flash programming, the otp version of the current chip does not match the otp version required by the fw file; programming is not allowed</p></td>
+</tr>
+<tr class="row-even"><td><p>E07</p></td>
+<td><p>trim_burn</p></td>
+<td><p>During the AC98N trim process, calibration of a trim item failed; further analysis is required</p></td>
+</tr>
+<tr class="row-odd"><td><p>E07</p></td>
+<td><p>otp_blank</p></td>
+<td><p>During AC98N otp programming, the chip otp is not blank; programming is not allowed</p></td>
+</tr>
+<tr class="row-even"><td><p>E07</p></td>
+<td><p>lrc_trim</p></td>
+<td><p>During AC98N otp programming, LRC value calibration failed; further analysis is required</p></td>
+</tr>
+<tr class="row-odd"><td><p>E07</p></td>
+<td><p>otp_burn</p></td>
+<td><p>During AC98N otp programming, an error occurred while programming the otp data; further analysis is required</p></td>
+</tr>
+<tr class="row-even"><td><p>E07</p></td>
+<td><p>otp_verify</p></td>
+<td><p>During AC98N otp programming, verification failed after the otp data was programmed</p></td>
+</tr>
+<tr class="row-odd"><td><p>E08</p></td>
+<td><p>flash_wr</p></td>
+<td><p>During the AC98N trim process, programming the trim code into the chip failed; further analysis is required</p></td>
+</tr>
+<tr class="row-even"><td><p>E25</p></td>
+<td><p>lvd_verify</p></td>
+<td><p>During AC98N flash programming, the lvd level selected for the first programming differs from the lvd level selected for the second programming</p></td>
+</tr>
+<tr class="row-odd"><td><p>E37</p></td>
+<td><p>flash_id</p></td>
+<td><p>During the AC98N trim process, the flash ID cannot be read; this usually indicates a faulty flash</p></td>
+</tr>
+<tr class="row-even"><td><p>E45</p></td>
+<td><p>uart_comm</p></td>
+<td><p>During the AC98N trim process, serial communication between the programming socket's AC632N and the chip failed</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>Other error messages:</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Error code</strong></p></th>
+<th class="head"><p><strong>Error message</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>E164</p></td>
+<td><p>btdc_sp</p></td>
+<td><p>DC test item failed: used to screen out chips with abnormal LDO levels or an abnormal ADC in the DCVDD power domain</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="pc">
+<h2><span class="section-number">1.6.5. </span>PC tool error messages<a class="headerlink" href="#pc" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Error message</strong>: When deploying the programming file, there is no chip KEY, or the following error is reported: <code class="docutils literal notranslate"><span class="pre">Error:</span> <span class="pre">The</span> <span class="pre">programmer</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">authorized</span> <span class="pre">to</span> <span class="pre">program</span> <span class="pre">the</span> <span class="pre">current</span> <span class="pre">chip</span> <span class="pre">model</span></code> (错误：烧录器未授权烧录当前芯片型号)</p></li>
+</ul>
+<p>Solution:<br/> If the error occurs with a <strong>special version</strong>, ask whether that version is intended for specific chips; if it occurs with the <strong>public version</strong>, contact weiyushu@zh-jieli.com for support and update the <strong>public version</strong> again.</p>
+<hr class="docutils"/>
+<ul class="simple">
+<li><p><strong>Error message</strong>: When deploying the programming file, the following error is reported: <code class="docutils literal notranslate"><span class="pre">Error:</span> <span class="pre">Failed</span> <span class="pre">to</span> <span class="pre">generate</span> <span class="pre">download</span> <span class="pre">data,</span> <span class="pre">error</span> <span class="pre">number=-37</span></code> (错误:生成下载数据失败,错误号=-37)</p></li>
+</ul>
+<p>Solution:<br/> The fw file data is too large: the FLASH component with the silkscreen "S_Flash" on the programmer is too small to hold the file data. Replace it with a larger-capacity FLASH and deploy again.</p>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="config_opt.html" class="btn btn-neutral float-left" title="1.5. PC-Side Programming Options for Each Chip Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="dongle.html" class="btn btn-neutral float-right" title="1.7. Authorized Programming Count Limit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/status_errors.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/status_errors.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

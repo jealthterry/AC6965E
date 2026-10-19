@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.1.10. How to Reduce Build Time on Windows — JL Project Documentation</title>
+<link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../../index.html"><img id="jl-logo" src="../../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>4. About the Toolchain</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>4.1. Common Issues and Solutions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="faq_printf_float_point.html">4.1.1. Why Can't printf Print Floating-Point Numbers?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_vsprintf.html">4.1.2. Why Are vsprintf, sprintf and vprintf Not Found?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_warn_implicit_fun.html">4.1.3. About Warnings for Calls to Undeclared Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_float_point.html">4.1.4. Floating-Point FAQ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_how_to_merge_libs.html">4.1.5. How to Merge .a Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_how_to_merge_ofiles.html">4.1.6. How to Reduce the Number of .o Files in an .a File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_program_used_memory/index.html">4.1.7. How to View the Program's Memory Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_stack_size_limit_exceeded.html">4.1.8. Why Does Linking Warn "stack size limit exceeded"?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_why_build_failed.html">4.1.9. Common Causes of Build Errors</a></li>
+<li class="toctree-l3 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>4.1.10. How to Reduce Build Time on Windows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">4.1.10.1. Change the antivirus software settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#microsoft-pc-manager-service">4.1.10.2. Disable the Microsoft PC Manager Service</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../linux_lib.html">4.2. Installing the Jieli Toolchain and Building Static Libraries on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ini_cfg.html">4.3. The isd_config.ini Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../otp_cfg.html">4.4. FLASH Parameter Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="../index.html"><span class="section-number">4. </span>About the Toolchain</a> »</li>
+<li><a href="index.html"><span class="section-number">4.1. </span>Common Issues and Solutions</a> »</li>
+<li><span class="section-number">4.1.10. </span>How to Reduce Build Time on Windows</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../../JL_Tools_Docs_zh/dev_tools/toolchains/faqs/faq_how_to_reduce_compilation_time.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="windows">
+<h1><span class="section-number">4.1.10. </span>How to Reduce Build Time on Windows<a class="headerlink" href="#windows" title="Permalink to this heading"></a></h1>
+<p>SDK build time is affected by system settings and security software (such as antivirus software and file encryption software).</p>
+<p>If SDK builds are slow on Windows, you can change the system configuration as described below to reduce the build time.</p>
+<section id="id1">
+<h2><span class="section-number">4.1.10.1. </span>Change the antivirus software settings<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>While the SDK is building, you can open the Windows <code class="docutils literal notranslate"><span class="pre">Task</span> <span class="pre">Manager</span></code> to see which processes have high CPU usage.</p>
+<p>In the example below, the process of the antivirus software built into Windows, <code class="docutils literal notranslate"><span class="pre">MsMpEng.exe</span></code>, has the highest CPU usage</p>
+<p><img alt="" data-action="zoom" src="../../../_images/building_times_image_cpu_usage.jpg"/></p>
+<p>In that case, you can try changing the security policy of the antivirus software to reduce the build time.</p>
+<p>Because there are so many antivirus products for Windows, this article uses only the antivirus software built into Windows as an example to show how to change the antivirus security policy</p>
+<ol class="arabic">
+<li><p>Turn off the <code class="docutils literal notranslate"><span class="pre">Real-time</span> <span class="pre">protection</span></code> feature of the antivirus software</p>
+<p>If your development environment is relatively closed and secure, you can simply turn off the <code class="docutils literal notranslate"><span class="pre">Real-time</span> <span class="pre">protection</span></code> feature of the antivirus software.</p>
+<p>In Windows Security, open <code class="docutils literal notranslate"><span class="pre">Virus</span> <span class="pre">&amp;</span> <span class="pre">threat</span> <span class="pre">protection</span> <span class="pre">settings</span></code> ("病毒和威胁防护"设置) and turn off <code class="docutils literal notranslate"><span class="pre">Real-time</span> <span class="pre">protection</span></code> (实时保护), as shown below:</p>
+<p><img alt="" data-action="zoom" src="../../../_images/building_times_image_03.jpg"/></p>
+<p>After turning off <code class="docutils literal notranslate"><span class="pre">Real-time</span> <span class="pre">protection</span></code>, we built the <code class="docutils literal notranslate"><span class="pre">wifi_camera</span></code> project of the <code class="docutils literal notranslate"><span class="pre">AC792N</span> <span class="pre">SDK</span></code> from the command line on the author's test computer as an example:</p>
+<p>The build time was reduced by about 20%.</p>
+<ul class="simple">
+<li><p>Build time with <code class="docutils literal notranslate"><span class="pre">real-time</span> <span class="pre">protection</span> <span class="pre">on</span></code>:<br/></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>!!! Build succeeded !!!<br/> make[1]: Leaving directory ‘E:/ac792/sdk/apps/wifi_camera/board/wl83’<br/> Start time: 2025/12/31 Wed 14:57:28<br/> End time: 2025/12/31 Wed 14:59:52<br/> Total time: 0 h 2 min 24 s (144 s in total)<br/></p>
+</div>
+<ul class="simple">
+<li><p>Build time with <code class="docutils literal notranslate"><span class="pre">real-time</span> <span class="pre">protection</span> <span class="pre">off</span></code>:</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>!!! Build succeeded !!!<br/> make[1]: Leaving directory ‘E:/ac792/sdk/apps/wifi_camera/board/wl83’<br/> Start time: 2025/12/31 Wed 15:05:23<br/> End time: 2025/12/31 Wed 15:07:14<br/> Total time: 0 h 1 min 51 s (111 s in total)</p>
+</div>
+</li>
+<li><p>Add the compiler process and the SDK directory to the antivirus whitelist</p>
+<p>If your development environment frequently needs to connect to the Internet, we recommend adding the <code class="docutils literal notranslate"><span class="pre">compiler</span> <span class="pre">process</span></code> and the <code class="docutils literal notranslate"><span class="pre">SDK</span> <span class="pre">directory</span></code> to the antivirus whitelist, as shown below:</p>
+<p>In Windows Security, open <code class="docutils literal notranslate"><span class="pre">Virus</span> <span class="pre">&amp;</span> <span class="pre">threat</span> <span class="pre">protection</span> <span class="pre">settings</span></code> ("病毒和威胁防护"设置), find the <code class="docutils literal notranslate"><span class="pre">Exclusions</span></code> (排除项) setting and click <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">or</span> <span class="pre">remove</span> <span class="pre">exclusions</span></code> (添加或删除排除项), as shown below:</p>
+<p><img alt="" data-action="zoom" src="../../../_images/building_times_image_04.jpg"/></p>
+<p>Add the compiler process clang.exe and the SDK path to the exclusions, as shown below:</p>
+<p><img alt="" data-action="zoom" src="../../../_images/building_times_image_05.jpg"/></p>
+<p>After the exclusions were added, the build time was reduced by about 17%.</p>
+<ul class="simple">
+<li><p>Build time after <code class="docutils literal notranslate"><span class="pre">adding</span> <span class="pre">the</span> <span class="pre">exclusions</span></code>:</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>!!! Build succeeded !!!<br/> make[1]: Leaving directory ‘E:/ac792/sdk/apps/wifi_camera/board/wl83’<br/> Start time: 2025/12/31 Wed 15:52:57<br/> End time: 2025/12/31 Wed 15:54:57<br/> Total time: 0 h 2 min 0 s (120 s in total)</p>
+</div>
+</li>
+</ol>
+</section>
+<section id="microsoft-pc-manager-service">
+<h2><span class="section-number">4.1.10.2. </span>Disable the <code class="docutils literal notranslate"><span class="pre">Microsoft</span> <span class="pre">PC</span> <span class="pre">Manager</span> <span class="pre">Service</span></code><a class="headerlink" href="#microsoft-pc-manager-service" title="Permalink to this heading"></a></h2>
+<p>After certain Windows updates are installed, SDK builds may become very slow. In that case, follow the steps below.</p>
+<p>Find <code class="docutils literal notranslate"><span class="pre">Microsoft</span> <span class="pre">PC</span> <span class="pre">Manager</span> <span class="pre">Service</span></code> in the system services, then stop and disable this service, as shown below:</p>
+<p><img alt="" data-action="zoom" src="../../../_images/building_times_image_02.jpg"/></p>
+<p>After <code class="docutils literal notranslate"><span class="pre">Microsoft</span> <span class="pre">PC</span> <span class="pre">Manager</span> <span class="pre">Service</span></code> has been stopped:</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">Task</span> <span class="pre">Manager</span></code>, check that the processes of the service, <code class="docutils literal notranslate"><span class="pre">MSPCManagerService.exe</span></code>, <code class="docutils literal notranslate"><span class="pre">MSPCManagerCore.exe</span></code> and <code class="docutils literal notranslate"><span class="pre">MSPCManager.exe</span></code>, no longer exist.</p>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="faq_why_build_failed.html" class="btn btn-neutral float-left" title="4.1.9. Common Causes of Build Errors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="../linux_lib.html" class="btn btn-neutral float-right" title="4.2. Installing the Jieli Toolchain and Building Static Libraries on Linux" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 09, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/toolchains/faqs/faq_how_to_reduce_compilation_time.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/toolchains/faqs/faq_how_to_reduce_compilation_time.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../../_static/offline.js"></script>
+</body>
+</html>

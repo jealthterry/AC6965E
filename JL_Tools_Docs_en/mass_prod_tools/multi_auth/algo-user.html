@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.2. What Algorithm Providers Need to Do — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>4. Multi-Algorithm Authorization Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">4.1. Introduction to Multi-Algorithm Authorization</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>4.2. What Algorithm Providers Need to Do</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">4.2.1. Apply for an account</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#authroization-id">4.2.2. Obtain the Authroization_ID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">4.2.3. Determine the size of the authorization data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">4.2.4. Generate the programming-time authorization executable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#a">4.2.5. Add authorization data verification to the algorithm library (.a file)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">4.2.6. Add the manufacturer as a customer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">4.2.7. Upload the programming-time authorization executable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">4.2.8. Sell the programming-time authorization executable</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="prod-user.html">4.3. What Manufacturers Need to Do</a></li>
+<li class="toctree-l2"><a class="reference internal" href="website-readme.html">4.4. Using the Jieli Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authrun-tmpl-list.html">4.5. Supported Chip Models and Authorization Executable Project Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="add_authrun_to_fw.html">4.6. How to Generate a FW Containing Only the Authorization Executable</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">4. </span>Multi-Algorithm Authorization Guide</a> »</li>
+<li><span class="section-number">4.2. </span>What Algorithm Providers Need to Do</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/multi_auth/algo-user.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">4.2. </span>What Algorithm Providers Need to Do<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">4.2.1. </span>Apply for an account<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>If you are sure that you need to sell authorizations for your algorithm through the Jieli multi-algorithm authorization server and you do not yet have a multi-algorithm authorization server account,<br/> contact Zhuhai Jieli to apply for a multi-algorithm authorization server account, and help the users of your algorithm obtain multi-algorithm authorization server accounts.<br/> For more information, see <a class="reference internal" href="website-readme.html"><span class="doc std std-doc">Using the Jieli Server</span></a></p>
+</section>
+<section id="authroization-id">
+<h2><span class="section-number">4.2.2. </span>Obtain the Authroization_ID<a class="headerlink" href="#authroization-id" title="Permalink to this heading"></a></h2>
+<p>Agree with the manufacturer on the storage ID of the authorization data (<code class="docutils literal notranslate"><span class="pre">Authorization_ID</span></code>), because within one SDK this ID is used to identify and distinguish the different algorithms.<br/> Make sure that the ID agreed with the manufacturer is in the range 64 to 999.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This <code class="docutils literal notranslate"><span class="pre">Authorization_ID</span></code> is the first parameter of the SDK API function <code class="docutils literal notranslate"><span class="pre">sys_cfg_read_otp(Authorization_ID,</span> <span class="pre">enc_data,</span> <span class="pre">Authorization_Data_len);</span> <span class="pre">or</span> <span class="pre">syscfg_read_otp(Authorization_ID,</span> <span class="pre">enc_data,</span> <span class="pre">Authorization_Data_len);</span></code>. It is also the <code class="docutils literal notranslate"><span class="pre">Authorization_ID</span></code> in <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">Authorization_ID=234</span></code> in <code class="docutils literal notranslate"><span class="pre">r_makebin.bat</span></code> of the project template below.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Authorization_ID</span></code> must be the same in all of these places. It specifies under which <code class="docutils literal notranslate"><span class="pre">Authorization_ID</span></code> the authorization data of the current algorithm provider is stored (each algorithm has its own <code class="docutils literal notranslate"><span class="pre">Authorization_ID</span></code>).</p>
+<p>The purpose of this <code class="docutils literal notranslate"><span class="pre">Authorization_ID</span></code> is to distinguish the authorization data of different algorithms on the same chip.</p>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">4.2.3. </span>Determine the size of the authorization data<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>The authorization data is the data that the algorithm company writes into the chip for authorization. Its size must be fixed and less than 256 bytes, and it cannot be changed once confirmed.</p>
+</section>
+<section id="id4">
+<h2><span class="section-number">4.2.4. </span>Generate the programming-time authorization executable<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>The programming-time authorization executable, i.e., the <code class="docutils literal notranslate"><span class="pre">.authrun</span></code> file, is a file that can run on the chip.</p>
+<p>During programming, the programmer executes all <code class="docutils literal notranslate"><span class="pre">.authrun</span></code> files and writes the authorization information into the chip.</p>
+<p>The algorithm company needs to add its authorization algorithm to the programming-time authorization executable <a class="reference internal" href="authrun-tmpl-list.html"><span class="doc std std-doc">project template (click here to download)</span></a> (<code class="docutils literal notranslate"><span class="pre">Generate_Authorization</span></code>) provided by Jieli, and build it to generate the programming-time authorization executable (<code class="docutils literal notranslate"><span class="pre">.authrun</span></code> file).</p>
+<p><img alt="" data-action="zoom" src="../../_images/auth-run-poj.jpg"/></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Note: when you modify the following two lines in <code class="docutils literal notranslate"><span class="pre">r_makebin.bat</span></code>, do not add any extra spaces (before or after the equals sign, or at the end of the line); <strong>bat scripts are sensitive to spaces</strong>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">Authorization_ID=234</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">CHIP_TYPE=AC695X</span></code></p>
+</div>
+<p>For the specific changes, see the instructions in the <a class="reference internal" href="authrun-tmpl-list.html"><span class="doc std std-doc">project template</span></a>.</p>
+</section>
+<section id="a">
+<span id="target-mul-auth-how-to-use"></span><h2><span class="section-number">4.2.5. </span>Add authorization data verification to the algorithm library (.a file)<a class="headerlink" href="#a" title="Permalink to this heading"></a></h2>
+<p>The algorithm company adds an authorization data verification procedure to the corresponding algorithm library (<code class="docutils literal notranslate"><span class="pre">.a</span></code> file).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">.authrun</span></code> file and the algorithm library (<code class="docutils literal notranslate"><span class="pre">.a</span></code> file) are <strong>two different things</strong>.</p>
+<p><strong>Only the <code class="docutils literal notranslate"><span class="pre">.authrun</span></code> file needs to be uploaded to the Jieli server.</strong></p>
+<p><strong>The <code class="docutils literal notranslate"><span class="pre">.a</span></code> file must be sent to the customer only after the step below, which checks whether the authorization data is valid, has been added (by email or other means; it does not need to go through the Jieli server)</strong></p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Delivery method</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.authrun</span></code> file</p></td>
+<td><p>1. The algorithm company uploads it to the Jieli server<br/>2. It is sold to the manufacturer on the server</p></td>
+<td><p>1. <strong>Generates</strong> the authorization data and returns it to the programmer, which writes it into the chip.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.a</span></code> algorithm library</p></td>
+<td><p>Does not need to go through the Jieli server<br/>Provided directly to the manufacturer<br/>for example, by email</p></td>
+<td><p>1. Contains the algorithm that the algorithm company actually provides<br/> 2. At a suitable place, calls <code class="docutils literal notranslate"><span class="pre">sys_cfg_read_otp</span> <span class="pre">or</span> <span class="pre">syscfg_read_otp</span></code> to read and<br/><strong>verify</strong> on its own whether the current chip contains the authorization data generated by <code class="docutils literal notranslate"><span class="pre">.authrun</span></code><br/> 3. <strong>If the chip is found not to have the correct authorization data, the algorithm must be guaranteed not to run</strong></p></td>
+</tr>
+</tbody>
+</table></div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Authorization_ID</span></code> links the <code class="docutils literal notranslate"><span class="pre">.a</span></code> file and the <code class="docutils literal notranslate"><span class="pre">.authrun</span></code> file.</p>
+<p>If you have the SDK but do not know how to get the corresponding project for generating the <code class="docutils literal notranslate"><span class="pre">.a</span></code> file, see <a class="reference internal" href="../../dev_tools/faqs/howto_convert_sdk_to_lib.html"><span class="doc std std-doc">How to Get a Library Project from an Existing Standard SDK Project</span></a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that the sample code below corresponds to the sample encrypted data in the template project.<br/> If the algorithm company changes how <code class="docutils literal notranslate"><span class="pre">c_main</span></code> in the template project generates the encrypted data (i.e., the authorization data), the authorization data verification procedure must be changed accordingly</p>
+</div>
+<p><img alt="" data-action="zoom" src="../../_images/chip_id.png"/></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">extern</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="nf">sys_cfg_read_otp</span><span class="p">(</span><span class="n">u32</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">u8</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">len</span><span class="p">);</span><span class="w"> </span>
+<span class="c1">//or extern u32 syscfg_read_otp(u32 id, u8 *buf, u32 len);</span>
+<span class="k">extern</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="nf">norflash_get_uuid</span><span class="p">(</span><span class="n">u8</span><span class="w"> </span><span class="o">*</span><span class="n">uuid</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">//Because the algorithm can run on many chips, to restrict the chip models it runs on, you can add a chip model check to the algorithm library according to the figure above</span>
+<span class="c1">//For example, to restrict the library to run only on the 695 series, add the following code:</span>
+<span class="k">if</span><span class="p">((</span><span class="n">JL_SYSTEM</span><span class="o">-&gt;</span><span class="n">CHIP_ID</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xff00</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x5E00</span><span class="p">){</span><span class="w"></span>
+<span class="w">	</span><span class="n">printf</span><span class="p">(</span><span class="s">"run on 695x(BR23)"</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">const</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">Authorization_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">128</span><span class="p">;</span><span class="w">      </span><span class="c1">// Change this to the ID of the current algorithm company</span>
+<span class="k">const</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">Authorization_Data_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">17</span><span class="p">;</span><span class="w"> </span><span class="c1">// Change this to the length specified in the .authrun</span>
+
+<span class="n">u8</span><span class="w"> </span><span class="n">enc_data</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span><span class="w"> </span><span class="c1">// Holds the output read by sys_cfg_read_otp; must be longer than (or equal to) Authorization_Data_len</span>
+
+<span class="c1">// Read the authorization data of the current algorithm company from the chip</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sys_cfg_read_otp</span><span class="p">(</span><span class="n">Authorization_ID</span><span class="p">,</span><span class="w"> </span><span class="n">enc_data</span><span class="w"> </span><span class="cm">/* output */</span><span class="p">,</span><span class="w"> </span><span class="n">Authorization_Data_len</span><span class="p">);</span><span class="w"></span>
+<span class="c1">//or int r = syscfg_read_otp(Authorization_ID, enc_data /* output */, Authorization_Data_len);</span>
+<span class="k">if</span><span class="p">(</span><span class="n">r</span><span class="o">!=</span><span class="w"> </span><span class="n">Authorization_Data_len</span><span class="p">){</span><span class="w"></span>
+<span class="w">    </span><span class="n">log_info</span><span class="p">(</span><span class="s">"read error %d"</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// If no valid authorization data can be read from the chip, exit so that the algorithm functions no longer work normally</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">put_buf</span><span class="p">(</span><span class="n">enc_data</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">);</span><span class="w"> </span><span class="c1">// Print the authorization data that was read (for debugging and observation)</span>
+
+<span class="c1">//Verify whether the authorization data is valid</span>
+<span class="c1">// The following is sample code; it must match the generation method in c_main of the .authrun file</span>
+<span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">r</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// For how to get the uuid, see:</span>
+<span class="w">    </span><span class="c1">//    Use norflash_get_uuid(&amp;out_uuid); always 16 bytes</span>
+<span class="w">    </span><span class="c1">//    printf_buf(out_uuid, 16);</span>
+<span class="w">    </span><span class="c1">//    For details, ask whoever provided the SDK</span>
+<span class="w">    </span><span class="n">u8</span><span class="w"> </span><span class="n">uuid</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">u32</span><span class="w"> </span><span class="n">flash_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">norflash_get_uuid</span><span class="p">(</span><span class="o">&amp;</span><span class="n">uuid</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">enc_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="o">^</span><span class="n">uuid</span><span class="p">[</span><span class="n">i</span><span class="o">%</span><span class="mi">16</span><span class="p">])){</span><span class="w"></span>
+<span class="w">        </span><span class="n">log_info</span><span class="p">(</span><span class="s">"check error %d %x %x"</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="n">enc_data</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">i</span><span class="o">^</span><span class="n">uuid</span><span class="p">[</span><span class="n">i</span><span class="o">%</span><span class="mi">16</span><span class="p">]);</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// Exit when the authorization data is invalid</span>
+<span class="w">        </span><span class="c1">//   For example, make the algorithm functions stop working normally</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2><span class="section-number">4.2.6. </span>Add the manufacturer as a customer<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Create your own account on the Jieli server (for how to use the server, see <a class="reference internal" href="website-readme.html"><span class="doc std std-doc">Using the Jieli Server</span></a>); skip this step if you already have one</p></li>
+<li><p>On the Jieli server, add the manufacturer under [My customers] (我的客户) (skip this step if it has already been added)</p></li>
+</ol>
+<p>Note: what you add here is the <b>unique ID</b> of the <font color="red"><b>manufacturer</b></font>, not your own <b>unique ID</b></p>
+<p><font color="red"><b>If adding the unique ID fails, first check the <b>letter case</b> of the <b>unique ID</b>.<br/> Some input method plug-ins may automatically convert certain letters to uppercase or lowercase.</b></font></p>
+<p>To make checking and handling easier, copy the unique ID in both ways: <font color="red"><b>screenshot</b></font> + <font color="red"><b>text copy</b></font>.<br/> That is, take a screenshot of the unique ID on the web page with screenshot software (or a plug-in), and also copy the unique ID via the system clipboard (right-click).<b></b></p><b>
+</b><p><img alt="" data-action="zoom" src="../../_images/add_customer_0.jpg"/>
+<img alt="" data-action="zoom" src="../../_images/add_customer_1.jpg"/>
+<img alt="" data-action="zoom" src="../../_images/add_customer_2.jpg"/></p>
+</section><b>
+<section id="id6">
+<h2><span class="section-number">4.2.7. </span>Upload the programming-time authorization executable<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
+<p>Under [My uploaded files] (我上传的文件), upload the authorization bin file (i.e., the <code class="docutils literal notranslate"><span class="pre">.authrun</span></code> file) to the Jieli server.</p>
+<p><img alt="" data-action="zoom" src="../../_images/upload_file_1.jpg"/>
+<img alt="" data-action="zoom" src="../../_images/upload_file_2.jpg"/>
+<img alt="" data-action="zoom" src="../../_images/upload_file_3.jpg"/>
+<img alt="" data-action="zoom" src="../../_images/upload_file_4.jpg"/></p>
+</section>
+<section id="id7">
+<h2><span class="section-number">4.2.8. </span>Sell the programming-time authorization executable<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h2>
+<p>Under [My uploaded files] (我上传的文件), find the file to be sold and use [Sell] (售出) to sell a number of counts to the manufacturer.</p>
+<p><img alt="" data-action="zoom" src="../../_images/sell_count_4.jpg"/>
+<img alt="" data-action="zoom" src="../../_images/sell_count_5.jpg"/>
+<img alt="" data-action="zoom" src="../../_images/sell_count_6.jpg"/></p>
+<p>Note: if you want the buyer of the file (the manufacturer in this example) to be able to resell the purchased counts to other users, check [Allow resale] (允许二次售卖) when selling, as shown below:</p>
+<p><img alt="" data-action="zoom" src="../../_images/multi_auth_resell.jpg"/></p>
+<p>By default, resale is not allowed.</p>
+<p>If resale is enabled for a purchased file, the buyer can find the file under [My purchased files] (我购买的文件) and select [Resell] (转售) to resell it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>The manufacturer cannot obtain the original content of the <code class="docutils literal notranslate"><span class="pre">.authrun</span></code> file through the server. Algorithm providers must take care not to leak the <code class="docutils literal notranslate"><span class="pre">.authrun</span></code> file to the manufacturer.</p></li>
+<li><p>Once uploaded, the same file can be sold multiple times. The results of multiple sales are cumulative.</p></li>
+</ol>
+</div>
+</section>
+</b></section><b>
+</b>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="intro_basic.html" class="btn btn-neutral float-left" title="4.1. Introduction to Multi-Algorithm Authorization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="prod-user.html" class="btn btn-neutral float-right" title="4.3. What Manufacturers Need to Do" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/multi_auth/algo-user.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/multi_auth/algo-user.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5.2. Key Usage Example — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>5. Private Data Authorization Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools_modification_section.html">5.1. SDK Changes</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>5.2. Key Usage Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">5.2.1. How to use the interfaces</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">5. </span>Private Data Authorization Guide</a> »</li>
+<li><span class="section-number">5.2. </span>Key Usage Example</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/private_data_auth/secure_key.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">5.2. </span>Key Usage Example<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<p>The SDK patches that currently support private data are listed below. (If you cannot find the chip model you need, or if you need support for the write function, contact Jieli.)</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p>Chip type</p></th>
+<th class="head"><p>Patch</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>AC701N</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/secure_key_readonly_20240327_AC701.a" rel="noopener" target="_blank">701N patch download (click here to download) (2024/03/27)</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AD14N</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/secure_key_readonly_20240327_AD14N.a" rel="noopener" target="_blank">AD14N patch download (click here to download) (2024/03/27)</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AC695N_LARGE</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/secure_key_readonly_20240327_AC695_L.a" rel="noopener" target="_blank">AC695N_LARGE patch download (click here to download) (2024/03/27)</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AC707N</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/secure_key_readonly_20250110_AC707.a" rel="noopener" target="_blank">AC707N patch download (click here to download) (2025/01/10)</a></p></td>
+</tr>
+</tbody>
+</table></div>
+<p>How to use the patch: go to the xxx\xxx\liba directory of the corresponding SDK (for example, cpu\br28\liba or include_lib\liba\sh54), rename the patch to secure_key.a (secure_key_lib.a for AD14N) and add it there.</p>
+<p>Add the corresponding library file in Code::Blocks, as shown below:<br/> <img alt="" data-action="zoom" src="../../_images/codeblocks_add_lib.png"/></p>
+<section id="id2">
+<h2><span class="section-number">5.2.1. </span>How to use the interfaces<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Note: this is sample code. The write function can be used only if the area is all FF.
+Return values:
+typedef enum {
+    SK_RV_OK = 0, // 0, success return value
+    SK_RV_OPEN_ERROR, //1, failed to open the encrypted area; check whether the INI file is configured correctly and whether the tools have been updated
+    SK_RV_WRITE_ERROR, //2, write failed; check whether the CPU library is correct
+    SK_RV_READ_ERROR, //3, read error; invalid return 
+    SK_RV_INIT_ERROR, //4, initialization error; invalid return
+    SK_PWD_MISMATCH, //5, the page key does not match the key passed in; the key in the current page header is wrong or empty
+    SK_PWD_CHIP_VERSION_MISMATCH, //6  chip version mismatch; the chip id does not match
+    SK_PWD_INVALID, //7, invalid passwd; check whether the key is correct
+    SK_FF_CHECK_ERROR, //8, all-FF check error: 1. dirty data that is not all FF found during initialization, 2. the data read back is all FF, 3. the area is not all FF when writing
+    SK_RV_WRITE_NOTSUPPORT,  //9, write function not supported; check whether the library you received supports the write function
+    SK_PWD_VERSION_MISMATCH,  //10, passwd version mismatch
+    SK_RV_EMPTY,  //11, empty page; on the first read, check whether the page is empty
+    SK_RV_UNKNOWN
+} SK_RETVAL_T;
+
+Problems that may occur during debugging:
+1, Calling the write interface with the read-only library reports the error SK_RV_WRITE_ERROR.
+2, Writing again to a page that has already been written reports the error SK_FF_CHECK_ERROR, which means that the write was made to an area that is not all FF.
+3, Reading a page with an ID that does not correspond to the page, or with a password that does not match, reports the error SK_PWD_MISMATCH.
+4, Reading an empty page for the first time reports the empty error SK_RV_EMPTY.
+5, The programmer reports the error "No key has been added to the firmware. Use the -key parameter in download.bat to add a KEY to the firmware." Solution: use a FW generated with the private data authorization read/write library provided after 2023/11/23.
+</pre></div>
+</div>
+<p>If you do not have it, contact Jieli Technology to obtain it</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>///////////////////////////////////Notes on programmer recognition///////////////////////////////////////////
+***This structure must be implemented in the code; otherwise the programmer reports an error.***
+struct _SK_MPAD {
+    u8 magic_start[16];
+    u8 owner_passwd[16];
+    u8 magic_end[16];
+};
+
+Fill example: define the structure above in your own code and keep it identical. The name defined below must also be priv_pad so that the library can call it.
+volatile const struct _SK_MPAD priv_pad = {
+    .magic_start = {0x50,0x52,0x49,0x56,0x17,0xeb,0x4a,0x47,0xae,0x47,0x8c,0x93,0xc2,0x17,0xa5,0x9e},
+    .owner_passwd = { 0x94, 0x44, 0x15, 0x16, 0x28, 0xae, ...... }, //Obtain the actual key from Jieli
+    .magic_end = {0x44,0x41,0x54,0x41,0x96,0xa3,0x41,0x97,0xa9,0x1f,0x2e,0x5e,0x18,0x3c,0xf4,0x98}
+};
+//////////////////////////////////////////////////////////////////////////////////////////
+</pre></div>
+</div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">secure_key_write</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">page_id</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">passwd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">key</span><span class="p">);</span><span class="w"> </span><span class="c1">//Write the key</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">secure_key_read</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">page_id</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">passwd</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">key</span><span class="p">);</span><span class="w"> </span><span class="c1">//Read the key</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">secure_map_key_to_memory</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">page_id</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">passwd</span><span class="p">);</span><span class="c1">//Get the map address</span>
+
+<span class="w">    </span><span class="c1">//////////////////////////////////Test demo///////////////////////////////////////////</span>
+<span class="w">    </span><span class="cp">#define PAGE_HEAD_LEN_TEST 16</span>
+<span class="w">    </span><span class="cp">#define PAGE_LEN_TEST 256</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">sk_test_write</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="kt">char</span><span class="w"> </span><span class="n">key</span><span class="p">[</span><span class="n">PAGE_LEN_TEST</span><span class="p">];</span><span class="w"></span>
+<span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">passwd</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mh">0x94</span><span class="p">,</span><span class="w"> </span><span class="mh">0x44</span><span class="p">,</span><span class="w"> </span><span class="mh">0x15</span><span class="p">,</span><span class="w"> </span><span class="mh">0x16</span><span class="p">,</span><span class="w"> </span><span class="mh">0x28</span><span class="p">,</span><span class="w"> </span><span class="mh">0xae</span><span class="p">,</span><span class="w"> </span><span class="p">......</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">//Obtain the actual key from Jieli</span>
+<span class="w">    </span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">PAGE_LEN_TEST</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">key</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xff</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w">  </span><span class="n">PAGE_HEAD_LEN_TEST</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">y_printf</span><span class="p">(</span><span class="s">"&gt;&gt;&gt;[test]:+++++++++++++ i = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">secure_key_write</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">passwd</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="k">goto</span><span class="w"> </span><span class="n">__exit</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="nl">__exit</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"&gt;&gt;&gt;[test]:ret = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">ret</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">wdt_clear</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">sk_test_read</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="kt">char</span><span class="w"> </span><span class="n">key</span><span class="p">[</span><span class="n">PAGE_LEN_TEST</span><span class="p">];</span><span class="w"></span>
+<span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">passwd</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mh">0x94</span><span class="p">,</span><span class="w"> </span><span class="mh">0x44</span><span class="p">,</span><span class="w"> </span><span class="mh">0x15</span><span class="p">,</span><span class="w"> </span><span class="mh">0x16</span><span class="p">,</span><span class="w"> </span><span class="mh">0x28</span><span class="p">,</span><span class="w"> </span><span class="mh">0xae</span><span class="p">,</span><span class="w"> </span><span class="p">......</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">//Obtain the actual key from Jieli</span>
+<span class="w">    </span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w">  </span><span class="n">PAGE_HEAD_LEN_TEST</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">y_printf</span><span class="p">(</span><span class="s">"&gt;&gt;&gt;[test]:+++++++++++++ i = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">memset</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">PAGE_LEN_TEST</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">secure_key_read</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">passwd</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="k">goto</span><span class="w"> </span><span class="n">__exit</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="n">put_buf</span><span class="p">((</span><span class="k">const</span><span class="w"> </span><span class="n">u8</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">PAGE_LEN_TEST</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">logic_addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">secure_map_key_to_memory</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">passwd</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">y_printf</span><span class="p">(</span><span class="s">"&gt;&gt;&gt;[test]:---------------------logic_addr = 0x%x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">u32</span><span class="p">)</span><span class="n">logic_addr</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">put_buf</span><span class="p">((</span><span class="k">const</span><span class="w"> </span><span class="n">u8</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">logic_addr</span><span class="p">,</span><span class="w"> </span><span class="n">PAGE_LEN_TEST</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">wdt_clear</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="nl">__exit</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"&gt;&gt;&gt;[test]:ret = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">ret</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">wdt_clear</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+
+</pre></div>
+</div>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="tools_modification_section.html" class="btn btn-neutral float-left" title="5.1. SDK Changes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="../common_function/index.html" class="btn btn-neutral float-right" title="6. General Features: Configuration and Use" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/private_data_auth/secure_key.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/private_data_auth/secure_key.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

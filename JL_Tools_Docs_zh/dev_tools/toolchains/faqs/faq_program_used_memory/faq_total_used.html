@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.1.7.1. 查看总体情况（即每个段的大小） — JL Project Documentation</title>
+<link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../../../index.html"><img id="jl-logo" src="../../../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>4. 工具链相关说明</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>4.1. 常见问题以及处理方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../faq_printf_float_point.html">4.1.1. 为什么<code class="docutils literal notranslate"><span class="pre">printf</span></code>无法输出浮点数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faq_vsprintf.html">4.1.2. 为什么找不到 vsprintf, sprintf, vprintf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faq_warn_implicit_fun.html">4.1.3. 关于调用了未声明函数的警告</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faq_float_point.html">4.1.4. 浮点数相关FAQ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faq_how_to_merge_libs.html">4.1.5. 如何合并<code class="docutils literal notranslate"><span class="pre">.a</span></code>文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faq_how_to_merge_ofiles.html">4.1.6. 如何将缩减 <code class="docutils literal notranslate"><span class="pre">.a</span></code> 文件里面 <code class="docutils literal notranslate"><span class="pre">.o</span></code> 文件的个数</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>4.1.7. 如何查看程序的空间使用情况</a><ul>
+<li class="toctree-l4 current"><a class="reference internal current" href="#">4.1.7.1. 查看总体情况（即每个段的大小）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="faq_func_and_var_sizes.html">4.1.7.2. 查看使用细节，即每个函数、变量的大小</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../faq_stack_size_limit_exceeded.html">4.1.8. 为什么链接时提示 stack size limit exceeded 警告</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faq_why_build_failed.html">4.1.9. 常见的编译出错原因</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../faq_how_to_reduce_compilation_time.html">4.1.10. 如何在Windows系统减少编译时间</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../linux_lib.html">4.2. LINUX下安装杰理工具链和编译静态库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ini_cfg.html">4.3. isd_config.ini 配置文件说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../otp_cfg.html">4.4. FLASH 参数配置说明</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mass_prod_tools/burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mass_prod_tools/burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mass_prod_tools/testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mass_prod_tools/multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mass_prod_tools/private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mass_prod_tools/common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mass_prod_tools/faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="../../index.html"><span class="section-number">4. </span>工具链相关说明</a> »</li>
+<li><a href="../index.html"><span class="section-number">4.1. </span>常见问题以及处理方法</a> »</li>
+<li><a href="index.html"><span class="section-number">4.1.7. </span>如何查看程序的空间使用情况</a> »</li>
+<li><span class="section-number">4.1.7.1. </span>查看总体情况（即每个段的大小）</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../../../JL_Tools_Docs_en/dev_tools/toolchains/faqs/faq_program_used_memory/faq_total_used.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">4.1.7.1. </span>查看总体情况（即每个段的大小）<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<p>在编译链接后，会调用后处理脚本。这个脚本中，会利用 objdump -h 输出链接生成的ELF文件的段的信息。例如：</p>
+<figure class="align-default" id="faq-total-used-image1">
+<img alt="" data-action="zoom" src="../../../../_images/faq_program_used_memory_image1.png"/>
+<figcaption>
+<p><span class="caption-text">图1</span><a class="headerlink" href="#faq-total-used-image1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>其中，<a class="reference internal" href="#faq-total-used-image1"><span class="std std-ref">图1</span></a>中的命令：C:\JL\pi32\bin\llvm-objdump.exe -section-headers sdk.elf 就是生成的命令。</p>
+<section id="build-log">
+<h2><span class="section-number">4.1.7.1.1. </span>如何解读build log输出<a class="headerlink" href="#build-log" title="Permalink to this heading"></a></h2>
+<p>框中的含义如下：</p>
+<p><img alt="" data-action="zoom" src="../../../../_images/faq_program_used_memory_image2.png"/></p>
+<p>注意，《段名》指的是SDK在ld脚本中定义的的一些输出段。<br/>
+这些段一般对应芯片上的区域。<br/>
+通常来说，<code class="docutils literal notranslate"><span class="pre">.text</span></code>段一般代表程序所在的区域，<code class="docutils literal notranslate"><span class="pre">.data</span></code>对应于全局变量所在的区域。</p>
+<p>最后一列 <code class="docutils literal notranslate"><span class="pre">Type</span></code> 列表示的是，对应行的段，包含了哪种类型的数据。其中：</p>
+<div class="wy-table-responsive"><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>含义</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TEXT</p></td>
+<td><p>代码</p></td>
+</tr>
+<tr class="row-odd"><td><p>DATA</p></td>
+<td><p>数据（初始值不全为 0 ）</p></td>
+</tr>
+<tr class="row-even"><td><p>BSS</p></td>
+<td><p>数据（初始值全为 0 或者 未指定初始值）</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>如果某个段既有 <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> 又有 <code class="docutils literal notranslate"><span class="pre">DATA</span></code>，则表示这个段中，即放了代码也放了数据。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果<code class="docutils literal notranslate"><span class="pre">Type</span></code>列没有对应的内容，则一般对应的段是一些附加信息的段，里面的内容是工具使用的，并不会实际放到设备中运行。
+例如，上图中的 <code class="docutils literal notranslate"><span class="pre">.debug_</span></code> 开头的段，这些都是一些调试信息，例如每个函数所在的文件位置之类的。</p>
+</div>
+</section>
+<section id="ld">
+<h2><span class="section-number">4.1.7.1.2. </span>和ld文件的对应方式<a class="headerlink" href="#ld" title="Permalink to this heading"></a></h2>
+<p>SDK中可以自行定义段，具体是在ld文件中定义。可以通过下面的方式找到该文件：</p>
+<ol class="arabic">
+<li><p>我们需要确认链接时候使用的 ld 文件是哪一个：</p>
+<p><strong>确认链接时使用的ld文件位置</strong></p>
+<p><img alt="" data-action="zoom" src="../../../../_images/faq_program_used_memory_image3.png"/></p>
+<p><img alt="" data-action="zoom" src="../../../../_images/faq_program_used_memory_image4.png"/></p>
+<p>在链接参数中，找到类似于 -Txxx.ld 的参数，则 xxx.ld 就是使用的 ld 文件。</p>
+</li>
+<li><p>我们需要确认生成ld文件的原始文件：</p>
+<p><strong>确认sdk_ld.c文件的位置</strong></p>
+<p>为了可以利用SDK中定义的一些宏，来确定ld文件里面的一些参数。<br/>
+较新的SDK都会用一个sdk_ld.c的文件，先经过预处理，展开宏之后，生成最终用于链接的ld文件。<br/>
+我们需要确认一下是否有这样的步骤：</p>
+<p><img alt="" data-action="zoom" src="../../../../_images/faq_program_used_memory_image5.png"/></p>
+<p>在<code class="docutils literal notranslate"><span class="pre">pre/post</span> <span class="pre">build</span> <span class="pre">steps</span></code>中，找到<code class="docutils literal notranslate"><span class="pre">pre-build</span> <span class="pre">steps</span></code>。并找到类似<code class="docutils literal notranslate"><span class="pre">-o</span> <span class="pre">xxx.ld</span></code>的地方，前面的输入即使<code class="docutils literal notranslate"><span class="pre">sdk_ld.c</span></code>文件。这里是<code class="docutils literal notranslate"><span class="pre">cpu\br30_develop\sdk_ld.c</span></code> 文件。<br/>
+打开对应的<code class="docutils literal notranslate"><span class="pre">sdk_ld.c</span></code>文件</p>
+<p><strong>如何解读sdk_ld.c文件</strong></p>
+<p>找到并打开sdk_ld.c文件，会得到类似如下的内容：</p>
+<p><img alt="" data-action="zoom" src="../../../../_images/faq_program_used_memory_image6.png"/></p>
+<p><img alt="" data-action="zoom" src="../../../../_images/faq_program_used_memory_image7.png"/></p>
+<p><img alt="" data-action="zoom" src="../../../../_images/faq_program_used_memory_image8.png"/></p>
+<p><img alt="" data-action="zoom" src="../../../../_images/faq_program_used_memory_image9.png"/></p>
+<p><img alt="" data-action="zoom" src="../../../../_images/faq_program_used_memory_image10.png"/></p>
+<p>以下是ld文件描述的输出，和实际ELF文件中段的对应关系：</p>
+<p><img alt="" data-action="zoom" src="../../../../_images/faq_program_used_memory_image11.png"/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果不能在右图对应的 ld 脚本中找到左侧的段名，一般有下面几种原因：</p>
+<ol class="arabic simple">
+<li><p>可能是 ld 脚本又包含了其它的 ld 脚本（通过 <code class="docutils literal notranslate"><span class="pre">#include</span></code> 或者 <code class="docutils literal notranslate"><span class="pre">INCLUDE</span></code>）</p></li>
+<li><p>确实没有在 ld 脚本里面指定对应的段。这种情况下，链接器会保留原始输入的 .o 或者 .a 文件中的段名。
+例如，我们在 .c 文件里面加了一个函数 <code class="docutils literal notranslate"><span class="pre">foo</span></code>，并用 <code class="docutils literal notranslate"><span class="pre">__attribute__((section(".foo")))</span></code> 定义该函数放置到 <code class="docutils literal notranslate"><span class="pre">.foo</span></code> 段。
+而我们又没有在 ld 脚本里面指定 <code class="docutils literal notranslate"><span class="pre">.foo</span></code> 需要输出到哪个输出段。
+则链接器最后会生成一个叫做 <code class="docutils literal notranslate"><span class="pre">.foo</span></code> 的段，其中的内容就包含了 foo 这个函数。</p></li>
+</ol>
+<p>如果希望知道对应段来自哪里，建议对工程的所有文件（包括源码以及.a文件等），进行字符串搜索，搜索对应的段名</p>
+</div>
+<p><img alt="" data-action="zoom" src="../../../../_images/faq_program_used_memory_image12.png"/></p>
+</li>
+</ol>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="index.html" class="btn btn-neutral float-left" title="4.1.7. 如何查看程序的空间使用情况" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="faq_func_and_var_sizes.html" class="btn btn-neutral float-right" title="4.1.7.2. 查看使用细节，即每个函数、变量的大小" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 09, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/toolchains/faqs/faq_program_used_memory/faq_total_used.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/toolchains/faqs/faq_program_used_memory/faq_total_used.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../../../_static/offline.js"></script>
+</body>
+</html>

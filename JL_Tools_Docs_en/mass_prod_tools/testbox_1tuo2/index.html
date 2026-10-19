@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3. Jieli 1-to-2 Bluetooth Test Box User Manual — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>3. Jieli 1-to-2 Bluetooth Test Box User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_base_introduction.html">3.1. Test Box Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html">3.2. PC Tool Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_upgrade.html">3.3. Test Box Firmware Upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wireless_upgrade.html">3.4. Wireless Upgrade of Bluetooth Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wired_upgrade.html">3.5. Wired Upgrade of Bluetooth Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_test_process.html">3.6. Bluetooth Device Test Procedure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mass_production.html">3.7. Test Box Batch Upgrade and Test Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ear_storage.html">3.8. Using Earphone Storage Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_transparent.html">3.9. PC Passthrough Commands and Custom Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mes_log.html">3.10. Test Box MES Log Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_view_bt_info.html">3.11. Viewing Bluetooth Device Information (SDK Version/Battery Level/Checksum)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ufw_crc_compare.html">3.12. Test Box UFW File Checksum Matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_error_status.html">3.13. Status Indicators and Error Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_fixture_install.html">3.14. Connecting the Test Box to a Fixture over UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_function.html">3.15. Other Common Features: Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_problem.html">3.16. Frequently Asked Questions (FAQ)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_version_info.html">3.17. Version Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><span class="section-number">3. </span>Jieli 1-to-2 Bluetooth Test Box User Manual</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/testbox_1tuo2/index.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">3. </span>Jieli 1-to-2 Bluetooth Test Box User Manual<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<p>Preface</p>
+<p>Thank you sincerely for using the Jieli Technology 1-to-2 Bluetooth test box!</p>
+<p>Before using the tool, please read this manual carefully to ensure correct and safe use. After reading it, keep this manual in a safe place so that others can refer to it later.</p>
+<p>If you encounter any problem that you cannot solve while using the tool, feel free to contact our engineers at any time. We will promptly provide you with the most effective service.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tb_base_introduction.html">3.1. Test Box Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_base_introduction.html#id2">3.1.1. Functional description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_base_introduction.html#id3">3.1.2. Test box components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_base_introduction.html#id4">3.1.3. Test box main unit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_base_introduction.html#target-dip-switch-description">3.1.4. DIP switch functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_base_introduction.html#id6">3.1.5. Button functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tb_pc_usage.html">3.2. PC Tool Configuration and Use</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html#id2">3.2.1. Opening and using the PC tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html#id3">3.2.2. Common function settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html#id4">3.2.3. Configuring a fixed device name for wireless connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html#id5">3.2.4. Test time settings (normally no need to change)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html#id6">3.2.5. Enabling the Bluetooth connection prompt tone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html#pp">3.2.6. Enabling test item switching with the PP button</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html#tws">3.2.7. Switch for TWS connection support in classic Bluetooth tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html#dut">3.2.8. Putting earphones into DUT mode in UART mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html#id7">3.2.9. Using the battery level threshold check for upgrades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html#id8">3.2.10. Configuring the button action recognition test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html#id9">3.2.11. Configuring in-ear detection calibration and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html#id10">3.2.12. Configuring TWS pairing and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html#trim">3.2.13. Configuring and using the out-of-case in-ear trim function for earphones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html#id11">3.2.14. Language option</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html#id12">3.2.15. Configuring the calibration signal transmission mode</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tb_upgrade.html">3.3. Test Box Firmware Upgrade</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_upgrade.html#id2">3.3.1. Remote upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_upgrade.html#id3">3.3.2. Local upgrade</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tb_wireless_upgrade.html">3.4. Wireless Upgrade of Bluetooth Devices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_wireless_upgrade.html#id2">3.4.1. Online wireless upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wireless_upgrade.html#tf">3.4.2. Offline wireless upgrade (using a TF card)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tb_wired_upgrade.html">3.5. Wired Upgrade of Bluetooth Devices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_wired_upgrade.html#id2">3.5.1. Online wired UART upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wired_upgrade.html#tf">3.5.2. Offline wired UART upgrade (using a TF card)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tb_test_process.html">3.6. Bluetooth Device Test Procedure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_test_process.html#id2">3.6.1. Classic Bluetooth device test procedure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_test_process.html#id3">3.6.2. Quick test procedure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_test_process.html#ble">3.6.3. BLE test procedure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_test_process.html#id4">3.6.4. Wired TWS pair test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_test_process.html#id5">3.6.5. Built-in touch sensitivity test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_test_process.html#id6">3.6.6. Using the wireless microphone test mode</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tb_mass_production.html">3.7. Test Box Batch Upgrade and Test Cases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_mass_production.html#target-bt-wireless-upgrade">3.7.1. Batch wireless upgrade of Bluetooth devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mass_production.html#target-bt-wired-upgrade">3.7.2. Batch wired upgrade of Bluetooth devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mass_production.html#id8">3.7.3. Batch testing of classic Bluetooth devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mass_production.html#tws">3.7.4. Quick test method for TWS earphones in mass production</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mass_production.html#target-bt-trim-mode">3.7.5. Batch frequency offset calibration during programming</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tb_ear_storage.html">3.8. Using Earphone Storage Mode</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_ear_storage.html#id2">3.8.1. Feature overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ear_storage.html#id3">3.8.2. Operation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tb_pc_transparent.html">3.9. PC Passthrough Commands and Custom Commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_transparent.html#id1">3.9.1. Using PC passthrough commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_transparent.html#id4">3.9.2. Using custom UART commands in UART mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_transparent.html#id5">3.9.3. Using custom command send mode</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tb_mes_log.html">3.10. Test Box MES Log Output</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_mes_log.html#id1">3.10.1. Test box wiring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mes_log.html#id2">3.10.2. Enabling the settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mes_log.html#id3">3.10.3. Protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tb_view_bt_info.html">3.11. Viewing Bluetooth Device Information (SDK Version/Battery Level/Checksum)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_view_bt_info.html#id1">3.11.1. Feature overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_view_bt_info.html#id2">3.11.2. Operation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tb_ufw_crc_compare.html">3.12. Test Box UFW File Checksum Matching</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_ufw_crc_compare.html#tfufw">3.12.1. Checking whether the UFW matches when upgrading devices from a TF card</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tb_error_status.html">3.13. Status Indicators and Error Messages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_error_status.html#id2">3.13.1. Status indicators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_error_status.html#id3">3.13.2. Error messages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tb_fixture_install.html">3.14. Connecting the Test Box to a Fixture over UART</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tb_common_function.html">3.15. Other Common Features: Configuration and Use</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_function.html#id2">3.15.1. Using the verification function in UART mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_function.html#trim">3.15.2. Configuring and using the out-of-case in-ear trim function for earphones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_function.html#id3">3.15.3. Using earphone spatial audio calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_function.html#anc">3.15.4. Using ANC calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_function.html#tws">3.15.5. Using TWS triple synchronization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_function.html#ble">3.15.6. Displaying custom advertising information in BLE mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_function.html#id4">3.15.7. Updating the test box audio files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_function.html#ac691x">3.15.8. Updated test box support for AC691X</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tb_common_problem.html">3.16. Frequently Asked Questions (FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tb_version_info.html">3.17. Version Information</a></li>
+</ul>
+</div>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="../burner_1tuo8/faqs.html" class="btn btn-neutral float-left" title="2.21. Troubleshooting Common Errors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="tb_base_introduction.html" class="btn btn-neutral float-right" title="3.1. Test Box Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/index.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/index.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3.2. 上位机功能配置和使用 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>3. 杰理科技一拖二蓝牙测试盒用户手册</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_base_introduction.html">3.1. 测试盒简要介绍</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>3.2. 上位机功能配置和使用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.2.1. 打开并使用上位机</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3.2.2. 常见功能设置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">3.2.3. 无线连接固定设备名配置说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">3.2.4. 测试时间设置 (平时不需要修改)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">3.2.5. 蓝牙连接提示音使能</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pp">3.2.6. PP键切换测试项使能</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tws">3.2.7. 经典蓝牙测试支持TWS连接开关</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dut">3.2.8. 串口模式耳机进入dut模式说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">3.2.9. 升级电量门限判断使用说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">3.2.10. 按键动作识别测试配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">3.2.11. 入耳检测校准及测试配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">3.2.12. TWS配对和测试配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trim">3.2.13. 耳机离仓入耳trim功能配置使用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">3.2.14. 语言配置项</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">3.2.15. 校频波发射模式配置</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tb_upgrade.html">3.3. 测试盒固件升级</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wireless_upgrade.html">3.4. 蓝牙设备无线升级流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wired_upgrade.html">3.5. 蓝牙设备有线升级流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_test_process.html">3.6. 蓝牙设备测试流程使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mass_production.html">3.7. 测试盒批量升级、测试用例介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ear_storage.html">3.8. 耳机仓储模式使用方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_transparent.html">3.9. PC透传命令、自定义命令使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mes_log.html">3.10. 测试盒MES LOG输出功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_view_bt_info.html">3.11. 蓝牙设备信息（sdk 版本/电量/校验码）查看方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ufw_crc_compare.html">3.12. 测试盒ufw文件校验码匹配</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_error_status.html">3.13. 状态指示和报错提示说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_fixture_install.html">3.14. 测试盒串口连接治具介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_function.html">3.15. 其它常见功能配置和使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_problem.html">3.16. 常见问题（FAQ）处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_version_info.html">3.17. 版本信息</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">3. </span>杰理科技一拖二蓝牙测试盒用户手册</a> »</li>
+<li><span class="section-number">3.2. </span>上位机功能配置和使用</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/mass_prod_tools/testbox_1tuo2/tb_pc_usage.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">3.2. </span>上位机功能配置和使用<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">3.2.1. </span>打开并使用上位机<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>测试盒上电开机，插入USB数据线连接PC电脑，使测试盒进入<code class="docutils literal notranslate"> <span class="pre">LOADING</span></code> 模式，
+如<a class="reference internal" href="#img-loding-image"><span class="std std-ref">测试盒进入 LOADING 模式</span></a>图所示<br/>
+【1】使用9V电源适配器给测试盒供电</p>
+<p>【2】插入pc从机线</p>
+<p>【3】控制总电源的钮子开关拨到<code class="docutils literal notranslate"><span class="pre">ON</span></code></p>
+<p>【4】<code class="docutils literal notranslate"><span class="pre">**长按**测试盒最右边功能按键</span></code>进入<code class="docutils literal notranslate"> <span class="pre">LOADING</span></code> 模式，即PC模式<br/></p>
+</li>
+</ol>
+<figure class="align-default" id="img-loding-image">
+<img alt="" data-action="zoom" src="../../_images/pc_usage_loding_image1.png"/>
+<figcaption>
+<p><span class="caption-text">测试盒进入<code class="docutils literal notranslate"> <span class="pre">LOADING</span></code> 模式</span><a class="headerlink" href="#img-loding-image" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic" start="2">
+<li><p>打开我的电脑，看到如下CD驱动器，单击进入</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image3.png"/></p>
+</li>
+<li><p>打开CD驱动后会弹出下图，然后再双击打开bt_test_box.exe，<code class="docutils literal notranslate"><span class="pre">也可以把这个工具和文档拷贝到pc电脑去操作</span></code>。</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image4.png"/></p>
+</li>
+<li><p>弹出下面窗口，【1】先点击从测试盒读取设置，【2】然后配置好点击保存到测试盒，拔出pc从机线即可</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image5.png"/></p>
+</li>
+<li><p>用户经常修改修改如下3项，</p></li>
+</ol>
+<ul class="simple">
+<li><p>可搜索最小信号强度，可调整搜索样机距离，数字越小范围越广。</p></li>
+<li><p>也可以设置待测样机名字让测试盒只连接待测样机使测试速度尽量快，</p></li>
+<li><p>修改测试最大功率修改，有些样机需要把功率调低才好连。</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2><span class="section-number">3.2.2. </span>常见功能设置<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><p>1、主机MAC地址：本测试盒的蓝牙地址</p>
+</div></blockquote>
+<blockquote>
+<div><p>2、目标MAC地址：固定地址连接模式下，被测试蓝牙设备的地址</p>
+</div></blockquote>
+<blockquote>
+<div><p>3、升级电量门限：样机电量低于设定百分比是不进行样机升级</p>
+</div></blockquote>
+<blockquote>
+<div><p>4、固定地址连接使能：使能后蓝牙以固定地址链接</p>
+</div></blockquote>
+<blockquote>
+<div><p>5、固定设备名连接使能：使能后蓝牙以固定名字链接</p>
+</div></blockquote>
+<blockquote>
+<div><p>6、目标设备名仅匹配前缀：使能后支持匹配前缀名相同而后缀名不同的蓝牙设备</p>
+</div></blockquote>
+<blockquote>
+<div><p>7、频偏自动校正使能，通过测试频偏后自动调整小机频偏</p>
+</div></blockquote>
+<blockquote>
+<div><p>8、搜索最大功率设置</p>
+</div></blockquote>
+<blockquote>
+<div><p>9、搜索最大灵敏度设置</p>
+</div></blockquote>
+<blockquote>
+<div><p>10、可搜索最小信号强度(单位db),控制搜索附近样机距离</p>
+</div></blockquote>
+<blockquote>
+<div><p>11、测试最大功率设置</p>
+</div></blockquote>
+<blockquote>
+<div><p>12、最大频偏提醒，测试的样机的频偏值如果大于此值，测试盒的喇叭会报警</p>
+</div></blockquote>
+<blockquote>
+<div><p>13、频率校正，校正的范围，例如设置10， 校正到的频偏在-10k~+10k以内，校正完成</p>
+</div></blockquote>
+<p>如果不在这个范围内会有提示音提醒</p>
+<blockquote>
+<div><p>14、通道1频偏，测试盒本身存在频偏，这个要手动设置进去，例如通道1存在频偏+2，这里就填2，如果是-2，这里就填-2</p>
+</div></blockquote>
+<blockquote>
+<div><p>15、通道2频偏，测试盒本身存在频偏，这个要手动设置进去，例如通道1存在频偏+2，这里就填2，如果是-2，这里就填-2</p>
+</div></blockquote>
+</section>
+<section id="id4">
+<h2><span class="section-number">3.2.3. </span>无线连接固定设备名配置说明<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>固定设备名连接配置</p></li>
+</ul>
+</div></blockquote>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_dev_name_connect1.png"/></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>V1.2.5.b版本以上增加目标设备名仅匹配前缀配置</p></li>
+</ul>
+</div></blockquote>
+<p>支持每台待测设备的设备名后缀不一样（如设备名后缀是mac地址部分字符）</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_dev_name_connect2.png"/></p>
+</section>
+<section id="id5">
+<h2><span class="section-number">3.2.4. </span>测试时间设置 (平时不需要修改)<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>A2DP播放时间：
+测试高级音频的时间，例如设置为5s，从播放高级音频开始，5s过后会进入下一个测试模式，结束高级音频测试（范围0-255s， 0：要手动切换）</p></li>
+<li><p>拨号铃声时间：</p>
+<p>测试通话时，模拟手机拨号时间，到设定时间结束拨号，模拟通话接通（范围0-255s， 0：没有拨号功能）</p>
+</li>
+<li><p>自动接听时间：</p>
+<p>测试通话时，测试盒往对方蓝牙设备发送电话通话测试音频的时间，然后停止发送音频进入测试MIC（范围0-255s，0：没有发送音频的功能，直接测试MIC）</p>
+</li>
+<li><p>mic测试时间：</p>
+<p>测试通话时，测试mic的时间，时间到会结束mic的测试（范围0-255s，0：没有自动结束测试mic的功能，要手动进行切换）。</p>
+</li>
+</ol>
+</section>
+<section id="id6">
+<h2><span class="section-number">3.2.5. </span>蓝牙连接提示音使能<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
+<p>该配置为1时，则提示音使能。在蓝牙连接成功会测试盒会播放“connected”的提示音，蓝牙断开会播放“disconnected”的提示音。（加载默认配置是为1）</p>
+<p>该配置为0时，则连接与断开时无提示音播放。</p>
+</section>
+<section id="pp">
+<h2><span class="section-number">3.2.6. </span>PP键切换测试项使能<a class="headerlink" href="#pp" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>该配置在测试盒连接小机进行经典蓝牙测试时有效，V122之前版本无此配置项，默认为使能状态。</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>当配置为1时，小机按PP键时会切换测试项（如由播歌切换到通话，由通话切到断开）。</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>当配置为0时，小机按PP键时在播歌测试时，仅执行暂停与播放操作，不切到下一测试项。如需要切换到下一项测试，可按测试盒上对应按键切换。</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="tws">
+<h2><span class="section-number">3.2.7. </span>经典蓝牙测试支持TWS连接开关<a class="headerlink" href="#tws" title="Permalink to this heading"></a></h2>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image1.png"/></p>
+<p>当该配置为0时，测试盒连上TWS时，TWS之间连接默认会断开。需要测试TWS各自MIC/喇叭功能的一般采用该配置。</p>
+<p>当配置为“1”时，测试盒连上TWS时，TWS之间连接默认不断开，此配置可以测试TWS连接状态下的耳机功能。（需要对应sdk支持）</p>
+</section>
+<section id="dut">
+<h2><span class="section-number">3.2.8. </span>串口模式耳机进入dut模式说明<a class="headerlink" href="#dut" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>对耳进入DUT模式使能</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>该配置为“1”时，与“对耳测试使能”、“对耳升级使能”、“对耳配对使能”均互斥，这些配置需配置为0。</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>当配置为1时，测试盒会定时发送进入DUT命令，若小机固件支持该命令，则收到该命令后进入DUT测试模
+式，可加快测试仪器搜索和连接的速度。</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>当配置为0时，该功能关闭。</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>使用说明，参考《<a class="reference internal" href="tb_mass_production.html#target-mass-fast-test"><span class="std std-ref">TWS耳机量产快速测试方法</span></a>》章节</p></li>
+</ol>
+</section>
+<section id="id7">
+<h2><span class="section-number">3.2.9. </span>升级电量门限判断使用说明<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h2>
+<p><strong>支持升级电量门限判断</strong></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image2.png"/></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>该配置支持串口升级及经典蓝牙升级的电量判断，默认门限值为0（即不进行门限判断）。</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>假设该配置为50%时，即在开始升级时小机电量小于50%，会报“Err:电量低于设定”的错误。</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>用户可以根据需求，自行配置0-70%的门限范围。100%设计为测试报错信息。</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id8">
+<h2><span class="section-number">3.2.10. </span>按键动作识别测试配置<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h2>
+<p><strong>V124f版本增加按键动作识别测试配置</strong></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image3.png"/></p>
+<ol class="arabic simple">
+<li><p>当配置为“1”时，测试盒连上待测设备经典蓝牙后，会在测完频偏（若使能）和入耳检测测试（若使能）后进入按键动作识别测试项；</p></li>
+<li><p>测试者需要按照测试盒界面提示“按下”或者“抬起”按键；</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>当LCD屏第一次显示“按下”时，测试者需要在8s内按下待测按键（由待测设备软件定义），并持续按住至少2s。此时检测到有“按下”行为LCD会显示“√”。若在显示“抬起”之前提前抬起按键，即会触发LCD显示“错误”。</p></li>
+<li><p>在LCD屏显示“抬起”的2s内测试者要抬起按键，检测到该行为LCD会显示“√”，并持续2s无新按下动作。待LCD再次显示“按下”后，再执行对应操作。</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>测试通过条件：按LCD提示完成两次“按下”和“抬起”操作即通过测试，自动切换到下一项测试（如播歌测试）。</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>测试超时定义：若第一次显示“按下”8s无操作，则会报超时错误；在识别到第一次“按下”动作后，后续显示执行的动作需要在2s内完成，否则也会报超时错误；</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>当配置为“0”，该测试项不使能。默认值为“0”。</p></li>
+</ol>
+</section>
+<section id="id9">
+<h2><span class="section-number">3.2.11. </span>入耳检测校准及测试配置<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h2>
+<p><strong>V1.2.4.f版本增加入耳检测校准及测试配置</strong></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image4.png"/></p>
+<ol class="arabic simple">
+<li><p>当配置为“1”时，测试盒连上待测设备经典蓝牙后，会在测完频偏（若使能）后进入入耳检测校验及测试模式；测试者需按LCD界面提示的执行对应操作；</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>LCD显示“入耳检测trim:”，8s内完成收到校准成功指令后会显示“√”，失败则显示“错误”。（注意：校准期间请让耳机接触于绝缘环境，不可接触触摸片）。</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>LCD显示“入耳检测:”，请在5s内进行入耳动作，并保持2s无动作，以检测校准参数正确情况，完成无误显示“√”，若显示“错误”可能是校准操作有问题，请重新校准。</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>LCD显示“出耳检测:”，请在5s内进行出耳动作，并保持2s检测，以检测校准参数正确情况，完成无误显示“√”，若显示“错误”可能是校准操作有问题，请重新校准。</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>测试超时定义：若第一次显示“入耳检测trim:”8s 内未完成校准，则会报超时错误；若显示“入耳检测:”、“入耳检测:”5s内无相应操作，则会报超时错误；</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>当配置为“0”，该测试项不使能。默认值为“0”。</p></li>
+</ol>
+</section>
+<section id="id10">
+<h2><span class="section-number">3.2.12. </span>TWS配对和测试配置<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h2>
+<ul>
+<li><p>V130版本新增tws配对和测试的流程，即进行对耳配对完成后，会自动让对耳进入测试模式。</p></li>
+<li><p>使能该功能需要上位机同时打开“经典蓝牙测试支持TWS连接”、“对耳配对使能”、“测试使能”。</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image12.png"/></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image13.png"/></p>
+</li>
+</ul>
+</section>
+<section id="trim">
+<h2><span class="section-number">3.2.13. </span>耳机离仓入耳trim功能配置使用<a class="headerlink" href="#trim" title="Permalink to this heading"></a></h2>
+<p><strong>V1.2.6版本添加离仓入耳trim功能</strong></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image10.png"/></p>
+<p>设置为1使能该功能，会进行入耳trim,需要对应的SDK支持。</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image11.png"/></p>
+<p>设置为1使能该功能，配对完成拿出充电仓会自动关机，同样需要对应的SDK支持。</p>
+</section>
+<section id="id11">
+<h2><span class="section-number">3.2.14. </span>语言配置项<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h2>
+<p><strong>V124f版本增加语言配置项</strong></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image5.png"/></p>
+<p>该功能支持打开工具时自动识别系统环境语言配置（Regional format），来显示pc工具的界面显示语音。</p>
+<p>也可以通过界面“语言”菜单选择“中文”或”English”。此时在pc界面点击“保存配置到测试盒”(“update config”)，测试盒LCD的显示语言也会切换到对应语言显示模式。</p>
+</section>
+<section id="id12">
+<h2><span class="section-number">3.2.15. </span>校频波发射模式配置<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h2>
+<p><strong>V1.2.5版本添加校频波频点设置配置项</strong></p>
+<p>该功能需要测试盒和一拖八烧录器配套使用，具体使用请参考《<a class="reference internal" href="tb_mass_production.html#target-bt-trim-mode"><span class="std std-ref">烧录阶段批量频偏校准方法</span></a>》章节</p>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="tb_base_introduction.html" class="btn btn-neutral float-left" title="3.1. 测试盒简要介绍" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="tb_upgrade.html" class="btn btn-neutral float-right" title="3.3. 测试盒固件升级" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_pc_usage.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_pc_usage.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

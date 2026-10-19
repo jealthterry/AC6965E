@@ -1,0 +1,17 @@
+{
+"ub2cddc5584": "Build reports ⟦1⟧Unknown command line argument⟦/1⟧, ⟦2⟧unrecognized option⟦/2⟧ or ⟦3⟧unknown argument⟦/3⟧",
+"ued1e6f0e91": "Build reports ⟦1⟧undefined reference to⟦/1⟧",
+"ud77dcd5d7b": "Build reports ⟦1⟧relocation truncated to fit⟦/1⟧",
+"u02726a8777": "Build reports ⟦1⟧xxx.a: error adding symbols: Archive has no index: run randlib to add one⟦/1⟧",
+"ubeb383084f": "Build reports ⟦1⟧error: LLVM gold plugin: permission denied⟦/1⟧",
+"u6362c12876": "Build reports ⟦1⟧xxx.a: syntax error⟦/1⟧",
+"u3afd3c2d73": "Build reports ⟦1⟧xxx.a: error adding symbols: File format not recognized⟦/1⟧",
+"u40bea36d1d": "Build reports ⟦1⟧clang.exe: error: no input files⟦/1⟧",
+"u2e9b7f976e": "Build reports ⟦1⟧cannot find xxxx.o: No such file or directory⟦/1⟧",
+"u10b0b87a61": "⟦1⟧If you are an algorithm provider, apply by sending an email directly to Jieli at ⟦2⟧jlkf@zh-jieli.com⟦/2⟧.⟦/1⟧⟦3/⟧ Email subject: Multi-algorithm authorization application - xx Company (in Chinese: 多算法授权申请-xx公司)⟦4/⟧ Use the full company name⟦5/⟧ Body:⟦6/⟧ 1. Role: algorithm provider⟦7/⟧ 2. Company introduction: e.g., our company is an algorithm company focusing on the R&D of xxxx; our customers include xxxx, xxxx, xxxx⟦8/⟧ 3. Agent number and name: e.g., 128 Jieli Technology⟦9/⟧ 4. Chip name: e.g., JL7006D⟦10/⟧ 5. Solution type: e.g., speakers, earphones, etc.⟦11/⟧ 6. Usage scenario: e.g., we are cooperating with xx Company, our company is responsible for xxx and the other company for xxx, and multi-algorithm authorization is needed to solve the xxx problem⟦12/⟧ ⟦13/⟧",
+"uba5f8c9454": "⟦1⟧If you are a manufacturer, apply through your algorithm provider, who sends an email directly to Jieli at ⟦2⟧weiyushu@zh-jieli.com⟦/2⟧.⟦/1⟧⟦3/⟧ Email subject: Multi-algorithm authorization application - xx Company applies for an invitation code on behalf of xx Company (in Chinese: 多算法授权申请-xx公司帮助xx公司申请邀请码)⟦4/⟧ Use the full company names⟦5/⟧ Body:⟦6/⟧ 1. Role: manufacturer⟦7/⟧ 2. Introduction of the solution company: e.g., the manufacturer using our algorithm is xx Company, which focuses on the R&D of xxxx; its customers include xxxx, xxxx, xxxx⟦8/⟧ 3. Chip name: e.g., JL7006D⟦9/⟧ 4. Solution type: e.g., speakers, earphones, etc.⟦10/⟧ 5. Usage scenario: e.g., xx Company is cooperating with our company and needs multi-algorithm authorization to solve the xxx problem⟦11/⟧ 6. Manufacturer email address: the email address of the contact person at xx Company⟦12/⟧",
+"uac40cea139": "Email subject: [Multi-algorithm authorization patch request]-[chip model]-[SDK version] (in Chinese: [申请多算法授权补丁]-[芯片型号]-[sdk版本])⟦1/⟧ Example: [申请多算法授权补丁]-AC632N-ac63_bt_sdk_release_v2.3.0⟦2/⟧",
+"u0d6cfcc848": "Maximum shutdown current (uA) (关机电流最大值)",
+"u034755d208": "Minimum shutdown current (uA) (关机电流最小值)",
+"u3cbe105972": "The power-up current of the chip to be programmed exceeds the set value (50mA);⟦1/⟧Solution:⟦2/⟧1. Check the chip contact; the programming socket may have a short circuit;⟦3/⟧2. The chip itself is defective; try replacing the chip"
+}

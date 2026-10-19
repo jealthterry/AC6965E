@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.4. 远程升级烧录器固件 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>1. 杰理科技一拖二烧录器用户手册</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">1.1. 烧录器简要介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html">1.2. 手动烧录、校验、查空芯片操作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html">1.3. 机台自动烧录操作流程</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.4. 远程升级烧录器固件</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1.4.1. 升级说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#target-remote-update-burn-tool"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.4.2. 正式版本固件升级</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pc1">1.4.2.1. 方法一：一台PC只支持升级1台烧录器</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pc6">1.4.2.2. 方法二：一台PC支持同时升级6台烧录器</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">1.4.3. 特殊版本固件升级</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">1.4.4. 升级异常处理</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html">1.5. 各型号芯片PC端烧录配置项介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html">1.6. 状态指示和报错提示说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html">1.7. 授权烧录次数限制功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html">1.8. 第三方数据（认证码）烧录功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html">1.9. 蓝牙地址及名字自增功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_burn.html">1.10. 芯片烧录接线和供电说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html">1.11. 其它常见功能配置和使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faqs.html">1.12. 常见错误处理</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">1. </span>杰理科技一拖二烧录器用户手册</a> »</li>
+<li><span class="section-number">1.4. </span>远程升级烧录器固件</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/mass_prod_tools/burner_1tuo2/remote_update.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">1.4. </span>远程升级烧录器固件<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">1.4.1. </span>升级说明<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>一拖二烧录器固件是指控制整个烧录器工作的主控芯片固件程序。</p>
+<p>烧录器固件可以通过PC工具<code class="docutils literal notranslate"><span class="pre">burn_tool.exe</span></code>操作进行远程升级。</p>
+<p>升级工具可选择最新的3个正式版本固件进行升级，同时支持升级根据实际应用和客户需要制作的特殊版本烧录器固件。</p>
+<p>烧录器固件会根据实际情况不定时进行优化升级，进行增加功能、性能优化、问题修复等。正常情况下务必及时升级到最新版本，否则可能出现一些烧录问题。</p>
+</section>
+<section id="target-remote-update-burn-tool">
+<span id="id3"></span><h2><span class="section-number">1.4.2. </span>正式版本固件升级<a class="headerlink" href="#target-remote-update-burn-tool" title="Permalink to this heading"></a></h2>
+<p>打开远程升级控制界面，有两种方法打开。</p>
+<ul class="simple">
+<li><p>方法一：一台PC只支持升级1台烧录器</p></li>
+<li><p>方法二：一台PC支持同时升级6台烧录器</p></li>
+</ul>
+<section id="pc1">
+<h3><span class="section-number">1.4.2.1. </span>方法一：一台PC只支持升级1台烧录器<a class="headerlink" href="#pc1" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>参考《<a class="reference internal" href="basic_usage.html#target-deploy-fw-file-to-1tuo2-open-ui"><span class="std std-ref">打开部署程序界面</span></a>》章节，打开更新程序的界面后如<a class="reference internal" href="#img-open-remote-update-1tuo2"><span class="std std-ref">打开远程升级界面步骤</span></a>所示：</p>
+<ul class="simple">
+<li><p>【1】点击“设备”；</p></li>
+<li><p>【2】点击“远程升级”，打开远程升级控制界面，会出现如图<a class="reference internal" href="#img-method1-remote-update-1tuo2"><span class="std std-ref">方法一远程升级操作说明</span></a>所示远程升级界面；</p></li>
+</ul>
+<figure class="align-default" id="img-open-remote-update-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image28.png"/>
+<figcaption>
+<p><span class="caption-text">打开远程升级界面步骤</span><a class="headerlink" href="#img-open-remote-update-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>如<a class="reference internal" href="#img-method1-remote-update-1tuo2"><span class="std std-ref">方法一远程升级操作说明</span></a>所示：</p>
+<ul class="simple">
+<li><p>【1】选择要升级的烧录器固件版本</p></li>
+<li><p>【2】点击“升级”</p></li>
+<li><p>【3】升级成功后，对烧录器重新上电（拔出烧录器端的USB数据线，并对”电源总开关“进行按下关闭再按下打开操作）;</p></li>
+<li><p>【4】重新上电后，显示屏提示“无烧写文件!”，参考《<a class="reference internal" href="basic_usage.html#target-deploy-fw-file-to-1tuo2"><span class="std std-ref">部署目标芯片程序到烧录器</span></a>》部署sdk编译生成的.fw、.ufw或.key文件到烧录器后即可执行程序离线烧录;</p></li>
+</ul>
+<figure class="align-default" id="img-method1-remote-update-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image29.png"/>
+<figcaption>
+<p><span class="caption-text">方法一远程升级操作说明</span><a class="headerlink" href="#img-method1-remote-update-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+</section>
+<section id="pc6">
+<h3><span class="section-number">1.4.2.2. </span>方法二：一台PC支持同时升级6台烧录器<a class="headerlink" href="#pc6" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>参考《<a class="reference internal" href="basic_usage.html#target-deploy-fw-file-to-1tuo2-open-ui"><span class="std std-ref">打开部署程序界面</span></a>》章节的<strong>操作步骤【3】鼠标右键打开“CD 驱动器”光驱</strong>，会看到<code class="docutils literal notranslate"><span class="pre">burn_tool.exe</span></code>可执行文件，<strong>只把</strong><code class="docutils literal notranslate"><span class="pre">burn_tool.exe</span></code>可执行文件复制一份到PC其它路径备份</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>注意，<strong>只需要</strong>拷贝<code class="docutils literal notranslate"><span class="pre">burn_tool.exe</span></code>，不要拷贝别的文件，否则可能会无法升级</p>
+</div>
+</li>
+<li><p>烧录器上电后使用USB线进行“烧录器和PC端连接”（也可不上电直接连接USB线），让烧录器进入“PC模式”（一台PC可以同时通过不同的USB接口连接6台烧录器，USB接口不够可通过USB扩展器进行连接）；</p></li>
+<li><p>双击备份的<code class="docutils literal notranslate"><span class="pre">burn_tool.exe</span></code>，打开远程升级控制界面，如图<a class="reference internal" href="#img-method2-remote-update-1tuo2"><span class="std std-ref">方法二远程升级操作说明</span></a>所示：</p>
+<ul class="simple">
+<li><p>【1】选择要升级的烧录器固件版本</p></li>
+<li><p>【2】在对应<strong>检测到烧录器连接上</strong>的通道，点击“升级”（支持6台在线的烧录器同时升级）</p></li>
+</ul>
+<figure class="align-default" id="img-method2-remote-update-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image30.png"/>
+<figcaption>
+<p><span class="caption-text">方法二远程升级操作说明</span><a class="headerlink" href="#img-method2-remote-update-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>所有升级的通道升级成功后，可对烧录器重新上电（拔出烧录器端的USB数据线，并对”电源总开关“进行按下关闭再按下打开）;</p></li>
+<li><p>重新上电后，显示屏提示“无烧写文件!”，参考《<a class="reference internal" href="basic_usage.html#target-deploy-fw-file-to-1tuo2"><span class="std std-ref">部署目标芯片程序到烧录器</span></a>》部署sdk编译生成的.fw、.ufw或.key文件到烧录器后即可执行程序离线烧录;</p></li>
+</ol>
+</section>
+</section>
+<section id="id4">
+<h2><span class="section-number">1.4.3. </span>特殊版本固件升级<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>特殊版本升级同《<a class="reference internal" href="#target-remote-update-burn-tool"><span class="std std-ref">正式版本固件升级</span></a>》的正式版本升级流程基本一致，主要区别是特殊版本升级<strong>需要输入特殊版本序列号</strong>。</p>
+<p>如图<a class="reference internal" href="#img-spec-remote-update-1tuo2"><span class="std std-ref">远程升级特殊版本操作说明</span></a>所示：</p>
+<ul class="simple">
+<li><p>【1】输入要升级的特殊版本序列号;</p></li>
+<li><p>【2】点击查询，查询到对应的特殊版本;</p></li>
+<li><p>【3】点击升级，升级成功后，对烧录器重新上电（拔出烧录器端的USB数据线，并对”电源总开关“进行按下关闭再按下打开操作）;</p></li>
+<li><p>【4】重新上电后，显示屏提示“无烧写文件!”，参考《<a class="reference internal" href="basic_usage.html#target-deploy-fw-file-to-1tuo2"><span class="std std-ref">部署目标芯片程序到烧录器</span></a>》部署sdk编译生成的.fw、.ufw或.key文件到烧录器后即可执行程序离线烧录;</p></li>
+</ul>
+<figure class="align-default" id="img-spec-remote-update-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image31.png"/>
+<figcaption>
+<p><span class="caption-text">远程升级特殊版本操作说明</span><a class="headerlink" href="#img-spec-remote-update-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id5">
+<h2><span class="section-number">1.4.4. </span>升级异常处理<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>升级过程出现USB松动等原因导致升级失败，请对烧录器重新上电再插入USB线，重新走正常的升级流程</p></li>
+<li><p>远程升级工具如果一直未检测到烧录器插入，可以尝试：</p>
+<ul class="simple">
+<li><p>【1】烧录器不供电，按住烧录器上的“<strong>独立按键</strong>”（参考：<a class="reference internal" href="intro_basic.html#target-1tuo2-hosts-info"><span class="std std-ref">烧录器主机介绍</span></a> 中的图片）</p></li>
+<li><p>【2】烧录器插入USB线并连接PC</p></li>
+<li><p>【3】松开独立按键；这时远程升级工具一般能再次检测到烧录器插入，通过《<a class="reference internal" href="#target-remote-update-burn-tool"><span class="std std-ref">正式版本固件升级</span></a>》的方法二使用提前备份的<code class="docutils literal notranslate"><span class="pre">burn_tool.exe</span></code>进行升级，这时候走正常的升级流程即可；</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="autoburn.html" class="btn btn-neutral float-left" title="1.3. 机台自动烧录操作流程" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="config_opt.html" class="btn btn-neutral float-right" title="1.5. 各型号芯片PC端烧录配置项介绍" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/remote_update.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/remote_update.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

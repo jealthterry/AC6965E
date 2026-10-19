@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.16. MIC 测试功能 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>2. 杰理科技一拖八烧录器用户手册</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">2.1. 烧录器简要介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html">2.2. 手动烧录、校验、查空芯片操作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html">2.3. 机台自动烧录操作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html">2.4. 远程升级烧录器固件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html">2.5. 各型号芯片PC端烧录配置项介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html">2.6. 状态指示和报错提示说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pc_err.html">2.7. PC界面报错提示说明和处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="change_board_interval.html">2.8. 换板时间设置及使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="burn_vol.html">2.9. 不同芯片烧录电压说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html">2.10. 授权烧录次数限制功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html">2.11. 第三方数据（认证码）烧录功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html">2.12. 蓝牙地址及名字自增功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_curr_test.html">2.13. 电流功耗测试功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_battery.html">2.14. 样机带电池烧录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freq_bias.html">2.15. 频偏校准功能</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>2.16. MIC 测试功能</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">2.16.1. 应用场景</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.16.2. 测试说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2.16.3. 测试操作步骤</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">2.16.4. 注意事项</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usual_uart_update.html">2.17. 样机带电池自定义IO单双线串口升级功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extern_flash_burn.html">2.18. 同时升级内置flash和外挂flash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="erase.html">2.19. 非全片擦除功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html">2.20. 其它常见功能配置和使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faqs.html">2.21. 常见错误处理</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">2. </span>杰理科技一拖八烧录器用户手册</a> »</li>
+<li><span class="section-number">2.16. </span>MIC 测试功能</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/mass_prod_tools/burner_1tuo8/mic_test.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="mic">
+<h1><span class="section-number">2.16. </span>MIC 测试功能<a class="headerlink" href="#mic" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2><span class="section-number">2.16.1. </span>应用场景<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>对于 MIC 异常的样机，在生产过程中需要挑选出来进行更换或对样机电路进行检修。如何快速挑选 MIC 异常的样机？</p>
+<p>可以使用一拖八烧录器烧录样机芯片程序的同时，对样机上的 MIC 进行检测，检测出 MIC 存在异常的样机。例如，MIC 没有声音的样机。</p>
+<p>如果样机的 MIC 正常，则烧录通过；反之当 MIC 异常的时候，烧录器则会报错。</p>
+<p>这样即可把 MIC 异常的样机挑选出来，避免 MIC 异常的样机流入后续生产环节，提高生产效率。</p>
+</section>
+<section id="id2">
+<h2><span class="section-number">2.16.2. </span>测试说明<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>支持 MIC 测试的烧录器固件版本和芯片型号。</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>一拖八烧录器固件版本</strong></p></th>
+<th class="head"><p><strong>支持芯片型号</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>以部署界面开放选项为准</p></td>
+<td><p>AD697N/AC897N、AD698N、AC700N/JL700N、AC701N/JL701N</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>AC704N、AC710N</p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li><p>MIC 测试配置参数说明</p>
+<ul class="simple">
+<li><p>如需通过烧录器进行 MIC 测试，则需要在“更新FW文件的PC界面烧录选项”中对 MIC 测试项进行配置，如图<a class="reference internal" href="#img-mic-test-opt-1tuo8"><span class="std std-ref">MIC 测试选项配置</span></a>所示：</p></li>
+</ul>
+<figure class="align-default" id="img-mic-test-opt-1tuo8">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image80.png"/>
+<figcaption>
+<p><span class="caption-text">MIC 测试选项配置</span><a class="headerlink" href="#img-mic-test-opt-1tuo8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ul>
+<li><p>MIC 测试选项参数配置说明</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>MIC 测项选项</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MIC 模式</p></td>
+<td><p>有三种类型选择：1、差分MIC; 2、单端隔直MIC; 3、省电容MIC；务必根据实际方案选择对应的MIC模式类型进行测试</p></td>
+</tr>
+<tr class="row-odd"><td><p>MIC 测试时间</p></td>
+<td><p><strong>默认为0，关闭MIC测试</strong><br/>选择100mS以上,数值越大 MIC 测试稳定性越好，不考虑烧录速度建议选择500~1000ms</p></td>
+</tr>
+<tr class="row-even"><td><p>MIC 测试频率下限</p></td>
+<td><p>如果环境中存在不可避免的低频噪声，可以根据噪声频率，设置频率下限，低于设定频率下限的频率会被过滤掉(设定的频率下限要小于测试时播放的正弦波频率)；<br/>频率下限(范围0-20000)</p></td>
+</tr>
+<tr class="row-odd"><td><p>MIC 测试阈值上限<br/>MIC 测试阈值下限</p></td>
+<td><p>找若干个正常样机，在测试环境使用音源设备播放一个持续的正弦波(例如1kHz正弦波)，观察各个样机的 MIC 采集能量值输出范围，<br/>并基于这个范围的最大最小值，并预留适当的余量来确定设置能量阈值的上下限；<br/>能量阈值上限/能量阈值下限(范围0-32767)<br/><strong>如果在烧录测试过程中，样机的能量值不在上下限范围内，则认为该样机存在 MIC 异常</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>MIC_x 供电方式</p></td>
+<td><p>对应要测试的 MIC 供电方式要根据实际的硬件设置：<br/>1、选择 ‘OFF’：默认关闭当前 MIC 通道测试；<br/>2、选择’BIAS’：即芯片设定的管脚供电，MIC0 是PA02引脚，MIC1 是PB07引脚(根据芯片型号而定)；<br/>3、选择LDO供电，即 micldo 提供偏置；<br/>4、选择IO供电，需要手动输入IO引脚。如：PA02, PA15, PB09 等IO供电(注意:需要 <strong>输入4个字符</strong>。例如，输入的是 PA02 而不是 PA2)</p></td>
+</tr>
+<tr class="row-odd"><td><p>MIC_x 偏置电阻</p></td>
+<td><p>选择对应要测试的 MIC 需要的电阻值，即设置芯片内部的 MIC 的偏置电阻大小</p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+</ul>
+</li>
+<li><p>无声音 MIC 特性</p>
+<ul class="simple">
+<li><p>MIC 器件的虚焊或者短路，导致采集不到声音，那么 adc 采集到的值不会有变化，能量值输出为0；</p></li>
+<li><p>MIC 有问题，采集不到声音或者声音特别小声，那么输出的电压信号幅度特别小，能量值输出是一个比正常情况小很多的值。</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id3">
+<h2><span class="section-number">2.16.3. </span>测试操作步骤<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>寻找合适的 MIC 测试阈值上下限</p>
+<ul class="simple">
+<li><p>更新 fw 烧录文件时，按照 MIC 参数配置说明，对 MIC 测试选项进行配置(最多同时支持测试4个 MIC ,但只有部分芯片支持4个)，<br/>其中 MIC 测试阈值下限可先设置0，上限可先设置1000；其余参数根据实际使用情况进行设置；在配置完参数之后，部署 fw 烧录文件和烧录选项到烧录器</p></li>
+<li><p>选择<strong>烧录模式或校验模式</strong>，对样机芯片执行烧录或者校验流程，烧录或校验完成之后，成功和失败的情况下，一拖八烧录器显示屏都会显示要测试的 MIC0 或 MIC1 的能量值；<br/>如图<a class="reference internal" href="#img-mic-eng-display"><span class="std std-ref">MIC测试能量值显示</span></a>所示：</p></li>
+</ul>
+<figure class="align-default" id="img-mic-eng-display">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image81.png"/>
+<figcaption>
+<p><span class="caption-text">MIC测试能量值显示</span><a class="headerlink" href="#img-mic-eng-display" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>进度条颜色</p></th>
+<th class="head"><p>含义</p></th>
+<th class="head"><p>MIC0 能量值</p></th>
+<th class="head"><p>MIC1 能量值</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>绿色</p></td>
+<td><p>测试成功</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>红色</p></td>
+<td><p>测试失败</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这里两次的能量值一样，但是报错不一致，是因为两次设置的MIC测试阈值上下限不一样</p>
+</div>
+<ul class="simple">
+<li><p>测试多个正常样机，记录每个样机的能量值，确定出合适的 MIC 测试阈值上下限</p></li>
+</ul>
+</li>
+<li><p>重新更新 fw 烧录文件，并配置合适的 MIC 测试阈值上下限，即可开始批量烧录并对 MIC 进行测试</p></li>
+</ol>
+</section>
+<section id="id4">
+<h2><span class="section-number">2.16.4. </span>注意事项<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>务必先寻找合适的 MIC 测试阈值上下限，配置好 MIC 测试阈值上下限之后，再进行批量烧录测试</p></li>
+<li><p>MIC 采集的数据中小于频率下限的部分会被过滤掉(例如环境有低频的干扰)</p></li>
+</ol>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="freq_bias.html" class="btn btn-neutral float-left" title="2.15. 频偏校准功能" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="usual_uart_update.html" class="btn btn-neutral float-right" title="2.17. 样机带电池自定义IO单双线串口升级功能" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo8/mic_test.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo8/mic_test.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

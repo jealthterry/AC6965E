@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3.3. Test Box Firmware Upgrade — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>3. Jieli 1-to-2 Bluetooth Test Box User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_base_introduction.html">3.1. Test Box Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html">3.2. PC Tool Configuration and Use</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>3.3. Test Box Firmware Upgrade</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.3.1. Remote upgrade</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3.3.2. Local upgrade</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wireless_upgrade.html">3.4. Wireless Upgrade of Bluetooth Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wired_upgrade.html">3.5. Wired Upgrade of Bluetooth Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_test_process.html">3.6. Bluetooth Device Test Procedure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mass_production.html">3.7. Test Box Batch Upgrade and Test Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ear_storage.html">3.8. Using Earphone Storage Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_transparent.html">3.9. PC Passthrough Commands and Custom Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mes_log.html">3.10. Test Box MES Log Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_view_bt_info.html">3.11. Viewing Bluetooth Device Information (SDK Version/Battery Level/Checksum)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ufw_crc_compare.html">3.12. Test Box UFW File Checksum Matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_error_status.html">3.13. Status Indicators and Error Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_fixture_install.html">3.14. Connecting the Test Box to a Fixture over UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_function.html">3.15. Other Common Features: Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_problem.html">3.16. Frequently Asked Questions (FAQ)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_version_info.html">3.17. Version Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">3. </span>Jieli 1-to-2 Bluetooth Test Box User Manual</a> »</li>
+<li><span class="section-number">3.3. </span>Test Box Firmware Upgrade</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/testbox_1tuo2/tb_upgrade.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">3.3. </span>Test Box Firmware Upgrade<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">3.3.1. </span>Remote upgrade<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>Remote upgrade of the test box firmware is supported starting from <font color="red" face="黑体" size="4">test box version V122</font>. In the test box PC interface, select "Test box upgrade" (测试盒升级) -&gt; "Remote upgrade" (远程升级) to open the remote upgrade window. The procedure is shown in the figure below:</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image27.png"/></p>
+<p>If a forced upgrade is needed (for example, if the upgrade is interrupted unexpectedly or power is lost), you can still upgrade the firmware of the three chips on the test box one by one with the USB Forced Upgrade Tool and jumpers, as described in method 2 under Local upgrade. Likewise, select the firmware version first and then click "Upgrade" (升级); the PC tool automatically identifies the master and slave chips of the test box and updates the corresponding firmware.</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">3.3.2. </span>Local upgrade<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>For upgrading the test box firmware, <font color="red" face="黑体" size="5">method 1 is preferred</font>; use method 2 only if problems occur when upgrading with method 1.</p>
+<p><font color="red" face="黑体" size="5">Method 1:</font><br/></p>
+<p>Upgrade with the bt_test_box.exe software. No jumpers are needed; just plug into the USB port to upgrade the 1-to-2 test box from the PC. (This method is supported only if the firmware running on the test box is AC690x_1T2 test box V1.0.1 or later.) The tool can read the version number, as shown in the figure below.</p>
+<ol class="arabic simple">
+<li><p>For this method, the test box must be running normally. Plug in the MiniUSB cable and press and hold [Button 4] (to the left of the DIP switch) to enter upgrade mode.</p></li>
+</ol>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image21.png"/>
+<img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image22.png"/></p>
+<ol class="arabic simple" start="2">
+<li><p>Drag AC690x_1T2测试盒bin_V1.0.1\jl_690x.bin into the "Slave" (从机) field</p></li>
+</ol>
+<p>Drag AC690x_1T2测试盒bin_V1.0.1\jl_690x_master.bin into the "Master" (主机) field. (After opening the files, <code class="docutils literal notranslate"><span class="pre">click</span> <span class="pre">"Upgrade</span> <span class="pre">test</span> <span class="pre">box"</span> <span class="pre">(升级测试盒)</span></code>; <strong>do not power off during the upgrade</strong>.) When the upgrade reaches 100%, restart the test box. If both channels on the display show <code class="docutils literal notranslate"><span class="pre">"Searching"</span></code> (搜索中), the master and slave upgrades succeeded and the box is running normally.</p>
+<ol class="arabic simple" start="3">
+<li><p>Handling upgrade errors: if a channel shows "Initializing" (初始化中), the slave upgrade failed; if the display shows nothing, the master upgrade failed. In that case, perform a forced firmware upgrade of the 1-to-2 test box with the small tool and jumpers described in method 2.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the test box firmware was upgraded from V1.0.1\V1.0.2 to V1.0.3 with method 1 and, after the upgrade, the master does not run correctly while the slaves are normal,</p>
+<p>then upgrade the master again with method 2; the slaves do not need to be upgraded again</p>
+</div>
+<p><font color="red" face="黑体" size="5">Method 2:</font><br/></p>
+<p>Upgrade the 1-to-2 test box firmware with the USB upgrade tool. The test box has three chips, and a firmware upgrade must update all three: two slaves (with the same firmware) and one master.</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image23.png"/></p>
+<p>Where:</p>
+<p>AC690x_1T2测试盒_从机Vx.x.x.exe: slave firmware upgrade package</p>
+<p>AC690x_1T2测试盒_主机Vx.x.x.exe: master firmware upgrade package</p>
+<ol class="arabic simple">
+<li><p>To upgrade the master, connect the USB upgrade tool, plug it into the USB port, and click AC690x_1T2测试盒_主机Vx.x.x.exe to download.</p></li>
+</ol>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image24.png"/></p>
+<ol class="arabic simple" start="2">
+<li><p>To upgrade the two slaves one at a time, first remove the 6 resistors on the back of the test box circuit board (all the resistors circled in the figure below must be removed). Then connect the USB port with Dupont wires (DM to slave 1DM or DM2, DP to slave 1DP or DP2). The wiring on the back of the test box (<code class="docutils literal notranslate"><span class="pre">download</span> <span class="pre">slave</span> <span class="pre">1</span> <span class="pre">and</span> <span class="pre">slave</span> <span class="pre">2</span> <span class="pre">separately</span></code>) is shown in the figure below. Connect the USB upgrade tool, plug it into the USB port, and click AC690x_1T2测试盒_从机Vx.x.x.exe to download. (<code class="docutils literal notranslate"><span class="pre">Solder</span> <span class="pre">the</span> <span class="pre">6</span> <span class="pre">resistors</span> <span class="pre">back</span> <span class="pre">on</span> <span class="pre">after</span> <span class="pre">all</span> <span class="pre">three</span> <span class="pre">chips</span> <span class="pre">have</span> <span class="pre">been</span> <span class="pre">upgraded</span></code>.)</p></li>
+</ol>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image25.png"/>
+<img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image26.png"/></p>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="tb_pc_usage.html" class="btn btn-neutral float-left" title="3.2. PC Tool Configuration and Use" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="tb_wireless_upgrade.html" class="btn btn-neutral float-right" title="3.4. Wireless Upgrade of Bluetooth Devices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_upgrade.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_upgrade.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

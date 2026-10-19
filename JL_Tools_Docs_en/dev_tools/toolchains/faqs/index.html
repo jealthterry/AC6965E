@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.1. Common Issues and Solutions — JL Project Documentation</title>
+<link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../../index.html"><img id="jl-logo" src="../../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>4. About the Toolchain</a><ul>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>4.1. Common Issues and Solutions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="faq_printf_float_point.html">4.1.1. Why Can't printf Print Floating-Point Numbers?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_vsprintf.html">4.1.2. Why Are vsprintf, sprintf and vprintf Not Found?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_warn_implicit_fun.html">4.1.3. About Warnings for Calls to Undeclared Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_float_point.html">4.1.4. Floating-Point FAQ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_how_to_merge_libs.html">4.1.5. How to Merge .a Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_how_to_merge_ofiles.html">4.1.6. How to Reduce the Number of .o Files in an .a File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_program_used_memory/index.html">4.1.7. How to View the Program's Memory Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_stack_size_limit_exceeded.html">4.1.8. Why Does Linking Warn "stack size limit exceeded"?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_why_build_failed.html">4.1.9. Common Causes of Build Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_how_to_reduce_compilation_time.html">4.1.10. How to Reduce Build Time on Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../linux_lib.html">4.2. Installing the Jieli Toolchain and Building Static Libraries on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ini_cfg.html">4.3. The isd_config.ini Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../otp_cfg.html">4.4. FLASH Parameter Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="../index.html"><span class="section-number">4. </span>About the Toolchain</a> »</li>
+<li><span class="section-number">4.1. </span>Common Issues and Solutions</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../../JL_Tools_Docs_zh/dev_tools/toolchains/faqs/index.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">4.1. </span>Common Issues and Solutions<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faq_printf_float_point.html">4.1.1. Why Can't printf Print Floating-Point Numbers?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq_vsprintf.html">4.1.2. Why Are vsprintf, sprintf and vprintf Not Found?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq_warn_implicit_fun.html">4.1.3. About Warnings for Calls to Undeclared Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="faq_warn_implicit_fun.html#id2">4.1.3.1. How to turn the warning into an error</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq_float_point.html">4.1.4. Floating-Point FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="faq_float_point.html#c">4.1.4.1. Can floating-point numbers be used normally in C code?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq_float_point.html#id1">4.1.4.2. Which chips support single-precision hardware floating point?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq_float_point.html#id2">4.1.4.3. Why doesn't my code generate single-precision hardware floating-point instructions?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq_float_point.html#id3">4.1.4.4. Why does my code contain double-precision operations?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq_float_point.html#id4">4.1.4.5. Why do floating-point exceptions occur?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq_float_point.html#id5">4.1.4.6. Why do floating-point functions seem not to work properly?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq_how_to_merge_libs.html">4.1.5. How to Merge .a Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="faq_how_to_merge_libs.html#id1">4.1.5.1. Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq_how_to_merge_ofiles.html">4.1.6. How to Reduce the Number of .o Files in an .a File</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="faq_how_to_merge_ofiles.html#id1">4.1.6.1. Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq_program_used_memory/index.html">4.1.7. How to View the Program's Memory Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="faq_program_used_memory/faq_total_used.html">4.1.7.1. Viewing the Overall Usage (Size of Each Section)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq_program_used_memory/faq_func_and_var_sizes.html">4.1.7.2. Viewing the Details (Size of Each Function and Variable)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq_stack_size_limit_exceeded.html">4.1.8. Why Does Linking Warn "stack size limit exceeded"?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq_why_build_failed.html">4.1.9. Common Causes of Build Errors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="faq_why_build_failed.html#unknown-command-line-argument-unrecognized-option-unknown-argument">4.1.9.1. Build reports Unknown command line argument, unrecognized option or unknown argument</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq_why_build_failed.html#undefined-reference-to">4.1.9.2. Build reports undefined reference to</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq_why_build_failed.html#relocation-truncated-to-fit">4.1.9.3. Build reports relocation truncated to fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq_why_build_failed.html#xxx-a-error-adding-symbols-archive-has-no-index-run-randlib-to-add-one">4.1.9.4. Build reports xxx.a: error adding symbols: Archive has no index: run randlib to add one</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq_why_build_failed.html#error-llvm-gold-plugin-permission-denied">4.1.9.5. Build reports error: LLVM gold plugin: permission denied</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq_why_build_failed.html#xxx-a-syntax-error">4.1.9.6. Build reports xxx.a: syntax error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq_why_build_failed.html#xxx-a-error-adding-symbols-file-format-not-recognized">4.1.9.7. Build reports xxx.a: error adding symbols: File format not recognized</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq_why_build_failed.html#clang-exe-error-no-input-files">4.1.9.8. Build reports clang.exe: error: no input files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq_why_build_failed.html#cannot-find-xxxx-o-no-such-file-or-directory">4.1.9.9. Build reports cannot find xxxx.o: No such file or directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq_why_build_failed.html#id2">4.1.9.10. Custom errors defined in the linker script</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq_how_to_reduce_compilation_time.html">4.1.10. How to Reduce Build Time on Windows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="faq_how_to_reduce_compilation_time.html#id1">4.1.10.1. Change the antivirus software settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq_how_to_reduce_compilation_time.html#microsoft-pc-manager-service">4.1.10.2. Disable the Microsoft PC Manager Service</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="../index.html" class="btn btn-neutral float-left" title="4. About the Toolchain" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="faq_printf_float_point.html" class="btn btn-neutral float-right" title="4.1.1. Why Can&#x27;t printf Print Floating-Point Numbers?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 09, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/toolchains/faqs/index.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/toolchains/faqs/index.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../../_static/offline.js"></script>
+</body>
+</html>

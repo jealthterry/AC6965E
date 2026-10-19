@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.3. 机台自动烧录操作流程 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>1. 杰理科技一拖二烧录器用户手册</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">1.1. 烧录器简要介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html">1.2. 手动烧录、校验、查空芯片操作流程</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.3. 机台自动烧录操作流程</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1.3.1. 自动烧录介绍</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#io"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.3.2. 自动烧录IO控制信号说明</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">1.3.2.1. IO控制信号线说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">1.3.2.2. IO控制信号时序</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id5"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.3.3. 自动烧录操作流程</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">1.3.3.1. 自动烧录准备工作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">1.3.3.2. 自动烧录流程说明</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html">1.4. 远程升级烧录器固件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html">1.5. 各型号芯片PC端烧录配置项介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html">1.6. 状态指示和报错提示说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html">1.7. 授权烧录次数限制功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html">1.8. 第三方数据（认证码）烧录功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html">1.9. 蓝牙地址及名字自增功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_burn.html">1.10. 芯片烧录接线和供电说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html">1.11. 其它常见功能配置和使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faqs.html">1.12. 常见错误处理</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">1. </span>杰理科技一拖二烧录器用户手册</a> »</li>
+<li><span class="section-number">1.3. </span>机台自动烧录操作流程</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/mass_prod_tools/burner_1tuo2/autoburn.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">1.3. </span>机台自动烧录操作流程<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">1.3.1. </span>自动烧录介绍<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>目的</p>
+<p>人工烧录速度慢，机台自动烧录可以大大提高烧录速度，解决人工烧录效率低问题。</p>
+</li>
+<li><p>实现说明</p></li>
+</ol>
+<p>机台通过烧录器上的IO信号控制自动烧录，取代手动烧录中<code class="docutils literal notranslate"><span class="pre">开始烧录</span></code>（对应手动按开始按键）和<code class="docutils literal notranslate"><span class="pre">烧录结果判断</span></code>（人眼判断开始按键上的红绿灯状态）两个步骤中的相关工作。通过机器手放芯片到转接socket座上并执行开始烧录，机台实时监控IO信号对应的烧录状态，对烧录结果进行判断处理。</p>
+</section>
+<section id="io">
+<h2><span class="section-number">1.3.2. </span>自动烧录IO控制信号说明<a class="headerlink" href="#io" title="Permalink to this heading"></a></h2>
+<section id="id3">
+<h3><span class="section-number">1.3.2.1. </span>IO控制信号线说明<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<p>机台自动烧录信号控制线，接转接板的“自动烧录IO控制信号线”，请参考《<a class="reference internal" href="intro_basic.html#target-introduction-and-installation-pinboard"><span class="std std-ref">转接板介绍与安装</span></a>》小节。
+烧录器有两个通道的控制信号线，单个通道信号线有<code class="docutils literal notranslate"><span class="pre">Start信号线</span></code>，<code class="docutils literal notranslate"><span class="pre">Busy忙信号线</span></code>，<code class="docutils literal notranslate"><span class="pre">Ok信号线</span></code>，<code class="docutils literal notranslate"><span class="pre">V3.3V</span></code>，<code class="docutils literal notranslate"><span class="pre">GND</span></code>，控制信号线说明如以下表格所示。</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>编号</strong></p></th>
+<th class="head"><p><strong>类型</strong></p></th>
+<th class="head"><p><strong>Start（开始按键）</strong></p></th>
+<th class="head"><p><strong>Busy（绿灯）</strong></p></th>
+<th class="head"><p><strong>Ok（红灯）</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>信号说明</p></td>
+<td><p>机台供给烧录器</p></td>
+<td><p>烧录器输出给机台</p></td>
+<td><p>烧录器输出给机台</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>初始状态</p></td>
+<td><p>高电平</p></td>
+<td><p>低电平（绿灯灭）</p></td>
+<td><p>低电平（红灯灭）<br/>或 高电平（红灯亮）</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>开始烧录</p></td>
+<td><p>低电平(大于1mS，给低后拉高)</p></td>
+<td><p>/</p></td>
+<td><p>/</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>正在烧录</p></td>
+<td><p>/</p></td>
+<td><p>高电平（绿灯亮）</p></td>
+<td><p>低电平（红灯灭）</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>烧录成功</p></td>
+<td><p>高电平</p></td>
+<td><p>低电平（绿灯灭）</p></td>
+<td><p>低电平（红灯灭）</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>烧录失败</p></td>
+<td><p>高电平</p></td>
+<td><p>低电平（绿灯灭）</p></td>
+<td><p>高电平（红灯亮）</p></td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ol class="arabic simple">
+<li><p><strong>Start信号线</strong>：开始按键的输入IO引脚给大于1mS的低电平时烧录器执行开始烧录，建议低电平时间2mS~20mS,低电平持续时间大一点也没影响。开始按键按下<code class="docutils literal notranslate"><span class="pre">Start信号</span></code>是低电平，抬起是高电平。
+<br/>
+<br/></p></li>
+<li><p><strong>Busy忙信号线</strong>：Start信号拉低大于等于1mS时，<code class="docutils literal notranslate"><span class="pre">Busy忙信号线</span></code>对应的IO引脚输出高电平（上升沿信号），烧录器开始烧录，对应于开始按键上的绿灯亮；烧录结束时，<code class="docutils literal notranslate"><span class="pre">Busy忙信号线</span></code>对应的IO引脚输出低电平（下降沿信号），对应于开始按键上的绿灯灭。
+<br/>
+<br/></p></li>
+<li><p><strong>ok信号线</strong>：<code class="docutils literal notranslate"><span class="pre">Busy忙信号线</span></code>上升沿，即开始烧录时，<code class="docutils literal notranslate"><span class="pre">ok信号线</span></code>电平被拉低（初始状态是低电平或高电平）；<code class="docutils literal notranslate"><span class="pre">Busy忙信号线</span></code>下降沿对应烧录结束，此时烧录成功对应<code class="docutils literal notranslate"><span class="pre">ok信号线</span></code>电平被拉低（开始按键的红灯灭），烧录失败对应<code class="docutils literal notranslate"><span class="pre">ok信号线</span></code>电平被拉高（开始按键的红灯亮）。
+<br/>
+<br/></p></li>
+<li><p>控制信号线接口的<code class="docutils literal notranslate"><span class="pre">V3.3V</span></code>引脚为烧录器提供的一个3.3V电源，可以根据机台控制模块需要进行连接；控制接口的<code class="docutils literal notranslate"><span class="pre">GND</span></code>引脚必须与机台控制模块GND连接；
+<br/>
+<br/></p></li>
+<li><p>更直观的理解，请查看自动烧录《IO控制信号时序》小节。</p></li>
+</ol>
+</div>
+</section>
+<section id="id4">
+<h3><span class="section-number">1.3.2.2. </span>IO控制信号时序<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<p>自动烧录IO控制信号时序如下图所示，结合上述的IO控制信号线说明进行理解。</p>
+<p><img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image_autotd.png"/></p>
+</section>
+</section>
+<section id="id5">
+<h2><span class="section-number">1.3.3. </span>自动烧录操作流程<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<section id="id6">
+<h3><span class="section-number">1.3.3.1. </span>自动烧录准备工作<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>自动烧录芯片程序前，确保执行了《<a class="reference internal" href="basic_usage.html"><span class="doc std std-doc">手动烧录、校验、查空芯片操作流程</span></a>》的相关操作，以防烧录过程出现一些异常问题，包括：</p>
+<ul class="simple">
+<li><p>烧录前上电开机，进入准备正常显示界面（请参考《<a class="reference internal" href="basic_usage.html#target-1tuo2-power-on"><span class="std std-ref">烧录器上电开机</span></a>》小节）</p></li>
+<li><p>确认或更新当前烧录器固件版本为需要的版本（请参考《<a class="reference internal" href="basic_usage.html#target-1tuo2-fw-confirmation-and-update"><span class="std std-ref">烧录器固件版本确认及更新</span></a>》小节，可不定时确认）</p></li>
+<li><p>确认或更新当前烧录器内的目标芯片程序为要烧录的程序（请参考《<a class="reference internal" href="basic_usage.html#target-deploy-fw-file-to-1tuo2"><span class="std std-ref">部署目标芯片程序到烧录器</span></a>》小节）</p></li>
+<li><p>确认或设置当前烧录器工作模式为烧录模式（请参考《<a class="reference internal" href="basic_usage.html#target-1tuo2-set-mode"><span class="std std-ref">烧录器工作模式介绍与设置</span></a>》小节）</p></li>
+</ul>
+</li>
+<li><p>自动烧录机台烧录环境搭建。</p>
+<ul class="simple">
+<li><p>参考《<a class="reference internal" href="intro_basic.html#target-introduction-and-installation-pinboard"><span class="std std-ref">转接板介绍与安装</span></a>》，完成对应型号的烧录座安装到烧录器上。</p></li>
+<li><p>把与烧录器连接的<code class="docutils literal notranslate"><span class="pre">机器手放置芯片的socket座</span></code>安装到机台上</p></li>
+<li><p>根据上述《自动烧录IO控制信号说明》完成机台IO控制信号线接线工作。</p></li>
+<li><p>盘装式芯片或编袋式芯片上下料环境搭建,其中下料分烧录成功的良品和烧录失败的不良品。</p></li>
+<li><p>自动烧录环境整体烧录流程调试。</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id7">
+<h3><span class="section-number">1.3.3.2. </span>自动烧录流程说明<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>自动烧录准备工作做好后，即可对芯片执行自动烧录。机台自动烧录流程大致如<a class="reference internal" href="#img-auto-burn-1tuo2"><span class="std std-ref">自动烧录流程</span></a>所示：</p></li>
+</ol>
+<figure class="align-default" id="img-auto-burn-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image27.png"/>
+<figcaption>
+<p><span class="caption-text">自动烧录流程</span><a class="headerlink" href="#img-auto-burn-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic" start="2">
+<li><p>以下通过表格的方式，对自动烧录流程进行介绍说明。</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>使用流程</strong></p></th>
+<th class="head"><p><strong>说明</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>自动烧录准备工作</p></td>
+<td><p>参考上小节内容《自动烧录准备工作》的介绍</p></td>
+</tr>
+<tr class="row-odd"><td><p>机器上放置芯片</p></td>
+<td><p>对应于手动取芯片并放置到专用烧录socket座的步骤</p></td>
+</tr>
+<tr class="row-even"><td><p>机台给start信号，开始烧写</p></td>
+<td><p>机台给<code class="docutils literal notranslate"><span class="pre">开始按键</span></code>的输入IO引脚大于1mS的低电平信号时，<br/>烧录器执行开始烧录，对应于人手动短按<code class="docutils literal notranslate"><span class="pre">开始按键</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>烧写结果判断</p></td>
+<td><p>机台识别开始按键上的Busy（绿灯）和Ok(红灯信号)，<br/>通过IO信号状态来判断是烧录成功，还是烧录失败</p></td>
+</tr>
+<tr class="row-even"><td><p>机器手取走芯片</p></td>
+<td><p>如果判断为烧录成功，则机器上取走芯片放置良品区编袋；<br/>如果判断为烧录失败，机器手取走芯片放置不良品区</p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+</ol>
+</section>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="basic_usage.html" class="btn btn-neutral float-left" title="1.2. 手动烧录、校验、查空芯片操作流程" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="remote_update.html" class="btn btn-neutral float-right" title="1.4. 远程升级烧录器固件" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/autoburn.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/autoburn.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

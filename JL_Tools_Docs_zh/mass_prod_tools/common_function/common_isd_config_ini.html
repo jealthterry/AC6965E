@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6.1. 常见isd_config.ini配置和烧录相关功能使用说明 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>6. 通用功能配置和使用说明</a><ul>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>6.1. 常见isd_config.ini配置和烧录相关功能使用说明</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#flashspi">6.1.1. flash的SPI参数配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#target-refile-config-introduce">6.1.2. 自定义资源文件烧录配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flash">6.1.3. flash参数烧录和保护参数生效测试配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">6.1.4. 256和4096对齐文件生成配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#efuse-bin">6.1.5. 文件透传如efuse.bin烧录配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lrcflash">6.1.6. lrc校准值烧录入flash配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sdk">6.1.7. 烧录器与SDK配置的芯片版本匹配</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="set_burn_tool_master_option.html">6.2. 如何在生成烧录文件时设置专家选项</a></li>
+<li class="toctree-l2"><a class="reference internal" href="set_burn_tool_option.html">6.3. 如何在生成烧录文件时设置烧录选项</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">6. </span>通用功能配置和使用说明</a> »</li>
+<li><span class="section-number">6.1. </span>常见isd_config.ini配置和烧录相关功能使用说明</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/mass_prod_tools/common_function/common_isd_config_ini.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="isd-config-ini">
+<h1><span class="section-number">6.1. </span>常见isd_config.ini配置和烧录相关功能使用说明<a class="headerlink" href="#isd-config-ini" title="Permalink to this heading"></a></h1>
+<p>更多详细的isd_config.ini 配置文件说明请参考: <a class="reference internal" href="../../dev_tools/toolchains/ini_cfg.html"><span class="doc std std-doc">isd_config.ini 配置文件说明</span></a></p>
+<section id="flashspi">
+<span id="target-flash-spi-params-cfg"></span><h2><span class="section-number">6.1.1. </span>flash的SPI参数配置<a class="headerlink" href="#flashspi" title="Permalink to this heading"></a></h2>
+<p>isd_config.ini支持配置flash的spi参数配置，配置如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">SYS_CFG_PARAM</span><span class="p">]</span>
+<span class="n">SPI</span> <span class="o">=</span> <span class="mi">2_3_0_0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>参数说明：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">SYS_CFG_PARAM</span><span class="p">]</span>
+<span class="n">SPI</span> <span class="o">=</span> <span class="n">X0_X1_X2_X3</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>X0，表示spi的线宽，根据flash实际封装情况配置,一般默认就好：<br/>
+0: 表示spi使用1线模式，写数据和读数据都是使用同一IO0/SO根线<br/>
+1：表示spi使用标准双线模式，写数据使用IO0/SO线，读数据使用IO1/SI线<br/>
+2：表示spi使用2线模式，写数据使用IO0/SO线，读数据使用IO0/SO和IO1/SI线<br/>
+4：表示spi使用4线模式，写数据使用IO0/SO线，读数据使用IO0/SO、IO1/SI线、IO2(flash的WP)、IO3(flash的HOLD)线<br/></p></li>
+<li><p>X1，表示SPI CLK的分配值,如芯片系统时钟跑48M，配置3，SPI的时钟则为48/(3+1)=12M：</p></li>
+<li><p>X2,表示flash读数据使用的命令,一般默认配置就好，具体参考对应芯片flash的使用手册:<br/>
+0：FAST_READ_OUTPUT_MODE<br/>
+1：FAST_READ_IO_MODE<br/>
+2：FAST_READ_IO_CONTINUOUS_READ_MODE<br/></p></li>
+<li><p>X3,使用哪组SPI的IO口<br/>
+0：使用第一组<br/>
+1：使用第二组<br/></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>部分芯片不支持4线，或者不支持FAST_READ_IO_MODE读模式；</p>
+<p>如果烧录过程报烧录失败，或者校验失败，可以检查一下对应的SPI配置是否正确！</p>
+</div>
+</section>
+<section id="target-refile-config-introduce">
+<span id="id1"></span><h2><span class="section-number">6.1.2. </span>自定义资源文件烧录配置<a class="headerlink" href="#target-refile-config-introduce" title="Permalink to this heading"></a></h2>
+<p>要把isd_config.ini同级目录下的文件“anc_coeff.bin”，”anc_gains.bin”通过烧录器烧录到芯片flash指定位置,
+参考如图配置如<a class="reference internal" href="#img-res1-file"><span class="std std-ref">自定义资源文件烧录配置</span></a>所示。</p>
+<figure class="align-default" id="img-res1-file">
+<img alt="" data-action="zoom" src="../../_images/image1_resfile.png"/>
+<figcaption>
+<p><span class="caption-text">自定义资源文件烧录配置</span><a class="headerlink" href="#img-res1-file" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>如果[RESERVED_CONFIG]段的资源超过6个，点击批处理后会报错！ 把资源文件放置[RESERVED_EXPAND_CONFIG]段；
+参考如图配置如<a class="reference internal" href="#img-res2-file"><span class="std std-ref">超过6个自定义资源文件烧录配置</span></a>所示。</p>
+<figure class="align-default" id="img-res2-file">
+<img alt="" data-action="zoom" src="../../_images/image2_resfile.png"/>
+<figcaption>
+<p><span class="caption-text">超过6个自定义资源文件烧录配置</span><a class="headerlink" href="#img-res2-file" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>每个资源文件可用引用同一个文件名的文件；但是XXX_FILE的文件名不能相同！</p></li>
+<li><p>可以修改如ANC0_ADR=AUTO;自动地址，[RESERVED_CONFIG]段选项详细说明,请参考《<a class="reference internal" href="../../dev_tools/toolchains/ini_cfg.html#target-reserved-config-introduce"><span class="std std-ref">[RESERVED_CONFIG]段选项说明</span></a>》小节</p></li>
+</ol>
+</div>
+</section>
+<section id="flash">
+<span id="target-protect-cfg-introduce"></span><h2><span class="section-number">6.1.3. </span>flash参数烧录和保护参数生效测试配置<a class="headerlink" href="#flash" title="Permalink to this heading"></a></h2>
+<p>1.工具版本更新
+SDK需要支持支持OTP_CFG配置，相关工具需要更新到以下版本(或之后版本)。</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>工具</p></th>
+<th class="head"><p>最低版本</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>isd_download.exe</p></td>
+<td><p>4.2.54</p></td>
+<td><p><a class="reference external" href="../../other_info/index.html">如何更新,请点击此处查看</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>一拖二烧录器</p></td>
+<td><p>2.27.7</p></td>
+<td><p><a class="reference external" href="../burner_1tuo2/remote_update.html">如何更新,请点击此处查看</a></p></td>
+</tr>
+<tr class="row-even"><td><p>一拖八烧录器</p></td>
+<td><p>3.1.22</p></td>
+<td><p><a class="reference external" href="../burner_1tuo8/remote_update.html">如何更新,请点击此处查看</a></p></td>
+</tr>
+</tbody>
+</table></div>
+<p>2.烧录器支持的型号和isd_config.ini配置</p>
+<p>如下芯片，需要在isd_config.ini的[BURNER_PASSTHROUGH_CFG]配置段中增加<code class="docutils literal notranslate"><span class="pre">FLASH_WRITE_PROTECT=YES</span></code>配置，烧录时把flash写保护参数烧到指定区域，以及进行保护的有效性测试。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">BURNER_PASSTHROUGH_CFG</span><span class="p">]</span><span class="w"></span>
+<span class="n">FLASH_WRITE_PROTECT</span><span class="o">=</span><span class="n">YES</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>不进行flash参数烧录和有效性测试，则可删除<code class="docutils literal notranslate"><span class="pre">FLASH_WRITE_PROTECT</span></code>字段，或者在isd_config.ini的[BURNER_PASSTHROUGH_CFG]配置段中增加<code class="docutils literal notranslate"><span class="pre">FLASH_WRITE_PROTECT=NO</span></code>配置。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">BURNER_PASSTHROUGH_CFG</span><span class="p">]</span><span class="w"></span>
+<span class="n">FLASH_WRITE_PROTECT</span><span class="o">=</span><span class="n">NO</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p>芯片型号</p></th>
+<th class="head"><p>isd_config.ini需要的配置</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>AC632N、AE632N</p></td>
+<td><p>FLASH_WRITE_PROTECT=YES</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AC695X、AC635N、AC6083、AE695N</p></td>
+<td><p>FLASH_WRITE_PROTECT=YES</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AC696X、AC636N、AC608N</p></td>
+<td><p>FLASH_WRITE_PROTECT=YES</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AC702N</p></td>
+<td><p>FLASH_WRITE_PROTECT=YES</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AC706N</p></td>
+<td><p>FLASH_WRITE_PROTECT=YES</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AD14N、AC104N</p></td>
+<td><p>FLASH_WRITE_PROTECT=YES</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AD15N、AE15N</p></td>
+<td><p>FLASH_WRITE_PROTECT=YES</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AC700N、JL700N</p></td>
+<td><p>FLASH_WRITE_PROTECT=YES</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AC701N、JL701N</p></td>
+<td><p>FLASH_WRITE_PROTECT=YES</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>如下芯片，需要在isd_config.ini的[EXTRA_CFG_PARAM]配置段中增加OTP_CFG_SIZE=512;配置，烧录时才写保护参数到flash和进行生效测试，否则烧录会报错；</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">EXTRA_CFG_PARAM</span><span class="p">]</span><span class="w"></span>
+<span class="n">OTP_CFG_SIZE</span><span class="o">=</span><span class="mi">512</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p>芯片型号</p></th>
+<th class="head"><p>isd_config.ini需要的配置</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>AW30N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>JL703N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AC700N、JL700N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AC704N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AC705N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AC706N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>JL708N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AC82N，AD18N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AC129N,AD12N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AC701N、JL701N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>JL709N、AC689N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AC710N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AC792N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AD24N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AC707N、AW34N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>OTP_CFG_SIZE=512；中512的值是可以变化的，具体依赖于当前使用的flash参数的配置信息大小；</p></li>
+<li><p>AC707N、AW34N 、AC710N、AD24N型号芯片最小的值建议配置128;</p></li>
+<li><p>其它型号最小值建议配置256;一般使用公版SDK默认配置的值即可；</p></li>
+</ol>
+</div>
+<p>3.烧录生成的.fw文件到芯片，写保护生效测试</p>
+<p>把配置好带flash参数烧录功能的fw文件通过一拖二烧录器或一拖八烧录器烧录到芯片flash，</p>
+<p>烧录过程烧录器对芯片flash的写保护功能进行一次写保护生效测试，测试通过才会允许烧录程序数据到芯片</p>
+<p>烧录成功后，如SDK开启了打印，会打印如下图所示写保护功能生效的信息：
+<img alt="" data-action="zoom" src="../../_images/image3_wr_protect_ok.png"/></p>
+<p>5.开发阶段启用flash写保护功能</p>
+<p>如果需要在开发调试阶段启动FLASH写保护功能，请参考《<a class="reference internal" href="../../dev_tools/toolchains/otp_cfg.html#target-flash-protect-debug"><span class="std std-ref">开启使用写保护功能，DTR功能，多算法授权功能</span></a>》</p>
+</section>
+<section id="id2">
+<h2><span class="section-number">6.1.4. </span>256和4096对齐文件生成配置<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>1.256和4096对齐文件介绍
+市面上所有的norflash支持4K字节擦除的操作，但是有一部分还支持256字节擦除；所以我们的烧录文件在组织过程中支持按4K字节对齐或者256字节对齐；</p>
+<p>烧录统一产品，可能芯片存在不同对齐方式的芯片；在下载固件过程中，下载工具会根据样机的FLASH支持的最小擦除单元，实时选择对齐方式组织FLASH数据，这个功能是可以关闭的。
+其中，<br/></p>
+<p>（1）256k对齐：节省flash空间
+（2）如果方案需要支持在线升级，那么升级前后的烧录文件对齐方式应保持一致</p>
+<p>2.生成FW只包含4096的烧录文件ini配置。如红色框住所示</p>
+<p><img alt="" data-action="zoom" src="../../_images/image4_256_4096.png"/></p>
+<p>3.生成FW只包含256对齐烧录文件ini配置，如红色框住所示, 然后强制升级工具插入一个支持256擦除的Flash芯片型号，识别到之后再点击批处理生成即可。</p>
+<p><img alt="" data-action="zoom" src="../../_images/image5_256_4096.png"/></p>
+<p>4.如何强制生成256字节对齐的FLASH BIN
+添加“SPECIAL_OPT=0”以及“AREA_ALIGN=1”配置项；不建议使用该方式！</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">SPECIAL_OPT</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">AREA_ALIGN</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w">        </span><span class="c1">// 此配置项离线时有效,即编译下载时不连接样机</span>
+<span class="cp">#FORCE_4K_ALIGN=YES; </span><span class="c1">// 如果有,必须注释掉这个配置</span>
+</pre></div>
+</div>
+<p><img alt="" data-action="zoom" src="../../_images/image6_256_4096.png"/></p>
+<p>5.生成FW包含256和4096对齐烧录文件，去掉如下部分点击批处理生成即可。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#SPECIAL_OPT=0;</span>
+<span class="cp">#FORCE_4K_ALIGN=YES; # 如果有，必须注释掉这个配置</span>
+</pre></div>
+</div>
+</section>
+<section id="efuse-bin">
+<h2><span class="section-number">6.1.5. </span>文件透传如efuse.bin烧录配置<a class="headerlink" href="#efuse-bin" title="Permalink to this heading"></a></h2>
+<p>isd_config.ini按如下添加需要烧录的“efuse.bin”文件，”efuse.bin存在isd_config.ini文件同级目录</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">FW_ADDITIONAL</span><span class="p">]</span><span class="w"></span>
+<span class="n">FILE_LIST</span><span class="o">=</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">efuse</span><span class="p">.</span><span class="n">bin</span><span class="o">:</span><span class="n">type</span><span class="o">=</span><span class="mh">0xee</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>如图所示：
+<img alt="" data-action="zoom" src="../../_images/image7_fw_add.png"/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>FILE_LIST支持多个文件，如：FILE_LIST=(file=ota.bin:type=100),(file=efuse.bin:type=0xee)</p></li>
+<li><p>AC702N、AC704N、AC705N、AC129N、AD12N需要配置FLASH模式还是ROM模式,配置如下所示：</p></li>
+</ol>
+<p>[BURNER_PASSTHROUGH_CFG]<br/>
+REQUIRE_TARGET_FEATURE=FLASH;//flash+efuse<br/>
+#REQUIRE_TARGET_FEATURE=EFUSE;//efuse only<br/></p>
+</div>
+</section>
+<section id="lrcflash">
+<h2><span class="section-number">6.1.6. </span>lrc校准值烧录入flash配置<a class="headerlink" href="#lrcflash" title="Permalink to this heading"></a></h2>
+<p>免晶振方案的芯片，配置lrc校准值写入FLASH UBOOT区域(只有LRC时钟偏差超过千分之五才写入)，参考如下</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">SYS_CFG_PARAM</span><span class="p">]</span><span class="w"></span>
+<span class="n">LRC</span><span class="o">=</span><span class="mi">-1</span><span class="p">;</span><span class="w">        </span><span class="c1">//配置，lrc校准值写入flash </span>
+</pre></div>
+</div>
+</section>
+<section id="sdk">
+<h2><span class="section-number">6.1.7. </span>烧录器与SDK配置的芯片版本匹配<a class="headerlink" href="#sdk" title="Permalink to this heading"></a></h2>
+<p>isd_config.ini按如图方式添加要支持的芯片版本（A~P版本）</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">CHIP_VERSION</span><span class="p">]</span><span class="w"></span>
+<span class="n">SUPPORTED_LIST</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">D</span><span class="p">,</span><span class="n">M</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">O</span><span class="p">,</span><span class="n">P</span><span class="w"></span>
+</pre></div>
+</div>
+<p>如果烧录器烧录报对应版本的错误，原因可能：<br/>
+1、可能是上述段没有添加支持该芯片版本<br/></p>
+<p>2、或者烧录器不允许该版本烧录<br/>
+如需修改请联系杰理工程师 <font color="red">根据SDK实际情况支持该版本烧录<br/></font></p><font color="red">
+<p>更多解释颗参考《 <a class="reference internal" href="../faqs/version_err.html"><span class="doc std std-doc">版本不匹配错误</span></a>》</p>
+</font></section><font color="red">
+</font></section><font color="red">
+</font>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="index.html" class="btn btn-neutral float-left" title="6. 通用功能配置和使用说明" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="set_burn_tool_master_option.html" class="btn btn-neutral float-right" title="6.2. 如何在生成烧录文件时设置专家选项" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/common_function/common_isd_config_ini.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/common_function/common_isd_config_ini.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

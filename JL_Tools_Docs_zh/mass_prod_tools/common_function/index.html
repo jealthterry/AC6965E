@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6. 通用功能配置和使用说明 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>6. 通用功能配置和使用说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="common_isd_config_ini.html">6.1. 常见isd_config.ini配置和烧录相关功能使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="set_burn_tool_master_option.html">6.2. 如何在生成烧录文件时设置专家选项</a></li>
+<li class="toctree-l2"><a class="reference internal" href="set_burn_tool_option.html">6.3. 如何在生成烧录文件时设置烧录选项</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><span class="section-number">6. </span>通用功能配置和使用说明</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/mass_prod_tools/common_function/index.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">6. </span>通用功能配置和使用说明<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<p>前言</p>
+<p>本章介绍量产工具和，以及配套工具相关的功能配置和使用说明！</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="common_isd_config_ini.html">6.1. 常见isd_config.ini配置和烧录相关功能使用说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="common_isd_config_ini.html#flashspi">6.1.1. flash的SPI参数配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common_isd_config_ini.html#target-refile-config-introduce">6.1.2. 自定义资源文件烧录配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common_isd_config_ini.html#flash">6.1.3. flash参数烧录和保护参数生效测试配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common_isd_config_ini.html#id2">6.1.4. 256和4096对齐文件生成配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common_isd_config_ini.html#efuse-bin">6.1.5. 文件透传如efuse.bin烧录配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common_isd_config_ini.html#lrcflash">6.1.6. lrc校准值烧录入flash配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common_isd_config_ini.html#sdk">6.1.7. 烧录器与SDK配置的芯片版本匹配</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="set_burn_tool_master_option.html">6.2. 如何在生成烧录文件时设置专家选项</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="set_burn_tool_master_option.html#ini">6.2.1. 如何修改 INI 专家配置选项</a></li>
+<li class="toctree-l2"><a class="reference internal" href="set_burn_tool_master_option.html#id2">6.2.2. 能用 INI 配置的专家配置项有哪些</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="set_burn_tool_option.html">6.3. 如何在生成烧录文件时设置烧录选项</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="set_burn_tool_option.html#ini">6.3.1. 如何修改 INI 指定烧录选项</a></li>
+<li class="toctree-l2"><a class="reference internal" href="set_burn_tool_option.html#key-flash">6.3.2. 如何生成仅包含烧录选项和KEY的烧录文件（不包含FLASH 烧录信息）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="set_burn_tool_option.html#id2">6.3.3. 能用 INI 配置的烧录选项有哪些</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="../private_data_auth/secure_key.html" class="btn btn-neutral float-left" title="5.2. 秘钥使用示例" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="common_isd_config_ini.html" class="btn btn-neutral float-right" title="6.1. 常见isd_config.ini配置和烧录相关功能使用说明" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/common_function/index.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/common_function/index.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

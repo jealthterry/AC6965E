@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3.9. PC透传命令、自定义命令使用 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>3. 杰理科技一拖二蓝牙测试盒用户手册</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_base_introduction.html">3.1. 测试盒简要介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html">3.2. 上位机功能配置和使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_upgrade.html">3.3. 测试盒固件升级</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wireless_upgrade.html">3.4. 蓝牙设备无线升级流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wired_upgrade.html">3.5. 蓝牙设备有线升级流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_test_process.html">3.6. 蓝牙设备测试流程使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mass_production.html">3.7. 测试盒批量升级、测试用例介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ear_storage.html">3.8. 耳机仓储模式使用方法</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>3.9. PC透传命令、自定义命令使用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1"><button class="toctree-expand" title="Open/close menu" type="button"></button>3.9.1. PC透传命令方法</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">3.9.1.1. 功能介绍</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">3.9.1.2. 操作方式</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">3.9.2. 串口模式自定义串口命令使用说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">3.9.3. 自定义命令发送模式使用说明</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mes_log.html">3.10. 测试盒MES LOG输出功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_view_bt_info.html">3.11. 蓝牙设备信息（sdk 版本/电量/校验码）查看方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ufw_crc_compare.html">3.12. 测试盒ufw文件校验码匹配</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_error_status.html">3.13. 状态指示和报错提示说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_fixture_install.html">3.14. 测试盒串口连接治具介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_function.html">3.15. 其它常见功能配置和使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_problem.html">3.16. 常见问题（FAQ）处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_version_info.html">3.17. 版本信息</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">3. </span>杰理科技一拖二蓝牙测试盒用户手册</a> »</li>
+<li><span class="section-number">3.9. </span>PC透传命令、自定义命令使用</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/mass_prod_tools/testbox_1tuo2/tb_pc_transparent.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="pc">
+<h1><span class="section-number">3.9. </span>PC透传命令、自定义命令使用<a class="headerlink" href="#pc" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2><span class="section-number">3.9.1. </span>PC透传命令方法<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<section id="id2">
+<h3><span class="section-number">3.9.1.1. </span>功能介绍<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<p>为方便测试盒接入MES系统。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>支持读取串口连接耳机的蓝牙地址</p></li>
+<li><p>支持透传自定义命令</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id3">
+<h3><span class="section-number">3.9.1.2. </span>操作方式<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>测试盒上位机设置</p></li>
+</ol>
+<p>【1】PC端连接测试盒，长按测试盒位于最右按键，进入PC配置模式，测试盒显示“LOADING”；</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_mass_image1.png"/></p>
+<p>【2】打开上位机软件，在有线串口模式配置“DUT命令模式使能”为1；</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_tran_image1.png"/></p>
+<ol class="arabic simple" start="2">
+<li><p>测试盒硬件环境</p></li>
+</ol>
+<p>【1】拨码配置：该模式不关心拨码开关的位置；</p>
+<p>【2】测试盒串口端接治具，参考《<a class="reference internal" href="tb_fixture_install.html#target-fixture-install"><span class="std std-ref">测试盒串口连接治具介绍</span></a>》</p>
+<ol class="arabic simple" start="3">
+<li><p>操作步骤</p></li>
+</ol>
+<p>【1】测试盒长按最右按键进入PC模式</p>
+<p>【2】PC使用命令行打开上位机，具体参数可由bluetooth_test_box.exe –console -h获取。</p>
+<p>【3】测试完成，将耳机放入正常充电仓，恢复正常模式</p>
+</section>
+</section>
+<section id="id4">
+<h2><span class="section-number">3.9.2. </span>串口模式自定义串口命令使用说明<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>DUT命令模式下自定义串口命令配置</p></li>
+</ul>
+</div></blockquote>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_tran_image2.png"/></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>在DUT命令模式使能下，若串口命令配置无内容，则测试盒发送原有CMD_BOX_ENTER_DUT(0x04)命令，sdk收到该命令的默认响应为进入待连接的DUT测试状态。</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>若串口命令配置为自定义内容（最多输入31字节16进制数值）,测试盒发送以CMD_BOX_CUSTOM_CODE(0xF0)的开始的命令；即当输入00时，测试盒会发送F0 00 命令，sdk默认对该命令的处理为进入快速自测模式。用户可以修改命令配置的内容，同时在sdk添加对该命令的响应操作来实现特定功能。</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>DUT命令模式，与串口模式下的升级/配对/测试均互斥，不能同时使用。</p>
+</div>
+</section>
+<section id="id5">
+<h2><span class="section-number">3.9.3. </span>自定义命令发送模式使用说明<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>V1.2.6.f添加自定义命令发送模式配置项（<code class="docutils literal notranslate"><span class="pre">该配置需sdk支持</span></code>）</p></li>
+</ol>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_tran_image3.png"/></p>
+<p>该模式支持在BLE从机测试模式（拨码1关，拨码6开）下，指定间隔发送自定义命令序列给待测设备，以实现控制待测设备切换不同工作状态实现自动测试。</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_tran_image4.png"/></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_tran_image5.png"/></p>
+<p>2.使用说明</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>当“自定义命令发送模式”配置为1时，“自定义命令配置”配置区可以配置自定义命令内容。</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>当“自定义命令发送模式”配置为0时，“自定义命令配置”配置区不可编辑。</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>“自定义命令配置”区中间隔时间支持1~255，单位100ms，即配置为10，为1秒间隔发送一条命令；</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>“自定义命令配置”区中自动循环发送打“√”,则将所有使能命令自动循环发送，不打“√”则只发一遍。</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>“自定义命令配置”区中命令数据内容支持十六进制形式或字符形式输入，通过勾选每条命令后的“HEX”实现，命令数据前的使能框需要打“√”才会在发送时使用，不打“√”则该命令仅存储在测试盒，不会发送；</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>当配置完如上配置信息后，需点击“保存设置到测试盒”，保存成功后复位测试盒生效本次配置。</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>当与待测设备建立ble连接后，按下测试盒对应通道的控制按键（CH1为左按键，CH2为中按键）即可切换进入或退出“自定义命令发送模式”，当进入自定义命令发送模式，测试盒会显示“TX CMD MODE”内容，退出则显示原来频偏或地址信息；</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="tb_ear_storage.html" class="btn btn-neutral float-left" title="3.8. 耳机仓储模式使用方法" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="tb_mes_log.html" class="btn btn-neutral float-right" title="3.10. 测试盒MES LOG输出功能" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_pc_transparent.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_pc_transparent.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

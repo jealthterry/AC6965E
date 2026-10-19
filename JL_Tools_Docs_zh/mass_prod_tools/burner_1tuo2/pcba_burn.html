@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.10. 芯片烧录接线和供电说明 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>1. 杰理科技一拖二烧录器用户手册</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">1.1. 烧录器简要介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html">1.2. 手动烧录、校验、查空芯片操作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html">1.3. 机台自动烧录操作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html">1.4. 远程升级烧录器固件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html">1.5. 各型号芯片PC端烧录配置项介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html">1.6. 状态指示和报错提示说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html">1.7. 授权烧录次数限制功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html">1.8. 第三方数据（认证码）烧录功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html">1.9. 蓝牙地址及名字自增功能</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.10. 芯片烧录接线和供电说明</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1.10.1. 支持烧录的芯片最小系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">1.10.2. 烧录通道排针接口定义和接线说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">1.10.3. 芯片烧录供电说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dm-dp">1.10.4. DM,DP引脚样机芯片烧录接线</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">1.10.5. 无DM,DP引脚样机芯片烧录接线</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">1.10.6. 样机芯片校准接线</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html">1.11. 其它常见功能配置和使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faqs.html">1.12. 常见错误处理</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">1. </span>杰理科技一拖二烧录器用户手册</a> »</li>
+<li><span class="section-number">1.10. </span>芯片烧录接线和供电说明</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/mass_prod_tools/burner_1tuo2/pcba_burn.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">1.10. </span>芯片烧录接线和供电说明<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">1.10.1. </span>支持烧录的芯片最小系统<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>芯片（裸片）的供电引脚焊接105滤波电容到GND，晶振引脚接上24M晶振（免晶振方案不用接晶振），芯片的VBAT、DM、DP、GND引脚（部分芯片无DM,DP为其他引脚），接线到烧录器通道1或通道2排针对应引脚即可实现芯片烧录，如<a class="reference internal" href="#img-min-system"><span class="std std-ref">支持烧录的芯片最小系统</span></a>所示。</p>
+<figure class="align-default" id="img-min-system">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_minsystem.png"/>
+<figcaption>
+<p><span class="caption-text">支持烧录的芯片最小系统</span><a class="headerlink" href="#img-min-system" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>量产烧录时，所有电源引脚如VPWR,VBAT,IOVDD,DCVDD,HPVDD,VCM等都要接滤波电容，可能还有校准电路，具体请参考杰理提供的对应型号烧录硬件原理图。</p></li>
+</ul>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">1.10.2. </span>烧录通道排针接口定义和接线说明<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>烧录通道1或通道2对应排针接口定义和接线参考图， 如<a class="reference internal" href="#img-pcba-conn-1tuo2"><span class="std std-ref">烧录座或样机接线参考图</span></a>所示。</p></li>
+</ol>
+<figure class="align-default" id="img-pcba-conn-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image64b.png"/>
+<figcaption>
+<p><span class="caption-text">烧录座或样机接线参考图</span><a class="headerlink" href="#img-pcba-conn-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic" start="2">
+<li><p>使用带LDO电压转换电路方式接线说明</p>
+<p>如<a class="reference internal" href="#img-pcba-conn-1tuo2"><span class="std std-ref">烧录座或样机接线参考图</span></a>所示，，烧录座带LDO电压转换电路，即烧录器排针”6.5V”引脚通过LDO硬件电路转为需要的5V,或4.2V等芯片对应的烧录电压，烧录器通过的<code class="docutils literal notranslate"><span class="pre">3.3V排针</span></code>引脚控制LDO供电开启和关闭对芯片进行供电控制。烧录器排针引脚和芯片烧录引脚接线关系如下：</p>
+</li>
+</ol>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>烧录器排针</strong></p></th>
+<th class="head"><p><strong>芯片引脚</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>6.5V（LDO转换顶板6.5V转5V、4.2V等）</p></td>
+<td><p>VBAT</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISP_DOUT(与USB_DAT连接)</p></td>
+<td><p>DM（部分芯片没有DM为其它引脚）</p></td>
+</tr>
+<tr class="row-even"><td><p>ISP_CLK(与USB_CLK连接)</p></td>
+<td><p>DP（部分芯片没有DP为其它脚）</p></td>
+</tr>
+<tr class="row-odd"><td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+</tbody>
+</table></div>
+<ol class="arabic" start="2">
+<li><p>使用烧录器供电引脚直接输出芯片供电电压方式接线说明</p>
+<p>如<a class="reference internal" href="#img-pcba-conn-1tuo2"><span class="std std-ref">烧录座或样机接线参考图</span></a>所示，接线时忽略<code class="docutils literal notranslate"><span class="pre">LDO</span></code>部分，烧录器排针”6.5V”直接输出PC工具配置的5V,或4.2V 等芯片对应的烧录电压，烧录器排针引脚和芯片烧录引脚接线关系如下：</p>
+</li>
+</ol>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>烧录器排针</strong></p></th>
+<th class="head"><p><strong>芯片引脚</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>6.5V（烧录器直接输出PC工具<br/>配置的5V、4.2V等烧录电压）</p></td>
+<td><p>VBAT</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISP_DOUT(与USB_DAT连接)</p></td>
+<td><p>DM（部分芯片没有DM为其它引脚）</p></td>
+</tr>
+<tr class="row-even"><td><p>ISP_CLK(与USB_CLK连接)</p></td>
+<td><p>DP（部分芯片没有DP为其它脚）</p></td>
+</tr>
+<tr class="row-odd"><td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>烧录座带LDO转换电路原因是以前考虑部分未校准的芯片会流到客户手中，导致芯片需要烧录器进行校准；或者部分芯片的efuse存储介质烧录需要6.5V，3.3V等特定电压；</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>当前的烧录器带有芯片校准检测功能，如果芯片未校准烧录会报错！并且efuse对应的key，lvd等烧录不再需要特定电压；</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>烧录座可以去掉LDO电路，做成芯片最小系统样式进行烧录！这样烧录座更简单，既可以省物料又可以做成通用烧录座；</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>使用LDO转换电路给芯片供电也有它的优势，走线短，电源相对更加稳定，烧录通过率可能更高；</p></li>
+</ul>
+</div></blockquote>
+</div>
+</section>
+<section id="id4">
+<h2><span class="section-number">1.10.3. </span>芯片烧录供电说明<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>一拖二烧录器V2.27.9及以上固件版本支持烧录座供电电压“4.2V~6.8V”PC工具可配置，主要有如下3种应用情况。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">无ldo电路</span></code>即烧录器排针”6.5V”直接输出PC工具配置的5V,或4.2V等电压到芯片VBAT供电端。
+<br/>
+<br/></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">带ldo电压转换电路</span></code>即通过硬件电路把烧录器排针的6.5V电压转换为芯片需要的供电电压5V,或4.2V等，需配置供电电压为“Default”。
+<br/>
+<br/></p></li>
+<li><p>低电烧录供电如IOVDD和VBAT绑在一起的情况，VBAT可以直接到烧录器上排针的3.3V引脚，或通过烧录器排针的6.5V电压转换为芯片需要的供电电压。</p></li>
+</ul>
+<p>烧录电压配置界面如下图所示：</p>
+<figure class="align-default" id="img-noldo-conn-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image71a.png"/>
+<figcaption>
+<p><span class="caption-text">烧录电压PC工具可配置</span><a class="headerlink" href="#img-noldo-conn-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>如果默认配置“4.2V”供电；烧录时如果座子带LDO电路请记得供电电压要配置回 “default”，否则可能因为供电不足导致出现各种烧录问题！
+<br/>
+<br/></p></li>
+<li><p>不能直接配置“default”供电电压，烧录不带LDO电路的样机芯片，否则可能因为供电电压过高导致烧坏芯片！</p></li>
+</ul>
+</div>
+</section>
+<section id="dm-dp">
+<h2><span class="section-number">1.10.4. </span>DM,DP引脚样机芯片烧录接线<a class="headerlink" href="#dm-dp" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>带DM,DP引脚的芯片通用烧录接线说明</p></li>
+</ol>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>烧录器排针</strong></p></th>
+<th class="head"><p><strong>芯片引脚</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>6.5V（烧录器直接输出PC工具<br/>配置的5V、4.2V等烧录电压）</p></td>
+<td><p>VBAT</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISP_DOUT(与USB_DAT连接)</p></td>
+<td><p>DM（部分芯片没有DM为其它引脚）</p></td>
+</tr>
+<tr class="row-even"><td><p>ISP_CLK(与USB_CLK连接)</p></td>
+<td><p>DP（部分芯片没有DP为其它脚）</p></td>
+</tr>
+<tr class="row-odd"><td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+</tbody>
+</table></div>
+<ol class="arabic simple" start="2">
+<li><p>带DM,DP引脚的芯片特殊烧录接线说明</p></li>
+</ol>
+<ul class="simple">
+<li><p>AD14N,AC104N,AD23N,AD24N样机芯片烧录接线</p></li>
+</ul>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>烧录器排针</strong></p></th>
+<th class="head"><p><strong>芯片引脚</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>6.5V（烧录器直接输出PC工具<br/>配置的5V、4.2V等烧录电压）</p></td>
+<td><p>VBAT</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISP_DOUT(与USB_CLK连接)</p></td>
+<td><p>DM</p></td>
+</tr>
+<tr class="row-even"><td><p>ISP_CLK(与USB_DAT连接)</p></td>
+<td><p>DP</p></td>
+</tr>
+<tr class="row-odd"><td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+</tbody>
+</table></div>
+<ul class="simple">
+<li><p>AC690X样机芯片烧录接线</p></li>
+</ul>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>烧录器排针</strong></p></th>
+<th class="head"><p><strong>芯片引脚</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>6.5V（烧录器直接输出PC工具<br/>配置的5V、4.2V等烧录电压）</p></td>
+<td><p>VBAT</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISP_DOUT(与USB_DAT连接)</p></td>
+<td><p>DM</p></td>
+</tr>
+<tr class="row-even"><td><p>ISP_DIN(与USB_CLK连接)</p></td>
+<td><p>DP</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISP_CLK</p></td>
+<td><p>PA3</p></td>
+</tr>
+<tr class="row-even"><td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="id5">
+<h2><span class="section-number">1.10.5. </span>无DM,DP引脚样机芯片烧录接线<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>AD15N样机芯片烧录接线</p></li>
+</ul>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>烧录器排针</strong></p></th>
+<th class="head"><p><strong>芯片引脚</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>6.5V（烧录器直接输出PC工具<br/>配置的5V、4.2V等烧录电压）</p></td>
+<td><p>VBAT</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISP_DOUT(与USB_DAT连接)</p></td>
+<td><p>PB1</p></td>
+</tr>
+<tr class="row-even"><td><p>ISP_CLK(与USB_CLK连接)</p></td>
+<td><p>PB0</p></td>
+</tr>
+<tr class="row-odd"><td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+</tbody>
+</table></div>
+<ul class="simple">
+<li><p>AD17N样机芯片烧录接线</p></li>
+</ul>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>烧录器排针</strong></p></th>
+<th class="head"><p><strong>芯片引脚</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>6.5V（烧录器直接输出PC工具<br/>配置的5V、4.2V等烧录电压）</p></td>
+<td><p>VBAT</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISP_DOUT(与USB_DAT连接)</p></td>
+<td><p>PA9</p></td>
+</tr>
+<tr class="row-even"><td><p>ISP_CLK(与USB_CLK连接)</p></td>
+<td><p>PA8</p></td>
+</tr>
+<tr class="row-odd"><td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+</tbody>
+</table></div>
+<ul class="simple">
+<li><p>AD21N、AC75N样机芯片烧录接线</p></li>
+</ul>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>烧录器排针</strong></p></th>
+<th class="head"><p><strong>芯片引脚</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>6.5V（烧录器直接输出PC工具<br/>配置的5V、4.2V等烧录电压）</p></td>
+<td><p>VBAT</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISP_DOUT(与USB_DAT连接)</p></td>
+<td><p>PC3</p></td>
+</tr>
+<tr class="row-even"><td><p>ISP_CLK(与USB_CLK连接)</p></td>
+<td><p>PC2</p></td>
+</tr>
+<tr class="row-odd"><td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+</tbody>
+</table></div>
+<ul class="simple">
+<li><p>AC704N、AC705N、AC680N、AC110N,AC111N,AC112N样机芯片烧录接线</p></li>
+</ul>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>烧录器排针</strong></p></th>
+<th class="head"><p><strong>芯片引脚</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>6.5V（烧录器直接输出PC工具<br/>配置的5V、4.2V等烧录电压）</p></td>
+<td><p>VBAT</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISP_DOUT(与USB_DAT连接)</p></td>
+<td><p>VPWR</p></td>
+</tr>
+<tr class="row-even"><td><p>ISP_CLK(与USB_CLK连接)</p></td>
+<td><p>PA02</p></td>
+</tr>
+<tr class="row-odd"><td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+</tbody>
+</table></div>
+<ul class="simple">
+<li><p>AC711N样机芯片烧录接线</p></li>
+</ul>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>烧录器排针</strong></p></th>
+<th class="head"><p><strong>芯片引脚</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>6.5V（烧录器直接输出PC工具<br/>配置的5V、4.2V等烧录电压）</p></td>
+<td><p>VBAT</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISP_DOUT(与USB_DAT连接)</p></td>
+<td><p>PC0</p></td>
+</tr>
+<tr class="row-even"><td><p>ISP_CLK(与USB_CLK连接)</p></td>
+<td><p>PB1</p></td>
+</tr>
+<tr class="row-odd"><td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="id6">
+<h2><span class="section-number">1.10.6. </span>样机芯片校准接线<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
+<p>此种接线方式可对样机、DEMO板、开发板上的芯片进行烧录测试，也可对芯片进行校准。</p>
+<p>简便的方法是找一个SOP封装的上层板(容易引线)，引出socket座上的VBAT（或LDOIN/VPWR）、DM、DP、GND,PB1 2.5V基准源，</p>
+<p>接到样机芯片对应引脚上，如<a class="reference internal" href="#img-pcba-trim-1tuo2"><span class="std std-ref">校准样机芯片接线</span></a>所示。走正常烧录流程即可实现芯片校准、程序烧录。</p>
+<figure class="align-default" id="img-pcba-trim-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image65.png"/>
+<figcaption>
+<p><span class="caption-text">校准样机芯片接线</span><a class="headerlink" href="#img-pcba-trim-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>部分芯片上层板的2.5V基准源并不一定是接PB1，视具体硬件设计而定；</p></li>
+<li><p>部分芯片校准电源供电接的是VBAT，而不是LDOIN/VPWR引脚；</p></li>
+<li><p>量产芯片，芯片出厂已经校准；只有出现ADC模块，VBAT充电模块等精度不够的情况才会在烧录阶段再次校准；</p></li>
+</ol>
+</div>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="btname_addr.html" class="btn btn-neutral float-left" title="1.9. 蓝牙地址及名字自增功能" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="commom_funcs.html" class="btn btn-neutral float-right" title="1.11. 其它常见功能配置和使用说明" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/pcba_burn.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/pcba_burn.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

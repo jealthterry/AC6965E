@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6.3. 工具拨码开关说明 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>6. 杰理科技强制升级工具4.0使用说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_and_download.html">6.1. 升级与下载说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="led_status.html">6.2. 灯的状态说明</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>6.3. 工具拨码开关说明</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">6.3.1. 拨码开关低四位（每时每刻只能拨一个位）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">6.3.2. 拨码开关高四位（可多个位同时拨）</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tool_firmware_update.html">6.4. 工具自身固件如何更新</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual_serial.html">6.5. 虚拟串口</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">6. </span>杰理科技强制升级工具4.0使用说明</a> »</li>
+<li><span class="section-number">6.3. </span>工具拨码开关说明</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/dev_tools/forced_upgrade/toggle_switch.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">6.3. </span>工具拨码开关说明<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">6.3.1. </span>拨码开关低四位（每时每刻只能拨一个位）<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<div class="wy-table-responsive"><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>拨码开关低四位</strong></p></th>
+<th class="head"><p><strong>KEY</strong></p></th>
+<th class="head"><p><strong>说明</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>不拨</strong></p></td>
+<td><p>usbkey</p></td>
+<td><p>几乎可升级所有芯片</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>第1位</strong></p></td>
+<td><p>usbkey</p></td>
+<td><p>循环断电的，间歇发usbkey的自动升级</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>第2位</strong></p></td>
+<td><p>ispkey</p></td>
+<td><p>升级需要test的芯片，如ac608n的无晶振升级等</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>第3位</strong></p></td>
+<td><p>usbkey</p></td>
+<td><p>不断电的，一直发usbkey的自动升级</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>第4位</strong></p></td>
+<td><p>预留</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="id3">
+<h2><span class="section-number">6.3.2. </span>拨码开关高四位（可多个位同时拨）<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>工具是否需要与PC端通讯，由拨码开关第7位决定</p>
+<ul class="simple">
+<li><p>不拨：工具无法与PC通讯，则以下几点的操作均无效。包括串口也不能使用。</p></li>
+<li><p>第7位：工具初始化有USB功能，可做串口工具，可接收PC端命令。</p></li>
+</ul>
+</li>
+<li><p>工具输出端的DP、DM的默认状态，由拨码开关第5位决定</p>
+<ul class="simple">
+<li><p>不拨：工具输出端的DP、DM默认高阻。</p></li>
+<li><p>第5位：工具输出端的DP、DM默认用于串口功能。</p></li>
+</ul>
+</li>
+<li><p>工具接收到PC端发来的设置波特率的命令</p></li>
+</ol>
+<div class="wy-table-responsive"><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>波特率</strong></p></th>
+<th class="head"><p><strong>串口</strong></p></th>
+<th class="head"><p><strong>说明</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1或111</p></td>
+<td><p>双工模式</p></td>
+<td><p>默认为双工模式</p></td>
+</tr>
+<tr class="row-odd"><td><p>2或112</p></td>
+<td><p>单线模式</p></td>
+<td><p>TX收发一体</p></td>
+</tr>
+<tr class="row-even"><td><p>3或113</p></td>
+<td><p>单线模式</p></td>
+<td><p>TX收发一体。并且当设置的波特率小于等于9600时，TX发送uartkey。（目前用于支持单线串口升级的芯片）</p></td>
+</tr>
+</tbody>
+</table></div>
+<ol class="arabic simple" start="4">
+<li><p>工具接收到PC端发来的jtag操作命令
+工具输出端的DP、DM用于jtag通讯功能。</p></li>
+<li><p>工具接收到PC端发来的升级操作命令
+等价于按下升级按键，进入升级流程。</p></li>
+<li><p>工具接收到PC端发来的flash操作命令
+工具输出端的DP、DM用于flash操作功能。（flash操作结束后，自动恢复到默认状态）<br/>
+工具上的RX引脚接flash的CS引脚。<br/>
+工具输出端的DP接flash的CLK引脚。<br/>
+工具输出端的DM引脚同时接flash的DO和DO引脚。<br/>
+<code class="docutils literal notranslate"><span class="pre">RX</span> <span class="pre">--&gt;</span> <span class="pre">CS</span></code><br/>
+<code class="docutils literal notranslate"><span class="pre">DP</span> <span class="pre">--&gt;</span> <span class="pre">CS</span></code><br/>
+<code class="docutils literal notranslate"><span class="pre">DM</span> <span class="pre">--&gt;</span> <span class="pre">DO</span></code><br/>
+<code class="docutils literal notranslate"><span class="pre">DM</span> <span class="pre">--&gt;</span> <span class="pre">DO</span></code><br/></p></li>
+</ol>
+<p>工具上已经将这几个引脚引出JTAG的10针接口：<br/>
+<code class="docutils literal notranslate"><span class="pre">TCK</span> <span class="pre">--&gt;</span> <span class="pre">DP</span></code><br/>
+<code class="docutils literal notranslate"><span class="pre">TDO</span> <span class="pre">--&gt;</span> <span class="pre">DM</span></code><br/>
+<code class="docutils literal notranslate"><span class="pre">TDI</span> <span class="pre">--&gt;</span> <span class="pre">DM</span></code><br/>
+<code class="docutils literal notranslate"><span class="pre">TMS</span> <span class="pre">--&gt;</span> <span class="pre">RX</span></code><br/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>还要记得给flash供电3.3V，共地。</p>
+<p>如果要对SH50的片上flash进行操作，那么就要拨拨码开关的第6位，工具的枚举为SH50 Burn v1.0.0.</p>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>工具的自身需求
+第8位：进入升级模式后，不会自动退出升级模式。</p></li>
+</ol>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="led_status.html" class="btn btn-neutral float-left" title="6.2. 灯的状态说明" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="tool_firmware_update.html" class="btn btn-neutral float-right" title="6.4. 工具自身固件如何更新" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 09, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/forced_upgrade/toggle_switch.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/forced_upgrade/toggle_switch.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

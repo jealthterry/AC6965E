@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.7. PC Tool Error Messages and Solutions — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>2. Jieli 1-to-8 Programmer User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">2.1. Programmer Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html">2.2. Manual Programming, Verification and Blank Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html">2.3. Automated Programming with a Handler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html">2.4. Remote Upgrade of the Programmer Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html">2.5. PC-Side Programming Options for Each Chip Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html">2.6. Status Indicators and Error Messages</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>2.7. PC Tool Error Messages and Solutions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#flashio">2.7.1. External FLASH programming data IO error</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="change_board_interval.html">2.8. Board-Change Interval Setting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="burn_vol.html">2.9. Programming Voltages for Different Chips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html">2.10. Authorized Programming Count Limit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html">2.11. Programming Third-Party Data (Authentication Codes)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html">2.12. Bluetooth Address and Name Auto-Increment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_curr_test.html">2.13. Current and Power Consumption Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_battery.html">2.14. Programming Devices with Batteries Attached</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freq_bias.html">2.15. Frequency Offset Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mic_test.html">2.16. MIC Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usual_uart_update.html">2.17. Upgrading Battery-Powered Devices over a Custom-IO Single/Two-Wire UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extern_flash_burn.html">2.18. Upgrading Internal and External Flash Together</a></li>
+<li class="toctree-l2"><a class="reference internal" href="erase.html">2.19. Partial (Non-Full-Chip) Erase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html">2.20. Other Common Features: Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faqs.html">2.21. Troubleshooting Common Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">2. </span>Jieli 1-to-8 Programmer User Manual</a> »</li>
+<li><span class="section-number">2.7. </span>PC Tool Error Messages and Solutions</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/burner_1tuo8/pc_err.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="pc">
+<h1><span class="section-number">2.7. </span>PC Tool Error Messages and Solutions<a class="headerlink" href="#pc" title="Permalink to this heading"></a></h1>
+<section id="flashio">
+<h2><span class="section-number">2.7.1. </span>External FLASH programming data IO error<a class="headerlink" href="#flashio" title="Permalink to this heading"></a></h2>
+<p>When deploying in the PC tool, the error shown in <a class="reference internal" href="#pc-extern-flash-io-err-1tuo8"><span class="std std-ref">External FLASH programming data IO error</span></a> is displayed.</p>
+<figure class="align-default" id="pc-extern-flash-io-err-1tuo8">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image84.png"/>
+<figcaption>
+<p><span class="caption-text">External FLASH programming data IO error</span><a class="headerlink" href="#pc-extern-flash-io-err-1tuo8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p><strong>Cause:</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">[SYS_CFG_PARAM]</span></code> section of the download directory configuration file <code class="docutils literal notranslate"><span class="pre">isd_config.ini</span></code> contains the following configuration items:</p>
+<p><code class="docutils literal notranslate"><span class="pre">EX_FLASH</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">EX_FLASH_IO</span></code></p>
+<p>However, in the <code class="docutils literal notranslate"><span class="pre">download.bat</span></code> script, <code class="docutils literal notranslate"><span class="pre">isd_download.exe</span></code> is not given the parameter:</p>
+<p><code class="docutils literal notranslate"><span class="pre">-ex_flash</span></code></p>
+<p>to specify the external FLASH data file.</p>
+<p><strong>Fix:</strong></p>
+<p>If external FLASH data needs to be downloaded, add the following parameters to <code class="docutils literal notranslate"><span class="pre">isd_download.exe</span></code> in the <code class="docutils literal notranslate"><span class="pre">download.bat</span></code> script:</p>
+<p><code class="docutils literal notranslate"><span class="pre">-ex_flash</span> <span class="pre">res.bin</span></code></p>
+<p>:: -ex_flash # parsing parameter required by the 1-to-8 programmer<br/> :: res.bin # the packed resource file; use this name whenever possible, because OTA upgrades recognize only this name</p>
+<p>Add the following configuration items to the <code class="docutils literal notranslate"><span class="pre">[SYS_CFG_PARAM]</span></code> section of the download directory configuration file <code class="docutils literal notranslate"><span class="pre">isd_config.ini</span></code>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">EX_FLASH=PA08_1C_NULL;</span></code></p>
+<p>In the example configuration, the CS pin is PA08,<br/> port C of SPI1 is used,<br/> and if the norflash is powered from vddio, simply enter NULL; otherwise, enter the corresponding pin number</p>
+<p>If external FLASH data does not need to be downloaded, delete the following <code class="docutils literal notranslate"><span class="pre">isd_download.exe</span></code> parameters from the <code class="docutils literal notranslate"><span class="pre">download.bat</span></code> script:</p>
+<p><code class="docutils literal notranslate"><span class="pre">-ex_flash</span> <span class="pre">res.bin</span></code></p>
+<p>as well as the following items under <code class="docutils literal notranslate"><span class="pre">[SYS_CFG_PARAM]</span></code> in <code class="docutils literal notranslate"><span class="pre">isd_config.ini</span></code>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">EX_FLASH</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">EX_FLASH_IO</span></code></p>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="status_errors.html" class="btn btn-neutral float-left" title="2.6. Status Indicators and Error Messages" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="change_board_interval.html" class="btn btn-neutral float-right" title="2.8. Board-Change Interval Setting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo8/pc_err.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo8/pc_err.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

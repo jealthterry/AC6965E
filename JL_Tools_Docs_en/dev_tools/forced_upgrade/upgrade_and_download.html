@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6.1. Upgrading and Downloading — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>6. Jieli Forced Upgrade Tool 4.0 User Guide</a><ul>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>6.1. Upgrading and Downloading</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2"><button class="toctree-expand" title="Open/close menu" type="button"></button>6.1.1. Upgrade procedure</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">6.1.1.1. Standard upgrade</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#target-forceupgrade-serial-update">6.1.1.2. Serial upgrade</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="led_status.html">6.2. LED Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toggle_switch.html">6.3. Tool DIP Switches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool_firmware_update.html">6.4. Updating the Tool's Own Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual_serial.html">6.5. Virtual Serial Port</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">6. </span>Jieli Forced Upgrade Tool 4.0 User Guide</a> »</li>
+<li><span class="section-number">6.1. </span>Upgrading and Downloading</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/dev_tools/forced_upgrade/upgrade_and_download.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">6.1. </span>Upgrading and Downloading<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">6.1.1. </span>Upgrade procedure<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>In most cases, when you need to download a program to a development board or device, you use the <strong>standard upgrade</strong> method. A few chips (such as AD15) use the <strong>serial upgrade</strong> method.</p>
+<section id="id3">
+<h3><span class="section-number">6.1.1.1. </span>Standard upgrade<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<p><strong>1. Set the DIP switches of the Forced Upgrade Tool</strong><br/></p>
+<p>Enter upgrade mode with one of the DIP switch settings in the table below<br/></p>
+<div class="wy-table-responsive"><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Lower four DIP switches</strong></p></th>
+<th class="head"><p><strong>LED status</strong></p></th>
+<th class="head"><p><strong>Button</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>None on</p></td>
+<td><p>Red LED steady on, green LED flashing</p></td>
+<td><p>Button press required</p></td>
+<td><p>Because pressing the button actually cuts the power output once for more than 250ms to reset the chip, and sends a handshake signal once.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Switch 1 on</p></td>
+<td><p>Red LED steady on, green LED steady on</p></td>
+<td><p>No button press required</p></td>
+<td><p>Because the tool periodically cuts the power output to reset the chip and periodically sends handshake signals.</p></td>
+</tr>
+<tr class="row-even"><td><p>Switch 2 on</p></td>
+<td><p>Red LED steady on, green LED flashing</p></td>
+<td><p>Button press required</p></td>
+<td><p>Because pressing the button actually cuts the power output once for more than 250ms to reset the chip, and sends a handshake signal once.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Switch 3 on</p></td>
+<td><p>Red LED steady on, green LED steady on</p></td>
+<td><p>No button press required, but a quick plug-in or a chip wake-up is needed</p></td>
+<td><p>The tool keeps sending handshake signals. The purpose of the quick plug-in is to give the chip a power-on reset; a chip wake-up is also a form of reset, so the handshake can succeed that way too.</p></td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only one of these switches can be turned on at a time, and the Forced Upgrade Tool must be <strong>reconnected</strong> to the computer</p>
+</div>
+<p><strong>2. Connect the chip to the Forced Upgrade Tool</strong><br/> Connect the female USB connector of the Forced Upgrade Tool to the computer and the male USB connector to the device or development board. (<strong>Be careful not to connect them the wrong way round</strong>; see the figure below.)</p>
+<p><img alt="" src="../../_images/fu_image1.jpg"/></p>
+<p><strong>3. Download and upgrade</strong><br/> After step 2, if no switch or switch 2 is on, press the button until the <strong>green LED goes off</strong> and the <strong>red LED stays on</strong>; if switch 1 or switch 3 is on, wait until the <strong>green LED goes off</strong> and the <strong>red LED stays on</strong>. The chip is then ready for download/upgrade. (For the LED states, see "<a class="reference internal" href="led_status.html"><span class="doc std std-doc">LED Status</span></a>".)<br/> Open the download directory in the SDK and run <code class="docutils literal notranslate"><span class="pre">download.bat</span></code> to upgrade/download.<br/> <img alt="" src="../../_images/fu_image18.png"/></p>
+<p><strong>How the chip enters forced upgrade mode:</strong><br/> The first requirement is to reset the chip, that is, the chip must start running its boot code from the beginning.<br/> Next, while the chip is resetting, the tool sends it a handshake signal, such as usbkey, ispkey or uartkey.<br/> Finally, once the handshake succeeds, the chip enters forced upgrade mode, and a drive named after the chip model appears in the computer's Device Manager.<br/> For example, the chip shown here is BR28, a chip in the Bluetooth series (Bluetooth chips generally start with BR, video chips with DV and general-purpose chips with SH):<br/> <img alt="" src="../../_images/fu_image17.png"/></p>
+<p>The lower four DIP switches of the Forced Upgrade Tool select which handshake signal the tool sends to the chip.<br/> For the lower four switches, see "<a class="reference internal" href="toggle_switch.html"><span class="doc std std-doc">Tool DIP Switches</span></a>".<br/></p>
+</section>
+<section id="target-forceupgrade-serial-update">
+<span id="id4"></span><h3><span class="section-number">6.1.1.2. </span>Serial upgrade<a class="headerlink" href="#target-forceupgrade-serial-update" title="Permalink to this heading"></a></h3>
+<p><strong>Forced Upgrade Tool 4.0 supports upgrading chips over a serial port (UART)</strong></p>
+<p>The procedure is as follows, using AC697x as an example:<br/></p>
+<p><img alt="" src="../../_images/fu_image14.png"/></p>
+<p>(1) Turn on DIP switch 7 of the tool and bind the tool to a virtual serial port (see "<a class="reference internal" href="virtual_serial.html"><span class="doc std std-doc">Virtual Serial Port</span></a>").<br/></p>
+<p>(2) Connect the TX pin of the tool to the serial upgrade pin of the chip. For chips after AC697x, the serial upgrade pin is the LDOIN pin; for chips before AC697x, it is the PB05 pin. The chip is powered by the tool, and the two share a common ground.<br/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note: step (3) is normally already set up in the SDK, so there is no need to modify the ini file yourself.</p>
+</div>
+<p>(3) Open the download directory, edit the <code class="docutils literal notranslate"><span class="pre">isd_config.ini</span></code> file in it, set the configuration item named <code class="docutils literal notranslate"><span class="pre">DOWNLOAD_MODEL</span></code> to <code class="docutils literal notranslate"><span class="pre">SERIAL</span></code> (<strong>normally the SDK already sets this by default, so no change is needed)</strong>, and save the change.</p>
+<p><img alt="" src="../../_images/fu_image15.png"/></p>
+<p><img alt="" src="../../_images/fu_image16.png"/></p>
+<p>(4) Double-click the <code class="docutils literal notranslate"><span class="pre">download.bat</span></code> file in the download directory to perform the serial upgrade.</p>
+</section>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="index.html" class="btn btn-neutral float-left" title="6. Jieli Forced Upgrade Tool 4.0 User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="led_status.html" class="btn btn-neutral float-right" title="6.2. LED Status" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 09, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/forced_upgrade/upgrade_and_download.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/forced_upgrade/upgrade_and_download.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

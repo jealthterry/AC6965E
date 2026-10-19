@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.5. 支持的芯片型号和授权执行文件工程模板 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>4. 多算法授权使用说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">4.1. 多算法授权介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algo-user.html">4.2. 算法提供商需要做的事情</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prod-user.html">4.3. 生产商需要做的事情</a></li>
+<li class="toctree-l2"><a class="reference internal" href="website-readme.html">4.4. 杰理服务器使用方式</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>4.5. 支持的芯片型号和授权执行文件工程模板</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#target-support-mul-auth-chip-type">4.5.1. 烧录器支持多算法授权功能的型号</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">4.5.2. 授权执行文件工程模板下载</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sdk">4.5.3. 支持多算法授权的sdk补丁</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#target-request-mul-auth-sdk-patch"><button class="toctree-expand" title="Open/close menu" type="button"></button>4.5.4. 多算法授权补丁申请</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">4.5.4.1. 邮件申请格式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">4.5.4.2. 注意事项</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">4.5.5. 具体的使用方式</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="add_authrun_to_fw.html">4.6. 如何生成只有包含授权执行文件的FW</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">4. </span>多算法授权使用说明</a> »</li>
+<li><span class="section-number">4.5. </span>支持的芯片型号和授权执行文件工程模板</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/mass_prod_tools/multi_auth/authrun-tmpl-list.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">4.5. </span>支持的芯片型号和授权执行文件工程模板<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="target-support-mul-auth-chip-type">
+<span id="id2"></span><h2><span class="section-number">4.5.1. </span>烧录器支持多算法授权功能的型号<a class="headerlink" href="#target-support-mul-auth-chip-type" title="Permalink to this heading"></a></h2>
+<p>烧录器支持多算法授权功能的芯片型号，以及对应支持授权执行文件的容量大小情况如下：<br/></p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p>芯片型号</p></th>
+<th class="head"><p>支持授权执行文件的大小</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>AD17N</p></td>
+<td><p>512</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AD15N、AE15N</p></td>
+<td><p>2K</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AC632N、AE632N</p></td>
+<td><p>4K</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AC695X、AC635N、AC6083、AE695N、<br/>AD14N、AC104N、AD16N、AC128N</p></td>
+<td><p>4K</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AC696X、AC636N、AC608N、AC706N、<br/>AD697N、JL697N、AC899N、AD699N、<br/>AC897N、AC637N、AD698N、<br/>AC638N、AC702N、AC701N、JL701N</p></td>
+<td><p>8k</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>如下型号，需要isd_download 4.2.54以上版本，且在isd_config.ini配置如下字段：<br/></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">EXTRA_CFG_PARAM</span><span class="p">]</span><span class="w"></span>
+<span class="n">OTP_CFG_SIZE</span><span class="o">=</span><span class="mi">512</span><span class="p">;</span><span class="w"></span>
+
+<span class="cp">#AC707N、AW34N 、AD24N型号芯片最小的值建议配置128;</span>
+<span class="cp">#其它型号最小值建议配置256;一般使用公版SDK默认配置的值即可；</span>
+</pre></div>
+</div>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p>芯片型号</p></th>
+<th class="head"><p>支持授权执行文件的大小</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>AD21N</p></td>
+<td><p>1K</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AC82N、AD18N、AC129N、AD12N</p></td>
+<td><p>2K</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AD21N、AD23N、AD24N、AW30N、<br/>AW31N、AW32N、AW33N、AC75N</p></td>
+<td><p>4K</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AC707N、AW34N、AC704N、AC705N、<br/>JL708N、JL709N、AC689N、AC710N、<br/>JL710N，AW36N、AC680N、AC112N、<br/>AC792N</p></td>
+<td><p>默认支持8K</p></td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>注意：<br/>
+1、授权执行文件总大小等于静态空间+动态空间：<br/></p>
+<p>静态空间： SIZE = .text +.data +.bss几个段的总大小<br/>
+动态空间：codeblocks编译环境加上链接参数：–plugin-opt=-warn-stack-size=64；编译会提示各个函数栈使用情况;可以参考《<a class="reference internal" href="../../dev_tools/toolchains/faqs/faq_stack_size_limit_exceeded.html#target-warn-stack-size"><span class="std std-ref">为什么链接时提示 stack size limit exceeded 警告</span></a>》了解</p>
+<p>点击编译（Rebuild）时“Build log”窗口有数据段的大小提示<br/></p>
+<p>2、不同型号的ram资源大小不同，建议不要做过于复杂算法，以免编译出来的执行文件过大，导致烧录运行失败；</p>
+<p>3、不用使用太大的stack栈，stack栈里面定义的buffer改成全局变量;不然静态空间小于支持的执行文件大小，但是还可能存在烧录执行文件跑死的情况；</p>
+<p>4、AC701N、JL701N等支持配置或者不配置OTP_CFG_SIZE=512;根据SDK设计进行处理，一般新版本SDK支持配置OTP_CFG_SIZE=512，即flash参数写到otp_cfg区域；旧sdk则写到flash末尾;</p>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">4.5.2. </span>授权执行文件工程模板下载<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>支持多算法授权功能的芯片有3种架构，如下不同型号对应的授权执行文件工程模版下载链接（如未能确认芯片对应哪个工程模版，请联系杰理公司）：</p>
+<ol class="arabic simple">
+<li><p><strong>q32s芯片架构</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p>对应的芯片型号： AC632N、AW31N、AW33N</p></li>
+<li><p>对应的工程模版： <a class="reference external" href="https://pkgman.jieliapp.com/s/authrun-j32-tmpl" rel="noopener" target="_blank">点击此处下载工程模板</a></p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p><strong>pi32芯片架构</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p>对应的芯片型号： AC82N、 AD14N、AC104N 、AD15N、、AD17N、AD24N 、AW30N</p></li>
+<li><p>对应的工程模版： <a class="reference external" href="https://pkgman.jieliapp.com/s/authrun-q32s-tmpl" rel="noopener" target="_blank">点击此处下载工程模板</a></p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p><strong>pi32v2芯片架构</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p>对应的芯片型号：  上述q32s和pi32芯片架构<code class="docutils literal notranslate"><span class="pre">对应型号外的其他型号</span></code></p></li>
+<li><p>对应的工程模版： <a class="reference external" href="https://pkgman.jieliapp.com/s/authrun-pi32v2-r3-tmpl" rel="noopener" target="_blank">点击此处下载工程模板</a></p></li>
+</ul>
+</section>
+<section id="sdk">
+<span id="target-support-mul-auth-sdk-patch"></span><h2><span class="section-number">4.5.3. </span>支持多算法授权的sdk补丁<a class="headerlink" href="#sdk" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong style="color: red;">大部分sdk原生就支持多算法授权，不需要补丁
+请直接参考<a class="reference internal" href="algo-user.html#target-mul-auth-how-to-use"><span class="std std-ref">算法库（.a 文件）添加授权数据验证</span></a>,</strong> <br/>
+如sdk出现 链接错误 ‘ sys_cfg_read_otp未定义 ‘，则更新对应的补丁,如没找到补丁则按照<a class="reference internal" href="#target-request-mul-auth-sdk-patch"><span class="std std-ref">多算法授权补丁申请</span></a>进行申请</p>
+</div>
+<p>目前支持多算法授权的sdk补丁如下：</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p>芯片类型</p></th>
+<th class="head"><p>补丁</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>AC632N</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/BD19-AC632N%282024_3_26%29.rar" rel="noopener" target="_blank">AC632N 补丁下载（点击此处下载）（2024/03/26）</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>695N/635N</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/BR23-AC695N-AC635N%282024_5_21%29.rar" rel="noopener" target="_blank">695N/635N 补丁下载（点击此处下载）（2024/05/21）</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>696N/636N</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/BR25-AC696N-AC636N%282024_7_12%29.rar" rel="noopener" target="_blank">696N/636N 补丁下载（点击此处下载）（2024/07/12）</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>697N</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/BR30-AC697N%282024_3_26%29.rar" rel="noopener" target="_blank">697N 补丁下载（点击此处下载）（2024/03/26）</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>700N</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/BR36-AC700N%282024_3_26%29.rar" rel="noopener" target="_blank">700N 补丁下载（点击此处下载）（2024/04/11）</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>701N</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/BR28-AC701N%282024_11_28%29.rar" rel="noopener" target="_blank">701N 补丁下载（点击此处下载）（2024/11/28）</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AD14N</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/SH54_AD14N%282024_3_26%29.rar" rel="noopener" target="_blank">AD14N 补丁下载（点击此处下载）（2024/03/26）</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AD15N</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/SH55_AD15N%282024_3_26%29.rar" rel="noopener" target="_blank">AD15N 补丁下载（点击此处下载）（2024/03/26）</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AD16N</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/UC03-AD16N%282024_3_26%29.rar" rel="noopener" target="_blank">AD16N 补丁下载（点击此处下载）（2024/03/26）</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AD17N</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/SH57_AD17N%282024_3_26%29.rar" rel="noopener" target="_blank">AD17N 补丁下载（点击此处下载）（2024/03/26）</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>706N</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/BR29-AC706N%282024_11_28%29.rar" rel="noopener" target="_blank">706N 补丁下载（点击此处下载）（2024/11/28</a></p></td>
+</tr>
+</tbody>
+</table></div>
+<p>补丁使用方式：找到对应sdk 的tools 目录下cpu.a 并替换即可。</p>
+</section>
+<section id="target-request-mul-auth-sdk-patch">
+<span id="id4"></span><h2><span class="section-number">4.5.4. </span>多算法授权补丁申请<a class="headerlink" href="#target-request-mul-auth-sdk-patch" title="Permalink to this heading"></a></h2>
+<p>如果未能找到你需要的芯片型号，请联系杰理公司<a href="mailto:weiyushu@zh-jieli.com">weiyushu@zh-jieli.com</a><br/>
+<strong style="color: red;">请邮件注明芯片型号和sdk版本，并把当前sdk的cpu.a做邮件附件一并发送：</strong><br/></p>
+<section id="id5">
+<h3><span class="section-number">4.5.4.1. </span>邮件申请格式<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<p>为了确保您的申请能够得到及时且准确的处理，请按照以下格式发送邮件：<br/></p>
+<p>邮件主题：[申请多算法授权补丁]-[芯片型号]-[sdk版本]<br/>
+示例：[申请多算法授权补丁]-AC632N-ac63_bt_sdk_release_v2.3.0<br/></p>
+</section>
+<section id="id6">
+<h3><span class="section-number">4.5.4.2. </span>注意事项<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>请确保邮件主题清晰、准确，以便快速识别和处理您的申请。</p></li>
+<li><p>附件中的<code class="docutils literal notranslate"><span class="pre">cpu.a</span></code>文件需为当前芯片对应的版本，以避免兼容性问题。</p></li>
+<li><p>如有任何疑问或需要进一步说明，请在邮件中详细说明。</p></li>
+</ul>
+</section>
+</section>
+<section id="id7">
+<h2><span class="section-number">4.5.5. </span>具体的使用方式<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h2>
+<ol class="arabic" start="0">
+<li><p>下载与芯片对应的模板工程。（如果未能找到你需要的芯片型号，请联系杰理公司）</p></li>
+<li><p>修改 <code class="docutils literal notranslate"><span class="pre">r_makebin.bat</span></code> 脚本中，对应修改 <code class="docutils literal notranslate"><span class="pre">Authorization_ID</span></code> 为协商好的 ID（示例中是 234）</p></li>
+<li><p><strong style="color: red;">ID 可用范围 64 ~ 999</strong></p>
+<p><img alt="" data-action="zoom" src="../../_images/tmpl_auth_step1.jpg"/></p>
+</li>
+</ol>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>注意，在修改 <code class="docutils literal notranslate"><span class="pre">r_makebin.bat</span></code> 中，下面的这两句话的时候，不能多余的空格（等号前后，行尾），<strong>bat脚本对空格是敏感的</strong>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">Authorization_ID=234</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">CHIP_TYPE=AC695X</span></code></p>
+</div>
+<ol class="arabic" start="2">
+<li><p>修改 <code class="docutils literal notranslate"><span class="pre">code/main.c</span></code> 文件中，返回的加密数据（即、授权数据）的长度</p></li>
+<li><p>修改 <code class="docutils literal notranslate"><span class="pre">code/main.c</span></code> 文件中，返回的加密数据（即、授权数据）的生成方式</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>模板工程中，给的示例是将 flash uuid 异或后，作为加密数据。
+这个是一个较弱的方式，一般而言，建议算法公司将其修改为自定义的，其他人不知道也不容易破解的方式</p>
+</div>
+<p><img alt="" data-action="zoom" src="../../_images/tmpl_auth_step2.jpg"/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>在烧录器烧录芯片的过程中，会调用 .authrun 文件中的 c_main 函数</p></li>
+<li><p>回调函数 c_main 被烧录器调用时，ops 结构体中的
+flash_id、seq、timestamp、uuid 这些值已经由烧录器端填写完成</p></li>
+<li><p>回调函数 c_main 需要负责填充 out_enc_data 并返回 out_len</p></li>
+<li><p>烧录器将 out_enc_data 中长度为 out_len 的内容写入到芯片中</p></li>
+</ol>
+<p><strong>烧录器的处理流程，伪代码如下：</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//---------</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">flash_ops</span><span class="w"> </span><span class="n">ops</span><span class="p">;</span><span class="w">           </span><span class="c1">// 这些代码是烧录器端实现的，算法公司无需关心</span>
+<span class="n">ops</span><span class="p">.</span><span class="n">flash_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_flash_id</span><span class="p">();</span><span class="w">  </span><span class="c1">// 这些代码是烧录器端实现的，算法公司无需关心</span>
+<span class="n">ops</span><span class="p">.</span><span class="n">seq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_program_seq</span><span class="p">();</span><span class="w">    </span><span class="c1">// 这些代码是烧录器端实现的，算法公司无需关心</span>
+<span class="n">ops</span><span class="p">.</span><span class="n">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_timestamp</span><span class="p">();</span><span class="c1">// 这些代码是烧录器端实现的，算法公司无需关心</span>
+<span class="n">ops</span><span class="p">.</span><span class="n">uuid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_flash_uuid</span><span class="p">();</span><span class="w">    </span><span class="c1">// 这些代码是烧录器端实现的，算法公司无需关心</span>
+<span class="n">ops</span><span class="p">.</span><span class="n">out_enc_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buf</span><span class="p">;</span><span class="w">         </span><span class="c1">// 这些代码是烧录器端实现的，算法公司无需关心</span>
+<span class="n">ops</span><span class="p">.</span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buf_size</span><span class="p">;</span><span class="w">             </span><span class="c1">// 这些代码是烧录器端实现的，算法公司无需关心</span>
+<span class="c1">//---------</span>
+<span class="c1">// 注意： .uuid 的长度固定为 16 个字节</span>
+
+
+<span class="c1">// 算法公司需要实现 .authrun 中的 c_main 函数</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">out_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c_main</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ops</span><span class="p">);</span><span class="w"> </span><span class="c1">// 调用 .authrun 的 c_main 回调函数</span>
+<span class="c1">// 调用 c_main 后，out_enc_data 内容应该已经被填充，并返回 out_len（需要写入芯片的加密数据长度）</span>
+<span class="c1">// out_len 一般长度不能超过255，一些资源少的芯片型号，实际长度会更小，具体以实际测试为准</span>
+
+<span class="n">write_to_flash</span><span class="p">(</span><span class="n">get_program_address</span><span class="p">(),</span><span class="w"> </span><span class="c1">// 这些代码是烧录器端实现的，算法公司无需关心</span>
+<span class="w">    </span><span class="n">ops</span><span class="p">.</span><span class="n">out_enc_data</span><span class="p">,</span><span class="w">                 </span><span class="c1">// 这些代码是烧录器端实现的，算法公司无需关心</span>
+<span class="w">    </span><span class="n">out_len</span><span class="p">);</span><span class="w">                         </span><span class="c1">// 这些代码是烧录器端实现的，算法公司无需关心</span>
+
+
+</pre></div>
+</div>
+</div>
+</li>
+<li><p>点击 Code::Blocks 中的重新编译，生成得到 <code class="docutils literal notranslate"><span class="pre">.authrun</span></code> 文件</p>
+<p><img alt="" data-action="zoom" src="../../_images/tmpl_auth_step4.jpg"/></p>
+</li>
+<li><p>在 <code class="docutils literal notranslate"><span class="pre">output</span></code> 目录下，找到对应的 <code class="docutils literal notranslate"><span class="pre">.authrun</span></code> 文件</p>
+<p><img alt="" data-action="zoom" src="../../_images/tmpl_auth_step5.jpg"/></p>
+</li>
+<li><p>上传 <code class="docutils literal notranslate"><span class="pre">.authrun</span></code> 文件到杰理服务器，用以后续售出</p></li>
+</ol>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>注意：</p>
+<ol class="arabic simple">
+<li><p>一般情况下，不要直接将 <code class="docutils literal notranslate"><span class="pre">.authrun</span></code> 文件直接发给客户</p></li>
+</ol>
+</div>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="website-readme.html" class="btn btn-neutral float-left" title="4.4. 杰理服务器使用方式" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="add_authrun_to_fw.html" class="btn btn-neutral float-right" title="4.6. 如何生成只有包含授权执行文件的FW" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/multi_auth/authrun-tmpl-list.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/multi_auth/authrun-tmpl-list.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

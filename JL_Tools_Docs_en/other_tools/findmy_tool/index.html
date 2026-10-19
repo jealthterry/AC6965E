@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3. FindMy Production Test Tool Suite — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>3. FindMy Production Test Tool Suite</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">3.1. Tool overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#findmy-token"><button class="toctree-expand" title="Open/close menu" type="button"></button>3.2. FindMy Token Export Tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.2.1. Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3.2.2. How to use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">3.2.3. Data format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id5"><button class="toctree-expand" title="Open/close menu" type="button"></button>3.3. FindMy Production Test Tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">3.3.1. Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">3.3.2. How to use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">3.3.3. Configuration file</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><span class="section-number">3. </span>FindMy Production Test Tool Suite</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/other_tools/findmy_tool/index.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="findmy">
+<h1><span class="section-number">3. </span>FindMy Production Test Tool Suite<a class="headerlink" href="#findmy" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2><span class="section-number">3.1. </span>Tool overview<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>The FindMy Production Test Tool Suite contains the following two tools:</p>
+<ol class="arabic simple">
+<li><p><strong>FindMy Token Export Tool</strong> – generates the Token files required by the Jieli programmers and the Jieli FindMy Production Test Tool.</p></li>
+<li><p><strong>FindMy Production Test Tool</strong> – writes the Token files into FindMy devices and runs production line tests.</p></li>
+</ol>
+<p><a class="reference external" href="https://pkgman.jieliapp.com/s/findmy_tools" rel="noopener" target="_blank">FindMy Production Test Tool Suite download link</a></p>
+</section>
+<hr class="docutils"/>
+<section id="findmy-token">
+<h2><span class="section-number">3.2. </span>FindMy Token Export Tool<a class="headerlink" href="#findmy-token" title="Permalink to this heading"></a></h2>
+<p>This tool generates Token files (<code class="docutils literal notranslate"><span class="pre">.hex</span></code>) from the CSV files exported by Jieli MFiTools.exe, for use in programming and production testing.</p>
+<p><img alt="Token Export Tool window" src="../../_images/jieli_tokens_to_csv.jpg"/></p>
+<section id="id2">
+<h3><span class="section-number">3.2.1. </span>Features<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Input file: the CSV file exported by the Jieli <code class="docutils literal notranslate"><span class="pre">MFiTools.exe</span></code> tool.</p></li>
+<li><p>Output file: a Token file with the <code class="docutils literal notranslate"><span class="pre">.hex</span></code> extension (<strong>do not change the extension</strong>).</p></li>
+<li><p>Log file: after the export, a log file with the <code class="docutils literal notranslate"><span class="pre">.export.log</span></code> extension is generated automatically. It records the following information:</p>
+<ul>
+<li><p>Export time</p></li>
+<li><p>Starting SN</p></li>
+<li><p>Values of the export options</p></li>
+<li><p>Start index of the exported Tokens</p></li>
+<li><p>Total number of exported Tokens</p></li>
+</ul>
+</li>
+<li><p>Auto-recall: when the tool starts, it reads the previous log file and automatically restores the <strong>export start index</strong> (导出起始序号) and the <strong>export options</strong> (导出勾选项).</p></li>
+</ul>
+</section>
+<section id="id3">
+<h3><span class="section-number">3.2.2. </span>How to use<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Double-click <strong>FindMy Token Export Tool</strong> (FindMy Token 导出工具) to run it.</p></li>
+<li><p>The tool automatically reads the previous export log (if any) and restores the start index and the checked options.</p></li>
+<li><p>Click "Browse" (浏览) and select the CSV file exported by <code class="docutils literal notranslate"><span class="pre">MFiTools.exe</span></code>.</p></li>
+<li><p>Change the <strong>export start index</strong> (导出起始序号) and the <strong>export options</strong> (导出勾选项) as needed.</p></li>
+<li><p>Click the <strong>Export</strong> (导出) button. The tool generates the following files in the same directory:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.hex</span></code> Token file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.export.log</span></code> export log file</p></li>
+</ul>
+</li>
+<li><p>Check the log file to confirm that the export time, starting SN, number of Tokens, etc. are correct.</p></li>
+</ol>
+</section>
+<section id="id4">
+<h3><span class="section-number">3.2.3. </span>Data format<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<p>Each line of data in the <code class="docutils literal notranslate"><span class="pre">.hex</span></code> file has the following format (big-endian byte order):</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Byte range</p></th>
+<th class="head"><p>Content</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0 ~ 3</p></td>
+<td><p>Fixed identifier</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">4A</span> <span class="pre">4C</span> <span class="pre">46</span> <span class="pre">4D</span></code> (the ASCII characters <code class="docutils literal notranslate"><span class="pre">JLFM</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>4 ~ 5</p></td>
+<td><p>Checksum</p></td>
+<td><p>CRC16 of all subsequent data starting from byte 6</p></td>
+</tr>
+<tr class="row-even"><td><p>6 ~ 7</p></td>
+<td><p>Total length</p></td>
+<td><p>Total number of bytes in the line (including the fixed identifier and the checksum)</p></td>
+</tr>
+<tr class="row-odd"><td><p>8 ~ 9</p></td>
+<td><p>Number of data segments</p></td>
+<td><p>Number of data segments that follow</p></td>
+</tr>
+<tr class="row-even"><td><p>10 ~ 11</p></td>
+<td><p>Format version</p></td>
+<td><p>The current version is <code class="docutils literal notranslate"><span class="pre">0x01</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>12 ~ 13</p></td>
+<td><p>Offset 1</p></td>
+<td><p>Offset of the first data segment (counted from byte 0)</p></td>
+</tr>
+<tr class="row-even"><td><p>14 ~ 15</p></td>
+<td><p>Length 1</p></td>
+<td><p>Length of the first data segment</p></td>
+</tr>
+<tr class="row-odd"><td><p>16 ~ 17</p></td>
+<td><p>Data ID 1</p></td>
+<td><p>ID of the first data segment</p></td>
+</tr>
+<tr class="row-even"><td><p>18 ~ 19</p></td>
+<td><p>Offset 2</p></td>
+<td><p>Offset of the second data segment</p></td>
+</tr>
+<tr class="row-odd"><td><p>20 ~ 21</p></td>
+<td><p>Length 2</p></td>
+<td><p>Length of the second data segment</p></td>
+</tr>
+<tr class="row-even"><td><p>22 ~ 23</p></td>
+<td><p>Data ID 2</p></td>
+<td><p>ID of the second data segment</p></td>
+</tr>
+<tr class="row-odd"><td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>And so on; each data segment takes 6 bytes (offset + length + ID)</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+</section>
+<hr class="docutils"/>
+<section id="id5">
+<h2><span class="section-number">3.3. </span>FindMy Production Test Tool<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<p>This tool writes the Token files generated by the FindMy Token Export Tool into FindMy devices and runs a series of production line tests.</p>
+<p><img alt="Production test tool window" src="../../_images/findmy_production_tool.jpg"/></p>
+<section id="id6">
+<h3><span class="section-number">3.3.1. </span>Features<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Supports a frequency offset calibration test with configurable minimum/maximum allowed values.</p></li>
+<li><p>Supports a signal strength test with a configurable allowed signal strength range.</p></li>
+<li><p>Supports product data verification, which compares the data reported by the device with the expected values.</p></li>
+<li><p>Supports manufacturer name verification, which ensures that the manufacturer name returned by the device is as expected.</p></li>
+<li><p>Supports model verification, which checks that the product model returned by the device is correct.</p></li>
+<li><p>Supports SN / UUID / Token update; the data is written by importing the .hex file generated by the Token Export Tool.</p></li>
+<li><p>Supports firmware upgrade during the production test; the upgrade file can be specified.</p></li>
+<li><p>Supports SN output (currently only over TCP), which sends the SN to a specified server.</p></li>
+<li><p>Supports configuring the action after the production test passes: either only exit production test mode, or exit and then perform a soft power-off.</p></li>
+<li><p>Supports production test result logs and debug logs; the file name prefix, maximum size and number of rolling files can be configured separately for each log.</p></li>
+</ul>
+</section>
+<section id="id7">
+<h3><span class="section-number">3.3.2. </span>How to use<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Edit the findmy_config.ini configuration file according to your production test requirements (see the configuration description below).</p></li>
+<li><p>Double-click the FindMy Production Test Tool to run it; the program loads the configuration automatically.</p></li>
+<li><p>Plug in the Jieli FindMy Dongle and wait for the tool to recognize it.</p></li>
+<li><p>Place the FindMy device to be tested on the FindMy Dongle.</p></li>
+<li><p>The tool automatically performs the tests and update operations; wait until the progress is complete.</p></li>
+<li><p>Handle the FindMy device according to the test result shown in the window ("Pass" (通过) or "Fail" (失败)).</p></li>
+<li><p>Repeat steps 4 to 6.</p></li>
+</ol>
+</section>
+<section id="id8">
+<h3><span class="section-number">3.3.3. </span>Configuration file<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+<p>The tool is configured through <code class="docutils literal notranslate"><span class="pre">findmy_config.ini</span></code>. The settings and their descriptions are as follows:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">#  Frequency offset calibration test</span><span class="w"></span>
+<span class="k">[freq_offset_calib_test]</span><span class="w"></span>
+<span class="na">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span><span class="w"></span>
+<span class="na">min_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">-10</span><span class="w"></span>
+<span class="na">max_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10</span><span class="w"></span>
+
+<span class="c1"># Signal strength test</span><span class="w"></span>
+<span class="k">[rssi_test]</span><span class="w"></span>
+<span class="na">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span><span class="w"></span>
+<span class="na">min_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">-100</span><span class="w"></span>
+<span class="na">max_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100</span><span class="w"></span>
+
+<span class="c1"># Product data test</span><span class="w"></span>
+<span class="k">[product_data_test]</span><span class="w"></span>
+<span class="na">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span><span class="w"></span>
+<span class="na">expected_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">f86ae43ac67acc6a</span><span class="w"></span>
+
+<span class="c1"># Manufacturer test</span><span class="w"></span>
+<span class="k">[manufacturer_test]</span><span class="w"></span>
+<span class="na">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span><span class="w"></span>
+<span class="na">expected_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Zhuhai Jieli Technology Co.,Ltd."</span><span class="w"></span>
+
+<span class="c1"># Model test</span><span class="w"></span>
+<span class="k">[model_test]</span><span class="w"></span>
+<span class="na">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span><span class="w"></span>
+<span class="na">expected_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">JLtag</span><span class="w"></span>
+
+<span class="c1"># Update SN / UUID / Token</span><span class="w"></span>
+<span class="k">[sn_uuid_token_update]</span><span class="w"></span>
+<span class="na">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span><span class="w"></span>
+<span class="na">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">jieli_test.csv.hex</span><span class="w"></span>
+
+<span class="c1"># FindMy upgrade file configuration</span><span class="w"></span>
+<span class="k">[upgrade]</span><span class="w"></span>
+<span class="na">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0</span><span class="w"></span>
+<span class="na">firmware</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">db_update_data.bin </span><span class="w"></span>
+
+<span class="c1"># SN output (currently only TCP is supported)</span><span class="w"></span>
+<span class="k">[sn_print]</span><span class="w"></span>
+<span class="na">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0</span><span class="w"></span>
+<span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span><span class="w"></span>
+<span class="na">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">127.0.0.1</span><span class="w"></span>
+<span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">8888</span><span class="w"></span>
+
+<span class="c1"># Action performed after the production test passes</span><span class="w"></span>
+<span class="c1"># 0 - Only exit production test mode</span><span class="w"></span>
+<span class="c1"># 1 - Exit production test mode and enter soft power-off</span><span class="w"></span>
+<span class="k">[post_test_action]</span><span class="w"></span>
+<span class="na">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span><span class="w"></span>
+<span class="na">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span><span class="w"></span>
+
+<span class="c1"># Production test result log</span><span class="w"></span>
+<span class="k">[test_log]</span><span class="w"></span>
+<span class="na">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span><span class="w"></span>
+<span class="na">file_prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">production_test_result</span><span class="w"></span>
+<span class="na">max_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1M</span><span class="w"></span>
+<span class="na">max_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">9</span><span class="w"></span>
+
+<span class="c1"># Production test debug log</span><span class="w"></span>
+<span class="k">[debug_log]</span><span class="w"></span>
+<span class="na">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0</span><span class="w"></span>
+<span class="na">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">debug_log.txt</span><span class="w"></span>
+<span class="na">max_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1M</span><span class="w"></span>
+<span class="na">max_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">9</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Summary of each configuration section:</strong></p>
+<ul class="simple">
+<li><p>freq_offset_calib_test – frequency offset calibration test; the minimum/maximum allowed values can be set.</p></li>
+<li><p>rssi_test – signal strength test; the allowed range can be set.</p></li>
+<li><p>product_data_test – product data verification; checks whether the data reported by the device matches expected_data.</p></li>
+<li><p>manufacturer_test – manufacturer name verification.</p></li>
+<li><p>model_test – product model verification.</p></li>
+<li><p>sn_uuid_token_update – SN/UUID/Token update; specifies the .hex file generated by the Token Export Tool.</p></li>
+<li><p>upgrade – whether to upgrade the firmware during the production test, and the upgrade file to use.</p></li>
+<li><p>sn_print – whether to output the SN information over the network (TCP).</p></li>
+<li><p>post_test_action – action performed after a successful production test: only exit production test mode, or exit and then perform a soft power-off.</p></li>
+<li><p>test_log – configuration of the production test result log (file name prefix, size limit, number of rolling files).</p></li>
+<li><p>debug_log – configuration of the debug log.</p></li>
+</ul>
+</section>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="../pc_config_update_tool/index.html" class="btn btn-neutral float-left" title="2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="../../other_info/index.html" class="btn btn-neutral float-right" title="1. Latest Tool Versions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/other_tools/findmy_tool/index.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/other_tools/findmy_tool/index.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

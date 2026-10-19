@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.12. 蓝牙地址及名字自增功能 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>2. 杰理科技一拖八烧录器用户手册</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">2.1. 烧录器简要介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html">2.2. 手动烧录、校验、查空芯片操作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html">2.3. 机台自动烧录操作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html">2.4. 远程升级烧录器固件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html">2.5. 各型号芯片PC端烧录配置项介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html">2.6. 状态指示和报错提示说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pc_err.html">2.7. PC界面报错提示说明和处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="change_board_interval.html">2.8. 换板时间设置及使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="burn_vol.html">2.9. 不同芯片烧录电压说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html">2.10. 授权烧录次数限制功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html">2.11. 第三方数据（认证码）烧录功能</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>2.12. 蓝牙地址及名字自增功能</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.12.1. 应用场景</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2.12.2. 蓝牙地址自增配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4"><button class="toctree-expand" title="Open/close menu" type="button"></button>2.12.3. 蓝牙地址烧录到目标芯片</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">2.12.3.1. 关于选项勾选说明</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">2.12.4. 蓝牙名字自增实现说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">2.12.5. 查看下一个待烧录蓝牙地址</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#target-1tuo8-btname-notice">2.12.6. 注意事项</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10"><button class="toctree-expand" title="Open/close menu" type="button"></button>2.12.7. 重烧保留芯片已有蓝牙地址</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#flash">2.12.7.1. 芯片FLASH中蓝牙地址为一拖二或一拖八指定烧录</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sdk">2.12.7.2. SDK自动生成的随机地址</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_curr_test.html">2.13. 电流功耗测试功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_battery.html">2.14. 样机带电池烧录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freq_bias.html">2.15. 频偏校准功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mic_test.html">2.16. MIC 测试功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usual_uart_update.html">2.17. 样机带电池自定义IO单双线串口升级功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extern_flash_burn.html">2.18. 同时升级内置flash和外挂flash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="erase.html">2.19. 非全片擦除功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html">2.20. 其它常见功能配置和使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faqs.html">2.21. 常见错误处理</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">2. </span>杰理科技一拖八烧录器用户手册</a> »</li>
+<li><span class="section-number">2.12. </span>蓝牙地址及名字自增功能</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/mass_prod_tools/burner_1tuo8/btname_addr.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">2.12. </span>蓝牙地址及名字自增功能<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>烧录器烧录的蓝牙地址，是 EDR 地址（不是 BLE 地址，见 <a class="reference internal" href="#target-1tuo8-btname-notice"><span class="std std-ref">注意事项</span></a>）</p>
+</div>
+<section id="id2">
+<h2><span class="section-number">2.12.1. </span>应用场景<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>同一批芯片蓝牙产品，实现每颗芯片对应的蓝牙地址都在规定的地址范围内，且每颗芯片的蓝牙地址都是唯一的。要实现这个功能可在更新fw烧录程序时，在PC端的烧录配置项中配置好对应的蓝牙地址范围，烧录目标芯片程序过程中同时将蓝牙地址按照递增的形式烧录到每颗芯片指定位置，既可以实现在SDK开发中对烧录到芯片内蓝牙地址的利用。与此同时，在SDK开发中可将蓝牙地址按照指定的格式添加到蓝牙名上，可实现蓝牙名的唯一性。</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">2.12.2. </span>蓝牙地址自增配置<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>在更新目标芯片程序控制界面，打开并选择要烧录的目标芯片fw文件程序后，如<a class="reference internal" href="#img-btaddr-inc-opt-ui"><span class="std std-ref">蓝牙地址自增配置</span></a>所示，</p>
+<ul class="simple">
+<li><p>【1】勾选更新蓝牙地址（不勾选，SDK使用的是随机分配的蓝牙地址）；</p></li>
+<li><p>【2】输入蓝牙地址自增的范围；</p></li>
+<li><p>【3】选择是否覆盖蓝牙地址（勾选，如芯片已烧有蓝牙地址会覆盖烧录一个新的地址，避免浪费一般不勾选）；</p></li>
+<li><p>【4】点击部署，更新fw文件和配置信息到烧录器；</p></li>
+</ul>
+<figure class="align-default" id="img-btaddr-inc-opt-ui">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image70.png"/>
+<figcaption>
+<p><span class="caption-text">蓝牙地址自增配置</span><a class="headerlink" href="#img-btaddr-inc-opt-ui" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>每次设置的地址范围，不能超过 u32 的范围。否则可能会报【蓝牙地址初始化失败】</p>
+</div>
+</section>
+<section id="id4">
+<h2><span class="section-number">2.12.3. </span>蓝牙地址烧录到目标芯片<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>蓝牙地址烧录是按照烧录配置项中配置的地址范围，从最低地址开始递增的形式进行烧录，在烧录芯片程序的同时，烧录器会把蓝牙地址也烧录到目标芯片。</p></li>
+<li><p>如设定蓝牙地址范围为：<strong>00: 00 : 00 :00 : 00 : 01 - 00: 00 : 00 :FF : FF : FF</strong>，第1颗芯片烧录成功后的蓝牙地址是<strong>00: 00 : 00 :00 : 00 :01</strong>，第2颗芯片烧录成功后的蓝牙地址是<strong>00: 00 : 00 :00 : 00 :02</strong>，依次类推。烧录完所设置的范围内的地址后，烧录器会报“蓝牙地址已用完”，不能再进行程序烧录。蓝牙地址具有唯一性，烧到每个芯片的蓝牙地址都不同。</p></li>
+<li><p>开启蓝牙地址自增功能，烧录器显示屏正常显示界面进度条显示部分，显示有烧录器分配给当前通道可用的蓝牙地址，如<a class="reference internal" href="#img-btaddr-display-ui-1tuo8"><span class="std std-ref">蓝牙地址显示界面</span></a>所示。当前通道有样机烧录时，会把当前蓝牙地址烧录到目标芯片，烧录成功后烧录器再给当前通道分配一个新地址。</p></li>
+</ol>
+<figure class="align-default" id="img-btaddr-display-ui-1tuo8">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image71.png"/>
+<figcaption>
+<p><span class="caption-text">蓝牙地址显示界面</span><a class="headerlink" href="#img-btaddr-display-ui-1tuo8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<section id="id5">
+<h3><span class="section-number">2.12.3.1. </span>关于选项勾选说明<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><a class="reference internal" href="erase.html"><span class="doc std std-doc">烧录前擦除整个FLASH</span></a></p></th>
+<th class="head"><p>更新蓝牙地址</p></th>
+<th class="head"><p>覆盖蓝牙地址</p></th>
+<th class="head"><p>被烧录芯片中蓝牙地址</p></th>
+<th class="head"><p>烧录器行为</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>未勾选</p></td>
+<td><p>未勾选</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>不更新、不烧录芯片中的蓝牙地址</p></td>
+</tr>
+<tr class="row-odd"><td><p>勾选</p></td>
+<td><p>未勾选</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>原有芯片中的地址被擦除，SDK随机生成蓝牙地址</p></td>
+</tr>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>勾选</p></td>
+<td><p>未勾选</p></td>
+<td><p>已经有，且在地址范围内</p></td>
+<td><p>保留芯片中已有的地址不变</p></td>
+</tr>
+<tr class="row-odd"><td><p>-</p></td>
+<td><p>勾选</p></td>
+<td><p>未勾选</p></td>
+<td><p>未有地址，或不在地址范围内</p></td>
+<td><p>芯片蓝牙地址，更新为地址范围内的地址</p></td>
+</tr>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>勾选</p></td>
+<td><p>勾选</p></td>
+<td><p>-</p></td>
+<td><p>芯片蓝牙地址，更新为地址范围内的地址</p></td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>空片、地址被擦除的芯片、或者未烧录地址的芯片，SDK会默认生成一个随机地址</p>
+</div>
+<section id="id6">
+<h4><span class="section-number">2.12.3.1.1. </span>常见问题<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>如果重烧芯片，芯片中已经有了地址，如何保留原来的地址：</p>
+<ul class="simple">
+<li><p>勾选【更新蓝牙地址】，取消勾选【覆盖蓝牙地址】，并将地址范围设置为原来的芯片范围</p></li>
+<li><p>重新烧录这些有了地址的芯片</p></li>
+<li><p>注意这时候，不要混入未有地址的芯片，否则将会有样机出现地址重复</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+</section>
+<section id="id7">
+<h2><span class="section-number">2.12.4. </span>蓝牙名字自增实现说明<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>实现原理说明</p>
+<p>芯片烧录时配置有蓝牙地址自增烧录功能，每颗芯片都烧录有一个指定范围内的蓝牙地址。在SDK开发中，可通过对应的函数接口读取蓝牙地址，可将蓝牙地址按照指定的格式添加到蓝牙名上，可实现蓝牙名根据蓝牙地址进行自增，实现蓝牙名的唯一性（<strong>如不懂SDK代码实现请咨询杰理技术支持</strong>）。</p>
+</li>
+<li><p>蓝牙名字自增实现示例</p>
+<ul class="simple">
+<li><p>如更新烧录程序时配置的蓝牙地址自增范围为：<strong>00: 00 : 00 :00 : 00 :01 - 00: 00 : 00 : FF : FF :FF</strong>，第1颗芯片烧录成功后的蓝牙地址是<strong>00: 00 : 00 :00 : 00 :01</strong>，第2颗芯片烧录成功后的蓝牙地址是<strong>00: 00 : 00 :00 : 00 :02</strong>，依次类推；</p></li>
+<li><p>比如SDK设定的蓝牙名字前缀为<strong>AC897N_Main</strong>,<strong>蓝牙名字设定格式</strong>为：<strong>蓝牙名字前缀 +地址后 8 位；<strong>通过SDK代码实现后蓝牙地址为</strong>00: 00 : 00 :00 : 00 :01的蓝牙名为：AC897N_Main_00000001,<strong>蓝牙地址为</strong>00: 00 : 00 :00 :00 :02的蓝牙名为：AC897N_Main_00000002,<strong>依次类推。可自定义其他蓝牙名字格式</strong>通过SDK代码实现</strong>根据蓝牙地址进行蓝牙名字自增。</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id8">
+<h2><span class="section-number">2.12.5. </span>查看下一个待烧录蓝牙地址<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h2>
+<p>勾选蓝牙地址自增后，如果要在不插入样机进行烧录的情况下查看下一个待烧录蓝牙地址，可以通过观察烧录器信息滚动屏幕中显示的<strong>当前地址</strong>，该蓝牙地址是尚未烧录的蓝牙地址，当插入样机烧录时，将取该蓝牙地址烧录。增加显示该蓝牙地址，是为了可以方便知道剩余蓝牙地址范围，<strong>当前地址</strong>显示如<a class="reference internal" href="#img-currbtaddr-display-ui-1tuo8"><span class="std std-ref">当前蓝牙地址显示界面</span></a>所示。</p>
+<figure class="align-default" id="img-currbtaddr-display-ui-1tuo8">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image88.png"/>
+<figcaption>
+<p><span class="caption-text">当前蓝牙地址显示界面</span><a class="headerlink" href="#img-currbtaddr-display-ui-1tuo8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="target-1tuo8-btname-notice">
+<span id="id9"></span><h2><span class="section-number">2.12.6. </span>注意事项<a class="headerlink" href="#target-1tuo8-btname-notice" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>PC端烧录配置项中所设定的蓝牙地址范围，在未使用完的情况下更新其他的目标芯片程序，所剩余的蓝牙地址将作废。请务必合理使用，避免不必要的的浪费。</p></li>
+<li><p><strong>烧录器烧录的蓝牙地址，是 EDR 地址</strong>。在一些 SDK 中，BLE 地址是依据 EDR 地址计算而得到的（具体计算方式，请咨询提供 SDK 的人），并不是通过烧录器烧录的（通常情况下，BLE 和 EDR 地址不一样）。</p></li>
+</ol>
+</section>
+<section id="id10">
+<h2><span class="section-number">2.12.7. </span>重烧保留芯片已有蓝牙地址<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h2>
+<p>对于有些场景，一些已经烧录有蓝牙地址的芯片，在重烧新的程序时需要保留芯片中已有的蓝牙地址，通常会有下面两种情况。</p>
+<section id="flash">
+<h3><span class="section-number">2.12.7.1. </span>芯片FLASH中蓝牙地址为一拖二或一拖八指定烧录<a class="headerlink" href="#flash" title="Permalink to this heading"></a></h3>
+<p>如果芯片FLASH中的蓝牙地址是使用一拖二烧写器或者是一拖八烧写器指定范围烧录的，则蓝牙地址位置是固定的。</p>
+<ol class="arabic simple">
+<li><p>选择【顺序自增】进行保留，该方式的特点是芯片FLASH中已有蓝牙地址在设置的范围内，则重烧时不擦除并保留，如果未在设定范围内则擦除并写入新的地址。烧录时，可以先抽测一些芯片，看前期烧录蓝牙地址值，假设抽测芯片蓝牙地址是85：A6：33：43：87：E4，其它几个样机前两个字节都是85 A6开头，则此时可以配置蓝牙地址范围为：85：A6：00：00：00：00  ~  85：A6：FF：FF：FF：FF, 只要重烧时，样机芯片蓝牙地址在设定的地址范围内，则重烧时不会擦除，这里的前提条件就是所有样机的前两个字节必须相同，这样才方便设置一个包含样机蓝牙地址的范围进行重烧并保留芯片中已有蓝牙地址，之所以有该限制，主要是自增计数器只有4字节长度。</p></li>
+<li><p>选择【保留自增】进行保留，该方式的特点是不管芯片FLASH中已有蓝牙地址在不在设置的自增范围内，重烧都不会擦除FLASH中的地址，如果芯片FLASH中没有地址，则使用设置范围地址烧入到芯片。</p></li>
+</ol>
+</section>
+<section id="sdk">
+<h3><span class="section-number">2.12.7.2. </span>SDK自动生成的随机地址<a class="headerlink" href="#sdk" title="Permalink to this heading"></a></h3>
+<p>应用程序自动生成的蓝牙地址存放位置根据不同型号，可能存放于VM区域或存放于bt_info区域，如果需要在重烧时保留芯片FLASH中已有蓝牙地址，不能使用前面所述顺序自增或者保留自增的方式进行重烧处理，而是需要
+将【烧写前擦除整个FLASH】和【擦除VM】选项取消，而且还需要保证重烧的FW程序与芯片已经烧录的程序VM地址相同（如果蓝牙地址存放在bt_info中，则需保证该配置地址也相同），重烧后，地址保留情况以实际测试为准。</p>
+</section>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="auth_data.html" class="btn btn-neutral float-left" title="2.11. 第三方数据（认证码）烧录功能" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="pcba_curr_test.html" class="btn btn-neutral float-right" title="2.13. 电流功耗测试功能" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo8/btname_addr.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo8/btname_addr.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

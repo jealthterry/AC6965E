@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.6. Status Indicators and Error Messages — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>2. Jieli 1-to-8 Programmer User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">2.1. Programmer Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html">2.2. Manual Programming, Verification and Blank Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html">2.3. Automated Programming with a Handler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html">2.4. Remote Upgrade of the Programmer Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html">2.5. PC-Side Programming Options for Each Chip Model</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>2.6. Status Indicators and Error Messages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#led"><button class="toctree-expand" title="Open/close menu" type="button"></button>2.6.1. LED indicator lights</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">2.6.1.1. Power indicator light</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">2.6.1.2. Programming status indicator lights</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#lcd"><button class="toctree-expand" title="Open/close menu" type="button"></button>2.6.2. LCD display</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">2.6.2.1. Power-on display</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">2.6.2.2. Normal screen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">2.6.2.3. Programming progress bar</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#targe-1tuo8-ldc-show-err">2.6.3. LCD display error messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vbat"><button class="toctree-expand" title="Open/close menu" type="button"></button>2.6.4. VBAT voltage error display</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">2.6.4.1. Common causes of VBAT voltage errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#usb">2.6.4.2. USB power supply adjustment setting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">2.6.4.3. Adjustment guidelines</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pc_err.html">2.7. PC Tool Error Messages and Solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="change_board_interval.html">2.8. Board-Change Interval Setting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="burn_vol.html">2.9. Programming Voltages for Different Chips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html">2.10. Authorized Programming Count Limit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html">2.11. Programming Third-Party Data (Authentication Codes)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html">2.12. Bluetooth Address and Name Auto-Increment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_curr_test.html">2.13. Current and Power Consumption Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_battery.html">2.14. Programming Devices with Batteries Attached</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freq_bias.html">2.15. Frequency Offset Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mic_test.html">2.16. MIC Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usual_uart_update.html">2.17. Upgrading Battery-Powered Devices over a Custom-IO Single/Two-Wire UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extern_flash_burn.html">2.18. Upgrading Internal and External Flash Together</a></li>
+<li class="toctree-l2"><a class="reference internal" href="erase.html">2.19. Partial (Non-Full-Chip) Erase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html">2.20. Other Common Features: Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faqs.html">2.21. Troubleshooting Common Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">2. </span>Jieli 1-to-8 Programmer User Manual</a> »</li>
+<li><span class="section-number">2.6. </span>Status Indicators and Error Messages</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/burner_1tuo8/status_errors.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">2.6. </span>Status Indicators and Error Messages<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="led">
+<h2><span class="section-number">2.6.1. </span>LED indicator lights<a class="headerlink" href="#led" title="Permalink to this heading"></a></h2>
+<section id="id2">
+<h3><span class="section-number">2.6.1.1. </span>Power indicator light<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<p>After connecting the programmer to the 9V power supply, flip the main power toggle switch to the right. The programmer powers on and the power indicator light comes on, as shown in <a class="reference internal" href="#img-vol-ind-light-1tuo8"><span class="std std-ref">Power indicator light</span></a>.</p>
+<figure class="align-default" id="img-vol-ind-light-1tuo8">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image43.png"/>
+<figcaption>
+<p><span class="caption-text">Power indicator light</span><a class="headerlink" href="#img-vol-ind-light-1tuo8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id3">
+<h3><span class="section-number">2.6.1.2. </span>Programming status indicator lights<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>The programming status indicator lights are the LED status indicators of the programmer's 8 channels, as shown in <a class="reference internal" href="#img-burn-ind-light-1tuo8"><span class="std std-ref">Programming status indicator lights</span></a>.</p></li>
+</ol>
+<figure class="align-default" id="img-burn-ind-light-1tuo8">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image44.png"/>
+<figcaption>
+<p><span class="caption-text">Programming status indicator lights</span><a class="headerlink" href="#img-burn-ind-light-1tuo8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple" start="2">
+<li><p>Status indicator light meanings</p></li>
+</ol>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>No.</strong></p></th>
+<th class="head"><p><strong>Status type</strong></p></th>
+<th class="head"><p><strong>Red LED</strong></p></th>
+<th class="head"><p><strong>Green LED</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Initial state</p></td>
+<td><p>Off</p></td>
+<td><p>Off</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Programming in progress</p></td>
+<td><p>Off</p></td>
+<td><p>On</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Programming succeeded</p></td>
+<td><p>On</p></td>
+<td><p>On</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Programming failed</p></td>
+<td><p>On</p></td>
+<td><p>Off</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+</section>
+<section id="lcd">
+<h2><span class="section-number">2.6.2. </span>LCD display<a class="headerlink" href="#lcd" title="Permalink to this heading"></a></h2>
+<section id="id4">
+<h3><span class="section-number">2.6.2.1. </span>Power-on display<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<p>When the programmer is powered on, it displays for 3 s a screen with the Jieli LOGO, the customer number, the device ID, the programmer firmware version number and the release date, as shown in <a class="reference internal" href="#img-open-on-ui-1tuo8"><span class="std std-ref">Programmer power-on screen</span></a>.</p>
+<figure class="align-default" id="img-open-on-ui-1tuo8">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image45.png"/>
+<figcaption>
+<p><span class="caption-text">Programmer power-on screen</span><a class="headerlink" href="#img-open-on-ui-1tuo8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id5">
+<h3><span class="section-number">2.6.2.2. </span>Normal screen<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>In the normal screen, the programmer is waiting for devices to be connected. It mainly shows the available and remaining programming counts of the fw file, the current working mode of the programmer, the fw file information and programmer configuration information, and the progress bar area of the 8 programming channels, as shown in <a class="reference internal" href="#img-normal-ui-1tuo8"><span class="std std-ref">Programmer normal screen</span></a>.</p></li>
+<li><p>If features such as Bluetooth address auto-increment or authentication code programming are used, the information area of the 8 programming channels also shows the Bluetooth address available for the channel, the authentication code number and other information.</p></li>
+</ol>
+<figure class="align-default" id="img-normal-ui-1tuo8">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image46.png"/>
+<figcaption>
+<p><span class="caption-text">Programmer normal screen</span><a class="headerlink" href="#img-normal-ui-1tuo8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id6">
+<h3><span class="section-number">2.6.2.3. </span>Programming progress bar<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<p>The colors and information shown in the progress bar of each programming channel are described in the following table.</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>No.</strong></p></th>
+<th class="head"><p><strong>Current status</strong></p></th>
+<th class="head"><p><strong>Progress bar color</strong></p></th>
+<th class="head"><p><strong>Information displayed</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Normal/waiting for programming</p></td>
+<td><p>Gray</p></td>
+<td><p>Ready, the Bluetooth address to be programmed next, etc.</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Programming in progress</p></td>
+<td><p>Blue</p></td>
+<td><p>Erase, write, verify, finish</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Programming succeeded</p></td>
+<td><p>Green</p></td>
+<td><p>Success + programming time, etc.</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Channel error/programming failed</p></td>
+<td><p>Red</p></td>
+<td><p>Error message</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Board-change interval too short</p></td>
+<td><p>Yellow</p></td>
+<td><p>Last programming succeeded (上次烧录成功)</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+</section>
+<section id="targe-1tuo8-ldc-show-err">
+<span id="id7"></span><h2><span class="section-number">2.6.3. </span>LCD display error messages<a class="headerlink" href="#targe-1tuo8-ldc-show-err" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>During power-on, while the software of each module is initialized, and while device chip firmware is being programmed, the programmer may encounter errors. All of these errors are shown on the LCD display on the corresponding programming channel.</p></li>
+<li><p>Some errors that occur during power-on and programming can be cleared from the display only by power-cycling the programmer; other errors are generally cleared once the device chip is disconnected.</p></li>
+</ol>
+<p>The following table lists common LCD error messages and explains them.</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Error message</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>02-Communication failed (通信失败) <br/> run_loader</p></td>
+<td><p>Possibly the connection between the device chip and the programmer's USB port is loose or has poor contact. If this error is reported <br/> every time after reprogramming several times, the chip model may be wrong or the chip may be defective; further analysis is needed.<br/> Also check whether the ini file configures DP or DM, or a pin bonded together with DP or DM, as the print (log) output; if so, comment out that print output</p></td>
+</tr>
+<tr class="row-odd"><td><p>03-Verification failed (校验失败)</p></td>
+<td><p>The firmware to be verified does not match the target chip firmware or the key file;<br/>Possible causes:<br/>unstable contact between the device and the USB programming port during verification;<br/>the FLASH data does not match the data to be verified;<br/>if verification fails repeatedly after reprogramming, there may be a FLASH problem that needs further analysis</p></td>
+</tr>
+<tr class="row-even"><td><p>04-KEY error or mismatch (KEY错误或不匹配)</p></td>
+<td><p>Blank chip programming: programming the key into the target chip failed, or the key was programmed incorrectly;<br/> Reprogramming: the chip KEY differs from the KEY of the FW to be programmed, or a defective first programming causes a mismatch on reprogramming</p></td>
+</tr>
+<tr class="row-odd"><td><p>04-ufw does not support blank chip programming (ufw不支持空片烧录)</p></td>
+<td><p>A ufw file can only be used to reprogram chips that already have a key programmed (programming blank chips is not supported).<br/>To program blank chips, use an fw file</p></td>
+</tr>
+<tr class="row-even"><td><p>06-Version mismatch (版本不匹配)_(target chip version)</p></td>
+<td><p>The FW file to be programmed does not match the chip version (see <a class="reference internal" href="../faqs/version_err.html"><span class="doc std std-doc">Version Mismatch Error</span></a>);<br/>check whether the SDK of the fw file supports this chip version. If anything is unclear, contact Jieli technical support</p></td>
+</tr>
+<tr class="row-odd"><td><p>06-SDK version error (SDK版本错误)_VX_X_X</p></td>
+<td><p>Currently this error exists only for the AD698N and AC638N models.<br/>It mainly enforces that the SDK matches the corresponding FLASH ID: the SDK version must be configured in the SDK ini file,<br/>in a format such as SDK_VERSION=AnyText_V1.2.1. If it is missing or wrong,<br/>programming reports this error when the chip being programmed happens to have a restricted FLASH ID</p></td>
+</tr>
+<tr class="row-even"><td><p>07-Erase failed (擦除失败)</p></td>
+<td><p>This error generally occurs at the flash erase stage and indicates that the erase failed; the chip's flash may have a problem. The erase may also fail because of poor contact or a communication error;<br/>if the erase still fails after a retry, further analysis is needed</p></td>
+</tr>
+<tr class="row-odd"><td><p>08-Programming failed (烧录失败)</p></td>
+<td><p>The programmed data is corrupted because of unstable contact between the device and the USB programming port or similar causes during programming</p></td>
+</tr>
+<tr class="row-even"><td><p>09-ERR_IQ_TRIM</p></td>
+<td><p>This error means that the chip failed a Bluetooth test item; the chip's Bluetooth performance may be faulty. If the error persists after several retries, further analysis is needed</p></td>
+</tr>
+<tr class="row-odd"><td><p>10-Sampling error, please retry (采样异常，请重试)</p></td>
+<td><p>If this error appears, try programming again. It is generally caused by test errors due to factors such as the charging and discharging of the board's peripheral capacitors affecting ADC sampling; when this error is reported, the board and chip are usually fine</p></td>
+</tr>
+<tr class="row-even"><td><p>11-RX(measured current)(uA)</p></td>
+<td><p>Tests the chip's LNA current to screen out chips whose internal LNA transistors are damaged, i.e. chips with a short receive range and connection problems</p></td>
+</tr>
+<tr class="row-odd"><td><p>12-Abnormal device current (样机电流异常)</p></td>
+<td><p>After the device is plugged into the USB programming port, the USB port current is too high;<br/>the device circuit may have a short circuit, or the chip may be faulty and draw too much current. Be sure to find the cause before reprogramming, otherwise the programmer's current test module may be damaged;<br/>after this type of error, the programmer must be restarted before the failed channel can be used again</p></td>
+</tr>
+<tr class="row-even"><td><p>14-DAC test failed (DAC测试失败)</p></td>
+<td><p>Tests the various voltages of the DAC module to screen out chips whose DAC parameters do not meet the requirements</p></td>
+</tr>
+<tr class="row-odd"><td><p>15-VDDIO:(measured voltage)(mV)</p></td>
+<td><p>The voltage on the chip's VDDIO pin exceeds the set value of 3800mV;<br/>this is usually due to a short circuit between the chip's VDDIO pin and a power supply of the device or inside the chip;<br/>if it occurs in a design where VDDIO is shorted to the VBAT supply pin used for programming the device,<br/>lower the programmer's USB programming port voltage to about 3.3V for programming</p></td>
+</tr>
+<tr class="row-even"><td><p>15-VDDIO error (VDDIO错误)</p></td>
+<td><p>Same as the 15-VDDIO:(measured voltage)(mV) error</p></td>
+</tr>
+<tr class="row-odd"><td><p>15-Capacity too small (容量太小)_XX_XXXXX</p></td>
+<td><p>The data of the fw file to be programmed is larger than the flash capacity of the target chip, so it cannot be programmed;<br/> the flash id cannot be read, possibly because of poor contact; try several times, and if it still fails, treat the chip as defective</p></td>
+</tr>
+<tr class="row-even"><td><p>16-SFC error (SFC错误)</p></td>
+<td><p>The firmware data is verified in SFC mode during programming; a chip that fails repeatedly can be considered defective</p></td>
+</tr>
+<tr class="row-odd"><td><p>17-Frequency offset calibration timeout (频偏校准超时)</p></td>
+<td><p>The test box was not turned on for the test, the "calibration signal frequency point configuration" (校频波频点配置) parameters of the test box and the programmer differ, or the chip's frequency offset cannot be calibrated into the specified range</p></td>
+</tr>
+<tr class="row-even"><td><p>18-Bluetooth addresses used up (蓝牙地址已用完)</p></td>
+<td><p>With Bluetooth address auto-increment programming configured, all addresses in the configured Bluetooth address range have been used</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bluetooth address initialization failed (蓝牙地址初始化失败)</p></td>
+<td><p>The Bluetooth address settings are incorrect; possibly the Bluetooth address range set at one time is too large (exceeds the u32 range)</p></td>
+</tr>
+<tr class="row-even"><td><p>19-Mode error (模式错误)</p></td>
+<td><p>This error is reported when programming, verification or blank check of the device chip starts and the mode set with the DIP switch is not one of the three working modes programming, <br/>verification and blank check, or when poor contact of the DIP switch causes the programmer to detect the mode incorrectly.</p></td>
+</tr>
+<tr class="row-odd"><td><p>20-LRC calibration failed (LRC校准失败)</p></td>
+<td><p>For a device with a crystal-less design, the chip's LRC clock parameters cannot be calibrated into the specified range; further analysis is needed</p></td>
+</tr>
+<tr class="row-even"><td><p>25-Chip not calibrated (芯片未校准)</p></td>
+<td><p>The chip was not calibrated at the factory.<br/>Such chips can be programmed with a 1-to-2 programmer before mounting (the chip is calibrated during programming);<br/>the 1-to-8 programmer has no chip calibration function</p></td>
+</tr>
+<tr class="row-odd"><td><p>21-RAM test failed (RAM测试失败)</p></td>
+<td><p>The target chip's RAM is abnormal; such chips need to be screened out</p></td>
+</tr>
+<tr class="row-even"><td><p>22-MIC test failed (MIC测试失败)</p></td>
+<td><p>The MIC of the target device is abnormal, e.g. there is no sound</p></td>
+</tr>
+<tr class="row-odd"><td><p>23-LVD level not supported (不支持该LVD档位) XXXX<br/>(XXXX: the chip version ID)</p></td>
+<td><p>The chip to be programmed does not support the selected LVD level.<br/>Currently, for the AC696X/AC636N models:<br/>the LVD levels that can be programmed on version A-E chips are 1.9V;2.0V;2.1V;2.2V;2.3V;2.4V;2.5V;2.6V,<br/>and the LVD levels that can be programmed on version F-G chips are &lt;1.5V;1.9V;2.0V;2.1V;2.2V;2.3V;2.4V;2.5V.<br/>The default level set in the programmer's AC696X PC tool is 2.6V. When F-G version chips are programmed with the default LVD2.6V,<br/>the programmer reports: 34-LVD level not supported (不支持该LVD档位) XXXX (chip version: 5F00-5F04 are version A-E, 5F05-5F06 are version F-G).</p></td>
+</tr>
+<tr class="row-even"><td><p>25-Chip not calibrated (芯片未校准)</p></td>
+<td><p>Some of the chip's voltages may not have been calibrated at the factory. In this case, the chip generally needs to be calibrated with a 1-to-2 programmer, using a top board or adapter board that supports calibration</p></td>
+</tr>
+<tr class="row-odd"><td><p>26-ERR_FMLDO_OPEN</p></td>
+<td><p>An error occurred when entering the Bluetooth-related FM power supply test, which in turn caused a USB communication error</p></td>
+</tr>
+<tr class="row-even"><td><p>27-ERR_FMLDO_CLOSE</p></td>
+<td><p>An error occurred when entering the Bluetooth-related FM power supply test, which in turn caused a USB communication error</p></td>
+</tr>
+<tr class="row-odd"><td><p>28-Failed to get reserved area (获取保留区出错)</p></td>
+<td><p>When the flash is configured not to be fully erased, an error occurred while calculating the area to be preserved during programming. Report it to Jieli engineers for further analysis</p></td>
+</tr>
+<tr class="row-even"><td><p>29-FLASH erase error (擦除FLASH出错)</p></td>
+<td><p>When the flash is configured not to be fully erased, an error occurred while erasing a specific flash area; this error needs further analysis</p></td>
+</tr>
+<tr class="row-odd"><td><p>30-Res file programming failed (Res文件烧录失败)</p></td>
+<td><p>Programming of a custom resource file failed; a read/write error or a USB communication error may have occurred while this part was being programmed</p></td>
+</tr>
+<tr class="row-even"><td><p>31-SFC test communication failed (SFC测试通信失败)</p></td>
+<td><p>Possibly a read error during the SFC test caused a USB communication timeout and this error; the flash may be faulty</p></td>
+</tr>
+<tr class="row-odd"><td><p>32-Algorithm authorization file programming failed (算法授权文件烧录失败)</p></td>
+<td><p>Programming of the data used for algorithm authorization failed. Meaning of the error numbers: 6: the algorithm data being programmed differs from the data already in the chip; 8/9: not enough run or <br/>storage space for the algorithm program; 14: writing OTP failed; 17: communication timeout while programming the algorithm authorization, possibly because the algorithm exceeds the memory</p></td>
+</tr>
+<tr class="row-even"><td><p>33-Res file verification failed (Res文件校验失败)</p></td>
+<td><p>Verification of a custom resource file failed</p></td>
+</tr>
+<tr class="row-odd"><td><p>34-LVD error or mismatch (LVD错误或不匹配)</p></td>
+<td><p>Possibly writing the LVD voltage value to the chip's storage medium failed during blank chip programming;<br/>or, when reprogramming, the selected LVD voltage value differs from the LVD value already programmed into the target chip.</p></td>
+</tr>
+<tr class="row-even"><td><p>34-IOVDD LEVEL error (IOVDD LEVEL错误) x</p></td>
+<td><p>This error indicates that the current configuration does not match the chip's IOVDD level; the chip must have been programmed before. The number in the error is the IOVDD level, where 0 is the lowest level. This error<br/>may occur because the chip was previously programmed with LVD set to the highest level; try setting LVD to the highest level and check whether programming succeeds. If the error still appears, the configuration still differs from that used for the first programming</p></td>
+</tr>
+<tr class="row-odd"><td><p>35-Failed to write frequency offset calibration value (写入频偏校准值失败)</p></td>
+<td><p>Frequency offset calibration was enabled during chip programming, but writing the calibrated value to the chip failed; you can retry</p></td>
+</tr>
+<tr class="row-even"><td><p>36-ERR_FLASH_CHECK</p></td>
+<td><p>The flash erase check failed. If this error is reported, the chip's flash may be faulty; further analysis is needed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>37-Failed to read ID (读ID失败)</p></td>
+<td><p>Reading the flash id of the target chip failed;<br/>possible causes: a USB communication error, a faulty chip, or a chip without internal flash. fw firmware generally cannot be programmed into a chip without flash; only a separate key file can be programmed;<br/>if repeated programming gives the same result, further analysis is needed</p></td>
+</tr>
+<tr class="row-even"><td><p>38-ERR_LNA_OPEN</p></td>
+<td><p>An error occurred when entering the Bluetooth LNA current test, which in turn caused a USB communication error</p></td>
+</tr>
+<tr class="row-odd"><td><p>39-ERR_LNA_CLOSE</p></td>
+<td><p>An error occurred when entering the Bluetooth LNA current test, which in turn caused a USB communication error</p></td>
+</tr>
+<tr class="row-even"><td><p>40-External FLASH programming failed (外挂FLASH烧录失败)</p></td>
+<td><p>Programming the device's external flash failed, possibly because the io configuration of the external flash in the programming file does not match the actual hardware connection, or because of a power supply problem while programming the external flash.<br/>If the external flash can be programmed with other tools, report the problem to the engineers</p></td>
+</tr>
+<tr class="row-odd"><td><p>41-External FLASH verification failed (外挂FLASH校验失败)</p></td>
+<td><p>The external flash data differs from the programming file data</p></td>
+</tr>
+<tr class="row-even"><td><p>49-Blank check count used up (查空次数已用完)</p></td>
+<td><p>Each time the programmer is powered on, each channel is limited to 200 blank checks. Once 200 successful blank checks have been performed, the programmer displays "Blank check count used up" (查空次数已用完).<br/>This limit mainly prevents the case where the user intends to program chips but does not notice that the DIP switch has been mistakenly set to blank check mode, so the chips end up with no firmware programmed</p></td>
+</tr>
+<tr class="row-odd"><td><p>57-Authorized count used up (授权次数已用完)</p></td>
+<td><p>The programming count of an FW file with an authorized programming count limit has been used up, and the target chip firmware (fw file) in the programmer is now invalid.<br/> Powering on the 1-to-8 programmer with devices plugged in may cause this error even though the programming count has not been used up</p></td>
+</tr>
+<tr class="row-even"><td><p>61-Protection parameter lookup failed (保护参数查找失败)</p></td>
+<td><p>If <code class="docutils literal notranslate"><span class="pre">FLASH_WRITE_PROTECT=YES</span></code> is configured in isd_config.ini,<br/>the protection parameters for the corresponding FLASH ID are written into the FLASH during programming.<br/>If "Protection parameter lookup failed" (保护参数查找失败) is reported during programming, it means that:<br/>the programmer currently has no protection parameters for this FLASH ID;<br/>you may need to update the programmer to support this FLASH ID,<br/>or ask the person in charge of the SDK whether the <code class="docutils literal notranslate"><span class="pre">FLASH_WRITE_PROTECT=YES</span></code> setting can be removed so that no write protection is added</p></td>
+</tr>
+<tr class="row-odd"><td><p>62-Protection parameter verification failed (保护参数校验失败)</p></td>
+<td><p>The protection parameters may not have been written successfully</p></td>
+</tr>
+<tr class="row-even"><td><p>63-Protection parameter test failed (保护参数测试失败)</p></td>
+<td><p>The protection parameter test failed, and the protection parameters cannot be used properly.<br/>Alternatively, ask the person in charge of the SDK whether the <code class="docutils literal notranslate"><span class="pre">FLASH_WRITE_PROTECT=YES</span></code> setting can be removed so that no write protection is added</p></td>
+</tr>
+<tr class="row-odd"><td><p>63-Protection parameter test timeout (保护参数测试超时)</p></td>
+<td><p>The protection parameter test timed out, and the protection parameters cannot be used properly.<br/>Alternatively, ask the person in charge of the SDK whether the <code class="docutils literal notranslate"><span class="pre">FLASH_WRITE_PROTECT=YES</span></code> setting can be removed so that no write protection is added</p></td>
+</tr>
+<tr class="row-even"><td><p>63-Protection parameter test conflict (保护参数测试冲突)</p></td>
+<td><p>The protection parameters conflict with the programming configuration.<br/>When <code class="docutils literal notranslate"><span class="pre">FLASH_WRITE_PROTECT=YES</span></code> is configured in isd_config.ini, leaving "Full flash erase" (全擦flash) unchecked or leaving "Erase VM" (擦拭VM) unchecked conflicts with the write protection parameters.<br/>Alternatively, ask the person in charge of the SDK whether the <code class="docutils literal notranslate"><span class="pre">FLASH_WRITE_PROTECT=YES</span></code> setting can be removed so that no write protection is added</p></td>
+</tr>
+<tr class="row-odd"><td><p>64-Failed to read FLASH BIN (读取FLASH BIN失败)</p></td>
+<td><p>This error is caused by a configuration problem in the ini file: the generated FW contains only a 256-aligned FLASH BIN (the minimum VM erase unit is 256 bytes), whereas<br/>the minimum erase unit of the current chip's FLASH is actually 4096 bytes, so a 4096-aligned FLASH BIN is required to program this chip's FLASH. Because this file cannot be found, programming reports an error.<br/>For the configuration method, see the description at this link: (https://gitee.com/Jieli-Tech/fw-AD15N/issues/I58Z7L)</p></td>
+</tr>
+<tr class="row-even"><td><p>65-Long-press reset option mismatch (长按复位选项不匹配)</p></td>
+<td><p>The long-press reset state does not match the state to be programmed</p></td>
+</tr>
+<tr class="row-odd"><td><p>66-VM address invalid (VM地址非法)</p></td>
+<td><p>This error is reported when the VM address to be preserved or erased is invalid, for example when the address exceeds the flash capacity or overlaps the program area</p></td>
+</tr>
+<tr class="row-even"><td><p>67-ERR_CYPTO</p></td>
+<td><p>This error is usually reported when programming over a serial port (UART). It may be caused by a UART communication error and typically occurs when there is poor contact</p></td>
+</tr>
+<tr class="row-odd"><td><p>68-Short-press reset option mismatch (短按复位选项不匹配)</p></td>
+<td><p>The short-press reset state does not match the state to be programmed</p></td>
+</tr>
+<tr class="row-even"><td><p>69-External FLASH capacity too small (外挂FLASH容量太小)</p></td>
+<td><p>When programming external flash, a failure to read the external flash ID can cause the capacity-too-small message; the error is also reported when the file resources to be programmed into the external flash exceed the flash capacity</p></td>
+</tr>
+<tr class="row-odd"><td><p>70-LNA_BIAS failed (LNA_BIAS失败)</p></td>
+<td><p>A Bluetooth-related current test item failed. If this error is reported every time after repeated reprogramming, further analysis may be needed</p></td>
+</tr>
+<tr class="row-even"><td><p>71-Secondary programming failed (二次烧录失败)</p></td>
+<td><p>Programming of some additional feature data failed</p></td>
+</tr>
+<tr class="row-odd"><td><p>72-Battery scheme error (电池方案错误)</p></td>
+<td><p>This error is reported when the scheme type to be programmed, as selected in the options, does not match the type already in the chip</p></td>
+</tr>
+<tr class="row-even"><td><p>73-Not a Dies chip (非Dies芯片)</p></td>
+<td><p>Dies chips are generally custom chips. If this error is reported, a custom-chip configuration may have been selected, which cannot be programmed into the current chip</p></td>
+</tr>
+<tr class="row-odd"><td><p>76-ic_test_timeout</p></td>
+<td><p>A chip test item timed out. Uncheck some of the PC tool's test items one at a time to find out which test item causes the timeout</p></td>
+</tr>
+<tr class="row-even"><td><p>81-CHIP_LVD(xx)&lt; FLASH_LVD(xx)</p></td>
+<td><p>Indicates that the chip's minimum reset voltage (corresponding to the programmer's [LVD voltage] (LVD电压) drop-down option) is lower than the FLASH's minimum operating voltage; xx is the voltage value, in mv.<br/>Solutions:<br/>Method 1: Taking the design requirements into account, set CHIP_LVD in the programmer's deployment screen to a level greater than or equal to the<br/>FLASH_LVD voltage level, then redeploy the fw file and program again.<br/>Method 2: If CHIP_LVD in the deployment screen has no option greater than FLASH_LVD, select the highest CHIP_LVD, or uncheck the [Flash Lvd voltage match] (Flash Lvd电压匹配) option, then redeploy and program again</p></td>
+</tr>
+<tr class="row-odd"><td><p>82-Frequency offset calibration communication timeout (频偏校准通信超时)</p></td>
+<td><p>The frequency offset calibration program could not be sent to the chip, or did not start running. Try checking the device's peripheral circuitry</p></td>
+</tr>
+<tr class="row-even"><td><p>82-Frequency offset calibration failed (频偏校准失败)</p></td>
+<td><p>The frequency offset calibration program was sent to the chip successfully, but the calibration did not reach the target accuracy, so an error is reported</p></td>
+</tr>
+<tr class="row-odd"><td><p>83-efuse bin verification failed (efuse bin校验失败)</p></td>
+<td><p>If this error is reported when a blank chip is programmed for the first time, the efuse may have been programmed poorly. If the chip is being reprogrammed, the current programming file may be unable to overwrite and match the data already in the chip. If you are sure that the programming<br/>file has not been changed, the name may have been modified or a frequency offset calibration value written through a test box connection; try checking [Skip configuration items] (略过配置项)</p></td>
+</tr>
+<tr class="row-even"><td><p>84-FTMAX/RAM/ROM test failed (FTMAX/RAM/ROM测试失败)</p></td>
+<td><p>When the chip is tested with a 240M clock, the corresponding test module cannot run at this clock frequency. The chip may need to be screened out</p></td>
+</tr>
+<tr class="row-odd"><td><p>85-UMIB test failed (UMIB测试失败)</p></td>
+<td><p>A Bluetooth test item failed. If this error is reported every time after repeated programming, the chip may need to be screened out for further analysis</p></td>
+</tr>
+<tr class="row-even"><td><p>88-update x</p></td>
+<td><p>This error means that the current FW/UFW firmware needs to be updated, or the programmer needs to be upgraded. In update x, x = 128 means the chip is version A, 129 means version B, and so on. Then check which versions are supported in the [Configured chip versions] (配置的芯片版本) item in the white information bar of the FW/UFW file's<br/>deployment screen. For example, if the programmer reports 88-update 129, the chip is version B; if the chip versions configured in the information bar include A but not B,<br/>the FW/UFW firmware does not support B. If the FW/UFW supports B but the programmer's information bar shows that B is not supported, the programmer needs to be updated. If anything is unclear, contact Jieli engineers for assistance</p></td>
+</tr>
+<tr class="row-odd"><td><p>91-FMLDO:%d(uA)</p></td>
+<td><p>The test of Bluetooth-related voltage modules such as FM failed. If this error is still reported after reprogramming, further analysis is required</p></td>
+</tr>
+<tr class="row-even"><td><p>92-LOOPBACK failed (LOOPBACK失败)</p></td>
+<td><p>Bluetooth performance-related parameters are tested during programming, and the parameters do not meet the requirements;<br/>the chip may have Bluetooth connection problems, such as a short connection range;<br/>if the error persists after several reprogramming attempts, the chip needs further analysis;</p></td>
+</tr>
+<tr class="row-odd"><td><p>93-USB unstable, please retry (USB不稳定，请重试)</p></td>
+<td><p>A USB communication error occurred. Simply retry as prompted</p></td>
+</tr>
+<tr class="row-even"><td><p>94-DACVDD voltage error (DACVDD电压错误)</p></td>
+<td><p>A chip test item reported an error. Retry to see whether the error persists. If the error is still reported after several retries, or is also reported when using a 1-to-2 programmer, the chip may have a problem with this test item and needs further analysis</p></td>
+</tr>
+<tr class="row-odd"><td><p>95-BTPLL test communication error, please retry (BTPLL测试通信出错，请重试)</p></td>
+<td><p>A test item reported an error. If the error is still reported after a retry or with another tool, further analysis is required</p></td>
+</tr>
+<tr class="row-even"><td><p>96-BTPLL error (BTPLL异常)</p></td>
+<td><p>A test item reported an error. If the error is still reported after a retry or with another tool, further analysis is required</p></td>
+</tr>
+<tr class="row-odd"><td><p>97-UMDC error (UMDC异常)</p></td>
+<td><p>A test item reported an error. If the error is still reported after a retry or with another tool, further analysis is required</p></td>
+</tr>
+<tr class="row-even"><td><p>98-DC test failed (DC测试失败)</p></td>
+<td><p>A test item reported an error. If the error is still reported after a retry or with another tool, further analysis is required</p></td>
+</tr>
+<tr class="row-odd"><td><p>150-nandflash V1 configuration not supported (不支持nandflash V1配置)</p></td>
+<td><p>The current version supports only the V2 configuration and no longer supports the V1 configuration. The difference between V1 and V2 is that the V2 ini file has 2 additional parameters. To program an FW configured with V1 parameters,<br/>you need to use a special version released before August 2024; for V2, use a version released after that date</p></td>
+</tr>
+<tr class="row-even"><td><p>REQUIRE_TARGET_FEATURE</p></td>
+<td><p>During programming, the FW was found to contain a flash.bin file, but <code class="docutils literal notranslate"><span class="pre">REQUIRE_TARGET_FEATURE=FLASH</span></code> or <code class="docutils literal notranslate"><span class="pre">REQUIRE_TARGET_FEATURE=EFUSE;</span></code> is not configured under <code class="docutils literal notranslate"><span class="pre">[BURNER_PASSTHROUGH_CFG]</span></code> in the ini file, so an error is reported</p></td>
+</tr>
+<tr class="row-odd"><td><p>Data receive timeout (接收数据超时)</p></td>
+<td><p>This error usually appears near the last step, after the earlier part of the process has communicated and programmed normally. It is usually caused by many large capacitors or other<br/>peripheral components around the device's chip delaying power-on, or by components connected to the DP and DM pins. Analyze the characteristics of the circuit or contact Jieli technical support</p></td>
+</tr>
+<tr class="row-even"><td><p>efuse bin error 2 (efuse bin错误2)</p></td>
+<td><p>This error means that the efuse.bin file packed into the FW file is too long. This is probably caused by an error in the batch script, which needs to be corrected. If you cannot resolve it, contact the person in charge of the Jieli SDK for assistance</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sampling error, please retry (采样异常，请重试)</p></td>
+<td><p>During the device current test, the ADC sampling was abnormal and the data is unreasonable;<br/>the programmer's current test module was affected by factors such as the device's peripheral circuitry, resulting in abnormal data acquisition;<br/>if this error occurs, try reprogramming. If the error persists after several reprogramming attempts, the cause needs further analysis</p></td>
+</tr>
+<tr class="row-even"><td><p>ADC Fail!</p></td>
+<td><p>The ADC current test module failed to initialize. Check whether the current test module's power supply, its wiring and the chip itself are normal;<br/>if you cannot find the cause, try replacing the CS1237 and the 1 Ω and 821 Ω resistors</p></td>
+</tr>
+<tr class="row-odd"><td><p>Programming voltage error (烧录电压错误)</p></td>
+<td><p>If this error appears after a remote upgrade, ignore it for now. Deploy the target chip firmware, then restart the programmer and check whether it works normally. If it does not, consult Jieli technical support</p></td>
+</tr>
+<tr class="row-even"><td><p>flash bin erro</p></td>
+<td><p>This error usually appears during power-on. Check whether a USB cable connected to a computer was plugged in while the programmer was initializing at power-on; in that case the flash that stores the programming file is occupied by the upgrade, and initialization<br/>fails. An error caused by this operation is generally normal. If the error appears at power-on even though no USB cable is connected to a computer, do not redeploy or upgrade yet; power on the programmer with only the 9V power<br/>supply. If it starts normally, try restarting the programmer more than 10 more times. If the error still does not appear, the data in the programmer's flash chip is fine. If, each time you power on again and wait<br/>for initialization to complete, the error appears on a varying subset of channels, the flash chip on the programmer is generally considered damaged. If the error always appears on the same channels, it may have been caused by an error during the deployment<br/>stage; redeploy the file, then power on again and observe to verify</p></td>
+</tr>
+<tr class="row-odd"><td><p>FLASH OTP fill error (FLASH OTP填充异常)</p></td>
+<td><p>This error is mainly caused by the OTP_CFG_SIZE value in the isd_config.ini file being smaller than the size of the file that describes the FLASH OTP parameters. For some chip models, the SDK setting of 128 may be too<br/>small; contact Jieli engineers to confirm whether this length can be increased</p></td>
+</tr>
+<tr class="row-even"><td><p>VBAT: actual sampled value, target voltage value</p></td>
+<td><p>This error means that the difference between the VBAT supply pin voltage sampled by the device's chip and the target voltage exceeds the set threshold. For the causes and solutions, see <code class="docutils literal notranslate"><span class="pre">Section</span> <span class="pre">2.6.4,</span> <span class="pre">VBAT</span> <span class="pre">voltage</span> <span class="pre">error</span> <span class="pre">display</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Last programming succeeded (上次烧录成功)</p></td>
+<td><p>This device was programmed successfully last time and does not need to be reprogrammed. For details, see <a class="reference internal" href="change_board_interval.html"><span class="doc std std-doc">Board-Change Interval Setting</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Other errors / common defects</p></td>
+<td><p>Errors that appear after a test item is checked: the programmer has added test items for certain chip models to screen out chips whose performance parameters do not meet the requirements;<br/>if programming failures appear after updating to the latest firmware or after checking a test item, and the failure rate is low and within expectations, treat the failed chips as defective;<br/>if the failure rate is high, report it to Jieli for further handling.</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="vbat">
+<h2><span class="section-number">2.6.4. </span>VBAT voltage error display<a class="headerlink" href="#vbat" title="Permalink to this heading"></a></h2>
+<p>In the programming screen, the VBAT voltage is displayed in the format <strong>VBAT: actual sampled value, target voltage value</strong>, for example: <strong>VBAT: 3299, 3400mv</strong></p>
+<p>Where:</p>
+<ul class="simple">
+<li><p><strong>3299mv</strong>: the actual voltage on the VBAT pin, sampled at the device's chip;</p></li>
+<li><p><strong>3400mv</strong>: the target voltage that must be reached at the chip;</p></li>
+<li><p>When the deviation between the actual sampled voltage and the target voltage exceeds the set threshold, for example <strong>100mv</strong>, a VBAT voltage error is reported.</p></li>
+</ul>
+<section id="id8">
+<h3><span class="section-number">2.6.4.1. </span>Common causes of VBAT voltage errors<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Programmer USB_VCC output deviation</strong><br/> The programmer's USB_VCC is adjusted with a potentiometer, so the actual output voltage may deviate somewhat from the set value. The 8 channels of a programmer share one voltage reference source, so ideally all channels output the same voltage; however, because of component variations and potentiometer adjustment, the actual deviation is usually <strong>within 30mv</strong>.</p></li>
+<li><p><strong>Voltage drop across the USB cable and pogo pin contact resistance</strong><br/> The resistance of the USB cable between the device and the programmer and the contact resistance between the fixture's pogo pins and the device's pads both cause a voltage drop. During programming, the device's current consumption is typically <strong>6–7mA</strong>; if the cable resistance and contact resistance add up to about <strong>10Ω</strong>, the voltage drop is about <strong>60mv</strong>. This is also the main reason why a device that fails programming can pass normally after the fixture is pressed down again.</p></li>
+<li><p><strong>USB_GND return path and sampling error</strong><br/> The programmer's USB_GND line includes a fixed <strong>1Ω</strong> resistor, and the crossing of the programming wiring and the ground return paths also has some effect. The device's own sampling may deviate slightly, but this is usually negligible.</p></li>
+</ol>
+</section>
+<section id="usb">
+<h3><span class="section-number">2.6.4.2. </span>USB power supply adjustment setting<a class="headerlink" href="#usb" title="Permalink to this heading"></a></h3>
+<p>To offset the programmer's hardware output deviation and the voltage drop caused by the fixture's contact resistance, you can compensate with the <strong>[USB power supply adjustment (-1000~+1000)]</strong> (USB供电调节) option in the programmer's deployment screen.</p>
+<p>Observe the 5 voltage levels printed in the programming progress bar, for example:</p>
+<p>If the progress bar shows <strong>VCC: 3320 3400, VCC: 3412 3500, VCC: 3526 3600, VCC: 3738 3800, VCC: 4134 4200</strong>, the actual sampled voltage of this device during programming is about <strong>70mv</strong> lower than the target voltage overall.<br/>You can enter <strong>70</strong> in all 5 edit boxes, or enter the difference for each voltage level in the corresponding edit box. The first edit box corresponds to the <strong>3400mv</strong> level, the following ones correspond to successively higher voltage levels,<br/>and the fifth edit box corresponds to the <strong>4200mv</strong> level.</p>
+<p>If the progress bar shows <strong>VCC: 3520 3400, VCC: 3512 3500, VCC: 3626 3600, VCC: 3838 3800, VCC: 4234 4200</strong>, the actual sampled voltage of this device during programming is about <strong>20mv</strong> higher than the target voltage overall.<br/>You can enter <strong>-20</strong> in all 5 edit boxes, or enter each difference separately.</p>
+</section>
+<section id="id9">
+<h3><span class="section-number">2.6.4.3. </span>Adjustment guidelines<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>When the actual sampled voltage is generally <strong>low</strong>, increase the compensation value appropriately, typically by <strong>10–30mv</strong>;</p></li>
+<li><p>When the actual sampled voltage is generally <strong>high</strong>, decrease the compensation value appropriately, typically by <strong>10–30mv</strong>;</p></li>
+<li><p>Low voltage is usually related to the voltage drop across the USB cable resistance and the pogo pin contact resistance;</p></li>
+<li><p>High voltage is usually related to the programmer's actual USB_VCC output being higher than the set value.</p></li>
+</ul>
+</section>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="config_opt.html" class="btn btn-neutral float-left" title="2.5. PC-Side Programming Options for Each Chip Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="pc_err.html" class="btn btn-neutral float-right" title="2.7. PC Tool Error Messages and Solutions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo8/status_errors.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo8/status_errors.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

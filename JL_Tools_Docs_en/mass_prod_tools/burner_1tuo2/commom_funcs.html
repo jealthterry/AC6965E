@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.11. Other Common Features: Configuration and Use — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>1. Jieli 1-to-2 Programmer User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">1.1. Programmer Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html">1.2. Manual Programming, Verification and Blank Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html">1.3. Automated Programming with a Handler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html">1.4. Remote Upgrade of the Programmer Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html">1.5. PC-Side Programming Options for Each Chip Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html">1.6. Status Indicators and Error Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html">1.7. Authorized Programming Count Limit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html">1.8. Programming Third-Party Data (Authentication Codes)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html">1.9. Bluetooth Address and Name Auto-Increment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_burn.html">1.10. Chip Programming Wiring and Power Supply</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.11. Other Common Features: Configuration and Use</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#flashspi">1.11.1. Flash SPI parameter configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1.11.2. Programming of custom resource files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flash">1.11.3. Configuring flash parameter programming and testing that protection parameters take effect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ldoldo">1.11.4. Programming with top boards without and with an LDO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">1.11.5. Chip performance test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">1.11.6. Chip soft power-off power consumption test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">1.11.7. Optimizing programming time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rs232">1.11.8. Controlling Bluetooth address programming over an RS232 serial port</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">1.11.9. Printing programming information over the serial port</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v">1.11.10. Soldering wires to the programmer's 9V power supply</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">1.11.11. Erasing the chip flash on its own</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ad698n-ac638n-dac-os"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.11.12. AD698N/AC638N DAC OS test</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">1.11.12.1. Test description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">1.11.12.2. Procedure</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="faqs.html">1.12. Troubleshooting Common Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">1. </span>Jieli 1-to-2 Programmer User Manual</a> »</li>
+<li><span class="section-number">1.11. </span>Other Common Features: Configuration and Use</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/burner_1tuo2/commom_funcs.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">1.11. </span>Other Common Features: Configuration and Use<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="flashspi">
+<h2><span class="section-number">1.11.1. </span>Flash SPI parameter configuration<a class="headerlink" href="#flashspi" title="Permalink to this heading"></a></h2>
+<p>To program one or more files located in the same directory as isd_config.ini, such as "file1.bin" and "file2.bin", into a specified location of the chip flash with the programmer, so that the SDK can use the data:<br/></p>
+<p>See "<a class="reference internal" href="../common_function/common_isd_config_ini.html#target-flash-spi-params-cfg"><span class="std std-ref">Flash SPI parameter configuration</span></a>"</p>
+</section>
+<section id="id2">
+<h2><span class="section-number">1.11.2. </span>Programming of custom resource files<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>To program one or more files located in the same directory as isd_config.ini, such as "file1.bin" and "file2.bin", into a specified location of the chip flash with the programmer, so that the SDK can use the data:<br/></p>
+<p>See "<a class="reference internal" href="../common_function/common_isd_config_ini.html#target-refile-config-introduce"><span class="std std-ref">Configuration for programming custom resource files</span></a>"</p>
+</section>
+<section id="flash">
+<h2><span class="section-number">1.11.3. </span>Configuring flash parameter programming and testing that protection parameters take effect<a class="headerlink" href="#flash" title="Permalink to this heading"></a></h2>
+<p>If a specified address area of the chip flash needs data protection, you can configure the flash write protection feature in the isd_config.ini file in the download directory. The programmer writes the protection parameters to the flash so that the SDK can configure flash write protection.<br/></p>
+<p>See "<a class="reference internal" href="../common_function/common_isd_config_ini.html#target-protect-cfg-introduce"><span class="std std-ref">Configuring flash parameter programming and testing that protection parameters take effect</span></a>"</p>
+</section>
+<section id="ldoldo">
+<h2><span class="section-number">1.11.4. </span>Programming with top boards without and with an LDO<a class="headerlink" href="#ldoldo" title="Permalink to this heading"></a></h2>
+<p>The 1-to-2 programmer supports programming with a top programming board that has an LDO conversion circuit, i.e. one that converts 6.5V to 4.2V, 5V or another voltage,<br/></p>
+<p>and also supports programming without an LDO conversion circuit (<strong>saving materials</strong>), in which case the programmer directly outputs the voltage that the chip model needs for normal programming<br/></p>
+<p>For the top board programming wiring, see "<a class="reference internal" href="pcba_burn.html"><span class="doc std std-doc">Chip Programming Wiring and Power Supply</span></a>"</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Programming sockets used to have an LDO conversion circuit because it was expected that some uncalibrated chips might reach customers and would then have to be calibrated by the programmer, or because programming the efuse of some chips requires specific voltages such as 6.5V or 3.3V; <br/></p>
+<p>The current programmer has a chip calibration check function: if a chip is not calibrated, programming reports an error! In addition, programming the efuse-related key, lvd, etc. no longer requires specific voltages;</p>
+<p>Therefore, the LDO circuit can be removed from the programming socket, and the socket can be built as a minimum chip system for programming! This makes the programming socket simpler, saves materials and allows it to be used as a universal programming socket!</p>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">1.11.5. </span>Chip performance test<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>While programming a chip, the programmer also tests the performance of each of the chip's modules. When you deploy the fw programming file</p>
+<p>(for deployment with the 1-to-2 programmer, see "<a class="reference internal" href="basic_usage.html#target-deploy-fw-file-to-1tuo2"><span class="std std-ref">Deploying the target chip firmware to the programmer</span></a>"),<br/></p>
+<p>a <strong>Configure</strong> (配置) option is available for configuring the chip screening test items. Normally, the default configuration is sufficient, but you can also configure them according to the customer's actual production situation.</p>
+<p>For a description of each screening option, see "<a class="reference internal" href="config_opt.html#target-chip-config-introduce"><span class="std std-ref">Common configuration items for each chip model</span></a>"</p>
+</section>
+<section id="id4">
+<h2><span class="section-number">1.11.6. </span>Chip soft power-off power consumption test<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>The 1-to-2 programmer has a built-in power consumption test function; for example, AC696X supports the soft power-off power consumption test. It is used as follows:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>1. Configure the "Power consumption test (uA): xxx" (功耗测试(uA):xxx) option;</p>
+<p>2. The test is off by default: select OFF to skip the soft power-off power consumption test;</p>
+<p>3. To enable the test, enter a specific value, for example "10": the chip then undergoes the soft power-off power consumption test, and if the measured value is greater than 10uA, programming reports an error and the chip is treated as defective;</p>
+<p>4. Note:<br/> (1) The programming socket for the power consumption test does not need an LDO conversion circuit; if the socket has an LDO conversion circuit, do not check this option;<br/> (2) Leave some margin in the limit value: for example, to screen out chips above 2uA, set 5uA or more<br/></p>
+</div>
+<p>If you need the power consumption test function for a chip model, contact a Jieli engineer <font color="red">!</font></p><font color="red">
+</font></section><font color="red">
+<section id="id5">
+<h2><span class="section-number">1.11.7. </span>Optimizing programming time<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<p>Ways to shorten the programming time:</p>
+<p>1. Check <strong>Blank chip programming</strong> (空片烧录) in the options for deploying the fw file. With this option checked, the step of reading the entire chip flash to verify that it is blank is skipped</p>
+<p>2. <strong>If the chips in mass production have had no production quality problems for a long time</strong>, you can disable unnecessary <strong>chip screening test items</strong>; programming only the firmware greatly increases the programming speed</p>
+</section>
+<section id="rs232">
+<h2><span class="section-number">1.11.8. </span>Controlling Bluetooth address programming over an RS232 serial port<a class="headerlink" href="#rs232" title="Permalink to this heading"></a></h2>
+<p>1. With programmer firmware version V2.27.9, the "PC Bluetooth address programming tool" (PC蓝牙地址烧录工具) can control the programmer over an RS232 serial port to program Bluetooth addresses. This prevents duplicate and lost Bluetooth addresses and makes Bluetooth address data easier to manage;</p>
+<p>2. To use this function, check "Serial port controlled programming" (串口控制烧录) in the "Configure" (配置) window on the PC, and connect the "PC Bluetooth address programming tool" and the programmer with an RS232 serial cable;</p>
+<p>3. This function requires the customer's own database to manage the Bluetooth addresses; the addresses to be programmed are taken from the database</p>
+<p>4. This function currently supports only the AC695X, AC635N, AC6083, AE695N, AC632N and AE632N chip models; if you need it for other models, contact Jieli technical support;</p>
+</section>
+<section id="id6">
+<h2><span class="section-number">1.11.9. </span>Printing programming information over the serial port<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
+<p>1. Purpose: to collect mass-production programming information for production management</p>
+<p>2. Programming information that can currently be printed</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Firmware version</strong></p></th>
+<th class="head"><p><strong>fw file checksum</strong></p></th>
+<th class="head"><p><strong>Chip model</strong></p></th>
+<th class="head"><p><strong>Chip version</strong></p></th>
+<th class="head"><p><strong>flash id</strong></p></th>
+<th class="head"><p><strong>Authorized count</strong></p></th>
+<th class="head"><p><strong>Programming success/failure count</strong></p></th>
+<th class="head"><p><strong>Programming time</strong></p></th>
+<th class="head"><p><strong>Error code and error message</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>burn_ver,V2.27.8</p></td>
+<td><p>fw_crc,7C35-CE54BED6</p></td>
+<td><p>chip_name,AD15N</p></td>
+<td><p>chip_ver,B</p></td>
+<td><p>flash_id,0x5e3213</p></td>
+<td><p>auth_times,0,used_times,0</p></td>
+<td><p>pass_times,16,fail_times,8</p></td>
+<td><p>burn_time,2095</p></td>
+<td><p>burn_pass[1],E00-burn_ok</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>3. Serial port hardware wiring</p>
+<p>Connect the programmer's "debug serial port TX" to the "serial module RX", and the "programmer debug serial port GND" to the "serial module GND", as shown in the figure below.</p>
+<p><img alt="" data-action="zoom" src="../../_images/common_funcs_log_img1.png"/></p>
+<p>3. PC tool serial port configuration</p>
+<p><img alt="" data-action="zoom" src="../../_images/common_funcs_log_img2.png"/></p>
+<p>A PC serial terminal tool that is stable and can filter out noise is recommended</p>
+<p>4. Save the log information as a .csv file for analysis</p>
+<p>You can save the log collected by the serial terminal tool as a .csv file for data analysis and processing</p>
+</section>
+<section id="v">
+<h2><span class="section-number">1.11.10. </span>Soldering wires to the programmer's 9V power supply<a class="headerlink" href="#v" title="Permalink to this heading"></a></h2>
+<p>When the programmer is built into equipment, solder wires that lead outside so that the production line can easily reset it when a problem occurs. The wiring is shown in the figure.</p>
+<p><img alt="" data-action="zoom" src="../../_images/common_funcs_log_img3.png"/></p>
+</section>
+<section id="id7">
+<h2><span class="section-number">1.11.11. </span>Erasing the chip flash on its own<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Add the following configuration to the isd_config.ini file in the download directory of any fw file, then click download.bat in the download directory to generate a new fw file;</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">BURNER_PASSTHROUGH_CFG</span><span class="p">]</span>
+<span class="n">ERASE_FLASH_MODE</span><span class="o">=</span><span class="n">YES</span><span class="p">;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Deploy the above fw file to the programmer;</p></li>
+<li><p>In any of the modes (programming, verification or blank check), press the <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">button</span></code> to erase the chip on its own. After erasing, the programmer verifies whether the entire flash contains all FF; if the success count on the display increases by 1, the erase was successful;</p></li>
+</ol>
+</section>
+<section id="ad698n-ac638n-dac-os">
+<h2><span class="section-number">1.11.12. </span>AD698N/AC638N DAC OS test<a class="headerlink" href="#ad698n-ac638n-dac-os" title="Permalink to this heading"></a></h2>
+<section id="id8">
+<h3><span class="section-number">1.11.12.1. </span>Test description<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>The DAC OS test is a screening test item of the 1-to-2 programmer, used mainly to screen out chips with abnormal DAC diode characteristics;</p></li>
+<li><p>The DAC OS test requires a DAC OS test circuit on the top board, and the top board's "voltage reference source must be calibrated" before use;</p></li>
+<li><p>Programming error messages</p>
+<ul class="simple">
+<li><p><strong>E06_DAC_OS_ERR</strong>: the chip failed the DAC OS test and must be screened out for further analysis;</p></li>
+<li><p><strong>E06_OS_INIT_ERR</strong>: DAC module initialization error; retry, and if programming fails repeatedly, check the hardware circuit;</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id9">
+<h3><span class="section-number">1.11.12.2. </span>Procedure<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Adjusting the reference source of the DAC OS top board<br/></p>
+<ul class="simple">
+<li><p>[1] Remotely upgrade the programmer to firmware that supports the DAC OS test, i.e. programmer firmware version <strong>V2.25.5</strong> or later;</p></li>
+<li><p>[2] When updating the chip firmware fw file, check the "DAC OS" test item in the programming options;</p></li>
+<li><p>[3] Install the top board with the DAC OS test circuit on the programmer;</p></li>
+<li><p>[4] Power on the programmer;</p></li>
+<li><p>[5] Use a multimeter to measure the voltage between test points <strong>+3.3V</strong> and <strong>-1.25V</strong> on the top board that supports the DAC OS test, and adjust the potentiometer until the multimeter reads <strong>4.55V</strong>. This completes the reference source adjustment of the DAC OS top board, as shown in <a class="reference internal" href="#img-dac-os-upper-board"><span class="std std-ref">Adjusting the reference source of the DAC OS top board</span></a>.</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Steps [3] and [4] must never be performed in reverse order</p>
+</div>
+<figure class="align-default" id="img-dac-os-upper-board">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image68.png"/>
+<figcaption>
+<p><span class="caption-text">Adjusting the reference source of the DAC OS top board</span><a class="headerlink" href="#img-dac-os-upper-board" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Follow the normal programming, verification and blank check procedures to program, verify and blank-check chips together with the DAC OS test.</p></li>
+</ol>
+</section>
+</section>
+</font></section><font color="red">
+</font>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="pcba_burn.html" class="btn btn-neutral float-left" title="1.10. Chip Programming Wiring and Power Supply" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="faqs.html" class="btn btn-neutral float-right" title="1.12. Troubleshooting Common Errors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/commom_funcs.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/commom_funcs.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

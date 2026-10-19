@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.14. 样机带电池烧录 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>2. 杰理科技一拖八烧录器用户手册</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">2.1. 烧录器简要介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html">2.2. 手动烧录、校验、查空芯片操作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html">2.3. 机台自动烧录操作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html">2.4. 远程升级烧录器固件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html">2.5. 各型号芯片PC端烧录配置项介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html">2.6. 状态指示和报错提示说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pc_err.html">2.7. PC界面报错提示说明和处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="change_board_interval.html">2.8. 换板时间设置及使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="burn_vol.html">2.9. 不同芯片烧录电压说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html">2.10. 授权烧录次数限制功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html">2.11. 第三方数据（认证码）烧录功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html">2.12. 蓝牙地址及名字自增功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_curr_test.html">2.13. 电流功耗测试功能</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>2.14. 样机带电池烧录</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.14.1. 应用场景</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2.14.2. 带电池烧录使用说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usb">2.14.3. usb样机带电池烧录</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">2.14.4. 注意事项</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5"><button class="toctree-expand" title="Open/close menu" type="button"></button>2.14.5. 样机带电池升级操作调试指南</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">2.14.5.1. 【样机带电池】选项的作用与原理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">2.14.5.2. 带电池升级的核心条件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">2.14.5.3. 未知复位方式时的排查步骤</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">2.14.5.4. 免晶振带电池升级说明</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="freq_bias.html">2.15. 频偏校准功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mic_test.html">2.16. MIC 测试功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usual_uart_update.html">2.17. 样机带电池自定义IO单双线串口升级功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extern_flash_burn.html">2.18. 同时升级内置flash和外挂flash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="erase.html">2.19. 非全片擦除功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html">2.20. 其它常见功能配置和使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faqs.html">2.21. 常见错误处理</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">2. </span>杰理科技一拖八烧录器用户手册</a> »</li>
+<li><span class="section-number">2.14. </span>样机带电池烧录</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/mass_prod_tools/burner_1tuo8/pcba_battery.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">2.14. </span>样机带电池烧录<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">2.14.1. </span>应用场景<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>组装好的成品有二次升级固件的需求，成品预留USB升级接口，升级的量较大需提高升级效率，这时可考虑使用一拖八烧录器对带电池的成品进行固件升级。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>1.空片不能用带电池升级;</p>
+<p>2.带电池烧录，带电池烧录负载消耗的电流过大，烧录器最大只能容忍<strong>1.5A电流</strong>，如需样机带电池烧录，请通过“控制USB电源的钮子开关”断开烧录USB端口供电（样机电池电压需正常，电压过低请充足电再升级）；</p>
+<p>3.没有断开烧录USB端口供电样机时，同时烧录数量务必保持在<strong>4个</strong>以内，不然烧坏烧录器，损失自己承担;</p>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">2.14.2. </span>带电池烧录使用说明<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>样机带电池烧录功能，目前一拖八烧录器支持【样机带电池】和【USB-样机带电池】升级两种方式，支持情况以PC部署界面情况为准。</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>比如AC700N和JL700N芯片型号的【USB-样机带电池】进入升级，SDK需要开启PC功能，是否能进行带电池烧录需要sdk提供者确认。
+usb带电池烧录配置参考《<a class="reference internal" href="#target-1tuo8-usb-with-battery-upgrade"><span class="std std-ref">usb样机带电池烧录</span></a>》</p>
+</div>
+<ol class="arabic" start="2">
+<li><p>样机带电池烧录配置</p>
+<ul class="simple">
+<li><p>【1】烧录器部署目标芯片fw文件程序（请参考《<a class="reference internal" href="basic_usage.html#target-deploy-fw-file-to-1tuo8"><span class="std std-ref">更新目标芯片程序到烧录器</span></a>》小节）；</p></li>
+<li><p>【2】在部署时需要在<strong>烧录配置项中勾选“样机带电池”</strong>，部署目标芯片程序到烧录器后，烧录器才支持带电池烧录功能，如<a class="reference internal" href="#img-pcba-battery-opt-1tuo8"><span class="std std-ref">样机带电池烧录配置</span></a>所示。；</p></li>
+</ul>
+<figure class="align-default" id="img-pcba-battery-opt-1tuo8">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image76.png"/>
+<figcaption>
+<p><span class="caption-text">样机带电池烧录配置</span><a class="headerlink" href="#img-pcba-battery-opt-1tuo8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>样机带电池烧录</p>
+<p>样机带电池烧录，跟普通的样机芯片程序烧录流程基本一致。</p>
+<ul class="simple">
+<li><p>【1】<strong>带电池样机需要正常运行SDK</strong>；</p></li>
+<li><p>【2】烧录器上电开机后，如果样机电池电压正常，请通过“控制USB电源的钮子开关”断开烧录USB端口供电;</p></li>
+<li><p>【3】带电池的样机通过USB线接入烧录器USB烧录接口，<strong>按按键让样机复位即可进行烧录</strong>;</p></li>
+</ul>
+<p>烧录成功后拔出USB线即固件升级完毕。样机固件升级成功后，对样机执行开机操作即可实现开机。</p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果样机没有设置专门的按键去复位样机，那么样机程序可以通过检查烧写器USB的DP或者DM脚信号去进行复位进入rom函数升级，或者通过USB VCC
+电源检测方式触发进入升级等，当前使用计数DP时钟数触发进入升级较多，单纯使用USB_VCC接入触发样机，可能容易出现误触发。</p>
+</div>
+</section>
+<section id="usb">
+<span id="target-1tuo8-usb-with-battery-upgrade"></span><h2><span class="section-number">2.14.3. </span>usb样机带电池烧录<a class="headerlink" href="#usb" title="Permalink to this heading"></a></h2>
+<p>与上面普通的样机带电池烧录不同在于，<strong>不需要按按键让样机复位即可进行烧录</strong>。</p>
+<p>具体操作步骤：</p>
+<ul class="simple">
+<li><p>【1】<strong>SDK需要开启PC功能</strong>；</p></li>
+<li><p>【2】<strong>带电池样机需要开机并正常运行SDK</strong>；</p></li>
+<li><p>【3】烧录器部署目标芯片fw文件程序（请参考《<a class="reference internal" href="basic_usage.html#target-deploy-fw-file-to-1tuo8"><span class="std std-ref">更新目标芯片程序到烧录器</span></a>》小节）；</p></li>
+<li><p>【4】在部署时需要在<strong>烧录配置项中勾选“USB-样机带电池”</strong>，部署目标芯片程序到烧录器后，烧录器才支持带电池烧录功能，如<a class="reference internal" href="#img-pcba-battery-opt-1tuo8"><span class="std std-ref">样机带电池烧录配置</span></a>所示。；</p></li>
+<li><p>【5】部署完毕后，烧录器重新上电，烧录器上电开机后，如果样机电池电压正常，请通过“控制USB电源的钮子开关”断开烧录USB端口供电；</p></li>
+<li><p>【6】带电池的样机通过USB线接入烧录器USB烧录接口，进入升级；</p></li>
+</ul>
+<p>烧录成功后拔出USB线即固件升级完毕。样机固件升级成功后，对样机执行开机操作即可实现开机。</p>
+<figure class="align-default" id="img-pcba-battery-opt-1tuo8-usb">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image89.png"/>
+<figcaption>
+<p><span class="caption-text">USB-样机带电池烧录配置</span><a class="headerlink" href="#img-pcba-battery-opt-1tuo8-usb" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id4">
+<h2><span class="section-number">2.14.4. </span>注意事项<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>一拖八进行带电池的样机烧录时，因为带电池原因，样机实际消耗的电流会很大，导致一拖八烧录器USB烧录端口处的电流达到几十mA至几百mA不等。即使USB端口电路扛得住几百mA的电流，但是如果8个通道同时进行烧录，电源适配器总供电端将达到几A电流，而烧录器最大只能容忍1.5A电流，可能会导致电源适配器或烧录器烧坏。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>1、空片不能用带电池升级;</p>
+<p>2、样机带电池烧录，带电池烧录负载消耗的电流过大，烧录器最大只能容忍1.5A电流，如需样机带电池烧录，请通过“控制USB电源的钮子开关”断开烧录USB端口供电（样机电池电压需正常，电压过低请充足电再升级）；否则样机同时烧录数量务必保持在4个以内，不然烧坏烧录器，损失自己承担;</p>
+</div>
+</section>
+<section id="id5">
+<h2><span class="section-number">2.14.5. </span>样机带电池升级操作调试指南<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<section id="id6">
+<h3><span class="section-number">2.14.5.1. </span>【样机带电池】选项的作用与原理<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>勾选【样机带电池】</strong>：烧写器会持续发送升级命令。这样可以确保样机在短暂的复位过程中，能够及时接收到命令并成功进入升级模式，而不是复位重新运行原有的应用程序。</p></li>
+<li><p><strong>不勾选【样机带电池】</strong>：烧写器将接管电源控制。流程为：烧写器控制上电并发送升级命令 -&gt; 成功则开始升级；失败则断电，随后再次上电并重试，循环此过程。</p></li>
+</ul>
+<p><strong>注意</strong>：如果样机实际上是带电池升级，却未勾选此选项（直接插入USB），虽然通过按键复位有一定概率进入升级模式，但识别率极低。这是因为复位时机很难刚好避开烧写器的上电或断电延时阶段。即使偶然识别成功，后续的频偏校准或芯片测试等流程也可能因电源控制冲突而失败。因此，<strong>带电池升级请务必勾选【样机带电池】</strong>。</p>
+</section>
+<section id="id7">
+<h3><span class="section-number">2.14.5.2. </span>带电池升级的核心条件<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
+<p>带电池升级能否成功的关键，在于样机必须具备“复位过程”或等效的复位机制。常见的复位方式主要有以下四种：</p>
+<ol class="arabic simple">
+<li><p><strong>硬件开关复位</strong>：板子上有物理开关，通过直接断开和闭合电池来实现上电复位（类似于烧写器控制断电上电）。</p></li>
+<li><p><strong>按键复位</strong>：通过长按或短按板子上的复位按键（Reset键）来触发重启并进入升级模式。</p></li>
+<li><p><strong>信号/命令复位</strong>：样机运行的SDK程序支持监测烧写器USB口DP/DM引脚的电平信号变化，或接收烧写器发送的特定命令来触发复位。</p></li>
+<li><p><strong>电压触发复位</strong>：样机SDK利用烧写器USB_VCC的电压变化来触发复位。此时需要在部署界面将USB_VCC配置为ON。</p></li>
+</ol>
+</section>
+<section id="id8">
+<h3><span class="section-number">2.14.5.3. </span>未知复位方式时的排查步骤<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+<p>如果您不确定当前样机支持哪种复位方式，可以按照以下步骤进行尝试和排查：</p>
+<ol class="arabic simple">
+<li><p><strong>尝试物理复位（插拔电池法）</strong>：</p>
+<ul class="simple">
+<li><p>勾选【样机带电池】，将样机USB插入烧写器。</p></li>
+<li><p>断开烧写器的USB_VCC（或关闭端口电源分开关）。</p></li>
+<li><p>物理断开样机电池正极，然后再重新短接（模拟上电复位）。</p></li>
+<li><p>观察烧写器是否能识别并烧录。如果没反应，可多次重复“断开-短接”操作。</p></li>
+<li><p><em>结论</em>：如果这种方式无法进入升级，通常说明该样机不支持常规的带电池升级。</p></li>
+</ul>
+</li>
+<li><p><strong>排查供电冲突</strong>：</p>
+<ul class="simple">
+<li><p>检查样机电源是否与烧写器的USB_VCC接在一起。如果USB_VCC处于OFF状态，可能会拉低样机电压，导致供电异常。</p></li>
+</ul>
+</li>
+<li><p><strong>交叉验证（断电法）</strong>：</p>
+<ul class="simple">
+<li><p>尝试不勾选【样机带电池】，并物理断开样机电池，看是否能正常升级。</p></li>
+<li><p>如果断电升级成功，说明烧写器与样机的升级通路正常。此时再改回勾选【样机带电池】并插拔电池，通常也能成功。</p></li>
+</ul>
+</li>
+<li><p><strong>寻求技术支持</strong>：</p>
+<ul class="simple">
+<li><p>如果上述“插拔电池”方式可行，说明升级通路没问题，关键在于确认样机在电池固定连接时如何触发复位。建议直接咨询样机的应用程序开发者或硬件电路设计者。</p></li>
+</ul>
+</li>
+<li><p><strong>尝试USB私有协议升级</strong>：</p>
+<ul class="simple">
+<li><p>如果以上方法均无效，可尝试勾选【usb样机带电池】。</p></li>
+<li><p>此方式适用于样机插入PC时能被识别为USB设备（如音频设备、磁盘、鼠标等），且样机已开启私有协议，支持接收烧写器发送的USB升级复位命令。</p></li>
+</ul>
+</li>
+<li><p><strong>使用强制升级工具</strong>：</p>
+<ul class="simple">
+<li><p>如果上述方法均无法解决问题，可以通过强制升级工具识别样机，并使用一拖一PC上位机程序来控制升级。</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id9">
+<h3><span class="section-number">2.14.5.4. </span>免晶振带电池升级说明<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+<p>关于免晶振与带晶振芯片在带电池升级时的差异，核心在于<strong>时钟系统的初始化位置</strong>不同。这直接决定了在程序异常或Flash为空时，芯片是否还能与烧写器进行通信。具体说明如下：</p>
+<p><strong>1. 免晶振芯片的升级限制</strong></p>
+<ul class="simple">
+<li><p>对于支持免晶振带电池升级的型号（如AC632N、AC695X、AC696X、AC608N），其时钟初始化通常是在 <code class="docutils literal notranslate"><span class="pre">uboot</span></code> 阶段进行的。因此，能否带电池升级主要取决于样机当前的应用程序是否支持。<br/>
+如果在升级过程中 <code class="docutils literal notranslate"><span class="pre">flash</span> <span class="pre">uboot</span></code> 被擦除或者 <code class="docutils literal notranslate"><span class="pre">flash</span></code> 为空，样机在带电池状态下复位后，将无法完成时钟初始化，进而无法与烧写器建立正常的USB或串口通信，导致升级失败。</p></li>
+</ul>
+<p><strong>2. 带晶振芯片的升级优势</strong></p>
+<ul class="simple">
+<li><p>与免晶振芯片不同，带晶振芯片的时钟系统是在 <code class="docutils literal notranslate"><span class="pre">maskrom</span></code> 内部就已经初始化正常的。这意味着，即使芯片处于空片状态或内部程序不完整，只要带电池复位，芯片依然能够正常启动底层通信
+模块，<br/>从而顺利与烧写器连接并完成升级。</p></li>
+</ul>
+<p><strong>总结</strong></p>
+<ul class="simple">
+<li><p>免晶振带电池升级的容错率较低，强依赖于 <code class="docutils literal notranslate"><span class="pre">uboot</span></code> 的完整性；而带晶振芯片由于底层硬件（<code class="docutils literal notranslate"><span class="pre">maskrom</span></code>）的支持，具备更强的通信保障，不依赖于flash uboot部分，当然部分型号免晶振时也
+支持在maskrom初始化时钟系统。</p></li>
+</ul>
+</section>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="pcba_curr_test.html" class="btn btn-neutral float-left" title="2.13. 电流功耗测试功能" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="freq_bias.html" class="btn btn-neutral float-right" title="2.15. 频偏校准功能" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo8/pcba_battery.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo8/pcba_battery.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

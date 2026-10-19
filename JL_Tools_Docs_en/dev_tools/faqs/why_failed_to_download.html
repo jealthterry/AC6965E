@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7.6. Why Can&#x27;t the Program Be Downloaded? — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>7. Other Common Issues and Solutions</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="howto_convert_cbp.html">7.1. How to Convert a Code::Blocks Project to a make/VSCode Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_convert_sdk_to_lib.html">7.2. How to Get a Library Project from an Existing Standard SDK Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_add_3rd_libs.html">7.3. How to Add a Third-Party Library to an SDK Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="why_build_slow.html">7.4. Why Are Some SDKs Slow to Build?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="why_build_result_mismatched.html">7.5. Why Do Builds Produce Different Files?</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>7.6. Why Can't the Program Be Downloaded?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#download-bat">7.6.1. Wrong encoding of the download script download.bat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2"><button class="toctree-expand" title="Open/close menu" type="button"></button>7.6.2. Device offline</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">7.6.2.1. Why can code sometimes be downloaded to the device only once?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#key">7.6.3. KEY file does not match the chip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usb-flash">7.6.4. Unstable USB connection or damaged FLASH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usb">7.6.5. Unstable USB connection or damaged chip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">7.6.6. Virtual serial port not set up correctly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">7.6.7. Other possible causes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="howto_change_tmp_dir.html">7.7. How to Change the Temporary Directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antivirus_misreport.html">7.8. About Antivirus (False) Alarms on the Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_find_downloadbat.html">7.9. How to Find Which download.bat Script the Current Project Uses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_formatall.html">7.10. How to Fully Erase the Chip Before Downloading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_reboot_afterdownload.html">7.11. How to Reset the Chip Automatically After Downloading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_read_flashid.html">7.12. How to Read the Chip's FLASH ID</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">7. </span>Other Common Issues and Solutions</a> »</li>
+<li><span class="section-number">7.6. </span>Why Can&#x27;t the Program Be Downloaded?</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/dev_tools/faqs/why_failed_to_download.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">7.6. </span>Why Can't the Program Be Downloaded?<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<div class="admonition warning offline-note"><p class="admonition-title">Note</p><p>This page was missing from the saved files and was restored from an Internet Archive snapshot (2026-08-24); it may differ slightly from the current online version.</p></div>
+<p>Sometimes, after a build, the firmware file cannot be downloaded to the device. You can troubleshoot this with the following steps:</p>
+<section id="download-bat">
+<h2><span class="section-number">7.6.1. </span>Wrong encoding of the download script download.bat<a class="headerlink" href="#download-bat" title="Permalink to this heading"></a></h2>
+<p>When Windows runs a <code class="docutils literal notranslate"><span class="pre">bat</span></code> batch file, the file must be in the local encoding, which on Chinese systems is usually <code class="docutils literal notranslate"><span class="pre">gbk</span></code>. If <code class="docutils literal notranslate"><span class="pre">download.bat</span></code> is encoded in <code class="docutils literal notranslate"><span class="pre">utf-8</span></code>, errors such as <code class="docutils literal notranslate"><span class="pre">is</span> <span class="pre">not</span> <span class="pre">recognized</span> <span class="pre">as</span> <span class="pre">an</span> <span class="pre">internal</span> <span class="pre">or</span> <span class="pre">external</span> <span class="pre">command,</span> <span class="pre">operable</span> <span class="pre">program</span> <span class="pre">or</span> <span class="pre">batch</span> <span class="pre">file</span></code> (不是内部或外部命令，也不是可运行的程序) are reported, as shown below:</p>
+<p><img alt="" src="../../_images/why_failed_to_download_invalid_encoding.jpg"/></p>
+<p>In this case, consider changing the file encoding to <code class="docutils literal notranslate"><span class="pre">gbk</span></code> with a tool such as <code class="docutils literal notranslate"><span class="pre">Notepad++</span></code>, or removing all Chinese characters from the file, which makes it equivalent to an <code class="docutils literal notranslate"><span class="pre">ANSI</span></code>-encoded file.</p>
+</section>
+<section id="id2">
+<h2><span class="section-number">7.6.2. </span>Device offline<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>Check the Code::Blocks build log for errors such as <code class="docutils literal notranslate"><span class="pre">Device</span> <span class="pre">Offline</span></code>, as shown below:</p>
+<p><img alt="" src="../../_images/why_failed_to_download_build_log.jpg"/></p>
+<p>If there are, the device is not connected to the computer or has not entered download mode. Possible causes include:</p>
+<ol class="arabic simple">
+<li><p>The device is not plugged in correctly, the USB cable is loose, etc., so the device does not appear in Device Manager (see the explanation below)</p></li>
+<li><p>The wrong device is plugged in, or the chip model does not match.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When a device in download mode is connected correctly, an additional hidden disk should appear when you open My Computer (make sure your file browser is set to show hidden files and devices).</p>
+<p>In addition, under [My Computer] - [Device Manager] - [Disk drives], there should be a disk device whose name contains <code class="docutils literal notranslate"><span class="pre">br**uboot1.0</span></code>, <code class="docutils literal notranslate"><span class="pre">bd**uboot1.0</span></code> or <code class="docutils literal notranslate"><span class="pre">dv**uboot1.0</span></code>.</p>
+<p>For more detailed steps, see <a class="reference internal" href="../forced_upgrade/upgrade_and_download.html"><span class="doc std std-doc">Upgrading and Downloading</span></a></p>
+<p>If the corresponding device already appears in Device Manager but the <code class="docutils literal notranslate"><span class="pre">Device</span> <span class="pre">Offline</span></code> message still appears, try the following methods in order:</p>
+<ol class="arabic simple">
+<li><p>Try downloading with administrator privileges, that is, open Code::Blocks as administrator, open the project, and then build and download. The download tool needs to access a physical device, which Windows may refuse in some cases, for example when you are logged in remotely.</p></li>
+<li><p>Check whether antivirus software, permission control software or similar software is installed on the computer, and whether the current user has permission to access USB devices (the download tool needs to read and write USB devices, and some computers may be configured to block access to USB devices for security and confidentiality reasons).</p></li>
+<li><p>If none of the above works, try another computer.</p></li>
+</ol>
+</div>
+<section id="id3">
+<h3><span class="section-number">7.6.2.1. </span>Why can code sometimes be downloaded to the device only once?<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<p>A common mistake is that no programming pins were reserved when the board was designed. After the chip has been programmed once, the firmware starts running and the chip is no longer in programming mode. The most typical symptom is: <strong>a blank chip programs normally, but afterwards the chip can never enter download mode again</strong>. For details on how the board and its programming pins should be designed, contact your distributor or whoever provided the SDK.</p>
+</section>
+</section>
+<section id="key">
+<h2><span class="section-number">7.6.3. </span>KEY file does not match the chip<a class="headerlink" href="#key" title="Permalink to this heading"></a></h2>
+<p>An error such as <code class="docutils literal notranslate"><span class="pre">key</span> <span class="pre">mismatch</span></code> or <code class="docutils literal notranslate"><span class="pre">mismatch</span></code> (不匹配) is reported. This error means that <strong>the key file does not match the chip</strong>. Check the parameters with which the download script <code class="docutils literal notranslate"><span class="pre">download.bat</span></code> calls <code class="docutils literal notranslate"><span class="pre">isd_download.exe</span></code>:</p>
+<ul class="simple">
+<li><p>If the chip is a <strong>blank chip</strong>, there is <strong>no need</strong> to specify the <code class="docutils literal notranslate"><span class="pre">-key</span> <span class="pre">xxxxx</span></code> parameter when downloading; remove it. A blank chip does not need a key file.</p></li>
+<li><p>If the chip <strong>is not blank</strong>, you must specify the corresponding <code class="docutils literal notranslate"><span class="pre">-key</span> <span class="pre">xxxxx</span></code> when downloading, where <code class="docutils literal notranslate"><span class="pre">xxxxx</span></code> is the key file that matches the chip. <strong>Obtain this file from your distributor</strong>.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Suppose you have confirmed that the chip is not blank and you specified a KEY file when downloading, but a mismatch error is still reported.</p>
+<p>This means that the KEY file you specified does not match the current chip. In other words, a different key file has already been programmed into this chip (not the KEY file you specified). Either you received a chip that was programmed incorrectly, or you received the wrong KEY file.</p>
+<p><strong>Chips and KEY files must correspond one-to-one. Once a chip has been programmed with a KEY, its KEY cannot be changed, and the chip cannot be programmed with any other KEY file</strong></p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">download.bat</span></code> script may call other bat scripts, so it is recommended to <strong>search the entire SDK project</strong> for the keyword <code class="docutils literal notranslate"><span class="pre">isd_download.exe</span></code>.</p>
+<p><img alt="" src="../../_images/global_search_step1.jpg"/>
+<img alt="" src="../../_images/global_search_step2.jpg"/></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>If your KEY file name contains spaces, it is recommended to remove them, or to enclose the name in double quotes "", for example "key file with space.key".</p></li>
+<li><p>To avoid problems, it is recommended that key file names contain no spaces at all.</p></li>
+</ol>
+</div>
+</section>
+<section id="usb-flash">
+<h2><span class="section-number">7.6.4. </span>Unstable USB connection or damaged FLASH<a class="headerlink" href="#usb-flash" title="Permalink to this heading"></a></h2>
+<p>The message <code class="docutils literal notranslate"><span class="pre">Error</span> <span class="pre">message:</span> <span class="pre">ERR_CRCCMP</span></code> (错误信息:ERR_CRCCMP) is displayed. This error means that after the download completed, a mismatch was found when the <strong>FLASH</strong> contents were compared, as shown below:</p>
+<p><img alt="" src="../../_images/download_err_crccmp.png"/></p>
+<p>Possible causes:</p>
+<ul class="simple">
+<li><p>The connection between the device and the computer is unstable, causing occasional failures. Reconnect the USB cable securely and try again.</p></li>
+<li><p>The FLASH of the device is damaged, so some areas cannot be written correctly. Replace the device and try again.</p></li>
+</ul>
+</section>
+<section id="usb">
+<h2><span class="section-number">7.6.5. </span>Unstable USB connection or damaged chip<a class="headerlink" href="#usb" title="Permalink to this heading"></a></h2>
+<p>The message <code class="docutils literal notranslate"><span class="pre">Error:</span> <span class="pre">failed</span> <span class="pre">to</span> <span class="pre">parse</span> <span class="pre">device</span> <span class="pre">information</span></code> (错误：分析设备信息失败) is displayed. This error means that an error occurred while parsing the device information:</p>
+<p><img alt="" src="../../_images/err_failed_to_parse_device.jpg"/></p>
+<p>Possible causes:</p>
+<ul class="simple">
+<li><p>The connection between the device and the computer is unstable, causing occasional failures. Reconnect the USB cable securely and try again.</p></li>
+<li><p>The chip of the device itself is damaged, causing abnormal communication with the PC tool.</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2><span class="section-number">7.6.6. </span>Virtual serial port not set up correctly<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>The message <code class="docutils literal notranslate"><span class="pre">Failed</span> <span class="pre">to</span> <span class="pre">open</span> <span class="pre">device</span> <span class="pre">(JLVirtualtagSerial)</span></code> (打开设备(JLVirtualtagSerial)失败) is displayed. This error means that the virtual serial port device cannot be opened, possibly because the virtual serial port has not been set up. See <a class="reference internal" href="../forced_upgrade/upgrade_and_download.html#target-forceupgrade-serial-update"><span class="std std-ref">Serial upgrade</span></a>.</p>
+</section>
+<section id="id5">
+<h2><span class="section-number">7.6.7. </span>Other possible causes<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<p>In other situations, you can try the following steps:</p>
+<ul class="simple">
+<li><p>Switch to another computer and download again</p></li>
+<li><p>Switch to another device and download again</p></li>
+</ul>
+<p>This helps determine whether the download failure is related to the computer or to the device.</p>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="why_build_result_mismatched.html" class="btn btn-neutral float-left" title="7.5. Why Do Builds Produce Different Files?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="howto_change_tmp_dir.html" class="btn btn-neutral float-right" title="7.7. How to Change the Temporary Directory" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Aug 18, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/faqs/why_failed_to_download.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/faqs/why_failed_to_download.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

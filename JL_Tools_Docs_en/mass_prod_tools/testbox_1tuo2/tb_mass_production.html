@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3.7. Test Box Batch Upgrade and Test Cases — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>3. Jieli 1-to-2 Bluetooth Test Box User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_base_introduction.html">3.1. Test Box Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html">3.2. PC Tool Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_upgrade.html">3.3. Test Box Firmware Upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wireless_upgrade.html">3.4. Wireless Upgrade of Bluetooth Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wired_upgrade.html">3.5. Wired Upgrade of Bluetooth Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_test_process.html">3.6. Bluetooth Device Test Procedure</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>3.7. Test Box Batch Upgrade and Test Cases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#target-bt-wireless-upgrade"><button class="toctree-expand" title="Open/close menu" type="button"></button>3.7.1. Batch wireless upgrade of Bluetooth devices</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">3.7.1.1. Feature overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">3.7.1.2. Operation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#target-bt-wired-upgrade"><button class="toctree-expand" title="Open/close menu" type="button"></button>3.7.2. Batch wired upgrade of Bluetooth devices</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">3.7.2.1. Feature overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">3.7.2.2. Operation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id8"><button class="toctree-expand" title="Open/close menu" type="button"></button>3.7.3. Batch testing of classic Bluetooth devices</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">3.7.3.1. Feature overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">3.7.3.2. Operation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tws"><button class="toctree-expand" title="Open/close menu" type="button"></button>3.7.4. Quick test method for TWS earphones in mass production</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id11">3.7.4.1. Feature overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">3.7.4.2. Operation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#target-bt-trim-mode"><button class="toctree-expand" title="Open/close menu" type="button"></button>3.7.5. Batch frequency offset calibration during programming</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id14">3.7.5.1. Using the calibration signal transmit mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">3.7.5.2. Batch frequency offset calibration with the 1-to-8 programmer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ear_storage.html">3.8. Using Earphone Storage Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_transparent.html">3.9. PC Passthrough Commands and Custom Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mes_log.html">3.10. Test Box MES Log Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_view_bt_info.html">3.11. Viewing Bluetooth Device Information (SDK Version/Battery Level/Checksum)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ufw_crc_compare.html">3.12. Test Box UFW File Checksum Matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_error_status.html">3.13. Status Indicators and Error Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_fixture_install.html">3.14. Connecting the Test Box to a Fixture over UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_function.html">3.15. Other Common Features: Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_problem.html">3.16. Frequently Asked Questions (FAQ)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_version_info.html">3.17. Version Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">3. </span>Jieli 1-to-2 Bluetooth Test Box User Manual</a> »</li>
+<li><span class="section-number">3.7. </span>Test Box Batch Upgrade and Test Cases</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/testbox_1tuo2/tb_mass_production.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">3.7. </span>Test Box Batch Upgrade and Test Cases<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="target-bt-wireless-upgrade">
+<span id="id2"></span><h2><span class="section-number">3.7.1. </span>Batch wireless upgrade of Bluetooth devices<a class="headerlink" href="#target-bt-wireless-upgrade" title="Permalink to this heading"></a></h2>
+<section id="id3">
+<h3><span class="section-number">3.7.1.1. </span>Feature overview<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<p>Jieli Bluetooth earphone, speaker, watch and other solutions can all be upgraded wirelessly in batches with the test box.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Supports simultaneous upgrade on two channels</p></li>
+<li><p>Supports connection by fixed device name, to prevent non-target devices from being upgraded by mistake</p></li>
+<li><p>Supports connection by matching only the device name prefix, so that each device's name can have a different MAC address suffix</p></li>
+<li><p>Supports standalone upgrade (just copy the upgrade file to a TF card and insert it into the test box to upgrade offline)</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id4">
+<h3><span class="section-number">3.7.1.2. </span>Operation<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Test box PC tool settings</p></li>
+</ol>
+<p>[1] Connect the test box to the PC and press and hold the rightmost button on the test box to enter PC configuration mode; the test box shows "LOADING";</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_mass_image1.png"/></p>
+<p>[2] On the "Function settings" (功能设置) page of the PC tool, configure "Wireless discovery configuration" (无线发现配置): set the name of the target devices to upgrade and whether to match only the prefix;</p>
+<p>[3] Click "Save settings to test box" (保存设置到测试盒);</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_mass_image2.png"/></p>
+<ol class="arabic simple" start="2">
+<li><p>Test box DIP switch settings</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>With DIP switch 6 of the test box in the "OFF" position (the other DIP switch positions do not matter), the test box is in classic Bluetooth mode; use this position to upgrade Bluetooth devices such as earphones and speakers.</p></li>
+<li><p>With DIP switch 6 in the "ON" position, the test box is in BLE mode (DIP switch 1 must be OFF, i.e. it connects to BLE slaves); use this position to upgrade devices such as BLE data transfer devices.</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After changing the DIP switches or the PC tool configuration, restart the test box for the new configuration to take effect</p>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Procedure</p></li>
+</ol>
+<p>[1] Insert a TF card containing the upgrade file (such as *.bfu or *.ufw) into the TF card slot on the left side of the test box. When the screen shows "BT upgrade searching" (BT升级搜索中), the box has entered wireless search and upgrade mode.</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_mass_image3.png"/></p>
+<p>[2] After a device is connected, the corresponding channel of the test box shows the device name and the upgrade progress.</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_mass_image4.png"/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For chips from the AC693x series onward, wireless upgrade (both classic Bluetooth and BLE) has two stages, "Preparing" (准备中) and "Upgrading" (升级中), whereas earlier chips such as AC692x have only the "Upgrading" (升级中) stage.</p>
+<p>If Bluetooth is interrupted or power is lost during the "Preparing" (准备中) stage, the device can still be found under its original Bluetooth name and upgraded.</p>
+<p>If the upgrade is interrupted during the "Upgrading" (升级中) stage, the test box automatically searches for the device name xxx_update to reconnect and continue the upgrade.</p>
+</div>
+<p>[3] When the "Upgrading" (升级中) progress reaches 100%, the upgrade has succeeded. The device resets and shows the corresponding upgrade-success UI (such as a double-beep prompt tone or a specific LED flash pattern), and powers off after the UI indication ends, so that the test box does not reconnect to it and upgrade it again.</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_mass_image5.png"/></p>
+<p>[4] If an error occurs during the upgrade, the corresponding error code is shown; look up the error code definitions in the table for a preliminary diagnosis</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_mass_image6.png"/></p>
+<p>[5] After one device has been upgraded, the test box automatically connects to other nearby devices with the same name and upgrades them; a device only needs to be powered on and discoverable by the test box for the upgrade to start automatically.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>1. In BLE mode, the upgrade disconnects and reconnects once when switching from the "Preparing" (准备中) state to the "Upgrading" (升级中) state; this is not an abnormal disconnection. Classic Bluetooth does not need to reconnect at this stage.</p>
+<p>2. On a real production line, there may be powered-on devices with the same name that are not the target devices to upgrade, so it is recommended to perform wireless upgrades in a shielded room whenever possible to avoid upgrading other devices with the same name by mistake.</p>
+</div>
+</section>
+</section>
+<section id="target-bt-wired-upgrade">
+<span id="id5"></span><h2><span class="section-number">3.7.2. </span>Batch wired upgrade of Bluetooth devices<a class="headerlink" href="#target-bt-wired-upgrade" title="Permalink to this heading"></a></h2>
+<section id="id6">
+<h3><span class="section-number">3.7.2.1. </span>Feature overview<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<p>Jieli Bluetooth earphone, speaker, watch and other solutions can all be upgraded in batches over a wired UART connection with the test box.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Supports simultaneous upgrade on two channels</p></li>
+<li><p>Wired one-to-one upgrade, with no risk of connecting to a device with the same name by mistake</p></li>
+<li><p>Supports standalone upgrade (just copy the upgrade file to a TF card and insert it into the test box to upgrade offline)</p></li>
+<li><p>Supports an adjustable UART baud rate for upgrades</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id7">
+<h3><span class="section-number">3.7.2.2. </span>Operation<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Test box PC tool settings</p></li>
+</ol>
+<p>[1] Connect the test box to the PC and press and hold the rightmost button on the test box to enter PC configuration mode; the test box shows "LOADING";</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_mass_image1.png"/></p>
+<p>[2] On the "Function settings" (功能设置) page of the PC tool, configure "Wired UART mode configuration" (有线串口模式配置): set "Upgrade enable" (升级使能) to "1", select the baud rate (default: 500K) and click "Save settings to test box" (保存设置到测试盒);</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_mass_image7.png"/></p>
+<ol class="arabic simple" start="2">
+<li><p>Test box DIP switch settings</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>This mode does not depend on the test box DIP switch settings.</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>Procedure</p></li>
+</ol>
+<p>[1] Insert a TF card containing the upgrade file (such as *.bfu or *.ufw) into the TF card slot on the left side of the test box. When the screen shows "UART upgrade search" (UART升级搜索), the box has entered wired upgrade mode.</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_mass_image8.png"/></p>
+<p>[2] Place the device to be upgraded in the UART fixture; the wired upgrade starts and the current upgrade progress is shown.</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_mass_image9.png"/></p>
+<p>[3] If an error occurs during the upgrade, the corresponding error code is shown; look up the error code definitions in the table for a preliminary diagnosis.</p>
+<p>[4] After the upgrade, take the earphone out of the fixture and put in a new device to be upgraded.</p>
+</section>
+</section>
+<section id="id8">
+<h2><span class="section-number">3.7.3. </span>Batch testing of classic Bluetooth devices<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h2>
+<section id="id9">
+<h3><span class="section-number">3.7.3.1. </span>Feature overview<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+<p>Jieli Bluetooth earphone, speaker and other classic Bluetooth solutions can all be tested wirelessly in batches with the test box.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Supports simultaneous testing on two channels</p></li>
+<li><p>Supports connection by fixed device name, to prevent non-target devices from being upgraded by mistake</p></li>
+<li><p>Supports connection by matching only the device name prefix, so that each device's name can have a different MAC address suffix</p></li>
+<li><p>Supports fast connection over a wired UART</p></li>
+<li><p>Supports running the frequency offset calibration + music playback + button + call tests in sequence</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id10">
+<h3><span class="section-number">3.7.3.2. </span>Operation<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Test box PC tool settings</p></li>
+</ol>
+<p><font color="red" face="黑体" size="4">Scenario 1: the device connects wirelessly</font></p>
+<p>[1] Connect the test box to the PC and press and hold the rightmost button on the test box to enter PC configuration mode; the test box shows "LOADING";</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_mass_image1.png"/></p>
+<p>[2] On the "Function settings" (功能设置) page of the PC tool, configure "Wireless discovery configuration" (无线发现配置): set the name of the target devices to upgrade and whether to match only the prefix;</p>
+<p>[3] Click "Save settings to test box" (保存设置到测试盒);</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_mass_image10.png"/></p>
+<p><font color="red" face="黑体" size="4">Scenario 2: the device connects over a wired UART</font></p>
+<p>[1] Connect the test box to the PC and press and hold the rightmost button on the test box to enter PC configuration mode; the test box shows "LOADING";</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_mass_image1.png"/></p>
+<p>[2] On the "Function settings" (功能设置) page of the PC tool, configure <code class="docutils literal notranslate"><span class="pre">Wired</span> <span class="pre">UART</span> <span class="pre">configuration</span></code> (有线串口配置) and change <code class="docutils literal notranslate"><span class="pre">"Test</span> <span class="pre">enable"</span> <span class="pre">(测试使能)</span> <span class="pre">to</span> <span class="pre">"1"</span></code>;</p>
+<p>[3] Click "Save settings to test box" (保存设置到测试盒);</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_mass_image11.png"/></p>
+<ol class="arabic simple" start="2">
+<li><p>Test box DIP switch settings</p></li>
+</ol>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>DIP switch No.</p></th>
+<th class="head"><p>Test item</p></th>
+<th class="head"><p>ON/OFF</p></th>
+<th class="head"><p>Remarks</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Call test</p></td>
+<td><p><strong>ON</strong></p></td>
+<td><p>CVSD encoding</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Call test MIC loopback mode</p></td>
+<td><p><strong>ON</strong></p></td>
+<td><p>Device MIC -&gt; Bluetooth transmission via the test box -&gt; device DAC output; requires the call test to be enabled</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Call test mode with MIC sound output from the test box</p></td>
+<td><p>OFF</p></td>
+<td><p>Device MIC -&gt; test box DAC output; requires the call test to be enabled</p></td>
+</tr>
+<tr class="row-odd"><td><p>–</p></td>
+<td><p>A2DP music playback</p></td>
+<td><p><strong>ON</strong></p></td>
+<td><p>No DIP switch needed; enabled by default</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Frequency offset test (频偏测试)</p></td>
+<td><p><strong>ON</strong></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Frequency offset calibration</p></td>
+<td><p><strong>ON</strong></p></td>
+<td><p>Requires the frequency offset test to be enabled</p></td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After changing the DIP switches or the PC tool configuration, restart the test box for the new configuration to take effect.</p>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Test steps</p></li>
+</ol>
+<p>[1] Establish the connection</p>
+<p><font color="red" face="黑体" size="4">Scenario 1: the device connects wirelessly</font> Power on the device under test and bring it close to the test box. The test box initiates a Bluetooth connection as soon as it finds the target device; once connected, the test box shows the device name and frequency offset (if the frequency offset test is enabled).</p>
+<p><font color="red" face="黑体" size="4">Scenario 2: the device connects over a wired UART</font></p>
+<p>Place the device under test in the UART fixture (see "<a class="reference internal" href="tb_fixture_install.html#target-fixture-install"><span class="std std-ref">Connecting the Test Box to a Fixture over UART</span></a>"). The test box obtains the device information over UART and establishes the connection; once connected, the test box shows the device name and frequency offset (if the frequency offset test is enabled).</p>
+<p>[2] Frequency offset test and calibration: when the frequency offset measured by the test box (the calibrated frequency offset, if calibration is enabled) exceeds the alarm value set in the PC tool (default: 10K), the test box sounds a triple-beep alarm to indicate an abnormal frequency offset.</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_mass_image12.png"/></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_mass_image13.png"/></p>
+<p>[3] After showing the frequency offset, the test box automatically starts the music playback test, and the test box's built-in song can be heard from the speaker of the device under test. After confirming that the device's sound is normal, use the switch button on the test box to move on to the next test item.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The switch button for channel 1 is the left button</p></li>
+<li><p>The switch button for channel 2 is the middle button</p></li>
+<li><p>The right button disconnects the devices on both channel 1 and channel 2.</p></li>
+</ul>
+</div></blockquote>
+<p><img alt="" data-action="zoom" src="../../_images/tb_mass_image14.png"/></p>
+<p>[4] During music playback, some button functions of the device under test can be recognized: button operations such as previous/next track and play/pause are shown on the test box LCD and the corresponding actions are executed. At this stage, you can check whether the button hardware and function definitions of the device under test are correct.</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_mass_image15.png"/></p>
+<p>[5] If the DIP switches are set to enable "Call test", the call test starts after you switch to it. The sound picked up by the MIC of the device under test is transmitted to the test box, and depending on the DIP switch setting, the test box either plays it through its own speaker or sends it back to the device under test. At this stage, you can confirm whether the MIC and the Bluetooth eSCO link of the device under test work properly.</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_mass_image16.png"/></p>
+<p>[6] When the call test is complete, press the switch button of the corresponding channel to disconnect Bluetooth and end the test of the current device. Wait for the next device to connect and repeat steps 1-4.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Except for the AC690x and AC692x series, frequency offset calibration can by default be performed only once. To recalibrate, set BTIF_OPT=0 in the isd_config.ini file before the upgrade process, which erases the original Bluetooth configuration area; only then can the device be recalibrated.</p>
+</div>
+</section>
+</section>
+<section id="tws">
+<span id="target-mass-fast-test"></span><h2><span class="section-number">3.7.4. </span>Quick test method for TWS earphones in mass production<a class="headerlink" href="#tws" title="Permalink to this heading"></a></h2>
+<section id="id11">
+<h3><span class="section-number">3.7.4.1. </span>Feature overview<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h3>
+<p>With Jieli TWS Bluetooth earphone solutions, the test box can quickly put the earphones into a special test mode in which, together with production test equipment, they can undergo RF, electroacoustic, air-tightness and other tests; the specific test items must be supported by the production test equipment. In the special test mode, the earphones are discoverable and connectable, with the TWS function and the reconnection function turned off, and they support RF testing, Bluetooth audio testing (A2DP, HFP), etc.</p>
+<p>After testing, put the TWS earphones into their charging case; the earphones return to the normal state.</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_mass_image17.png"/></p>
+</section>
+<section id="id12">
+<h3><span class="section-number">3.7.4.2. </span>Operation<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Test box PC tool settings</p></li>
+</ol>
+<p>[1] Connect the test box to the PC and press and hold the rightmost button on the test box to enter PC configuration mode; the test box shows "LOADING";</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_mass_image1.png"/></p>
+<p>[2] Open the PC tool and, under "Wired UART mode configuration" (有线串口模式配置), set "DUT command mode enable" (DUT命令模式使能) to 1.</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_mass_image18.png"/></p>
+<ol class="arabic simple" start="2">
+<li><p>Test box hardware setup</p></li>
+</ol>
+<p>[1] DIP switch configuration: this mode does not depend on the DIP switch positions.</p>
+<p>[2] Connect the UART port of the test box to the fixture; see "<a class="reference internal" href="tb_fixture_install.html#target-fixture-install"><span class="std std-ref">Connecting the Test Box to a Fixture over UART</span></a>".</p>
+<ol class="arabic simple" start="3">
+<li><p>Procedure</p></li>
+</ol>
+<p>[1] The TWS earphones enter the special test mode via the test box</p>
+<p>[2] The TWS earphones enter the special test mode via the test box</p>
+<p>[3] When testing is complete, put the earphones into a normal charging case to restore normal mode</p>
+</section>
+</section>
+<section id="target-bt-trim-mode">
+<span id="id13"></span><h2><span class="section-number">3.7.5. </span>Batch frequency offset calibration during programming<a class="headerlink" href="#target-bt-trim-mode" title="Permalink to this heading"></a></h2>
+<section id="id14">
+<h3><span class="section-number">3.7.5.1. </span>Using the calibration signal transmit mode<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h3>
+<p>Version V1.2.5 adds the option for setting the calibration signal frequency point</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_mass_image19.png"/></p>
+<p>Using the calibration signal transmit mode</p>
+<ol class="arabic simple">
+<li><p>Calibration signal transmit mode: V125 supports the calibration signal transmit mode. Used together with the 1-to-8 programming tool, this feature calibrates the Bluetooth frequency offset of the chips being programmed during programming, which eliminates the subsequent frequency calibration step.<br/></p></li>
+<li><p>To enter calibration signal transmit mode: after power-on, quickly press and hold the left function button until the LCD shows the "Calibration signal transmit mode" (校频波发射模式) screen; the test box is then in this mode.<br/></p></li>
+<li><p>To configure the calibration signal frequency point: by default, the calibration signal is transmitted on frequency point 1. To use a different frequency point, change it with the "Calibration signal frequency point configuration" (校频波频点配置) option in the PC tool (range: 0 to 9). The test box LCD shows this frequency point in calibration signal transmit mode.<br/></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The transmit frequency point of the test box must match the frequency point configured in the 1-to-8 tool for calibration to work properly. When you change the frequency point, also change "Calibration signal frequency point setting" (校频波频点设置) in the 1-to-8 programmer PC tool accordingly.</p>
+</div>
+</section>
+<section id="id15">
+<h3><span class="section-number">3.7.5.2. </span>Batch frequency offset calibration with the 1-to-8 programmer<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h3>
+<p>The test box can be used with the 1-to-8 programmer for batch frequency offset calibration. For the detailed procedure, see "<a class="reference internal" href="../burner_1tuo8/freq_bias.html"><span class="doc std std-doc">Frequency Offset Calibration</span></a>".</p>
+</section>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="tb_test_process.html" class="btn btn-neutral float-left" title="3.6. Bluetooth Device Test Procedure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="tb_ear_storage.html" class="btn btn-neutral float-right" title="3.8. Using Earphone Storage Mode" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_mass_production.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_mass_production.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7.3. How to Add a Third-Party Library to an SDK Project — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>7. Other Common Issues and Solutions</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="howto_convert_cbp.html">7.1. How to Convert a Code::Blocks Project to a make/VSCode Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_convert_sdk_to_lib.html">7.2. How to Get a Library Project from an Existing Standard SDK Project</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>7.3. How to Add a Third-Party Library to an SDK Project</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">7.3.1. Files included in a third-party library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">7.3.2. What to check before adding a third-party library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">7.3.3. What to change to add a third-party library</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="why_build_slow.html">7.4. Why Are Some SDKs Slow to Build?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="why_build_result_mismatched.html">7.5. Why Do Builds Produce Different Files?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="why_failed_to_download.html">7.6. Why Can't the Program Be Downloaded?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_change_tmp_dir.html">7.7. How to Change the Temporary Directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antivirus_misreport.html">7.8. About Antivirus (False) Alarms on the Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_find_downloadbat.html">7.9. How to Find Which download.bat Script the Current Project Uses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_formatall.html">7.10. How to Fully Erase the Chip Before Downloading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_reboot_afterdownload.html">7.11. How to Reset the Chip Automatically After Downloading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_read_flashid.html">7.12. How to Read the Chip's FLASH ID</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">7. </span>Other Common Issues and Solutions</a> »</li>
+<li><span class="section-number">7.3. </span>How to Add a Third-Party Library to an SDK Project</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/dev_tools/faqs/howto_add_3rd_libs.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="sdk">
+<h1><span class="section-number">7.3. </span>How to Add a Third-Party Library to an SDK Project<a class="headerlink" href="#sdk" title="Permalink to this heading"></a></h1>
+<div class="admonition warning offline-note"><p class="admonition-title">Note</p><p>This page was missing from the saved files and was restored from an Internet Archive snapshot (2026-08-24); it may differ slightly from the current online version.</p></div>
+<section id="id1">
+<h2><span class="section-number">7.3.1. </span>Files included in a third-party library<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>In some cases, you need to add library files (.a files) provided by a third party. Generally, two kinds of files need to be added:</p>
+<ol class="arabic simple">
+<li><p>Header (.h) files. These files generally contain the corresponding function declarations (that is, the declarations of the functions that the .a file provides)</p></li>
+<li><p>The .a file itself, which contains the implementations of the function bodies</p></li>
+</ol>
+</section>
+<section id="id2">
+<h2><span class="section-number">7.3.2. </span>What to check before adding a third-party library<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>Before adding a third-party library, check the following:</p>
+<ol class="arabic simple">
+<li><p>Make sure that the compiler flags of the third-party library are the same as those of the current SDK, because different SDKs may use different instruction sets. First of all, make sure that <strong>the compiler flags of the third-party library and the SDK are the same</strong> (especially the <code class="docutils literal notranslate"><span class="pre">-target</span> <span class="pre">xxx</span></code> and <code class="docutils literal notranslate"><span class="pre">-mcpu=xx</span></code> options).</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are the author of a third-party library and want to package the library yourself, see <a class="reference internal" href="howto_convert_sdk_to_lib.html"><span class="doc std std-doc">How to Get a Library Project from an Existing Standard SDK Project</span></a></p>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Determine whether the SDK you are using is a Code::Blocks project, a Makefile project or a VSCode project. Different kinds of projects need to be changed in different places.</p></li>
+</ol>
+</section>
+<section id="id3">
+<h2><span class="section-number">7.3.3. </span>What to change to add a third-party library<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>Adding a third-party library mainly involves the following changes:</p>
+<ol class="arabic simple">
+<li><p>Copy the .a library file to the SDK project directory, for example to the <code class="docutils literal notranslate"><span class="pre">include_lib\liba\${CPU}\</span></code> directory. <code class="docutils literal notranslate"><span class="pre">${CPU}</span></code> stands for the CPU model, for example br23. For details, refer to the corresponding directory in the SDK.</p></li>
+<li><p>Copy the .h header file to the SDK project directory, for example to the <code class="docutils literal notranslate"><span class="pre">include_lib\liba\3rd\</span></code> directory. <strong>If the directory does not exist, create it yourself</strong>.</p></li>
+<li><p>Modify the linker flags to add the path of the .a library file.</p></li>
+</ol>
+<p>The following uses libtest.a and libtest.h as an example to show how to make the changes for the different kinds of projects in the AC695X SDK:</p>
+<p><img alt="" src="../../_images/how_to_add_3rd_libs_step1.jpg"/></p>
+<ol class="arabic">
+<li><p>Copy libtest.a to the SDK project directory, in this example the <code class="docutils literal notranslate"><span class="pre">include_lib\liba\${CPU}</span></code> directory, as shown below:</p>
+<p><img alt="" src="../../_images/how_to_add_3rd_libs_copy_libs.jpg"/></p>
+</li>
+<li><p>Copy libtest.h to the SDK project directory, in this example the <code class="docutils literal notranslate"><span class="pre">include_lib\3rd</span></code> directory, as shown below:</p>
+<p><img alt="" src="../../_images/how_to_add_3rd_libs_copy_headers.jpg"/></p>
+</li>
+<li><p>Modify the linker flags to add the relative path of libtest.a.</p>
+<ol class="arabic">
+<li><p><strong>If your SDK uses a Code::Blocks project</strong>, proceed as shown below:</p>
+<p><img alt="" src="../../_images/how_to_add_3rd_libs_update_cb_settings1.jpg"/>
+<img alt="" src="../../_images/how_to_add_3rd_libs_update_cb_settings2.jpg"/></p>
+</li>
+<li><p><strong>If you use the Makefile or VSCode (which also uses the Makefile)</strong>, proceed as shown below:</p>
+<p><img alt="" src="../../_images/how_to_add_3rd_libs_update_makefile_settings1.jpg"/>
+<img alt="" src="../../_images/how_to_add_3rd_libs_update_makefile_settings2.jpg"/></p>
+</li>
+</ol>
+<p>After modifying the linker flags, you can test calling the functions in libtest.a</p>
+</li>
+<li><p>Test calling the functions in libtest.a, as shown below (using Code::Blocks as an example)</p>
+<p><img alt="" src="../../_images/how_to_add_3rd_libs_test_api1.jpg"/>
+<img alt="" src="../../_images/how_to_add_3rd_libs_test_api2.jpg"/></p>
+</li>
+</ol>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">#include</span></code> reports that the header file cannot be found, you may also need to modify the header search path</p>
+</div>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="howto_convert_sdk_to_lib.html" class="btn btn-neutral float-left" title="7.2. How to Get a Library Project from an Existing Standard SDK Project" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="why_build_slow.html" class="btn btn-neutral float-right" title="7.4. Why Are Some SDKs Slow to Build?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Aug 18, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/faqs/howto_add_3rd_libs.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/faqs/howto_add_3rd_libs.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

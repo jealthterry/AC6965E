@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3.1. Test Box Overview — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>3. Jieli 1-to-2 Bluetooth Test Box User Manual</a><ul>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>3.1. Test Box Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.1.1. Functional description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3.1.2. Test box components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">3.1.3. Test box main unit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#target-dip-switch-description">3.1.4. DIP switch functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">3.1.5. Button functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html">3.2. PC Tool Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_upgrade.html">3.3. Test Box Firmware Upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wireless_upgrade.html">3.4. Wireless Upgrade of Bluetooth Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wired_upgrade.html">3.5. Wired Upgrade of Bluetooth Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_test_process.html">3.6. Bluetooth Device Test Procedure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mass_production.html">3.7. Test Box Batch Upgrade and Test Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ear_storage.html">3.8. Using Earphone Storage Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_transparent.html">3.9. PC Passthrough Commands and Custom Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mes_log.html">3.10. Test Box MES Log Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_view_bt_info.html">3.11. Viewing Bluetooth Device Information (SDK Version/Battery Level/Checksum)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ufw_crc_compare.html">3.12. Test Box UFW File Checksum Matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_error_status.html">3.13. Status Indicators and Error Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_fixture_install.html">3.14. Connecting the Test Box to a Fixture over UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_function.html">3.15. Other Common Features: Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_problem.html">3.16. Frequently Asked Questions (FAQ)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_version_info.html">3.17. Version Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">3. </span>Jieli 1-to-2 Bluetooth Test Box User Manual</a> »</li>
+<li><span class="section-number">3.1. </span>Test Box Overview</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/testbox_1tuo2/tb_base_introduction.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">3.1. </span>Test Box Overview<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">3.1.1. </span>Functional description<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>The Jieli Technology 1-to-2 Bluetooth test box is mainly used to test and upgrade devices based on all series of Jieli Bluetooth chips. Its main functions are as follows:</p>
+<p>(1) Wireless upgrade of Bluetooth devices</p>
+<p>(2) Wired upgrade of Bluetooth devices</p>
+<p>(3) Bluetooth device tests, including call test, call MIC loopback, BLE test, quick test, frequency offset test, automatic frequency offset correction, etc.</p>
+<p>(4) Auxiliary tests for Bluetooth devices</p>
+<p>(5) Configuration and use of other functions</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">3.1.2. </span>Test box components<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>No.</strong></p></th>
+<th class="head"><p><strong>Module type</strong></p></th>
+<th class="head"><p><strong>Components</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Test box main unit</p></td>
+<td><p>Main control board</p></td>
+<td><p>Controls the operation of the test box</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>9V power input</p></td>
+<td><p>Main power supply port</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>Power indicator light</p></td>
+<td><p>Lights up when powered on</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>Main power toggle switch</p></td>
+<td><p>Turns the main power on and off</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>DIP switch</p></td>
+<td><p>Test mode setting</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>3 function buttons</p></td>
+<td><p>Control the test and upgrade functions</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>Reset button</p></td>
+<td><p>Resets the chip</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>USB port</p></td>
+<td><p>Used to update the test box firmware and for online testing and upgrading of Bluetooth devices</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>Upgrade UART port</p></td>
+<td><p>Connects to a Bluetooth device for wired UART testing and upgrading</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>AUX port</p></td>
+<td><p>Audio input</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>EAR PHONE port</p></td>
+<td><p>Audio output</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>TF card slot</p></td>
+<td><p>Holds a TF card for offline testing and upgrading</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>Speaker</p></td>
+<td><p>Plays test and upgrade status prompt tones</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>LCD display</p></td>
+<td><p>Shows the test and upgrade status and error messages</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>USB data cable</p></td>
+<td><p></p></td>
+<td><p>Connects to a PC to update the test box firmware and for online testing and upgrading of Bluetooth devices</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Power adapter</p></td>
+<td><p></p></td>
+<td><p>Use a power supply rated 9.0V, 2.0A or above</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="id4">
+<h2><span class="section-number">3.1.3. </span>Test box main unit<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>Test boxes of different hardware versions have essentially the same functions. The figure below shows the main unit of a hardware version V2.6 test box.</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_introduction_image1.png"/></p>
+</section>
+<section id="target-dip-switch-description">
+<span id="id5"></span><h2><span class="section-number">3.1.4. </span>DIP switch functions<a class="headerlink" href="#target-dip-switch-description" title="Permalink to this heading"></a></h2>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Switch number</p></th>
+<th class="head"><p>Test mode</p></th>
+<th class="head"><p>Switch settings</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Call test (when BLE test is OFF)</p></td>
+<td><p><strong>ON</strong></p></td>
+<td><p><strong>Enable call test</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>OFF</p></td>
+<td><p>Disable call test</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>BLE master/slave test (when BLE test is ON)</p></td>
+<td><p><strong>ON</strong></p></td>
+<td><p><strong>BLE master test mode</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>OFF</p></td>
+<td><p>BLE slave test mode</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Call MIC loopback</p></td>
+<td><p><strong>ON</strong></p></td>
+<td><p><strong>Enable call MIC loopback test</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>OFF</p></td>
+<td><p>Disable call MIC loopback test</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Quick test</p></td>
+<td><p><strong>ON</strong></p></td>
+<td><p><strong>Enable quick test</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>OFF</p></td>
+<td><p>Disable quick test</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Frequency offset test (频偏测试)</p></td>
+<td><p><strong>ON</strong></p></td>
+<td><p><strong>Enable frequency offset test</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>OFF</p></td>
+<td><p>Disable frequency offset test</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Automatic frequency offset correction</p></td>
+<td><p><strong>ON</strong></p></td>
+<td><p><strong>Enable automatic correction</strong> (<font color="red" face="黑体" size="4">the frequency offset test must also be enabled</font>)</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>OFF</p></td>
+<td><p>Disable automatic correction</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>BLE test</p></td>
+<td><p><strong>ON</strong></p></td>
+<td><p><strong>Enable BLE test</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>OFF</p></td>
+<td><p>Disable BLE test</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>The advanced audio test is always performed by default.</p>
+<ol class="arabic">
+<li><p>Call test</p>
+<p>When this function is enabled, the test box establishes a phone audio connection with the device, and the call test can then be performed: speak into the device's MIC, and the MIC sound comes out of the test box speaker</p>
+</li>
+<li><p>Call MIC loopback test</p>
+<p>When this function is enabled, speak into the device's MIC: the audio is sent to the test box, which sends it back to the device, and the device's speaker plays it</p>
+<p><font color="red" face="黑体" size="4">ON: the MIC sound comes out of the device</font></p>
+<p><font color="red" face="黑体" size="4">OFF: the MIC sound comes out of the test box speaker</font></p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To use this function, DIP switch 1 must be ON</p>
+</div>
+<ol class="arabic" start="3">
+<li><p>Quick test</p>
+<p>When this function is enabled and a device is connected, the test box puts the device into quick test mode. The device then turns on sound amplification: speak into the device's MIC and the MIC sound comes out of the speaker; pressing a button on the device plays a key tone.</p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For this function, the test box only sends the start command; the specific device behavior and flow are supported by the SDK</p>
+</div>
+<ol class="arabic" start="4">
+<li><p>Frequency offset test (频偏测试)</p>
+<p>When this function is enabled, a frequency offset test is performed once the device is connected</p>
+</li>
+<li><p>Automatic frequency offset correction</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <strong>frequency offset test</strong> must also be enabled</p>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>BLE test</p></li>
+</ol>
+<p>When this function is enabled, you can test the BLE frequency offset, automatic calibration, and the number of the button pressed on the device</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When this function is enabled, only automatic frequency offset correction can be configured</p>
+</div>
+</section>
+<section id="id6">
+<h2><span class="section-number">3.1.5. </span>Button functions<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image2.png"/></p>
+<ol class="arabic simple">
+<li><p>Reset button</p></li>
+<li><p>Next test item for device B: music playback test -&gt; call test -&gt; disconnect (with a device connected, double-press to program the authentication code)</p></li>
+<li><p>Next test item for device A: music playback test -&gt; call test -&gt; disconnect (with a device connected, double-press to program the authentication code)</p></li>
+<li><p>Disconnect. Press and hold this button while plugging in the PC cable to enter configuration mode</p></li>
+</ol>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="index.html" class="btn btn-neutral float-left" title="3. Jieli 1-to-2 Bluetooth Test Box User Manual" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="tb_pc_usage.html" class="btn btn-neutral float-right" title="3.2. PC Tool Configuration and Use" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_base_introduction.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_base_introduction.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

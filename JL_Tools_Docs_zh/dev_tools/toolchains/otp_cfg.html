@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.4. FLASH 参数配置说明 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>4. 工具链相关说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="faqs/index.html">4.1. 常见问题以及处理方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linux_lib.html">4.2. LINUX下安装杰理工具链和编译静态库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ini_cfg.html">4.3. isd_config.ini 配置文件说明</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>4.4. FLASH 参数配置说明</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#otp-cfg">4.4.1. 支持OTP_CFG工具的最低版本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#votp-otp">4.4.2. VOTP，OTP 区域说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sdk"><button class="toctree-expand" title="Open/close menu" type="button"></button>4.4.3. SDK修改点</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#isd-config-ini">4.4.3.1. isd_config.ini文件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#download-bat">4.4.3.2. download.bat文件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dtr">4.4.3.3. 开启使用写保护功能，DTR功能，多算法授权功能</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">4. </span>工具链相关说明</a> »</li>
+<li><span class="section-number">4.4. </span>FLASH 参数配置说明</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/dev_tools/toolchains/otp_cfg.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="flash">
+<h1><span class="section-number">4.4. </span>FLASH 参数配置说明<a class="headerlink" href="#flash" title="Permalink to this heading"></a></h1>
+<p>适用场景：sdk需要开启写保护功能，DTR功能，多算法授权功能。<br/>
+需要增加OTP_CFG配置，即增加VOTP区，下载flash_params.bin 或 flash_params_v3.bin， 请按照以下说明更新SDK。</p>
+<section id="otp-cfg">
+<h2><span class="section-number">4.4.1. </span>支持OTP_CFG工具的最低版本<a class="headerlink" href="#otp-cfg" title="Permalink to this heading"></a></h2>
+<p>SDK需要支持OTP_CFG配置，相关工具需要更新到以下版本(或之后版本)。</p>
+<div class="wy-table-responsive"><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>工具</p></th>
+<th class="head"><p>最低版本</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>isd_download.exe</p></td>
+<td><p>4.2.54</p></td>
+<td><p><a class="reference external" href="../../other_info/index.html">如何更新,请点击此处查看</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>一拖二烧录器</p></td>
+<td><p>2.27.7</p></td>
+<td><p><a class="reference external" href="../../mass_prod_tools/burner_1tuo2/remote_update.html">如何更新,请点击此处查看</a></p></td>
+</tr>
+<tr class="row-even"><td><p>一拖八烧录器</p></td>
+<td><p>3.1.22</p></td>
+<td><p><a class="reference external" href="../../mass_prod_tools/burner_1tuo8/remote_update.html">如何更新,请点击此处查看</a></p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="votp-otp">
+<h2><span class="section-number">4.4.2. </span>VOTP，OTP 区域说明<a class="headerlink" href="#votp-otp" title="Permalink to this heading"></a></h2>
+<p>VOTP：属于flash空间的某个区域，存储写保护参数，DTR参数和操作OTP的参数：cmd, addr，size等，支持烧写器和强制升级工具烧写<br/>
+OTP： 跟flash空间分开，存储多算法授权数据，只支持烧写器烧写，lock otp 功能暂不支持<br/>
+在sdk里调用 syscfg_read_otp 或 sys_cfg_read_otp 函数，会先找到VOTP存储的cmd, addr ,size参数，再用这些参数来访问OTP存储的多算法授权数据</p>
+<p><img alt="" data-action="zoom" src="../../_images/batch_votp_otp.png"/></p>
+</section>
+<section id="sdk">
+<h2><span class="section-number">4.4.3. </span>SDK修改点<a class="headerlink" href="#sdk" title="Permalink to this heading"></a></h2>
+<section id="isd-config-ini">
+<h3><span class="section-number">4.4.3.1. </span>isd_config.ini文件<a class="headerlink" href="#isd-config-ini" title="Permalink to this heading"></a></h3>
+<ul>
+<li><p>在isd_config.ini的<code class="docutils literal notranslate"><span class="pre">EXTRA_CFG_PARAM</span></code>配置段中增加<code class="docutils literal notranslate"><span class="pre">OTP_CFG_SIZE</span></code>配置<br/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>[EXTRA_CFG_PARAM]<br/>
+OTP_CFG_SIZE=256;</p>
+</div>
+<p>如下图:<br/>
+<img alt="" data-action="zoom" src="../../_images/config_votp_cfg_size.png"/></p>
+</li>
+<li><p>如需同时启用FLASH写保护功能，需要在isd_config.ini中增加以下配置<br/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>[BURNER_PASSTHROUGH_CFG]<br/>
+FLASH_WRITE_PROTECT=YES;</p>
+</div>
+<p>如下图:<br/>
+<img alt="" data-action="zoom" src="../../_images/config_flash_write_protect1.png"/></p>
+<p>启用FLASH写保护功能，使用支持写保护功能的烧录器烧录时，会将芯片FLASH对应的写保护参数烧录到OTP_CFG区域中</p>
+</li>
+<li><p>如果是使用flash_params_v3.bin 参数，还需要在isd_config.ini中增加以下配置<br/></p></li>
+<li><p>需要根据flash spec来确认是否支持DTR和WPS功能</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>[EXTRA_CFG_PARAM]
+NORFLASH_DTR_EN = 0;#给0是不使能DTR，给1是使能<br/>
+NORFLASH_WPS_EN = 0;#给0是不使能WPS，给1是使能<br/></p>
+</div>
+</li>
+</ul>
+</section>
+<section id="download-bat">
+<h3><span class="section-number">4.4.3.2. </span>download.bat文件<a class="headerlink" href="#download-bat" title="Permalink to this heading"></a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>启用OTP_CFG(VOTP)后，jl_isd.bin文件格式将升级为新格式。<br/>
+fw_add.exe/ufw_maker.exe是无法识别的。<br/>
+如果download.bat是通过fw_add.exe/ufw_maker.exe生成最终的FW/UFW文件，<br/>
+那么需要删除download.bat中的fw_add.exe/ufw_maker.exe相关语句。</p>
+</div>
+<p>删除fw_add.exe/ufw_maker.exe相关语句后，<br/>
+在isd_download.exe后增加<code class="docutils literal notranslate"><span class="pre">-output-fw</span></code>和<code class="docutils literal notranslate"><span class="pre">-output-ufw</span></code>参数，生成最终的FW/UFW文件。<br/>
+如下图：<br/>
+<img alt="" data-action="zoom" src="../../_images/batch_output_fw_ufw.png"/></p>
+</section>
+<section id="dtr">
+<span id="target-flash-protect-debug"></span><h3><span class="section-number">4.4.3.3. </span>开启使用写保护功能，DTR功能，多算法授权功能<a class="headerlink" href="#dtr" title="Permalink to this heading"></a></h3>
+<p>如果需要在开发调试阶段使用开使用写保护功能，DTR功能，多算法授权功能，<br/>
+可以通过isd_download.exe参数<code class="docutils literal notranslate"><span class="pre">-flash-params</span></code>指定FLASH写保护参数配置文件。<br/>
+如下图:<br/></p>
+<p><img alt="" data-action="zoom" src="../../_images/batch_set_flash_params1.png"/>
+<strong>注</strong>：flash_params.bin 适用的芯片：br27、br28 、br29、br50 、br52、 br56、bd47、bd49、bd45、br42、br46、CD09、br60、br62 <br/>
+flash_params_v3.bin 适用的芯片：br35、sh58、sh59、mc03 及后续新的芯片<br/></p>
+<p>FLASH VOTP参数更新，支持以下2种方式：</p>
+<ul>
+<li><p>1、FLASH VOTP参数数据，从以下链接可以获取：<br/>
+<a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/20260828_flash_params.bin" rel="noopener" target="_blank">20260828_flash_params.bin (点击此处下载_2026_08_28)</a><br/>
+<a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/20260828_flash_params_v3.bin" rel="noopener" target="_blank">20260828_flash_params_v3.bin(点击此处下载_2026_08_28)</a><br/></p></li>
+<li><p>2、在isd_config.ini的<code class="docutils literal notranslate"><span class="pre">EXTRA_CFG_PARAM</span></code>配置段中增加以下配置，支持从服务器自动更新参数</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>[EXTRA_CFG_PARAM]<br/>
+REMOTE_FLASH_PARAMS=YES;</p>
+</div>
+</li>
+</ul>
+<p>设置FLASH VOTP参数配置文件，连接样机后，<br/>
+执行download.bat批处理后，则会将开发板/样机中FLASH对应的写保护，DTR，多算法授权的参数下载到VOTP区域，并且有相关打印信息输出，如下图：<br/></p>
+<p><img alt="" data-action="zoom" src="../../_images/batch_download.png"/></p>
+</section>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="ini_cfg.html" class="btn btn-neutral float-left" title="4.3. isd_config.ini 配置文件说明" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="../post_build/index.html" class="btn btn-neutral float-right" title="5. 下载目录工具说明" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 09, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/toolchains/otp_cfg.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/toolchains/otp_cfg.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

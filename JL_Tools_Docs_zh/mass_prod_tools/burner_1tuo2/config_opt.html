@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.5. 各型号芯片PC端烧录配置项介绍 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>1. 杰理科技一拖二烧录器用户手册</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">1.1. 烧录器简要介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html">1.2. 手动烧录、校验、查空芯片操作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html">1.3. 机台自动烧录操作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html">1.4. 远程升级烧录器固件</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.5. 各型号芯片PC端烧录配置项介绍</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">1.5.1. 打开并选择配置项</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#target-chip-config-introduce">1.5.2. 各型号芯片常用配置项介绍</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html">1.6. 状态指示和报错提示说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html">1.7. 授权烧录次数限制功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html">1.8. 第三方数据（认证码）烧录功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html">1.9. 蓝牙地址及名字自增功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_burn.html">1.10. 芯片烧录接线和供电说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html">1.11. 其它常见功能配置和使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faqs.html">1.12. 常见错误处理</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">1. </span>杰理科技一拖二烧录器用户手册</a> »</li>
+<li><span class="section-number">1.5. </span>各型号芯片PC端烧录配置项介绍</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/mass_prod_tools/burner_1tuo2/config_opt.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="pc">
+<h1><span class="section-number">1.5. </span>各型号芯片PC端烧录配置项介绍<a class="headerlink" href="#pc" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果希望把这些勾选项固定在 FW/UFW 文件中设置，避免每次部署重新选择，可以参考：<a class="reference internal" href="../common_function/set_burn_tool_option.html"><span class="doc std std-doc">如何在生成烧录文件时设置烧录选项</span></a></p>
+</div>
+<section id="id1">
+<h2><span class="section-number">1.5.1. </span>打开并选择配置项<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>更新fw烧录文件时，PC端更新程序界面有一个“<strong>配置</strong>”控件，点击“配置”控件，出现很多可选的或需要配置的配置项，<strong>正常情况下默认就好</strong>，但也可以根据客户需要进行选择。</p>
+<p>例如打开V2.23.7版本更新AC897N芯片程序的配置界面，可看到的配置项有<strong>DAC、IQ_TRIM、LNA、免晶振方案（LRC_TRIM）、强制更新认证码，PA、REF_TRIM、LVD、蓝牙配置</strong>，如<a class="reference internal" href="#img-chip-config-opt-1tuo2"><span class="std std-ref">芯片烧录配置界面</span></a>所示。</p>
+<p>加载目标芯片程序fw文件后对各配置项进行配置，点击更新即可更新目标芯片程序和配置信息到烧录器。</p>
+<figure class="align-default" id="img-chip-config-opt-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image32.png"/>
+<figcaption>
+<p><span class="caption-text">芯片烧录配置界面</span><a class="headerlink" href="#img-chip-config-opt-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>不同版本烧录器固件的配置界面可能不一致，请及时更新到最新的烧录器固件。</p>
+</div>
+</section>
+<section id="target-chip-config-introduce">
+<span id="id2"></span><h2><span class="section-number">1.5.2. </span>各型号芯片常用配置项介绍<a class="headerlink" href="#target-chip-config-introduce" title="Permalink to this heading"></a></h2>
+<p>不同型号芯片的烧录配置项基本相同，不同芯片的配置项名字一致其实际作用也相同。以下通过表格的形式对各个系列芯片的一些常用配置项进行介绍说明，烧录时可根据实际需要进行配置。</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>配置项</strong></p></th>
+<th class="head"><p><strong>配置项说明</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>REF_TRIM</p></td>
+<td><p>勾选，进行芯片adc基准源校准,芯片外供电压参考源；用与避免前期未校准芯片流入生产环节</p></td>
+</tr>
+<tr class="row-odd"><td><p>REF_IO</p></td>
+<td><p>下拉选项为REF_TRIM对应的2.5V参考电压连接的芯片IO引脚，根据实际烧录座硬件电路进行选择；<br/>大部分芯片没有此选项使用默认IO，且量产芯片CP阶段已经被校准，使用默认配置即可</p></td>
+</tr>
+<tr class="row-even"><td><p>免晶振方案（LRC_TRIM）</p></td>
+<td><p>勾选，对无需外挂晶振的芯片进行LRC时钟校准，使用芯片LRC时钟源作为系统时钟</p></td>
+</tr>
+<tr class="row-odd"><td><p>LVD电压</p></td>
+<td><p>配置芯片低电复位的电压值，二次烧录要配置成相同值否则报错不能继续烧录，<br/>选择时请结合实际方案和SDK说明进行配置LVD电压<br/><font color="red" face="黑体" size="4">该配置项为一次性烧录，请慎重选择</font></p></td>
+</tr>
+<tr class="row-even"><td><p>强制更新认证码</p></td>
+<td><p>勾选，非空片烧录时候如芯片内原来已烧录有认证码数据将会被覆盖再烧录一个新的认证码，<br/>一般默认不勾选如芯片已有认证码则使用已有的避免浪费认证码；请参考《<a class="reference internal" href="auth_data.html"><span class="doc std std-doc">第三方数据（认证码）烧录功能</span></a>》节内容；</p></td>
+</tr>
+<tr class="row-odd"><td><p>多算法授权强制更新</p></td>
+<td><p>勾选，如芯片已烧录了授权数据到芯片，勾选此选项后执行二次烧录，<br/>会强制更新当前要烧录的授权数据到芯片，要消耗授权次数<br/>不勾选，如芯片已经存在授权数据，并与当前的要烧录的数据一致，<br/>则不再重新烧录数据到芯片，且不消耗授权次数</p></td>
+</tr>
+<tr class="row-even"><td><p>蓝牙地址</p></td>
+<td><p>勾选，配置输入蓝牙地址范围，同时勾选自增，<br/>烧录芯片时蓝牙地址按照递增的形式烧录到每颗芯片中去；<br/>也可以勾选随机，烧录随机地址到芯片;请参考《<a class="reference internal" href="btname_addr.html"><span class="doc std std-doc">蓝牙地址及名字自增功能</span></a>》节内容；</p></td>
+</tr>
+<tr class="row-odd"><td><p>电池方案</p></td>
+<td><p>根据芯片使用的电池类型对应工作电压，配置芯片低电复位的LVD电压值；<br/>可选择锂电池（3.0V~4.4V），对应的LVD电压2.3V;<br/>两节干电池（1.8V~3.2V）,不使能LVD低电复位功能；<br/>纽扣电池（2.2V~3.6V），对应的LVD电压1.8V;<br/><font color="red" face="黑体" size="4">该配置为一次性烧录,选择一个方案烧录后不能选其他方案再次烧录，请慎重选择</font></p></td>
+</tr>
+<tr class="row-even"><td><p>AC95N/AC96N烧录选项</p></td>
+<td><p>线性充电电流档位（mA）:根据设计方案配置线性充电电流档位；<br/>开关充电电流档位（mA）:根据设计方案配置线性充电电流档位；<br/>VOUT(mV):升压模块需要调整到的VOUT电压值；<br/>VBAT(V):根据使用的电池类型选择4.2V或者4.35V。<br/>模拟再校准：开启（选择on）,可以重新配置线性开关充电电流档位和修改VOUT、VBAT参数再烧录；<br/>功耗测试：<br/>输入功耗测试卡值（uA），进行芯片低功耗测试筛选功耗不达标的芯片（需要烧录座子硬件支持）;<br/>选择OFF或输入0，关闭功耗测试</p></td>
+</tr>
+<tr class="row-odd"><td><p>使能（引脚）短按复位功能</p></td>
+<td><p>勾选，烧录相应配置值到芯片，使能芯片的短按复位功能。<br/><font color="red" face="黑体" size="4">该配置项为一次性烧录，请慎重选择</font></p></td>
+</tr>
+<tr class="row-even"><td><p>使能（引脚）长按复位功能</p></td>
+<td><p>勾选，烧录相应配置值到芯片，将使能芯片的长按复位功能。<br/><font color="red" face="黑体" size="4">该配置项为一次性烧录，请慎重选择</font></p></td>
+</tr>
+<tr class="row-odd"><td><p>裸片烧录</p></td>
+<td><p>勾选，烧录直接打黑胶封装形式已经贴片的芯片<br/>此类芯片LVD和VDDIO的电压档位不一样。<br/><font color="red" face="黑体" size="4">该配置项为一次性烧录，请慎重选择</font></p></td>
+</tr>
+<tr class="row-even"><td><p>空片烧录</p></td>
+<td><p>勾选，不检查flash数据是否为全FF和不对flash进行擦除操作（芯片出厂前flash数据为全FF，不需要进行擦除动作）；<br/>目的:减少整体烧录时间，提高量产烧录效率（烧录时间与flash容量有关，勾选此项可减少200mS以上烧录时间）<br/>如有“擦除整片flash”选项，则需要勾选“擦除整片flash”，“空片烧录”选项才生效</p></td>
+</tr>
+<tr class="row-odd"><td><p>擦除整个flash</p></td>
+<td><p>勾选，保证芯片flash整片数据为全FF，才进行程序数据烧录；<br/>不勾选，如果原来VM区数据符合保留规则，则进行二次烧录时候<br/>不对VM区域数据进行擦除操作（保留第一次烧录开机后VM区域数据）</p></td>
+</tr>
+<tr class="row-even"><td><p>功耗测试(uA):xxx</p></td>
+<td><p>选择 OFF,不对芯片进行软关机功耗测试；<br/>输入具体数值，如输入“10”，对芯片进行软关机功耗测试,芯片功能实测值大于10uA烧录报错当不良片处理<br/>注意：<br/>1.功耗测试烧录座不需要带LDO转换电路,如带ldo转换电路，请不要勾选；<br/>2.卡值请留点余量，如要筛选大于2uA的芯片，请设置5uA以上</p></td>
+</tr>
+<tr class="row-odd"><td><p>Flash Lvd电压匹配</p></td>
+<td><p>勾选，对芯片Flash支持的最低工作电压和所选择lvd电压进行匹配性检查；<br/>（1）如果所选lvd电压大于等于Flash支持的最低工作电压，允许烧录；<br/>（2）反之，不允许烧录，烧录器报错显示当前芯片flash最低工作电压 <br/>（3）如报错，请去掉勾选，根据需要选择需要的lvd电压档位，一般建议选择最高lvd电压档位进行烧录</p></td>
+</tr>
+<tr class="row-even"><td><p>充电使能</p></td>
+<td><p>它是芯片上电初始阶段VBAT的输出控制配置项，默认勾选该选项，<br/>有些方案因将VBAT与VDDIO连接在一起，因此可能需要关闭上电起始阶段VBAT的电压输出，<br/>这时可能需要取消该勾选项烧录，具体需结合实际应用进行配置</p></td>
+</tr>
+<tr class="row-odd"><td><p>串口控制烧录</p></td>
+<td><p>勾选，可使用RS232串口通过“PC蓝牙地址烧录工具”控制烧录器烧录蓝牙地址，<br/>防止蓝牙地址出现重复和掉失情况，方便对蓝牙地址数据的管控</p></td>
+</tr>
+<tr class="row-even"><td><p>烧录电压</p></td>
+<td><p>选Default,烧录座是带LDO转换电路的即芯片供电是通过烧录器排针6.5V转为芯片需要的4.2V等电压进行烧录;<br/> 选其它具体电压（4.2V~6.8V）,6.5V烧录器排针直接输出配置的电压供给芯片，节省了LDO电路物料</p></td>
+</tr>
+<tr class="row-odd"><td><p>XOSC_PIN_MODE</p></td>
+<td><p>自动：烧录器会自动识别芯片是单脚振还是双脚振模式；<br/> 单脚：芯片采用的是单脚振方案接法;<br/>双脚：芯片采用的是双脚振方案接法;<br/>注意：默认是配自动，一般自动模式烧录报错（无法自动识别）才重新选择单脚或双脚模式</p></td>
+</tr>
+<tr class="row-even"><td><p>PB1_PU_TRIM</p></td>
+<td><p>勾选，对芯片PB1上拉电阻进行校准，应用与PB1接AD KEY按键方案,保证AD键值不冲突</p></td>
+</tr>
+<tr class="row-odd"><td><p>otp重新烧写</p></td>
+<td><p>勾选，otp烧录异常的芯片会再次执行一次异常烧录</p></td>
+</tr>
+<tr class="row-even"><td><p>POWERON_TIME</p></td>
+<td><p>指烧录成功后烧录器对芯片复位后上电的时间，单位是mS;该配置只有AC632N使用<br/> 输入框默认是0，即烧录成功后不执行复位上电操作；输入N即非0的值，烧录成功后对芯片执行复位上电N mS</p></td>
+</tr>
+<tr class="row-odd"><td><p>带晶振烧录</p></td>
+<td><p>指烧录座硬件环境即上层板是否接晶振进行烧录，勾选，可处理免晶振方案下因环境导致的烧录通信不稳定问题；<br/><font color="red" face="黑体" size="4">SDK是免晶振方案烧录时，配置界面务必还要勾选“LRC_TIRIM”进行烧录</font></p></td>
+</tr>
+<tr class="row-even"><td><p>断电持续时间（毫秒）</p></td>
+<td><p>烧录完需要对芯片上电运行SDK执行蓝牙trim（校准）操作时,<br/>输入的时间为烧录完后断电时间，执行断电多久再上电</p></td>
+</tr>
+<tr class="row-odd"><td><p>上电持续时间（毫秒）</p></td>
+<td><p>烧录完需要对芯片上电运行SDK执行蓝牙trim（校准）操作时,<br/>输入的时间为烧录完断电一定时间后，给芯片供电的时间</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>筛选测试项</strong></p></td>
+<td><p><font color="red" face="黑体" size="4">用于筛选各测试项参数不达标芯片，避免此类不良芯片流入后续生产环节</font></p></td>
+</tr>
+<tr class="row-even"><td><p>SFC校验</p></td>
+<td><p>根据开发方案选择音箱方案或其他方案，烧录时在所选方案使用的电压测试条件<br/>进行SFC模式下的程序数据校验，用于筛选程序数据校验不过的芯片</p></td>
+</tr>
+<tr class="row-odd"><td><p>LOOP_BACK</p></td>
+<td><p>勾选，进行蓝牙性能相关的参数测试，用于筛选参数不达标的芯片</p></td>
+</tr>
+<tr class="row-even"><td><p>DAC</p></td>
+<td><p>勾选，进行DAC模块各项电压测试用于筛选DAC参数不达标即如有杂音类的芯片</p></td>
+</tr>
+<tr class="row-odd"><td><p>IQ_TRIM</p></td>
+<td><p>勾选，进行蓝牙相关校准参数测试，测试芯片发送到接收通路功能<br/>是否正常，筛选收发通路异常芯片</p></td>
+</tr>
+<tr class="row-even"><td><p>LNA</p></td>
+<td><p>勾选，进行蓝牙接收性能测试用于筛选芯片LNA内部晶体管受损芯片；<br/>筛选表现接收距离短，存在连接问题的芯片</p></td>
+</tr>
+<tr class="row-odd"><td><p>PA</p></td>
+<td><p>勾选，进行蓝牙发送性能测试用于筛选蓝牙发送参数不达标的芯片</p></td>
+</tr>
+<tr class="row-even"><td><p>DACVDD</p></td>
+<td><p>勾选，筛选封装混料，导致dacvdd异常芯片</p></td>
+</tr>
+<tr class="row-odd"><td><p>LNA_BIAS</p></td>
+<td><p>勾选，进行蓝牙相关校准参数测试，筛选蓝牙相关参数不达标的芯片</p></td>
+</tr>
+<tr class="row-even"><td><p>USB筛选模式</p></td>
+<td><p>有正常烧录，严格筛选模式，针对AC695X设计方案<br/>是否使用到USB引脚来选择对应的模式来筛选USB引脚有问题的芯片</p></td>
+</tr>
+<tr class="row-odd"><td><p>DAC OS</p></td>
+<td><p>勾选，用于筛选AD698N/AC638N DAC 二极管特性异常芯片；<br/>请参考《<a class="reference internal" href="commom_funcs.html"><span class="doc std std-doc">其它常见功能配置和使用说明</span></a>》节内容；</p></td>
+</tr>
+<tr class="row-even"><td><p>RAM全面测试</p></td>
+<td><p>勾选，用于筛选芯片RAM模块异常，表现为不开机，开机异常的芯片</p></td>
+</tr>
+<tr class="row-odd"><td><p>RAM_240M</p></td>
+<td><p>勾选，用于筛选芯片时钟240M下，RAM模块异常，表现为不开机，开机异常的芯片</p></td>
+</tr>
+<tr class="row-even"><td><p>ROM_240M</p></td>
+<td><p>勾选，用于筛选芯片时钟240M下，ROM模块异常，表现为不开机，开机异常的芯片</p></td>
+</tr>
+<tr class="row-odd"><td><p>FTMAX_240M</p></td>
+<td><p>勾选，用于筛选芯片时钟240M下，FTMAX模块异常的芯片</p></td>
+</tr>
+<tr class="row-even"><td><p>DC TEST</p></td>
+<td><p>勾选，测试LDO电压挡位，筛选因过压损伤导致挡位电压异常的坏片。<br/>默认不勾选，有出现VDC12，xosc过压一类的情况需要勾选。</p></td>
+</tr>
+<tr class="row-odd"><td><p>UMDC</p></td>
+<td><p>勾选，配合LOOP_BACK进行测试，筛选蓝牙相关参数不达标芯片</p></td>
+</tr>
+<tr class="row-even"><td><p>ighg</p></td>
+<td><p>勾选，用于筛选蓝牙性能参数不达标的芯片</p></td>
+</tr>
+<tr class="row-odd"><td><p>fdiv</p></td>
+<td><p>勾选，用于筛选浮点除法器异常芯片</p></td>
+</tr>
+<tr class="row-even"><td><p>IO</p></td>
+<td><p>勾选，用于筛选打线有交丝风险即芯片IO异常的芯片；</p></td>
+</tr>
+<tr class="row-odd"><td><p>IO_TEST</p></td>
+<td><p>勾选，用于筛选打线有交丝风险即芯片IO异常的芯片；<br/>部分芯片可按封装对芯片IO进行测试;<br/>如选DISABLE是不测，有对应封装则选对应的封装型号，<br/>没有又需要测试则选OTHERS</p></td>
+</tr>
+<tr class="row-even"><td><p>BTPLL</p></td>
+<td><p>勾选，测试本地振荡器产生的本振频率（载波）是否正确，筛选BTPLL异常芯片</p></td>
+</tr>
+<tr class="row-odd"><td><p>BTDC_SP</p></td>
+<td><p>勾选，筛选蓝牙相关的BTDC_SP模块异常芯片</p></td>
+</tr>
+<tr class="row-even"><td><p>AUDIO_RAM</p></td>
+<td><p>勾选，筛选不同频率，电压条件下，AUDIO_RAM读写异常的芯片</p></td>
+</tr>
+<tr class="row-odd"><td><p>BTDC_AUADC</p></td>
+<td><p>勾选，筛选蓝牙发射功率偏低，对应的AUADC模块异常的芯片</p></td>
+</tr>
+<tr class="row-even"><td><p>SRC</p></td>
+<td><p>勾选，筛选音频SRC模块异常的芯片</p></td>
+</tr>
+<tr class="row-odd"><td><p>LRC_DIFF</p></td>
+<td><p>选择百分比，烧录时候进行LRC时钟当前校准值和已校准值对比，两者偏差超配置的百分比当不良片处理；<br/>说明：<br/>测试只针对不想更新sdk的情况，如SDK已经打对应补丁并在isd_config.ini配置了”LRC=-1;”的不需要测试</p></td>
+</tr>
+<tr class="row-even"><td><p>功耗测试</p></td>
+<td><p>选择OFF，表示不进行功耗测试；输入非0的数值，表示烧录时对芯片进行软关机功耗测试；<br/>比如输入10，如果芯片功耗实际测试值大于10uA，烧录报错芯片当坏片处理；<br/>注意：功耗测试需要烧录器硬件即上层板（芯片烧录座）支持，上层板不需带LDO转换电路</p></td>
+</tr>
+<tr class="row-odd"><td><p>使用pdown方案</p></td>
+<td><p>选择是，即如果方案使用了低功耗唤醒功能，<br/>烧录时对ram进行pdwon方案下各个条件测试，提前筛出异常芯片</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="remote_update.html" class="btn btn-neutral float-left" title="1.4. 远程升级烧录器固件" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="status_errors.html" class="btn btn-neutral float-right" title="1.6. 状态指示和报错提示说明" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/config_opt.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/config_opt.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

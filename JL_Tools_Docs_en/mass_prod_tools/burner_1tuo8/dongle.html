@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.10. Authorized Programming Count Limit — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>2. Jieli 1-to-8 Programmer User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">2.1. Programmer Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html">2.2. Manual Programming, Verification and Blank Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html">2.3. Automated Programming with a Handler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html">2.4. Remote Upgrade of the Programmer Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html">2.5. PC-Side Programming Options for Each Chip Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html">2.6. Status Indicators and Error Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pc_err.html">2.7. PC Tool Error Messages and Solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="change_board_interval.html">2.8. Board-Change Interval Setting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="burn_vol.html">2.9. Programming Voltages for Different Chips</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>2.10. Authorized Programming Count Limit</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.10.1. Use case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2.10.2. Authorization modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fw">2.10.3. Creating a fw file authorized in unrestricted mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4"><button class="toctree-expand" title="Open/close menu" type="button"></button>2.10.4. Authorization in machine-code binding mode</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">2.10.4.1. Creating a fw file with a programming count limit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">2.10.4.2. Creating a fw file without a programming count limit</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">2.10.5. Programming fw files with an authorized count limit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">2.10.6. Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html">2.11. Programming Third-Party Data (Authentication Codes)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html">2.12. Bluetooth Address and Name Auto-Increment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_curr_test.html">2.13. Current and Power Consumption Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_battery.html">2.14. Programming Devices with Batteries Attached</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freq_bias.html">2.15. Frequency Offset Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mic_test.html">2.16. MIC Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usual_uart_update.html">2.17. Upgrading Battery-Powered Devices over a Custom-IO Single/Two-Wire UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extern_flash_burn.html">2.18. Upgrading Internal and External Flash Together</a></li>
+<li class="toctree-l2"><a class="reference internal" href="erase.html">2.19. Partial (Non-Full-Chip) Erase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html">2.20. Other Common Features: Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faqs.html">2.21. Troubleshooting Common Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">2. </span>Jieli 1-to-8 Programmer User Manual</a> »</li>
+<li><span class="section-number">2.10. </span>Authorized Programming Count Limit</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/burner_1tuo8/dongle.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">2.10. </span>Authorized Programming Count Limit<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">2.10.1. </span>Use case<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>For example, a developed fw programming file of target chip firmware may only be allowed to be programmed into 1000 chips by a specified programmer. After it has been programmed 1000 times, the programming file becomes invalid and can no longer be programmed by the programmer, which prevents others from profiting from it.<br/>To implement this, you can apply an authorized programming count limit to the fw file.</p>
+<p><strong>Fw files for the 1-to-8 programmer must be authorized before they can be loaded and programmed</strong>. If the programming count of a programming file does not need to be limited, you can authorize it in unlimited mode.</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">2.10.2. </span>Authorization modes<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p><strong>Fw/ufw</strong> files support two authorization modes: unlimited mode and machine code binding mode.</p>
+<ol class="arabic">
+<li><p>Unrestricted mode</p>
+<p>A <strong>FW/UFW</strong> file authorized in this mode is not bound to any specific 1-to-8 programmer; any 1-to-8 programmer with a matching KEY can load and program it. If the programming count of a programming file does not need to be limited, you can authorize it in unlimited mode.</p>
+</li>
+<li><p>Machine-code binding mode</p>
+<p><strong>FW/UFW</strong> files authorized in this mode can be loaded and programmed only by the programmer to which the bound machine code belongs.</p>
+</li>
+</ol>
+</section>
+<section id="fw">
+<h2><span class="section-number">2.10.3. </span>Creating a fw file authorized in unrestricted mode<a class="headerlink" href="#fw" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>[1] On the PC, double-click the firmware programming authorization tool executable <code class="docutils literal notranslate"><span class="pre">固件文件烧录授权工具_(版本号).exe</span></code> to open it (contact Jieli's Shenzhen office to obtain this tool).</p></li>
+<li><p>[2] Perform steps 1–4 as shown in <a class="reference internal" href="#img-no-auth-fw-gen"><span class="std std-ref">Generating an unrestricted authorized fw file</span></a>. The save dialog shown in <a class="reference internal" href="#img-no-auth-fw-save"><span class="std std-ref">Saving an unrestricted authorized fw file</span></a> appears; click Save to save the authorized fw file to the specified directory.</p></li>
+<li><p>[3] After you click "Save" (保存), a message appears confirming that the file was saved and showing the exact save path, as shown in <a class="reference internal" href="#img-auth-fw-save"><span class="std std-ref">Message after saving the authorized fw file</span></a>; click OK.</p></li>
+</ul>
+<figure class="align-default" id="img-no-auth-fw-gen">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image51.png"/>
+<figcaption>
+<p><span class="caption-text">Generating an unrestricted authorized fw file</span><a class="headerlink" href="#img-no-auth-fw-gen" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="img-no-auth-fw-save">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image52.png"/>
+<figcaption>
+<p><span class="caption-text">Saving an unrestricted authorized fw file</span><a class="headerlink" href="#img-no-auth-fw-save" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="img-auth-fw-save">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image53.png"/>
+<figcaption>
+<p><span class="caption-text">Message after saving the authorized fw file</span><a class="headerlink" href="#img-auth-fw-save" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id4">
+<h2><span class="section-number">2.10.4. </span>Authorization in machine-code binding mode<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<section id="id5">
+<h3><span class="section-number">2.10.4.1. </span>Creating a fw file with a programming count limit<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Machine code generation steps</p>
+<ul class="simple">
+<li><p>[1] Open the PC tool control panel (see the "<a class="reference internal" href="basic_usage.html#target-deploy-fw-file-to-1tuo8-open-ui"><span class="std std-ref">Open the PC tool control panel</span></a>" subsection);</p></li>
+<li><p>[2] As shown in <a class="reference internal" href="#img-machine-open-code-gen"><span class="std std-ref">Opening the machine code generation screen</span></a>, click "Device" (设备) -&gt; "Machine code" (机器码) to open the machine code generation screen;</p></li>
+<li><p>[3] As shown in <a class="reference internal" href="#img-machine-code-gen-ui"><span class="std std-ref">Machine code generation window</span></a>, click "Update" (更新), then copy the generated machine code into the authorization tool to authorize the fw file;</p></li>
+</ul>
+<figure class="align-default" id="img-machine-open-code-gen">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image54.png"/>
+<figcaption>
+<p><span class="caption-text">Opening the machine code generation screen</span><a class="headerlink" href="#img-machine-open-code-gen" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="img-machine-code-gen-ui">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image55.png"/>
+<figcaption>
+<p><span class="caption-text">Machine code generation window</span><a class="headerlink" href="#img-machine-code-gen-ui" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>One programmer supports generating 4 machine codes, so 4 fw files with an authorized count limit can be made. Only the machine code with serial number 1 is used here as an example for authorizing an fw file; the procedure for generating the machine codes with other serial numbers and making their authorized fw files is the same.</p>
+</div>
+</li>
+<li><p>Generating a fw file authorized with a machine code</p>
+<ul class="simple">
+<li><p>[1] On the PC, double-click the firmware programming authorization tool executable <code class="docutils literal notranslate"><span class="pre">固件文件烧录授权工具_(版本号).exe</span></code> to open the tool's interface;</p></li>
+<li><p>[2] Follow steps 1 to 6 shown in <a class="reference internal" href="#img-mc-auth-fw-gen"><span class="std std-ref">Generating a machine-code-authorized fw file</span></a>; the save window shown in <a class="reference internal" href="#img-mc-auth-fw-save"><span class="std std-ref">Save window for a machine-code-authorized fw file</span></a> appears. Click "Save" (保存) to save the authorized fw file to the specified directory;</p></li>
+<li><p>[3] After you click "Save" (保存), a message appears confirming that the file was saved and showing the exact save path, as shown in <a class="reference internal" href="#img-mc-auth-save-info"><span class="std std-ref">Message after saving the authorized fw file</span></a>; click OK.</p></li>
+</ul>
+<figure class="align-default" id="img-mc-auth-fw-gen">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image56.png"/>
+<figcaption>
+<p><span class="caption-text">Generating a machine-code-authorized fw file</span><a class="headerlink" href="#img-mc-auth-fw-gen" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="img-mc-auth-fw-save">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image57.png"/>
+<figcaption>
+<p><span class="caption-text">Save window for a machine-code-authorized fw file</span><a class="headerlink" href="#img-mc-auth-fw-save" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="img-mc-auth-save-info">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image58.png"/>
+<figcaption>
+<p><span class="caption-text">Message after saving the authorized fw file</span><a class="headerlink" href="#img-mc-auth-save-info" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+</section>
+<section id="id6">
+<h3><span class="section-number">2.10.4.2. </span>Creating a fw file without a programming count limit<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<p>The steps for making an fw file without a programming count limit are basically the same as those for making an fw file with a programming count limit. The only difference is that you check "Unlimited" (无限制) when making an fw file without a programming count limit, as shown in <a class="reference internal" href="#img-ulimited-auth-fw-gen"><span class="std std-ref">Window for generating a machine-code-authorized fw file with unlimited count</span></a>.</p>
+<p>After configuring, click "Authorize" (授权) to generate the corresponding authorized fw file.</p>
+<figure class="align-default" id="img-ulimited-auth-fw-gen">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image59.png"/>
+<figcaption>
+<p><span class="caption-text">Window for generating a machine-code-authorized fw file with unlimited count</span><a class="headerlink" href="#img-ulimited-auth-fw-gen" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="id7">
+<h2><span class="section-number">2.10.5. </span>Programming fw files with an authorized count limit<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Programming an authorized FW file</p>
+<ul>
+<li><p>Machine-code binding mode</p>
+<p>For example, if an fw programming file limited to 1000 programmings, <code class="docutils literal notranslate"><span class="pre">jl_isd_AC897N_[已授权-机器码CRC[50D8]].fw</span></code>, has been made, follow the section "<a class="reference internal" href="basic_usage.html#target-deploy-fw-file-to-1tuo8-open-ui"><span class="std std-ref">Open the PC tool control panel</span></a>" to update this fw file to the programmer that generated the corresponding machine code.</p>
+<p>After the authorized fw file has been updated to the programmer, follow the normal chip programming procedure. After 1000 chips have been programmed successfully, the programmer no longer supports programming with this FW file, and the display shows "Authorized count used up" (授权次数已用完).</p>
+<p>If an fw file with unlimited authorization has been made, the programmer that generated the corresponding machine code can program with this fw file an unlimited number of times.</p>
+</li>
+<li><p>Unrestricted mode</p>
+<p>To program with an fw file authorized in this mode, update the fw file to any 1-to-8 programmer and then simply follow the normal chip programming procedure.</p>
+</li>
+</ul>
+</li>
+<li><p>Viewing the authorized count information of an fw file</p>
+<p>Open the PC tool control panel (see the section "<a class="reference internal" href="basic_usage.html#target-deploy-fw-file-to-1tuo8-open-ui"><span class="std std-ref">Open the PC tool control panel</span></a>"), click "Device" (设备) -&gt; "Machine code" (机器码) to open the machine code generation screen shown in <a class="reference internal" href="#img-view-auth-count-ui-1tou8"><span class="std std-ref">Window for viewing the authorized count usage</span></a>, find the serial number of the machine code whose checksum corresponds to the authorized fw file, and view its authorized count information.</p>
+<p>For example, the checksum of <code class="docutils literal notranslate"><span class="pre">jl_isd_AC897N_[已授权-机器码CRC[50D8]].fw</span></code> is 50D8, which matches the checksum corresponding to the machine code with serial number 1, and its authorized count is 1000.</p>
+<figure class="align-default" id="img-view-auth-count-ui-1tou8">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image60.png"/>
+<figcaption>
+<p><span class="caption-text">Window for viewing the authorized count usage</span><a class="headerlink" href="#img-view-auth-count-ui-1tou8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Viewing the authorized count usage</p>
+<p>When programming with an fw file that has an authorized count limit in machine code binding mode, the display of the corresponding programmer shows the total programming count and the remaining programming count, and the progress bar section of each channel shows the number of successful programmings, as shown in <a class="reference internal" href="#img-view-count-usage-1tuo8"><span class="std std-ref">Authorized programming count usage</span></a>.</p>
+<figure class="align-default" id="img-view-count-usage-1tuo8">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image61.png"/>
+<figcaption>
+<p><span class="caption-text">Authorized programming count usage</span><a class="headerlink" href="#img-view-count-usage-1tuo8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Changing the programming firmware partway through</p>
+<p>Changing the programming firmware partway through does not cause the authorized count information of the current fw to be lost; you can later update the currently authorized FW back to the programmer and continue using it. The original authorization information for the current number becomes invalid only if, after other firmware has been updated, the machine code with the current number is updated again.</p>
+</li>
+</ol>
+</section>
+<section id="id8">
+<h2><span class="section-number">2.10.6. </span>Notes<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h2>
+<p>Keep unauthorized fw files secure and do not forward them to others; otherwise, the authorized programming count limit is meaningless.</p>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="burn_vol.html" class="btn btn-neutral float-left" title="2.9. Programming Voltages for Different Chips" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="auth_data.html" class="btn btn-neutral float-right" title="2.11. Programming Third-Party Data (Authentication Codes)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo8/dongle.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo8/dongle.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

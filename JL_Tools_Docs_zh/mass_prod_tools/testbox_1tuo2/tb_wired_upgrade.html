@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3.5. 蓝牙设备有线升级流程 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>3. 杰理科技一拖二蓝牙测试盒用户手册</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_base_introduction.html">3.1. 测试盒简要介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html">3.2. 上位机功能配置和使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_upgrade.html">3.3. 测试盒固件升级</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wireless_upgrade.html">3.4. 蓝牙设备无线升级流程</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>3.5. 蓝牙设备有线升级流程</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.5.1. 在线方式有线串口升级</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tf">3.5.2. 离线方式（使用TF卡）有线串口升级</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tb_test_process.html">3.6. 蓝牙设备测试流程使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mass_production.html">3.7. 测试盒批量升级、测试用例介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ear_storage.html">3.8. 耳机仓储模式使用方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_transparent.html">3.9. PC透传命令、自定义命令使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mes_log.html">3.10. 测试盒MES LOG输出功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_view_bt_info.html">3.11. 蓝牙设备信息（sdk 版本/电量/校验码）查看方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ufw_crc_compare.html">3.12. 测试盒ufw文件校验码匹配</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_error_status.html">3.13. 状态指示和报错提示说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_fixture_install.html">3.14. 测试盒串口连接治具介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_function.html">3.15. 其它常见功能配置和使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_problem.html">3.16. 常见问题（FAQ）处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_version_info.html">3.17. 版本信息</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">3. </span>杰理科技一拖二蓝牙测试盒用户手册</a> »</li>
+<li><span class="section-number">3.5. </span>蓝牙设备有线升级流程</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/mass_prod_tools/testbox_1tuo2/tb_wired_upgrade.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">3.5. </span>蓝牙设备有线升级流程<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">3.5.1. </span>在线方式有线串口升级<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<ul>
+<li><p><strong>使用条件</strong></p>
+<p>1.测试盒硬件版本为v2.2以上，且固件版本为v2.1.7以上,可以支持对耳测试接口。</p>
+<p>2.对耳LDO引脚支持串口通讯（与串口IO合绑）且<code class="docutils literal notranslate"><span class="pre">LDOIN电容需小于103</span></code>的样机，可以通过测试盒串口转接板与TWS样机连接。</p>
+</li>
+<li><p><strong>功能支持</strong></p>
+<ol class="arabic simple">
+<li><p>支持测试盒插入TF卡升级模式双通道升级</p></li>
+<li><p>支持测试盒pc模式选择左右耳升级</p></li>
+<li><p>支持串口升级波特率可配(10K-2000K)（<code class="docutils literal notranslate"><span class="pre">V1.2.4增加10K\~100K支持</span></code>）</p></li>
+<li><p>支持升级完毕后停留在升级界面或自动升级</p></li>
+</ol>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>10K~100K需要对应sdk支持才可配置，100K~500K是常用波特率选项</p>
+</div>
+<ul>
+<li><p><strong>与测试盒其他功能互斥说明</strong></p>
+<ol class="arabic simple">
+<li><p>“对耳串口升级使能”和“对耳测试使能”不能同时使用，配置时候需要至少关闭一项。</p></li>
+<li><p>在测试盒固件升级前，需要先关闭“对耳串口升级使能”，否则无法更新测试盒固件。</p></li>
+<li><p>打开“对耳串口升级使能”，无法使用原来蓝牙无线升级功能（包括插卡升级及PC界面升级）。</p></li>
+</ol>
+</li>
+<li><p><strong>使用说明</strong></p>
+<ol class="arabic">
+<li><p>通过pc工具界面打开“对耳串口升级使能”；</p>
+<p>并设置好合适的波特率，默认500,000；</p>
+<p>“升级流程”和“升级到RAM使能”默认为0；</p>
+<p>“串口升级后停留”来选择是否停留在升级界面；</p>
+<p>点击“保存设置到测试盒”，重启测试盒进入串口升级模式。</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image35.png"/></p>
+</li>
+<li><p>通过PC界面串口升级</p>
+<p>切换pc界面到“样机升级”界面，默认会显示左右耳的设备“earphone-L”和“earphone-R”，当左右耳设备在线的时候会显示对应样机的蓝牙地址，不在线设备蓝牙地址为0或1。</p>
+</li>
+</ol>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>当升级中断时，虽然耳机处于非在线状态（地址为0或1），仍可以指定左右耳进行升级。</p>
+</div>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image36.png"/></p>
+<ol class="arabic simple" start="3">
+<li><p>通过插入TF卡串口升级</p></li>
+</ol>
+<p>把升级文件(update.ufw)放到TF卡根目录下，插入测试盒。测试盒检测到耳机在线即开始升级，左右耳可同时串口升级。</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image37.png"/></p>
+</section>
+<section id="tf">
+<h2><span class="section-number">3.5.2. </span>离线方式（使用TF卡）有线串口升级<a class="headerlink" href="#tf" title="Permalink to this heading"></a></h2>
+<p>如不想使用USB数据线线连接PC电脑进行在线方式有线升级.ufw文件，</p>
+<p>可以参考《 <a class="reference internal" href="tb_mass_production.html#target-bt-wired-upgrade"><span class="std std-ref">蓝牙设备批量有线升级方法</span></a> 》章节，通过将拷贝有升级文件（如*.bfu 或*.ufw）
+的 <code class="docutils literal notranslate"><span class="pre">TF</span></code> 卡插入测试盒左侧 <code class="docutils literal notranslate"><span class="pre">TF</span></code> 卡座进行蓝牙设备固件升级。</p>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="tb_wireless_upgrade.html" class="btn btn-neutral float-left" title="3.4. 蓝牙设备无线升级流程" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="tb_test_process.html" class="btn btn-neutral float-right" title="3.6. 蓝牙设备测试流程使用说明" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_wired_upgrade.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_wired_upgrade.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

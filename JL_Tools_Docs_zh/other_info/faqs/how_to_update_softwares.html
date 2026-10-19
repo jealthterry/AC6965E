@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3.2. 如何更新工具 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html#id7"><button class="toctree-expand" title="Open/close menu" type="button"></button>3. 常见问题</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="how_to_update_using_jlxproj.html">3.1. 如何使用 .jlxproj 文件来升级工具</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>3.2. 如何更新工具</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.2.1. 更新工具链</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#isd-download">3.2.2. 更新 isd_download 等下载工具</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#target-update-sdk-config-efftool">3.2.3. 更新配置工具、调音工具等</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">3.2.4. 更新一拖二、一拖八烧录器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">3.2.5. 其它工具</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="../index.html"><span class="section-number">1. </span>工具最新版本</a> »</li>
+<li><span class="section-number">3.2. </span>如何更新工具</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/other_info/faqs/how_to_update_softwares.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">3.2. </span>如何更新工具<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>在更新时，请确保电脑网络正常。</p>
+</div>
+<p>工具的新版本一般会包含了 BUG 修复以及新功能的添加。为了进行正常开发、生产，尽量保持工具版本为最新版本。</p>
+<p>这里所说的工具，包括了下面几种：</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>名称</p></th>
+<th class="head"><p>作用</p></th>
+<th class="head"><p>备注</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>工具链</p></td>
+<td><p>开发，编译链接</p></td>
+<td><p>包括编译器、链接器、标准库文件(libc.a)等，用于生成 ELF 格式的文件</p></td>
+</tr>
+<tr class="row-odd"><td><p>isd_download 等下载工具</p></td>
+<td><p>用于下载固件到小机、生成固件文件</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>配置工具、调音工具</p></td>
+<td><p>开发、配置</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>一拖二烧录器</p></td>
+<td><p>量产烧录</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>一拖八烧录器</p></td>
+<td><p>量产烧录</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table></div>
+<p>因为一些原因，不同的工具升级方式略有区别，总结如下：</p>
+<section id="id2">
+<h2><span class="section-number">3.2.1. </span>更新工具链<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>更新工具链（也就是编译器、链接器等）的方式，详见：<a class="reference internal" href="../../dev_tools/dev_env/jl_toolchain_update.html"><span class="doc std std-doc">更新杰理工具链</span></a>。</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>注意，这个只是用于更新工具链。与其它工具无关，请勿混淆。</p>
+</div>
+</section>
+<section id="isd-download">
+<h2><span class="section-number">3.2.2. </span>更新 isd_download 等下载工具<a class="headerlink" href="#isd-download" title="Permalink to this heading"></a></h2>
+<p>在 SDK 下载目录中，通常有一个入口文件【下载目录工具更新.jlxproj】，如下图所示：</p>
+<p><img alt="" data-action="zoom" src="../../_images/download_dir_update_downtool_entry.jpg"/></p>
+<p>打开后，点【检查更新】按钮更新。具体参考：<a class="reference internal" href="how_to_update_using_jlxproj.html"><span class="doc std std-doc">如何使用 .jlxproj 文件来升级工具</span></a></p>
+</section>
+<section id="target-update-sdk-config-efftool">
+<span id="id3"></span><h2><span class="section-number">3.2.3. </span>更新配置工具、调音工具等<a class="headerlink" href="#target-update-sdk-config-efftool" title="Permalink to this heading"></a></h2>
+<p>在 SDK 下载目录中，通常有一个入口文件（<code class="docutils literal notranslate"><span class="pre">.jlxproj</span></code>后缀）。双击打开这个文件，可以打开开发需要的一些工具。
+例如，配置工具、调音工具等。</p>
+<p>不同的 SDK 中，该入口文件界面显示略有不同，以下是几种常见的界面：</p>
+<p><img alt="" data-action="zoom" src="../../_images/download_dir_entry_file_path1.jpg"/>
+<img alt="" data-action="zoom" src="../../_images/how_to_update_softwares_entry_ui1.jpg"/></p>
+<p><img alt="" data-action="zoom" src="../../_images/download_dir_entry_file_path2.jpg"/>
+<img alt="" data-action="zoom" src="../../_images/how_to_update_softwares_entry_ui2.jpg"/></p>
+<p>打开后，找到界面上的按钮【<strong>检查依赖的软件包是否更新</strong>】，点击检查更新即可。</p>
+</section>
+<section id="id4">
+<h2><span class="section-number">3.2.4. </span>更新一拖二、一拖八烧录器<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>一拖二、一拖八工具有专门的更新方式，详见：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../mass_prod_tools/burner_1tuo2/remote_update.html"><span class="doc std std-doc">升级一拖二烧录器</span></a></p></li>
+<li><p><a class="reference internal" href="../../mass_prod_tools/burner_1tuo8/remote_update.html"><span class="doc std std-doc">升级一拖八烧录器</span></a></p></li>
+</ul>
+</section>
+<section id="id5">
+<h2><span class="section-number">3.2.5. </span>其它工具<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<p>其它未提及的工具，可以在 <a class="reference internal" href="../index.html"><span class="doc std std-doc">工具最新版本</span></a> 处找到最新版本的链接下载。</p>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="how_to_update_using_jlxproj.html" class="btn btn-neutral float-left" title="3.1. 如何使用 .jlxproj 文件来升级工具" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/other_info/faqs/how_to_update_softwares.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/other_info/faqs/how_to_update_softwares.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

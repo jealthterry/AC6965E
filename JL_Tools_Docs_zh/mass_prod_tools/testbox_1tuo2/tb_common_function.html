@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3.15. 其它常见功能配置和使用 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>3. 杰理科技一拖二蓝牙测试盒用户手册</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_base_introduction.html">3.1. 测试盒简要介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html">3.2. 上位机功能配置和使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_upgrade.html">3.3. 测试盒固件升级</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wireless_upgrade.html">3.4. 蓝牙设备无线升级流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wired_upgrade.html">3.5. 蓝牙设备有线升级流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_test_process.html">3.6. 蓝牙设备测试流程使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mass_production.html">3.7. 测试盒批量升级、测试用例介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ear_storage.html">3.8. 耳机仓储模式使用方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_transparent.html">3.9. PC透传命令、自定义命令使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mes_log.html">3.10. 测试盒MES LOG输出功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_view_bt_info.html">3.11. 蓝牙设备信息（sdk 版本/电量/校验码）查看方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ufw_crc_compare.html">3.12. 测试盒ufw文件校验码匹配</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_error_status.html">3.13. 状态指示和报错提示说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_fixture_install.html">3.14. 测试盒串口连接治具介绍</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>3.15. 其它常见功能配置和使用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.15.1. 串口模式校验功能使用说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trim">3.15.2. 耳机离仓入耳trim功能配置使用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3.15.3. 耳机空间音效校准使用说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#anc">3.15.4. ANC校准使用说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tws">3.15.5. TWS三元组同步功能使用说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ble">3.15.6. BLE模式自定义广播信息显示使用说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">3.15.7. 测试盒更新音频文件说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ac691x">3.15.8. 测试盒更新对AC691X的支持</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_problem.html">3.16. 常见问题（FAQ）处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_version_info.html">3.17. 版本信息</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">3. </span>杰理科技一拖二蓝牙测试盒用户手册</a> »</li>
+<li><span class="section-number">3.15. </span>其它常见功能配置和使用</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/mass_prod_tools/testbox_1tuo2/tb_common_function.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">3.15. </span>其它常见功能配置和使用<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">3.15.1. </span>串口模式校验功能使用说明<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>V1.2.5.d 增加串口进行校验模式配置</p></li>
+</ol>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image6.png"/></p>
+<p>V1.3.2增加校验蓝牙名</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image9.png"/></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>使用该校验功能需要开启有线串口模式配置下的测试使能，需关闭升级使能。</p></li>
+</ul>
+</div></blockquote>
+<p>设置“0”关闭对应的测试选项。<br/>
+设置“1”开启对应的测试功能，具体的测试指标由其下方的配置框设置。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>该模式下设备不在线时显示校验模式以及版本号，在线的情况下显示测试的结果。</p></li>
+</ul>
+</div></blockquote>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image7.png"/></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image8.png"/></p>
+<p>V1.3.2版本修改显示校验结果上面一行固定显示下面一行为刷新显示。</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image14.png"/></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image15.png"/></p>
+<ol class="arabic simple" start="2">
+<li><p>V1.2.5.d增加蓝牙2.4G接入码设置</p></li>
+</ol>
+<p><strong>使用时打开拨码开关6</strong>
+<img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image9.png"/></p>
+<p>该值为“0”默认通用蓝牙连接；<br/></p>
+<p>该值非“0”为设置的配对码。</p>
+</section>
+<section id="trim">
+<h2><span class="section-number">3.15.2. </span>耳机离仓入耳trim功能配置使用<a class="headerlink" href="#trim" title="Permalink to this heading"></a></h2>
+<p><strong>V1.2.6版本添加离仓入耳trim功能</strong></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image10.png"/></p>
+<p>设置为1使能该功能，会进行入耳trim,需要对应的SDK支持。</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image11.png"/></p>
+<p>设置为1使能该功能，配对完成拿出充电仓会自动关机，同样需要对应的SDK支持。</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">3.15.3. </span>耳机空间音效校准使用说明<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>V1.2.8.b之后的版本支持耳机空间音效校准功能（<code class="docutils literal notranslate"><span class="pre">该配置需sdk支持</span></code>）</p></li>
+<li><p>设置测试盒校准命令：“DUT命令模式使能”设置成1，“串口命令配置”设为01，该配置与“有线串口模式配置”的其它使能项均互斥。</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_commom_fuction_image5.png"/></p>
+</li>
+<li><p>UI显示内容含义表</p></li>
+</ol>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>显示及提示音内容</p></th>
+<th class="head"><p>具体含义</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>测试盒“di”一声，显示“trim run…”</p></td>
+<td><p>开始校准</p></td>
+</tr>
+<tr class="row-odd"><td><p>显示“trim run…”</p></td>
+<td><p>校准中</p></td>
+</tr>
+<tr class="row-even"><td><p>测试盒“di”两声，显示“trim succ !”</p></td>
+<td><p>校准成功</p></td>
+</tr>
+<tr class="row-odd"><td><p>测试盒“di”三声，显示“trim fail !”</p></td>
+<td><p>校准失败</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="anc">
+<h2><span class="section-number">3.15.4. </span>ANC校准使用说明<a class="headerlink" href="#anc" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>V1.2.8.g之后的版本支持ANC校准功能（该配置需sdk支持）</p></li>
+<li><p>拨码开关3、4、5、6必需关闭，如下图所示</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_commom_fuction_image6.png"/></p>
+</li>
+<li><p>上位机打开“ANC增益校准使能”配置，设置“ANC增益调整步进”值，“ANC产品形态”保持默认的“tws_ff”，重新上电。</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_commom_fuction_image7.png"/></p>
+</li>
+<li><p>测试盒与耳机的连接示意图以及ANC测试界面如下图所示</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_commom_fuction_image8.png"/></p>
+</li>
+<li><p>界面及按键说明：
+<strong>界面说明：</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p>1：显示左耳耳机的在线状态</p></li>
+<li><p>2：显示左耳耳机的ANC数字增益</p></li>
+<li><p>3：显示右耳耳机的在线状态和ANC数字增益</p></li>
+</ul>
+<p>图中的“▲”符号表示当前调节的是哪个耳机的ANC增益。</p>
+<p><strong>按键说明：</strong></p>
+<ul class="simple">
+<li><p>KEY1：单击增加耳机ANC数字增益</p></li>
+<li><p>KEY2：单击选择左右耳，长按解除当前对耳的配对</p></li>
+<li><p>KEY3：单击减小耳机ANC数字增益</p></li>
+<li><p>直接放入新的一对耳机，也能自动解除上一对耳机的配对，并自动配对新的一对耳机。</p></li>
+</ul>
+<ol class="arabic simple" start="6">
+<li><p>UI的错误提示含义：</p></li>
+</ol>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>界面显示</p></th>
+<th class="head"><p>错误原因</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ver err</p></td>
+<td><p>耳机的ANC版本不支持</p></td>
+</tr>
+<tr class="row-odd"><td><p>spp err</p></td>
+<td><p>耳机不支持ANC功能</p></td>
+</tr>
+<tr class="row-even"><td><p>cmd fail或cmd unf</p></td>
+<td><p>测试盒与耳机通信出错</p></td>
+</tr>
+<tr class="row-odd"><td><p>timeout</p></td>
+<td><p>测试盒与耳机通信超时</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="tws">
+<h2><span class="section-number">3.15.5. </span>TWS三元组同步功能使用说明<a class="headerlink" href="#tws" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>功能使用说明</p></li>
+</ol>
+<ul>
+<li><p>V127b新增三元组同步功能。针对tws产品需要同步三元组的情况，需要先使能配对功能，配对完成之后才可以进行三元组同步。</p></li>
+<li><p>对耳配对完成，且三元组同步使能设置为1的情况下，会进入三元组同步流程，第一次同步如果其中一个耳机没有三元组，同步流程之后会显示同步完成，之后上电会显示已同步。</p></li>
+<li><p>三元组强制同步使能功能适用于：两个耳机都存在三元组但是数据不一致的情况，此时设置该功能为1，会把三元组存在于flash的耳机数据同步到另一个耳机，另一个耳机之前数据会被覆盖，需谨慎操作。</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_commom_fuction_image1.png"/></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_commom_fuction_image2.png"/></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_commom_fuction_image3.png"/></p>
+</li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>UI显示内容含义表</p></li>
+</ol>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>显示内容</p></th>
+<th class="head"><p>具体含义</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>无三元组</p></td>
+<td><p>TWS设备中有三元组信息，通过串口连接TWS，使能该测试功能后，提示无三元组</p></td>
+</tr>
+<tr class="row-odd"><td><p>已烧录</p></td>
+<td><p>两个tws的flash中分别已经烧录了三元组信息</p></td>
+</tr>
+<tr class="row-even"><td><p>同步完成</p></td>
+<td><p>tws其中一个没有三元组信息,另一个flash中存在三元组信息，第一次烧录完成后提示同步完成</p></td>
+</tr>
+<tr class="row-odd"><td><p>已同步</p></td>
+<td><p>两个tws中已经同步过三元组，除了第一次同步外，之后的同步显示已同步</p></td>
+</tr>
+<tr class="row-even"><td><p>数据不一致</p></td>
+<td><p>当两个tws中的三元组信息不一致，并且没有使能强制同步的条件下，显示数据不一致</p></td>
+</tr>
+<tr class="row-odd"><td><p>同步失败</p></td>
+<td><p>由于内存读写操作导致三元组信息没有完成同步，显示同步失败</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="ble">
+<h2><span class="section-number">3.15.6. </span>BLE模式自定义广播信息显示使用说明<a class="headerlink" href="#ble" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>新增BLE广播包自定义字段显示功能。目前支持的显示字段类型定义为0xFE,即广播包中定义0xFE类型的数据，测试盒解析到该类型的数据发送给上位机进行显示。</p></li>
+<li><p>广播包的内容需自行在对应的SDK中生成，且最大长度不能超过16byte,超过部分将不会显示。</p></li>
+<li><p>如下图 ID数据选项显示：</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_commom_fuction_image4.png"/></p>
+</li>
+</ol>
+</section>
+<section id="id4">
+<h2><span class="section-number">3.15.7. </span>测试盒更新音频文件说明<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>把需要更新的sbc文件，上下首两个音频文件，名字为media1.sbc media2.sbc，放到AC690x_1T2测试盒_从机Vx.x.x.exe同级目录下（没有这两个文件用默认自带的）。</p>
+</div>
+<ol class="arabic">
+<li><p>方法1：重新升级测试盒从机代码即可，升级从机过程参考测试盒固件升级的方法1，主机不用升级。</p></li>
+<li><p>方法2：假如目录下有media1.sbc media2.sbc，点击有AC690x_1T2测试盒_从机Vx.x.x.exe会目录下生成jl_690x.bin（这个bin文件已经替换了新的提示音），然后参考测试盒固件升级的方法2升级即可。</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image28.png"/></p>
+</li>
+</ol>
+</section>
+<section id="ac691x">
+<h2><span class="section-number">3.15.8. </span>测试盒更新对AC691X的支持<a class="headerlink" href="#ac691x" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>频偏校准：</p>
+<p>拨动拨码开关，使能测试盒频偏校准模式后，把ext_app.bfu（BLE和EDR使用不同的ext_app.bfu，请注意区分）文件放在tf卡并插入测试盒即可。</p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. 如果测试盒的tf卡中没有ext_app.bfu文件，频偏校准后不会保存到芯片中。
+
+2. 频偏校准时，tf卡里不能放有jl_690x.bfu升级文件，有的话会优先选择jl_690x.bfu进行升级。
+</pre></div>
+</div>
+</div>
+<ol class="arabic" start="2">
+<li><p>升级AC691X蓝牙名字（BLE和EDR使用不同的jl_690x.bfu，请注意区分）：</p>
+<p>通过otp.exe工具打开配置选项</p>
+<p>需要勾选如下图的设置用户配置（不需要更新aec配置的话，aec配置选项不用勾选），保存为ac691x.cfg，放到bt_updata目录下，通过工具cfg_updata.bat进行生成jl_690x.bfu进行测试盒无线升级。</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image29.png"/></p>
+</li>
+<li><p>aec_cfg升级：</p>
+<p>勾选如下图的设置AEC配置（不需要更新名字配置的话，用户配置选项不用勾选），保存为ac691x.cfg，放到bt_updata目录下，通过工具cfg_updata.bat进行生成jl_690x.bfu，把生成升级文件jl_690x.bfu文件放在tf卡并插入测试盒即可。</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image30.png"/></p>
+<p>说明：可以同时更新名字和aec参数，同时勾选用户配置和设置AEC配置，生成的bfu可以进行同时更新。（不需要更新的不用勾选）</p>
+</li>
+<li><p>支持flash版本芯片BLE升级（v101_C版本以上才支持）</p>
+<p>操作步骤：</p>
+<ul class="simple">
+<li><p>A、进行BLE升级前，需将BLE使能开关打开；</p></li>
+<li><p>B、无线升级和2.1升级一样，可以通过sd升级及pc在线升级方式，操作步骤同<a class="reference internal" href="tb_wireless_upgrade.html"><span class="doc std std-doc">蓝牙设备无线升级流程</span></a></p></li>
+<li><p>C、通过sd卡升级，需将jl_ac691x.bfu改成放到updata.bfu测试盒才可以识别。</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="tb_fixture_install.html" class="btn btn-neutral float-left" title="3.14. 测试盒串口连接治具介绍" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="tb_common_problem.html" class="btn btn-neutral float-right" title="3.16. 常见问题（FAQ）处理" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_common_function.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_common_function.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

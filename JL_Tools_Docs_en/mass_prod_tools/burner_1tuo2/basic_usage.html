@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.2. Manual Programming, Verification and Blank Check — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>1. Jieli 1-to-2 Programmer User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">1.1. Programmer Overview</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.2. Manual Programming, Verification and Blank Check</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1.2.1. Preparing the programming environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#target-1tuo2-power-on">1.2.2. Power on the programmer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#target-1tuo2-fw-confirmation-and-update">1.2.3. Checking and updating the programmer firmware version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#target-deploy-fw-file-to-1tuo2"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.2.4. Deploying the target chip firmware to the programmer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">1.2.4.1. Deployment notes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#target-deploy-fw-file-to-1tuo2-open-ui">1.2.4.2. Opening the deployment program interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">1.2.4.3. Selecting the target chip model to program</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">1.2.4.4. Selecting and deploying the programming file to the programmer</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#target-1tuo2-set-mode"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.2.5. Programmer working modes: introduction and setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id11">1.2.5.1. Introduction to the programmer working modes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#v3-1">1.2.5.2. Setting the working mode on V3.1 programmers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#v5-0">1.2.5.3. Setting the working mode on V5.0 programmers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id12"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.2.6. Programming chip firmware</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id13">1.2.6.1. Preparing for programming</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#target-1tuo2-chip-start-to-burn">1.2.6.2. Starting chip programming</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">1.2.6.3. Determining the programming result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id16"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.2.7. Verifying chip firmware</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id17">1.2.7.1. Preparing for verification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">1.2.7.2. Starting chip verification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">1.2.7.3. Determining the verification result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id20"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.2.8. Blank-checking chips</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id21">1.2.8.1. Preparing for the blank check</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id22">1.2.8.2. Starting the chip blank check</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id23">1.2.8.3. Determining the blank check result</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html">1.3. Automated Programming with a Handler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html">1.4. Remote Upgrade of the Programmer Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html">1.5. PC-Side Programming Options for Each Chip Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html">1.6. Status Indicators and Error Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html">1.7. Authorized Programming Count Limit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html">1.8. Programming Third-Party Data (Authentication Codes)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html">1.9. Bluetooth Address and Name Auto-Increment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_burn.html">1.10. Chip Programming Wiring and Power Supply</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html">1.11. Other Common Features: Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faqs.html">1.12. Troubleshooting Common Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">1. </span>Jieli 1-to-2 Programmer User Manual</a> »</li>
+<li><span class="section-number">1.2. </span>Manual Programming, Verification and Blank Check</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/burner_1tuo2/basic_usage.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">1.2. </span>Manual Programming, Verification and Blank Check<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">1.2.1. </span>Preparing the programming environment<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>Materials to prepare for programming:</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Category</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Quantity</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PC</p></td>
+<td><p>1. To upgrade the programmer firmware to the required version or the latest version<br/>2. To deploy fw, ufw or key files to the programmer, where they are stored first,<br/> for subsequent offline programming</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Programmer main unit</p></td>
+<td><p>Controls chip programming</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>USB data cable</p></td>
+<td><p>Connects the programmer to the PC, for upgrading the programmer firmware or updating the target chip firmware</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Power adapter</p></td>
+<td><p>Use a power supply rated 9.0V, 2.0A or above to power the programmer</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>Top board</p></td>
+<td><p>1. Programming bare chips: prepare a socket board for the model of the chip to be programmed<br/>2. Programming devices or development boards: prepare several Dupont wires;<br/> for the wiring, see "<a class="reference internal" href="pcba_burn.html"><span class="doc std std-doc">Chip Programming Wiring and Power Supply</span></a>"</p></td>
+<td><p>1 or 2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Chips to be programmed</p></td>
+<td><p>Place the chips to be programmed on the socket board for the corresponding chip model for programming</p></td>
+<td><p>Several</p></td>
+</tr>
+<tr class="row-even"><td><p>Chip firmware to be programmed</p></td>
+<td><p>Prepare the fw file generated by building the SDK (which includes the key file);<br/> alternatively, program the key file on its own first, and then program the firmware with the key using a tool such as the Forced Upgrade Tool</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="target-1tuo2-power-on">
+<span id="id3"></span><h2><span class="section-number">1.2.2. </span>Power on the programmer<a class="headerlink" href="#target-1tuo2-power-on" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Powering the programmer</p>
+<p>The programmer is powered by a 9V power adapter. The power wiring is shown in <a class="reference internal" href="#img-vol-conn-1tuo2"><span class="std std-ref">Programmer power supply wiring diagram</span></a>.</p>
+<figure class="align-default" id="img-vol-conn-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image10.png"/>
+<figcaption>
+<p><span class="caption-text">Programmer power supply wiring diagram</span><a class="headerlink" href="#img-vol-conn-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Power on the programmer</p>
+<p>The firmware that controls the programmer is programmed before it leaves the factory, so you can power on the programmer as soon as you receive it. The steps after powering the programmer are shown in <a class="reference internal" href="#img-on-1tuo2"><span class="std std-ref">Power-on screen</span></a></p>
+<ul class="simple">
+<li><p>[1] Press the "Main power switch" (电源总开关);</p></li>
+<li><p>[2] After power-on, the "Power indicator light" (电源指示灯) lights up and the programmer's buzzer beeps once briefly,</p></li>
+<li><p>[3] The red and green "Button indicator lights" (按键指示灯) of the 2 programming channels light up briefly;</p></li>
+<li><p>[4] The "LCD display" (液晶显示屏) lights up;</p></li>
+</ul>
+<figure class="align-default" id="img-on-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image11.png"/>
+<figcaption>
+<p><span class="caption-text">Power-on screen</span><a class="headerlink" href="#img-on-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+</section>
+<section id="target-1tuo2-fw-confirmation-and-update">
+<span id="id4"></span><h2><span class="section-number">1.2.3. </span>Checking and updating the programmer firmware version<a class="headerlink" href="#target-1tuo2-fw-confirmation-and-update" title="Permalink to this heading"></a></h2>
+<p>The programmer firmware is the firmware of the main control chip that controls the operation of the whole programmer. Before programming target chip firmware, be sure to check whether the current programmer firmware is the latest version (except in special cases); otherwise some programming problems may occur.</p>
+<ol class="arabic">
+<li><p>Checking the current programmer version</p>
+<p>After the programmer is powered on and has displayed the "Jieli LOGO", it displays the current programmer firmware version number for 2 seconds (the programmer firmware version number is also shown in the interface for updating the target chip firmware), as shown in <a class="reference internal" href="#img-firmware-ver-1tuo2"><span class="std std-ref">Programmer firmware version display</span></a>.</p>
+<figure class="align-default" id="img-firmware-ver-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image12.png"/>
+<figcaption>
+<p><span class="caption-text">Programmer firmware version display</span><a class="headerlink" href="#img-firmware-ver-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Regularly check for new versions and update the programmer firmware</p>
+<p>If the firmware version used by the programmer is outdated, the PC tool interface for updating the target chip firmware fw file shows a corresponding update prompt. If new firmware is available, update promptly.</p>
+<p>Open the PC tool control panel for remote upgrade of the programmer firmware to get the 3 latest programmer firmware version numbers, and select the version you need to upgrade to. For the upgrade steps, see <a class="reference internal" href="remote_update.html"><span class="doc std std-doc">Remote Upgrade of the Programmer Firmware</span></a>.</p>
+</li>
+</ol>
+</section>
+<section id="target-deploy-fw-file-to-1tuo2">
+<span id="id5"></span><h2><span class="section-number">1.2.4. </span>Deploying the target chip firmware to the programmer<a class="headerlink" href="#target-deploy-fw-file-to-1tuo2" title="Permalink to this heading"></a></h2>
+<section id="id6">
+<h3><span class="section-number">1.2.4.1. </span>Deployment notes<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<p>Before programming, verifying or blank-checking chips, you need to deploy the programming firmware for the target chip, that is, the fw file, ufw file or key file generated by building the SDK, to the programmer. During the process, the programmer programs this firmware into the target chip, or uses it for verification and blank check. If the corresponding firmware has already been deployed to the programmer, skip the steps in the following subsections.</p>
+</section>
+<section id="target-deploy-fw-file-to-1tuo2-open-ui">
+<span id="id7"></span><h3><span class="section-number">1.2.4.2. </span>Opening the deployment program interface<a class="headerlink" href="#target-deploy-fw-file-to-1tuo2-open-ui" title="Permalink to this heading"></a></h3>
+<p>After the programmer is powered on, proceed as shown in <a class="reference internal" href="#img-open-update-1tuo2"><span class="std std-ref">Opening the deployment program interface</span></a>:<br/></p>
+<ul class="simple">
+<li><p>[1] Use the USB data cable to <code class="docutils literal notranslate"><span class="pre">connect</span> <span class="pre">the</span> <span class="pre">programmer's</span> <span class="pre">USB</span> <span class="pre">port</span> <span class="pre">for</span> <span class="pre">program</span> <span class="pre">updates</span> <span class="pre">to</span> <span class="pre">a</span> <span class="pre">USB</span> <span class="pre">port</span> <span class="pre">on</span> <span class="pre">the</span> <span class="pre">PC</span></code>. The display shows <code class="docutils literal notranslate"><span class="pre">PC</span> <span class="pre">mode</span></code> (PC模式);</p></li>
+<li><p>[2] Open <code class="docutils literal notranslate"><span class="pre">This</span> <span class="pre">PC</span></code> on the PC and find the <code class="docutils literal notranslate"><span class="pre">CD</span> <span class="pre">Drive</span></code>;</p></li>
+<li><p>[3] Right-click the "CD Drive" and open it; you will see the <code class="docutils literal notranslate"><span class="pre">burn_tool.exe</span></code> file;</p></li>
+<li><p>[4] Double-click <code class="docutils literal notranslate"><span class="pre">burn_tool.exe</span></code>. The deployment program interface appears, as shown in <a class="reference internal" href="#img-update-ui-1tuo2"><span class="std std-ref">Deployment program interface</span></a>;</p></li>
+</ul>
+<figure class="align-default" id="img-open-update-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image13.png"/>
+<figcaption>
+<p><span class="caption-text">Opening the deployment program interface</span><a class="headerlink" href="#img-open-update-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="img-update-ui-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image14.png"/>
+<figcaption>
+<p><span class="caption-text">Deployment program interface</span><a class="headerlink" href="#img-update-ui-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id8">
+<h3><span class="section-number">1.2.4.3. </span>Selecting the target chip model to program<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+<p>Here, deploying an fw programming file is demonstrated for the AC897N chip. So after opening the deployment program interface, when selecting the target chip model, select AC897N as the chip type in the "Chip type" (芯片类型) drop-down menu, as shown in <a class="reference internal" href="#img-select-chip-1tuo2"><span class="std std-ref">Chip model selection interface</span></a>.</p>
+<figure class="align-default" id="img-select-chip-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image15.png"/>
+<figcaption>
+<p><span class="caption-text">Chip model selection interface</span><a class="headerlink" href="#img-select-chip-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id9">
+<h3><span class="section-number">1.2.4.4. </span>Selecting and deploying the programming file to the programmer<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+<p>After selecting the model of the chip to be programmed, follow the steps shown in <a class="reference internal" href="#img-deploy-fw-1tuo2"><span class="std std-ref">Deploying the fw programming file to the programmer</span></a>:<br/></p>
+<ul class="simple">
+<li><p>[1] Click "Open" (打开) and select the fw file (a ufw file or key file also works; you can also program an authorized fw/ufw file with a programming count limit, see <a class="reference internal" href="dongle.html"><span class="doc std std-doc">Authorized Programming Count Limit</span></a>);</p></li>
+<li><p>[2] Click "Configure" (配置), select the chip programming configuration items and click OK, as shown in <a class="reference internal" href="#img-config-opt-1tuo2"><span class="std std-ref">Programming configuration items interface</span></a> (the defaults are usually fine; to configure them as needed, see <a class="reference internal" href="config_opt.html"><span class="doc std std-doc">PC-Side Programming Options for Each Chip Model</span></a>);</p></li>
+<li><p>[3] Click the "Update" (更新) button to deploy the FW file, that is, the target chip programming firmware, to the programmer;</p></li>
+<li><p>[4] After the programming file has been deployed successfully, the message "Programmer updated successfully, please power-cycle" (更新烧录器成功，请重新上电) appears. Click "Confirm" (确认), then power-cycle the programmer (unplug the USB data cable from the programmer, then press the "Main power switch" (电源总开关) to turn it off and press it again to turn it on).</p></li>
+</ul>
+<p>If deployment fails, a corresponding error message is displayed. Find the cause of the error based on the message and deploy again. If deployment fails repeatedly or you run into a problem you cannot solve, contact Jieli technical support promptly.</p>
+<figure class="align-default" id="img-deploy-fw-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image16.png"/>
+<figcaption>
+<p><span class="caption-text">Deploying the fw programming file to the programmer</span><a class="headerlink" href="#img-deploy-fw-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="img-config-opt-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image17.png"/>
+<figcaption>
+<p><span class="caption-text">Programming configuration items interface</span><a class="headerlink" href="#img-config-opt-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="target-1tuo2-set-mode">
+<span id="id10"></span><h2><span class="section-number">1.2.5. </span>Programmer working modes: introduction and setup<a class="headerlink" href="#target-1tuo2-set-mode" title="Permalink to this heading"></a></h2>
+<section id="id11">
+<h3><span class="section-number">1.2.5.1. </span>Introduction to the programmer working modes<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h3>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Working mode</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Programming mode<br/>(also called burn mode)</p></td>
+<td><p>Programs the data of the firmware file deployed to the programmer, i.e. the .fw or .ufw file generated by the SDK build, or the .key file,<br/>into the target chip. Along with the firmware data, it also programs the configured LVD,<br/>authentication codes, Bluetooth address, resource files, etc., and performs functions such as chip performance testing</p></td>
+</tr>
+<tr class="row-odd"><td><p>Verification mode</p></td>
+<td><p>Compares the data of the firmware file deployed to the programmer (the .fw or .ufw file generated by the SDK build, or the .key file), the LVD,<br/>resource files, etc. with the firmware data from the previous programming, i.e. the data already in the chip.<br/>It is mainly used to confirm whether the firmware data already programmed into the chip matches the data of the firmware file you intend to program.<br/>Verification mode also performs the chip performance test</p></td>
+</tr>
+<tr class="row-even"><td><p>Blank check mode</p></td>
+<td><p>Checks whether the chip is blank, i.e. whether it is still in its factory state and has never been programmed with a .fw firmware file or key file data.<br/>Blank check mode is also often used to retrieve the checksum of the .fw file that corresponds to the firmware already programmed into the chip</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sound mode</p></td>
+<td><p>Turns on the buzzer sound alerts</p></td>
+</tr>
+<tr class="row-even"><td><p>Mute mode</p></td>
+<td><p>Turns off the buzzer sound alerts</p></td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Programming</span> <span class="pre">mode</span></code> already includes verification: after programming, any data written to the chip is read back to verify that it was programmed correctly; <br/> <br/></p></li>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">Blank</span> <span class="pre">check</span> <span class="pre">mode</span></code>, even if the checksum of a .fw file is displayed, this does not prove that the firmware programmed into the chip is complete: the blank check only reads the checksum from a certain area and displays it. Displaying the checksum during the blank check is mainly used to find the .fw file that was programmed last time, which makes programming files easier to manage. For example, if you want to know which of many fw files was programmed into the device you have, you can identify it this way and use the retrieved .fw file for production programming, testing and failure analysis; <br/> <br/></p></li>
+<li><p>To double-check whether the firmware programmed into the chip last time is complete and consistent with the currently deployed .fw file data and programming configuration, you must use <code class="docutils literal notranslate"><span class="pre">Verification</span> <span class="pre">mode</span></code>;</p></li>
+</ol>
+</div>
+</section>
+<section id="v3-1">
+<h3><span class="section-number">1.2.5.2. </span>Setting the working mode on V3.1 programmers<a class="headerlink" href="#v3-1" title="Permalink to this heading"></a></h3>
+<p>This version of the programmer mainly uses the DIP switches to set the working mode: DIP switches 1 to 5 act as one control unit that sets Programming, Verification or Blank check mode; DIP switch 6 acts as a separate control unit that sets the sound mode. The DIP switch settings for each working mode are shown in <a class="reference internal" href="#img-switch-btn-workmode-1tuo2"><span class="std std-ref">Setting the working mode with the DIP switches</span></a>.</p>
+<figure class="align-default" id="img-switch-btn-workmode-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image18.png"/>
+<figcaption>
+<p><span class="caption-text">Setting the working mode with the DIP switches</span><a class="headerlink" href="#img-switch-btn-workmode-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="v5-0">
+<h3><span class="section-number">1.2.5.3. </span>Setting the working mode on V5.0 programmers<a class="headerlink" href="#v5-0" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Setting Programming, Verification or Blank check mode</p>
+<p>Follow the steps shown in <a class="reference internal" href="#img-ind-btn-workmode-1tuo2"><span class="std std-ref">Setting the working mode with the standalone button</span></a>:<br/></p>
+<ul class="simple">
+<li><p>[1] Press and hold the <code class="docutils literal notranslate"><span class="pre">standalone</span> <span class="pre">button</span> <span class="pre">(mode</span> <span class="pre">selection</span> <span class="pre">button)</span></code> (see the pictures in <a class="reference internal" href="intro_basic.html#target-1tuo2-hosts-info"><span class="std std-ref">Introduction to the programmer main unit</span></a>) and release it after 3s. The programmer enters the mode setting state, the display shows <code class="docutils literal notranslate"><span class="pre">"Mode</span> <span class="pre">setting"</span> <span class="pre">(模式设置)</span> <span class="pre">and</span> <span class="pre">the</span> <span class="pre">current</span> <span class="pre">mode</span></code>, and indicator light 1 keeps flashing;</p></li>
+<li><p>[2] Briefly press the <code class="docutils literal notranslate"><span class="pre">standalone</span> <span class="pre">button</span></code> to switch the programmer mode (it cycles through Programming, Verification and Blank check);</p></li>
+<li><p>[3] If the <code class="docutils literal notranslate"><span class="pre">standalone</span> <span class="pre">button</span></code> is not pressed for 2s, the currently set mode is selected and the display returns to the normal screen (before the normal screen appears, the display shows the current programmer version number for 2s). The normal screen shows the current working mode.</p></li>
+</ul>
+<figure class="align-default" id="img-ind-btn-workmode-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image19.png"/>
+<figcaption>
+<p><span class="caption-text">Setting the working mode with the standalone button</span><a class="headerlink" href="#img-ind-btn-workmode-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Setting the sound mode:</p>
+<p>As shown in <a class="reference internal" href="#img-ind-btn-soundmode-1tuo2"><span class="std std-ref">Setting the sound mode with the standalone button</span></a>, while the display shows the normal screen, briefly press the standalone button to switch the sound mode (it toggles between Sound mode and Mute mode).</p>
+<figure class="align-default" id="img-ind-btn-soundmode-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image20.png"/>
+<figcaption>
+<p><span class="caption-text">Setting the sound mode with the standalone button</span><a class="headerlink" href="#img-ind-btn-soundmode-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+</section>
+</section>
+<section id="id12">
+<h2><span class="section-number">1.2.6. </span>Programming chip firmware<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h2>
+<section id="id13">
+<h3><span class="section-number">1.2.6.1. </span>Preparing for programming<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Before programming chip firmware, make sure you have carried out the operations in the previous 4 sections to prevent problems during programming. These include:</p>
+<ul class="simple">
+<li><p>Power on the programmer before programming and wait for the normal ready screen (see the "<a class="reference internal" href="#target-1tuo2-power-on"><span class="std std-ref">Power on the programmer</span></a>" section)</p></li>
+<li><p>Confirm that the programmer firmware is the required version, or update it (see the "<a class="reference internal" href="#target-1tuo2-fw-confirmation-and-update"><span class="std std-ref">Checking and updating the programmer firmware version</span></a>" section; check this from time to time)</p></li>
+<li><p>Confirm that the target chip firmware in the programmer is the firmware to be programmed, or update it (see the "<a class="reference internal" href="#target-deploy-fw-file-to-1tuo2"><span class="std std-ref">Deploying the target chip firmware to the programmer</span></a>" section)</p></li>
+<li><p>Confirm that the programmer's working mode is Programming mode, or set it (see the "<a class="reference internal" href="#target-1tuo2-set-mode"><span class="std std-ref">Programmer working modes: introduction and setup</span></a>" section)</p></li>
+</ul>
+</li>
+<li><p>After installing the top board (see "<a class="reference internal" href="intro_basic.html#target-1tuo2-board-install"><span class="std std-ref">Top board introduction and installation</span></a>" for how to install it), place the chip in the socket on the top board for the corresponding chip model, then close the socket lid. Chip placement is shown in <a class="reference internal" href="#img-chip-place-1tuo2"><span class="std std-ref">Chip placement</span></a>.</p>
+<figure class="align-default" id="img-chip-place-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image21.png"/>
+<figcaption>
+<p><span class="caption-text">Chip placement</span><a class="headerlink" href="#img-chip-place-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The small white arrow on the top board socket marks pin 1 of the chip. Do not place the chip the wrong way round.</p>
+</div>
+</section>
+<section id="target-1tuo2-chip-start-to-burn">
+<span id="id14"></span><h3><span class="section-number">1.2.6.2. </span>Starting chip programming<a class="headerlink" href="#target-1tuo2-chip-start-to-burn" title="Permalink to this heading"></a></h3>
+<p>Once the preparation is complete, you can program the chip. If the chip is placed on the channel 1 top board, briefly press the channel 1 Start button; if the chip is placed on the channel 2 top board, briefly press the channel 2 Start button, as shown in <a class="reference internal" href="#img-start-burn-1tuo2"><span class="std std-ref">Starting chip programming</span></a>.</p>
+<figure class="align-default" id="img-start-burn-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image22.png"/>
+<figcaption>
+<p><span class="caption-text">Starting chip programming</span><a class="headerlink" href="#img-start-burn-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id15">
+<h3><span class="section-number">1.2.6.3. </span>Determining the programming result<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Determining programming success</p>
+<p>After the Start button is briefly pressed, if <code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">green</span> <span class="pre">indicator</span> <span class="pre">light</span> <span class="pre">goes</span> <span class="pre">from</span> <span class="pre">off</span> <span class="pre">to</span> <span class="pre">on</span> <span class="pre">and</span> <span class="pre">then</span> <span class="pre">off</span> <span class="pre">again</span></code>, <code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">red</span> <span class="pre">indicator</span> <span class="pre">light</span> <span class="pre">stays</span> <span class="pre">off</span></code> and the buzzer beeps once, programming has succeeded. After successful programming, <code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">success</span> <span class="pre">count</span> <span class="pre">on</span> <span class="pre">the</span> <span class="pre">display</span> <span class="pre">increases</span> <span class="pre">by</span> <span class="pre">1</span></code>.</p>
+<p>For example, the display changes after successful programming on channel 1 are shown in <a class="reference internal" href="#img-ch1-burn-succ-display-1tuo2"><span class="std std-ref">Display changes after successful programming on channel 1</span></a>.</p>
+<figure class="align-default" id="img-ch1-burn-succ-display-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image23.png"/>
+<figcaption>
+<p><span class="caption-text">Display changes after successful programming on channel 1</span><a class="headerlink" href="#img-ch1-burn-succ-display-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Determining programming failure</p>
+<p>After the Start button is briefly pressed, if <code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">green</span> <span class="pre">indicator</span> <span class="pre">light</span> <span class="pre">goes</span> <span class="pre">from</span> <span class="pre">off</span> <span class="pre">to</span> <span class="pre">on</span> <span class="pre">and</span> <span class="pre">then</span> <span class="pre">off</span> <span class="pre">again</span></code>, after which <code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">red</span> <span class="pre">indicator</span> <span class="pre">light</span> <span class="pre">turns</span> <span class="pre">on</span></code> and <code class="docutils literal notranslate"><span class="pre">an</span> <span class="pre">error</span> <span class="pre">message</span> <span class="pre">is</span> <span class="pre">shown</span></code> on the display, programming has failed.</p>
+<p>For example, channel 1 reports a "Communication failed" (通信失败) error after programming starts (other error types are also possible), as shown in <a class="reference internal" href="#img-ch1-burn-fail-display-1tuo2"><span class="std std-ref">Channel 1 programming failure display</span></a>.<br/> After the display shows an error, it returns to normal after the next successful programming or when the programmer is restarted.</p>
+<figure class="align-default" id="img-ch1-burn-fail-display-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image24.png"/>
+<figcaption>
+<p><span class="caption-text">Channel 1 programming failure display</span><a class="headerlink" href="#img-ch1-burn-fail-display-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>After a chip has been programmed successfully, you can remove it from the top board socket and mount it onto the device (SMT), or put it into the socket of a demo board or development board for product function tests. The same chip can be programmed repeatedly with a different target chip firmware, different programming options, etc.;</p></li>
+<li><p><font color="red">Chips that fail programming must not move on to subsequent production steps; the specific cause of the failure must be analyzed further</font>;</p></li>
+</ol>
+<p>3. For details on the status indicators and error messages, see the "<a class="reference internal" href="status_errors.html"><span class="doc std std-doc">Status Indicators and Error Messages</span></a>" chapter;</p>
+</div>
+</section>
+</section>
+<section id="id16">
+<h2><span class="section-number">1.2.7. </span>Verifying chip firmware<a class="headerlink" href="#id16" title="Permalink to this heading"></a></h2>
+<section id="id17">
+<h3><span class="section-number">1.2.7.1. </span>Preparing for verification<a class="headerlink" href="#id17" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Before verifying chip firmware, make sure you have carried out the operations in the previous 4 sections to prevent problems during verification. These include:</p>
+<ul class="simple">
+<li><p>Power on the programmer before programming and wait for the normal ready screen (see the "<a class="reference internal" href="#target-1tuo2-power-on"><span class="std std-ref">Power on the programmer</span></a>" section)</p></li>
+<li><p>Confirm that the programmer firmware is the required version, or update it (see the "<a class="reference internal" href="#target-1tuo2-fw-confirmation-and-update"><span class="std std-ref">Checking and updating the programmer firmware version</span></a>" section; check this from time to time)</p></li>
+<li><p>Confirm that the target chip firmware in the programmer is the firmware to be verified, or update it (see the "<a class="reference internal" href="#target-deploy-fw-file-to-1tuo2"><span class="std std-ref">Deploying the target chip firmware to the programmer</span></a>" section)</p></li>
+<li><p>Confirm that the programmer's working mode is Verification mode, or set it (see the "<a class="reference internal" href="#target-1tuo2-set-mode"><span class="std std-ref">Programmer working modes: introduction and setup</span></a>" section)</p></li>
+</ul>
+</li>
+<li><p>After installing the top board, place the chip in the socket on the top board for the corresponding chip model, then close the socket lid.</p></li>
+</ol>
+</section>
+<section id="id18">
+<h3><span class="section-number">1.2.7.2. </span>Starting chip verification<a class="headerlink" href="#id18" title="Permalink to this heading"></a></h3>
+<p>Once the preparation is complete, you can verify the chip. If the chip is placed on the channel 1 top board, briefly press the channel 1 Start button; if the chip is placed on the channel 2 top board, briefly press the channel 2 Start button. The steps are the same as in the "<a class="reference internal" href="#target-1tuo2-chip-start-to-burn"><span class="std std-ref">Starting chip programming</span></a>" section.</p>
+</section>
+<section id="id19">
+<h3><span class="section-number">1.2.7.3. </span>Determining the verification result<a class="headerlink" href="#id19" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Determining verification success</p>
+<p>After the Start button is briefly pressed, if <code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">green</span> <span class="pre">indicator</span> <span class="pre">light</span> <span class="pre">goes</span> <span class="pre">from</span> <span class="pre">off</span> <span class="pre">to</span> <span class="pre">on</span> <span class="pre">and</span> <span class="pre">then</span> <span class="pre">off</span> <span class="pre">again</span></code>, <code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">red</span> <span class="pre">indicator</span> <span class="pre">light</span> <span class="pre">stays</span> <span class="pre">off</span></code> and the buzzer beeps once, verification has succeeded. After successful verification, <code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">success</span> <span class="pre">count</span> <span class="pre">on</span> <span class="pre">the</span> <span class="pre">display</span> <span class="pre">increases</span> <span class="pre">by</span> <span class="pre">1</span></code>. The display changes after successful verification are the same as after successful programming.</p>
+</li>
+<li><p>Determining verification failure</p>
+<p>After the Start button is briefly pressed, if <code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">green</span> <span class="pre">indicator</span> <span class="pre">light</span> <span class="pre">goes</span> <span class="pre">from</span> <span class="pre">off</span> <span class="pre">to</span> <span class="pre">on</span> <span class="pre">and</span> <span class="pre">then</span> <span class="pre">off</span> <span class="pre">again</span></code>, after which <code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">red</span> <span class="pre">indicator</span> <span class="pre">light</span> <span class="pre">turns</span> <span class="pre">on</span></code> and <code class="docutils literal notranslate"><span class="pre">an</span> <span class="pre">error</span> <span class="pre">message</span> <span class="pre">is</span> <span class="pre">shown</span></code> on the display, verification has failed.</p>
+<p>For example, channel 1 reports a "Verification failed" (校验失败) error after verification starts (other error types are also possible), as shown in <a class="reference internal" href="#img-ch1-verify-fail-display-1tuo2"><span class="std std-ref">Channel 1 verification failure display</span></a>. After the display shows an error, it returns to normal after the next successful verification or when the programmer is restarted.</p>
+<figure class="align-default" id="img-ch1-verify-fail-display-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image25.png"/>
+<figcaption>
+<p><span class="caption-text">Channel 1 verification failure display</span><a class="headerlink" href="#img-ch1-verify-fail-display-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+</section>
+</section>
+<section id="id20">
+<h2><span class="section-number">1.2.8. </span>Blank-checking chips<a class="headerlink" href="#id20" title="Permalink to this heading"></a></h2>
+<section id="id21">
+<h3><span class="section-number">1.2.8.1. </span>Preparing for the blank check<a class="headerlink" href="#id21" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Before blank-checking a chip, make sure you have carried out the operations in the previous 4 sections to prevent problems during the blank check. These include:</p>
+<ul class="simple">
+<li><p>Power on the programmer before programming and wait for the normal ready screen (see the "<a class="reference internal" href="#target-1tuo2-power-on"><span class="std std-ref">Power on the programmer</span></a>" section)</p></li>
+<li><p>Confirm that the programmer firmware is the required version, or update it (see the "<a class="reference internal" href="#target-1tuo2-fw-confirmation-and-update"><span class="std std-ref">Checking and updating the programmer firmware version</span></a>" section; check this from time to time)</p></li>
+<li><p>Confirm that the target chip firmware in the programmer is firmware for the corresponding chip model, or update it (see the "<a class="reference internal" href="#target-deploy-fw-file-to-1tuo2"><span class="std std-ref">Deploying the target chip firmware to the programmer</span></a>" section)</p></li>
+<li><p>Confirm that the programmer's working mode is Blank check mode, or set it (see the "<a class="reference internal" href="#target-1tuo2-set-mode"><span class="std std-ref">Programmer working modes: introduction and setup</span></a>" section)</p></li>
+</ul>
+</li>
+<li><p>After installing the top board, place the chip in the socket on the top board for the corresponding chip model, then close the socket lid.</p></li>
+</ol>
+</section>
+<section id="id22">
+<h3><span class="section-number">1.2.8.2. </span>Starting the chip blank check<a class="headerlink" href="#id22" title="Permalink to this heading"></a></h3>
+<p>Once the preparation is complete, you can blank-check the chip. If the chip is placed on the channel 1 top board, briefly press the channel 1 Start button; if the chip is placed on the channel 2 top board, briefly press the channel 2 Start button. The steps are the same as in the "<a class="reference internal" href="#target-1tuo2-chip-start-to-burn"><span class="std std-ref">Starting chip programming</span></a>" section.</p>
+</section>
+<section id="id23">
+<h3><span class="section-number">1.2.8.3. </span>Determining the blank check result<a class="headerlink" href="#id23" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Determining blank check success</p>
+<p>After the Start button is briefly pressed, if <code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">green</span> <span class="pre">indicator</span> <span class="pre">light</span> <span class="pre">goes</span> <span class="pre">from</span> <span class="pre">off</span> <span class="pre">to</span> <span class="pre">on</span> <span class="pre">and</span> <span class="pre">then</span> <span class="pre">off</span> <span class="pre">again</span></code>, <code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">red</span> <span class="pre">indicator</span> <span class="pre">light</span> <span class="pre">stays</span> <span class="pre">off</span></code> and the buzzer beeps once, the blank check has succeeded. After a successful blank check, the display shows <code class="docutils literal notranslate"><span class="pre">Blank</span></code> (空片) or <code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">success</span> <span class="pre">count</span> <span class="pre">on</span> <span class="pre">the</span> <span class="pre">display</span> <span class="pre">increases</span> <span class="pre">by</span> <span class="pre">1</span></code>. <strong>A successful blank check means that the chip is blank and has never been programmed with firmware data</strong>.</p>
+</li>
+<li><p>Determining a non-blank chip</p>
+<p>After the Start button is briefly pressed, if <code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">green</span> <span class="pre">indicator</span> <span class="pre">light</span> <span class="pre">goes</span> <span class="pre">from</span> <span class="pre">off</span> <span class="pre">to</span> <span class="pre">on</span> <span class="pre">and</span> <span class="pre">then</span> <span class="pre">off</span> <span class="pre">again</span></code>, after which <code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">red</span> <span class="pre">indicator</span> <span class="pre">light</span> <span class="pre">turns</span> <span class="pre">on</span></code> and the display shows the CRC16 checksum of the firmware already programmed into the chip or an error message (such as <code class="docutils literal notranslate"><span class="pre">Not</span> <span class="pre">blank</span></code> (非空片) or <code class="docutils literal notranslate"><span class="pre">Blank</span> <span class="pre">check</span> <span class="pre">failed</span></code> (查空失败)), the chip is not blank, i.e. it has already been programmed.</p>
+<p>For example, after the blank check starts on channel 1, the display shows a checksum (other error types are also possible), as shown in <a class="reference internal" href="#img-ch1-blank-check-1tuo2"><span class="std std-ref">Channel 1 blank check showing the firmware checksum</span></a>. After the display shows a checksum or an error, it returns to normal after the next successful blank check or when the programmer is restarted.</p>
+<figure class="align-default" id="img-ch1-blank-check-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image26.png"/>
+<figcaption>
+<p><span class="caption-text">Channel 1 blank check showing the firmware checksum</span><a class="headerlink" href="#img-ch1-blank-check-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+</section>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="intro_basic.html" class="btn btn-neutral float-left" title="1.1. Programmer Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="autoburn.html" class="btn btn-neutral float-right" title="1.3. Automated Programming with a Handler" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/basic_usage.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/basic_usage.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.10. Chip Programming Wiring and Power Supply — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>1. Jieli 1-to-2 Programmer User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">1.1. Programmer Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html">1.2. Manual Programming, Verification and Blank Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html">1.3. Automated Programming with a Handler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html">1.4. Remote Upgrade of the Programmer Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html">1.5. PC-Side Programming Options for Each Chip Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html">1.6. Status Indicators and Error Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html">1.7. Authorized Programming Count Limit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html">1.8. Programming Third-Party Data (Authentication Codes)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html">1.9. Bluetooth Address and Name Auto-Increment</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.10. Chip Programming Wiring and Power Supply</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1.10.1. Minimum chip system for programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">1.10.2. Programming channel pin header definitions and wiring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">1.10.3. Power supply for chip programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dm-dp">1.10.4. Programming wiring for device chips with DM and DP pins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">1.10.5. Programming wiring for device chips without DM and DP pins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">1.10.6. Wiring for calibrating device chips</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html">1.11. Other Common Features: Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faqs.html">1.12. Troubleshooting Common Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">1. </span>Jieli 1-to-2 Programmer User Manual</a> »</li>
+<li><span class="section-number">1.10. </span>Chip Programming Wiring and Power Supply</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/burner_1tuo2/pcba_burn.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">1.10. </span>Chip Programming Wiring and Power Supply<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">1.10.1. </span>Minimum chip system for programming<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>Solder a 105 filter capacitor from each power supply pin of the chip (bare chip) to GND, connect a 24M crystal to the crystal pins (no crystal is needed for crystal-less designs), and wire the chip's VBAT, DM, DP and GND pins (on some chips, other pins are used instead of DM and DP) to the corresponding pins of the channel 1 or channel 2 pin header on the programmer. The chip can then be programmed, as shown in <a class="reference internal" href="#img-min-system"><span class="std std-ref">Minimum chip system for programming</span></a>.</p>
+<figure class="align-default" id="img-min-system">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_minsystem.png"/>
+<figcaption>
+<p><span class="caption-text">Minimum chip system for programming</span><a class="headerlink" href="#img-min-system" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>For mass-production programming, all power pins, such as VPWR, VBAT, IOVDD, DCVDD, HPVDD and VCM, must be connected to filter capacitors, and a calibration circuit may also be needed. For details, see the programming hardware schematic for the corresponding model provided by Jieli.</p></li>
+</ul>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">1.10.2. </span>Programming channel pin header definitions and wiring<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>The pin header definitions and the wiring reference diagram for programming channel 1 or channel 2 are shown in <a class="reference internal" href="#img-pcba-conn-1tuo2"><span class="std std-ref">Wiring reference for a programming socket or device</span></a>.</p></li>
+</ol>
+<figure class="align-default" id="img-pcba-conn-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image64b.png"/>
+<figcaption>
+<p><span class="caption-text">Wiring reference for a programming socket or device</span><a class="headerlink" href="#img-pcba-conn-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic" start="2">
+<li><p>Wiring with an LDO voltage conversion circuit</p>
+<p>As shown in <a class="reference internal" href="#img-pcba-conn-1tuo2"><span class="std std-ref">Wiring reference for a programming socket or device</span></a>, the programming socket has an LDO voltage conversion circuit: the LDO hardware circuit converts the "6.5V" pin of the programmer pin header to the programming voltage required by the chip, such as 5V or 4.2V, and the programmer controls the power supply to the chip by switching the LDO supply on and off through the <code class="docutils literal notranslate"><span class="pre">3.3V</span> <span class="pre">header</span></code> pin. The connections between the programmer header pins and the chip programming pins are as follows:</p>
+</li>
+</ol>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Programmer pin header</strong></p></th>
+<th class="head"><p><strong>Chip pin</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>6.5V (the LDO conversion top board converts 6.5V to 5V, 4.2V, etc.)</p></td>
+<td><p>VBAT</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISP_DOUT (connected to USB_DAT)</p></td>
+<td><p>DM (some chips have no DM and use another pin)</p></td>
+</tr>
+<tr class="row-even"><td><p>ISP_CLK (connected to USB_CLK)</p></td>
+<td><p>DP (some chips have no DP and use another pin)</p></td>
+</tr>
+<tr class="row-odd"><td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+</tbody>
+</table></div>
+<ol class="arabic" start="2">
+<li><p>Wiring with the chip supply voltage output directly from the programmer's power pin</p>
+<p>As shown in <a class="reference internal" href="#img-pcba-conn-1tuo2"><span class="std std-ref">Wiring reference for a programming socket or device</span></a>, ignore the <code class="docutils literal notranslate"><span class="pre">LDO</span></code> part when wiring. The "6.5V" pin of the programmer pin header directly outputs the programming voltage required by the chip as configured in the PC tool, such as 5V or 4.2V. The connections between the programmer header pins and the chip programming pins are as follows:</p>
+</li>
+</ol>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Programmer pin header</strong></p></th>
+<th class="head"><p><strong>Chip pin</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>6.5V (the programmer directly outputs the programming voltage<br/>configured in the PC tool, such as 5V or 4.2V)</p></td>
+<td><p>VBAT</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISP_DOUT (connected to USB_DAT)</p></td>
+<td><p>DM (some chips have no DM and use another pin)</p></td>
+</tr>
+<tr class="row-even"><td><p>ISP_CLK (connected to USB_CLK)</p></td>
+<td><p>DP (some chips have no DP and use another pin)</p></td>
+</tr>
+<tr class="row-odd"><td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Programming sockets used to have an LDO conversion circuit because it was expected that some uncalibrated chips might reach customers and would then have to be calibrated by the programmer, or because programming the efuse storage medium of some chips requires specific voltages such as 6.5V or 3.3V;</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>The current programmer has a chip calibration check function: if a chip is not calibrated, programming reports an error! In addition, programming the efuse-related key, lvd, etc. no longer requires specific voltages;</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>The LDO circuit can be removed from the programming socket, and the socket can be built as a minimum chip system for programming! This makes the programming socket simpler, saves materials and allows it to be used as a universal programming socket;</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>Powering the chip through an LDO conversion circuit also has advantages: shorter traces, a relatively more stable power supply and possibly a higher programming pass rate;</p></li>
+</ul>
+</div></blockquote>
+</div>
+</section>
+<section id="id4">
+<h2><span class="section-number">1.10.3. </span>Power supply for chip programming<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>With firmware version V2.27.9 or later, the 1-to-2 programmer allows the programming socket supply voltage to be configured in the PC tool within "4.2V~6.8V". There are three main use cases:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Without</span> <span class="pre">an</span> <span class="pre">LDO</span> <span class="pre">circuit</span></code>: the "6.5V" pin of the programmer pin header directly outputs the voltage configured in the PC tool, such as 5V or 4.2V, to the chip's VBAT supply pin. <br/> <br/></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">With</span> <span class="pre">an</span> <span class="pre">LDO</span> <span class="pre">voltage</span> <span class="pre">conversion</span> <span class="pre">circuit</span></code>: a hardware circuit converts the 6.5V from the programmer pin header to the supply voltage required by the chip, such as 5V or 4.2V; the supply voltage must be set to "Default". <br/> <br/></p></li>
+<li><p>Low-voltage programming supply, for example when IOVDD and VBAT are tied together: VBAT can be connected directly to the 3.3V pin of the programmer pin header, or the 6.5V from the programmer pin header can be converted to the supply voltage required by the chip.</p></li>
+</ul>
+<p>The programming voltage configuration window is shown below:</p>
+<figure class="align-default" id="img-noldo-conn-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image71a.png"/>
+<figcaption>
+<p><span class="caption-text">Programming voltage configurable in the PC tool</span><a class="headerlink" href="#img-noldo-conn-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>If the supply is configured as "4.2V" by default and the socket has an LDO circuit, remember to set the supply voltage back to "default" when programming; otherwise, insufficient power may cause various programming problems! <br/> <br/></p></li>
+<li><p>Do not program device chips without an LDO circuit with the supply voltage set directly to "default"; otherwise, the excessive supply voltage may burn out the chip!</p></li>
+</ul>
+</div>
+</section>
+<section id="dm-dp">
+<h2><span class="section-number">1.10.4. </span>Programming wiring for device chips with DM and DP pins<a class="headerlink" href="#dm-dp" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>General programming wiring for chips with DM and DP pins</p></li>
+</ol>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Programmer pin header</strong></p></th>
+<th class="head"><p><strong>Chip pin</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>6.5V (the programmer directly outputs the programming voltage<br/>configured in the PC tool, such as 5V or 4.2V)</p></td>
+<td><p>VBAT</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISP_DOUT (connected to USB_DAT)</p></td>
+<td><p>DM (some chips have no DM and use another pin)</p></td>
+</tr>
+<tr class="row-even"><td><p>ISP_CLK (connected to USB_CLK)</p></td>
+<td><p>DP (some chips have no DP and use another pin)</p></td>
+</tr>
+<tr class="row-odd"><td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+</tbody>
+</table></div>
+<ol class="arabic simple" start="2">
+<li><p>Special programming wiring for chips with DM and DP pins</p></li>
+</ol>
+<ul class="simple">
+<li><p>Programming wiring for AD14N, AC104N, AD23N and AD24N device chips</p></li>
+</ul>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Programmer pin header</strong></p></th>
+<th class="head"><p><strong>Chip pin</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>6.5V (the programmer directly outputs the programming voltage<br/>configured in the PC tool, such as 5V or 4.2V)</p></td>
+<td><p>VBAT</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISP_DOUT (connected to USB_CLK)</p></td>
+<td><p>DM</p></td>
+</tr>
+<tr class="row-even"><td><p>ISP_CLK (connected to USB_DAT)</p></td>
+<td><p>DP</p></td>
+</tr>
+<tr class="row-odd"><td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+</tbody>
+</table></div>
+<ul class="simple">
+<li><p>Programming wiring for AC690X device chips</p></li>
+</ul>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Programmer pin header</strong></p></th>
+<th class="head"><p><strong>Chip pin</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>6.5V (the programmer directly outputs the programming voltage<br/>configured in the PC tool, such as 5V or 4.2V)</p></td>
+<td><p>VBAT</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISP_DOUT (connected to USB_DAT)</p></td>
+<td><p>DM</p></td>
+</tr>
+<tr class="row-even"><td><p>ISP_DIN (connected to USB_CLK)</p></td>
+<td><p>DP</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISP_CLK</p></td>
+<td><p>PA3</p></td>
+</tr>
+<tr class="row-even"><td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="id5">
+<h2><span class="section-number">1.10.5. </span>Programming wiring for device chips without DM and DP pins<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Programming wiring for AD15N device chips</p></li>
+</ul>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Programmer pin header</strong></p></th>
+<th class="head"><p><strong>Chip pin</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>6.5V (the programmer directly outputs the programming voltage<br/>configured in the PC tool, such as 5V or 4.2V)</p></td>
+<td><p>VBAT</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISP_DOUT (connected to USB_DAT)</p></td>
+<td><p>PB1</p></td>
+</tr>
+<tr class="row-even"><td><p>ISP_CLK (connected to USB_CLK)</p></td>
+<td><p>PB0</p></td>
+</tr>
+<tr class="row-odd"><td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+</tbody>
+</table></div>
+<ul class="simple">
+<li><p>Programming wiring for AD17N device chips</p></li>
+</ul>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Programmer pin header</strong></p></th>
+<th class="head"><p><strong>Chip pin</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>6.5V (the programmer directly outputs the programming voltage<br/>configured in the PC tool, such as 5V or 4.2V)</p></td>
+<td><p>VBAT</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISP_DOUT (connected to USB_DAT)</p></td>
+<td><p>PA9</p></td>
+</tr>
+<tr class="row-even"><td><p>ISP_CLK (connected to USB_CLK)</p></td>
+<td><p>PA8</p></td>
+</tr>
+<tr class="row-odd"><td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+</tbody>
+</table></div>
+<ul class="simple">
+<li><p>Programming wiring for AD21N and AC75N device chips</p></li>
+</ul>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Programmer pin header</strong></p></th>
+<th class="head"><p><strong>Chip pin</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>6.5V (the programmer directly outputs the programming voltage<br/>configured in the PC tool, such as 5V or 4.2V)</p></td>
+<td><p>VBAT</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISP_DOUT (connected to USB_DAT)</p></td>
+<td><p>PC3</p></td>
+</tr>
+<tr class="row-even"><td><p>ISP_CLK (connected to USB_CLK)</p></td>
+<td><p>PC2</p></td>
+</tr>
+<tr class="row-odd"><td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+</tbody>
+</table></div>
+<ul class="simple">
+<li><p>Programming wiring for AC704N, AC705N, AC680N, AC110N, AC111N and AC112N device chips</p></li>
+</ul>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Programmer pin header</strong></p></th>
+<th class="head"><p><strong>Chip pin</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>6.5V (the programmer directly outputs the programming voltage<br/>configured in the PC tool, such as 5V or 4.2V)</p></td>
+<td><p>VBAT</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISP_DOUT (connected to USB_DAT)</p></td>
+<td><p>VPWR</p></td>
+</tr>
+<tr class="row-even"><td><p>ISP_CLK (connected to USB_CLK)</p></td>
+<td><p>PA02</p></td>
+</tr>
+<tr class="row-odd"><td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+</tbody>
+</table></div>
+<ul class="simple">
+<li><p>Programming wiring for AC711N device chips</p></li>
+</ul>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Programmer pin header</strong></p></th>
+<th class="head"><p><strong>Chip pin</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>6.5V (the programmer directly outputs the programming voltage<br/>configured in the PC tool, such as 5V or 4.2V)</p></td>
+<td><p>VBAT</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISP_DOUT (connected to USB_DAT)</p></td>
+<td><p>PC0</p></td>
+</tr>
+<tr class="row-even"><td><p>ISP_CLK (connected to USB_CLK)</p></td>
+<td><p>PB1</p></td>
+</tr>
+<tr class="row-odd"><td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="id6">
+<h2><span class="section-number">1.10.6. </span>Wiring for calibrating device chips<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
+<p>With this wiring method, chips on devices, DEMO boards and development boards can be programmed and tested, and the chips can also be calibrated.</p>
+<p>A simple method is to take a top board for an SOP package (easy to solder wires to) and bring out VBAT (or LDOIN/VPWR), DM, DP, GND and the PB1 2.5V reference source from the socket,</p>
+<p>and connect them to the corresponding pins of the device chip, as shown in <a class="reference internal" href="#img-pcba-trim-1tuo2"><span class="std std-ref">Wiring for calibrating a device chip</span></a>. Then follow the normal programming procedure to calibrate the chip and program the firmware.</p>
+<figure class="align-default" id="img-pcba-trim-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image65.png"/>
+<figcaption>
+<p><span class="caption-text">Wiring for calibrating a device chip</span><a class="headerlink" href="#img-pcba-trim-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>On the top boards of some chips, the 2.5V reference source is not necessarily connected to PB1; it depends on the specific hardware design;</p></li>
+<li><p>On some chips, the calibration power supply is connected to VBAT rather than to the LDOIN/VPWR pin;</p></li>
+<li><p>Mass-production chips are calibrated at the factory; they are calibrated again during programming only if modules such as the ADC module or the VBAT charging module are not accurate enough;</p></li>
+</ol>
+</div>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="btname_addr.html" class="btn btn-neutral float-left" title="1.9. Bluetooth Address and Name Auto-Increment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="commom_funcs.html" class="btn btn-neutral float-right" title="1.11. Other Common Features: Configuration and Use" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/pcba_burn.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/pcba_burn.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

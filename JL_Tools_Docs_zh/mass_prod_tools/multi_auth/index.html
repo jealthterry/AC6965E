@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4. 多算法授权使用说明 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>4. 多算法授权使用说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">4.1. 多算法授权介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algo-user.html">4.2. 算法提供商需要做的事情</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prod-user.html">4.3. 生产商需要做的事情</a></li>
+<li class="toctree-l2"><a class="reference internal" href="website-readme.html">4.4. 杰理服务器使用方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authrun-tmpl-list.html">4.5. 支持的芯片型号和授权执行文件工程模板</a></li>
+<li class="toctree-l2"><a class="reference internal" href="add_authrun_to_fw.html">4.6. 如何生成只有包含授权执行文件的FW</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><span class="section-number">4. </span>多算法授权使用说明</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/mass_prod_tools/multi_auth/index.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">4. </span>多算法授权使用说明<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<p>前言</p>
+<p>本章介绍多算法授权的应用场景，以及具体的使用流程！</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro_basic.html">4.1. 多算法授权介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algo-user.html">4.2. 算法提供商需要做的事情</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="algo-user.html#id2">4.2.1. 申请账号</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algo-user.html#authroization-id">4.2.2. 获取 Authroization_ID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algo-user.html#id3">4.2.3. 确定授权数据的大小</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algo-user.html#id4">4.2.4. 生成烧录时授权执行文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algo-user.html#a">4.2.5. 算法库（.a 文件）添加授权数据验证</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algo-user.html#id5">4.2.6. 添加生产商为客户</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algo-user.html#id6">4.2.7. 上传烧录时授权执行文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algo-user.html#id7">4.2.8. 出售烧录时授权执行文件</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="prod-user.html">4.3. 生产商需要做的事情</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="prod-user.html#id2">4.3.1. 申请账号</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prod-user.html#authroization-id">4.3.2. 协商并分配 Authroization_ID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prod-user.html#id3">4.3.3. 集成调用算法公司提供的库文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prod-user.html#id4">4.3.4. 下载凭证文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prod-user.html#fw">4.3.5. 生成 FW 文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prod-user.html#id5">4.3.6. 部署 FW 文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prod-user.html#target-multi-auth-prod-user-revoke-counts">4.3.7. 回收未使用的授权次数</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="website-readme.html">4.4. 杰理服务器使用方式</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="website-readme.html#id2">4.4.1. 账户注册</a></li>
+<li class="toctree-l2"><a class="reference internal" href="website-readme.html#id3">4.4.2. 用户登录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="website-readme.html#id4">4.4.3. 用户首页</a></li>
+<li class="toctree-l2"><a class="reference internal" href="website-readme.html#id5">4.4.4. 更新用户密码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authrun-tmpl-list.html">4.5. 支持的芯片型号和授权执行文件工程模板</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authrun-tmpl-list.html#target-support-mul-auth-chip-type">4.5.1. 烧录器支持多算法授权功能的型号</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authrun-tmpl-list.html#id3">4.5.2. 授权执行文件工程模板下载</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authrun-tmpl-list.html#sdk">4.5.3. 支持多算法授权的sdk补丁</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authrun-tmpl-list.html#target-request-mul-auth-sdk-patch">4.5.4. 多算法授权补丁申请</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="authrun-tmpl-list.html#id5">4.5.4.1. 邮件申请格式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="authrun-tmpl-list.html#id6">4.5.4.2. 注意事项</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="authrun-tmpl-list.html#id7">4.5.5. 具体的使用方式</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="add_authrun_to_fw.html">4.6. 如何生成只有包含授权执行文件的FW</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="add_authrun_to_fw.html#authrunfw">4.6.1. 拷贝烧录时授权执行文件<code class="docutils literal notranslate"><span class="pre">.authrun</span></code>到FW生成目录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="add_authrun_to_fw.html#ini">4.6.2. 生成新的ini文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="add_authrun_to_fw.html#bat">4.6.3. 生成新的bat脚本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="add_authrun_to_fw.html#id1">4.6.4. 更新FW文件生成目录下工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="add_authrun_to_fw.html#id2">4.6.5. 生成FW文件</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="../testbox_1tuo2/tb_version_info.html" class="btn btn-neutral float-left" title="3.17. 版本信息" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="intro_basic.html" class="btn btn-neutral float-right" title="4.1. 多算法授权介绍" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/multi_auth/index.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/multi_auth/index.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

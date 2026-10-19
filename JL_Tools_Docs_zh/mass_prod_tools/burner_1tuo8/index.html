@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2. 杰理科技一拖八烧录器用户手册 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>2. 杰理科技一拖八烧录器用户手册</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">2.1. 烧录器简要介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html">2.2. 手动烧录、校验、查空芯片操作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html">2.3. 机台自动烧录操作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html">2.4. 远程升级烧录器固件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html">2.5. 各型号芯片PC端烧录配置项介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html">2.6. 状态指示和报错提示说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pc_err.html">2.7. PC界面报错提示说明和处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="change_board_interval.html">2.8. 换板时间设置及使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="burn_vol.html">2.9. 不同芯片烧录电压说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html">2.10. 授权烧录次数限制功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html">2.11. 第三方数据（认证码）烧录功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html">2.12. 蓝牙地址及名字自增功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_curr_test.html">2.13. 电流功耗测试功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_battery.html">2.14. 样机带电池烧录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freq_bias.html">2.15. 频偏校准功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mic_test.html">2.16. MIC 测试功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usual_uart_update.html">2.17. 样机带电池自定义IO单双线串口升级功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extern_flash_burn.html">2.18. 同时升级内置flash和外挂flash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="erase.html">2.19. 非全片擦除功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html">2.20. 其它常见功能配置和使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faqs.html">2.21. 常见错误处理</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><span class="section-number">2. </span>杰理科技一拖八烧录器用户手册</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/mass_prod_tools/burner_1tuo8/index.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">2. </span>杰理科技一拖八烧录器用户手册<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<p>前言</p>
+<p>诚挚的感谢您使用杰理科技一拖八烧录器！</p>
+<p>正式使用之前，敬请仔细阅读本手册，确保您的正确和安全使用。阅后请妥善保管本手册，以方便他人进一步查阅使用。</p>
+<p>您在使用过程中，如遇到任何解决不了的问题，请随时与本公司的工程师联系，我们将会及时向您提供最有效的服务。</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro_basic.html">2.1. 烧录器简要介绍</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html#id2">2.1.1. 功能描述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html#id3">2.1.2. 烧录器清单</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html#id4">2.1.3. 烧录器主机介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html#id6">2.1.4. 样机烧录接线说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html#id9">2.1.5. 烧录器使用流程说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html#id10">2.1.6. 名词解释</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basic_usage.html">2.2. 手动烧录、校验、查空芯片操作流程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html#id2">2.2.1. 烧录环境准备</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html#target-1tuo8-power-on">2.2.2. 烧录器上电开机</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html#target-1tuo8-fw-confirmation-and-update">2.2.3. 烧录器固件版本确认及更新</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html#target-deploy-fw-file-to-1tuo8">2.2.4. 更新目标芯片程序到烧录器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html#target-1tuo8-set-mode">2.2.5. 烧录器工作模式介绍与设置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html#id12">2.2.6. 样机芯片程序烧录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html#id16">2.2.7. 样机芯片程序校验</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html#id20">2.2.8. 样机芯片程序查空</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="autoburn.html">2.3. 机台自动烧录操作流程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html#id2">2.3.1. 自动烧录介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html#io">2.3.2. 自动烧录IO控制信号说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html#id3">2.3.3. 样机芯片自动烧录</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="remote_update.html">2.4. 远程升级烧录器固件</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html#id2">2.4.1. 升级说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html#trage-1tuo8-remote-update-flow">2.4.2. 正式版本固件升级</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html#id4">2.4.3. 特殊版本固件升级</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html#id5">2.4.4. 升级异常处理</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="config_opt.html">2.5. 各型号芯片PC端烧录配置项介绍</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html#id1">2.5.1. 打开并选择配置项</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html#id2">2.5.2. 各型号芯片常用配置项介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html#mac">2.5.3. MAC地址与认证码烧写操作说明</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="status_errors.html">2.6. 状态指示和报错提示说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html#led">2.6.1. LED指示灯说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html#lcd">2.6.2. LCD显示屏说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html#targe-1tuo8-ldc-show-err">2.6.3. LCD显示屏报错提示说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html#vbat">2.6.4. VBAT 电压报错显示说明</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pc_err.html">2.7. PC界面报错提示说明和处理</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pc_err.html#flashio">2.7.1. 外部FLASH烧录数据IO错误</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="change_board_interval.html">2.8. 换板时间设置及使用说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="change_board_interval.html#id2">2.8.1. 应用场景</a></li>
+<li class="toctree-l2"><a class="reference internal" href="change_board_interval.html#id3">2.8.2. 换板时间设置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="change_board_interval.html#id4">2.8.3. 使用说明</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="burn_vol.html">2.9. 不同芯片烧录电压说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="burn_vol.html#id2">2.9.1. 芯片烧录电压说明与设置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="burn_vol.html#vbatvddio">2.9.2. VBAT和VDDIO短接样机烧录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="burn_vol.html#id3">2.9.3. 各型号芯片烧录电压</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dongle.html">2.10. 授权烧录次数限制功能</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html#id2">2.10.1. 应用场景</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html#id3">2.10.2. 授权模式介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html#fw">2.10.3. 无限制模式授权fw文件制作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html#id4">2.10.4. 绑定机器码模式授权</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html#id7">2.10.5. 授权次数限制的fw文件烧录说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html#id8">2.10.6. 注意事项</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="auth_data.html">2.11. 第三方数据（认证码）烧录功能</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html#id2">2.11.1. 应用场景</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html#id3">2.11.2. 认证码数据准备</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html#id6">2.11.3. 认证码数据烧录流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html#id9">2.11.4. 导出认证码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html#id12">2.11.5. 注意事项</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="btname_addr.html">2.12. 蓝牙地址及名字自增功能</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html#id2">2.12.1. 应用场景</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html#id3">2.12.2. 蓝牙地址自增配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html#id4">2.12.3. 蓝牙地址烧录到目标芯片</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html#id7">2.12.4. 蓝牙名字自增实现说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html#id8">2.12.5. 查看下一个待烧录蓝牙地址</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html#target-1tuo8-btname-notice">2.12.6. 注意事项</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html#id10">2.12.7. 重烧保留芯片已有蓝牙地址</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pcba_curr_test.html">2.13. 电流功耗测试功能</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pcba_curr_test.html#id2">2.13.1. 测试目的和测试类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_curr_test.html#id3">2.13.2. 烧录兼功耗测试使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_curr_test.html#id4">2.13.3. 单独测电流功能</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pcba_battery.html">2.14. 样机带电池烧录</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pcba_battery.html#id2">2.14.1. 应用场景</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_battery.html#id3">2.14.2. 带电池烧录使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_battery.html#usb">2.14.3. usb样机带电池烧录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_battery.html#id4">2.14.4. 注意事项</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_battery.html#id5">2.14.5. 样机带电池升级操作调试指南</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="freq_bias.html">2.15. 频偏校准功能</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="freq_bias.html#id2">2.15.1. 应用场景</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freq_bias.html#id3">2.15.2. 校准说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freq_bias.html#id4">2.15.3. 校准操作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freq_bias.html#id5">2.15.4. 注意事项</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mic_test.html">2.16. MIC 测试功能</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mic_test.html#id1">2.16.1. 应用场景</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mic_test.html#id2">2.16.2. 测试说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mic_test.html#id3">2.16.3. 测试操作步骤</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mic_test.html#id4">2.16.4. 注意事项</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usual_uart_update.html">2.17. 样机带电池自定义IO单双线串口升级功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extern_flash_burn.html">2.18. 同时升级内置flash和外挂flash</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="extern_flash_burn.html#id1">2.18.1. 资源打包程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extern_flash_burn.html#id2">2.18.2. 编译参数添加</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="erase.html">2.19. 非全片擦除功能</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="erase.html#id2">2.19.1. 开启方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="erase.html#id3">2.19.2. 说明</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="commom_funcs.html">2.20. 其它常见功能配置和使用说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html#ac521x">2.20.1. AC521X视频类芯片烧录说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html#ac791n-ac531n">2.20.2. AC791N/AC531N芯片烧录说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html#ac792n">2.20.3. AC792N芯片烧录说明</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faqs.html">2.21. 常见错误处理</a></li>
+</ul>
+</div>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="../burner_1tuo2/faqs.html" class="btn btn-neutral float-left" title="1.12. 常见错误处理" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="intro_basic.html" class="btn btn-neutral float-right" title="2.1. 烧录器简要介绍" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo8/index.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo8/index.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

@@ -1,0 +1,968 @@
+{
+ "batch": "b02",
+ "pages": [
+  {
+   "page": "dev_tools/toolchains/faqs/index.html",
+   "page_title": "4.1. 常见问题以及处理方法",
+   "units": [
+    {
+     "id": "u32d576f9fa",
+     "role": "li",
+     "zh": "4.1.5. 如何合并⟦1⟧.a⟦/1⟧文件"
+    },
+    {
+     "id": "u89fd63c326",
+     "role": "li",
+     "zh": "4.1.5.1. 使用方式"
+    },
+    {
+     "id": "uecf5b4bf88",
+     "role": "li",
+     "zh": "4.1.6. 如何将缩减 ⟦1⟧.a⟦/1⟧ 文件里面 ⟦2⟧.o⟦/2⟧ 文件的个数"
+    },
+    {
+     "id": "u1b7bfb2fcc",
+     "role": "li",
+     "zh": "4.1.6.1. 使用方式"
+    },
+    {
+     "id": "ud64be9ab8f",
+     "role": "li",
+     "zh": "4.1.7. 如何查看程序的空间使用情况"
+    },
+    {
+     "id": "udd122ba5d6",
+     "role": "li",
+     "zh": "4.1.7.1. 查看总体情况（即每个段的大小）"
+    },
+    {
+     "id": "u4e07e6587c",
+     "role": "li",
+     "zh": "4.1.7.2. 查看使用细节，即每个函数、变量的大小"
+    },
+    {
+     "id": "ua7e3adb664",
+     "role": "li",
+     "zh": "4.1.8. 为什么链接时提示 stack size limit exceeded 警告"
+    },
+    {
+     "id": "ubafbeebd7f",
+     "role": "li",
+     "zh": "4.1.9. 常见的编译出错原因"
+    },
+    {
+     "id": "ucac373277d",
+     "role": "li",
+     "zh": "4.1.9.1. 提示 ⟦1⟧Unknown command line argument⟦/1⟧, ⟦2⟧unrecognized option⟦/2⟧ 或者 ⟦3⟧unknown argument⟦/3⟧"
+    },
+    {
+     "id": "uddd2fc0f98",
+     "role": "li",
+     "zh": "4.1.9.2. 提示 ⟦1⟧undefined reference to⟦/1⟧"
+    },
+    {
+     "id": "u3f0d7e4d2c",
+     "role": "li",
+     "zh": "4.1.9.3. 提示 ⟦1⟧relocation truncated to fit⟦/1⟧"
+    },
+    {
+     "id": "u86cc4f5b56",
+     "role": "li",
+     "zh": "4.1.9.4. 提示 ⟦1⟧xxx.a: error adding symbols: Archive has no index: run randlib to add one⟦/1⟧"
+    },
+    {
+     "id": "u132db518bb",
+     "role": "li",
+     "zh": "4.1.9.5. 提示 ⟦1⟧error: LLVM gold plugin: permission denied⟦/1⟧"
+    },
+    {
+     "id": "u40a6908583",
+     "role": "li",
+     "zh": "4.1.9.6. 提示 ⟦1⟧xxx.a: syntax error⟦/1⟧"
+    },
+    {
+     "id": "u19b3e83ec2",
+     "role": "li",
+     "zh": "4.1.9.7. 提示 ⟦1⟧xxx.a: error adding symbols: File format not recognized⟦/1⟧"
+    },
+    {
+     "id": "ueed87fd42f",
+     "role": "li",
+     "zh": "4.1.9.8. 提示 ⟦1⟧clang.exe: error: no input files⟦/1⟧"
+    },
+    {
+     "id": "u72118541f3",
+     "role": "li",
+     "zh": "4.1.9.9. 提示 ⟦1⟧cannot find xxxx.o: No such file or directory⟦/1⟧"
+    },
+    {
+     "id": "ue030d37ba4",
+     "role": "li",
+     "zh": "4.1.9.10. 链接脚本自定义的报错"
+    },
+    {
+     "id": "ub7fa953ebf",
+     "role": "li",
+     "zh": "4.1.10. 如何在Windows系统减少编译时间"
+    },
+    {
+     "id": "u8a70775bad",
+     "role": "li",
+     "zh": "4.1.10.1. 修改杀毒软件配置"
+    },
+    {
+     "id": "ud8771c3415",
+     "role": "li",
+     "zh": "4.1.10.2. 禁用⟦1⟧Microsoft PC Manager Service⟦/1⟧服务"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/toolchains/faqs/faq_printf_float_point.html",
+   "page_title": "4.1.1. 为什么printf无法输出浮点数",
+   "units": [
+    {
+     "id": "ue440fc7cf9",
+     "role": "p",
+     "zh": "为了缩减代码体积。目前大部分SDK中，并没有支持⟦1⟧%f⟦/1⟧格式化的输出。也就是并不会打印浮点数。为了处理这个问题，可有两个办法："
+    },
+    {
+     "id": "u7d68d6bedf",
+     "role": "p",
+     "zh": "打印浮点数的内存。例如，⟦1⟧float a; printf(\"%x\\n\", (uint32_t *)&a);⟦/1⟧"
+    },
+    {
+     "id": "uf1dd12d828",
+     "role": "p",
+     "zh": "或者使用⟦1⟧put_float⟦/1⟧函数单独打印浮点数。参考实现如下："
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/toolchains/faqs/faq_vsprintf.html",
+   "page_title": "4.1.2. 为什么找不到 vsprintf, sprintf, vprintf",
+   "units": [
+    {
+     "id": "u1c978cd99b",
+     "role": "p",
+     "zh": "这几个函数目前未放置到 libc.a 中，可以用下面的实现："
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/toolchains/faqs/faq_warn_implicit_fun.html",
+   "page_title": "4.1.3. 关于调用了未声明函数的警告",
+   "units": [
+    {
+     "id": "u5c68f3e54c",
+     "role": "p",
+     "zh": "当我们在代码中，调用了未声明的函数的时候，会出现 ⟦1⟧warning: implicit declaration of function⟦/1⟧ 的警告。这个警告的含义是，你调用了一个函数。但是未提前声明这个函数。"
+    },
+    {
+     "id": "uaa72bce3be",
+     "role": "p",
+     "zh": "这个在一些情况下，是会影响程序的行为。"
+    },
+    {
+     "id": "ud75cbc57ac",
+     "role": "p",
+     "zh": "按照 C 语言的标准规定，当一个函数未声明的时候，会假定这个函数的原型是下面的样子："
+    },
+    {
+     "id": "u993879089c",
+     "role": "code",
+     "zh": "/* 当 foo 未被声明的时候，会假定 foo 的原型如下 */"
+    },
+    {
+     "id": "u0ea37b58f5",
+     "role": "h2",
+     "zh": "如何转换为报错"
+    },
+    {
+     "id": "u58929250d9",
+     "role": "p",
+     "zh": "一般来说，我们都是需要先声明函数原型之后，再去调用。以避免一些未预料的错误。"
+    },
+    {
+     "id": "u34a15524d0",
+     "role": "p",
+     "zh": "为了让编译器将这个警告转换为错误，可以在编译参数中添加：⟦1⟧-Werror=implicit-function-declaration⟦/1⟧。"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/toolchains/faqs/faq_float_point.html",
+   "page_title": "4.1.4. 浮点数相关FAQ",
+   "units": [
+    {
+     "id": "u1a314f85ef",
+     "role": "h2",
+     "zh": "C代码中能否正常使用浮点数"
+    },
+    {
+     "id": "u47a70d0419",
+     "role": "p",
+     "zh": "C代码中总是可以使用浮点数运算的。数学库⟦1⟧libm⟦/1⟧也是支持的（⟦2⟧tan⟦/2⟧,⟦3⟧sin⟦/3⟧等函数所在的库）。区别在于："
+    },
+    {
+     "id": "u47f9c96f59",
+     "role": "p",
+     "zh": "有一些芯片没有⟦1⟧硬件浮点⟦/1⟧（也就是指，单条硬件指令实现的浮点运算），这种情况下，编译器会生成软件实现的浮点运算（即libcompiler_rt.a库中的⟦2⟧__adddf3⟦/2⟧之类的函数）。"
+    },
+    {
+     "id": "u1cf81c39e7",
+     "role": "p",
+     "zh": "有一些芯片支持⟦1⟧单精度硬件浮点⟦/1⟧（也就是指，对于单精度⟦2⟧float⟦/2⟧相关的运算，有单条指令硬件指令实现的浮点运算），这种情下，对于单精度运算，编译器会生成相关的指令。但是双精度浮点运算，仍然会使用软件实现的方式（例如，双精度浮点加法⟦3⟧__adddf3⟦/3⟧）。"
+    },
+    {
+     "id": "ubbadbf8e2e",
+     "role": "p",
+     "zh": "硬件浮点和软件浮点的差异主要在于运算速度和生成的代码大小。结果是一致的。软件实现的运算速度更慢、代码更大。"
+    },
+    {
+     "id": "ud3851c3a51",
+     "role": "h2",
+     "zh": "哪些芯片支持单精度硬件浮点"
+    },
+    {
+     "id": "u8a76a9c5d9",
+     "role": "p",
+     "zh": "目前只有部分 pi32v2 架构的芯片支持单精度硬件浮点。其中，r3,r4版本的指令集的芯片是支持的。也就是编译的时候，指定了⟦1⟧-mcpu=r3⟦/1⟧,⟦2⟧-mcpu=r4⟦/2⟧参数的芯片。"
+    },
+    {
+     "id": "u3d82644667",
+     "role": "h2",
+     "zh": "为什么我的代码没有生成单精度硬件浮点指令"
+    },
+    {
+     "id": "u1d2333a815",
+     "role": "p",
+     "zh": "这个一般有多种情况"
+    },
+    {
+     "id": "u3279ea098a",
+     "role": "p",
+     "zh": "当前编译选项未指定⟦1⟧-mcpu=r3⟦/1⟧参数。"
+    },
+    {
+     "id": "ud7964b47a6",
+     "role": "p",
+     "zh": "如果是库，需要检查库编译时候，是否添加了⟦1⟧-mcpu=r3⟦/1⟧参数。（⟦2⟧注意，库和SDK可能会被程序员错误地设置成了不同的-mcpu参数⟦/2⟧，参考：⟦3⟧在已经有了标准 SDK 工程的情况下，如何获得编译库的工程⟦/3⟧ 获取与SDK参数保持一致的库工程）"
+    },
+    {
+     "id": "u8504d8d008",
+     "role": "p",
+     "zh": "代码本身并没有使用单精度浮点指令。"
+    },
+    {
+     "id": "u3ad413a862",
+     "role": "p",
+     "zh": "注意，浮点常数默认是⟦1⟧double⟦/1⟧。在常数末尾加上f后，才是单精度。例如，⟦2⟧1.0⟦/2⟧是一个⟦3⟧double⟦/3⟧，⟦4⟧1.0f⟦/4⟧是一个⟦5⟧float⟦/5⟧。后者才是单精度浮点数"
+    },
+    {
+     "id": "u184690c4db",
+     "role": "p",
+     "zh": "当单精度和双精度混合运算的时候，会先把单精度提升为双精度再进行双精度运算。"
+    },
+    {
+     "id": "ub5a3de3db1",
+     "role": "h2",
+     "zh": "为什么我的代码中有双精度运算"
+    },
+    {
+     "id": "u0c8497e8d8",
+     "role": "p",
+     "zh": "一般情况下，我们会在仅支持硬件单精度浮点运算的芯片上，尽量避免使用双精度。但是有些情况下仍然会出现了双精度的运算，例如，发现调用了⟦1⟧__adddf3⟦/1⟧之类的双精度软件实现函数。这主要有下面几点原因："
+    },
+    {
+     "id": "u71579eb207",
+     "role": "p",
+     "zh": "浮点常数默认是⟦1⟧double⟦/1⟧。在常数末尾加上f后，才是单精度。例如，⟦2⟧1.0⟦/2⟧是一个⟦3⟧double⟦/3⟧，⟦4⟧1.0f⟦/4⟧是一个⟦5⟧float⟦/5⟧。后者才是单精度浮点数。"
+    },
+    {
+     "id": "ub93161eb2b",
+     "role": "p",
+     "zh": "当给带有可变长参数（即，⟦1⟧...⟦/1⟧）的函数传参时，会提升为双精度。例如，对⟦2⟧int⟦/2⟧ ⟦3⟧printf(const char *fmt, ...)⟦/3⟧;这样的函数，执行⟦4⟧float a = 1.0f; printf(\"%f\\n\", a);⟦/4⟧的时候，⟦5⟧a⟦/5⟧会被提升为⟦6⟧double⟦/6⟧后再传递。 注意，如果函数未声明，默认参数列表是可边长的，参考：⟦7⟧关于调用了未声明函数的警告⟦/7⟧"
+    },
+    {
+     "id": "u5b0ad35bd9",
+     "role": "h2",
+     "zh": "为什么出现了浮点异常"
+    },
+    {
+     "id": "u3970312512",
+     "role": "p",
+     "zh": "芯片的浮点异常是可以打开或者关闭的。默认情况下，编译器会假设芯片没有开启浮点异常。也就是说，当出现浮点运算有问题的时候，只会产生NaN。例如，除零的时候，结果是NaN，但是不发生异常。"
+    },
+    {
+     "id": "ub81eef708c",
+     "role": "p",
+     "zh": "但是有时候为了调试，可能会打开浮点异常。这个时候，除零之类的错误将会导致异常中断。为了配合这种情况，编译参数需要对应加上⟦1⟧-mllvm -floating-point-may-trap⟦/1⟧，链接参数需要对应加上⟦2⟧--plugin-opt=-floating-point-may-trap⟦/2⟧。这两个参数的作用是告诉编译器浮点数运算可能会导致异常，有一些优化不能做。"
+    },
+    {
+     "id": "u76b707a919",
+     "role": "h2",
+     "zh": "为什么浮点函数好像不正常"
+    },
+    {
+     "id": "u25d66d38d0",
+     "role": "p",
+     "zh": "确认是否出现调用了未声明的问题，参考 ⟦1⟧关于调用了未声明函数的警告⟦/1⟧"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/toolchains/faqs/faq_how_to_merge_libs.html",
+   "page_title": "4.1.5. 如何合并.a文件",
+   "units": [
+    {
+     "id": "ub1fc7e1539",
+     "role": "p",
+     "zh": "⟦1⟧.a⟦/1⟧即静态库文件。⟦2⟧.a⟦/2⟧文件是一种归档格式，里面是若干个⟦3⟧.o⟦/3⟧文件。"
+    },
+    {
+     "id": "u6f2064b790",
+     "role": "p",
+     "zh": "⟦1⟧.a⟦/1⟧文件通常用⟦2⟧ar⟦/2⟧程序生成。"
+    },
+    {
+     "id": "u48a6ed7ffb",
+     "role": "p",
+     "zh": "注意，⟦1⟧ar⟦/1⟧是一种简称，不同的芯片可能具体的程序名字有所不同，通常会带有一些前缀。 特定于杰理的工具链中的⟦2⟧ar⟦/2⟧，位于⟦3⟧C:\\JL\\pi32\\bin\\llvm-ar.exe⟦/3⟧。"
+    },
+    {
+     "id": "u602104826d",
+     "role": "p",
+     "zh": "使用⟦1⟧ar⟦/1⟧程序，可以生成或者解开.a文件。如果想要合并两个或者更多⟦2⟧.a⟦/2⟧文件，则一般是先每个⟦3⟧.a⟦/3⟧文件解开成⟦4⟧.o⟦/4⟧文件后，重新用⟦5⟧ar⟦/5⟧程序，打包成一个新的⟦6⟧.a⟦/6⟧。"
+    },
+    {
+     "id": "u8df43e60fa",
+     "role": "p",
+     "zh": "可以使用我们提供的⟦1⟧合并脚本（点击此处下载）⟦/1⟧。"
+    },
+    {
+     "id": "ucb295d772e",
+     "role": "h2",
+     "zh": "使用方式"
+    },
+    {
+     "id": "ud6300e97cc",
+     "role": "p",
+     "zh": "安装 ⟦1⟧python3（点击此处下载）⟦/1⟧ 环境，注意要将 python 添加到 PATH 中："
+    },
+    {
+     "id": "ubfc57d0f62",
+     "role": "p",
+     "zh": "解压下载的合并脚本，如下图所示："
+    },
+    {
+     "id": "u2746cffebf",
+     "role": "p",
+     "zh": "界面如下图所示，点击按钮选择文件即可："
+    },
+    {
+     "id": "u663234e112",
+     "role": "p",
+     "zh": "如果希望用命令行来合并，可以使用下面的命令："
+    },
+    {
+     "id": "u96bd11a405",
+     "role": "p",
+     "zh": "⟦1⟧python3 merge_archive.py input1.a input2.a input3.a --output new.a⟦/1⟧ 这个命令，将 ⟦2⟧input1.a⟦/2⟧, ⟦3⟧input2.a⟦/3⟧, ⟦4⟧input3.a⟦/4⟧ 合并生成 ⟦5⟧new.a⟦/5⟧"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/toolchains/faqs/faq_how_to_merge_ofiles.html",
+   "page_title": "4.1.6. 如何将缩减 .a 文件里面 .o 文件的个数",
+   "units": [
+    {
+     "id": "u4f093181cc",
+     "role": "p",
+     "zh": "⟦1⟧.a⟦/1⟧ 即静态库文件。⟦2⟧.a⟦/2⟧ 文件是一种归档格式，里面是若干个 ⟦3⟧.o⟦/3⟧ 文件。"
+    },
+    {
+     "id": "u19f34c21bf",
+     "role": "p",
+     "zh": "如果 ⟦1⟧.a⟦/1⟧ 里面的 ⟦2⟧.o⟦/2⟧ 文件较多，且这些 ⟦3⟧.o⟦/3⟧ 都是 LTO 模式编译得到的时候（即，编译时添加了 ⟦4⟧-flto⟦/4⟧ 参数），可能会在链接的过程中遇到 ⟦5⟧Too many open files⟦/5⟧ 的错误。"
+    },
+    {
+     "id": "udcc2c3b157",
+     "role": "p",
+     "zh": "这个时候，可以考虑将 ⟦1⟧.a⟦/1⟧ 文件里面的多个 ⟦2⟧.o⟦/2⟧ 文件合并。"
+    },
+    {
+     "id": "u820dcfbba6",
+     "role": "p",
+     "zh": "可以使用我们提供的⟦1⟧缩减脚本（点击此处下载）⟦/1⟧。"
+    },
+    {
+     "id": "uac9c783a50",
+     "role": "p",
+     "zh": "需要首先确保工具链版本是 2.4.8 或以上。工具链下载地址参考：⟦1⟧工具最新版本⟦/1⟧"
+    },
+    {
+     "id": "u68abb81006",
+     "role": "p",
+     "zh": "完成后，会提示生成文件的保存路径"
+    },
+    {
+     "id": "u819679434a",
+     "role": "p",
+     "zh": "⟦1⟧python3 merge_arhive_ofiles.py input1.a --output new.a⟦/1⟧ 这个命令，将 ⟦2⟧input1.a⟦/2⟧ 的 ⟦3⟧.o⟦/3⟧ 文件合并生成 ⟦4⟧new.a⟦/4⟧"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/toolchains/faqs/faq_program_used_memory/index.html",
+   "page_title": "4.1.7. 如何查看程序的空间使用情况",
+   "units": [
+    {
+     "id": "ud229aca501",
+     "role": "li",
+     "zh": "4.1.7.1.1. 如何解读build log输出"
+    },
+    {
+     "id": "u3436839937",
+     "role": "li",
+     "zh": "4.1.7.1.2. 和ld文件的对应方式"
+    },
+    {
+     "id": "u122b0d2546",
+     "role": "li",
+     "zh": "4.1.7.2.1. 生成symbol_tbl.txt的方式"
+    },
+    {
+     "id": "uf024cfe237",
+     "role": "li",
+     "zh": "4.1.7.2.2. 生成symbol_tbl.html的方式"
+    },
+    {
+     "id": "ua8d92dc037",
+     "role": "li",
+     "zh": "4.1.7.2.3. symbol_tbl.html的使用与说明"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/toolchains/faqs/faq_program_used_memory/faq_total_used.html",
+   "page_title": "4.1.7.1. 查看总体情况（即每个段的大小）",
+   "units": [
+    {
+     "id": "ud76f0094e1",
+     "role": "p",
+     "zh": "在编译链接后，会调用后处理脚本。这个脚本中，会利用 objdump -h 输出链接生成的ELF文件的段的信息。例如："
+    },
+    {
+     "id": "u0ab677192b",
+     "role": "caption",
+     "zh": "图1"
+    },
+    {
+     "id": "u1f8ec21a26",
+     "role": "p",
+     "zh": "其中，⟦1⟧图1⟦/1⟧中的命令：C:\\JL\\pi32\\bin\\llvm-objdump.exe -section-headers sdk.elf 就是生成的命令。"
+    },
+    {
+     "id": "ubbd6914a5f",
+     "role": "h2",
+     "zh": "如何解读build log输出"
+    },
+    {
+     "id": "u36c5c6f647",
+     "role": "p",
+     "zh": "框中的含义如下："
+    },
+    {
+     "id": "u62c86ab328",
+     "role": "p",
+     "zh": "注意，《段名》指的是SDK在ld脚本中定义的的一些输出段。⟦1/⟧ 这些段一般对应芯片上的区域。⟦2/⟧ 通常来说，⟦3⟧.text⟦/3⟧段一般代表程序所在的区域，⟦4⟧.data⟦/4⟧对应于全局变量所在的区域。"
+    },
+    {
+     "id": "uc35de25169",
+     "role": "p",
+     "zh": "最后一列 ⟦1⟧Type⟦/1⟧ 列表示的是，对应行的段，包含了哪种类型的数据。其中："
+    },
+    {
+     "id": "u4a20c33d2e",
+     "role": "cell",
+     "zh": "含义"
+    },
+    {
+     "id": "u5887a6aa4a",
+     "role": "cell",
+     "zh": "代码"
+    },
+    {
+     "id": "ucd91b91e32",
+     "role": "cell",
+     "zh": "数据（初始值不全为 0 ）"
+    },
+    {
+     "id": "u01f561af5d",
+     "role": "cell",
+     "zh": "数据（初始值全为 0 或者 未指定初始值）"
+    },
+    {
+     "id": "uc0a00a7a44",
+     "role": "p",
+     "zh": "如果某个段既有 ⟦1⟧TEXT⟦/1⟧ 又有 ⟦2⟧DATA⟦/2⟧，则表示这个段中，即放了代码也放了数据。"
+    },
+    {
+     "id": "u1dc8592b63",
+     "role": "p",
+     "zh": "如果⟦1⟧Type⟦/1⟧列没有对应的内容，则一般对应的段是一些附加信息的段，里面的内容是工具使用的，并不会实际放到设备中运行。 例如，上图中的 ⟦2⟧.debug_⟦/2⟧ 开头的段，这些都是一些调试信息，例如每个函数所在的文件位置之类的。"
+    },
+    {
+     "id": "ua0d0f0913d",
+     "role": "h2",
+     "zh": "和ld文件的对应方式"
+    },
+    {
+     "id": "u04b10f4226",
+     "role": "p",
+     "zh": "SDK中可以自行定义段，具体是在ld文件中定义。可以通过下面的方式找到该文件："
+    },
+    {
+     "id": "ua0839f12cc",
+     "role": "p",
+     "zh": "我们需要确认链接时候使用的 ld 文件是哪一个："
+    },
+    {
+     "id": "u7aae07c79a",
+     "role": "p",
+     "zh": "确认链接时使用的ld文件位置"
+    },
+    {
+     "id": "u891e5bcbf3",
+     "role": "p",
+     "zh": "在链接参数中，找到类似于 -Txxx.ld 的参数，则 xxx.ld 就是使用的 ld 文件。"
+    },
+    {
+     "id": "u95399ca7c3",
+     "role": "p",
+     "zh": "我们需要确认生成ld文件的原始文件："
+    },
+    {
+     "id": "u41a3511328",
+     "role": "p",
+     "zh": "确认sdk_ld.c文件的位置"
+    },
+    {
+     "id": "uede836341f",
+     "role": "p",
+     "zh": "为了可以利用SDK中定义的一些宏，来确定ld文件里面的一些参数。⟦1/⟧ 较新的SDK都会用一个sdk_ld.c的文件，先经过预处理，展开宏之后，生成最终用于链接的ld文件。⟦2/⟧ 我们需要确认一下是否有这样的步骤："
+    },
+    {
+     "id": "uf0198e438b",
+     "role": "p",
+     "zh": "在⟦1⟧pre/post build steps⟦/1⟧中，找到⟦2⟧pre-build steps⟦/2⟧。并找到类似⟦3⟧-o xxx.ld⟦/3⟧的地方，前面的输入即使⟦4⟧sdk_ld.c⟦/4⟧文件。这里是⟦5⟧cpu\\br30_develop\\sdk_ld.c⟦/5⟧ 文件。⟦6/⟧ 打开对应的⟦7⟧sdk_ld.c⟦/7⟧文件"
+    },
+    {
+     "id": "u32d17b5c8d",
+     "role": "p",
+     "zh": "如何解读sdk_ld.c文件"
+    },
+    {
+     "id": "u483b1edcb8",
+     "role": "p",
+     "zh": "找到并打开sdk_ld.c文件，会得到类似如下的内容："
+    },
+    {
+     "id": "u282d8c88f0",
+     "role": "p",
+     "zh": "以下是ld文件描述的输出，和实际ELF文件中段的对应关系："
+    },
+    {
+     "id": "u5e5339ded0",
+     "role": "p",
+     "zh": "如果不能在右图对应的 ld 脚本中找到左侧的段名，一般有下面几种原因："
+    },
+    {
+     "id": "uc63e281dc1",
+     "role": "p",
+     "zh": "可能是 ld 脚本又包含了其它的 ld 脚本（通过 ⟦1⟧#include⟦/1⟧ 或者 ⟦2⟧INCLUDE⟦/2⟧）"
+    },
+    {
+     "id": "ub72e162870",
+     "role": "p",
+     "zh": "确实没有在 ld 脚本里面指定对应的段。这种情况下，链接器会保留原始输入的 .o 或者 .a 文件中的段名。 例如，我们在 .c 文件里面加了一个函数 ⟦1⟧foo⟦/1⟧，并用 ⟦2⟧__attribute__((section(\".foo\")))⟦/2⟧ 定义该函数放置到 ⟦3⟧.foo⟦/3⟧ 段。 而我们又没有在 ld 脚本里面指定 ⟦4⟧.foo⟦/4⟧ 需要输出到哪个输出段。 则链接器最后会生成一个叫做 ⟦5⟧.foo⟦/5⟧ 的段，其中的内容就包含了 foo 这个函数。"
+    },
+    {
+     "id": "ub2cefcaffb",
+     "role": "p",
+     "zh": "如果希望知道对应段来自哪里，建议对工程的所有文件（包括源码以及.a文件等），进行字符串搜索，搜索对应的段名"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/toolchains/faqs/faq_program_used_memory/faq_func_and_var_sizes.html",
+   "page_title": "4.1.7.2. 查看使用细节，即每个函数、变量的大小",
+   "units": [
+    {
+     "id": "ud85e818afd",
+     "role": "h2",
+     "zh": "生成symbol_tbl.txt的方式"
+    },
+    {
+     "id": "u5b368632af",
+     "role": "p",
+     "zh": "目前SDK中，生成的⟦1⟧symbol_tbl.txt⟦/1⟧不是使用⟦2⟧llvm-objsizedump.exe⟦/2⟧生成，不合符要求，需要用下面的脚本"
+    },
+    {
+     "id": "udd4807c7de",
+     "role": "p",
+     "zh": "获取report_size_usage.bat脚本"
+    },
+    {
+     "id": "u5118990a78",
+     "role": "p",
+     "zh": "将下面的脚本，放到⟦1⟧sdk.elf⟦/1⟧所在的目录，并双击打开："
+    },
+    {
+     "id": "u196a7f1522",
+     "role": "p",
+     "zh": "下载⟦1⟧汇总符号大小工具（点击此处下载）⟦/1⟧"
+    },
+    {
+     "id": "uf61770f8f3",
+     "role": "p",
+     "zh": "注意脚本的文本内容如下：⟦1/⟧ @rem 放到下载目录中⟦2/⟧ @rem 会把 sdk.elf 中使用的空间大小，⟦3/⟧ @rem 按地址排序，输出到 symbol_tbl.txt 中⟦4/⟧ set OBJSIZEDUMP=C:\\JL\\pi32\\bin\\llvm-objsizedump.exe⟦5/⟧ set ELF=sdk.elf⟦6/⟧ set OUTPUT=symbol_tbl.txt⟦7/⟧"
+    },
+    {
+     "id": "uab2a21c190",
+     "role": "p",
+     "zh": "双击运行脚本"
+    },
+    {
+     "id": "uf53b9f63bf",
+     "role": "p",
+     "zh": "将脚本放到⟦1⟧sdk.elf⟦/1⟧所在的目录（一般就是下载目录），并双击打开："
+    },
+    {
+     "id": "ua2ee2a74a8",
+     "role": "p",
+     "zh": "symbol_tbl.txt文件的格式"
+    },
+    {
+     "id": "u6069a90462",
+     "role": "p",
+     "zh": "这个⟦1⟧symbol_tbl.txt⟦/1⟧里面的格式如下："
+    },
+    {
+     "id": "ufc7df00b1f",
+     "role": "h2",
+     "zh": "生成symbol_tbl.html的方式"
+    },
+    {
+     "id": "u111a97e31f",
+     "role": "p",
+     "zh": "如果希望可以更方便查看，可以利用下面脚本来生成HTML格式的文件，然后用浏览器来查看："
+    },
+    {
+     "id": "uf01748c84f",
+     "role": "p",
+     "zh": "安装python3"
+    },
+    {
+     "id": "u1c30f09b51",
+     "role": "p",
+     "zh": "下载并安装⟦1⟧python3（点击此处下载）⟦/1⟧，注意安装的时候，需要勾选选项，把⟦2⟧python⟦/2⟧添加在⟦3⟧PATH⟦/3⟧中："
+    },
+    {
+     "id": "u83b6967fe6",
+     "role": "p",
+     "zh": "获取并运行⟦1⟧report_elf_sizes.py⟦/1⟧与⟦2⟧report_elf_sizes.bat⟦/2⟧脚本"
+    },
+    {
+     "id": "u66967db1bf",
+     "role": "p",
+     "zh": "下载⟦1⟧汇总符号大小工具（点击此处下载）⟦/1⟧，解压得到⟦2⟧report_elf_sizes.py⟦/2⟧和⟦3⟧report_elf_sizes.bat⟦/3⟧，并放到⟦4⟧sdk.elf⟦/4⟧所在的目录(一般就是下载目录）："
+    },
+    {
+     "id": "u4d485f5739",
+     "role": "p",
+     "zh": "旧工具链的特别说明"
+    },
+    {
+     "id": "ue667501d90",
+     "role": "p",
+     "zh": "（如果是较旧的工具链，即版本低于2.4.7，因为未附带解析c++函数名的程序，所以会有下面的报错。但是只是会导致c++的名字显示不够好看，不影响其他功能）"
+    },
+    {
+     "id": "ueb12b18a7d",
+     "role": "h2",
+     "zh": "symbol_tbl.html的使用与说明"
+    },
+    {
+     "id": "u1dfbdf6d07",
+     "role": "p",
+     "zh": "最后，生成一个⟦1⟧symbol_tbl.html⟦/1⟧的文件在目录下，可以用浏览器双击打开："
+    },
+    {
+     "id": "ua4f390bca0",
+     "role": "p",
+     "zh": "打开后，界面类似下面："
+    },
+    {
+     "id": "ucb69dffc02",
+     "role": "p",
+     "zh": "可以自行选择过滤条件以及排列方式。"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/toolchains/faqs/faq_stack_size_limit_exceeded.html",
+   "page_title": "4.1.8. 为什么链接时提示 stack size limit exceeded 警告",
+   "units": [
+    {
+     "id": "u975b131fba",
+     "role": "p",
+     "zh": "一些 SDK 在最后链接阶段，可能会报类似下面的警告："
+    },
+    {
+     "id": "u0b877159e2",
+     "role": "p",
+     "zh": "这个警告的意思是，这些函数的栈空间使用超过了某一个阈值。其中，括号里面的是该函数使用的栈空间大小，最后是这个函数的名字。"
+    },
+    {
+     "id": "ua8108441a2",
+     "role": "p",
+     "zh": "例如，下面一行："
+    },
+    {
+     "id": "u9345a06cca",
+     "role": "p",
+     "zh": "的意思是，⟦1⟧__os_taskq_del⟦/1⟧ 这个函数使用的栈空间大小是⟦2⟧288⟦/2⟧字节，超过了我们设置的阈值。"
+    },
+    {
+     "id": "u3ec3b7e67c",
+     "role": "p",
+     "zh": "这个警告，只是用于提示程序员，哪些函数用了较大的栈，并不代表实际运行的时候，会出现错误。"
+    },
+    {
+     "id": "u2f04574310",
+     "role": "p",
+     "zh": "设置检查阈值的方式："
+    },
+    {
+     "id": "u33874e12f8",
+     "role": "code",
+     "zh": "# 编译参数设置：(以阈值 256 为例)"
+    },
+    {
+     "id": "uaf9b0a7fa0",
+     "role": "code",
+     "zh": "# 链接参数设置：(以阈值 256 为例)"
+    },
+    {
+     "id": "ua95e56a925",
+     "role": "p",
+     "zh": "Code::Blocks 工程的设置方法参考："
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/toolchains/faqs/faq_why_build_failed.html",
+   "page_title": "4.1.9. 常见的编译出错原因",
+   "units": [
+    {
+     "id": "ub2cddc5584",
+     "role": "h2",
+     "zh": "提示 ⟦1⟧Unknown command line argument⟦/1⟧, ⟦2⟧unrecognized option⟦/2⟧ 或者 ⟦3⟧unknown argument⟦/3⟧"
+    },
+    {
+     "id": "udd22fb8521",
+     "role": "p",
+     "zh": "在链接或者编译的时候，提示⟦1⟧Unknown command line argument⟦/1⟧, ⟦2⟧unrecognized option⟦/2⟧ 或者 ⟦3⟧unknown argument⟦/3⟧，意思是传递给编译器或者链接器的命令行参数，编译器或者链接器并不认识。这一般有两种可能："
+    },
+    {
+     "id": "udeb5005bc4",
+     "role": "p",
+     "zh": "你修改了编译参数或者链接参数，但是打错了字，写错了参数"
+    },
+    {
+     "id": "u2dec41cdd8",
+     "role": "p",
+     "zh": "你的工具链太旧了，还不支持该参数"
+    },
+    {
+     "id": "u564ea317f0",
+     "role": "p",
+     "zh": "处理方式："
+    },
+    {
+     "id": "uf8cb9d69db",
+     "role": "p",
+     "zh": "更新工具链到最新版本，参考：⟦1⟧更新杰理工具链⟦/1⟧"
+    },
+    {
+     "id": "ucd88ff5ebd",
+     "role": "p",
+     "zh": "重新编译链接"
+    },
+    {
+     "id": "ued1e6f0e91",
+     "role": "h2",
+     "zh": "提示 ⟦1⟧undefined reference to⟦/1⟧"
+    },
+    {
+     "id": "ufcab22326c",
+     "role": "p",
+     "zh": "在链接的时候，提示 ⟦1⟧undefined reference to⟦/1⟧，类似下图："
+    },
+    {
+     "id": "ub0b735f281",
+     "role": "p",
+     "zh": "这个错误的含义是，未能找到引用的函数。例如，上图中⟦1⟧undefined reference to 'wav_decode'⟦/1⟧ 的含义是，我们在代码中，引用了（即调用，或者取地址之类）了函数⟦2⟧wav_decode⟦/2⟧，但是并没有提供这个函数的实现。"
+    },
+    {
+     "id": "u042e4c483b",
+     "role": "p",
+     "zh": "这通常有两个原因："
+    },
+    {
+     "id": "ua0ff18e3f4",
+     "role": "p",
+     "zh": "我们确实没有提供这个函数的实现。检查是否输入错了函数名、或者是库函数未更新，缺失了对应的函数。"
+    },
+    {
+     "id": "u7f9890de50",
+     "role": "p",
+     "zh": "可能是链接器查找库文件的顺序导致了未能找到，可以考虑使用⟦1⟧--start-group⟦/1⟧, ⟦2⟧--end-group⟦/2⟧ 来指定库文件的搜索方式。"
+    },
+    {
+     "id": "ud77dcd5d7b",
+     "role": "h2",
+     "zh": "提示 ⟦1⟧relocation truncated to fit⟦/1⟧"
+    },
+    {
+     "id": "uf404377cd3",
+     "role": "p",
+     "zh": "在链接的时候，提示 ⟦1⟧reloaction truncated to fit⟦/1⟧，类似下图："
+    },
+    {
+     "id": "u832121c239",
+     "role": "p",
+     "zh": "这个错误的意思是，对应符号距离引用这个符号的位置，距离太远了，无法表示出来。这通常有下面几种原因："
+    },
+    {
+     "id": "u081f10c222",
+     "role": "p",
+     "zh": "使用的库函数用的是较短的⟦1⟧call⟦/1⟧指令（即，未添加 ⟦2⟧-mllvm -pi32v2-large-program=true⟦/2⟧ 进行编译的）。 注意要更换为 ⟦3⟧large⟦/3⟧ 配置的编译器选项、链接器选项以及对应的标准库。"
+    },
+    {
+     "id": "u752ba453af",
+     "role": "p",
+     "zh": "如果对应的符号是函数，可能是这个函数没有指定为对齐到两个字节。注意，每个函数的开头都需要对齐到两个字节。 这个需要在函数标号（如果是汇编文件）前加上⟦1⟧.align 2⟦/1⟧。或者检查 ld 脚本是否有正确放置。"
+    },
+    {
+     "id": "ubb7ae4e60c",
+     "role": "p",
+     "zh": "可能是对应的符号未定义。"
+    },
+    {
+     "id": "u02726a8777",
+     "role": "h2",
+     "zh": "提示 ⟦1⟧xxx.a: error adding symbols: Archive has no index: run randlib to add one⟦/1⟧"
+    },
+    {
+     "id": "u2287ed0ece",
+     "role": "p",
+     "zh": "在链接的时候，提示 ⟦1⟧Archive has no index⟦/1⟧，类似下图："
+    },
+    {
+     "id": "u3b18d1b8a8",
+     "role": "p",
+     "zh": "这个错误的含义是，当前这个⟦1⟧xxx.a⟦/1⟧文件中，没有符号的索引。这个可能是因为生成⟦2⟧.a⟦/2⟧的时候删除了符号索引，或者是其它一些原因。可以自行使用下面的命令添加："
+    },
+    {
+     "id": "u10c9725063",
+     "role": "code",
+     "zh": "# 如果是在 Windows 系统下\n# 打开一个 CMD 窗口，输入下面的命令，给 xxx.a 增加符号索引\n\nC:\\JL\\pi32\\bin\\llvm-ar.exe s xxx.a\n\n# 如果在 linux 系统下，则调用 llvm-ar （也可以是 ar）\n# 其中， TOOL_DIR 是 linux 下工具链所在的位置\n\n$TOOL_DIR/common/bin/llvm-ar s xxx.a\n"
+    },
+    {
+     "id": "ubeb383084f",
+     "role": "h2",
+     "zh": "提示 ⟦1⟧error: LLVM gold plugin: permission denied⟦/1⟧"
+    },
+    {
+     "id": "u9c6dc9b3e0",
+     "role": "p",
+     "zh": "在链接的时候，提示如下图的报错："
+    },
+    {
+     "id": "uab9662ae50",
+     "role": "p",
+     "zh": "这个错误的原因是，链接器在调用工具链目录中的 LLVMgold.dll 时候失败了。这个通常有下面几种可能："
+    },
+    {
+     "id": "udb4d5a4729",
+     "role": "p",
+     "zh": "工具链中的文件被破坏。尝试重装工具链后重试，工具链安装参考：⟦1⟧开发环境安装说明⟦/1⟧"
+    },
+    {
+     "id": "uc860e1a9b3",
+     "role": "p",
+     "zh": "杀毒软件或者其它权限控制的软件，限制了链接器调用 LLVMgold.dll。尝试信任⟦1⟧C:\\JL⟦/1⟧目录下的所有可执行程序（递归所有目录）。"
+    },
+    {
+     "id": "ud8958fea60",
+     "role": "p",
+     "zh": "其它可能原因，尝试更换电脑后是否能解决。"
+    },
+    {
+     "id": "u6362c12876",
+     "role": "h2",
+     "zh": "提示 ⟦1⟧xxx.a: syntax error⟦/1⟧"
+    },
+    {
+     "id": "u67c8b252b1",
+     "role": "p",
+     "zh": "这个错误的意思是，链接器将 .a 文件当做了链接脚本来处理。而 .a 文件的内容，并不是一个链接脚本。所以就报了语法错误。"
+    },
+    {
+     "id": "uc319c96069",
+     "role": "p",
+     "zh": "这可能有下面几种原因："
+    },
+    {
+     "id": "u09ed2aac09",
+     "role": "p",
+     "zh": "错误地指定了链接参数，例如，在 .a 文件开头加了 -T 参数。-T 参数用于指定链接脚本。"
+    },
+    {
+     "id": "ud2010ddd5f",
+     "role": "p",
+     "zh": ".a 文件本身可能被损坏了，并不符合 .a 文件的格式。"
+    },
+    {
+     "id": "u46cdad6710",
+     "role": "p",
+     "zh": "一些时候，.a 文件可能里面并没有加入 .o 文件。这个情况下，.a 文件的内容是 ⟦1⟧!<arch>\\n⟦/1⟧。在 Windows 下，如果 git 设置了 ⟦2⟧auto.crlf⟦/2⟧ 选项 为 ⟦3⟧true⟦/3⟧，则在 clone 仓库的时候，对应的 .a 文件可能会被 git 当做文本文件，并将其中的 ⟦4⟧\\n⟦/4⟧ 替换为 ⟦5⟧\\r\\n⟦/5⟧。导致最终链接失败。"
+    },
+    {
+     "id": "u3afd3c2d73",
+     "role": "h2",
+     "zh": "提示 ⟦1⟧xxx.a: error adding symbols: File format not recognized⟦/1⟧"
+    },
+    {
+     "id": "uf5c97baf57",
+     "role": "p",
+     "zh": "这个通常是下面几种原因："
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/toolchains/faqs/faq_why_build_failed.html",
+   "page_title": "4.1.9. 常见的编译出错原因",
+   "units": [
+    {
+     "id": "u0d27f5cd2f",
+     "role": "p",
+     "zh": "在 Linux 下编译或者 WSL 里面编译的时候，未先执行 ⟦1⟧ulimit -n 8096⟦/1⟧ 扩大可打开的文件数，导致链接器大概文件达到上限而失败。 如果是在 Windows 下遇到这个问题，可以考虑参考 ⟦2⟧如何将缩减 .a 文件里面 .o 文件的个数⟦/2⟧，将 .a 文件里面多个 .o 文件合并成一个 .o 文件。 （这个问题通常与 -flto 模式且 .a 文件内包含大量 .o 文件有关，可以考虑对该 .a 在编译时的参数，移除 -flto；或者参考上面步骤合并 .o 文件）"
+    }
+   ]
+  }
+ ]
+}

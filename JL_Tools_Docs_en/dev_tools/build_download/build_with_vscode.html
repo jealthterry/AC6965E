@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.3. Building with VSCode — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>2. Building and Downloading the SDK</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="build_with_codeblocks.html">2.1. Building with Code::Blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_with_makefile.html">2.2. Building with make</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>2.3. Building with VSCode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1"><button class="toctree-expand" title="Open/close menu" type="button"></button>2.3.1. VSCode setup steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#task-explorerc-c">2.3.1.1. Install the required extensions Task Explorer and C/C++</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vscode-sdk">2.3.1.2. Open the SDK directory in VSCode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task">2.3.1.3. Select the corresponding task to build</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.3.2. Troubleshooting VSCode build errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2.3.3. Notes on building with VSCode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">2.3.4. Common issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">2. </span>Building and Downloading the SDK</a> »</li>
+<li><span class="section-number">2.3. </span>Building with VSCode</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/dev_tools/build_download/build_with_vscode.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="vscode">
+<h1><span class="section-number">2.3. </span>Building with VSCode<a class="headerlink" href="#vscode" title="Permalink to this heading"></a></h1>
+<p>Newer SDKs support development and building with VSCode by default (on both Windows and Linux).</p>
+<p>Building in VSCode works by calling the <code class="docutils literal notranslate"><span class="pre">make</span></code> command. On Linux, first configure the environment by following the steps in <a class="reference internal" href="build_with_makefile.html"><span class="doc std std-doc">Building with make</span></a>.</p>
+<section id="id1">
+<h2><span class="section-number">2.3.1. </span>VSCode setup steps<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>The AC695N SDK is used as an example below:</p>
+<section id="task-explorerc-c">
+<h3><span class="section-number">2.3.1.1. </span>Install the required extensions <code class="docutils literal notranslate"><span class="pre">Task</span> <span class="pre">Explorer</span></code> and <code class="docutils literal notranslate"><span class="pre">C/C++</span></code><a class="headerlink" href="#task-explorerc-c" title="Permalink to this heading"></a></h3>
+<p>As shown below:</p>
+<p><img alt="" data-action="zoom" src="../../_images/vscode_install_task_explorer.jpg"/></p>
+<p><img alt="" data-action="zoom" src="../../_images/vscode_install_c_cpp_ext.jpg"/></p>
+</section>
+<section id="vscode-sdk">
+<h3><span class="section-number">2.3.1.2. </span>Open the SDK directory in VSCode<a class="headerlink" href="#vscode-sdk" title="Permalink to this heading"></a></h3>
+<p>As shown below:</p>
+<p><img alt="" data-action="zoom" src="../../_images/open_vscode.jpg"/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you cannot find [Open with Code] (通过 Code 打开) in the right-click menu, there are several possible reasons:</p>
+<ul class="simple">
+<li><p>VSCode is not installed</p></li>
+<li><p>The option to show it in the right-click menu was not checked when VSCode was installed</p></li>
+</ul>
+<p>You can open VSCode directly, choose Open Folder from the VSCode menu bar and select the SDK directory, as shown below:</p>
+<p><img alt="" data-action="zoom" src="../../_images/build_with_vscode_open_folder.jpg"/></p>
+</div>
+<p><img alt="" data-action="zoom" src="../../_images/vscode_check_config.jpg"/></p>
+</section>
+<section id="task">
+<h3><span class="section-number">2.3.1.3. </span>Select the corresponding task to build<a class="headerlink" href="#task" title="Permalink to this heading"></a></h3>
+<p>As shown below:</p>
+<p><img alt="" data-action="zoom" src="../../_images/vscode_build.jpg"/></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">.vscode</span></code> directory in the SDK directory contains the <code class="docutils literal notranslate"><span class="pre">tasks.json</span></code> and <code class="docutils literal notranslate"><span class="pre">c_cpp_properties.json</span></code> files. These two files are the configuration that VSCode needs. For more, refer to the settings in these files.</p>
+<p><img alt="" data-action="zoom" src="../../_images/vscode_config_file.jpg"/></p>
+</section>
+</section>
+<section id="id2">
+<h2><span class="section-number">2.3.2. </span>Troubleshooting VSCode build errors<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>VSCode builds by calling the Makefile, so first check that the Makefile works properly. See <a class="reference internal" href="build_with_makefile.html"><span class="doc std std-doc">Building with make</span></a> and <a class="reference internal" href="build_with_makefile.html#target-find-why-makefile-failed-steps"><span class="std std-ref">Steps to troubleshoot Makefile build errors</span></a></p></li>
+<li><p>Check that the extensions mentioned above are installed correctly.</p></li>
+</ol>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Note that the build tasks must be run through the extension. This is because the build process uses some additional tools, such as <code class="docutils literal notranslate"><span class="pre">mkdir_win</span></code>, <code class="docutils literal notranslate"><span class="pre">make</span></code>, etc.</p>
+<p>These tools are generally released with the SDK (usually in the <code class="docutils literal notranslate"><span class="pre">tools</span></code> directory). Before building, the directory containing these tools must be added to the <code class="docutils literal notranslate"><span class="pre">%PATH%</span></code> environment variable.</p>
+<p>This is done by the <code class="docutils literal notranslate"><span class="pre">.vscode/winmk.bat</span></code> script.</p>
+<p>If you want to build in VSCode's built-in terminal, build by calling <code class="docutils literal notranslate"><span class="pre">.vscode/winmk.bat</span></code> the same way the build tasks call it.</p>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">2.3.3. </span>Notes on building with VSCode<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>After the extensions are installed, the device-model selection option in the editor status bar, C syntax coloring, code highlighting, and go-to-definition/find-references navigation do not work</p></li>
+</ol>
+<p>Possible causes and solutions:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Extensions for STM32 microcontroller development, such as STM32-cube-clange, also come with their own IntelliSense engine,</p>
+<p>which conflicts with VSCode's standard C/C++ engine. Only one of the two can be used, and STM32 extensions usually turn off the standard C/C++ engine.</p>
+<p>The chip-model selection feature is provided by VSCode's standard "C/C++ environment"; simply re-enable that extension.</p>
+<p>Usually, when an extension is installed, it warns you about the conflict and lets you choose "Disable" (关掉) or "Ignore (don't show again)" (无视（不再弹窗）). At that point, check carefully whether another installed extension is causing a conflict.</p>
+</div>
+</section>
+<section id="id4">
+<h2><span class="section-number">2.3.4. </span>Common issues<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>If the build reports errors, see <a class="reference internal" href="../toolchains/faqs/index.html"><span class="doc std std-doc">Common Issues and Solutions</span></a></p></li>
+<li><p>If downloading the firmware reports errors, see <a class="reference internal" href="../faqs/why_failed_to_download.html"><span class="doc std std-doc">Why Can't the Program Be Downloaded?</span></a></p></li>
+</ol>
+</div>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="build_with_makefile.html" class="btn btn-neutral float-left" title="2.2. Building with make" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="../codeblocks/index.html" class="btn btn-neutral float-right" title="3. Code::Blocks Usage and Troubleshooting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 09, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/build_download/build_with_vscode.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/build_download/build_with_vscode.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

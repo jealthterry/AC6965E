@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3.4. Wireless Upgrade of Bluetooth Devices — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>3. Jieli 1-to-2 Bluetooth Test Box User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_base_introduction.html">3.1. Test Box Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html">3.2. PC Tool Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_upgrade.html">3.3. Test Box Firmware Upgrade</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>3.4. Wireless Upgrade of Bluetooth Devices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.4.1. Online wireless upgrade</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tf">3.4.2. Offline wireless upgrade (using a TF card)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wired_upgrade.html">3.5. Wired Upgrade of Bluetooth Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_test_process.html">3.6. Bluetooth Device Test Procedure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mass_production.html">3.7. Test Box Batch Upgrade and Test Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ear_storage.html">3.8. Using Earphone Storage Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_transparent.html">3.9. PC Passthrough Commands and Custom Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mes_log.html">3.10. Test Box MES Log Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_view_bt_info.html">3.11. Viewing Bluetooth Device Information (SDK Version/Battery Level/Checksum)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ufw_crc_compare.html">3.12. Test Box UFW File Checksum Matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_error_status.html">3.13. Status Indicators and Error Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_fixture_install.html">3.14. Connecting the Test Box to a Fixture over UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_function.html">3.15. Other Common Features: Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_problem.html">3.16. Frequently Asked Questions (FAQ)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_version_info.html">3.17. Version Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">3. </span>Jieli 1-to-2 Bluetooth Test Box User Manual</a> »</li>
+<li><span class="section-number">3.4. </span>Wireless Upgrade of Bluetooth Devices</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/testbox_1tuo2/tb_wireless_upgrade.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">3.4. </span>Wireless Upgrade of Bluetooth Devices<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">3.4.1. </span>Online wireless upgrade<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p><font color="red" face="黑体" size="4">Method 1: wireless upgrade of devices from an SD card</font></p>
+<p>1. Use the configuration tool to set the name of the target devices to connect to, so that the box does not connect to other devices and brick them with the upgrade</p>
+<p>2. Insert the SD card containing the bfu or ufw file into the card slot of the test box</p>
+<p>3. The upgrade starts as soon as a device is connected; both the device firmware and the device's Bluetooth name can be upgraded</p>
+<p>4. 1: device Bluetooth name; 2: upgrade progress. When the upgrade is finished, a double beep is played, and the box then starts searching for the next device</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image16.png"/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the test box loses power or an error occurs during the upgrade, the device being upgraded can still be found and upgraded again (devices support re-upgrade; the Bluetooth name for re-upgrade is BT_UPDATA, and all ac690x series chips support this)<br/></p>
+<p>Ac690x_sdk_211 and later versions support refusing the upgrade when the KEY differs; the test box shows the corresponding error during the upgrade.</p>
+</div>
+<p><font color="red" face="黑体" size="4">Method 2: wireless upgrade of devices over Bluetooth from the PC (convenient for developing and debugging devices without a USB port)</font> 1. Press and hold button 4 and plug in the PC slave cable to enter configuration mode. (Follow the configuration procedure above.)</p>
+<p>2. Go to the "Device upgrade" (样机升级) section. As shown in the figure below, 5 devices to be upgraded are listed (with their Bluetooth names and addresses). The test box dynamically searches for nearby Bluetooth devices; click the <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">devices</span> <span class="pre">to</span> <span class="pre">upgrade</span></code> (获取待升级样机) button to refresh the device list. Check the devices to upgrade and open the bfu or ufw file to upgrade with. Then click <code class="docutils literal notranslate"><span class="pre">Upgrade</span> <span class="pre">devices</span></code> (升级样机).</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image17.png"/></p>
+<p>3. You can also search for and upgrade devices with a specified Bluetooth name: check "<code class="docutils literal notranslate"><span class="pre">Upgrade</span> <span class="pre">devices</span></code> by name" (根据名字升级设备) as shown in the figure above, enter the Bluetooth name of the devices to upgrade, open the bfu file and click "Upgrade" (升级). During the upgrade, "Upgrading" (升级中) is displayed; please wait.</p>
+<p>4. Alternatively, you can modify download.bat in the device project directly and specify the Bluetooth name of the devices to upgrade with a parameter. Modify download.bat as shown in the figure below, then click download.bat to download. (You need to update isd_download.exe in the device project; this works only if isd_download.exe supports the parameter.)</p>
+<p>As shown below, the Bluetooth name of the devices to upgrade is: <code class="docutils literal notranslate"><span class="pre">sound_box</span></code></p>
+<p>Add the following parameter to the download command line: <code class="docutils literal notranslate"><span class="pre">%TEST_BOX_WIRELESS_UPDATE%</span></code> <br/></p>
+<p>Without this parameter: normal download. With this parameter: the device is upgraded wirelessly through the 1-to-2 test box</p>
+<p>Configure it as shown in the figure <a class="reference internal" href="#img-image19"><span class="std std-ref">Modifying download.bat</span></a>.</p>
+<figure class="align-default" id="img-image19">
+<img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image19.png"/>
+<figcaption>
+<p><span class="caption-text">Modifying download.bat</span><a class="headerlink" href="#img-image19" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The result is shown in the figure <a class="reference internal" href="#img-image20"><span class="std std-ref">Wireless upgrade success message</span></a>.</p>
+<figure class="align-default" id="img-image20">
+<img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image20.png"/>
+<figcaption>
+<p><span class="caption-text">Wireless upgrade success message</span><a class="headerlink" href="#img-image20" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the test box loses power or an error occurs during the upgrade, the device being upgraded can still be found and upgraded again (devices support re-upgrade; the Bluetooth name for re-upgrade must be changed to BT_UPDATA, and all ac690x series chips support this)</p>
+</div>
+<p>5. During the upgrade, the test box screen shows the name of the device being upgraded and the progress. On success, the PC tool pops up a "PC upgrade successful" (pc升级成功) message; on error, the corresponding error message pops up. AC690x_sdk_211 and later support refusing the upgrade when the KEY differs; the test box shows the corresponding error during the upgrade.</p>
+</section>
+<section id="tf">
+<h2><span class="section-number">3.4.2. </span>Offline wireless upgrade (using a TF card)<a class="headerlink" href="#tf" title="Permalink to this heading"></a></h2>
+<p>If you do not want to connect to a PC with a USB data cable to perform an online wireless upgrade with the .ufw file,</p>
+<p>you can follow the section "<a class="reference internal" href="tb_mass_production.html#target-bt-wireless-upgrade"><span class="std std-ref">Batch wireless upgrade of Bluetooth devices</span></a>": insert a <code class="docutils literal notranslate"><span class="pre">TF</span></code> card containing the upgrade file (such as *.bfu or *.ufw) into the <code class="docutils literal notranslate"><span class="pre">TF</span></code> card slot on the left side of the test box to upgrade the Bluetooth device firmware.</p>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="tb_upgrade.html" class="btn btn-neutral float-left" title="3.3. Test Box Firmware Upgrade" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="tb_wired_upgrade.html" class="btn btn-neutral float-right" title="3.5. Wired Upgrade of Bluetooth Devices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_wireless_upgrade.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_wireless_upgrade.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

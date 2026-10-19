@@ -1,0 +1,1317 @@
+{
+ "batch": "b01",
+ "pages": [
+  {
+   "page": "index.html",
+   "page_title": "欢迎使用杰理工具文档",
+   "units": [
+    {
+     "id": "u709df55c0d",
+     "role": "p",
+     "zh": "当前文档主要针对杰理开发、生成相关的工具进行说明。"
+    },
+    {
+     "id": "ud4d79ae5e6",
+     "role": "p",
+     "zh": "程序开发相关工具"
+    },
+    {
+     "id": "u9627b106cf",
+     "role": "li",
+     "zh": "1. 开发环境安装说明"
+    },
+    {
+     "id": "u629063ab70",
+     "role": "li",
+     "zh": "2. SDK 编译以及下载"
+    },
+    {
+     "id": "u0598758a6d",
+     "role": "li",
+     "zh": "3. Code::Blocks 使用说明以及常见问题处理"
+    },
+    {
+     "id": "uce76deae7f",
+     "role": "li",
+     "zh": "4. 工具链相关说明"
+    },
+    {
+     "id": "u5c88f48051",
+     "role": "li",
+     "zh": "5. 下载目录工具说明"
+    },
+    {
+     "id": "u8331e93940",
+     "role": "li",
+     "zh": "6. 杰理科技强制升级工具4.0使用说明"
+    },
+    {
+     "id": "u0b8fadcb49",
+     "role": "li",
+     "zh": "7. 其它常见问题以及处理方法"
+    },
+    {
+     "id": "ub377375a57",
+     "role": "p",
+     "zh": "固件文件处理工具"
+    },
+    {
+     "id": "u282c8fcad3",
+     "role": "li",
+     "zh": "1. 固件文件相关工具"
+    },
+    {
+     "id": "u097a577c84",
+     "role": "li",
+     "zh": "1.1. 固件文件下载"
+    },
+    {
+     "id": "u8af6929d82",
+     "role": "li",
+     "zh": "1.2. 固件编辑工具说明"
+    },
+    {
+     "id": "u02eb69cd6c",
+     "role": "li",
+     "zh": "1.3. 配置信息更新工具说明"
+    },
+    {
+     "id": "u385028609e",
+     "role": "li",
+     "zh": "1.4. 常见问题与解决方法"
+    },
+    {
+     "id": "ubf31ec2e2a",
+     "role": "p",
+     "zh": "量产相关工具"
+    },
+    {
+     "id": "u284b88a4cc",
+     "role": "li",
+     "zh": "1. 杰理科技一拖二烧录器用户手册"
+    },
+    {
+     "id": "u44f0a522ff",
+     "role": "li",
+     "zh": "2. 杰理科技一拖八烧录器用户手册"
+    },
+    {
+     "id": "u96108af724",
+     "role": "li",
+     "zh": "3. 杰理科技一拖二蓝牙测试盒用户手册"
+    },
+    {
+     "id": "u793e215503",
+     "role": "li",
+     "zh": "4. 多算法授权使用说明"
+    },
+    {
+     "id": "u9395d347c0",
+     "role": "li",
+     "zh": "5. 私有数据授权使用说明"
+    },
+    {
+     "id": "u52628d22f6",
+     "role": "li",
+     "zh": "6. 通用功能配置和使用说明"
+    },
+    {
+     "id": "ue0aa1c84ec",
+     "role": "li",
+     "zh": "7. 常见错误处理方式"
+    },
+    {
+     "id": "ucc3622c6ac",
+     "role": "p",
+     "zh": "其它工具"
+    },
+    {
+     "id": "uea4da12c15",
+     "role": "li",
+     "zh": "1. TWS配对地址分析工具"
+    },
+    {
+     "id": "ud76009e23c",
+     "role": "li",
+     "zh": "2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具"
+    },
+    {
+     "id": "u844cbe74f4",
+     "role": "li",
+     "zh": "3. FindMy 产测工具套件"
+    },
+    {
+     "id": "u4a274f8e2b",
+     "role": "p",
+     "zh": "其它信息"
+    },
+    {
+     "id": "u38f6de04f2",
+     "role": "li",
+     "zh": "1. 工具最新版本"
+    },
+    {
+     "id": "u0d2c8dfcc0",
+     "role": "li",
+     "zh": "2. 文档链接"
+    },
+    {
+     "id": "u0a4cf96d92",
+     "role": "li",
+     "zh": "3. 常见问题"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/dev_env/index.html",
+   "page_title": "1. 开发环境安装说明",
+   "units": [
+    {
+     "id": "u9efc039197",
+     "role": "h2",
+     "zh": "Windows 环境"
+    },
+    {
+     "id": "u07b97725dc",
+     "role": "p",
+     "zh": "SDK工程默认支持在 Windows 系统上，用 Code::Blocks 开发。"
+    },
+    {
+     "id": "u06139764f8",
+     "role": "p",
+     "zh": "配置环境主要分为三步："
+    },
+    {
+     "id": "ue902e82cc4",
+     "role": "p",
+     "zh": "下载并安装 ⟦1⟧Windows版Code::Blocks（点击此处下载）⟦/1⟧"
+    },
+    {
+     "id": "u2ee9295716",
+     "role": "p",
+     "zh": "打开安装好的 Code::Blocks 后，关闭 Code::Blocks （这是为了让Code::Blocks生成一些基础设置信息）"
+    },
+    {
+     "id": "u6a37af8b9d",
+     "role": "p",
+     "zh": "下载并安装 ⟦1⟧最新版本的杰理Windows版工具链（点击此处下载）⟦/1⟧"
+    },
+    {
+     "id": "ud9a7ca988e",
+     "role": "p",
+     "zh": "到现在，你已经可以打开 Code::Blocks 工程进行编译开发了，具体方式，参考 ⟦1⟧SDK 编译以及下载⟦/1⟧。"
+    },
+    {
+     "id": "ub7537d7342",
+     "role": "p",
+     "zh": "第一次使用 Code::Blocks 编译可能会有 Security Warning 弹窗。 解决方法见：⟦1⟧编译的时候提示Security Warning⟦/1⟧与⟦2⟧链接的时候，提示无法找到@xxx.objs.txt文件⟦/2⟧。"
+    },
+    {
+     "id": "ube199a014e",
+     "role": "p",
+     "zh": "其它常见问题参考："
+    },
+    {
+     "id": "u20f5c7e66c",
+     "role": "p",
+     "zh": "Code::Blocks 使用说明以及常见问题处理"
+    },
+    {
+     "id": "uce10c1552f",
+     "role": "p",
+     "zh": "常见问题以及处理方法"
+    },
+    {
+     "id": "u9b390dbc54",
+     "role": "p",
+     "zh": "其它常见问题以及处理方法"
+    },
+    {
+     "id": "u263ba94014",
+     "role": "p",
+     "zh": "下面是一些详细的说明，⟦1⟧可以略过⟦/1⟧："
+    },
+    {
+     "id": "ucc856bffbc",
+     "role": "li",
+     "zh": "1.1.1. 安装 Code::Blocks"
+    },
+    {
+     "id": "u4ffcba35e0",
+     "role": "li",
+     "zh": "1.1.2. 安装杰理工具链"
+    },
+    {
+     "id": "u1617627077",
+     "role": "li",
+     "zh": "1.1.3. 更新杰理工具链"
+    },
+    {
+     "id": "udc8571d348",
+     "role": "h2",
+     "zh": "Linux 环境"
+    },
+    {
+     "id": "u643e8dc670",
+     "role": "p",
+     "zh": "目前默认情况下，SDK 工程支持在 Linux 环境下使用 Makefile 进行开发编译，参考⟦1⟧使用 make 进行编译⟦/1⟧。"
+    },
+    {
+     "id": "u0376ce66bd",
+     "role": "p",
+     "zh": "SDK 的后处理脚本⟦1⟧download.sh⟦/1⟧经过修改（参照对应 Windows 版本的⟦2⟧download.bat⟦/2⟧）后，可以生成⟦3⟧.fw⟦/3⟧固件文件。"
+    },
+    {
+     "id": "u3e6fe6bef4",
+     "role": "p",
+     "zh": "不支持下载固件到设备中。"
+    },
+    {
+     "id": "ub3c472749d",
+     "role": "p",
+     "zh": "工具链以及下载目录后处理工具下载链接，参考：⟦1⟧工具最新版本⟦/1⟧"
+    },
+    {
+     "id": "u0dbd3cb281",
+     "role": "h2",
+     "zh": "MacOS 环境"
+    },
+    {
+     "id": "ufdf3f67d65",
+     "role": "p",
+     "zh": "目前⟦1⟧没有⟦/1⟧工具链支持"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/dev_env/code_blocks.html",
+   "page_title": "1.1.1. 安装 Code::Blocks",
+   "units": [
+    {
+     "id": "uc36cb49581",
+     "role": "p",
+     "zh": "Code::Blocks既可以从官方网站下载，也可以直接从杰理网站镜像的地址下载。"
+    },
+    {
+     "id": "u1488b95c59",
+     "role": "h2",
+     "zh": "从杰理工具网站下载安装"
+    },
+    {
+     "id": "u630af74a86",
+     "role": "p",
+     "zh": "在浏览器中打开链接：⟦1⟧Code::Blocks Windows版本（点击此处下载）⟦/1⟧"
+    },
+    {
+     "id": "ube3092da6e",
+     "role": "p",
+     "zh": "双击下载后的 ⟦1⟧codeblocks-latest.exe⟦/1⟧ ，按照提示进行安装即可。"
+    },
+    {
+     "id": "u9022aa6cd6",
+     "role": "h2",
+     "zh": "CodeBlocks官方网站下载安装"
+    },
+    {
+     "id": "u21626dc680",
+     "role": "p",
+     "zh": "首先打开网址：⟦1⟧Code::Blocks 官网⟦/1⟧ 。"
+    },
+    {
+     "id": "udb0e6af005",
+     "role": "p",
+     "zh": "进入下图所示的下载界面后，选择最新版本的 ⟦1⟧codeblocks-20.03-setup.exe⟦/1⟧ 下载，下载后双击进行安装，按提示安装即可。"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/dev_env/jl_toolchain.html",
+   "page_title": "1.1.2. 安装杰理工具链",
+   "units": [
+    {
+     "id": "u534e7c896a",
+     "role": "p",
+     "zh": "杰理工具链 ⟦1⟧不再需要申请并导入license文件⟦/1⟧ ，用户安装完之后就可以直接使用。"
+    },
+    {
+     "id": "u7f24481cae",
+     "role": "p",
+     "zh": "目前SDK编译只支持 Windows 与 Linux 操作系统。各自安装方式如下："
+    },
+    {
+     "id": "u50aa2e0714",
+     "role": "h2",
+     "zh": "Windows 操作系统"
+    },
+    {
+     "id": "u3aef99bb84",
+     "role": "p",
+     "zh": "在确保当前机器已经安装好 CodeBlocks 之后，就可以开始安装杰理工具链，点击链接 ⟦1⟧Windows工具链（点击此处下载）⟦/1⟧ 下载工具链"
+    },
+    {
+     "id": "uab98190146",
+     "role": "p",
+     "zh": "双击下载的文件后，按提示进行安装即可。"
+    },
+    {
+     "id": "ue479445cc2",
+     "role": "h2",
+     "zh": "Linux 操作系统"
+    },
+    {
+     "id": "u4f0835a2ab",
+     "role": "p",
+     "zh": "Linux 操作系统下，只支持通过 make 方式编译SDK。工具链下载地址：⟦1⟧Linux工具链（点击此处下载）⟦/1⟧。解压到 ⟦2⟧/opt/jieli⟦/2⟧ 目录下，保证 ⟦3⟧/opt/jieli/common/bin/clang⟦/3⟧ 存在（注意目录层次）"
+    },
+    {
+     "id": "u7feac50a52",
+     "role": "p",
+     "zh": "由于 Linux 下有打开文件数量的限制，而链接过程会打开较多文件，可能会导致链接失败。确认 ⟦1⟧ulimit -n⟦/1⟧ 的结果足够大（建议大于8096），可以通过 ⟦2⟧ulimit -n 8096⟦/2⟧ 来设置一个较大的值。"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/dev_env/jl_toolchain_update.html",
+   "page_title": "1.1.3. 更新杰理工具链",
+   "units": [
+    {
+     "id": "u3e9aad48db",
+     "role": "p",
+     "zh": "注意，本文中所示方式，⟦1⟧只适用于更新工具链⟦/1⟧，也就是编译器和链接器等。"
+    },
+    {
+     "id": "u0407eb5a54",
+     "role": "p",
+     "zh": "其它工具，例如配置工具、调音工具、下载工具等⟦1⟧与本页内容无关⟦/1⟧。⟦2⟧请勿混淆⟦/2⟧。"
+    },
+    {
+     "id": "ub6a19587c8",
+     "role": "p",
+     "zh": "其它工具的更新方式，参考：⟦1⟧如何更新工具⟦/1⟧"
+    },
+    {
+     "id": "u2742251d4c",
+     "role": "p",
+     "zh": "更新工具链有两种方式："
+    },
+    {
+     "id": "u33a1df3967",
+     "role": "p",
+     "zh": "直接重新下载最新的工具链后安装，参考 ⟦1⟧安装杰理工具链⟦/1⟧。"
+    },
+    {
+     "id": "ucbab43a0fa",
+     "role": "p",
+     "zh": "利用工具链的检查更新功能进行更新，具体方式如下："
+    },
+    {
+     "id": "ucbe3b4e107",
+     "role": "p",
+     "zh": "在确保当前机器已经安装杰理的工具链后，当杰理发布新版本的工具链时，可以按如下步骤检查更新：点击 ⟦1⟧开始菜单⟦/1⟧ ，选择 ⟦2⟧JL toolchain⟦/2⟧ 下的 ⟦3⟧检查更新⟦/3⟧ 。"
+    },
+    {
+     "id": "ua31bedef9b",
+     "role": "p",
+     "zh": "如果未更新到杰理工具链最新版本，则会提示下图。"
+    },
+    {
+     "id": "ufef4c9fffb",
+     "role": "p",
+     "zh": "点击上图界面 ⟦1⟧确定⟦/1⟧ 按钮后，进入如图所示下载界面。"
+    },
+    {
+     "id": "ue2d5bac5c9",
+     "role": "p",
+     "zh": "点击上图的 ⟦1⟧下载升级包⟦/1⟧ 后，开始下载新版本工具链的安装包，下载完毕后，提示升级包文件下载成功界面。"
+    },
+    {
+     "id": "ud6de692990",
+     "role": "p",
+     "zh": "点击 ⟦1⟧打开升级包文件⟦/1⟧ 后，开始安装下载好的安装包。"
+    },
+    {
+     "id": "u18e0b0aae9",
+     "role": "p",
+     "zh": "更新到最新的版本后，再次 ⟦1⟧检查更新⟦/1⟧ 就会提示如下信息。"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/build_download/index.html",
+   "page_title": "2. SDK 编译以及下载",
+   "units": [
+    {
+     "id": "ueff37565c5",
+     "role": "p",
+     "zh": "在安装好工具链后，即可开始进行编译。"
+    },
+    {
+     "id": "u6fcfa4a41a",
+     "role": "p",
+     "zh": "默认情况下，SDK 支持在 Windows 系统下进行编译以及下载。在 Linux 系统上，仅支持编译。"
+    },
+    {
+     "id": "u7906da7e8d",
+     "role": "p",
+     "zh": "SDK 发布的时候，默认发布了 .cbp 后缀的 Code::Blocks 工程。此外，还同时发布了 Makefile 以及 VSCode 的配置。用户可以自行选择使用命令行进行编译。"
+    },
+    {
+     "id": "u837d4036c9",
+     "role": "li",
+     "zh": "2.1. 使用 Code::Blocks 进行编译"
+    },
+    {
+     "id": "u44f9bb66f7",
+     "role": "li",
+     "zh": "2.2. 使用 make 进行编译"
+    },
+    {
+     "id": "ubed8bef95f",
+     "role": "li",
+     "zh": "2.3. 使用 VSCode 进行编译"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/build_download/build_with_codeblocks.html",
+   "page_title": "2.1. 使用 Code::Blocks 进行编译",
+   "units": [
+    {
+     "id": "u3ce597733c",
+     "role": "p",
+     "zh": "默认情况下，SDK 发布都是以 Code::Blocks 工程（即扩展名为 .cbp 的文件）的形式发布。"
+    },
+    {
+     "id": "udf61cce428",
+     "role": "h2",
+     "zh": "使用 Code::Blocks 编译 SDK 的步骤"
+    },
+    {
+     "id": "ubb0a02237d",
+     "role": "p",
+     "zh": "使用 Code::Blocks 进行编译分为两步。下面以 AC695N 的 SDK 为例说明："
+    },
+    {
+     "id": "u779f1af8cf",
+     "role": "h3",
+     "zh": "打开 SDK 目录下的 cbp 工程"
+    },
+    {
+     "id": "u7ac3408313",
+     "role": "p",
+     "zh": "如下图所示："
+    },
+    {
+     "id": "u2804b14c87",
+     "role": "h3",
+     "zh": "使用强制下载工具连接开发板（样机）与PC"
+    },
+    {
+     "id": "u4232f2406b",
+     "role": "p",
+     "zh": "强制升级工具的USB母头与电脑连接，USB公头连接样机或开发板。（⟦1⟧注意不要接反⟦/1⟧，参考下图）"
+    },
+    {
+     "id": "u54ff6f6e64",
+     "role": "p",
+     "zh": "详细参考：⟦1⟧升级与下载说明⟦/1⟧"
+    },
+    {
+     "id": "ud0984e7826",
+     "role": "h3",
+     "zh": "点击【编译】或者【重新编译】按钮"
+    },
+    {
+     "id": "uef09578bce",
+     "role": "p",
+     "zh": "请勿点击【运行】或者【调试】。因为这两个按钮会导致 Code::Blocks 尝试在当前 Windows 机器上运行小机的固件程序。由于小机的固件程序并不是 Windows 上的可执行文件。这会导致报错。"
+    },
+    {
+     "id": "u7b5c5d8a14",
+     "role": "p",
+     "zh": "点击【编译】按钮，当 Code::Blocks 编译成功后，将会调用下载目录中的 ⟦1⟧download.bat⟦/1⟧ 后处理脚本，将程序下载到开发板（样机）中。我们只需要点击【编译】按钮即可。"
+    },
+    {
+     "id": "u7ade34ebb1",
+     "role": "h2",
+     "zh": "常见问题"
+    },
+    {
+     "id": "ubb6ab4fdd3",
+     "role": "p",
+     "zh": "如果使用 Code::Blocks 过程中遇到问题，可以参考 ⟦1⟧常见报错⟦/1⟧，这里列举了常见的问题以及处理方式。"
+    },
+    {
+     "id": "ucc377fdbbd",
+     "role": "p",
+     "zh": "如果编译报错，参考：⟦1⟧常见问题以及处理方法⟦/1⟧"
+    },
+    {
+     "id": "u816119f3e3",
+     "role": "p",
+     "zh": "如果下载程序报错，参考：⟦1⟧为什么无法下载程序⟦/1⟧"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/build_download/build_with_makefile.html",
+   "page_title": "2.2. 使用 make 进行编译",
+   "units": [
+    {
+     "id": "u28dbc5d24e",
+     "role": "p",
+     "zh": "较新的 SDK 默认都会支持使用 make 编译（支持 Windows 以及 Linux）。"
+    },
+    {
+     "id": "u157c64be52",
+     "role": "p",
+     "zh": "SDK 的根目录下有一个 Makefile 文件。此外，为了支持 Windows 下使用 make。SDK 额外附带了 tools 目录，里面放置了必要的编译工具。"
+    },
+    {
+     "id": "u21e6f27e79",
+     "role": "h2",
+     "zh": "Windows 下使用 make 进行编译"
+    },
+    {
+     "id": "ue3fd75bd3a",
+     "role": "p",
+     "zh": "在 Windows 下进行编译分为两步。下面以 AC695N 的 SDK 为例进行说明："
+    },
+    {
+     "id": "uc335889149",
+     "role": "p",
+     "zh": "打开 SDK 目录下 ⟦1⟧tools⟦/1⟧ 目录内的 ⟦2⟧make_prompt.bat⟦/2⟧ 脚本。如下图所示："
+    },
+    {
+     "id": "u844ab3e02c",
+     "role": "p",
+     "zh": "如果 ⟦1⟧tools⟦/1⟧ 目录下，未能找到 ⟦2⟧make_prompt.bat⟦/2⟧ 文件，则打开 SDK 根目录下的 ⟦3⟧make_prompt.bat⟦/3⟧。如果还未能找到，则参考：⟦4⟧如何将 Code::Blocks 工程转换为 make/VSCode 工程⟦/4⟧。"
+    },
+    {
+     "id": "u2882e6651f",
+     "role": "p",
+     "zh": "如果你不使用我们提供的 ⟦1⟧make_prompt.bat⟦/1⟧ 来设置 ⟦2⟧%PATH%⟦/2⟧ 环境变量，则你需要自行参考 ⟦3⟧make_prompt.bat⟦/3⟧ 的内容来设置。"
+    },
+    {
+     "id": "u6883e4b49a",
+     "role": "p",
+     "zh": "在弹出的命令行窗口中，输入⟦1⟧make⟦/1⟧并回车。"
+    },
+    {
+     "id": "u1b1d79e4ad",
+     "role": "h2",
+     "zh": "Linux 下使用 make 进行编译"
+    },
+    {
+     "id": "ucb3fd9d45c",
+     "role": "p",
+     "zh": "在 Linux 下进行编译，分为以下四步："
+    },
+    {
+     "id": "u3c4dc29e7e",
+     "role": "p",
+     "zh": "首先点击下载⟦1⟧Linux 下的工具链⟦/1⟧。"
+    },
+    {
+     "id": "u0a2cd94554",
+     "role": "p",
+     "zh": "解压工具到⟦1⟧/opt/jieli⟦/1⟧目录下，保证⟦2⟧/opt/jieli/common/bin/clang⟦/2⟧存在（注意目录层次）"
+    },
+    {
+     "id": "u8e3fb67ce2",
+     "role": "p",
+     "zh": "确认⟦1⟧ulimit -n⟦/1⟧的结果足够大（建议大于⟦2⟧8096⟦/2⟧)。否则链接可能会因为打开文件较多而失败。 可以通过⟦3⟧ulimit -n 8096⟦/3⟧来设置一个较大的值。"
+    },
+    {
+     "id": "u67bb7a3e88",
+     "role": "p",
+     "zh": "进入 SDK 根目录，并输入⟦1⟧make⟦/1⟧进行编译"
+    },
+    {
+     "id": "uf233c06cb2",
+     "role": "h2",
+     "zh": "排查使用 Makefile 编译出错的步骤"
+    },
+    {
+     "id": "ueaac926452",
+     "role": "p",
+     "zh": "检查 SDK 所在的路径中，是否有空格、中文。"
+    },
+    {
+     "id": "u6ed16be688",
+     "role": "p",
+     "zh": "检查 SDK 所在的路径，是否层次过深。"
+    },
+    {
+     "id": "ud20a867715",
+     "role": "p",
+     "zh": "检查 SDK 根目录中的 tools 文件夹，是否与 ⟦1⟧转换工具（点击此处下载）⟦/1⟧ 中的 tools 文件夹一致。检查是否有缺失的文件。"
+    },
+    {
+     "id": "u6f9fd03869",
+     "role": "p",
+     "zh": "检查对应的 Code::Blocks 工程是否能够编译，确认工具链环境是否有问题。"
+    },
+    {
+     "id": "u9b5a061cc7",
+     "role": "p",
+     "zh": "如果你不是使用我们提供的 ⟦1⟧make_prompt.bat⟦/1⟧ 来编译，确认是否正确设置了 ⟦2⟧%PATH%⟦/2⟧ 环境变量，即，这个环境变量中能否找到对应的工具链。"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/build_download/build_with_vscode.html",
+   "page_title": "2.3. 使用 VSCode 进行编译",
+   "units": [
+    {
+     "id": "u28a303aafd",
+     "role": "p",
+     "zh": "较新的 SDK 默认都会支持使用 VSCode 进行开发编译（包括 Windows 以及 Linux）。"
+    },
+    {
+     "id": "ud6bab2cb23",
+     "role": "p",
+     "zh": "VSCode 下编译是通过调用⟦1⟧make⟦/1⟧命令实现的。Linux下需要参考⟦2⟧使用 make 进行编译⟦/2⟧的步骤先进行配置。"
+    },
+    {
+     "id": "ue03552a7e0",
+     "role": "h2",
+     "zh": "VSCode 设置步骤"
+    },
+    {
+     "id": "u73500b0f71",
+     "role": "p",
+     "zh": "下面以 AC695N 的 SDK 为例进行说明："
+    },
+    {
+     "id": "u24283f93a3",
+     "role": "h3",
+     "zh": "安装必要的插件⟦1⟧Task Explorer⟦/1⟧和⟦2⟧C/C++⟦/2⟧"
+    },
+    {
+     "id": "u5a7ff47399",
+     "role": "h3",
+     "zh": "使用 VSCode 打开 SDK 目录"
+    },
+    {
+     "id": "uc106febe87",
+     "role": "p",
+     "zh": "如果在右键菜单中，未能找到【通过 Code 打开】，这个有以下几种可能："
+    },
+    {
+     "id": "ucee29ad129",
+     "role": "p",
+     "zh": "你未安装 VSCode"
+    },
+    {
+     "id": "u1a95310469",
+     "role": "p",
+     "zh": "在安装 VSCode 的时候，未勾选在右键菜单栏显示的选项"
+    },
+    {
+     "id": "u79c0396288",
+     "role": "p",
+     "zh": "你可以直接打开 VSCode，然后再 VSCode 菜单栏处选择打开目录，并选择 SDK 目录打开，如下图所示："
+    },
+    {
+     "id": "uc1685782ff",
+     "role": "h3",
+     "zh": "选择对应的 task 进行编译"
+    },
+    {
+     "id": "u71cfc4e038",
+     "role": "p",
+     "zh": "SDK 目录下的 ⟦1⟧.vscode⟦/1⟧ 目录里面包含了⟦2⟧tasks.json⟦/2⟧以及⟦3⟧c_cpp_properties.json⟦/3⟧文件。这两个是 VSCode 所需要的配置。更多可以参考这里的设置。"
+    },
+    {
+     "id": "u9dc2c68042",
+     "role": "h2",
+     "zh": "排查 VSCode 编译出错问题"
+    },
+    {
+     "id": "uc1ba985553",
+     "role": "p",
+     "zh": "VSCode 编译是通过调用 Makefile 实现的，所以先检查 Makefile 是否正常。参考：⟦1⟧使用 make 进行编译⟦/1⟧ 以及 ⟦2⟧排查使用 Makefile 编译出错的步骤⟦/2⟧"
+    },
+    {
+     "id": "ue08b3fb69d",
+     "role": "p",
+     "zh": "检查上述的插件是否正常安装。"
+    },
+    {
+     "id": "u55d2b79852",
+     "role": "p",
+     "zh": "注意要通过插件来运行编译任务。这是因为编译过程中，需要使用到一些额外的工具，例如 ⟦1⟧mkdir_win⟦/1⟧, ⟦2⟧make⟦/2⟧ 等。"
+    },
+    {
+     "id": "u5950e5183c",
+     "role": "p",
+     "zh": "这些工具一般跟随 SDK 发布（通常在 ⟦1⟧tools⟦/1⟧ 目录下）。在编译之前，需要将这些工具所在的目录，添加到 ⟦2⟧%PATH%⟦/2⟧ 环境变量中。"
+    },
+    {
+     "id": "u88934e69c7",
+     "role": "p",
+     "zh": "这个是通过 ⟦1⟧.vscode/winmk.bat⟦/1⟧ 脚本来完成的。"
+    },
+    {
+     "id": "u60e737122c",
+     "role": "p",
+     "zh": "假如你希望在 vscode 自带的终端中编译，请按照 ⟦1⟧.vscode/winmk.bat⟦/1⟧ 的调用方式来编译。"
+    },
+    {
+     "id": "ue84061043d",
+     "role": "h2",
+     "zh": "VScode编译的注意事项"
+    },
+    {
+     "id": "u80ead298f6",
+     "role": "p",
+     "zh": "插件安装完成后，编辑器状态栏的区分设备型号的选项及C语言的语法着色、代码高亮、定义引用查找跳转无法使用"
+    },
+    {
+     "id": "uf14ba7389a",
+     "role": "p",
+     "zh": "可能原因及解决办法："
+    },
+    {
+     "id": "uc2f9de5719",
+     "role": "p",
+     "zh": "STM32-cube-clange 等有关STM32型单片机开发的插件也自带了一个intelli引擎，"
+    },
+    {
+     "id": "u4cb82b1aaa",
+     "role": "p",
+     "zh": "会与VScode标准的C/C++的引擎冲突，只能二选其一，而STM32的插件一般会把标准C/C++的引擎关掉。"
+    },
+    {
+     "id": "u5400afd080",
+     "role": "p",
+     "zh": "选择芯片型号的功能，是由VScode标准的”C/C++环境“提供，恢复插件使能即可。"
+    },
+    {
+     "id": "u7806ee20e1",
+     "role": "p",
+     "zh": "一般插件安装时会主动提示冲突，让你选择”关掉“还是”无视（不再弹窗）“，这时得注意查看和排查是否是已安装的其他插件有冲突。"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/codeblocks/index.html",
+   "page_title": "3. Code::Blocks 使用说明以及常见问题处理",
+   "units": [
+    {
+     "id": "u06c4630a73",
+     "role": "p",
+     "zh": "这里列举了 Code::Blocks 的使用说明。包括如何实现某些功能，以及一些常见报错的处理方式。"
+    },
+    {
+     "id": "u5db0b80a9c",
+     "role": "li",
+     "zh": "3.1. 应该如何实现某功能"
+    },
+    {
+     "id": "udf2984cd9d",
+     "role": "li",
+     "zh": "3.1.1. 添加新的文件到工程中编译"
+    },
+    {
+     "id": "u5f92783db8",
+     "role": "li",
+     "zh": "3.1.2. 如何查看当前工程是什么工具"
+    },
+    {
+     "id": "u035afabd92",
+     "role": "li",
+     "zh": "3.1.3. 如何添加编译参数"
+    },
+    {
+     "id": "u6383d03b9c",
+     "role": "li",
+     "zh": "3.1.4. 如何添加宏定义"
+    },
+    {
+     "id": "u6164b42510",
+     "role": "li",
+     "zh": "3.1.5. 如何添加搜索路径（-I..）"
+    },
+    {
+     "id": "u9f039dadee",
+     "role": "li",
+     "zh": "3.1.6. 如何设置链接参数"
+    },
+    {
+     "id": "u6d6cd28081",
+     "role": "li",
+     "zh": "3.1.7. 如何添加编译后执行脚本"
+    },
+    {
+     "id": "u7648bc9da0",
+     "role": "li",
+     "zh": "3.1.8. 如何添加编译前执行脚本"
+    },
+    {
+     "id": "ub1352cbfe7",
+     "role": "li",
+     "zh": "3.1.9. 如何新建编译库的工程"
+    },
+    {
+     "id": "ufcd6c9ca12",
+     "role": "li",
+     "zh": "3.1.10. 如何新建编译可执行程序工程"
+    },
+    {
+     "id": "uad80bf1471",
+     "role": "li",
+     "zh": "3.1.11. 如何设置当前工程的输出文件路径"
+    },
+    {
+     "id": "ud1ec46f127",
+     "role": "li",
+     "zh": "3.2. 常见报错"
+    },
+    {
+     "id": "u6bcf7d5692",
+     "role": "li",
+     "zh": "3.2.1. Environment error（找不到GNU GCC）"
+    },
+    {
+     "id": "ubf25aef781",
+     "role": "li",
+     "zh": "3.2.2. 打开工程提示不能找到编译器配置（cannot find/run the compiler）"
+    },
+    {
+     "id": "u6b14af5ff1",
+     "role": "li",
+     "zh": "3.2.3. 不支持的16位应用程序/已停止工作"
+    },
+    {
+     "id": "u1a18fd60ed",
+     "role": "li",
+     "zh": "3.2.4. 编译的时候提示Security Warning"
+    },
+    {
+     "id": "ua009a11ad0",
+     "role": "li",
+     "zh": "3.2.5. 链接的时候，提示无法找到⟦1⟧@xxx.objs.txt⟦/1⟧文件"
+    },
+    {
+     "id": "udd1d03d6dd",
+     "role": "li",
+     "zh": "3.2.6. 为什么 Code::Blocks 语法着色不对"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/codeblocks/howto_add_files.html",
+   "page_title": "3.1.1. 添加新的文件到工程中编译",
+   "units": [
+    {
+     "id": "u8756e4379d",
+     "role": "p",
+     "zh": "打开工程后，在如下菜单栏出选择："
+    },
+    {
+     "id": "u24ac40380e",
+     "role": "p",
+     "zh": "如有下面弹出，则选择【是】"
+    },
+    {
+     "id": "uf8e0cd44de",
+     "role": "p",
+     "zh": "选择文件需要保存的路径。"
+    },
+    {
+     "id": "ub47b24d3b4",
+     "role": "p",
+     "zh": "为了确定文件是否加入了当前编译目标，可以通过下面方式确认："
+    },
+    {
+     "id": "u913e6ec653",
+     "role": "p",
+     "zh": "如图，Release是当前的编译目标，在右键文件的Properties后，如下图："
+    },
+    {
+     "id": "ufe3994723b",
+     "role": "p",
+     "zh": "表示已经加入到了当前编译目标中。"
+    },
+    {
+     "id": "ua282c140f9",
+     "role": "p",
+     "zh": "另外一种添加文件的方式："
+    },
+    {
+     "id": "u7f7fee4ea7",
+     "role": "p",
+     "zh": "然后选想要的文件类型后，点击【Go】"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/codeblocks/howto_view_toolset.html",
+   "page_title": "3.1.2. 如何查看当前工程是什么工具",
+   "units": [
+    {
+     "id": "u63259d3206",
+     "role": "p",
+     "zh": "右键选择build options"
+    },
+    {
+     "id": "u344b885d0d",
+     "role": "p",
+     "zh": "如下查看"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/codeblocks/howto_add_cflags.html",
+   "page_title": "3.1.3. 如何添加编译参数",
+   "units": [
+    {
+     "id": "u8b7b050cec",
+     "role": "p",
+     "zh": "如下添加"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/codeblocks/howto_add_define.html",
+   "page_title": "3.1.4. 如何添加宏定义",
+   "units": [
+    {
+     "id": "u3299bc9712",
+     "role": "p",
+     "zh": "1.1 右键选择build options"
+    },
+    {
+     "id": "u99e0faf388",
+     "role": "p",
+     "zh": "1.2 如下添加"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/codeblocks/howto_add_include.html",
+   "page_title": "3.1.5. 如何添加搜索路径（-I..）",
+   "units": [
+    {
+     "id": "u1297c27bf9",
+     "role": "p",
+     "zh": "如下设置"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/codeblocks/howto_new_lib_project.html",
+   "page_title": "3.1.9. 如何新建编译库的工程",
+   "units": [
+    {
+     "id": "u44a19f5b92",
+     "role": "p",
+     "zh": "选择新建工程"
+    },
+    {
+     "id": "uad1e3c4b84",
+     "role": "p",
+     "zh": "选择 Static Library"
+    },
+    {
+     "id": "u62c7c17332",
+     "role": "p",
+     "zh": "输入标题，选择保存路径等"
+    },
+    {
+     "id": "u7e693d1412",
+     "role": "p",
+     "zh": "选择适合的工具"
+    },
+    {
+     "id": "u6575d28f4e",
+     "role": "p",
+     "zh": "完成"
+    },
+    {
+     "id": "u24fa0a13af",
+     "role": "p",
+     "zh": "Compiler设置需要根据芯片设置不同而不同。图中只是示例。 一般来说和SDK工程设置一致，见⟦1⟧如何查看当前工程是什么工具⟦/1⟧。 也就是说，这个库工程的.a文件，要放到哪个SDK工程里面链接，那就保持和对应那个SDK工程的Compiler设置一致。"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/codeblocks/howto_new_exe_project.html",
+   "page_title": "3.1.10. 如何新建编译可执行程序工程",
+   "units": [
+    {
+     "id": "u690828ac61",
+     "role": "p",
+     "zh": "1 新建工程"
+    },
+    {
+     "id": "u52dc6bcc05",
+     "role": "p",
+     "zh": "2 选择空白工程模板"
+    },
+    {
+     "id": "u88e0281303",
+     "role": "p",
+     "zh": "3 设置必要的信息（如标题，以及保存路径等）"
+    },
+    {
+     "id": "u73d1c7ab7a",
+     "role": "p",
+     "zh": "4 设置工具"
+    },
+    {
+     "id": "ud690fdaa71",
+     "role": "p",
+     "zh": "Compiler设置需要根据芯片设置不同而不同。图中只是示例。"
+    },
+    {
+     "id": "u2091cc17c0",
+     "role": "p",
+     "zh": "一般来说和SDK工程设置一致，见⟦1⟧如何查看当前工程是什么工具⟦/1⟧"
+    },
+    {
+     "id": "u54e1f84b44",
+     "role": "p",
+     "zh": "6 保存，添加其他文件等"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/codeblocks/faqs.html",
+   "page_title": "3.2. 常见报错",
+   "units": [
+    {
+     "id": "u049264a34f",
+     "role": "p",
+     "zh": "下面列举了一些常见的报错，以及处理方式"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/codeblocks/faq_env_error_no_gcc.html",
+   "page_title": "3.2.1. Environment error（找不到GNU GCC）",
+   "units": [
+    {
+     "id": "udce473ebb4",
+     "role": "p",
+     "zh": "有时候打开 Code::Blocks 会出现如下错误。这个是因为 Code::Blocks 会查找系统中gcc的位置。找不到之后会报错。但是由于我们并没有使用gcc。⟦1⟧所以这个并不会造成影响⟦/1⟧。如果希望不再出现，可以安装gnu gcc。例如安装 codeblocks-mingw32 的版本。"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/codeblocks/faq_cannot_find_compiler.html",
+   "page_title": "3.2.2. 打开工程提示不能找到编译器配置（cannot find/run the compiler）",
+   "units": [
+    {
+     "id": "uf89a5cf12e",
+     "role": "p",
+     "zh": "出现这种情况的原因是cbp工程中指定需要使用的编译器，在当前电脑安装的 Code::Blocks 的全局配置中找不到。这有两种可能："
+    },
+    {
+     "id": "u71e8631f0c",
+     "role": "p",
+     "zh": "当前的 cbp 工程指定的编译器错误（查看方式：见⟦1⟧如何查看当前工程是什么工具⟦/1⟧）"
+    },
+    {
+     "id": "ub310784e1f",
+     "role": "p",
+     "zh": "当前的 cbp 工程指定的编译器正确，当前电脑的 Code::Blocks 的全局配置未及时更新（也就是需要更新工具链）"
+    },
+    {
+     "id": "ucec1baad12",
+     "role": "p",
+     "zh": "当前工具链已经是最新，可能是因为原来电脑中的配置因为某种原因被破坏了。"
+    },
+    {
+     "id": "udbdb49b403",
+     "role": "p",
+     "zh": "一般情况下，先重新安装最新版本⟦1⟧工具链（点击此处下载）⟦/1⟧后，再重试是否问题还存在。"
+    },
+    {
+     "id": "ue94f7e4be1",
+     "role": "p",
+     "zh": "查看 Code::Blocks 的全局编译器配置"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/codeblocks/faq_not_support_16bit.html",
+   "page_title": "3.2.3. 不支持的16位应用程序/已停止工作",
+   "units": [
+    {
+     "id": "u3c9b6fb156",
+     "role": "p",
+     "zh": "当点击【运行】或者【编译后调试】的按钮（即，⟦1/⟧ 这两个按钮），会出现类似如下的提示："
+    },
+    {
+     "id": "u9b090f3455",
+     "role": "p",
+     "zh": "这是因为，小机的程序不是 Windows 应用程序，无法在 Windows 上运行（而是在样机上运行）。"
+    },
+    {
+     "id": "u779de1cd1a",
+     "role": "p",
+     "zh": "点击【编译】按钮（即，⟦1/⟧）"
+    },
+    {
+     "id": "u53c405d7af",
+     "role": "p",
+     "zh": "如果点击的是【编译⟦1/⟧】按钮，但仍然弹出了这个错误，那一般是因为你的电脑被感染了病毒，杀毒后再尝试。（这是因为有些病毒会尝试感染并运行所有被编译出来的文件）。"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/codeblocks/faq_security_warning.html",
+   "page_title": "3.2.4. 编译的时候提示Security Warning",
+   "units": [
+    {
+     "id": "u37636f9276",
+     "role": "p",
+     "zh": "由于Windows下命令行参数长度有限，当链接较多文件后，可能会超过长度限制导致链接失败。为了支持链接更多的文件，需要把一部分命令行参数写入到临时的文件（目前是工程目录下的⟦1⟧objs.txt⟦/1⟧文件）中，然后再链接。创建文件的操作会触发警告。"
+    },
+    {
+     "id": "ub4c172a33e",
+     "role": "p",
+     "zh": "从编译器2.4.1版本开始，Code::Blocks 在编译的时候，可能会提示类似如下的内容："
+    },
+    {
+     "id": "ub14d731cf1",
+     "role": "p",
+     "zh": "请选择图中的【ALLOW execution of this command for all scripts from now on】并点击【OK】。"
+    },
+    {
+     "id": "ucb585f8e1a",
+     "role": "p",
+     "zh": "如果第一次没有选择，也可以通过下面方式修改："
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/codeblocks/faq_objs_txt_not_found.html",
+   "page_title": "3.2.5. 链接的时候，提示无法找到@xxx.objs.txt文件",
+   "units": [
+    {
+     "id": "u5e45905020",
+     "role": "p",
+     "zh": "这个⟦1⟧objs.txt⟦/1⟧的文件，一般是在链接前通过 Code::Blocks 的脚本生成的文件。里面包含了所有需要链接的文件的路径。如果在一开始没有允许 Code::Blocks执行生成文件的脚本，则会导致问题。（见⟦2⟧编译的时候提示Security Warning⟦/2⟧）。可以通过下面方式来允许："
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/codeblocks/faq_syntax_highlight_err.html",
+   "page_title": "3.2.6. 为什么 Code::Blocks 语法着色不对",
+   "units": [
+    {
+     "id": "u77eaae28f1",
+     "role": "p",
+     "zh": "一些情况下，会发现 Code::Blocks 的语法着色不对。例如，下图中，已经定义了 ⟦1⟧UART_TEST_EN⟦/1⟧，但是 Code::Blocks 未能正确识别，仍然讲代码块识别为无效。"
+    },
+    {
+     "id": "u137090eb67",
+     "role": "p",
+     "zh": "这通常是因为 Code::Blocks 的着色插件精度不够。可以考虑更新 Code::Blocks 版本，或者使用 VSCode（一般情况下，我们的 SDK 都同时支持 VSCode 和 Code::Blocks）。"
+    },
+    {
+     "id": "ud592993e07",
+     "role": "p",
+     "zh": "SDK 使用 VSCode 的方法参考：⟦1⟧使用 VSCode 进行编译⟦/1⟧"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/toolchains/index.html",
+   "page_title": "4. 工具链相关说明",
+   "units": [
+    {
+     "id": "u1a3c6c54fb",
+     "role": "li",
+     "zh": "4.1. 常见问题以及处理方法"
+    },
+    {
+     "id": "ub4814d8f63",
+     "role": "li",
+     "zh": "4.2. LINUX下安装杰理工具链和编译静态库"
+    },
+    {
+     "id": "u6c2bd091fc",
+     "role": "li",
+     "zh": "4.3. isd_config.ini 配置文件说明"
+    },
+    {
+     "id": "ue97556df7f",
+     "role": "li",
+     "zh": "4.4. FLASH 参数配置说明"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/toolchains/faqs/index.html",
+   "page_title": "4.1. 常见问题以及处理方法",
+   "units": [
+    {
+     "id": "ud3354b1f80",
+     "role": "li",
+     "zh": "4.1.1. 为什么⟦1⟧printf⟦/1⟧无法输出浮点数"
+    },
+    {
+     "id": "u1e0a6ce4ae",
+     "role": "li",
+     "zh": "4.1.2. 为什么找不到 vsprintf, sprintf, vprintf"
+    },
+    {
+     "id": "uc3d2d7deb3",
+     "role": "li",
+     "zh": "4.1.3. 关于调用了未声明函数的警告"
+    },
+    {
+     "id": "u9a4b656df9",
+     "role": "li",
+     "zh": "4.1.3.1. 如何转换为报错"
+    },
+    {
+     "id": "u331586f9e4",
+     "role": "li",
+     "zh": "4.1.4. 浮点数相关FAQ"
+    },
+    {
+     "id": "uc96dd5b709",
+     "role": "li",
+     "zh": "4.1.4.1. C代码中能否正常使用浮点数"
+    },
+    {
+     "id": "u774ac27ef5",
+     "role": "li",
+     "zh": "4.1.4.2. 哪些芯片支持单精度硬件浮点"
+    },
+    {
+     "id": "u54781e30bb",
+     "role": "li",
+     "zh": "4.1.4.3. 为什么我的代码没有生成单精度硬件浮点指令"
+    },
+    {
+     "id": "ufc55a8210a",
+     "role": "li",
+     "zh": "4.1.4.4. 为什么我的代码中有双精度运算"
+    },
+    {
+     "id": "u1b91cddc50",
+     "role": "li",
+     "zh": "4.1.4.5. 为什么出现了浮点异常"
+    }
+   ]
+  },
+  {
+   "page": "dev_tools/toolchains/faqs/index.html",
+   "page_title": "4.1. 常见问题以及处理方法",
+   "units": [
+    {
+     "id": "u2a6bd0fac3",
+     "role": "li",
+     "zh": "4.1.4.6. 为什么浮点函数好像不正常"
+    }
+   ]
+  }
+ ]
+}

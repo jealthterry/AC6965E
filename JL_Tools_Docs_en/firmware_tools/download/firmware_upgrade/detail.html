@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.1.1.1.1. Configuration Items — JL Project Documentation</title>
+<link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../../index.html"><img id="jl-logo" src="../../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>1. Firmware File Tools</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.1. Firmware File Download</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.1.1. Firmware Upgrade Tool (1-to-1 PC Download Tool)</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="index.html#id1">1.1.1.1. How to get the Firmware Upgrade Tool</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../firmware_edit/index.html">1.2. Firmware Editing Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mac_update/index.html">1.3. Configuration Update Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faqs/index.html">1.4. FAQs and Solutions</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="../../index.html"><span class="section-number">1. </span>Firmware File Tools</a> »</li>
+<li><a href="../index.html"><span class="section-number">1.1. </span>Firmware File Download</a> »</li>
+<li><a href="index.html"><span class="section-number">1.1.1. </span>Firmware Upgrade Tool (1-to-1 PC Download Tool)</a> »</li>
+<li><span class="section-number">1.1.1.1.1. </span>Configuration Items</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../../JL_Tools_Docs_zh/firmware_tools/download/firmware_upgrade/detail.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">1.1.1.1.1. </span>Configuration Items<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>The configuration file must be saved with UTF8 encoding</strong>.</p>
+</div>
+<p>The configuration file config.ini must be stored in the data directory located in the same directory as the tool. Files to be merged into the tool must also be stored in the data directory, as shown below:</p>
+<figure class="align-default" id="img-dir-struct-fw-tools">
+<img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image3.png"/>
+<figcaption>
+<p><span class="caption-text">File directory structure</span><a class="headerlink" href="#img-dir-struct-fw-tools" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>All text in this tool's interface can be configured through configuration items, in both Chinese and English. Chinese and English text are configured with the <code class="docutils literal notranslate"><span class="pre">*text_cn</span></code> and <code class="docutils literal notranslate"><span class="pre">*text_en</span></code> items respectively.</p>
+</section>
+<section id="id2">
+<h1><span class="section-number">1.1.1.1.2. </span>Merging the Firmware File into the Tool<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h1>
+<p>The configuration items for this function are as follows:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">###########################################</span>
+<span class="c1">#</span>
+<span class="c1"># Firmware file to be merged into the tool</span>
+<span class="c1"># Firmware file used for the upgrade</span>
+<span class="c1"># Takes effect after the firmware file has been merged into the tool</span>
+<span class="c1">#</span>
+<span class="c1">###########################################</span>
+<span class="k">[Firmware]</span>
+<span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">your.fw</span>
+</pre></div>
+</div>
+<p>This configuration item takes effect only after the firmware file and the <code class="docutils literal notranslate"><span class="pre">data/config.ini</span></code> file have been merged into the tool together. When merging the firmware file, also put the firmware file in the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory and set <code class="docutils literal notranslate"><span class="pre">Firmware/value</span></code> to the name of the firmware file to be merged. See the figure <a class="reference internal" href="#img-dir-struct-fw-tools"><span class="std std-ref">File directory structure</span></a>.</p>
+<p>When the files are ready, run the following on the command line</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>固件升级程序_1.4.18.exe<span class="w"> </span>--merge<span class="w"> </span>data<span class="w"> </span>--target<span class="w"> </span>固件升级程序_1.4.18_包含固件.exe
+</pre></div>
+</div>
+<p>to merge the data directory into the tool, as shown below:</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image4.png"/></p>
+<p><code class="docutils literal notranslate"><span class="pre">固件升级程序_1.4.18_包含固件.exe</span></code> is the new tool that contains the firmware file after the merge.</p>
+<p>Run the merged tool <code class="docutils literal notranslate"><span class="pre">固件升级程序_1.4.18_包含固件.exe</span></code>. The firmware is loaded into the tool automatically and the file selector is hidden, as shown below:</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image5.png"/></p>
+</section>
+<section id="pc">
+<h1><span class="section-number">1.1.1.1.3. </span>PC-Mode Device Name<a class="headerlink" href="#pc" title="Permalink to this heading"></a></h1>
+<p>The configuration items for this function are as follows:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">#########################################</span>
+<span class="c1">#</span>
+<span class="c1"># Names of devices that can be upgraded in PC mode</span>
+<span class="c1">#</span>
+<span class="c1">#########################################</span>
+<span class="k">[PCMode]</span>
+<span class="na">name_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">br23udisk</span><span class="w"> </span><span class="c1">;List of names of devices that can be upgraded</span>
+<span class="na">wait_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1000</span><span class="w"> </span><span class="c1">;Time to wait for the device to switch from PC mode to upgrade mode</span>
+</pre></div>
+</div>
+<p>If the device cannot enter upgrade mode directly but has a PC mode, <strong>and the SDK supports it</strong>, this configuration can be used to switch the device from PC mode to upgrade mode to complete the firmware upgrade.</p>
+<p>Taking AC695X as an example, after a device running the standard SDK firmware enters PC mode, the device BR23 UDISK USB Device appears in the Windows Device Manager. <strong>BR23UDISK</strong> (without the space in the middle) is then the PC-mode name of this device, as shown below:</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image6.png"/></p>
+<p>This name can be configured with SCSIInquiryData in the SDK file apps/common/usb/device/msd.c, as shown below:</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image7.png"/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If no device with <code class="docutils literal notranslate"><span class="pre">UDISK</span></code> in its name can be found in Device Manager, the current SDK may <strong>not support the standard command</strong> for switching the device from PC mode to upgrade mode.</p>
+<p>In that case, the device firmware developer needs to <strong>implement their own</strong> trigger for switching from PC mode to upgrade mode. For example, the device can call the <code class="docutils literal notranslate"><span class="pre">go_mask_usb_updata</span></code> function in the SDK to enter upgrade mode when it detects that a certain button has been pressed.</p>
+</div>
+</section>
+<section id="pid">
+<h1><span class="section-number">1.1.1.1.4. </span>PID Display and Matching Rules<a class="headerlink" href="#pid" title="Permalink to this heading"></a></h1>
+<p>In many cases, a developer has several device models being evaluated at a third party. To prevent devices with different hardware from being upgraded with the wrong firmware, you can use PID matching rules to restrict which devices can be upgraded. The configuration items for this function are as follows:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">#########################################</span>
+<span class="c1">#</span>
+<span class="c1"># PID display and matching rule configuration</span>
+<span class="c1">#</span>
+<span class="c1">#########################################</span>
+<span class="c1">#</span>
+<span class="c1"># PID matching</span>
+<span class="c1">#</span>
+<span class="k">[PidMatch]</span>
+<span class="na">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">; Whether to match the PID. If the PID does not match, programming is not allowed</span>
+<span class="na">pid_mismatch_text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"设备PID与固件PID不匹配！"</span>
+<span class="na">pid_mismatch_text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"The device PID does not match the firmware PID!"</span>
+<span class="c1">#</span>
+<span class="c1"># Device PID whitelist</span>
+<span class="c1"># If the device's PID is in the whitelist,</span>
+<span class="c1"># the device PID is ignored during the upgrade</span>
+<span class="c1">#</span>
+<span class="k">[PidWhiteList]</span>
+<span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">AC695x_TWS,None</span>
+<span class="c1">#</span>
+<span class="c1"># Pid mapping table, displays the actual Pid as the specified Pid</span>
+<span class="c1">#</span>
+<span class="k">[PidMapping]</span>
+<span class="na">OLD PID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">NEW PID</span>
+<span class="na">AC695x_TWS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">NewPid</span>
+<span class="c1">#</span>
+<span class="c1"># Parameters added for compatibility with old SDKs</span>
+<span class="c1"># PID parsing, valid for AC691X and for AC692X SDK V1</span>
+<span class="c1"># Split "PDCTNAME=" in the configuration into two parts at the first separator</span>
+<span class="c1"># The first part is displayed as the PID, the second as the VID</span>
+<span class="c1">#</span>
+<span class="k">[PidSection]</span>
+<span class="na">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">_</span><span class="w"> </span><span class="c1">; Separator, underscore by default</span>
+</pre></div>
+</div>
+<p>If PID matching is enabled and the firmware PID does not match the device PID, the tool displays the text set in the PidMatch/pid_mismatch_text_?? configuration, as shown below:</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image8.png"/></p>
+</section>
+<section id="id3">
+<h1><span class="section-number">1.1.1.1.5. </span>Upgrade Options<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h1>
+<p>The configuration items for this function are as follows:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">######################################</span>
+<span class="c1">#</span>
+<span class="c1"># Option configuration</span>
+<span class="c1">#</span>
+<span class="c1">######################################</span>
+<span class="k">[EraseAll]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">擦除整个FLASH</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Reaset Entire Flash</span>
+<span class="na">checked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">; Whether checked by default</span>
+<span class="k">[Reset]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">成功后复位</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Reset After Success</span>
+<span class="na">checked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span><span class="w"> </span><span class="c1">; Whether checked by default</span>
+<span class="k">[AutoUpgrade]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">自动升级</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Auto Upgrade</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">; Whether to display</span>
+<span class="na">checked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">; Whether checked by default, valid only when "visible=true"</span>
+</pre></div>
+</div>
+<p>The effect of the above configuration in the tool's interface is shown below:</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image9.png"/></p>
+</section>
+<section id="id4">
+<h1><span class="section-number">1.1.1.1.6. </span>Window Title Bar Text and Icon<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h1>
+<p>The configuration items for this function are as follows:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">###########################################</span>
+<span class="c1">#</span>
+<span class="c1"># Window menu bar information configuration</span>
+<span class="c1">#</span>
+<span class="c1">###########################################</span>
+<span class="k">[Title]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">您的升级程序 1.0.1</span><span class="w"> </span><span class="c1">;Chinese title text</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">YOUR UPGRADE TOOL 1.0.1</span><span class="w"> </span><span class="c1">;English title text</span>
+<span class="na">icon_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">window.png</span><span class="w"> </span><span class="c1">;Title bar icon, supports png and jpg file formats</span>
+<span class="k">[Menu]</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;Whether to display the top menu bar</span>
+<span class="na">language</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">english</span><span class="w"> </span><span class="c1">;Default language, only Chinese and English are supported (chinese,english)</span>
+<span class="k">[Window]</span>
+<span class="na">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">750</span><span class="w"> </span><span class="c1">;Minimum window width</span>
+<span class="c1">#height = 400 ;Minimum window height</span>
+<span class="na">width_fixed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span><span class="w"> </span><span class="c1">;Whether the width is fixed</span>
+<span class="na">height_fixed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span><span class="w"> </span><span class="c1">;Whether the height is fixed</span>
+</pre></div>
+</div>
+<p>The effect of the above configuration in the tool's interface is shown below:</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image10.png"/></p>
+</section>
+<section id="id5">
+<h1><span class="section-number">1.1.1.1.7. </span>Firmware File Selector Text and File Types<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h1>
+<p>The tool supports FW and UFW firmware files. The configuration items for this function are as follows:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">###########################################</span>
+<span class="c1">#</span>
+<span class="c1"># Firmware file selector configuration</span>
+<span class="c1">#</span>
+<span class="c1">###########################################</span>
+<span class="k">[FirmwareEdit]</span>
+<span class="na">label_text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">文件：</span>
+<span class="na">label_text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">File:</span>
+<span class="na">crc_text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">文件校验码</span>
+<span class="na">crc_text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">File CRC</span>
+<span class="na">open_text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">打开</span>
+<span class="na">open_text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Open</span>
+<span class="na">file_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">fw,ufw</span><span class="w"> </span><span class="c1">;File types supported for upgrading,</span>
+<span class="na">separate file types with commas</span>
+</pre></div>
+</div>
+<p>The effect of the above configuration in the tool's interface is shown below:</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image11.png"/></p>
+</section>
+<section id="id6">
+<h1><span class="section-number">1.1.1.1.8. </span>Custom Version Information<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h1>
+<p>The configuration items for this function are as follows:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">########################################</span>
+<span class="c1">#</span>
+<span class="c1"># Specific version text to display</span>
+<span class="c1">#</span>
+<span class="c1">########################################</span>
+<span class="k">[ConfigVersion]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">版本</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Version</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
+<span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Your version text</span>
+</pre></div>
+</div>
+<p>The effect of the above configuration in the tool's interface is shown below:</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image12.png"/></p>
+</section>
+<section id="id7">
+<h1><span class="section-number">1.1.1.1.9. </span>Firmware Information Display<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h1>
+<p>The configuration items for this function are as follows:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">########################################</span>
+<span class="c1">#</span>
+<span class="c1"># Firmware information display configuration</span>
+<span class="c1">#</span>
+<span class="c1">########################################</span>
+<span class="k">[FirmwareCrc]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">固件校验码</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Firmware CRC</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;Whether to display the firmware checksum</span>
+<span class="k">[FirmwarePid]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">固件PID</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Firmware PID</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;Whether to display the PID configured in the firmware file</span>
+<span class="k">[FirmwareVid]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">固件VID</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Firmware VID</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;Whether to display the VID configured in the firmware file</span>
+</pre></div>
+</div>
+<p>The effect of the above configuration in the tool's interface is shown below:</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image13.png"/></p>
+</section>
+<section id="id8">
+<h1><span class="section-number">1.1.1.1.10. </span>Device Information Display<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h1>
+<p>The configuration items for this function are as follows:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">########################################</span>
+<span class="c1">#</span>
+<span class="c1"># Device information display configuration</span>
+<span class="c1">#</span>
+<span class="c1">########################################</span>
+<span class="k">[DevicePid]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">设备PID</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Device PID</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;Whether to display the PID in the device</span>
+<span class="k">[DeviceVid]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">设备VID</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Device VID</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;Whether to display the VID in the device</span>
+<span class="k">[DeviceCrc]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">设备固件校验码</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Device CRC</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;Whether to display the firmware checksum in the device</span>
+<span class="k">[DeviceStatus]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">设备状态</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Device Status</span>
+<span class="k">[BurnerVersion]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">烧写工具版本</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Burner Version</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;Whether to display which programming tool programmed the firmware in the device</span>
+<span class="k">[ChipCfgInfo]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">芯片配置信息</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Chip CFG Info</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span>
+<span class="c1">;Whether to display chip configuration information, currently supported only for AC104N,AD14N,AD15N</span>
+</pre></div>
+</div>
+<p>The effect of the above configuration in the tool's interface is shown below:</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image14.png"/></p>
+</section>
+<section id="id9">
+<h1><span class="section-number">1.1.1.1.11. </span>Custom Description Text<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h1>
+<p>The configuration items for this function are as follows:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">########################################</span>
+<span class="c1">#</span>
+<span class="c1"># Custom description text</span>
+<span class="c1">#</span>
+<span class="c1">########################################</span>
+<span class="k">[Description]</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"</span>
+<span class="na">The text you want to display</span>
+<span class="na">"</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"</span>
+<span class="na">your text information</span>
+<span class="na">"</span>
+</pre></div>
+</div>
+<p>The effect of the above configuration in the tool's interface is shown below:</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image15.png"/></p>
+</section>
+<section id="id10">
+<h1><span class="section-number">1.1.1.1.12. </span>Upgrade and Verify Button Text<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h1>
+<p>The upgrade and verify buttons are available only when a firmware file has been loaded and a device is available. The configuration items for this function are as follows:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">########################################</span>
+<span class="c1">#</span>
+<span class="c1"># Button configuration</span>
+<span class="c1">#</span>
+<span class="c1">########################################</span>
+<span class="c1">#</span>
+<span class="c1"># Upgrade button configuration</span>
+<span class="c1">#</span>
+<span class="k">[UpdateButton]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">升级</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Upgrade</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span>
+<span class="c1">;Whether to display the upgrade button. If the upgrade button is not displayed, the tool does not upgrade automatically</span>
+<span class="c1">#</span>
+<span class="c1"># Verify button configuration</span>
+<span class="c1">#</span>
+<span class="k">[VerifyButton]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">校验</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Verify</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;Whether to display the verify button</span>
+</pre></div>
+</div>
+<p>The effect of the above configuration in the tool's interface is shown below:</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image16.png"/></p>
+</section>
+<section id="id11">
+<h1><span class="section-number">1.1.1.1.13. </span>Authentication Code Configuration<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h1>
+<p>If third-party data such as serial numbers needs to be programmed while the device functions are being confirmed, you can enable authentication code programming so that third-party data such as serial numbers is written into the device at the same time as the device firmware is upgraded.</p>
+<p>The configuration items for this function are as follows:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">############################################</span>
+<span class="c1">#</span>
+<span class="c1"># Authentication code file selector configuration</span>
+<span class="c1">#</span>
+<span class="c1">############################################</span>
+<span class="k">[AuthCodeFileEdit]</span>
+<span class="na">label_text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">认证码文件：</span>
+<span class="na">label_text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Auth Code File:</span>
+<span class="na">crc_text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">文件校验码</span>
+<span class="na">crc_text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">File CRC</span>
+<span class="na">open_text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">打开</span>
+<span class="na">open_text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Open</span>
+<span class="na">file_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">csv,hex</span><span class="w"> </span><span class="c1">;Authentication code file formats,</span>
+<span class="na">separate file types with commas (only csv and hex files are supported)</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;Whether to display the authentication code file selector</span>
+<span class="k">[AuthCodeInfo]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">认证码信息</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Auth Code Info</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;Whether to display authentication code details</span>
+<span class="k">[AuthCodeTotal]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">总个数</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Total Number</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;Whether to display the total number of authentication codes</span>
+<span class="k">[AuthCodeUsed]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">已使用个数</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Number Of Used</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;Whether to display the number used</span>
+<span class="k">[AuthCodeAvailable]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">剩余的个数</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Number Of Available</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;Whether to display the number remaining</span>
+<span class="c1">#</span>
+<span class="c1"># The rewrite authentication code option is valid only when AuthCodeFileEdit/visible=true</span>
+<span class="c1">#</span>
+<span class="k">[OverwriteAuthCode]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">重写认证码</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Overwrite Auth Code</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">; Whether to display</span>
+<span class="na">checked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span><span class="w"> </span><span class="c1">;</span>
+<span class="na">Whether checked by default, valid only when "visible</span><span class="o">=</span><span class="s">true"</span>
+</pre></div>
+</div>
+<p>The effect of the above configuration in the tool's interface is shown below:</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image17.png"/></p>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="index.html" class="btn btn-neutral float-left" title="1.1.1. Firmware Upgrade Tool (1-to-1 PC Download Tool)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="../../firmware_edit/index.html" class="btn btn-neutral float-right" title="1.2. Firmware Editing Tool" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 09, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/firmware_tools/download/firmware_upgrade/detail.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/firmware_tools/download/firmware_upgrade/detail.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../../_static/offline.js"></script>
+</body>
+</html>

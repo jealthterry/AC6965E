@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5.2. FLASH参数说明 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../../index.html"><img id="jl-logo" src="../../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>5. 下载目录工具说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fat_image_tool/index.html">5.1. fat_image_tool工具介绍</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>5.2. FLASH参数说明</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">5.2.1. 介绍</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">5.2.2. FLASH参数版本说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sdkflash">5.2.3. 如何在SDK中设置FLASH参数文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0flash">5.2.4. V0版本芯片型号启用FLASH写保护功能</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v1-v3flash">5.2.5. V1/V3版本芯片型号启用FLASH写保护功能</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">5.2.6. 启用远程FLASH参数功能</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="../index.html"><span class="section-number">5. </span>下载目录工具说明</a> »</li>
+<li><span class="section-number">5.2. </span>FLASH参数说明</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../../JL_Tools_Docs_en/dev_tools/post_build/flash_params/index.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="flash">
+<h1><span class="section-number">5.2. </span>FLASH参数说明<a class="headerlink" href="#flash" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2><span class="section-number">5.2.1. </span>介绍<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>FLASH参数是SDK用于使能FLASH写保护功能和多算法授权用的一组参数。</p>
+<p>如SDK支持FLASH写保护功能和多算法授权，那么需要配置芯片FLASH ID对应的FLASH参数，才可以使能FLASH写保护功能和多算法授权。</p>
+<p>一般情况下FLASH参数是由烧写器写入到芯片的FLASH中的。</p>
+<p>但是您可能需要在开发调试阶段，完成以下操作：</p>
+<ol class="arabic simple">
+<li><p>启动FLASH写保护参数功能<br/></p></li>
+<li><p>重新激活多算法授权功能（如：烧写器烧录多算法授权数据后，多算法授权功能失效）</p></li>
+</ol>
+<p>可以通过isd_download.exe的参数-flash-params指定FLASH参数文件。</p>
+<p>常用的FLASH参数都已存放的FLASH参数文件中， FLASH参数文件可以通过以下链接获取：</p>
+<p><a class="reference external" href="https://pkgman.jieliapp.com/s/flash_params_v1" rel="noopener" target="_blank">V0_V1版本FLASH参数文件(点击此处下载)</a><br/>
+<a class="reference external" href="https://pkgman.jieliapp.com/s/flash_params_v3" rel="noopener" target="_blank">V3版本FLASH参数文件(点击此处下载)</a><br/></p>
+<p>如您发现由未支持的FLASH ID型号，请联系杰理工程师。</p>
+</section>
+<section id="id2">
+<h2><span class="section-number">5.2.2. </span>FLASH参数版本说明<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>默认情况下，各个芯片型号SDK适用的FLASH参数版本如下：</p>
+<div class="wy-table-responsive"><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>FLASH参数版本</p></th>
+<th class="head"><p>适用芯片型号的SDK</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>V0</p></td>
+<td><p>AC695X、AC635N、AC6083、AE695N <br/> AC696X、AC636N、AC608N <br/> AC104N、AD14N <br/> AD15N、AE15N <br/> AD17N</p></td>
+</tr>
+<tr class="row-odd"><td><p>V1</p></td>
+<td><p>JL703N <br/> AC701N、JL701N <br/> AC706N <br/> JL708N <br/> JL709N、AC689N <br/> AC710N、JL710N、AW36N <br/> AW31N <br/> AW30N、AE30N <br/> AW32N <br/> AC704N <br/> AC705N <br/> AC82N、AD18N <br/> AC680N <br/> AC112N</p></td>
+</tr>
+<tr class="row-even"><td><p>V3</p></td>
+<td><p>AC707N、AW34N <br/> AD24N <br/> AD23N <br/> AD21N、AC75N</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="sdkflash">
+<h2><span class="section-number">5.2.3. </span>如何在SDK中设置FLASH参数文件<a class="headerlink" href="#sdkflash" title="Permalink to this heading"></a></h2>
+<p>下载FLASH参数文件后，找到SDK中的download.bat文件， 在isd_download.exe后添加-flash-params参数，如下图：</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>如果您的download.bat文件是由download.c或者download_bat.c文件生成，<br/>
+那么请在download.c或者download_bat.c中添加-flash-params参数<br/></p>
+</div>
+<p><img alt="" data-action="zoom" src="../../../_images/batch_set_flash_params.png"/></p>
+</section>
+<section id="v0flash">
+<h2><span class="section-number">5.2.4. </span>V0版本芯片型号启用FLASH写保护功能<a class="headerlink" href="#v0flash" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>V0版本仅需要在isd_config.ini中增加以下配置</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>[BURNER_PASSTHROUGH_CFG]<br/>
+FLASH_WRITE_PROTECT=YES</p>
+</div>
+<p>如下图:<br/>
+<img alt="" data-action="zoom" src="../../../_images/config_flash_write_protect.png"/></p>
+</li>
+</ol>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>使用V0版本FLASH参数使能FLASH写保护功能的SDK，不需要配置OTP_CFG_SIZE。</p>
+</div>
+</section>
+<section id="v1-v3flash">
+<h2><span class="section-number">5.2.5. </span>V1/V3版本芯片型号启用FLASH写保护功能<a class="headerlink" href="#v1-v3flash" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>需要在isd_config.ini中增加以下配置</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>[BURNER_PASSTHROUGH_CFG]<br/>
+FLASH_WRITE_PROTECT=YES</p>
+</div>
+<p>如下图:<br/>
+<img alt="" data-action="zoom" src="../../../_images/config_flash_write_protect.png"/></p>
+</li>
+<li><p>在isd_config.ini的<code class="docutils literal notranslate"><span class="pre">EXTRA_CFG_PARAM</span></code>配置段中增加<code class="docutils literal notranslate"><span class="pre">OTP_CFG_SIZE=512</span></code>配置<br/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>[EXTRA_CFG_PARAM]<br/>
+OTP_CFG_SIZE=512</p>
+</div>
+<p>如下图:<br/>
+<img alt="" data-action="zoom" src="../../../_images/config_otp_cfg_size.png"/></p>
+</li>
+</ol>
+</section>
+<section id="id3">
+<h2><span class="section-number">5.2.6. </span>启用远程FLASH参数功能<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>如果需要SDK自动从服务器下载FLASH参数文件，并自动添加到SDK中，</p>
+<p>可以在isd_config.ini的<code class="docutils literal notranslate"><span class="pre">EXTRA_CFG_PARAM</span></code>配置段中增加<code class="docutils literal notranslate"><span class="pre">REMOTE_FLASH_PARAMS=YES</span></code>配置<br/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>[EXTRA_CFG_PARAM]<br/>
+REMOTE_FLASH_PARAMS=YES</p>
+</div>
+<p>如下图:<br/>
+<img alt="" data-action="zoom" src="../../../_images/config_remote_flash_params.png"/></p>
+<p>支持<code class="docutils literal notranslate"><span class="pre">REMOTE_FLASH_PARAMS</span></code>配置的isd_download.exe最低版本如下：</p>
+<div class="wy-table-responsive"><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>工具</p></th>
+<th class="head"><p>最低版本</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>isd_download.exe</p></td>
+<td><p>4.2.76</p></td>
+<td><p><a class="reference external" href="../../../other_info/index.html">如何更新,请点击此处查看</a></p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="../fat_image_tool/index.html" class="btn btn-neutral float-left" title="5.1. fat_image_tool工具介绍" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="../../forced_upgrade/index.html" class="btn btn-neutral float-right" title="6. 杰理科技强制升级工具4.0使用说明" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 09, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/post_build/flash_params/index.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/post_build/flash_params/index.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../../_static/offline.js"></script>
+</body>
+</html>

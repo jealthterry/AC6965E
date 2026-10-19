@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.1.9. Common Causes of Build Errors — JL Project Documentation</title>
+<link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../../index.html"><img id="jl-logo" src="../../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>4. About the Toolchain</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>4.1. Common Issues and Solutions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="faq_printf_float_point.html">4.1.1. Why Can't printf Print Floating-Point Numbers?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_vsprintf.html">4.1.2. Why Are vsprintf, sprintf and vprintf Not Found?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_warn_implicit_fun.html">4.1.3. About Warnings for Calls to Undeclared Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_float_point.html">4.1.4. Floating-Point FAQ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_how_to_merge_libs.html">4.1.5. How to Merge .a Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_how_to_merge_ofiles.html">4.1.6. How to Reduce the Number of .o Files in an .a File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_program_used_memory/index.html">4.1.7. How to View the Program's Memory Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq_stack_size_limit_exceeded.html">4.1.8. Why Does Linking Warn "stack size limit exceeded"?</a></li>
+<li class="toctree-l3 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>4.1.9. Common Causes of Build Errors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#unknown-command-line-argument-unrecognized-option-unknown-argument">4.1.9.1. Build reports Unknown command line argument, unrecognized option or unknown argument</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#undefined-reference-to">4.1.9.2. Build reports undefined reference to</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#relocation-truncated-to-fit">4.1.9.3. Build reports relocation truncated to fit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#xxx-a-error-adding-symbols-archive-has-no-index-run-randlib-to-add-one">4.1.9.4. Build reports xxx.a: error adding symbols: Archive has no index: run randlib to add one</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#error-llvm-gold-plugin-permission-denied">4.1.9.5. Build reports error: LLVM gold plugin: permission denied</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#xxx-a-syntax-error">4.1.9.6. Build reports xxx.a: syntax error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#xxx-a-error-adding-symbols-file-format-not-recognized">4.1.9.7. Build reports xxx.a: error adding symbols: File format not recognized</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#clang-exe-error-no-input-files">4.1.9.8. Build reports clang.exe: error: no input files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cannot-find-xxxx-o-no-such-file-or-directory">4.1.9.9. Build reports cannot find xxxx.o: No such file or directory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">4.1.9.10. Custom errors defined in the linker script</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="faq_how_to_reduce_compilation_time.html">4.1.10. How to Reduce Build Time on Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../linux_lib.html">4.2. Installing the Jieli Toolchain and Building Static Libraries on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ini_cfg.html">4.3. The isd_config.ini Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../otp_cfg.html">4.4. FLASH Parameter Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="../index.html"><span class="section-number">4. </span>About the Toolchain</a> »</li>
+<li><a href="index.html"><span class="section-number">4.1. </span>Common Issues and Solutions</a> »</li>
+<li><span class="section-number">4.1.9. </span>Common Causes of Build Errors</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../../JL_Tools_Docs_zh/dev_tools/toolchains/faqs/faq_why_build_failed.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">4.1.9. </span>Common Causes of Build Errors<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="unknown-command-line-argument-unrecognized-option-unknown-argument">
+<h2><span class="section-number">4.1.9.1. </span>Build reports <code class="docutils literal notranslate"><span class="pre">Unknown</span> <span class="pre">command</span> <span class="pre">line</span> <span class="pre">argument</span></code>, <code class="docutils literal notranslate"><span class="pre">unrecognized</span> <span class="pre">option</span></code> or <code class="docutils literal notranslate"><span class="pre">unknown</span> <span class="pre">argument</span></code><a class="headerlink" href="#unknown-command-line-argument-unrecognized-option-unknown-argument" title="Permalink to this heading"></a></h2>
+<p>If <code class="docutils literal notranslate"><span class="pre">Unknown</span> <span class="pre">command</span> <span class="pre">line</span> <span class="pre">argument</span></code>, <code class="docutils literal notranslate"><span class="pre">unrecognized</span> <span class="pre">option</span></code> or <code class="docutils literal notranslate"><span class="pre">unknown</span> <span class="pre">argument</span></code> is reported during linking or compiling, it means that the compiler or linker does not recognize a command-line argument passed to it. There are generally two possible reasons:</p>
+<ol class="arabic simple">
+<li><p>You modified the compiler or linker flags but made a typo or wrote an option incorrectly</p></li>
+<li><p>Your toolchain is too old and does not support the option yet</p></li>
+</ol>
+<p>Solution:</p>
+<ol class="arabic simple">
+<li><p>Update the toolchain to the latest version; see <a class="reference internal" href="../../dev_env/jl_toolchain_update.html"><span class="doc std std-doc">Updating the Jieli Toolchain</span></a></p></li>
+<li><p>Build and link again</p></li>
+</ol>
+</section>
+<section id="undefined-reference-to">
+<h2><span class="section-number">4.1.9.2. </span>Build reports <code class="docutils literal notranslate"><span class="pre">undefined</span> <span class="pre">reference</span> <span class="pre">to</span></code><a class="headerlink" href="#undefined-reference-to" title="Permalink to this heading"></a></h2>
+<p>During linking, <code class="docutils literal notranslate"><span class="pre">undefined</span> <span class="pre">reference</span> <span class="pre">to</span></code> is reported, as in the figure below:</p>
+<p><img alt="" src="../../../_images/why_build_failed_undefined_reference.png"/></p>
+<p>This error means that a referenced function could not be found. For example, <code class="docutils literal notranslate"><span class="pre">undefined</span> <span class="pre">reference</span> <span class="pre">to</span> <span class="pre">'wav_decode'</span></code> in the figure above means that the code references (that is, calls, takes the address of, etc.) the function <code class="docutils literal notranslate"><span class="pre">wav_decode</span></code>, but no implementation of this function is provided.</p>
+<p>There are usually two reasons for this:</p>
+<ol class="arabic simple">
+<li><p>No implementation of the function is actually provided. Check whether the function name was mistyped, or whether the library has not been updated and is missing the function.</p></li>
+<li><p>The function may not be found because of the order in which the linker searches the library files. Consider using <code class="docutils literal notranslate"><span class="pre">--start-group</span></code> and <code class="docutils literal notranslate"><span class="pre">--end-group</span></code> to specify how the library files are searched.</p></li>
+</ol>
+</section>
+<section id="relocation-truncated-to-fit">
+<h2><span class="section-number">4.1.9.3. </span>Build reports <code class="docutils literal notranslate"><span class="pre">relocation</span> <span class="pre">truncated</span> <span class="pre">to</span> <span class="pre">fit</span></code><a class="headerlink" href="#relocation-truncated-to-fit" title="Permalink to this heading"></a></h2>
+<p>During linking, <code class="docutils literal notranslate"><span class="pre">reloaction</span> <span class="pre">truncated</span> <span class="pre">to</span> <span class="pre">fit</span></code> is reported, as in the figure below:</p>
+<p><img alt="" src="../../../_images/err_ld_relocation_truncated_to_fit.jpg"/></p>
+<p>This error means that the symbol is too far away from the location that references it for the distance to be represented. This usually has one of the following causes:</p>
+<ol class="arabic simple">
+<li><p>The library functions being used were built with the shorter <code class="docutils literal notranslate"><span class="pre">call</span></code> instruction (that is, built without <code class="docutils literal notranslate"><span class="pre">-mllvm</span> <span class="pre">-pi32v2-large-program=true</span></code>). Make sure to switch to the compiler options, linker options and standard libraries of the <code class="docutils literal notranslate"><span class="pre">large</span></code> configuration.</p></li>
+<li><p>If the symbol is a function, the function may not have been aligned to two bytes. Note that the start of every function must be aligned to two bytes. To do this, add <code class="docutils literal notranslate"><span class="pre">.align</span> <span class="pre">2</span></code> before the function label (in an assembly file), or check whether the ld script places it correctly.</p></li>
+<li><p>The symbol may be undefined.</p></li>
+</ol>
+</section>
+<section id="xxx-a-error-adding-symbols-archive-has-no-index-run-randlib-to-add-one">
+<h2><span class="section-number">4.1.9.4. </span>Build reports <code class="docutils literal notranslate"><span class="pre">xxx.a:</span> <span class="pre">error</span> <span class="pre">adding</span> <span class="pre">symbols:</span> <span class="pre">Archive</span> <span class="pre">has</span> <span class="pre">no</span> <span class="pre">index:</span> <span class="pre">run</span> <span class="pre">randlib</span> <span class="pre">to</span> <span class="pre">add</span> <span class="pre">one</span></code><a class="headerlink" href="#xxx-a-error-adding-symbols-archive-has-no-index-run-randlib-to-add-one" title="Permalink to this heading"></a></h2>
+<p>During linking, <code class="docutils literal notranslate"><span class="pre">Archive</span> <span class="pre">has</span> <span class="pre">no</span> <span class="pre">index</span></code> is reported, as in the figure below:</p>
+<p><img alt="" src="../../../_images/why_build_failed_archive_has_no_index.jpg"/></p>
+<p>This error means that the <code class="docutils literal notranslate"><span class="pre">xxx.a</span></code> file has no symbol index. This may be because the symbol index was removed when the <code class="docutils literal notranslate"><span class="pre">.a</span></code> file was generated, or for some other reason. You can add the index yourself with the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># On Windows
+# Open a CMD window and enter the following command to add a symbol index to xxx.a
+
+C:\JL\pi32\bin\llvm-ar.exe s xxx.a
+
+# On Linux, call llvm-ar (ar also works)
+# Here, TOOL_DIR is the location of the toolchain on Linux
+
+$TOOL_DIR/common/bin/llvm-ar s xxx.a
+</pre></div>
+</div>
+</section>
+<section id="error-llvm-gold-plugin-permission-denied">
+<h2><span class="section-number">4.1.9.5. </span>Build reports <code class="docutils literal notranslate"><span class="pre">error:</span> <span class="pre">LLVM</span> <span class="pre">gold</span> <span class="pre">plugin:</span> <span class="pre">permission</span> <span class="pre">denied</span></code><a class="headerlink" href="#error-llvm-gold-plugin-permission-denied" title="Permalink to this heading"></a></h2>
+<p>During linking, the error shown below is reported:</p>
+<p><img alt="" src="../../../_images/err_llvm_gold_permission_denied.png"/></p>
+<p>This error occurs because the linker failed when calling LLVMgold.dll in the toolchain directory. There are usually several possible causes:</p>
+<ol class="arabic simple">
+<li><p>Files in the toolchain are corrupted. Reinstall the toolchain and try again. For toolchain installation, see <a class="reference internal" href="../../dev_env/index.html"><span class="doc std std-doc">Development Environment Installation</span></a></p></li>
+<li><p>Antivirus software or other permission-control software prevents the linker from calling LLVMgold.dll. Try trusting all executables under the <code class="docutils literal notranslate"><span class="pre">C:\JL</span></code> directory (recursively, including all subdirectories).</p></li>
+<li><p>Other possible causes: try a different computer and see whether that solves the problem.</p></li>
+</ol>
+</section>
+<section id="xxx-a-syntax-error">
+<h2><span class="section-number">4.1.9.6. </span>Build reports <code class="docutils literal notranslate"><span class="pre">xxx.a:</span> <span class="pre">syntax</span> <span class="pre">error</span></code><a class="headerlink" href="#xxx-a-syntax-error" title="Permalink to this heading"></a></h2>
+<p>During linking, the error shown below is reported:</p>
+<p><img alt="" src="../../../_images/archive_file_syntax_error.jpg"/></p>
+<p>This error means that the linker processed the .a file as a linker script. Since the content of the .a file is not a linker script, a syntax error is reported.</p>
+<p>This may have one of the following causes:</p>
+<ol class="arabic simple">
+<li><p>The linker flags were specified incorrectly, for example, a -T option was added in front of the .a file. The -T option is used to specify a linker script.</p></li>
+<li><p>The .a file itself may be corrupted and no longer conform to the .a file format.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Sometimes an .a file does not contain any .o files. In this case, the content of the .a file is <code class="docutils literal notranslate"><span class="pre">!&lt;arch&gt;\n</span></code>. On Windows, if git's <code class="docutils literal notranslate"><span class="pre">auto.crlf</span></code> option is set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, git may treat such an .a file as a text file when the repository is cloned and replace the <code class="docutils literal notranslate"><span class="pre">\n</span></code> in it with <code class="docutils literal notranslate"><span class="pre">\r\n</span></code>, which makes linking fail.</p>
+</div>
+</section>
+<section id="xxx-a-error-adding-symbols-file-format-not-recognized">
+<h2><span class="section-number">4.1.9.7. </span>Build reports <code class="docutils literal notranslate"><span class="pre">xxx.a:</span> <span class="pre">error</span> <span class="pre">adding</span> <span class="pre">symbols:</span> <span class="pre">File</span> <span class="pre">format</span> <span class="pre">not</span> <span class="pre">recognized</span></code><a class="headerlink" href="#xxx-a-error-adding-symbols-file-format-not-recognized" title="Permalink to this heading"></a></h2>
+<p>During linking, the error shown below is reported:</p>
+<p><img alt="" src="../../../_images/err_add_symbols_file_format_not_recognized.jpg"/></p>
+<p>This usually has one of the following causes:</p>
+<ol class="arabic simple">
+<li><p>When building on Linux or in WSL, <code class="docutils literal notranslate"><span class="pre">ulimit</span> <span class="pre">-n</span> <span class="pre">8096</span></code> was not run first to increase the number of files that can be opened, so the linker fails when the number of open files reaches the limit. If you encounter this problem on Windows, consider following <a class="reference internal" href="faq_how_to_merge_ofiles.html"><span class="doc std std-doc">How to Reduce the Number of .o Files in an .a File</span></a> to merge the multiple .o files in the .a file into a single .o file. (This problem is usually related to -flto mode combined with an .a file that contains a large number of .o files. Consider removing -flto from the flags used to build that .a file, or merge the .o files as described above.)</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">xxx.a</span></code> file does not use the same instruction set as the current SDK. Check whether it was generated with the Jieli compiler.</p></li>
+</ol>
+</section>
+<section id="clang-exe-error-no-input-files">
+<h2><span class="section-number">4.1.9.8. </span>Build reports <code class="docutils literal notranslate"><span class="pre">clang.exe:</span> <span class="pre">error:</span> <span class="pre">no</span> <span class="pre">input</span> <span class="pre">files</span></code><a class="headerlink" href="#clang-exe-error-no-input-files" title="Permalink to this heading"></a></h2>
+<p>During compilation, the error shown below is reported:</p>
+<p><img alt="" src="../../../_images/err_clang_no_input_files.jpg"/></p>
+<p>This error is usually caused by the compile command exceeding the command-line length limit.</p>
+<p>When you encounter these errors, consider the following:</p>
+<ol class="arabic">
+<li><p>You can solve this problem by shortening the compile command.</p>
+<p>For example, pass the include directories to clang through a file argument.</p>
+<p><font color="red"> Note: lines in include_dir.txt must not end with a backslash <code class="docutils literal notranslate"><span class="pre">\</span></code>. </font></p>
+<p>For builds with a Makefile, see the figure below:</p>
+<p><img alt="" src="../../../_images/add_include_to_file_1.jpg"/></p>
+<p>For builds with Code::Blocks, see the figure below:</p>
+<p><img alt="" src="../../../_images/add_include_to_file_2.jpg"/></p>
+<p><img alt="" src="../../../_images/add_include_to_file_3.jpg"/></p>
+<p>Put the file that stores the include directories in the same directory as the Makefile and the Code::Blocks project, as shown below:</p>
+<p><img alt="" src="../../../_images/add_include_to_file_0.jpg"/></p>
+</li>
+</ol>
+</section>
+<section id="cannot-find-xxxx-o-no-such-file-or-directory">
+<h2><span class="section-number">4.1.9.9. </span>Build reports <code class="docutils literal notranslate"><span class="pre">cannot</span> <span class="pre">find</span> <span class="pre">xxxx.o:</span> <span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory</span></code><a class="headerlink" href="#cannot-find-xxxx-o-no-such-file-or-directory" title="Permalink to this heading"></a></h2>
+<p>During compilation, the error shown below is reported:</p>
+<p><img alt="" src="../../../_images/cannot_find_o_no_such_file_ro_directory.jpg"/></p>
+<p>This error may be caused by the path of the Code::Blocks project being too long.</p>
+<p>When you encounter this error, consider the following:</p>
+<ol class="arabic simple">
+<li><p>Shorten the path of the Code::Blocks project, for example by copying the Code::Blocks project to the root directory of a drive.</p></li>
+</ol>
+</section>
+<section id="id2">
+<h2><span class="section-number">4.1.9.10. </span>Custom errors defined in the linker script<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>Sometimes checks are added to the linker script, for example statements such as <code class="docutils literal notranslate"><span class="pre">ASSERT(exp,</span> <span class="pre">message)</span></code>. When <code class="docutils literal notranslate"><span class="pre">exp</span></code> is false, the linker outputs <code class="docutils literal notranslate"><span class="pre">message</span></code>. Generally, these checks verify the following:</p>
+<ol class="arabic simple">
+<li><p>That the size of the code, data, etc. is within the range supported by the chip and does not overflow (exceed the physical limit)</p></li>
+<li><p>That the alignment (of the start address or the size) of the code, data, etc. meets the requirements</p></li>
+</ol>
+<p>For example, the following figure:</p>
+<p><img alt="" src="../../../_images/ld_script_assert.jpg"/></p>
+<p>When you encounter these errors, consider the following:</p>
+<ol class="arabic simple">
+<li><p>Search the entire current code directory for the error string to find the corresponding linker script (usually <code class="docutils literal notranslate"><span class="pre">sdk.ld.c</span></code>)</p></li>
+<li><p>Determine which condition is not met and make the corresponding changes</p></li>
+</ol>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="faq_stack_size_limit_exceeded.html" class="btn btn-neutral float-left" title="4.1.8. Why Does Linking Warn &quot;stack size limit exceeded&quot;?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="faq_how_to_reduce_compilation_time.html" class="btn btn-neutral float-right" title="4.1.10. How to Reduce Build Time on Windows" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 09, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/toolchains/faqs/faq_why_build_failed.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/toolchains/faqs/faq_why_build_failed.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../../_static/offline.js"></script>
+</body>
+</html>

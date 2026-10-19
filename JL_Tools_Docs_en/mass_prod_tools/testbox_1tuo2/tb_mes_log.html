@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3.10. Test Box MES Log Output — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>3. Jieli 1-to-2 Bluetooth Test Box User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_base_introduction.html">3.1. Test Box Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html">3.2. PC Tool Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_upgrade.html">3.3. Test Box Firmware Upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wireless_upgrade.html">3.4. Wireless Upgrade of Bluetooth Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wired_upgrade.html">3.5. Wired Upgrade of Bluetooth Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_test_process.html">3.6. Bluetooth Device Test Procedure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mass_production.html">3.7. Test Box Batch Upgrade and Test Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ear_storage.html">3.8. Using Earphone Storage Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_transparent.html">3.9. PC Passthrough Commands and Custom Commands</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>3.10. Test Box MES Log Output</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">3.10.1. Test box wiring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.10.2. Enabling the settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3.10.3. Protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tb_view_bt_info.html">3.11. Viewing Bluetooth Device Information (SDK Version/Battery Level/Checksum)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ufw_crc_compare.html">3.12. Test Box UFW File Checksum Matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_error_status.html">3.13. Status Indicators and Error Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_fixture_install.html">3.14. Connecting the Test Box to a Fixture over UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_function.html">3.15. Other Common Features: Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_problem.html">3.16. Frequently Asked Questions (FAQ)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_version_info.html">3.17. Version Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">3. </span>Jieli 1-to-2 Bluetooth Test Box User Manual</a> »</li>
+<li><span class="section-number">3.10. </span>Test Box MES Log Output</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/testbox_1tuo2/tb_mes_log.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="mes-log">
+<h1><span class="section-number">3.10. </span>Test Box MES Log Output<a class="headerlink" href="#mes-log" title="Permalink to this heading"></a></h1>
+<p>So that customers can connect the Bluetooth test box to an MES system, the test box outputs LOG data over the serial port (UART).</p>
+<section id="id1">
+<h2><span class="section-number">3.10.1. </span>Test box wiring<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>LOG output wiring:</strong> UART output baud rate: 460800</p></li>
+</ul>
+<p>LOG output wiring in EDR connection mode<br/> <img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image74.png"/></p>
+<p>LOG output wiring with BLE test enabled<br/> <img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image78.png"/></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>1. EDR connection mode means that DIP switch 6 <code class="docutils literal notranslate"><span class="pre">BLE</span> <span class="pre">test</span></code> is not ON; only an EDR connection is made.<br/> 2. When DIP switch 6 <code class="docutils literal notranslate"><span class="pre">BLE</span> <span class="pre">test</span></code> is ON, only a BLE connection is made and <strong>only the Bluetooth address can be output</strong>; <strong>the frequency offset calibration value and RSSI are output</strong> only when DIP switch 4 <code class="docutils literal notranslate"><span class="pre">Frequency</span> <span class="pre">offset</span> <span class="pre">test</span></code> is ON</p>
+</div>
+</section>
+<section id="id2">
+<h2><span class="section-number">3.10.2. </span>Enabling the settings<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>LOG output requires some settings to be enabled, as shown below:</p>
+<p><code class="docutils literal notranslate"><span class="pre">MSE</span> <span class="pre">LOG</span> <span class="pre">output</span> <span class="pre">configuration</span></code> (MSE LOG输出配置) must be set to 1<br/> <img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image75.png"/></p>
+<p><code class="docutils literal notranslate"><span class="pre">Classic</span> <span class="pre">Bluetooth</span> <span class="pre">test</span> <span class="pre">supports</span> <span class="pre">TWS</span> <span class="pre">connection</span></code> (经典蓝牙测试支持tws连接) must be set to 0<br/> To display the SDK version, check <code class="docutils literal notranslate"><span class="pre">SDK</span> <span class="pre">version</span></code> (sdk版本) <br/> To display the battery level, check <code class="docutils literal notranslate"><span class="pre">Battery</span> <span class="pre">level</span> <span class="pre">and</span> <span class="pre">checksum</span></code> (电量及校验码)<br/> To display the checksum, check <code class="docutils literal notranslate"><span class="pre">Battery</span> <span class="pre">level</span> <span class="pre">and</span> <span class="pre">checksum</span></code> (电量及校验码)<br/> <img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image76.png"/></p>
+<p>In UART mode, check <code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">mode</span></code> (测试模式)<br/> To display pairing information, check <code class="docutils literal notranslate"><span class="pre">TWS</span> <span class="pre">pairing</span> <span class="pre">enable</span></code> (对耳配对使能)<br/> <img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image77.png"/></p>
+</section>
+<section id="id3">
+<h2><span class="section-number">3.10.3. </span>Protocol<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>The LOG is output according to a specific protocol, which makes it easy to connect to an MES system</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>             <span class="o">|&lt;-------------</span> <span class="n">LEN</span> <span class="o">---------------&gt;|</span>
+ <span class="o">+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+</span>
+ <span class="o">|</span><span class="n">CRC16</span><span class="o">|</span> <span class="n">LEN</span> <span class="o">|</span>    <span class="n">MASK</span>   <span class="o">|</span><span class="n">L</span> <span class="o">|</span><span class="n">T</span> <span class="o">|</span><span class="n">V</span><span class="o">....|</span><span class="n">L</span> <span class="o">|</span><span class="n">T</span> <span class="o">|</span><span class="n">V</span><span class="o">....|</span>
+ <span class="o">+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+</span>
+       <span class="o">|&lt;----------------</span> <span class="n">CRC16</span> <span class="o">----------------&gt;|</span>
+
+</pre></div>
+</div>
+<p>CRC16: the CRC16 value calculated over the command data, excluding the CRC16 itself</p>
+<p>LEN: the length of MASK + LTV * N</p>
+<p>MASK: data type flags; each BIT represents one data type:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>BIT</strong></p></th>
+<th class="head"><p><strong>Data type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>BIT0</p></td>
+<td><p>0: left earbud; 1: right earbud</p></td>
+<td><p>The left/right earbud flag exists only in MASK</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>When any of the following BITs is set to 1, data in LTV format is appended</p></td>
+</tr>
+<tr class="row-even"><td><p>BIT1</p></td>
+<td><p>Bluetooth address</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">enable</span></code> (测试使能) must be checked in <strong>UART mode</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>BIT2</p></td>
+<td><p>SDK version</p></td>
+<td><p>Output when <code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">display</span> <span class="pre">content</span> <span class="pre">configuration</span></code> (连接显示内容配置) -&gt; <code class="docutils literal notranslate"><span class="pre">SDK</span> <span class="pre">info</span></code> (sdk信息) is checked in <strong>EDR connection mode</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>BIT3</p></td>
+<td><p>CRC32</p></td>
+<td><p>Output when <code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">display</span> <span class="pre">content</span> <span class="pre">configuration</span></code> (连接显示内容配置) -&gt; <code class="docutils literal notranslate"><span class="pre">Battery</span> <span class="pre">level</span> <span class="pre">and</span> <span class="pre">checksum</span></code> (电量及校验码) is checked in <strong>EDR connection mode</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>BIT4</p></td>
+<td><p>Battery level</p></td>
+<td><p>Output when <code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">display</span> <span class="pre">content</span> <span class="pre">configuration</span></code> (连接显示内容配置) -&gt; <code class="docutils literal notranslate"><span class="pre">Battery</span> <span class="pre">level</span> <span class="pre">and</span> <span class="pre">checksum</span></code> (电量及校验码) is checked in <strong>EDR connection mode</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>BIT5</p></td>
+<td><p>Pairing status</p></td>
+<td><p>Output when <code class="docutils literal notranslate"><span class="pre">TWS</span> <span class="pre">pairing</span> <span class="pre">enable</span></code> (对耳配对使能) is checked</p></td>
+</tr>
+<tr class="row-odd"><td><p>BIT6</p></td>
+<td><p>Bluetooth address after pairing</p></td>
+<td><p>Output when <code class="docutils literal notranslate"><span class="pre">TWS</span> <span class="pre">pairing</span> <span class="pre">enable</span></code> (对耳配对使能) is checked</p></td>
+</tr>
+<tr class="row-even"><td><p>BIT7</p></td>
+<td><p>Frequency offset</p></td>
+<td><p>Output when a frequency offset test is performed in <strong>BLE test mode</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>BIT8</p></td>
+<td><p>RSSI</p></td>
+<td><p>Output when a frequency offset test is performed in <strong>BLE test mode</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>BIT9</p></td>
+<td><p>Frequency offset calibration structure</p></td>
+<td><p>Outputs a frequency offset calibration structure<br/>struct fre_offset_t {<br/> u8 flag; //whether calibrated before. 0: not calibrated; 1: calibrated this time; 2: already calibrated<br/> s8 bf_trim_fre_offset; //frequency offset before calibration<br/> s8 trim_fre_offset; //frequency offset after calibration<br/> u8 fre_offset_result; //calibration result (compared with the maximum frequency offset alert option checked on the test box)<br/>} ;</p></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>LTV :</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>L: data length of V<br/> T: data type:</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>No.</strong></p></th>
+<th class="head"><p><strong>Data type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Length</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Bluetooth address</p></td>
+<td><p></p></td>
+<td><p>6byte</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>SDK version</p></td>
+<td><p></p></td>
+<td><p>32byte</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>CRC32</p></td>
+<td><p></p></td>
+<td><p>4byte</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Battery level</p></td>
+<td><p>Hex</p></td>
+<td><p>1byte</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Pairing status</p></td>
+<td><p>0: not paired; 1: paired</p></td>
+<td><p>1byte</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>Bluetooth address after pairing</p></td>
+<td><p></p></td>
+<td><p>6byte</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>Frequency offset</p></td>
+<td><p></p></td>
+<td><p>4byte</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>RSSI</p></td>
+<td><p></p></td>
+<td><p>4byte</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>Frequency offset calibration structure</p></td>
+<td><p></p></td>
+<td><p>4byte</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>V: the data, whose length corresponds to type T<br/></p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    Example 1:
+    2F C0 0C 00 03 00 00 00 06 01 08 C5 EE 4B 0B 87
+
+    |CRC16| LEN |    MASK   |L |T |        V        |
+    |2F C0|0C 00|03 00 00 00|06|01|08 C5 EE 4B 0B 87|
+
+
+    Example 2:
+    CE 8A 42 00 7E 00 00 00 06 01 E9 FE 53 86 9A 52 
+    20 02 18 03 3F 3F 3F 3F 2D 40 32 30 32 33 30 36 
+    32 36 2D 24 38 35 65 63 31 00 00 00 00 00 00 00 
+    00 00 04 03 13 E7 54 75 01 04 64 01 05 01 06 06 
+    A0 E3 B1 6D 9A EB
+
+    |CRC16| LEN |    MASK   |L |T |        V        |
+    |CE 8A|42 00|7E 00 00 00|06|01|E9 FE 53 86 9A 52|
+    |L |T |                 V  
+    |20|02|18 03 3F 3F 3F 3F 2D 40 32 30 32 33 30 36 
+                            V
+    32 36 2D 24 38 35 65 63 31 00 00 00 00 00 00 00 
+        |L |T |     V     |L |T |V |L |T |V |L |T |
+    00 00|04|03|13 E7 54 75|01|04|64|01|05|01|06|06|
+            V       |
+    A0 E3 B1 6D 9A EB|
+
+
+    Example 3: output of frequency offset and RSSI
+    19 50 18 00 83 01 00 00 06 01 8C 4C 80 7A A0 C2 
+    04 07 1B 00 00 00 04 08 CD FF FF FF
+
+    |CRC16| LEN |    MASK   |L |T |        V        |
+    |19 50|18 00|83 01 00 00|06|01|8C 4C 80 7A A0 C2|
+    |L |T |     V     |L |T |     V     |
+    |04|07|1B 00 00 00|04|08|CD FF FF FF|
+</pre></div>
+</div>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="tb_pc_transparent.html" class="btn btn-neutral float-left" title="3.9. PC Passthrough Commands and Custom Commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="tb_view_bt_info.html" class="btn btn-neutral float-right" title="3.11. Viewing Bluetooth Device Information (SDK Version/Battery Level/Checksum)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_mes_log.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_mes_log.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

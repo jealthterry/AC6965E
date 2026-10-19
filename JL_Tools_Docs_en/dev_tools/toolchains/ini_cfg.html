@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.3. The isd_config.ini Configuration File — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>4. About the Toolchain</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="faqs/index.html">4.1. Common Issues and Solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linux_lib.html">4.2. Installing the Jieli Toolchain and Building Static Libraries on Linux</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>4.3. The isd_config.ini Configuration File</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">4.3.1. Configuration sections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2"><button class="toctree-expand" title="Open/close menu" type="button"></button>4.3.2. Options</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#extra-cfg-param">4.3.2.1. [EXTRA_CFG_PARAM] section options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sys-cfg-param">4.3.2.2. [SYS_CFG_PARAM] section options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tool-config">4.3.2.3. [TOOL_CONFIG] section options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#chip-version">4.3.2.4. [CHIP_VERSION] section options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reserved-config">4.3.2.5. [RESERVED_CONFIG] section options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reserved-expand-config">4.3.2.6. [RESERVED_EXPAND_CONFIG] section options (optional)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="otp_cfg.html">4.4. FLASH Parameter Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">4. </span>About the Toolchain</a> »</li>
+<li><span class="section-number">4.3. </span>The isd_config.ini Configuration File</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/dev_tools/toolchains/ini_cfg.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="isd-config-ini">
+<h1><span class="section-number">4.3. </span>The isd_config.ini Configuration File<a class="headerlink" href="#isd-config-ini" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2><span class="section-number">4.3.1. </span>Configuration sections<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<div class="wy-table-responsive"><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Section name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[EXTRA_CFG_PARAM]</span></code></p></td>
+<td><p>Configures the information required before flash.bin is generated.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">[SYS_CFG_PARAM]</span></code></p></td>
+<td><p>Configures the parameters required by the system. All options in this section are converted and then stored in flash.bin.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[TOOL_CONFIG]</span></code></p></td>
+<td><p>Configures information related to the tools.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">[CHIP_VERSION]</span></code></p></td>
+<td><p>Configures information related to the chip version.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[RESERVED_CONFIG]</span></code></p></td>
+<td><p>Section for configuring reserved-area information. If the RESERVED_OPT option is set in the <code class="docutils literal notranslate"><span class="pre">[EXTRA_CFG_PARAM]</span></code> section, at most 6 entries can be configured in this section.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">[RESERVED_EXPAND_CONFIG]</span></code></p></td>
+<td><p>Section for configuring reserved-area information, like <code class="docutils literal notranslate"><span class="pre">[RESERVED_CONFIG]</span></code>. This section was added in case the <code class="docutils literal notranslate"><span class="pre">[RESERVED_CONFIG]</span></code> section is not sufficient.</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="id2">
+<h2><span class="section-number">4.3.2. </span>Options<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p><b>The default value is the value used when the option is not present.</b></p><b>
+</b><p><b>The valid values are the values that the option accepts.</b></p>
+<section id="extra-cfg-param">
+<h3><span class="section-number">4.3.2.1. </span><code class="docutils literal notranslate"><span class="pre">[EXTRA_CFG_PARAM]</span></code> section options<a class="headerlink" href="#extra-cfg-param" title="Permalink to this heading"></a></h3>
+<div class="wy-table-responsive"><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Options</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default value</p></th>
+<th class="head"><p>Valid values</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NEED_RESERVED_4K</p></td>
+<td><p>Boolean</p></td>
+<td><p>YES</p></td>
+<td><p>YES/NO</p></td>
+<td><p>Reserves some space for storing the configuration required by the SDK. <font color="red">Leave it unchanged by default</font>; if you need to change it, contact a Jieli engineer</p></td>
+</tr>
+<tr class="row-odd"><td><p>NEED_RESERVED_AREA</p></td>
+<td><p>Boolean</p></td>
+<td><p>YES</p></td>
+<td><p>YES/NO</p></td>
+<td><p>Whether the reserved area is required to include the BTIF area <br/> Chip models without Bluetooth configuration set this to NO, for example AD14N, AD15N</p></td>
+</tr>
+<tr class="row-even"><td><p>NEW_FLASH_FS</p></td>
+<td><p>Boolean</p></td>
+<td><p></p></td>
+<td><p>YES/NO</p></td>
+<td><p>Whether to use the new file system (BR22). This option is mutually exclusive with the dual-backup option</p></td>
+</tr>
+<tr class="row-odd"><td><p>BR22_TWS_DB</p></td>
+<td><p>Boolean</p></td>
+<td><p></p></td>
+<td><p>YES/NO</p></td>
+<td><p>Whether to use the BR22 dual-backup flash structure. This option is mutually exclusive with the single-backup option (it must be used together with FLASH_SIZE and BR22_TWS_VERSION)</p></td>
+</tr>
+<tr class="row-even"><td><p>BR22_TWS_VERSION</p></td>
+<td><p>Numeric value</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>Version number for dual backup (generally used together with BR22_TWS_DB)</p></td>
+</tr>
+<tr class="row-odd"><td><p>FLASH_SIZE</p></td>
+<td><p>Numeric value</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>Specifies the size of the current FLASH (generally used together with BR22_TWS_DB)</p></td>
+</tr>
+<tr class="row-even"><td><p>CHECK_OTA_BIN</p></td>
+<td><p>Boolean</p></td>
+<td><p></p></td>
+<td><p>YES/NO</p></td>
+<td><p>Can be set to YES or NO. If it is not set, ota.bin is checked and its size calculated by default in the single-backup case (BR22_TWS_DB indicates dual backup). If it is NO, ota.bin is not checked</p></td>
+</tr>
+<tr class="row-odd"><td><p>CHIP_NAME</p></td>
+<td><p>String</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>Chip name</p></td>
+</tr>
+<tr class="row-even"><td><p>ENTRY</p></td>
+<td><p>Numeric value</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>Entry address of the SDK</p></td>
+</tr>
+<tr class="row-odd"><td><p>RESERVED_OPT</p></td>
+<td><p>Numeric value</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p>Whether the reserved area needs to be reserved in advance</p></td>
+</tr>
+<tr class="row-even"><td><p>PID</p></td>
+<td><p>String</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>The chip's pid (a string of at most 16 bytes)</p></td>
+</tr>
+<tr class="row-odd"><td><p>VID</p></td>
+<td><p>String</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>The chip's vid (a string of at most 4 bytes)</p></td>
+</tr>
+<tr class="row-even"><td><p>DOWNLOAD_MODEL</p></td>
+<td><p>String</p></td>
+<td><p></p></td>
+<td><p>USB/SERIAL</p></td>
+<td><p>Download mode: USB download or serial port (UART) download (USB download by default)</p></td>
+</tr>
+<tr class="row-odd"><td><p>COMPACT_SETTING</p></td>
+<td><p>Boolean</p></td>
+<td><p>NO</p></td>
+<td><p>YES/NO</p></td>
+<td><p>Whether file start positions are allowed not to be 4K-aligned</p></td>
+</tr>
+<tr class="row-even"><td><p>EXPAND_BIN</p></td>
+<td><p>Boolean</p></td>
+<td><p>NO</p></td>
+<td><p>YES/NO</p></td>
+<td><p>Whether to generate jl_isd_expand.bin, which extends jl_isd.bin to the size of the flash actually occupied by the solution (0xFF is appended after jl_isd.bin).</p></td>
+</tr>
+<tr class="row-odd"><td><p>SDK_VERSION</p></td>
+<td><p>String</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>Version information of the current SDK. <font color="red">This parameter is set automatically by the build script</font></p></td>
+</tr>
+<tr class="row-even"><td><p>SPECIAL_OPT</p></td>
+<td><p>Numeric value</p></td>
+<td><p></p></td>
+<td><p>0</p></td>
+<td><p>FLASH format. Leave it unchanged by default; if you need to change it, contact a Jieli engineer</p></td>
+</tr>
+<tr class="row-odd"><td><p>FORCE_4K_ALIGN</p></td>
+<td><p>Boolean</p></td>
+<td><p></p></td>
+<td><p>YES/NO</p></td>
+<td><p>Default FLASH BIN format. Leave it unchanged by default; if you need to change it, contact a Jieli engineer</p></td>
+</tr>
+<tr class="row-even"><td><p>UFW_ELEMENT</p></td>
+<td><p>Format</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>Format and order of the FLASH BIN in the UFW file. Leave it unchanged by default; if you need to change it, contact a Jieli engineer</p></td>
+</tr>
+<tr class="row-odd"><td><p>AREA_ALIGN</p></td>
+<td><p>Numeric value</p></td>
+<td><p></p></td>
+<td><p>1/0x10</p></td>
+<td><p>Alignment used when the FLASH BIN is generated offline. Leave it unchanged by default; if you need to change it, contact a Jieli engineer</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="sys-cfg-param">
+<h3><span class="section-number">4.3.2.2. </span><code class="docutils literal notranslate"><span class="pre">[SYS_CFG_PARAM]</span></code> section options<a class="headerlink" href="#sys-cfg-param" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>The settings in this section are custom settings. They are converted and stored in flash.bin for use by the firmware.<br/></p></li>
+<li><p>Currently available settings:</p></li>
+</ul>
+<div class="wy-table-responsive"><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SPI=2_3_0_0</p></td>
+<td><p>Configures the SPI parameters. The value to the right of the equals sign means <code class="docutils literal notranslate"><span class="pre">datawidth_clk_mode_port</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>OSC=btosc</p></td>
+<td><p>Parameter used to specify the system clock source; <font color="red">usually commented out</font></p></td>
+</tr>
+<tr class="row-even"><td><p>OSC_FREQ=12MHz</p></td>
+<td><p>Parameter used to specify the FREQ frequency; can be 12MHz or 24MHz; <font color="red">usually commented out</font></p></td>
+</tr>
+<tr class="row-odd"><td><p>SYS_CLK=24MHz</p></td>
+<td><p>Parameter used to specify the CLK frequency; can be 24MHz or 48MHz; <font color="red">usually commented out</font></p></td>
+</tr>
+<tr class="row-even"><td><p>UTTX=PA05</p></td>
+<td><p>Serial port (UART) TX</p></td>
+</tr>
+<tr class="row-odd"><td><p>UTBD=1000000</p></td>
+<td><p>Serial port baud rate</p></td>
+</tr>
+<tr class="row-even"><td><p>UTRX=PB01</p></td>
+<td><p>Serial port upgrade; can be PB00, PB05 or PA05; <font color="red">usually commented out</font></p></td>
+</tr>
+<tr class="row-odd"><td><p>RESET=PB01_08_0</p></td>
+<td><p>Specifies the reset button pin and the reset parameters. The value to the right of the equals sign means port_long-press time_active level (the long-press time can be one of six values: 00, 01, 02, 04, 08 or 16, in seconds; when the long-press time is 00, the long-press reset function is disabled.)</p></td>
+</tr>
+<tr class="row-even"><td><p>EX_FLASH=PB07_2A_PB11</p></td>
+<td><p>Specifies the external upgrade parameters used when the isd_download.exe tool programs an external flash:<br/>The CS pin is PB07<br/>Port C of SPI1 is used<br/>If the norflash power supply is vddio, enter NULL; otherwise, enter the corresponding pin number<br/>Must be used together with the packres.exe tool</p></td>
+</tr>
+<tr class="row-odd"><td><p>EOFFSET=0</p></td>
+<td><p><font color="red">Do not change this arbitrarily</font>. If you need to change it, contact a Jieli engineer. <font color="red">Note: this feature requires UBOOT support</font></p></td>
+</tr>
+<tr class="row-even"><td><p>AUTH_CODE=0</p></td>
+<td><p><font color="red">Disabled by default</font>. To enable it, contact a Jieli engineer. <font color="red">Set this value according to the actual SDK</font></p></td>
+</tr>
+<tr class="row-odd"><td><p>POWERON_TIMES=0</p></td>
+<td><p>Duration of the chip's first power-on after programming is complete, in ms; at most 60S can be configured. <font color="red">Not set by default; supported only by AC695X, AC635N and AC6083 in version 2.27.2 and later</font>. To enable it, contact a Jieli engineer</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="tool-config">
+<h3><span class="section-number">4.3.2.3. </span><code class="docutils literal notranslate"><span class="pre">[TOOL_CONFIG]</span></code> section options<a class="headerlink" href="#tool-config" title="Permalink to this heading"></a></h3>
+<div class="wy-table-responsive"><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1TO2_MIN_VER=2.24.0</p></td>
+<td><p>The minimum version of the 1-to-2 programmer that may load FW/UFW files generated from this configuration is 2.24.0. <font color="red">It must not be changed</font>; if you need to change it, contact a Jieli engineer<font color="red">; this value is set according to the actual SDK</font></p></td>
+</tr>
+<tr class="row-odd"><td><p>1TO8_MIN_VER=3.0.34</p></td>
+<td><p>The minimum version of the 1-to-8 programmer that may load FW/UFW files generated from this configuration is 3.0.34. <font color="red">It must not be changed</font>; if you need to change it, contact a Jieli engineer<font color="red">; this value is set according to the actual SDK</font></p></td>
+</tr>
+<tr class="row-even"><td><p>BTBOX_MIN_VER=1.2.4.f</p></td>
+<td><p>The minimum version of the Bluetooth test box that may load UFW files generated from this configuration is 1.2.4.f. <font color="red">It must not be changed</font>; if you need to change it, contact a Jieli engineer<font color="red">; this value is set according to the actual SDK</font></p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="chip-version">
+<h3><span class="section-number">4.3.2.4. </span><code class="docutils literal notranslate"><span class="pre">[CHIP_VERSION]</span></code> section options<a class="headerlink" href="#chip-version" title="Permalink to this heading"></a></h3>
+<div class="wy-table-responsive"><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SUPPORTED_LIST=A,B,C</p></td>
+<td><p>Allows the FW/UFW generated from this configuration to be programmed into version A, B and C chips. <font color="red">It must not be changed</font>; if you need to change it, contact a Jieli engineer. <font color="red">This value is set according to the actual SDK</font></p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="reserved-config">
+<span id="target-reserved-config-introduce"></span><h3><span class="section-number">4.3.2.5. </span><code class="docutils literal notranslate"><span class="pre">[RESERVED_CONFIG]</span></code> section options<a class="headerlink" href="#reserved-config" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>This section configures the reserved areas and can exist on its own. The VM and PRCT areas are special: VM holds VM-related information, and PRCT holds information about the protected area.<br/></p></li>
+<li><p>If the <code class="docutils literal notranslate"><span class="pre">[EXTRA_CFG_PARAM]</span></code> section contains the <b><code class="docutils literal notranslate"><span class="pre">RESERVED_OPT</span></code></b> setting, no more than 6 entries can be configured in this section.<br/></p></li>
+<li><p>The VM, PROC and BIIF entries must have corresponding settings in a reserved configuration section (either <code class="docutils literal notranslate"><span class="pre">[RESERVED_CONFIG]</span></code> or <code class="docutils literal notranslate"><span class="pre">[RESERVED_EXPAND_CONFIG]</span></code>); otherwise, an error is reported.</p></li>
+<li><p>Each entry follows the fixed format below:</p></li>
+</ul>
+<div class="wy-table-responsive"><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Setting description</p></th>
+<th class="head"><p>Value description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>XXXX_ADR</p></td>
+<td><p>Start address of the area; XXXX is the name of the reserved area</p></td>
+<td><p>AUTO: the start address is allocated automatically by the tool (not supported for PROC and VM)<br/>A numeric value means an absolute address<br/>For VM, 0 means automatic allocation</p></td>
+</tr>
+<tr class="row-odd"><td><p>XXXX_LEN</p></td>
+<td><p>Length of the area; XXXX is the name of the reserved area</p></td>
+<td><p>CODE_LEN: code length (PROC only)<br/>A numeric value specifies the length</p></td>
+</tr>
+<tr class="row-even"><td><p>XXXX_OPT</p></td>
+<td><p>Operation attribute of the area; XXXX is the name of the reserved area</p></td>
+<td><p>0: erase the area when code is downloaded<br/>1: leave the area untouched when code is downloaded<br/>2: protect the area when code is downloaded</p></td>
+</tr>
+<tr class="row-odd"><td><p>XXXX_FILE (optional)</p></td>
+<td><p>When code is downloaded, the specified file is downloaded to the corresponding area; XXXX is the name of the reserved area</p></td>
+<td><p><br/>1. The name of the specified file (the file must be in the same directory as isd_download.exe)<br/>2. To find this area, locate the corresponding reserved-area header by XXXX (the name of the reserved area), then get the location of the data from the address information in the header</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="reserved-expand-config">
+<h3><span class="section-number">4.3.2.6. </span>[RESERVED_EXPAND_CONFIG] section options (optional)<a class="headerlink" href="#reserved-expand-config" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>This section is an extension of the <code class="docutils literal notranslate"><span class="pre">[RESERVED_CONFIG]</span></code> section. It is also used to configure reserved-area information, and its format follows the same rules as the entries in <code class="docutils literal notranslate"><span class="pre">[RESERVED_CONFIG]</span></code>.<br/></p></li>
+<li><p>This section has no limit on the number of entries. If only the <code class="docutils literal notranslate"><span class="pre">[RESERVED_EXPAND_CONFIG]</span></code> section is configured and the [RESERVED_CONFIG] section is not, the <b>RESERVED_OPT</b> setting in the <code class="docutils literal notranslate"><span class="pre">[EXTRA_CFG_PARAM]</span></code> section has no effect.<br/></p></li>
+<li><p>This section can coexist with the <code class="docutils literal notranslate"><span class="pre">[RESERVED_CONFIG]</span></code> section. In that case, the <b><code class="docutils literal notranslate"><span class="pre">RESERVED_OPT</span></code></b> setting in the <code class="docutils literal notranslate"><span class="pre">[EXTRA_CFG_PARAM]</span></code> section still takes effect.</p></li>
+</ul>
+</section>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="linux_lib.html" class="btn btn-neutral float-left" title="4.2. Installing the Jieli Toolchain and Building Static Libraries on Linux" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="otp_cfg.html" class="btn btn-neutral float-right" title="4.4. FLASH Parameter Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 09, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/toolchains/ini_cfg.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/toolchains/ini_cfg.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

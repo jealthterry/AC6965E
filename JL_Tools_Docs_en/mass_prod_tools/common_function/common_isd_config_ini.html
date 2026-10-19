@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6.1. Common isd_config.ini Settings and Programming-Related Features — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>6. General Features: Configuration and Use</a><ul>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>6.1. Common isd_config.ini Settings and Programming-Related Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#flashspi">6.1.1. Flash SPI parameter configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#target-refile-config-introduce">6.1.2. Configuration for programming custom resource files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flash">6.1.3. Configuring flash parameter programming and testing that protection parameters take effect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">6.1.4. Configuration for generating 256- and 4096-byte aligned files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#efuse-bin">6.1.5. Configuration for passthrough programming of files such as efuse.bin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lrcflash">6.1.6. Configuration for programming the LRC calibration value into flash</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sdk">6.1.7. Chip version matching between the programmer and the SDK configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="set_burn_tool_master_option.html">6.2. How to Set Expert Options When Generating a Programming File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="set_burn_tool_option.html">6.3. How to Set Programming Options When Generating a Programming File</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">6. </span>General Features: Configuration and Use</a> »</li>
+<li><span class="section-number">6.1. </span>Common isd_config.ini Settings and Programming-Related Features</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/common_function/common_isd_config_ini.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="isd-config-ini">
+<h1><span class="section-number">6.1. </span>Common isd_config.ini Settings and Programming-Related Features<a class="headerlink" href="#isd-config-ini" title="Permalink to this heading"></a></h1>
+<p>For more details about the isd_config.ini configuration file, see <a class="reference internal" href="../../dev_tools/toolchains/ini_cfg.html"><span class="doc std std-doc">The isd_config.ini Configuration File</span></a></p>
+<section id="flashspi">
+<span id="target-flash-spi-params-cfg"></span><h2><span class="section-number">6.1.1. </span>Flash SPI parameter configuration<a class="headerlink" href="#flashspi" title="Permalink to this heading"></a></h2>
+<p>isd_config.ini supports configuring the SPI parameters of the flash, as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">SYS_CFG_PARAM</span><span class="p">]</span>
+<span class="n">SPI</span> <span class="o">=</span> <span class="mi">2_3_0_0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Parameters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">SYS_CFG_PARAM</span><span class="p">]</span>
+<span class="n">SPI</span> <span class="o">=</span> <span class="n">X0_X1_X2_X3</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>X0: the SPI data width. Configure it according to the actual flash package; the default is usually fine:<br/> 0: SPI uses 1-wire mode; data is written and read on the same IO0/SO line<br/> 1: SPI uses standard two-wire mode; data is written on the IO0/SO line and read on the IO1/SI line<br/> 2: SPI uses 2-wire mode; data is written on the IO0/SO line and read on the IO0/SO and IO1/SI lines<br/> 4: SPI uses 4-wire mode; data is written on the IO0/SO line and read on the IO0/SO, IO1/SI, IO2 (flash WP) and IO3 (flash HOLD) lines<br/></p></li>
+<li><p>X1: the SPI CLK divider value. For example, if the chip system clock runs at 48M and this is set to 3, the SPI clock is 48/(3+1)=12M:</p></li>
+<li><p>X2: the command used to read data from the flash. The default is usually fine; for details, see the manual of the flash used with the chip:<br/> 0: FAST_READ_OUTPUT_MODE<br/> 1: FAST_READ_IO_MODE<br/> 2: FAST_READ_IO_CONTINUOUS_READ_MODE<br/></p></li>
+<li><p>X3: which group of SPI IO pins to use<br/> 0: use the first group<br/> 1: use the second group<br/></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some chips do not support 4-wire mode or the FAST_READ_IO_MODE read mode.</p>
+<p>If a programming failure or verification failure is reported during programming, check whether the corresponding SPI configuration is correct.</p>
+</div>
+</section>
+<section id="target-refile-config-introduce">
+<span id="id1"></span><h2><span class="section-number">6.1.2. </span>Configuration for programming custom resource files<a class="headerlink" href="#target-refile-config-introduce" title="Permalink to this heading"></a></h2>
+<p>To use the programmer to program the files "anc_coeff.bin" and "anc_gains.bin", which are in the same directory as isd_config.ini, to specified locations in the chip flash, configure them as shown in <a class="reference internal" href="#img-res1-file"><span class="std std-ref">Configuration for programming custom resource files</span></a>.</p>
+<figure class="align-default" id="img-res1-file">
+<img alt="" data-action="zoom" src="../../_images/image1_resfile.png"/>
+<figcaption>
+<p><span class="caption-text">Configuration for programming custom resource files</span><a class="headerlink" href="#img-res1-file" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>If the [RESERVED_CONFIG] section contains more than 6 resources, an error is reported when you run the batch file. Put the resource files in the [RESERVED_EXPAND_CONFIG] section instead, configured as shown in <a class="reference internal" href="#img-res2-file"><span class="std std-ref">Configuration for programming more than 6 custom resource files</span></a>.</p>
+<figure class="align-default" id="img-res2-file">
+<img alt="" data-action="zoom" src="../../_images/image2_resfile.png"/>
+<figcaption>
+<p><span class="caption-text">Configuration for programming more than 6 custom resource files</span><a class="headerlink" href="#img-res2-file" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>Several resource entries can reference a file with the same file name, but the XXX_FILE names must not be the same.</p></li>
+<li><p>Addresses can be changed, for example to ANC0_ADR=AUTO; (automatic address). For details of the options in the [RESERVED_CONFIG] section, see the section "<a class="reference internal" href="../../dev_tools/toolchains/ini_cfg.html#target-reserved-config-introduce"><span class="std std-ref">[RESERVED_CONFIG] section options</span></a>".</p></li>
+</ol>
+</div>
+</section>
+<section id="flash">
+<span id="target-protect-cfg-introduce"></span><h2><span class="section-number">6.1.3. </span>Configuring flash parameter programming and testing that protection parameters take effect<a class="headerlink" href="#flash" title="Permalink to this heading"></a></h2>
+<p>1. Tool version update: For the SDK to support the OTP_CFG configuration, the related tools must be updated to the following versions (or later).</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tool</p></th>
+<th class="head"><p>Minimum version</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>isd_download.exe</p></td>
+<td><p>4.2.54</p></td>
+<td><p><a class="reference external" href="../../other_info/index.html">How to update: click here</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>1-to-2 programmer</p></td>
+<td><p>2.27.7</p></td>
+<td><p><a class="reference external" href="../burner_1tuo2/remote_update.html">How to update: click here</a></p></td>
+</tr>
+<tr class="row-even"><td><p>1-to-8 programmer</p></td>
+<td><p>3.1.22</p></td>
+<td><p><a class="reference external" href="../burner_1tuo8/remote_update.html">How to update: click here</a></p></td>
+</tr>
+</tbody>
+</table></div>
+<p>2. Chip models supported by the programmer and the isd_config.ini configuration</p>
+<p>For the following chips, add the <code class="docutils literal notranslate"><span class="pre">FLASH_WRITE_PROTECT=YES</span></code> setting to the [BURNER_PASSTHROUGH_CFG] section of isd_config.ini. During programming, the flash write protection parameters are then programmed into the specified area and the protection is tested for effectiveness.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">BURNER_PASSTHROUGH_CFG</span><span class="p">]</span><span class="w"></span>
+<span class="n">FLASH_WRITE_PROTECT</span><span class="o">=</span><span class="n">YES</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>To skip flash parameter programming and the effectiveness test, delete the <code class="docutils literal notranslate"><span class="pre">FLASH_WRITE_PROTECT</span></code> field, or add the <code class="docutils literal notranslate"><span class="pre">FLASH_WRITE_PROTECT=NO</span></code> setting to the [BURNER_PASSTHROUGH_CFG] section of isd_config.ini.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">BURNER_PASSTHROUGH_CFG</span><span class="p">]</span><span class="w"></span>
+<span class="n">FLASH_WRITE_PROTECT</span><span class="o">=</span><span class="n">NO</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p>Chip model</p></th>
+<th class="head"><p>Required isd_config.ini configuration</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>AC632N, AE632N</p></td>
+<td><p>FLASH_WRITE_PROTECT=YES</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AC695X, AC635N, AC6083, AE695N</p></td>
+<td><p>FLASH_WRITE_PROTECT=YES</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AC696X, AC636N, AC608N</p></td>
+<td><p>FLASH_WRITE_PROTECT=YES</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AC702N</p></td>
+<td><p>FLASH_WRITE_PROTECT=YES</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AC706N</p></td>
+<td><p>FLASH_WRITE_PROTECT=YES</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AD14N, AC104N</p></td>
+<td><p>FLASH_WRITE_PROTECT=YES</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AD15N, AE15N</p></td>
+<td><p>FLASH_WRITE_PROTECT=YES</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AC700N, JL700N</p></td>
+<td><p>FLASH_WRITE_PROTECT=YES</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AC701N, JL701N</p></td>
+<td><p>FLASH_WRITE_PROTECT=YES</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>For the following chips, add the OTP_CFG_SIZE=512; setting to the [EXTRA_CFG_PARAM] section of isd_config.ini. Only then are the protection parameters written to the flash and the effectiveness test performed during programming; otherwise programming reports an error.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">EXTRA_CFG_PARAM</span><span class="p">]</span><span class="w"></span>
+<span class="n">OTP_CFG_SIZE</span><span class="o">=</span><span class="mi">512</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p>Chip model</p></th>
+<th class="head"><p>Required isd_config.ini configuration</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>AW30N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>JL703N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AC700N, JL700N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AC704N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AC705N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AC706N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>JL708N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AC82N, AD18N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AC129N,AD12N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AC701N, JL701N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>JL709N, AC689N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AC710N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AC792N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AD24N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AC707N, AW34N</p></td>
+<td><p>OTP_CFG_SIZE=512</p></td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>The value 512 in OTP_CFG_SIZE=512; can vary; it depends on the size of the configuration information of the flash parameters currently in use.</p></li>
+<li><p>For AC707N, AW34N, AC710N and AD24N chips, the recommended minimum value is 128.</p></li>
+<li><p>For other models, the recommended minimum value is 256. In general, the default value configured in the standard SDK is fine.</p></li>
+</ol>
+</div>
+<p>3. Programming the generated .fw file into the chip: write protection effectiveness test</p>
+<p>Use a 1-to-2 programmer or a 1-to-8 programmer to program the FW file that is configured with the flash parameter programming function into the chip flash.</p>
+<p>During programming, the programmer tests once whether the write protection of the chip flash takes effect. The firmware data is programmed into the chip only if the test passes.</p>
+<p>After successful programming, if printing is enabled in the SDK, a message indicating that write protection is in effect is printed, as shown below: <img alt="" data-action="zoom" src="../../_images/image3_wr_protect_ok.png"/></p>
+<p>5. Enabling flash write protection during development</p>
+<p>To enable FLASH write protection during development and debugging, see "<a class="reference internal" href="../../dev_tools/toolchains/otp_cfg.html#target-flash-protect-debug"><span class="std std-ref">Enabling the write protection, DTR and multi-algorithm authorization features</span></a>"</p>
+</section>
+<section id="id2">
+<h2><span class="section-number">6.1.4. </span>Configuration for generating 256- and 4096-byte aligned files<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>1. About 256- and 4096-byte aligned files: All NOR flash on the market supports 4K-byte erase operations, and some also support 256-byte erase. Our programming files can therefore be organized with either 4K-byte or 256-byte alignment.</p>
+<p>The same product may be programmed with flash chips that use different alignments. During firmware download, the download tool selects the alignment in real time according to the smallest erase unit supported by the device's FLASH and organizes the FLASH data accordingly. This feature can be disabled. Note:<br/></p>
+<p>(1) 256-byte alignment saves flash space. (2) If the solution needs to support online upgrades, the programming files before and after the upgrade must use the same alignment.</p>
+<p>2. ini configuration for generating a FW that contains only the 4096-byte aligned programming file, as shown in the red box</p>
+<p><img alt="" data-action="zoom" src="../../_images/image4_256_4096.png"/></p>
+<p>3. ini configuration for generating a FW that contains only the 256-byte aligned programming file, as shown in the red box. Then connect a chip whose flash supports 256-byte erase to the Forced Upgrade Tool; once it is recognized, run the batch file to generate the FW.</p>
+<p><img alt="" data-action="zoom" src="../../_images/image5_256_4096.png"/></p>
+<p>4. How to force generation of a 256-byte aligned FLASH BIN: add the "SPECIAL_OPT=0" and "AREA_ALIGN=1" configuration items. This method is not recommended.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">SPECIAL_OPT</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">AREA_ALIGN</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w">        </span><span class="c1">// This option takes effect offline, i.e. when no device is connected during build and download</span>
+<span class="cp">#FORCE_4K_ALIGN=YES; </span><span class="c1">// If present, this setting must be commented out</span>
+</pre></div>
+</div>
+<p><img alt="" data-action="zoom" src="../../_images/image6_256_4096.png"/></p>
+<p>5. To generate a FW that contains both the 256- and the 4096-byte aligned programming files, remove the following part and run the batch file.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#SPECIAL_OPT=0;</span>
+<span class="cp">#FORCE_4K_ALIGN=YES; # If present, this setting must be commented out</span>
+</pre></div>
+</div>
+</section>
+<section id="efuse-bin">
+<h2><span class="section-number">6.1.5. </span>Configuration for passthrough programming of files such as efuse.bin<a class="headerlink" href="#efuse-bin" title="Permalink to this heading"></a></h2>
+<p>Add the "efuse.bin" file to be programmed to isd_config.ini as shown below; "efuse.bin" is located in the same directory as the isd_config.ini file.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">FW_ADDITIONAL</span><span class="p">]</span><span class="w"></span>
+<span class="n">FILE_LIST</span><span class="o">=</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">efuse</span><span class="p">.</span><span class="n">bin</span><span class="o">:</span><span class="n">type</span><span class="o">=</span><span class="mh">0xee</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>As shown in the figure: <img alt="" data-action="zoom" src="../../_images/image7_fw_add.png"/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>FILE_LIST supports multiple files, for example: FILE_LIST=(file=ota.bin:type=100),(file=efuse.bin:type=0xee)</p></li>
+<li><p>AC702N, AC704N, AC705N, AC129N and AD12N must be configured for either FLASH mode or ROM mode, as follows:</p></li>
+</ol>
+<p>[BURNER_PASSTHROUGH_CFG]<br/>
+REQUIRE_TARGET_FEATURE=FLASH;//flash+efuse<br/>
+#REQUIRE_TARGET_FEATURE=EFUSE;//efuse only<br/></p>
+</div>
+</section>
+<section id="lrcflash">
+<h2><span class="section-number">6.1.6. </span>Configuration for programming the LRC calibration value into flash<a class="headerlink" href="#lrcflash" title="Permalink to this heading"></a></h2>
+<p>For chips in crystal-less solutions, configure the LRC calibration value to be written into the FLASH UBOOT area (it is written only if the LRC clock deviation exceeds 0.5%), as follows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">SYS_CFG_PARAM</span><span class="p">]</span><span class="w"></span>
+<span class="n">LRC</span><span class="o">=</span><span class="mi">-1</span><span class="p">;</span><span class="w">        </span><span class="c1">//Configuration: write the LRC calibration value to flash </span>
+</pre></div>
+</div>
+</section>
+<section id="sdk">
+<h2><span class="section-number">6.1.7. </span>Chip version matching between the programmer and the SDK configuration<a class="headerlink" href="#sdk" title="Permalink to this heading"></a></h2>
+<p>Add the chip versions to be supported (versions A to P) to isd_config.ini as shown in the figure</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">CHIP_VERSION</span><span class="p">]</span><span class="w"></span>
+<span class="n">SUPPORTED_LIST</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">D</span><span class="p">,</span><span class="n">M</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">O</span><span class="p">,</span><span class="n">P</span><span class="w"></span>
+</pre></div>
+</div>
+<p>If the programmer reports a version error during programming, possible causes are:<br/> 1. The section above does not include support for this chip version<br/></p>
+<p>2. Or the programmer does not allow this version to be programmed<br/> To change this, contact a Jieli engineer <font color="red">to enable programming of this version according to the actual SDK<br/></font></p><font color="red">
+<p>For more explanation, see "<a class="reference internal" href="../faqs/version_err.html"><span class="doc std std-doc">Version Mismatch Error</span></a>"</p>
+</font></section><font color="red">
+</font></section><font color="red">
+</font>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="index.html" class="btn btn-neutral float-left" title="6. General Features: Configuration and Use" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="set_burn_tool_master_option.html" class="btn btn-neutral float-right" title="6.2. How to Set Expert Options When Generating a Programming File" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/common_function/common_isd_config_ini.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/common_function/common_isd_config_ini.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

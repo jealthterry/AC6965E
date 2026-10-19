@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3.15. Other Common Features: Configuration and Use — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>3. Jieli 1-to-2 Bluetooth Test Box User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_base_introduction.html">3.1. Test Box Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html">3.2. PC Tool Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_upgrade.html">3.3. Test Box Firmware Upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wireless_upgrade.html">3.4. Wireless Upgrade of Bluetooth Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wired_upgrade.html">3.5. Wired Upgrade of Bluetooth Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_test_process.html">3.6. Bluetooth Device Test Procedure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mass_production.html">3.7. Test Box Batch Upgrade and Test Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ear_storage.html">3.8. Using Earphone Storage Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_transparent.html">3.9. PC Passthrough Commands and Custom Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mes_log.html">3.10. Test Box MES Log Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_view_bt_info.html">3.11. Viewing Bluetooth Device Information (SDK Version/Battery Level/Checksum)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ufw_crc_compare.html">3.12. Test Box UFW File Checksum Matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_error_status.html">3.13. Status Indicators and Error Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_fixture_install.html">3.14. Connecting the Test Box to a Fixture over UART</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>3.15. Other Common Features: Configuration and Use</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.15.1. Using the verification function in UART mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trim">3.15.2. Configuring and using the out-of-case in-ear trim function for earphones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3.15.3. Using earphone spatial audio calibration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#anc">3.15.4. Using ANC calibration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tws">3.15.5. Using TWS triple synchronization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ble">3.15.6. Displaying custom advertising information in BLE mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">3.15.7. Updating the test box audio files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ac691x">3.15.8. Updated test box support for AC691X</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_problem.html">3.16. Frequently Asked Questions (FAQ)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_version_info.html">3.17. Version Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">3. </span>Jieli 1-to-2 Bluetooth Test Box User Manual</a> »</li>
+<li><span class="section-number">3.15. </span>Other Common Features: Configuration and Use</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/testbox_1tuo2/tb_common_function.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">3.15. </span>Other Common Features: Configuration and Use<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">3.15.1. </span>Using the verification function in UART mode<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>V1.2.5.d added the configuration of verification mode over UART</p></li>
+</ol>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image6.png"/></p>
+<p>V1.3.2 added Bluetooth name verification</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image9.png"/></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>To use this verification function, turn on "Test enable" (测试使能) under "Wired UART mode configuration" (有线串口模式配置) and turn off "Upgrade enable" (升级使能).</p></li>
+</ul>
+</div></blockquote>
+<p>Set "0" to disable the corresponding test option.<br/> Set "1" to enable the corresponding test function; the specific test criteria are set in the configuration box below it.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>In this mode, when no device is online, the display shows the verification mode and the version number; when a device is online, it shows the test results.</p></li>
+</ul>
+</div></blockquote>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image7.png"/></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image8.png"/></p>
+<p>In V1.3.2, the verification result display was changed: the upper line is fixed and the lower line is refreshed.</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image14.png"/></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image15.png"/></p>
+<ol class="arabic simple" start="2">
+<li><p>V1.2.5.d added the Bluetooth 2.4G access code setting</p></li>
+</ol>
+<p><strong>To use it, turn on DIP switch 6</strong> <img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image9.png"/></p>
+<p>When this value is "0", the default generic Bluetooth connection is used;<br/></p>
+<p>When this value is not "0", it is the configured pairing code.</p>
+</section>
+<section id="trim">
+<h2><span class="section-number">3.15.2. </span>Configuring and using the out-of-case in-ear trim function for earphones<a class="headerlink" href="#trim" title="Permalink to this heading"></a></h2>
+<p><strong>Version V1.2.6 adds the out-of-case in-ear trim function</strong></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image10.png"/></p>
+<p>Set to 1 to enable this function; in-ear trim is then performed. This requires support in the corresponding SDK.</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image11.png"/></p>
+<p>Set to 1 to enable this function; after pairing is complete, the earphones power off automatically when taken out of the charging case. This also requires support in the corresponding SDK.</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">3.15.3. </span>Using earphone spatial audio calibration<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Versions after V1.2.8.b support earphone spatial audio calibration (<code class="docutils literal notranslate"><span class="pre">this</span> <span class="pre">option</span> <span class="pre">requires</span> <span class="pre">SDK</span> <span class="pre">support</span></code>)</p></li>
+<li><p>Set the test box calibration command: set "DUT command mode enable" (DUT命令模式使能) to 1 and "UART command configuration" (串口命令配置) to 01. This setting is mutually exclusive with all the other enable options under "Wired UART mode configuration" (有线串口模式配置).</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_commom_fuction_image5.png"/></p>
+</li>
+<li><p>Meaning of the UI display content</p></li>
+</ol>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Display and prompt tone</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>The test box beeps ("di") once and displays "trim run…"</p></td>
+<td><p>Calibration started</p></td>
+</tr>
+<tr class="row-odd"><td><p>Displays "trim run…"</p></td>
+<td><p>Calibrating</p></td>
+</tr>
+<tr class="row-even"><td><p>The test box beeps ("di") twice and displays "trim succ !"</p></td>
+<td><p>Calibration succeeded</p></td>
+</tr>
+<tr class="row-odd"><td><p>The test box beeps ("di") three times and displays "trim fail !"</p></td>
+<td><p>Calibration failed</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="anc">
+<h2><span class="section-number">3.15.4. </span>Using ANC calibration<a class="headerlink" href="#anc" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Versions after V1.2.8.g support ANC calibration (this option requires SDK support)</p></li>
+<li><p>DIP switches 3, 4, 5 and 6 must be off, as shown below</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_commom_fuction_image6.png"/></p>
+</li>
+<li><p>In the PC tool, turn on "ANC gain calibration enable" (ANC增益校准使能), set the "ANC gain adjustment step" (ANC增益调整步进) value, keep "ANC product type" (ANC产品形态) at its default "tws_ff", and power-cycle the test box.</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_commom_fuction_image7.png"/></p>
+</li>
+<li><p>The connection diagram of the test box and the earphones and the ANC test screen are shown below</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_commom_fuction_image8.png"/></p>
+</li>
+<li><p>Screen and buttons: <strong>Screen:</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p>1: shows the online status of the left earbud</p></li>
+<li><p>2: shows the ANC digital gain of the left earbud</p></li>
+<li><p>3: shows the online status and the ANC digital gain of the right earbud</p></li>
+</ul>
+<p>The "▲" symbol in the figure indicates which earbud's ANC gain is currently being adjusted.</p>
+<p><strong>Buttons:</strong></p>
+<ul class="simple">
+<li><p>KEY1: press to increase the earbud's ANC digital gain</p></li>
+<li><p>KEY2: press to select the left or right earbud; press and hold to unpair the current earbud pair</p></li>
+<li><p>KEY3: press to decrease the earbud's ANC digital gain</p></li>
+<li><p>Simply inserting a new pair of earphones also automatically unpairs the previous pair and automatically pairs the new pair.</p></li>
+</ul>
+<ol class="arabic simple" start="6">
+<li><p>Meaning of the UI error messages:</p></li>
+</ol>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Display</p></th>
+<th class="head"><p>Cause</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ver err</p></td>
+<td><p>ANC version of the earphones not supported</p></td>
+</tr>
+<tr class="row-odd"><td><p>spp err</p></td>
+<td><p>The earphones do not support ANC</p></td>
+</tr>
+<tr class="row-even"><td><p>cmd fail or cmd unf</p></td>
+<td><p>Communication error between the test box and the earphones</p></td>
+</tr>
+<tr class="row-odd"><td><p>timeout</p></td>
+<td><p>Communication timeout between the test box and the earphones</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="tws">
+<h2><span class="section-number">3.15.5. </span>Using TWS triple synchronization<a class="headerlink" href="#tws" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Usage</p></li>
+</ol>
+<ul>
+<li><p>V127b added the triple synchronization function. For TWS products that need to synchronize the triple, the pairing function must be enabled first; triple synchronization can only be performed after pairing is complete.</p></li>
+<li><p>When TWS pairing is complete and "Triple sync enable" (三元组同步使能) is set to 1, the triple synchronization process starts. During the first synchronization, if one of the earbuds has no triple, "Sync complete" (同步完成) is displayed after the synchronization process; on subsequent power-ups, "Synced" (已同步) is displayed.</p></li>
+<li><p>The "Triple forced sync enable" (三元组强制同步使能) function is intended for cases where both earbuds have a triple but the data differs. If this function is set to 1, the triple data of the earbud that has it stored in flash is synchronized to the other earbud, and the other earbud's previous data is overwritten. Use this function with caution.</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_commom_fuction_image1.png"/></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_commom_fuction_image2.png"/></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_commom_fuction_image3.png"/></p>
+</li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>Meaning of the UI display content</p></li>
+</ol>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Display</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>No triple (无三元组)</p></td>
+<td><p>The TWS devices contain triple information; when the TWS devices are connected over UART and this test function is enabled, "No triple" is displayed</p></td>
+</tr>
+<tr class="row-odd"><td><p>Programmed (已烧录)</p></td>
+<td><p>Triple information has already been programmed into the flash of each of the two TWS earbuds</p></td>
+</tr>
+<tr class="row-even"><td><p>Sync complete (同步完成)</p></td>
+<td><p>One of the TWS earbuds has no triple information and the other has triple information in its flash; after the first programming is complete, "Sync complete" is displayed</p></td>
+</tr>
+<tr class="row-odd"><td><p>Synced (已同步)</p></td>
+<td><p>The triple has already been synchronized between the two TWS earbuds; apart from the first synchronization, every subsequent synchronization shows "Synced"</p></td>
+</tr>
+<tr class="row-even"><td><p>Data mismatch (数据不一致)</p></td>
+<td><p>When the triple information in the two TWS earbuds differs and forced sync is not enabled, "Data mismatch" is displayed</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sync failed (同步失败)</p></td>
+<td><p>When the triple information could not be synchronized because of a memory read/write operation, "Sync failed" (同步失败) is displayed</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="ble">
+<h2><span class="section-number">3.15.6. </span>Displaying custom advertising information in BLE mode<a class="headerlink" href="#ble" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>A function for displaying custom fields of BLE advertising packets has been added. The currently supported display field type is defined as 0xFE: the test box parses the data of type 0xFE defined in the advertising packet and sends it to the PC tool for display.</p></li>
+<li><p>You need to generate the advertising packet content yourself in the corresponding SDK. Its maximum length is 16 bytes; anything beyond that is not displayed.</p></li>
+<li><p>The ID data option is displayed as shown below:</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_commom_fuction_image4.png"/></p>
+</li>
+</ol>
+</section>
+<section id="id4">
+<h2><span class="section-number">3.15.7. </span>Updating the test box audio files<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Name the two sbc audio files to be updated (the previous and next tracks) media1.sbc and media2.sbc, and put them in the same directory as AC690x_1T2测试盒_从机Vx.x.x.exe (if these two files are absent, the built-in default files are used).</p>
+</div>
+<ol class="arabic">
+<li><p>Method 1: simply upgrade the test box slave firmware again. For the slave upgrade procedure, see method 1 in "Test Box Firmware Upgrade"; the master does not need to be upgraded.</p></li>
+<li><p>Method 2: if media1.sbc and media2.sbc are in the directory, click AC690x_1T2测试盒_从机Vx.x.x.exe to generate jl_690x.bin in the directory (the prompt tones in this bin file have already been replaced with the new ones), then upgrade by following method 2 in "Test Box Firmware Upgrade".</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image28.png"/></p>
+</li>
+</ol>
+</section>
+<section id="ac691x">
+<h2><span class="section-number">3.15.8. </span>Updated test box support for AC691X<a class="headerlink" href="#ac691x" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Frequency offset calibration:</p>
+<p>Set the DIP switches to enable the test box frequency offset calibration mode, then put the ext_app.bfu file (BLE and EDR use different ext_app.bfu files; make sure you use the right one) on a TF card and insert the card into the test box.</p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. If there is no ext_app.bfu file on the test box TF card, the frequency offset calibration result is not saved to the chip.
+
+2. During frequency offset calibration, the TF card must not contain the jl_690x.bfu upgrade file; if it does, jl_690x.bfu takes priority and is used for an upgrade.
+</pre></div>
+</div>
+</div>
+<ol class="arabic" start="2">
+<li><p>Upgrading the AC691X Bluetooth name (BLE and EDR use different jl_690x.bfu files; make sure you use the right one):</p>
+<p>Open the configuration options with the otp.exe tool</p>
+<p>Check the "User configuration" (用户配置) settings as shown below; if you do not need to update the AEC configuration, leave the "AEC configuration" (aec配置) option unchecked. Save the configuration as ac691x.cfg, put it in the bt_updata directory, and run the cfg_updata.bat tool to generate jl_690x.bfu for wireless upgrade with the test box.</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image29.png"/></p>
+</li>
+<li><p>aec_cfg upgrade:</p>
+<p>Check the "AEC configuration" (AEC配置) settings as shown below; if you do not need to update the name configuration, leave the "User configuration" (用户配置) option unchecked. Save the configuration as ac691x.cfg, put it in the bt_updata directory and run the cfg_updata.bat tool to generate jl_690x.bfu. Then put the generated upgrade file jl_690x.bfu on a TF card and insert the card into the test box.</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image30.png"/></p>
+<p>Note: the name and the AEC parameters can be updated at the same time. Check both "User configuration" (用户配置) and the "AEC configuration" (AEC配置) settings, and the generated bfu updates both at once. (Leave unchecked whatever does not need to be updated.)</p>
+</li>
+<li><p>BLE upgrade of flash-version chips is supported (only in v101_C and later)</p>
+<p>Procedure:</p>
+<ul class="simple">
+<li><p>A. Before a BLE upgrade, turn on the BLE enable switch;</p></li>
+<li><p>B. Wireless upgrade is the same as the 2.1 upgrade: you can upgrade from an SD card or online from the PC. The procedure is the same as in <a class="reference internal" href="tb_wireless_upgrade.html"><span class="doc std std-doc">Wireless Upgrade of Bluetooth Devices</span></a></p></li>
+<li><p>C. For an upgrade from an SD card, rename jl_ac691x.bfu to updata.bfu; only then can the test box recognize it.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="tb_fixture_install.html" class="btn btn-neutral float-left" title="3.14. Connecting the Test Box to a Fixture over UART" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="tb_common_problem.html" class="btn btn-neutral float-right" title="3.16. Frequently Asked Questions (FAQ)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_common_function.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_common_function.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

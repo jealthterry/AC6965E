@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.1.1.1.1. 配置项说明 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../../index.html"><img id="jl-logo" src="../../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_tools/dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_tools/build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_tools/codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_tools/toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_tools/post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_tools/forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_tools/faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>1. 固件文件相关工具</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.1. 固件文件下载</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.1.1. 固件升级工具（一拖一PC下载工具）</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="index.html#id1">1.1.1.1. 如何得到固件升级工具</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../firmware_edit/index.html">1.2. 固件编辑工具说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mac_update/index.html">1.3. 配置信息更新工具说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faqs/index.html">1.4. 常见问题与解决方法</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="../../index.html"><span class="section-number">1. </span>固件文件相关工具</a> »</li>
+<li><a href="../index.html"><span class="section-number">1.1. </span>固件文件下载</a> »</li>
+<li><a href="index.html"><span class="section-number">1.1.1. </span>固件升级工具（一拖一PC下载工具）</a> »</li>
+<li><span class="section-number">1.1.1.1.1. </span>配置项说明</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../../JL_Tools_Docs_en/firmware_tools/download/firmware_upgrade/detail.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">1.1.1.1.1. </span>配置项说明<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>配置文件必须用UTF8编码保存</strong>。</p>
+</div>
+<p>配置文件config.ini必须存放在工具同级目录的data目录下。需要合并到工具中的文件也必须存放到data目录下。如下图：</p>
+<figure class="align-default" id="img-dir-struct-fw-tools">
+<img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image3.png"/>
+<figcaption>
+<p><span class="caption-text">文件目录结构</span><a class="headerlink" href="#img-dir-struct-fw-tools" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>本工具界面上所有文字都可以通过配置项进行配置。包括中/英语言文字。中/英文字通过<code class="docutils literal notranslate"><span class="pre">*text_cn</span></code>和<code class="docutils literal notranslate"><span class="pre">*text_en</span></code>配置项进行配置。</p>
+</section>
+<section id="id2">
+<h1><span class="section-number">1.1.1.1.2. </span>合并固件文件到工具<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h1>
+<p>此功能详细配置项如下：</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">###########################################</span>
+<span class="c1">#</span>
+<span class="c1"># 需要合并到工具的固件文件</span>
+<span class="c1"># 升级用的固件文件</span>
+<span class="c1"># 在固件文件和工具合并后有效</span>
+<span class="c1">#</span>
+<span class="c1">###########################################</span>
+<span class="k">[Firmware]</span>
+<span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">your.fw</span>
+</pre></div>
+</div>
+<p>此配置项需要把固件文件和<code class="docutils literal notranslate"><span class="pre">data/config.ini</span></code>文件，一起合并到工具中才会生效。合并固件文件时需要将固件文件也放到<code class="docutils literal notranslate"><span class="pre">data</span></code>目录下，并且设置<code class="docutils literal notranslate"><span class="pre">Firmware/value</span></code>的值为合并的固件文件名。参考图<a class="reference internal" href="#img-dir-struct-fw-tools"><span class="std std-ref">文件目录结构</span></a>。</p>
+<p>文件准备好后，通过命令行执行</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>固件升级程序_1.4.18.exe<span class="w"> </span>--merge<span class="w"> </span>data<span class="w"> </span>--target<span class="w"> </span>固件升级程序_1.4.18_包含固件.exe
+</pre></div>
+</div>
+<p>就可以将data目录合并到工具中，如下图：</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image4.png"/></p>
+<p><code class="docutils literal notranslate"><span class="pre">固件升级程序_1.4.18_包含固件.exe</span></code>就是合并后包含了固件文件的新工具。</p>
+<p>执行合并后的工具，执行<code class="docutils literal notranslate"><span class="pre">固件升级程序_1.4.18_包含固件.exe</span></code>，固件会自动加载到工具中，并且文件选择栏会不可见。如下图：</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image5.png"/></p>
+</section>
+<section id="pc">
+<h1><span class="section-number">1.1.1.1.3. </span>PC模式设备名字配置<a class="headerlink" href="#pc" title="Permalink to this heading"></a></h1>
+<p>此功能详细配置项如下：</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">#########################################</span>
+<span class="c1">#</span>
+<span class="c1"># PC模式下支持升级样机的名字</span>
+<span class="c1">#</span>
+<span class="c1">#########################################</span>
+<span class="k">[PCMode]</span>
+<span class="na">name_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">br23udisk</span><span class="w"> </span><span class="c1">;支持升级的样机名字列表</span>
+<span class="na">wait_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1000</span><span class="w"> </span><span class="c1">;等待样机从PC模式切换到升级模式的时间</span>
+</pre></div>
+</div>
+<p>如果样机不能直接进入升级模式并且有PC模式，<strong>且SDK支持的情况下</strong>，那么可以通过此配置使样机从PC模式切换到升级模式，完成固件升级。</p>
+<p>以AC695X为例，标准SDK固件的样机进入PC模式后，可以在WINDOWS设备管理器中看到设备BR23 UDISK USB Device。那么<strong>BR23UDISK</strong>(不包含中间空格)就是该样机的PC模式名字。如下图：</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image6.png"/></p>
+<p>此名字可以通过SDK的apps/common/usb/device/msd.c文中的SCSIInquiryData来配置。如下图：</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image7.png"/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果未能在设备管理器中发现<code class="docutils literal notranslate"><span class="pre">UDISK</span></code>字样的设备，那么说明当前的SDK可能 <strong>不支持标准的命令</strong>将样机，从PC模式切换到升级模式。</p>
+<p>这需要样机固件开发人员，<strong>自行实现</strong>从PC模式切换到升级模式的触发方式。例如，可以让样机在检测到，某个按键被按下的时候，调用SDK中的<code class="docutils literal notranslate"><span class="pre">go_mask_usb_updata</span></code>函数进入升级模式。</p>
+</div>
+</section>
+<section id="pid">
+<h1><span class="section-number">1.1.1.1.4. </span>PID显示和匹配规则配置<a class="headerlink" href="#pid" title="Permalink to this heading"></a></h1>
+<p>在很多情况下，开发者会有多款样机在第三方处进行确认。为避免不同硬件的样机升错固件程序，可以通过PID匹配规则来限制样机的升级。此功能详细配置项如下：</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">#########################################</span>
+<span class="c1">#</span>
+<span class="c1"># PID显示和匹配规则配置</span>
+<span class="c1">#</span>
+<span class="c1">#########################################</span>
+<span class="c1">#</span>
+<span class="c1"># PID匹配</span>
+<span class="c1">#</span>
+<span class="k">[PidMatch]</span>
+<span class="na">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">; 是否匹配PID, 如果PID不匹配那么不允许烧写</span>
+<span class="na">pid_mismatch_text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"设备PID与固件PID不匹配！"</span>
+<span class="na">pid_mismatch_text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"The device PID does not match the firmware PID!"</span>
+<span class="c1">#</span>
+<span class="c1"># 设备PID白名单</span>
+<span class="c1"># 如果样机的PID在白名单中</span>
+<span class="c1"># 升级的时候会忽略样机PID</span>
+<span class="c1">#</span>
+<span class="k">[PidWhiteList]</span>
+<span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">AC695x_TWS,None</span>
+<span class="c1">#</span>
+<span class="c1"># Pid映射表,将实际Pid显示为指定Pid</span>
+<span class="c1">#</span>
+<span class="k">[PidMapping]</span>
+<span class="na">OLD PID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">NEW PID</span>
+<span class="na">AC695x_TWS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">NewPid</span>
+<span class="c1">#</span>
+<span class="c1"># 为兼容旧SDK增加的参数</span>
+<span class="c1"># PID解析，AC691X有效，AC692X SDK V1版有效</span>
+<span class="c1"># 将配置中的“PDCTNAME=”以第一个分隔符为间隔分为两段</span>
+<span class="c1"># 第一段显示为PID，第二段显示为VID</span>
+<span class="c1">#</span>
+<span class="k">[PidSection]</span>
+<span class="na">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">_</span><span class="w"> </span><span class="c1">; 分割符号，默认为下划线</span>
+</pre></div>
+</div>
+<p>如启动PID匹配功能，当固件PID和样机PID不匹配时，工具会提示在PidMatch/pid_mismatch_text_??配置中的设置的文字，如下图：</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image8.png"/></p>
+</section>
+<section id="id3">
+<h1><span class="section-number">1.1.1.1.5. </span>升级选项配置<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h1>
+<p>此功能详细配置项如下：</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">######################################</span>
+<span class="c1">#</span>
+<span class="c1"># 选项配置</span>
+<span class="c1">#</span>
+<span class="c1">######################################</span>
+<span class="k">[EraseAll]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">擦除整个FLASH</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Reaset Entire Flash</span>
+<span class="na">checked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">; 是否默认勾选</span>
+<span class="k">[Reset]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">成功后复位</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Reset After Success</span>
+<span class="na">checked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span><span class="w"> </span><span class="c1">; 是否默认勾选</span>
+<span class="k">[AutoUpgrade]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">自动升级</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Auto Upgrade</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">; 是否显示</span>
+<span class="na">checked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">; 是否默认勾选,此配置仅在“visible=true”时有效</span>
+</pre></div>
+</div>
+<p>以上配置在工具界面上的效果如下图：</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image9.png"/></p>
+</section>
+<section id="id4">
+<h1><span class="section-number">1.1.1.1.6. </span>窗口标题栏文字和图标配置<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h1>
+<p>此功能详细配置项如下：</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">###########################################</span>
+<span class="c1">#</span>
+<span class="c1"># 窗口菜单栏信息配置</span>
+<span class="c1">#</span>
+<span class="c1">###########################################</span>
+<span class="k">[Title]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">您的升级程序 1.0.1</span><span class="w"> </span><span class="c1">;中文标题文字</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">YOUR UPGRADE TOOL 1.0.1</span><span class="w"> </span><span class="c1">;英文标题文字</span>
+<span class="na">icon_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">window.png</span><span class="w"> </span><span class="c1">;标题栏图标,支持png,jpg格式文件格式</span>
+<span class="k">[Menu]</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;是否显示顶部菜单栏</span>
+<span class="na">language</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">english</span><span class="w"> </span><span class="c1">;默认语言，仅支持中文和英语（chinese,english）</span>
+<span class="k">[Window]</span>
+<span class="na">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">750</span><span class="w"> </span><span class="c1">;窗口最小宽度</span>
+<span class="c1">#height = 400 ;窗口最小高度</span>
+<span class="na">width_fixed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span><span class="w"> </span><span class="c1">;是否固定宽度</span>
+<span class="na">height_fixed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span><span class="w"> </span><span class="c1">;是否固定高度</span>
+</pre></div>
+</div>
+<p>以上配置在工具界面上的效果如下图：</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image10.png"/></p>
+</section>
+<section id="id5">
+<h1><span class="section-number">1.1.1.1.7. </span>固件文件选择栏文字和文件类型<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h1>
+<p>工具支持的固件文件类型有FW和UFW文件，此功能详细配置项如下：</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">###########################################</span>
+<span class="c1">#</span>
+<span class="c1"># 固件文件选择栏配置</span>
+<span class="c1">#</span>
+<span class="c1">###########################################</span>
+<span class="k">[FirmwareEdit]</span>
+<span class="na">label_text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">文件：</span>
+<span class="na">label_text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">File:</span>
+<span class="na">crc_text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">文件校验码</span>
+<span class="na">crc_text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">File CRC</span>
+<span class="na">open_text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">打开</span>
+<span class="na">open_text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Open</span>
+<span class="na">file_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">fw,ufw</span><span class="w"> </span><span class="c1">;支持升级的文件类型,</span>
+<span class="na">文件类型之间用逗号隔开</span>
+</pre></div>
+</div>
+<p>以上配置在工具界面上的效果如下图：</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image11.png"/></p>
+</section>
+<section id="id6">
+<h1><span class="section-number">1.1.1.1.8. </span>自定义版本信息配置<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h1>
+<p>此功能详细配置项如下：</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">########################################</span>
+<span class="c1">#</span>
+<span class="c1"># 需要显示的特定版本文字</span>
+<span class="c1">#</span>
+<span class="c1">########################################</span>
+<span class="k">[ConfigVersion]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">版本</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Version</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
+<span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Your version text</span>
+</pre></div>
+</div>
+<p>以上配置在工具界面上的效果如下图：</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image12.png"/></p>
+</section>
+<section id="id7">
+<h1><span class="section-number">1.1.1.1.9. </span>固件信息显示配置<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h1>
+<p>此功能详细配置项如下：</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">########################################</span>
+<span class="c1">#</span>
+<span class="c1"># 固件信息显示配置</span>
+<span class="c1">#</span>
+<span class="c1">########################################</span>
+<span class="k">[FirmwareCrc]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">固件校验码</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Firmware CRC</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;是否显示固件程序校验码</span>
+<span class="k">[FirmwarePid]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">固件PID</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Firmware PID</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;是否显示固件文件中配置的PID</span>
+<span class="k">[FirmwareVid]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">固件VID</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Firmware VID</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;是否显示固件文件中配置的VID</span>
+</pre></div>
+</div>
+<p>以上配置在工具界面上的效果如下图：</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image13.png"/></p>
+</section>
+<section id="id8">
+<h1><span class="section-number">1.1.1.1.10. </span>样机信息显示配置<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h1>
+<p>此功能详细配置项如下：</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">########################################</span>
+<span class="c1">#</span>
+<span class="c1"># 样机信息显示配置</span>
+<span class="c1">#</span>
+<span class="c1">########################################</span>
+<span class="k">[DevicePid]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">设备PID</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Device PID</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;是否显示样机中的PID</span>
+<span class="k">[DeviceVid]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">设备VID</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Device VID</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;是否显示样机中的VID</span>
+<span class="k">[DeviceCrc]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">设备固件校验码</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Device CRC</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;是否显示设备中的固件校验码</span>
+<span class="k">[DeviceStatus]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">设备状态</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Device Status</span>
+<span class="k">[BurnerVersion]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">烧写工具版本</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Burner Version</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;是否显示设备中固件是被哪个烧写工具烧写的</span>
+<span class="k">[ChipCfgInfo]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">芯片配置信息</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Chip CFG Info</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span>
+<span class="c1">;是否显示芯片配置信息，目前仅支持AC104N,AD14N,AD15N</span>
+</pre></div>
+</div>
+<p>以上配置在工具界面上的效果如下图：</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image14.png"/></p>
+</section>
+<section id="id9">
+<h1><span class="section-number">1.1.1.1.11. </span>自定描述信息配置<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h1>
+<p>此功能详细配置项如下：</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">########################################</span>
+<span class="c1">#</span>
+<span class="c1"># 自定义描述信息</span>
+<span class="c1">#</span>
+<span class="c1">########################################</span>
+<span class="k">[Description]</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"</span>
+<span class="na">您需要显示的文字信息</span>
+<span class="na">"</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"</span>
+<span class="na">your text information</span>
+<span class="na">"</span>
+</pre></div>
+</div>
+<p>以上配置在工具界面上的效果如下图：</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image15.png"/></p>
+</section>
+<section id="id10">
+<h1><span class="section-number">1.1.1.1.12. </span>升级和校验按钮文字配置<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h1>
+<p>升级按钮和校验按钮只有在加载了固件文件和有可用设备时才会可用。此功能详细配置项如下：</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">########################################</span>
+<span class="c1">#</span>
+<span class="c1"># 按钮配置</span>
+<span class="c1">#</span>
+<span class="c1">########################################</span>
+<span class="c1">#</span>
+<span class="c1"># 升级按钮配置</span>
+<span class="c1">#</span>
+<span class="k">[UpdateButton]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">升级</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Upgrade</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span>
+<span class="c1">;是否显示升级按钮，如果升级按钮不显示，工具不会自动升级</span>
+<span class="c1">#</span>
+<span class="c1"># 校验按钮配置</span>
+<span class="c1">#</span>
+<span class="k">[VerifyButton]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">校验</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Verify</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;是否显示校验按钮</span>
+</pre></div>
+</div>
+<p>以上配置在工具界面上的效果如下图：</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image16.png"/></p>
+</section>
+<section id="id11">
+<h1><span class="section-number">1.1.1.1.13. </span>认证码配置<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h1>
+<p>如果在样机功能确认过程中，需要烧写序列号等第三方数据，那么可以通过开启认证码烧写功能，在升级样机固件的同时升级将序列号等第三方数据写入样机中。</p>
+<p>此功能详细配置项如下：</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">############################################</span>
+<span class="c1">#</span>
+<span class="c1"># 认证码文件选择栏配置</span>
+<span class="c1">#</span>
+<span class="c1">############################################</span>
+<span class="k">[AuthCodeFileEdit]</span>
+<span class="na">label_text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">认证码文件：</span>
+<span class="na">label_text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Auth Code File:</span>
+<span class="na">crc_text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">文件校验码</span>
+<span class="na">crc_text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">File CRC</span>
+<span class="na">open_text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">打开</span>
+<span class="na">open_text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Open</span>
+<span class="na">file_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">csv,hex</span><span class="w"> </span><span class="c1">;认证码文件格式,</span>
+<span class="na">文件类型之间用逗号隔开（仅支持csv文件和hex文件）</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;是否显示认证码文件选择栏</span>
+<span class="k">[AuthCodeInfo]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">认证码信息</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Auth Code Info</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;是否显示认证码详细信息</span>
+<span class="k">[AuthCodeTotal]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">总个数</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Total Number</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;是否显示认证码总数</span>
+<span class="k">[AuthCodeUsed]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">已使用个数</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Number Of Used</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;是否显示已使用个数</span>
+<span class="k">[AuthCodeAvailable]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">剩余的个数</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Number Of Available</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">;是否显示剩余个数</span>
+<span class="c1">#</span>
+<span class="c1"># 重写认证码选项仅在AuthCodeFileEdit/visible=true时有效</span>
+<span class="c1">#</span>
+<span class="k">[OverwriteAuthCode]</span>
+<span class="na">text_cn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">重写认证码</span>
+<span class="na">text_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Overwrite Auth Code</span>
+<span class="na">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"> </span><span class="c1">; 是否显示</span>
+<span class="na">checked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span><span class="w"> </span><span class="c1">;</span>
+<span class="na">是否默认勾选,此配置仅在“visible</span><span class="o">=</span><span class="s">true”时有效</span>
+</pre></div>
+</div>
+<p>以上配置在工具界面上的效果如下图：</p>
+<p><img alt="" data-action="zoom" src="../../../_images/firmware_upgrade_image17.png"/></p>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="index.html" class="btn btn-neutral float-left" title="1.1.1. 固件升级工具（一拖一PC下载工具）" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="../../firmware_edit/index.html" class="btn btn-neutral float-right" title="1.2. 固件编辑工具说明" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 09, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/firmware_tools/download/firmware_upgrade/detail.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/firmware_tools/download/firmware_upgrade/detail.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../../_static/offline.js"></script>
+</body>
+</html>

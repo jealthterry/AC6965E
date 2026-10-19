@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.5. Supported Chip Models and Authorization Executable Project Templates — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>4. Multi-Algorithm Authorization Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">4.1. Introduction to Multi-Algorithm Authorization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algo-user.html">4.2. What Algorithm Providers Need to Do</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prod-user.html">4.3. What Manufacturers Need to Do</a></li>
+<li class="toctree-l2"><a class="reference internal" href="website-readme.html">4.4. Using the Jieli Server</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>4.5. Supported Chip Models and Authorization Executable Project Templates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#target-support-mul-auth-chip-type">4.5.1. Chip models supported by the programmer for multi-algorithm authorization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">4.5.2. Authorization executable project template download</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sdk">4.5.3. SDK patches that support multi-algorithm authorization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#target-request-mul-auth-sdk-patch"><button class="toctree-expand" title="Open/close menu" type="button"></button>4.5.4. Requesting a multi-algorithm authorization patch</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">4.5.4.1. Email request format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">4.5.4.2. Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">4.5.5. Detailed usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="add_authrun_to_fw.html">4.6. How to Generate a FW Containing Only the Authorization Executable</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">4. </span>Multi-Algorithm Authorization Guide</a> »</li>
+<li><span class="section-number">4.5. </span>Supported Chip Models and Authorization Executable Project Templates</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/multi_auth/authrun-tmpl-list.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">4.5. </span>Supported Chip Models and Authorization Executable Project Templates<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="target-support-mul-auth-chip-type">
+<span id="id2"></span><h2><span class="section-number">4.5.1. </span>Chip models supported by the programmer for multi-algorithm authorization<a class="headerlink" href="#target-support-mul-auth-chip-type" title="Permalink to this heading"></a></h2>
+<p>The chip models for which the programmer supports multi-algorithm authorization, and the supported authorization executable size for each, are as follows:<br/></p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p>Chip model</p></th>
+<th class="head"><p>Supported authorization executable size</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>AD17N</p></td>
+<td><p>512</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AD15N, AE15N</p></td>
+<td><p>2K</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AC632N, AE632N</p></td>
+<td><p>4K</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AC695X, AC635N, AC6083, AE695N,<br/>AD14N, AC104N, AD16N, AC128N</p></td>
+<td><p>4K</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AC696X, AC636N, AC608N, AC706N,<br/>AD697N, JL697N, AC899N, AD699N,<br/>AC897N, AC637N, AD698N,<br/>AC638N, AC702N, AC701N, JL701N</p></td>
+<td><p>8k</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>The following models require isd_download version 4.2.54 or later, and the following fields must be configured in isd_config.ini:<br/></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">EXTRA_CFG_PARAM</span><span class="p">]</span><span class="w"></span>
+<span class="n">OTP_CFG_SIZE</span><span class="o">=</span><span class="mi">512</span><span class="p">;</span><span class="w"></span>
+
+<span class="cp">#For AC707N, AW34N and AD24N chips, a minimum value of 128 is recommended;</span>
+<span class="cp">#For other models, a minimum value of 256 is recommended; the default value of the public SDK is usually fine;</span>
+</pre></div>
+</div>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p>Chip model</p></th>
+<th class="head"><p>Supported authorization executable size</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>AD21N</p></td>
+<td><p>1K</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AC82N, AD18N, AC129N, AD12N</p></td>
+<td><p>2K</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AD21N, AD23N, AD24N, AW30N,<br/>AW31N, AW32N, AW33N, AC75N</p></td>
+<td><p>4K</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AC707N, AW34N, AC704N, AC705N,<br/>JL708N, JL709N, AC689N, AC710N,<br/>JL710N, AW36N, AC680N, AC112N,<br/>AC792N</p></td>
+<td><p>8K supported by default</p></td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Notes:<br/> 1. The total size of the authorization executable equals static space + dynamic space:<br/></p>
+<p>Static space: SIZE = the total size of the .text +.data +.bss sections<br/> Dynamic space: add the linker flag –plugin-opt=-warn-stack-size=64 in the Code::Blocks build environment; the build then reports the stack usage of each function. For details, see <a class="reference internal" href="../../dev_tools/toolchains/faqs/faq_stack_size_limit_exceeded.html#target-warn-stack-size"><span class="std std-ref">Why Does Linking Warn "stack size limit exceeded"?</span></a></p>
+<p>When you click Rebuild, the "Build log" window shows the sizes of the data sections<br/></p>
+<p>2. Different models have different amounts of RAM. Do not make the algorithm too complex, so that the built executable does not become too large and fail to run during programming;</p>
+<p>3. Do not use too large a stack; change buffers defined on the stack to global variables. Otherwise, even if the static space is smaller than the supported executable size, the executable may still hang when it runs during programming;</p>
+<p>4. AC701N, JL701N, etc. can be used with or without OTP_CFG_SIZE=512, depending on the SDK design. Newer SDK versions generally support configuring OTP_CFG_SIZE=512, i.e., the flash parameters are written to the otp_cfg area; older SDKs write them to the end of the flash;</p>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">4.5.2. </span>Authorization executable project template download<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>Chips that support multi-algorithm authorization come in 3 architectures. The download links of the authorization executable project templates for the different models are listed below (if you cannot determine which project template matches your chip, contact Jieli):</p>
+<ol class="arabic simple">
+<li><p><strong>q32s chip architecture</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p>Corresponding chip models: AC632N, AW31N, AW33N</p></li>
+<li><p>Corresponding project template: <a class="reference external" href="https://pkgman.jieliapp.com/s/authrun-j32-tmpl" rel="noopener" target="_blank">click here to download the project template</a></p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p><strong>pi32 chip architecture</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p>Corresponding chip models: AC82N, AD14N, AC104N, AD15N, AD17N, AD24N, AW30N</p></li>
+<li><p>Corresponding project template: <a class="reference external" href="https://pkgman.jieliapp.com/s/authrun-q32s-tmpl" rel="noopener" target="_blank">click here to download the project template</a></p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p><strong>pi32v2 chip architecture</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p>Corresponding chip models: <code class="docutils literal notranslate"><span class="pre">all</span> <span class="pre">models</span> <span class="pre">other</span> <span class="pre">than</span> <span class="pre">those</span></code> of the q32s and pi32 chip architectures above</p></li>
+<li><p>Corresponding project template: <a class="reference external" href="https://pkgman.jieliapp.com/s/authrun-pi32v2-r3-tmpl" rel="noopener" target="_blank">click here to download the project template</a></p></li>
+</ul>
+</section>
+<section id="sdk">
+<span id="target-support-mul-auth-sdk-patch"></span><h2><span class="section-number">4.5.3. </span>SDK patches that support multi-algorithm authorization<a class="headerlink" href="#sdk" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong style="color: red;">Most SDKs support multi-algorithm authorization natively and need no patch; see <a class="reference internal" href="algo-user.html#target-mul-auth-how-to-use"><span class="std std-ref">Add authorization data verification to the algorithm library (.a file)</span></a> directly.</strong> <br/> If the SDK reports the link error "sys_cfg_read_otp undefined", update the corresponding patch; if you cannot find a patch, request one as described in <a class="reference internal" href="#target-request-mul-auth-sdk-patch"><span class="std std-ref">Requesting a multi-algorithm authorization patch</span></a></p>
+</div>
+<p>The SDK patches currently available for multi-algorithm authorization are as follows:</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p>Chip type</p></th>
+<th class="head"><p>Patch</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>AC632N</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/BD19-AC632N%282024_3_26%29.rar" rel="noopener" target="_blank">AC632N patch download (click here to download) (2024/03/26)</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>695N/635N</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/BR23-AC695N-AC635N%282024_5_21%29.rar" rel="noopener" target="_blank">695N/635N patch download (click here to download) (2024/05/21)</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>696N/636N</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/BR25-AC696N-AC636N%282024_7_12%29.rar" rel="noopener" target="_blank">696N/636N patch download (click here to download) (2024/07/12)</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>697N</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/BR30-AC697N%282024_3_26%29.rar" rel="noopener" target="_blank">697N patch download (click here to download) (2024/03/26)</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>700N</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/BR36-AC700N%282024_3_26%29.rar" rel="noopener" target="_blank">700N patch download (click here to download) (2024/04/11)</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>701N</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/BR28-AC701N%282024_11_28%29.rar" rel="noopener" target="_blank">701N patch download (click here to download) (2024/11/28)</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AD14N</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/SH54_AD14N%282024_3_26%29.rar" rel="noopener" target="_blank">AD14N patch download (click here to download) (2024/03/26)</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AD15N</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/SH55_AD15N%282024_3_26%29.rar" rel="noopener" target="_blank">AD15N patch download (click here to download) (2024/03/26)</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AD16N</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/UC03-AD16N%282024_3_26%29.rar" rel="noopener" target="_blank">AD16N patch download (click here to download) (2024/03/26)</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AD17N</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/SH57_AD17N%282024_3_26%29.rar" rel="noopener" target="_blank">AD17N patch download (click here to download) (2024/03/26)</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>706N</p></td>
+<td><p><a class="reference external" href="https://jl-update.oss-cn-shenzhen.aliyuncs.com/BR29-AC706N%282024_11_28%29.rar" rel="noopener" target="_blank">706N patch download (click here to download) (2024/11/28)</a></p></td>
+</tr>
+</tbody>
+</table></div>
+<p>How to use the patch: find cpu.a in the tools directory of the corresponding SDK and replace it.</p>
+</section>
+<section id="target-request-mul-auth-sdk-patch">
+<span id="id4"></span><h2><span class="section-number">4.5.4. </span>Requesting a multi-algorithm authorization patch<a class="headerlink" href="#target-request-mul-auth-sdk-patch" title="Permalink to this heading"></a></h2>
+<p>If you cannot find the chip model you need, contact Jieli at <a href="mailto:weiyushu@zh-jieli.com">weiyushu@zh-jieli.com</a><br/> <strong style="color: red;">In the email, state the chip model and the SDK version, and attach the cpu.a of your current SDK:</strong><br/></p>
+<section id="id5">
+<h3><span class="section-number">4.5.4.1. </span>Email request format<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<p>To ensure that your request is handled promptly and accurately, send your email in the following format:<br/></p>
+<p>Email subject: [Multi-algorithm authorization patch request]-[chip model]-[SDK version] (in Chinese: [申请多算法授权补丁]-[芯片型号]-[sdk版本])<br/> Example: [申请多算法授权补丁]-AC632N-ac63_bt_sdk_release_v2.3.0<br/></p>
+</section>
+<section id="id6">
+<h3><span class="section-number">4.5.4.2. </span>Notes<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Make sure the email subject is clear and accurate so that your request can be quickly identified and processed.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">cpu.a</span></code> file in the attachment must be the version for the current chip, to avoid compatibility issues.</p></li>
+<li><p>If you have any questions or need to explain anything further, describe it in detail in the email.</p></li>
+</ul>
+</section>
+</section>
+<section id="id7">
+<h2><span class="section-number">4.5.5. </span>Detailed usage<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h2>
+<ol class="arabic" start="0">
+<li><p>Download the template project for your chip. (If you cannot find the chip model you need, contact Jieli.)</p></li>
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">r_makebin.bat</span></code> script, change <code class="docutils literal notranslate"><span class="pre">Authorization_ID</span></code> to the agreed ID (234 in the example)</p></li>
+<li><p><strong style="color: red;">Valid ID range: 64 to 999</strong></p>
+<p><img alt="" data-action="zoom" src="../../_images/tmpl_auth_step1.jpg"/></p>
+</li>
+</ol>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Note: when you modify the following two lines in <code class="docutils literal notranslate"><span class="pre">r_makebin.bat</span></code>, do not add any extra spaces (before or after the equals sign, or at the end of the line); <strong>bat scripts are sensitive to spaces</strong>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">Authorization_ID=234</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">CHIP_TYPE=AC695X</span></code></p>
+</div>
+<ol class="arabic" start="2">
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">code/main.c</span></code> file, change the length of the returned encrypted data (i.e., the authorization data)</p></li>
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">code/main.c</span></code> file, change how the returned encrypted data (i.e., the authorization data) is generated</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the template project, the example XORs the flash uuid and uses the result as the encrypted data. This is a weak method; in general, algorithm companies are advised to replace it with a custom method that others do not know and cannot easily crack</p>
+</div>
+<p><img alt="" data-action="zoom" src="../../_images/tmpl_auth_step2.jpg"/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>While programming the chip, the programmer calls the c_main function in the .authrun file</p></li>
+<li><p>When the programmer calls the callback function c_main, the values flash_id, seq, timestamp and uuid in the ops structure have already been filled in by the programmer</p></li>
+<li><p>The callback function c_main is responsible for filling out_enc_data and returning out_len</p></li>
+<li><p>The programmer writes the content of out_enc_data, of length out_len, into the chip</p></li>
+</ol>
+<p><strong>The programmer's processing flow, in pseudocode, is as follows:</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//---------</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">flash_ops</span><span class="w"> </span><span class="n">ops</span><span class="p">;</span><span class="w">           </span><span class="c1">// This code is implemented on the programmer side; algorithm companies do not need to care about it</span>
+<span class="n">ops</span><span class="p">.</span><span class="n">flash_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_flash_id</span><span class="p">();</span><span class="w">  </span><span class="c1">// This code is implemented on the programmer side; algorithm companies do not need to care about it</span>
+<span class="n">ops</span><span class="p">.</span><span class="n">seq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_program_seq</span><span class="p">();</span><span class="w">    </span><span class="c1">// This code is implemented on the programmer side; algorithm companies do not need to care about it</span>
+<span class="n">ops</span><span class="p">.</span><span class="n">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_timestamp</span><span class="p">();</span><span class="c1">// This code is implemented on the programmer side; algorithm companies do not need to care about it</span>
+<span class="n">ops</span><span class="p">.</span><span class="n">uuid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_flash_uuid</span><span class="p">();</span><span class="w">    </span><span class="c1">// This code is implemented on the programmer side; algorithm companies do not need to care about it</span>
+<span class="n">ops</span><span class="p">.</span><span class="n">out_enc_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buf</span><span class="p">;</span><span class="w">         </span><span class="c1">// This code is implemented on the programmer side; algorithm companies do not need to care about it</span>
+<span class="n">ops</span><span class="p">.</span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buf_size</span><span class="p">;</span><span class="w">             </span><span class="c1">// This code is implemented on the programmer side; algorithm companies do not need to care about it</span>
+<span class="c1">//---------</span>
+<span class="c1">// Note: .uuid is always 16 bytes long</span>
+
+
+<span class="c1">// The algorithm company must implement the c_main function in the .authrun</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">out_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c_main</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ops</span><span class="p">);</span><span class="w"> </span><span class="c1">// Call the c_main callback function of the .authrun</span>
+<span class="c1">// After c_main is called, out_enc_data should have been filled and out_len (the length of the encrypted data to write to the chip) returned</span>
+<span class="c1">// out_len generally cannot exceed 255; for some chip models with fewer resources, the actual limit is smaller. Actual testing prevails</span>
+
+<span class="n">write_to_flash</span><span class="p">(</span><span class="n">get_program_address</span><span class="p">(),</span><span class="w"> </span><span class="c1">// This code is implemented on the programmer side; algorithm companies do not need to care about it</span>
+<span class="w">    </span><span class="n">ops</span><span class="p">.</span><span class="n">out_enc_data</span><span class="p">,</span><span class="w">                 </span><span class="c1">// This code is implemented on the programmer side; algorithm companies do not need to care about it</span>
+<span class="w">    </span><span class="n">out_len</span><span class="p">);</span><span class="w">                         </span><span class="c1">// This code is implemented on the programmer side; algorithm companies do not need to care about it</span>
+
+
+</pre></div>
+</div>
+</div>
+</li>
+<li><p>In Code::Blocks, click Rebuild to generate the <code class="docutils literal notranslate"><span class="pre">.authrun</span></code> file</p>
+<p><img alt="" data-action="zoom" src="../../_images/tmpl_auth_step4.jpg"/></p>
+</li>
+<li><p>Find the corresponding <code class="docutils literal notranslate"><span class="pre">.authrun</span></code> file in the <code class="docutils literal notranslate"><span class="pre">output</span></code> directory</p>
+<p><img alt="" data-action="zoom" src="../../_images/tmpl_auth_step5.jpg"/></p>
+</li>
+<li><p>Upload the <code class="docutils literal notranslate"><span class="pre">.authrun</span></code> file to the Jieli server so that it can be sold later</p></li>
+</ol>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Note:</p>
+<ol class="arabic simple">
+<li><p>In general, do not send the <code class="docutils literal notranslate"><span class="pre">.authrun</span></code> file directly to customers</p></li>
+</ol>
+</div>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="website-readme.html" class="btn btn-neutral float-left" title="4.4. Using the Jieli Server" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="add_authrun_to_fw.html" class="btn btn-neutral float-right" title="4.6. How to Generate a FW Containing Only the Authorization Executable" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/multi_auth/authrun-tmpl-list.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/multi_auth/authrun-tmpl-list.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

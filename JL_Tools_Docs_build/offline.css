@@ -1,0 +1,86 @@
+/* Additions for the offline copy of the Jieli Tools documentation. */
+
+/* Icon font embedded so icons also work when pages are opened straight from disk. */
+@font-face {
+  font-family: FontAwesome;
+  src: url(data:font/woff2;base64,__FA_WOFF2__) format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+.wy-nav-content { max-width: none; }
+
+/* Let long (English) menu section captions wrap instead of being cut off. */
+.wy-menu-vertical p.caption {
+  white-space: normal;
+  height: auto;
+  line-height: 1.3;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+#jl-logo { object-fit: contain; }
+.wy-side-nav-search input[type="text"] {
+  width: 100%;
+  border-radius: 5px;
+  margin-top: 10px;
+  border-color: #ccc;
+  height: 35px;
+}
+
+.wy-breadcrumbs-aside .lang-switch {
+  display: inline-block;
+  padding: 1px 10px;
+  border: 1px solid #E1595D;
+  border-radius: 4px;
+  color: #E1595D;
+  font-size: 90%;
+  line-height: 22px;
+}
+.wy-breadcrumbs-aside .lang-switch:hover { background: #E1595D; color: #fff; }
+
+.rst-content .offline-note { margin-top: 12px; }
+.offline-source { font-size: 85%; color: #888; word-break: break-all; }
+.offline-source a { color: #888; }
+
+/* Image lightbox (replaces the online zoom script). */
+.rst-content [itemprop="articleBody"] img { cursor: zoom-in; }
+.offline-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2vmin;
+  background: rgba(20, 20, 20, 0.85);
+  cursor: zoom-out;
+}
+.offline-lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  background: #fff;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Search page */
+.offline-search-form input {
+  width: 100%;
+  max-width: 640px;
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+#offline-search-status { margin-top: 12px; color: #666; }
+ul.search { list-style: none !important; margin: 0 !important; padding: 0; }
+ul.search li {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 10px 0;
+  border-bottom: 1px solid #e1e4e5;
+}
+ul.search li a.res-title { font-size: 110%; font-weight: bold; }
+ul.search li .res-page { display: block; color: #888; font-size: 85%; }
+ul.search li p.context { margin: 4px 0 0; color: #444; font-size: 90%; }
+ul.search mark { background: #fde3a7; color: inherit; font-style: normal; font-weight: inherit; padding: 0 1px; }

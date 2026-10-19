@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.17. Upgrading Battery-Powered Devices over a Custom-IO Single/Two-Wire UART — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>2. Jieli 1-to-8 Programmer User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">2.1. Programmer Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html">2.2. Manual Programming, Verification and Blank Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html">2.3. Automated Programming with a Handler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html">2.4. Remote Upgrade of the Programmer Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html">2.5. PC-Side Programming Options for Each Chip Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html">2.6. Status Indicators and Error Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pc_err.html">2.7. PC Tool Error Messages and Solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="change_board_interval.html">2.8. Board-Change Interval Setting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="burn_vol.html">2.9. Programming Voltages for Different Chips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html">2.10. Authorized Programming Count Limit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html">2.11. Programming Third-Party Data (Authentication Codes)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html">2.12. Bluetooth Address and Name Auto-Increment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_curr_test.html">2.13. Current and Power Consumption Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_battery.html">2.14. Programming Devices with Batteries Attached</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freq_bias.html">2.15. Frequency Offset Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mic_test.html">2.16. MIC Test</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">2.17. Upgrading Battery-Powered Devices over a Custom-IO Single/Two-Wire UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extern_flash_burn.html">2.18. Upgrading Internal and External Flash Together</a></li>
+<li class="toctree-l2"><a class="reference internal" href="erase.html">2.19. Partial (Non-Full-Chip) Erase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html">2.20. Other Common Features: Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faqs.html">2.21. Troubleshooting Common Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">2. </span>Jieli 1-to-8 Programmer User Manual</a> »</li>
+<li><span class="section-number">2.17. </span>Upgrading Battery-Powered Devices over a Custom-IO Single/Two-Wire UART</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/burner_1tuo8/usual_uart_update.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="io">
+<h1><span class="section-number">2.17. </span>Upgrading Battery-Powered Devices over a Custom-IO Single/Two-Wire UART<a class="headerlink" href="#io" title="Permalink to this heading"></a></h1>
+<p>Support for custom UART upgrade was added in programmer version V3.1.8.</p>
+<ul>
+<li><p>[1] Open the <code class="docutils literal notranslate"><span class="pre">burner.exe</span></code> software and, in the main window of the programmer tool, click [File] (文件) -&gt; [Deploy] (部署) -&gt; [UART Upgrade] (串口升级) to open the main window of the UART upgrade deployment program, as shown in <a class="reference internal" href="#img-uart-update-ui-1tuo8"><span class="std std-ref">UART upgrade main window</span></a>;</p></li>
+<li><p>[2] Define the corresponding IOs and the single-wire/two-wire mode in the application;</p></li>
+<li><p>[3] Set [UART type] (串口类型) to match the application's configuration: select two-wire [DP(TX),DM(RX)] or single-wire [DP[TX&amp;RX]]. [DP(TX),DM(RX)] means that the DP pin of the programmer's USB programming port acts as UART TX to send data and DM acts as UART RX to receive data; [DP[TX&amp;RX]] means that the DP pin of the programmer's USB programming port both sends and receives;</p></li>
+<li><p>[4] The configuration item [UART baud rate] (串口波特率) has a default value of 1000000bit/s. It can be changed to control the upgrade speed; the default value is usually fine;</p>
+<p>In the PC interface of the 1-to-8 programmer, this upgrade does not distinguish between chip models (any model can be upgraded with this function, as long as the firmware in the device chip and the upgrade ufw support it); simply upgrade with the authorized upgrade ufw that corresponds to the device model. Use version V2.1.1 or later of the programming file authorization tool.</p>
+</li>
+</ul>
+<figure class="align-default" id="img-uart-update-ui-1tuo8">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image82.png"/>
+<figcaption>
+<p><span class="caption-text">UART upgrade main window</span><a class="headerlink" href="#img-uart-update-ui-1tuo8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The following example demonstrates a two-wire UART upgrade of a device that is powered (or battery-powered) and running.</p>
+<p>Figure <a class="reference internal" href="#img-uart-update-sample-ui-1to8"><span class="std std-ref">Two-wire UART upgrade demo with the device powered and running</span></a> shows an AC632N development board. The board is powered through a USB port other than the programmer's programming port, to simulate the battery power of the device in a real upgrade. Because this is a UART upgrade performed while the firmware is running, the device is powered and running.</p>
+<p>In this demonstration, the firmware deployed to the programmer is an authorized AC632N ufw file.</p>
+<ul>
+<li><p>[1] Open the <code class="docutils literal notranslate"><span class="pre">burner.exe</span></code> software and go to the main window for UART upgrade deployment;</p></li>
+<li><p>[2] Upgrade port PA8 is configured as UART RX and PA7 as UART TX. Connect pin PA8 on the AC632N development board to the DP(TX) pin of the programmer's USB port, and pin PA7 to the DM (RX) pin of the programmer's USB port. In addition, connect the GND of the USB cable to the GND of the development board;</p></li>
+<li><p>[3] Set [UART type] (串口类型) to two-wire [DP(TX),DM(RX)];</p></li>
+<li><p>[4] For the configuration item [UART baud rate] (串口波特率), use the default value of 1000000bit/s;</p>
+<p>Power is not supplied through the programmer's USB programming port. In real production, the device is usually powered by its own battery; in this demonstration, an external USB supply replaces the battery to power the development board.</p>
+</li>
+</ul>
+<p>Once the development board is powered, the chip runs its own firmware. Then plug the USB cable carrying the two UART upgrade wires and GND into the programmer's programming port; the upgrade progress is shown as in the progress bar in the figure.</p>
+<p>For a single-wire upgrade of a device with a battery (or powered), connect only one UART wire and one GND wire to the device, set [UART type] (串口类型) to [DP[TX&amp;RX]] in the PC tool, and then plug the cable into the programmer port to perform the single-wire UART upgrade.</p>
+<figure class="align-default" id="img-uart-update-sample-ui-1to8">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image83.png"/>
+<figcaption>
+<p><span class="caption-text">Two-wire UART upgrade demo with the device powered and running</span><a class="headerlink" href="#img-uart-update-sample-ui-1to8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="mic_test.html" class="btn btn-neutral float-left" title="2.16. MIC Test" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="extern_flash_burn.html" class="btn btn-neutral float-right" title="2.18. Upgrading Internal and External Flash Together" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo8/usual_uart_update.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo8/usual_uart_update.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

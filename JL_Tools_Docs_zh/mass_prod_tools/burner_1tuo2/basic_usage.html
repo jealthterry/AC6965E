@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.2. 手动烧录、校验、查空芯片操作流程 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>1. 杰理科技一拖二烧录器用户手册</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">1.1. 烧录器简要介绍</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.2. 手动烧录、校验、查空芯片操作流程</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1.2.1. 烧录环境准备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#target-1tuo2-power-on">1.2.2. 烧录器上电开机</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#target-1tuo2-fw-confirmation-and-update">1.2.3. 烧录器固件版本确认及更新</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#target-deploy-fw-file-to-1tuo2"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.2.4. 部署目标芯片程序到烧录器</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">1.2.4.1. 部署说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#target-deploy-fw-file-to-1tuo2-open-ui">1.2.4.2. 打开部署程序界面</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">1.2.4.3. 选择要烧录的目标芯片型号</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">1.2.4.4. 选择并部署烧录文件到烧录器</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#target-1tuo2-set-mode"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.2.5. 烧录器工作模式介绍与设置</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id11">1.2.5.1. 烧录器工作模式介绍</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#v3-1">1.2.5.2. V3.1版本烧录器工作模式设置</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#v5-0">1.2.5.3. V5.0版本烧录器工作模式设置</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id12"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.2.6. 芯片程序烧录</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id13">1.2.6.1. 烧录准备工作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#target-1tuo2-chip-start-to-burn">1.2.6.2. 芯片开始烧录</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">1.2.6.3. 烧录结果判断</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id16"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.2.7. 芯片程序校验</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id17">1.2.7.1. 校验准备工作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">1.2.7.2. 芯片开始校验</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">1.2.7.3. 校验结果判断</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id20"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.2.8. 芯片程序查空</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id21">1.2.8.1. 查空准备工作</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id22">1.2.8.2. 芯片开始查空</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id23">1.2.8.3. 查空结果判断</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html">1.3. 机台自动烧录操作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html">1.4. 远程升级烧录器固件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html">1.5. 各型号芯片PC端烧录配置项介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html">1.6. 状态指示和报错提示说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html">1.7. 授权烧录次数限制功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html">1.8. 第三方数据（认证码）烧录功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html">1.9. 蓝牙地址及名字自增功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_burn.html">1.10. 芯片烧录接线和供电说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html">1.11. 其它常见功能配置和使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faqs.html">1.12. 常见错误处理</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">1. </span>杰理科技一拖二烧录器用户手册</a> »</li>
+<li><span class="section-number">1.2. </span>手动烧录、校验、查空芯片操作流程</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/mass_prod_tools/burner_1tuo2/basic_usage.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">1.2. </span>手动烧录、校验、查空芯片操作流程<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">1.2.1. </span>烧录环境准备<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>烧录需要准备的物料清单：</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>类别</strong></p></th>
+<th class="head"><p><strong>说明</strong></p></th>
+<th class="head"><p><strong>数量</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PC计算机</p></td>
+<td><p>1. 用于升级烧录器固件，升级到需要的固件版本或最新版本<br/>2.用于部署fw文件、ufw文件或key文件到烧录器先存储起来，<br/>再实现离线烧录</p></td>
+<td><p>1 台</p></td>
+</tr>
+<tr class="row-odd"><td><p>烧录器主机</p></td>
+<td><p>用于控制烧录芯片</p></td>
+<td><p>1台</p></td>
+</tr>
+<tr class="row-even"><td><p>USB数据线</p></td>
+<td><p>用于烧录器和PC计算机连接，升级烧录器固件或更新目标芯片程序</p></td>
+<td><p>1条</p></td>
+</tr>
+<tr class="row-odd"><td><p>电源适配器</p></td>
+<td><p>请使用9.0V、2.0A以上规格电源，给烧录器供电</p></td>
+<td><p>1个</p></td>
+</tr>
+<tr class="row-even"><td><p>上层板</p></td>
+<td><p>1.烧录裸片：准备对应待烧录芯片型号的的socket板<br/>2. 烧录样机,开发板：准备多根杜邦线，<br/>接线参考《<a class="reference internal" href="pcba_burn.html"><span class="doc std std-doc">芯片烧录接线和供电说明</span></a>》</p></td>
+<td><p>1或2个</p></td>
+</tr>
+<tr class="row-odd"><td><p>待烧录的芯片</p></td>
+<td><p>待烧录的芯片放置对应芯片型号的的socket板进行烧录</p></td>
+<td><p>若干</p></td>
+</tr>
+<tr class="row-even"><td><p>待烧录的芯片程序</p></td>
+<td><p>准备要烧录sdk编译生成的fw文件（包含了key文件）；<br/>也可以单独先烧录key文件，再通过强制升级等工具烧录带key的程序</p></td>
+<td><p>1个</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="target-1tuo2-power-on">
+<span id="id3"></span><h2><span class="section-number">1.2.2. </span>烧录器上电开机<a class="headerlink" href="#target-1tuo2-power-on" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>烧录器供电</p>
+<p>烧录器使用9V电源适配器进行供电，电源接线如<a class="reference internal" href="#img-vol-conn-1tuo2"><span class="std std-ref">烧录器供电接线图</span></a>所示。</p>
+<figure class="align-default" id="img-vol-conn-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image10.png"/>
+<figcaption>
+<p><span class="caption-text">烧录器供电接线图</span><a class="headerlink" href="#img-vol-conn-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>烧录器上电开机</p>
+<p>烧录器出厂前已烧录有控制烧录器工作的固件程序，拿到烧录器后即可上电开机。烧录器供电后操作步骤如<a class="reference internal" href="#img-on-1tuo2"><span class="std std-ref">上电开机画面</span></a>所示</p>
+<ul class="simple">
+<li><p>【1】按下“电源总开关”；</p></li>
+<li><p>【2】上电后，“电源指示灯”亮起，烧录器蜂鸣器会短叫一声，</p></li>
+<li><p>【3】2路烧录“按键指示灯”红色指示灯和绿色指示灯会短亮；</p></li>
+<li><p>【4】“液晶显示屏”会亮起；</p></li>
+</ul>
+<figure class="align-default" id="img-on-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image11.png"/>
+<figcaption>
+<p><span class="caption-text">上电开机画面</span><a class="headerlink" href="#img-on-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+</section>
+<section id="target-1tuo2-fw-confirmation-and-update">
+<span id="id4"></span><h2><span class="section-number">1.2.3. </span>烧录器固件版本确认及更新<a class="headerlink" href="#target-1tuo2-fw-confirmation-and-update" title="Permalink to this heading"></a></h2>
+<p>烧录器固件指控制整个烧录器工作的主控芯片固件程序，烧录目标芯片程序前务必确认当前烧录器固件版本是否是最新（特殊情况除外），否则可能出现一些烧录问题。</p>
+<ol class="arabic">
+<li><p>当前烧录器版本确认</p>
+<p>烧录器上电开机显示完“杰理LOGO”后，会显示2S时间当前烧录器固件版本号（更新目标芯片程序界面也包含有烧录器固件版本号），如<a class="reference internal" href="#img-firmware-ver-1tuo2"><span class="std std-ref">烧录器固件版本号显示</span></a>所示。</p>
+<figure class="align-default" id="img-firmware-ver-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image12.png"/>
+<figcaption>
+<p><span class="caption-text">烧录器固件版本号显示</span><a class="headerlink" href="#img-firmware-ver-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>定期检查是否有新版本及更新烧录器固件</p>
+<p>如果当前烧录器使用的固件版本过旧，更新目标芯片程序 fw 文件的 PC
+工具界面会有相应的更新提示，如有新固件请及时进行更新。</p>
+<p>进入远程升级烧录器固件的PC端控制界面，即可获取到最新的3个烧录器固件版本号，可选择需要的版本进行升级。升级步骤可参考<a class="reference internal" href="remote_update.html"><span class="doc std std-doc">远程升级烧录器固件</span></a>。</p>
+</li>
+</ol>
+</section>
+<section id="target-deploy-fw-file-to-1tuo2">
+<span id="id5"></span><h2><span class="section-number">1.2.4. </span>部署目标芯片程序到烧录器<a class="headerlink" href="#target-deploy-fw-file-to-1tuo2" title="Permalink to this heading"></a></h2>
+<section id="id6">
+<h3><span class="section-number">1.2.4.1. </span>部署说明<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<p>芯片烧录、校验、查空程序前，需要部署目标芯片对应的烧录程序即SDK编译生成的fw文件、ufw文件，或key文件到烧录器，烧录过程烧录器会把程序烧录到目标芯片，或利用程序进行校验和查空。
+如果烧录器已经部署过对应的程序，请跳过以下小节的操作步骤。</p>
+</section>
+<section id="target-deploy-fw-file-to-1tuo2-open-ui">
+<span id="id7"></span><h3><span class="section-number">1.2.4.2. </span>打开部署程序界面<a class="headerlink" href="#target-deploy-fw-file-to-1tuo2-open-ui" title="Permalink to this heading"></a></h3>
+<p>在烧录器上电开机后，按如<a class="reference internal" href="#img-open-update-1tuo2"><span class="std std-ref">打开部署程序界面</span></a>所示进行操作，<br/></p>
+<ul class="simple">
+<li><p>【1】使用USB数据线进行 <code class="docutils literal notranslate"><span class="pre">烧录器更新程序用的USB接口和PC端的USB接口连接</span></code>，显示屏显示<code class="docutils literal notranslate"><span class="pre">PC模式</span></code>；</p></li>
+<li><p>【2】打开PC端<code class="docutils literal notranslate"><span class="pre">此电脑</span></code>，看到<code class="docutils literal notranslate"><span class="pre">CD驱动器</span></code>光驱；</p></li>
+<li><p>【3】鼠标右键打开“CD驱动器”光驱，会看到<code class="docutils literal notranslate"><span class="pre">burn_tool.exe</span></code>文件；</p></li>
+<li><p>【4】双击<code class="docutils literal notranslate"><span class="pre">burn_tool.exe</span></code>，出现如<a class="reference internal" href="#img-update-ui-1tuo2"><span class="std std-ref">部署程序界面</span></a>所示部署程序的界面；</p></li>
+</ul>
+<figure class="align-default" id="img-open-update-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image13.png"/>
+<figcaption>
+<p><span class="caption-text">打开部署程序界面</span><a class="headerlink" href="#img-open-update-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="img-update-ui-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image14.png"/>
+<figcaption>
+<p><span class="caption-text">部署程序界面</span><a class="headerlink" href="#img-update-ui-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id8">
+<h3><span class="section-number">1.2.4.3. </span>选择要烧录的目标芯片型号<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+<p>这里对AC897N芯片进行fw烧录文件部署演示，所以在打开部署程序界面后，选择要烧录的目标芯片型号时，在如<a class="reference internal" href="#img-select-chip-1tuo2"><span class="std std-ref">芯片型号选择界面</span></a>所示“芯片类型”下拉菜单，选择芯片类型为AC897N。</p>
+<figure class="align-default" id="img-select-chip-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image15.png"/>
+<figcaption>
+<p><span class="caption-text">芯片型号选择界面</span><a class="headerlink" href="#img-select-chip-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id9">
+<h3><span class="section-number">1.2.4.4. </span>选择并部署烧录文件到烧录器<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+<p>待烧录的芯片型号选择好后，按如<a class="reference internal" href="#img-deploy-fw-1tuo2"><span class="std std-ref">部署fw烧录文件到烧录器</span></a>所示步骤操作：<br/></p>
+<ul class="simple">
+<li><p>【1】点击打开并选择fw文件（ufw文件、key文件也可以，也可烧录经过授权后带烧录次数限制的fw/ufw文件，可参考<a class="reference internal" href="dongle.html"><span class="doc std std-doc">授权烧录次数限制功能</span></a>）；</p></li>
+<li><p>【2】点击配置，选择芯片烧录配置项后点击OK，如<a class="reference internal" href="#img-config-opt-1tuo2"><span class="std std-ref">烧录配置项配置界面</span></a>所示（一般默认，可参考<a class="reference internal" href="config_opt.html"><span class="doc std std-doc">各型号芯片PC端烧录配置项介绍</span></a>根据需求进行配置）；</p></li>
+<li><p>【3】点击更新按钮，部署FW文件即目标芯片烧录程序到烧录器；</p></li>
+<li><p>【4】部署烧录文件成功后，有“更新烧录器成功，请重新上电”提示，点击确认后请对烧录器重新上电（拔出烧录器端的USB数据线，并对”电源总开关“进行按下关闭再按下打开操作）。</p></li>
+</ul>
+<p>如果部署失败，有对应的错误信息提示，根据提示找错误原因再重新部署，如反复部署失败，有解决不了的问题，及时联系杰理技术支持。</p>
+<figure class="align-default" id="img-deploy-fw-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image16.png"/>
+<figcaption>
+<p><span class="caption-text">部署fw烧录文件到烧录器</span><a class="headerlink" href="#img-deploy-fw-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="img-config-opt-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image17.png"/>
+<figcaption>
+<p><span class="caption-text">烧录配置项配置界面</span><a class="headerlink" href="#img-config-opt-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="target-1tuo2-set-mode">
+<span id="id10"></span><h2><span class="section-number">1.2.5. </span>烧录器工作模式介绍与设置<a class="headerlink" href="#target-1tuo2-set-mode" title="Permalink to this heading"></a></h2>
+<section id="id11">
+<h3><span class="section-number">1.2.5.1. </span>烧录器工作模式介绍<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h3>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>工作模式</strong></p></th>
+<th class="head"><p><strong>模式介绍</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>烧录模式<br/>(烧写模式)</p></td>
+<td><p>把部署到烧录器的程序文件即SDK编译生成的.fw、.ufw文件，或.key文件<br/>对应的数据烧录到目标芯片；烧录程序数据的同时，对配置的lvd、<br/>认证码、蓝牙地址、资源文件等进行烧录，同时实现芯片性能测试等功能</p></td>
+</tr>
+<tr class="row-odd"><td><p>校验模式</p></td>
+<td><p>把部署到烧录器的程序文件即SDK编译生成的.fw、.ufw文件，或.key文件及lvd,<br/>资源文件等对应的数据与上一次烧录即当前芯片已经存在的程序数据做对比，<br/>主要用于确认当前芯片已烧录的程序数据等与预期要烧的程序文件数据是否是一致;<br/>校验模式也执行芯片性能测试功能</p></td>
+</tr>
+<tr class="row-even"><td><p>查空模式</p></td>
+<td><p>检查芯片是否是空片，芯片是否处于出厂前状态，即是否已经烧录过.fw文件程序、key文件数据；<br/>查空模式也常常用于找回当前芯片已烧程序对应.fw文件的校验码</p></td>
+</tr>
+<tr class="row-odd"><td><p>声音模式</p></td>
+<td><p>打开蜂鸣器声音提示功能</p></td>
+</tr>
+<tr class="row-even"><td><p>静音模式</p></td>
+<td><p>关闭蜂鸣器声音提示功能</p></td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>对于<code class="docutils literal notranslate"><span class="pre">烧录模式</span></code>，已经包含了校验功能，烧录到芯片的任何数据，执行烧录后都会读取校验是否烧录正确;
+<br/>
+<br/></p></li>
+<li><p>对于<code class="docutils literal notranslate"><span class="pre">查空模式</span></code>，即使显示了.fw文件的校验码，但是不能证明芯片烧录程序是完整的，查空仅是从某个区域读取校验码进行显示；查空显示校验码主要用于找回上次烧录的.fw文件，方便管理烧录文件。如想知道当前手上的样机烧录的是众多fw文件中的哪个文件，可用找回的.fw文件进行生产烧录,测试,不良分析；
+<br/>
+<br/></p></li>
+<li><p>要二次确认芯片上次烧录的程序是否完整，同当前部署的.fw文件数据、烧录配置是否一致，必须使用<code class="docutils literal notranslate"><span class="pre">校验模式</span></code>；</p></li>
+</ol>
+</div>
+</section>
+<section id="v3-1">
+<h3><span class="section-number">1.2.5.2. </span>V3.1版本烧录器工作模式设置<a class="headerlink" href="#v3-1" title="Permalink to this heading"></a></h3>
+<p>此版本烧录器主要用拨码开关来设置工作模式，1~5拨码开关作为一个控制单元用来设置烧录、校验、查空模式
+;第6个拨码开关作为一个控制单元用来设置声音模式。
+工作模式对应的拨码开关拨码如<a class="reference internal" href="#img-switch-btn-workmode-1tuo2"><span class="std std-ref">拨码开关设置工作模式</span></a>所示。</p>
+<figure class="align-default" id="img-switch-btn-workmode-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image18.png"/>
+<figcaption>
+<p><span class="caption-text">拨码开关设置工作模式</span><a class="headerlink" href="#img-switch-btn-workmode-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="v5-0">
+<h3><span class="section-number">1.2.5.3. </span>V5.0版本烧录器工作模式设置<a class="headerlink" href="#v5-0" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>烧录、校验、查空模式设置</p>
+<p>如<a class="reference internal" href="#img-ind-btn-workmode-1tuo2"><span class="std std-ref">独立按键设置工作模式</span></a>所示的操作步骤：<br/></p>
+<ul class="simple">
+<li><p>【1】长按<code class="docutils literal notranslate"><span class="pre">独立按键（模式选择按键）</span></code>（参考：<a class="reference internal" href="intro_basic.html#target-1tuo2-hosts-info"><span class="std std-ref">烧录器主机介绍</span></a> 中的图片），3s后松开，烧录器进入模式设置状态，显示屏显示<code class="docutils literal notranslate"><span class="pre">模式设置和当前模式</span></code>、1号指示灯不断闪烁；</p></li>
+<li><p>【2】短按<code class="docutils literal notranslate"><span class="pre">独立按键</span></code>切换烧录器模式（烧录-校验-查空循环切换）；</p></li>
+<li><p>【3】<code class="docutils literal notranslate"><span class="pre">独立按键</span></code>2s内未有按下操作后，即选择了当前设置的模式，显示屏回到正常界面（显示屏显示正常界面前有2S显示当前烧录器版本号)，正常界面显示有当前的工作模式。</p></li>
+</ul>
+<figure class="align-default" id="img-ind-btn-workmode-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image19.png"/>
+<figcaption>
+<p><span class="caption-text">独立按键设置工作模式</span><a class="headerlink" href="#img-ind-btn-workmode-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>声音模式设置：</p>
+<p>如<a class="reference internal" href="#img-ind-btn-soundmode-1tuo2"><span class="std std-ref">独立按键设置声音模式</span></a>所示，显示屏处于显示正常界面，短按独立按键切换声音模式（声音模式-静音模式循环切换）。</p>
+<figure class="align-default" id="img-ind-btn-soundmode-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image20.png"/>
+<figcaption>
+<p><span class="caption-text">独立按键设置声音模式</span><a class="headerlink" href="#img-ind-btn-soundmode-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+</section>
+</section>
+<section id="id12">
+<h2><span class="section-number">1.2.6. </span>芯片程序烧录<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h2>
+<section id="id13">
+<h3><span class="section-number">1.2.6.1. </span>烧录准备工作<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>烧录芯片程序前，确保执行了前4小节的相关操作，以防烧录过程出现一些异常问题，包括：</p>
+<ul class="simple">
+<li><p>烧录前上电开机，进入准备正常显示界面（请参考《<a class="reference internal" href="#target-1tuo2-power-on"><span class="std std-ref">烧录器上电开机</span></a>》小节）</p></li>
+<li><p>确认或更新当前烧录器固件版本为需要的版本（请参考《<a class="reference internal" href="#target-1tuo2-fw-confirmation-and-update"><span class="std std-ref">烧录器固件版本确认及更新</span></a>》小节，可不定时确认）</p></li>
+<li><p>确认或更新当前烧录器内的目标芯片程序为要烧录的程序（请参考《<a class="reference internal" href="#target-deploy-fw-file-to-1tuo2"><span class="std std-ref">部署目标芯片程序到烧录器</span></a>》小节）</p></li>
+<li><p>确认或设置当前烧录器工作模式为烧录模式（请参考《<a class="reference internal" href="#target-1tuo2-set-mode"><span class="std std-ref">烧录器工作模式介绍与设置</span></a>》小节）</p></li>
+</ul>
+</li>
+<li><p>安装好上层板后(参考《<a class="reference internal" href="intro_basic.html#target-1tuo2-board-install"><span class="std std-ref">上层板介绍与安装</span></a>》进行安装)，放置芯片到对应芯片型号的上层板socket座子上，芯片放好后盖上socket座盖子。芯片放置如<a class="reference internal" href="#img-chip-place-1tuo2"><span class="std std-ref">芯片放置</span></a>所示。</p>
+<figure class="align-default" id="img-chip-place-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image21.png"/>
+<figcaption>
+<p><span class="caption-text">芯片放置</span><a class="headerlink" href="#img-chip-place-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>上层板socket座上白色的小箭头为芯片第1引脚，请别放错。</p>
+</div>
+</section>
+<section id="target-1tuo2-chip-start-to-burn">
+<span id="id14"></span><h3><span class="section-number">1.2.6.2. </span>芯片开始烧录<a class="headerlink" href="#target-1tuo2-chip-start-to-burn" title="Permalink to this heading"></a></h3>
+<p>烧录准备工作做好后，即可对芯片执行烧录。如果芯片放置在通道1上层板上进行烧录，请短按通道1开始按键；如芯片放置在通道2上层板上进行烧录，请短按通道2开始按键；
+如<a class="reference internal" href="#img-start-burn-1tuo2"><span class="std std-ref">芯片开始烧录操作</span></a>所示。</p>
+<figure class="align-default" id="img-start-burn-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image22.png"/>
+<figcaption>
+<p><span class="caption-text">芯片开始烧录操作</span><a class="headerlink" href="#img-start-burn-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id15">
+<h3><span class="section-number">1.2.6.3. </span>烧录结果判断<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>烧录成功判断</p>
+<p>开始按键短按后<code class="docutils literal notranslate"><span class="pre">绿色指示灯由“灭-亮-灭</span></code>变化，<code class="docutils literal notranslate"><span class="pre">红色指示灯处于熄灭状态</span></code>，蜂鸣器鸣叫一声，表示烧录成功，烧录成功后<code class="docutils literal notranslate"><span class="pre">显示屏成功计数部分加1</span></code>。</p>
+<p>例如通道1烧录成功显示屏显示变化如<a class="reference internal" href="#img-ch1-burn-succ-display-1tuo2"><span class="std std-ref">通道1烧录成功显示变化</span></a>所示。</p>
+<figure class="align-default" id="img-ch1-burn-succ-display-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image23.png"/>
+<figcaption>
+<p><span class="caption-text">通道1烧录成功显示变化</span><a class="headerlink" href="#img-ch1-burn-succ-display-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>烧录失败判断</p>
+<p>开始按键短按后<code class="docutils literal notranslate"><span class="pre">绿色指示灯由灭-亮-灭</span></code>变化后，<code class="docutils literal notranslate"><span class="pre">红色指示灯亮起</span></code>，并在显示屏上<code class="docutils literal notranslate"><span class="pre">显示错误信息</span></code>，表示烧录失败。</p>
+<p>例如通道1开始烧录后报通信失败（也可能是其它错误类型），如<a class="reference internal" href="#img-ch1-burn-fail-display-1tuo2"><span class="std std-ref">通道1烧录失败显示</span></a>所示。<br/>
+显示屏报错后，下次烧录成功，或者重启烧录器显示即可恢复正常。</p>
+<figure class="align-default" id="img-ch1-burn-fail-display-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image24.png"/>
+<figcaption>
+<p><span class="caption-text">通道1烧录失败显示</span><a class="headerlink" href="#img-ch1-burn-fail-display-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>芯片烧录成功后即可从上层板的socket座取出芯片进行贴片上样机，或者放入demo板，开发板的socket座进行产品功能测试；同一颗芯片可以改变目标芯片程序，烧录配置项等进行反复多次烧录；</p></li>
+<li><p><font color="red">烧录失败的芯片不允许流入后续的生产环节，需要进一步分析具体烧录失败原因</font>；</p></li>
+</ol>
+<p>3.了解详细的状态指示和报错提示说明，请参考《<a class="reference internal" href="status_errors.html"><span class="doc std std-doc">状态指示和报错提示说明</span></a>》章节；</p>
+</div>
+</section>
+</section>
+<section id="id16">
+<h2><span class="section-number">1.2.7. </span>芯片程序校验<a class="headerlink" href="#id16" title="Permalink to this heading"></a></h2>
+<section id="id17">
+<h3><span class="section-number">1.2.7.1. </span>校验准备工作<a class="headerlink" href="#id17" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>校验芯片程序前，确保执行了前4小节的相关操作，以防校验过程出现一些异常问题，包括：</p>
+<ul class="simple">
+<li><p>烧录前上电开机，进入准备正常显示界面（请参考《<a class="reference internal" href="#target-1tuo2-power-on"><span class="std std-ref">烧录器上电开机</span></a>》小节）</p></li>
+<li><p>确认或更新当前烧录器固件版本为需要的版本（请参考《<a class="reference internal" href="#target-1tuo2-fw-confirmation-and-update"><span class="std std-ref">烧录器固件版本确认及更新</span></a>》小节，可不定时确认）</p></li>
+<li><p>确认或更新当前烧录器内的目标芯片程序为要校验的程序（请参考《<a class="reference internal" href="#target-deploy-fw-file-to-1tuo2"><span class="std std-ref">部署目标芯片程序到烧录器</span></a>》小节）</p></li>
+<li><p>确认或设置当前烧录器工作模式为校验模式（请参考《<a class="reference internal" href="#target-1tuo2-set-mode"><span class="std std-ref">烧录器工作模式介绍与设置</span></a>》小节）</p></li>
+</ul>
+</li>
+<li><p>安装好上层板后，放置芯片到对应芯片型号的上层板socket座子上，芯片放好后盖上socket座盖子。</p></li>
+</ol>
+</section>
+<section id="id18">
+<h3><span class="section-number">1.2.7.2. </span>芯片开始校验<a class="headerlink" href="#id18" title="Permalink to this heading"></a></h3>
+<p>校验准备工作做好后，即可对芯片执行校验。如果芯片放置在通道1上层板上进行校验，请短按通道1开始按键；如芯片放置在通道2上层板上进行校验，请短按通道2开始按键；操作步骤同《<a class="reference internal" href="#target-1tuo2-chip-start-to-burn"><span class="std std-ref">芯片开始烧录</span></a>》小节一致。</p>
+</section>
+<section id="id19">
+<h3><span class="section-number">1.2.7.3. </span>校验结果判断<a class="headerlink" href="#id19" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>校验成功判断</p>
+<p>开始按键短按后<code class="docutils literal notranslate"><span class="pre">绿色指示灯由灭-亮-灭</span></code>变化，<code class="docutils literal notranslate"><span class="pre">红色指示灯处于熄灭状态</span></code>，蜂鸣器鸣叫一声，表示校验成功，校验成功后<code class="docutils literal notranslate"><span class="pre">显示屏成功计数部分加1</span></code>。校验成功显示屏显示变化同烧录成功显示屏变化一致。</p>
+</li>
+<li><p>校验失败判断</p>
+<p>开始按键短按后<code class="docutils literal notranslate"><span class="pre">绿色指示灯由灭-亮-灭</span></code>变化后，<code class="docutils literal notranslate"><span class="pre">红色指示灯亮起</span></code>，并在显示屏上<code class="docutils literal notranslate"><span class="pre">显示错误信息</span></code>，表示校验失败。</p>
+<p>例如通道1开始校验后报校验失败（也可能是其它错误类型），如<a class="reference internal" href="#img-ch1-verify-fail-display-1tuo2"><span class="std std-ref">通道1校验失败显示</span></a>所示。显示屏报错后，下次校验成功，或者重启烧录器显示即可恢复正常。</p>
+<figure class="align-default" id="img-ch1-verify-fail-display-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image25.png"/>
+<figcaption>
+<p><span class="caption-text">通道1校验失败显示</span><a class="headerlink" href="#img-ch1-verify-fail-display-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+</section>
+</section>
+<section id="id20">
+<h2><span class="section-number">1.2.8. </span>芯片程序查空<a class="headerlink" href="#id20" title="Permalink to this heading"></a></h2>
+<section id="id21">
+<h3><span class="section-number">1.2.8.1. </span>查空准备工作<a class="headerlink" href="#id21" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>查空芯片程序前，确保执行了前4小节的相关操作，以防查空过程出现一些异常问题，包括：</p>
+<ul class="simple">
+<li><p>烧录前上电开机，进入准备正常显示界面（请参考《<a class="reference internal" href="#target-1tuo2-power-on"><span class="std std-ref">烧录器上电开机</span></a>》小节）</p></li>
+<li><p>确认或更新当前烧录器固件版本为需要的版本（请参考《<a class="reference internal" href="#target-1tuo2-fw-confirmation-and-update"><span class="std std-ref">烧录器固件版本确认及更新</span></a>》小节，可不定时确认）</p></li>
+<li><p>确认或更新当前烧录器内的目标芯片程序为对应芯片型号的程序（请参考《<a class="reference internal" href="#target-deploy-fw-file-to-1tuo2"><span class="std std-ref">部署目标芯片程序到烧录器</span></a>》小节）</p></li>
+<li><p>确认或设置当前烧录器工作模式为查空模式（请参考《<a class="reference internal" href="#target-1tuo2-set-mode"><span class="std std-ref">烧录器工作模式介绍与设置</span></a>》小节）</p></li>
+</ul>
+</li>
+<li><p>安装好上层板后，放置芯片到对应芯片型号的上层板socket座子上，芯片放好后盖上socket座盖子。</p></li>
+</ol>
+</section>
+<section id="id22">
+<h3><span class="section-number">1.2.8.2. </span>芯片开始查空<a class="headerlink" href="#id22" title="Permalink to this heading"></a></h3>
+<p>查空准备工作做好后，即可对芯片执行查空。如果芯片放置在通道1上层板上进行查空，请短按通道1开始按键；如芯片放置在通道2上层板上进行查空，请短按通道2开始按键；操作步骤同《<a class="reference internal" href="#target-1tuo2-chip-start-to-burn"><span class="std std-ref">芯片开始烧录</span></a>》小节一致。</p>
+</section>
+<section id="id23">
+<h3><span class="section-number">1.2.8.3. </span>查空结果判断<a class="headerlink" href="#id23" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>查空成功判断</p>
+<p>开始按键短按后<code class="docutils literal notranslate"><span class="pre">绿色指示灯由灭-亮-灭</span></code>变化，<code class="docutils literal notranslate"><span class="pre">红色指示灯处于熄灭状态</span></code>，蜂鸣器鸣叫一声，表示查空成功，查空成功后,显示屏显示<code class="docutils literal notranslate"><span class="pre">空片</span></code>字样，或<code class="docutils literal notranslate"><span class="pre">显示屏成功计数部分加1</span></code>， <strong>查空成功表示芯片为空片，没有烧录过程序数据</strong>。</p>
+</li>
+<li><p>非空片判断</p>
+<p>开始按键短按后<code class="docutils literal notranslate"><span class="pre">绿色指示灯由灭-亮-灭</span></code>变化后，<code class="docutils literal notranslate"><span class="pre">红色指示灯亮起</span></code>，并在显示屏上显示芯片已烧程序的CRC16校验码或错误信息（如显示<code class="docutils literal notranslate"><span class="pre">非空片</span></code>或<code class="docutils literal notranslate"><span class="pre">查空失败</span></code>）,表示芯片不是空片即已被烧录过程序。</p>
+<p>例如通道1开始查空后显示屏显示校验码（也可能是其它错误类型），如<a class="reference internal" href="#img-ch1-blank-check-1tuo2"><span class="std std-ref">通道1查空显示程序校验码</span></a>所示。显示屏校验码或报错后，下次查空成功，或者重启烧录器显示即可恢复正常。</p>
+<figure class="align-default" id="img-ch1-blank-check-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image26.png"/>
+<figcaption>
+<p><span class="caption-text">通道1查空显示程序校验码</span><a class="headerlink" href="#img-ch1-blank-check-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+</section>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="intro_basic.html" class="btn btn-neutral float-left" title="1.1. 烧录器简要介绍" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="autoburn.html" class="btn btn-neutral float-right" title="1.3. 机台自动烧录操作流程" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/basic_usage.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/basic_usage.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

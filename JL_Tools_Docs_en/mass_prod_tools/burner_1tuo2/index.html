@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1. Jieli 1-to-2 Programmer User Manual — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>1. Jieli 1-to-2 Programmer User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">1.1. Programmer Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html">1.2. Manual Programming, Verification and Blank Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html">1.3. Automated Programming with a Handler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html">1.4. Remote Upgrade of the Programmer Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html">1.5. PC-Side Programming Options for Each Chip Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html">1.6. Status Indicators and Error Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html">1.7. Authorized Programming Count Limit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html">1.8. Programming Third-Party Data (Authentication Codes)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html">1.9. Bluetooth Address and Name Auto-Increment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_burn.html">1.10. Chip Programming Wiring and Power Supply</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html">1.11. Other Common Features: Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faqs.html">1.12. Troubleshooting Common Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><span class="section-number">1. </span>Jieli 1-to-2 Programmer User Manual</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/burner_1tuo2/index.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">1. </span>Jieli 1-to-2 Programmer User Manual<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<p>Preface</p>
+<p>Thank you sincerely for using the Jieli Technology 1-to-2 programmer!</p>
+<p>Before using the tool, please read this manual carefully to ensure correct and safe use. After reading it, keep this manual in a safe place so that others can refer to it later.</p>
+<p>If you encounter any problem that you cannot solve while using the tool, feel free to contact our engineers at any time. We will promptly provide you with the most effective service.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro_basic.html">1.1. Programmer Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html#id2">1.1.1. Functional description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html#id3">1.1.2. Programmer package contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html#target-1tuo2-hosts-info">1.1.3. Introduction to the programmer main unit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html#id7">1.1.4. Introduction to the main control board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html#target-1tuo2-board-install">1.1.5. Top board introduction and installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html#target-introduction-and-installation-pinboard">1.1.6. Adapter board introduction and installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html#id12">1.1.7. Programmer usage workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html#id13">1.1.8. Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basic_usage.html">1.2. Manual Programming, Verification and Blank Check</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html#id2">1.2.1. Preparing the programming environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html#target-1tuo2-power-on">1.2.2. Power on the programmer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html#target-1tuo2-fw-confirmation-and-update">1.2.3. Checking and updating the programmer firmware version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html#target-deploy-fw-file-to-1tuo2">1.2.4. Deploying the target chip firmware to the programmer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html#target-1tuo2-set-mode">1.2.5. Programmer working modes: introduction and setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html#id12">1.2.6. Programming chip firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html#id16">1.2.7. Verifying chip firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html#id20">1.2.8. Blank-checking chips</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="autoburn.html">1.3. Automated Programming with a Handler</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html#id2">1.3.1. Introduction to automated programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html#io">1.3.2. IO control signals for automated programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html#id5">1.3.3. Automated programming procedure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="remote_update.html">1.4. Remote Upgrade of the Programmer Firmware</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html#id2">1.4.1. Upgrade notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html#target-remote-update-burn-tool">1.4.2. Upgrading to official release firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html#id4">1.4.3. Upgrading to special version firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html#id5">1.4.4. Handling upgrade errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="config_opt.html">1.5. PC-Side Programming Options for Each Chip Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html#id1">1.5.1. Opening and selecting configuration items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html#target-chip-config-introduce">1.5.2. Common configuration items for each chip model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="status_errors.html">1.6. Status Indicators and Error Messages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html#led">1.6.1. LED indicators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html#id5">1.6.2. Buzzer prompt tones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html#oled">1.6.3. OLED display</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html#id12">1.6.4. OLED error messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html#pc">1.6.5. PC tool error messages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dongle.html">1.7. Authorized Programming Count Limit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html#id2">1.7.1. Use case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html#id3">1.7.2. Supported authorization methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html#id4">1.7.3. Introduction to standard authorization mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html#fw">1.7.4. Creating a fw file authorized in unrestricted mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html#id5">1.7.5. Authorization in machine-code binding mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html#id8">1.7.6. Programming with count-limited authorized firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html#id9">1.7.7. Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="auth_data.html">1.8. Programming Third-Party Data (Authentication Codes)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html#id2">1.8.1. Use case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html#id3">1.8.2. Preparing authentication code data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html#id6">1.8.3. Authentication code data programming procedure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html#id9">1.8.4. Exporting authentication codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html#id12">1.8.5. Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="btname_addr.html">1.9. Bluetooth Address and Name Auto-Increment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html#id2">1.9.1. Use case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html#id3">1.9.2. Bluetooth address auto-increment configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html#id4">1.9.3. Programming Bluetooth addresses into the target chip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html#id5">1.9.4. Implementing Bluetooth name auto-increment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html#id8">1.9.5. Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pcba_burn.html">1.10. Chip Programming Wiring and Power Supply</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pcba_burn.html#id2">1.10.1. Minimum chip system for programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_burn.html#id3">1.10.2. Programming channel pin header definitions and wiring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_burn.html#id4">1.10.3. Power supply for chip programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_burn.html#dm-dp">1.10.4. Programming wiring for device chips with DM and DP pins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_burn.html#id5">1.10.5. Programming wiring for device chips without DM and DP pins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_burn.html#id6">1.10.6. Wiring for calibrating device chips</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="commom_funcs.html">1.11. Other Common Features: Configuration and Use</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html#flashspi">1.11.1. Flash SPI parameter configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html#id2">1.11.2. Programming of custom resource files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html#flash">1.11.3. Configuring flash parameter programming and testing that protection parameters take effect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html#ldoldo">1.11.4. Programming with top boards without and with an LDO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html#id3">1.11.5. Chip performance test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html#id4">1.11.6. Chip soft power-off power consumption test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html#id5">1.11.7. Optimizing programming time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html#rs232">1.11.8. Controlling Bluetooth address programming over an RS232 serial port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html#id6">1.11.9. Printing programming information over the serial port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html#v">1.11.10. Soldering wires to the programmer's 9V power supply</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html#id7">1.11.11. Erasing the chip flash on its own</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html#ad698n-ac638n-dac-os">1.11.12. AD698N/AC638N DAC OS test</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faqs.html">1.12. Troubleshooting Common Errors</a></li>
+</ul>
+</div>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="../../firmware_tools/faqs/file_ext_readme.html" class="btn btn-neutral float-left" title="1.4.2. File Types Explained" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="intro_basic.html" class="btn btn-neutral float-right" title="1.1. Programmer Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/index.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/index.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.6. 状态指示和报错提示说明 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>2. 杰理科技一拖八烧录器用户手册</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">2.1. 烧录器简要介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html">2.2. 手动烧录、校验、查空芯片操作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html">2.3. 机台自动烧录操作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html">2.4. 远程升级烧录器固件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html">2.5. 各型号芯片PC端烧录配置项介绍</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>2.6. 状态指示和报错提示说明</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#led"><button class="toctree-expand" title="Open/close menu" type="button"></button>2.6.1. LED指示灯说明</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">2.6.1.1. 电源指示灯</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">2.6.1.2. 烧录状态指示灯</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#lcd"><button class="toctree-expand" title="Open/close menu" type="button"></button>2.6.2. LCD显示屏说明</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">2.6.2.1. 上电开机显示</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">2.6.2.2. 正常界面显示</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">2.6.2.3. 烧录进度条显示</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#targe-1tuo8-ldc-show-err">2.6.3. LCD显示屏报错提示说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vbat"><button class="toctree-expand" title="Open/close menu" type="button"></button>2.6.4. VBAT 电压报错显示说明</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">2.6.4.1. VBAT 电压报错常见原因</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#usb">2.6.4.2. USB 供电调节配置说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">2.6.4.3. 调节原则</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pc_err.html">2.7. PC界面报错提示说明和处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="change_board_interval.html">2.8. 换板时间设置及使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="burn_vol.html">2.9. 不同芯片烧录电压说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html">2.10. 授权烧录次数限制功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html">2.11. 第三方数据（认证码）烧录功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html">2.12. 蓝牙地址及名字自增功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_curr_test.html">2.13. 电流功耗测试功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_battery.html">2.14. 样机带电池烧录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freq_bias.html">2.15. 频偏校准功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mic_test.html">2.16. MIC 测试功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usual_uart_update.html">2.17. 样机带电池自定义IO单双线串口升级功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extern_flash_burn.html">2.18. 同时升级内置flash和外挂flash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="erase.html">2.19. 非全片擦除功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html">2.20. 其它常见功能配置和使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faqs.html">2.21. 常见错误处理</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">2. </span>杰理科技一拖八烧录器用户手册</a> »</li>
+<li><span class="section-number">2.6. </span>状态指示和报错提示说明</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/mass_prod_tools/burner_1tuo8/status_errors.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">2.6. </span>状态指示和报错提示说明<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="led">
+<h2><span class="section-number">2.6.1. </span>LED指示灯说明<a class="headerlink" href="#led" title="Permalink to this heading"></a></h2>
+<section id="id2">
+<h3><span class="section-number">2.6.1.1. </span>电源指示灯<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<p>烧录器接入9V电源后，往右拨控制总电源的钮子开关，烧录器上电，电源指示灯亮起来，如<a class="reference internal" href="#img-vol-ind-light-1tuo8"><span class="std std-ref">电源指示灯</span></a>所示。</p>
+<figure class="align-default" id="img-vol-ind-light-1tuo8">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image43.png"/>
+<figcaption>
+<p><span class="caption-text">电源指示灯</span><a class="headerlink" href="#img-vol-ind-light-1tuo8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id3">
+<h3><span class="section-number">2.6.1.2. </span>烧录状态指示灯<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>烧录状态指示灯指8个烧录器通道的led状态指示灯，如<a class="reference internal" href="#img-burn-ind-light-1tuo8"><span class="std std-ref">烧录状态指示灯</span></a>所示。</p></li>
+</ol>
+<figure class="align-default" id="img-burn-ind-light-1tuo8">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image44.png"/>
+<figcaption>
+<p><span class="caption-text">烧录状态指示灯</span><a class="headerlink" href="#img-burn-ind-light-1tuo8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple" start="2">
+<li><p>状态指示灯说明</p></li>
+</ol>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>编号</strong></p></th>
+<th class="head"><p><strong>状态类型</strong></p></th>
+<th class="head"><p><strong>红灯</strong></p></th>
+<th class="head"><p><strong>绿灯</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>初始状态</p></td>
+<td><p>灭</p></td>
+<td><p>灭</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>正在烧录</p></td>
+<td><p>灭</p></td>
+<td><p>亮</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>烧录成功</p></td>
+<td><p>亮</p></td>
+<td><p>亮</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>烧录失败</p></td>
+<td><p>亮</p></td>
+<td><p>灭</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+</section>
+<section id="lcd">
+<h2><span class="section-number">2.6.2. </span>LCD显示屏说明<a class="headerlink" href="#lcd" title="Permalink to this heading"></a></h2>
+<section id="id4">
+<h3><span class="section-number">2.6.2.1. </span>上电开机显示<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<p>烧录器上电开机显示界面，会显示有3S的杰理LOGO，客户编号，设备标识，烧录器固件版本号和版本发布日期，如<a class="reference internal" href="#img-open-on-ui-1tuo8"><span class="std std-ref">烧录器上电开机界面</span></a>所示。</p>
+<figure class="align-default" id="img-open-on-ui-1tuo8">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image45.png"/>
+<figcaption>
+<p><span class="caption-text">烧录器上电开机界面</span><a class="headerlink" href="#img-open-on-ui-1tuo8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id5">
+<h3><span class="section-number">2.6.2.2. </span>正常界面显示<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>烧录器正常界面处于等待样机接入状态，主要显示fw文件可用烧录次数和剩余烧录次数，当前烧录器工作模式，fw文件信息和烧录器配置信息，8个烧录通道进度条信息显示部分，如<a class="reference internal" href="#img-normal-ui-1tuo8"><span class="std std-ref">烧录器正常界面显示</span></a>所示。</p></li>
+<li><p>如果使用了蓝牙地址自增、认证码烧录等功能，还会在8个烧录通道信息显示部分显示当前通道可用的蓝牙地址，认证码序号等信息。</p></li>
+</ol>
+<figure class="align-default" id="img-normal-ui-1tuo8">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image46.png"/>
+<figcaption>
+<p><span class="caption-text">烧录器正常界面显示</span><a class="headerlink" href="#img-normal-ui-1tuo8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id6">
+<h3><span class="section-number">2.6.2.3. </span>烧录进度条显示<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<p>各个烧录通道进度条颜色和信息显示说明如下表格所示。</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>编号</strong></p></th>
+<th class="head"><p><strong>当前状态</strong></p></th>
+<th class="head"><p><strong>进度条颜色</strong></p></th>
+<th class="head"><p><strong>信息显示</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>正常状态/等待烧录</p></td>
+<td><p>灰色</p></td>
+<td><p>Ready、当前待烧录的蓝牙地址等</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>正在烧录</p></td>
+<td><p>蓝色</p></td>
+<td><p>Erase、write、verify、finish</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>烧录成功</p></td>
+<td><p>绿色</p></td>
+<td><p>Success+烧录时间等</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>通道异常/烧录失败</p></td>
+<td><p>红色</p></td>
+<td><p>报错提示信息</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>换板时间过短</p></td>
+<td><p>黄色</p></td>
+<td><p>上次烧录成功</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+</section>
+<section id="targe-1tuo8-ldc-show-err">
+<span id="id7"></span><h2><span class="section-number">2.6.3. </span>LCD显示屏报错提示说明<a class="headerlink" href="#targe-1tuo8-ldc-show-err" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>烧录器在上电开机进行各模块软件初始化和样机芯片程序烧录过程中，可能会出现一些异常情况，这些异常都通过LCD显示屏显示在对应的烧录通道上。</p></li>
+<li><p>上电开机和烧录过程中出现的部分异常，需重新给烧录器上电才能消除显示屏上的异常，其它异常一般样机芯片不在线即可消除。</p></li>
+</ol>
+<p>以下通过表格形式列举LCD常见错误提示，以及对错误提示说明。</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>错误提示</p></th>
+<th class="head"><p>错误提示说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>02-通信失败 <br/> run_loader</p></td>
+<td><p>可能为样机芯片接入烧录器USB接口存在松动、接触不良；多次重新烧录都 <br/> 提示该错误，可能为芯片型号不对，或为芯片存在不良等原因，需进一步分析，<br/> 或检查ini文件中是不是配置DP或DM作打印，或者DP或DM合绑的脚打印，如果是则需要注释掉该打印</p></td>
+</tr>
+<tr class="row-odd"><td><p>03-校验失败</p></td>
+<td><p>需校验的程序与目标芯片程序或key文件不一致；<br/>可能原因：<br/>校验时样机与USB烧录接口接触不稳定；<br/>FLASH数据与要校验的不一致；<br/>反复烧录校验失败可能是FLASH问题，需进一步分析</p></td>
+</tr>
+<tr class="row-even"><td><p>04-KEY错误或不匹配</p></td>
+<td><p>空片烧录，key烧录到目标芯片失败，key烧录不良；<br/> 二次烧录，芯片KEY与待烧的FW程序KEY不一致，或首次烧录不良导致二次烧录不匹配</p></td>
+</tr>
+<tr class="row-odd"><td><p>04-ufw不支持空片烧录</p></td>
+<td><p>ufw 文件只能用于已经烧过key的芯片进行重烧使用（不支持烧录空片）。<br/>如果要烧录空片，要使用 fw 文件</p></td>
+</tr>
+<tr class="row-even"><td><p>06-版本不匹配_(目标芯片的版本)</p></td>
+<td><p>待烧录的FW文件程序与芯片的版本不匹配（参考：<a class="reference internal" href="../faqs/version_err.html"><span class="doc std std-doc">版本不匹配错误</span></a>），<br/>需确认fw文件对应的SDK是否支持该版本的芯片，如有不清楚请联系杰理技术支持</p></td>
+</tr>
+<tr class="row-odd"><td><p>06-SDK版本错误_VX_X_X</p></td>
+<td><p>该报错暂时只有AD698N、AC638N型号存在，<br/>主要是为了限制SDK需要与对应FLASH ID匹配，SDK ini中需要配置SDK版本，<br/>格式例如：SDK_VERSION=其他字符串_V1.2.1，如果不填或者填错，<br/>当烧录芯片刚好为受限FLASH ID时则会烧录报错</p></td>
+</tr>
+<tr class="row-even"><td><p>07-擦除失败</p></td>
+<td><p>该报错一般出现在flash擦除环节，提示擦除失败，可能为芯片flash存在问题。也可能是接触不良，通信出错导致擦除失败；<br/>如果重试，如果仍为擦除失败，须进一步分析</p></td>
+</tr>
+<tr class="row-odd"><td><p>08-烧录失败</p></td>
+<td><p>烧录程序时样机与USB烧录接口接触不稳定等原因导致烧录数据异常</p></td>
+</tr>
+<tr class="row-even"><td><p>09-ERR_IQ_TRIM</p></td>
+<td><p>该报错是芯片蓝牙测试项不过，可能芯片蓝牙性能存在问题，如果重试多次，仍报错，须进一步分析</p></td>
+</tr>
+<tr class="row-odd"><td><p>10-采样异常，请重试</p></td>
+<td><p>出现该报错，可以尝试重新烧录，一般提示该错误跟板子外围电容充放电等影响ADC采样导致测试出现错误，该报错一般板子和芯片都是正常的</p></td>
+</tr>
+<tr class="row-even"><td><p>11-RX(实测的电流值)(uA)</p></td>
+<td><p>测试芯片LNA电流，筛选芯片LNA内部晶体管受损芯片；筛选表现接收距离短，存在连接问题的芯片</p></td>
+</tr>
+<tr class="row-odd"><td><p>12-样机电流异常</p></td>
+<td><p>样机插入USB烧录接口后，导致USB端口电流过大；<br/>可能原因是样机电路存在短路或芯片异常消耗电流过大，务必查到原因后再重烧，否则可能烧坏烧录器电流测试模块；<br/>此类报错需要重启烧录器报错通道才能继续使用</p></td>
+</tr>
+<tr class="row-even"><td><p>14-DAC测试失败</p></td>
+<td><p>进行DAC模块各项电压测试用于筛选DAC参数不达标的芯片</p></td>
+</tr>
+<tr class="row-odd"><td><p>15-VDDIO:(实测电压)(mV)</p></td>
+<td><p>芯片VDDIO引脚电压超过设定值3800mV，<br/>一般考虑为芯片VDDIO引脚与样机或芯片内部电源短路；<br/>如出现在与样机烧录VBAT供电脚短接的设计方案，<br/>需要调低烧录器USB烧录端口电压3.3V左右行烧录</p></td>
+</tr>
+<tr class="row-even"><td><p>15-VDDIO错误</p></td>
+<td><p>报错同15-VDDIO:(实测电压)(mV)一致</p></td>
+</tr>
+<tr class="row-odd"><td><p>15-容量太小_XX_XXXXX</p></td>
+<td><p>待烧录的程序fw文件数据比目标芯片flash的容量要大，无法进行烧录<br/> 读不到flash id，可能接触不良引起，可以多次尝试，多次尝试失败后当不良片处理</p></td>
+</tr>
+<tr class="row-even"><td><p>16-SFC错误</p></td>
+<td><p>烧录时进行SFC模式下的程序数据校验，多次烧录不过芯片可视为不良片</p></td>
+</tr>
+<tr class="row-odd"><td><p>17-频偏校准超时</p></td>
+<td><p>没有开启测试盒进行测试，测试盒和烧录器“校频波频点配置”参数不一致，或者芯片频偏校不到指定范围</p></td>
+</tr>
+<tr class="row-even"><td><p>18-蓝牙地址已用完</p></td>
+<td><p>设置蓝牙地址自增烧录时，所设置蓝牙地址段范围值已经全部使用完</p></td>
+</tr>
+<tr class="row-odd"><td><p>蓝牙地址初始化失败</p></td>
+<td><p>蓝牙地址设置有误；可能是一次性设置了过大的蓝牙地址范围（超过 u32 范围）</p></td>
+</tr>
+<tr class="row-even"><td><p>19-模式错误</p></td>
+<td><p>样机芯片开始烧录，校验，查空时报此此错误，为拨码开关设置的模式非烧录。<br/>校验，查空三种工作模式，或拨码开关接触不良导致烧录器检测出错。</p></td>
+</tr>
+<tr class="row-odd"><td><p>20-LRC校准失败</p></td>
+<td><p>对无晶振方案样机，芯片LRC时钟参数校准不到指定范围内，需进一步分析</p></td>
+</tr>
+<tr class="row-even"><td><p>25-芯片未校准</p></td>
+<td><p>表示该芯片出厂未经过校准，<br/>这类芯片可使用一拖二烧录器对芯片进行烧录再贴片（烧录过程进行芯片校准），<br/>一拖八烧录器无芯片校准功能</p></td>
+</tr>
+<tr class="row-odd"><td><p>21-RAM测试失败</p></td>
+<td><p>目标芯片ram异常为需要筛选出来的芯片</p></td>
+</tr>
+<tr class="row-even"><td><p>22-MIC测试失败</p></td>
+<td><p>目标样机MIC存在异常如无声音等</p></td>
+</tr>
+<tr class="row-odd"><td><p>23-不支持该LVD档位XXXX<br/>(XXXX:表示芯片版本ID)</p></td>
+<td><p>表示待烧芯片不支持烧录该LVD档位值。<br/>目前AC696X/AC636N型号，<br/>A-E版本LVD可烧录的档位有：1.9V;2.0V;2.1V;2.2V;2.3V;2.4V;2.5V;2.6V，<br/>F-G版本LVD可录的档位有：&lt;1.5V;1.9V;2.0V;2.1V;2.2V;2.3V;2.4V;2.5V。<br/>烧录器AC696X PC默认设置的档位为2.6V，当使用默认LVD2.6V烧录F-G版本芯片时，<br/>烧录器将会提示：34-不支持该LVD档位XXXX(芯片版本：5F00-5F04为版，5F05-5F06为F-G版本)。</p></td>
+</tr>
+<tr class="row-even"><td><p>25-芯片未校准</p></td>
+<td><p>芯片可能出厂一些电压没有校准，此时一般需要使用一拖二烧录器使用带校准的上层板子或转接板进行校准</p></td>
+</tr>
+<tr class="row-odd"><td><p>26-ERR_FMLDO_OPEN</p></td>
+<td><p>进入蓝牙相关FM电源测试时出现异常，进而导致USB通信出错</p></td>
+</tr>
+<tr class="row-even"><td><p>27-ERR_FMLDO_CLOSE</p></td>
+<td><p>进入蓝牙相关FM电源测试时出现异常，进而导致USB通信出错</p></td>
+</tr>
+<tr class="row-odd"><td><p>28-获取保留区出错</p></td>
+<td><p>当配置flash不整片擦除时，烧录计算需要保留的区域出现错误，可反馈给杰理工程师进一步分析</p></td>
+</tr>
+<tr class="row-even"><td><p>29-擦除FLASH出错</p></td>
+<td><p>当配置flash不整片擦除时，对flash特定区域擦除时出现错误，出现该报错须进一步分析</p></td>
+</tr>
+<tr class="row-odd"><td><p>30-Res文件烧录失败</p></td>
+<td><p>表示自定义资源文件烧录失败，可能在烧录该部分时出现读写异常，或者USB通信异常</p></td>
+</tr>
+<tr class="row-even"><td><p>31-SFC测试通信失败</p></td>
+<td><p>可能为进行SFC测试时，读异常，导致USB通信超时，出现该报错，可能flash存在异常</p></td>
+</tr>
+<tr class="row-odd"><td><p>32-算法授权文件烧录失败</p></td>
+<td><p>用于算法授权的相关部分数据烧录失败，报错序号含义：6:当前烧写算法数据与芯片中已有数据不同；8/9: 算法程序，运行或者<br/>存储空间不够；14：写OTP失败；17:算法授权烧写通信超时，考虑算法超过内存导致异常</p></td>
+</tr>
+<tr class="row-even"><td><p>33-Res文件校验失败</p></td>
+<td><p>表示自定义资源文件校验失败</p></td>
+</tr>
+<tr class="row-odd"><td><p>34-LVD错误或不匹配</p></td>
+<td><p>可能为芯片空片烧录时，LVD电压值写入芯片存储介质失败；<br/>或二次烧录时选择要烧录的LVD电压值与已经烧录到目标芯片的LVD值不同。</p></td>
+</tr>
+<tr class="row-even"><td><p>34-IOVDD LEVEL错误 x</p></td>
+<td><p>该报错表示当前配置与芯片IOVDD档位不匹配，芯片前期应该已经被烧录过，报错数字表示IOVDD档位，0对应最低档位。提示该错误<br/>可能是前期配置过LVD等于最高档位烧写过，请尝试将LVD配置为最高档位验证烧录是否成功。如果报错，则为与首次烧录配置仍不同导致</p></td>
+</tr>
+<tr class="row-odd"><td><p>35-写入频偏校准值失败</p></td>
+<td><p>芯片烧录时开启频偏校准 ，校准的值写入到芯片失败，失败可以尝试重试</p></td>
+</tr>
+<tr class="row-even"><td><p>36-ERR_FLASH_CHECK</p></td>
+<td><p>flash擦除检查失败，如果报该错，可能芯片flash存在异常，须进一步分析。</p></td>
+</tr>
+<tr class="row-odd"><td><p>37-读ID失败</p></td>
+<td><p>读取目标芯片flash id失败；<br/>可能原因是USB通信异常，芯片可能异常，或者芯片无内置flash；fw程序一般不能烧到不含flash的芯片中，只能烧单独的key文件；<br/>反复烧录还是同样的结果，则需进一步分析</p></td>
+</tr>
+<tr class="row-even"><td><p>38-ERR_LNA_OPEN</p></td>
+<td><p>进入蓝牙LNA电流测试时出现异常，进而导致USB通信出错</p></td>
+</tr>
+<tr class="row-odd"><td><p>39-ERR_LNA_CLOSE</p></td>
+<td><p>进入蓝牙LNA电流测试时出现异常，进而导致USB通信出错</p></td>
+</tr>
+<tr class="row-even"><td><p>40-外挂FLASH烧录失败</p></td>
+<td><p>样机外挂flash烧录失败，可能为外挂flash 烧录文件io配置与实际硬件连接不一致导致，或者外挂flash烧录时电源问题引起。<br/>如果使用其它工具可以烧录，可以将问题反馈给工程师</p></td>
+</tr>
+<tr class="row-odd"><td><p>41-外挂FLASH校验失败</p></td>
+<td><p>外挂flash数据与烧录文件数据不一样</p></td>
+</tr>
+<tr class="row-even"><td><p>49-查空次数已用完</p></td>
+<td><p>烧录器每次开机后，每个通道有限制查空可以使用次数为200次，查空成功次数满200后，则烧录器会会提示查空次数已用完。<br/>该限制主要用于避免用户本需要烧录芯片，但未发现误拨为查空模式，导致芯片最后没有烧程序</p></td>
+</tr>
+<tr class="row-odd"><td><p>57-授权次数已用完</p></td>
+<td><p>经过授权限制烧录次数的FW文件，烧录次数已使用完，烧录器内的目标芯片程序fw文件作废<br/> 一拖八插着样机开机可能导致烧录次数没用完情况下报错</p></td>
+</tr>
+<tr class="row-even"><td><p>61-保护参数查找失败</p></td>
+<td><p>isd_config.ini中配置<code class="docutils literal notranslate"><span class="pre">FLASH_WRITE_PROTECT=YES</span></code>，<br/>那么烧录时将会把对应FLASH ID保护参数写入FLASH中，<br/>如果烧录时提示保护参数查找失败表示：<br/>当前烧录器中暂时没有该FLASH ID的保护参数存在，<br/>可能需要更新烧录器支持该FLASH ID，<br/>或者联系SDK负责人是否可以去掉<code class="docutils literal notranslate"><span class="pre">FLASH_WRITE_PROTECT=YES</span></code>配置，不加写保护</p></td>
+</tr>
+<tr class="row-odd"><td><p>62-保护参数校验失败</p></td>
+<td><p>可能为保护参数未能写入成功</p></td>
+</tr>
+<tr class="row-even"><td><p>63-保护参数测试失败</p></td>
+<td><p>保护参数测试失败，保护参数无法正常使用。<br/>或者联系SDK负责人是否可以去掉<code class="docutils literal notranslate"><span class="pre">FLASH_WRITE_PROTECT=YES</span></code>配置，不加写保护</p></td>
+</tr>
+<tr class="row-odd"><td><p>63-保护参数测试超时</p></td>
+<td><p>保护参数测试超时，保护参数无法正常使用。<br/>或者联系SDK负责人是否可以去掉<code class="docutils literal notranslate"><span class="pre">FLASH_WRITE_PROTECT=YES</span></code>配置，不加写保护</p></td>
+</tr>
+<tr class="row-even"><td><p>63-保护参数测试冲突</p></td>
+<td><p>保护参数与烧录配置冲突，<br/>isd_config.ini中配置<code class="docutils literal notranslate"><span class="pre">FLASH_WRITE_PROTECT=YES</span></code>时，不勾选全擦flash以及不勾选擦拭VM都会与写保护参数冲突<br/>或者联系SDK负责人是否可以去掉<code class="docutils literal notranslate"><span class="pre">FLASH_WRITE_PROTECT=YES</span></code>配置，不加写保护</p></td>
+</tr>
+<tr class="row-odd"><td><p>64-读取FLASH BIN失败</p></td>
+<td><p>提示该错误原因为ini文件中的配置问题，所生成的FW中只包含有256对齐的FLASH BIN(VM擦除最小操作单元为256字节)， 而实际<br/>当前芯片FLASH最小擦除单元为4096字节，需要4096对齐的FLASH BIN才可以烧录进该芯片FLASH，没有找到该文件所以烧录报错，<br/>具体配置方法请查看链接说明：(https://gitee.com/Jieli-Tech/fw-AD15N/issues/I58Z7L)</p></td>
+</tr>
+<tr class="row-even"><td><p>65-长按复位选项不匹配</p></td>
+<td><p>长按复位状态与需要烧录的状态不匹配</p></td>
+</tr>
+<tr class="row-odd"><td><p>66-VM地址非法</p></td>
+<td><p>需要保留或擦除的VM地址非法则报错，比如该地址大于flash容量，或者该地址与程序区域重合均会报错</p></td>
+</tr>
+<tr class="row-even"><td><p>67-ERR_CYPTO</p></td>
+<td><p>一般串口烧录时会报该错误，可能为串口通信错误导致，一般可出现在接触不良的时候</p></td>
+</tr>
+<tr class="row-odd"><td><p>68-短按复位选项不匹配</p></td>
+<td><p>短按复位状态与需要烧录的状态不匹配</p></td>
+</tr>
+<tr class="row-even"><td><p>69-外挂FLASH容量太小</p></td>
+<td><p>在烧录外挂flash时，外挂flash id读取失败，可以导致提示容量小，或者待烧录到外挂flash的文件资源超过了flash的容量而提示错误</p></td>
+</tr>
+<tr class="row-odd"><td><p>70-LNA_BIAS失败</p></td>
+<td><p>与蓝牙相关的电流测试项失败，反复重烧均提示该错误，可能需要进一步分析</p></td>
+</tr>
+<tr class="row-even"><td><p>71-二次烧录失败</p></td>
+<td><p>附加的一些功能数据烧录失败</p></td>
+</tr>
+<tr class="row-odd"><td><p>72-电池方案错误</p></td>
+<td><p>选项需要烧录的方案类型与芯片中已有的类型不匹配报错</p></td>
+</tr>
+<tr class="row-even"><td><p>73-非Dies芯片</p></td>
+<td><p>Dies芯片一般时定制类型的芯片，如果提示该错误，可能是选择定制芯片配置无法烧录到当前芯片</p></td>
+</tr>
+<tr class="row-odd"><td><p>76-ic_test_timeout</p></td>
+<td><p>芯片测试项测试超时，可以分别取消一些PC测试项勾选，以排查具体是哪个测试项导致的超时</p></td>
+</tr>
+<tr class="row-even"><td><p>81-CHIP_LVD(xx)&lt; FLASH_LVD(xx)</p></td>
+<td><p>表示芯片最低复位电压（对应烧录器【LVD电压】下拉选项）小于FLASH最低工作电压， xx表示电压值，单位为mv；<br/>处理方法：<br/>方法一：在考虑方案要求情况下，在烧录器部署界面将CHIP_LVD配置为大于等于<br/>FLASH_LVD电压档位，重新部署fw文件进行烧录；<br/>方法二：当部署界面CHIP_LVD没有大于FLASH_LVD的选项，则可以选项最高CHIP_LVD，或者去掉【Flash Lvd电压匹配】勾选项，重新部署烧录</p></td>
+</tr>
+<tr class="row-odd"><td><p>82-频偏校准通信超时</p></td>
+<td><p>校准频偏用程序发送至芯片失败，或者没有运行起来，可以尝试排查一下样机外围电路</p></td>
+</tr>
+<tr class="row-even"><td><p>82-频偏校准失败</p></td>
+<td><p>频偏校准程序发送到芯片成功，但是没有校准到目标精度内，所以报错</p></td>
+</tr>
+<tr class="row-odd"><td><p>83-efuse bin校验失败</p></td>
+<td><p>如果是空片初次烧录提示该错误，可能为efuse烧录不良。如果是重烧，则可能是当前烧写文件与芯片已有数据无法覆盖匹配。如果确认未改变过烧<br/>录文件，则可能连接测试盒有修改过名字或者写入过频偏校准值， 可以尝试勾选【略过配置项】</p></td>
+</tr>
+<tr class="row-even"><td><p>84-FTMAX/RAM/ROM测试失败</p></td>
+<td><p>芯片测试240M时钟时，对应测试模块无法运行至该时钟频率，可能为需要筛选出来芯片</p></td>
+</tr>
+<tr class="row-odd"><td><p>85-UMIB测试失败</p></td>
+<td><p>蓝牙测试项失败，如果反复烧录均提示该错误，可能需要筛选出来进一步分析</p></td>
+</tr>
+<tr class="row-even"><td><p>88-update x</p></td>
+<td><p>提示该错误表示当前FW/UFW程序需要更新修改，或者是烧写器需升级版本。update x中x等于128，表示芯片为A, 129为B，依次类推，然后查看FW/UFW文件<br/>部署界面白色信息栏中【配置的芯片版本】项有支持哪些。举一个例子，如果烧写器报错为：88-update 129，表示芯片为B，但是信息显示栏配置的芯片版本有A，没有B，<br/>则表示FW/UFW程序不支持B; 如果FW/UFW支持B，烧写器信息栏显示不支持B,那么此时需要更新烧写器。 如果不理解请联系杰理工程协助处理</p></td>
+</tr>
+<tr class="row-odd"><td><p>91-FMLDO:%d(uA)</p></td>
+<td><p>蓝牙相关联的FM等电压模块测试失败 ，重烧提示该错误须进一步分析</p></td>
+</tr>
+<tr class="row-even"><td><p>92-LOOPBACK失败</p></td>
+<td><p>烧录时进行蓝牙性能相关的参数测试，参数不达标；<br/>该芯片可能存在蓝牙连接相关，如连接距离短问题；<br/>重烧多次报错，芯片需进一步分析；</p></td>
+</tr>
+<tr class="row-odd"><td><p>93-USB不稳定，请重试</p></td>
+<td><p>USB通信出现错误，请按照提示重试即可</p></td>
+</tr>
+<tr class="row-even"><td><p>94-DACVDD电压错误</p></td>
+<td><p>芯片测试项报错，可以重试是否仍提示该错误，重试多次依然报错或者使用一拖二烧录器也提示该错误，可能芯片存在该项测试异常，须进一步分析</p></td>
+</tr>
+<tr class="row-odd"><td><p>95-BTPLL测试通信出错，请重试</p></td>
+<td><p>测试项报错，重试或者使用其它工具也报错，须进一步分析</p></td>
+</tr>
+<tr class="row-even"><td><p>96-BTPLL异常</p></td>
+<td><p>测试项报错，重试或者使用其它工具也报错，须进一步分析</p></td>
+</tr>
+<tr class="row-odd"><td><p>97-UMDC异常</p></td>
+<td><p>测试项报错，重试或者使用其它工具也报错，须进一步分析</p></td>
+</tr>
+<tr class="row-even"><td><p>98-DC测试失败</p></td>
+<td><p>测试项报错，重试或者使用其它工具也报错，须进一步分析</p></td>
+</tr>
+<tr class="row-odd"><td><p>150-不支持nandflash V1配置</p></td>
+<td><p>当前版本只支持V2配置，不再支持V1配置，V1与V2差异区别在于ini文件V2多了2个参数，如果需要烧录V1参数配置的FW，则<br/>需要使用2024年8月之前的特殊版本，V2则使用该时间之后版本</p></td>
+</tr>
+<tr class="row-even"><td><p>REQUIRE_TARGET_FEATURE</p></td>
+<td><p>烧写时候检查FW中含有flash.bin文件，然后ini中的<code class="docutils literal notranslate"><span class="pre">[BURNER_PASSTHROUGH_CFG]</span></code>未配置<code class="docutils literal notranslate"><span class="pre">REQUIRE_TARGET_FEATURE=FLASH</span></code>或<code class="docutils literal notranslate"><span class="pre">REQUIRE_TARGET_FEATURE=EFUSE;</span></code>，因此作报错处理</p></td>
+</tr>
+<tr class="row-odd"><td><p>接收数据超时</p></td>
+<td><p>该报错通常出现在前面一部分过程能正常通信烧录，在接近最后一步时提示该错误，该问题通常是因为样机芯片外围有较多大电容或其它<br/>外设元器件导致上电被延迟引起，或DP DM脚接有元器件影响，可分析下电路特点或者联系杰理支持</p></td>
+</tr>
+<tr class="row-even"><td><p>efuse bin错误2</p></td>
+<td><p>该错误表示FW文件中打包的efuse.bin文件长度超了，应该为批处理存在错误，需要修正，如果不能解决，请联系杰理SDK负责人协助处理</p></td>
+</tr>
+<tr class="row-odd"><td><p>采样异常，请重试</p></td>
+<td><p>进行样机电流测试时候，ADC采样异常，数据不合理；<br/>烧录器电流测试模块受到样机外围电路等因素影响，导致数据采集异常；<br/>出现报错可尝试重烧，重烧多次报错，需进一步分析原因</p></td>
+</tr>
+<tr class="row-even"><td><p>ADC Fail!</p></td>
+<td><p>ADC电流测试模块初始化异常，需检查电流测试模块供电，走线，芯片本身是否正常；<br/>如找不到原因请尝试更换CS1237，1欧，821欧电阻</p></td>
+</tr>
+<tr class="row-odd"><td><p>烧录电压错误</p></td>
+<td><p>如果远程升级后出现该错误，先不用理会，请部署目标芯片程序后重启烧录器看看烧录器是否工作正常，如不正常请咨询杰理技术支持</p></td>
+</tr>
+<tr class="row-even"><td><p>flash bin erro</p></td>
+<td><p>该报错一般出现在开机阶段，检查是否在烧录器开机初始化阶段中插入USB连接计算机，导致存储烧录文件的flash被升级占用而初始化<br/>失败，因该操作导致一般是正常现象。如果开机无USB线连接计算机，却出现开机提示该报错，可以先不要重新部署或升级，只供9V电<br/>源开机，如果开机正常，可以尝试再对烧录器重启10次以上，如果仍然未报错，说明烧录器上flash芯片中数据正常，如果重新开机等待<br/>初始化完成过程中，总有不固定部分通道出现该报错，则一般考虑烧录器上flash芯片损坏，如果是固定通道出现该报错，可能是部署阶<br/>段出现错误导致，可以重新部署文件，再开机观察验证</p></td>
+</tr>
+<tr class="row-odd"><td><p>FLASH OTP填充异常</p></td>
+<td><p>该错误主要是因为isd_config.ini文件中的OTP_CFG_SIZE配置大小小于描述FLASH OTP参数文件的大小，部分型号SDK配置128可能偏<br/>小，可联系杰理工程确认是否可改大该配置长度</p></td>
+</tr>
+<tr class="row-even"><td><p>VBAT: 实际采样值, 目标电压值</p></td>
+<td><p>该报错表示样机芯片采样VBAT供电脚电压大小与目标电压差值超过设定阈值范围，具体原因及处理方法参考：<code class="docutils literal notranslate"><span class="pre">2.6.4节</span> <span class="pre">VBAT电压报错显示说明</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>上次烧录成功</p></td>
+<td><p>该样机上次烧录成功无需重烧，详情请见<a class="reference internal" href="change_board_interval.html"><span class="doc std std-doc">换板时间设置及使用说明</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>其它报错/常见不良</p></td>
+<td><p>勾选某个测试项出现对应错误：烧录器新增某个芯片型号的测试项，用于筛选性能参数不达标的芯片；<br/>如果更新最新固件，或者勾选某个测试项后出现烧录不良，不良率低符合预期则当坏片处理；<br/>不良率较高则反馈杰理公司进一步处理。</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="vbat">
+<h2><span class="section-number">2.6.4. </span>VBAT 电压报错显示说明<a class="headerlink" href="#vbat" title="Permalink to this heading"></a></h2>
+<p>烧录界面中 VBAT 电压显示格式为：<strong>VBAT: 实际采样值, 目标电压值</strong>
+例如：<strong>VBAT: 3299, 3400mv</strong></p>
+<p>其中：</p>
+<ul class="simple">
+<li><p><strong>3299mv</strong>：样机芯片端采样到的 VBAT 引脚实际电压；</p></li>
+<li><p><strong>3400mv</strong>：芯片端需要达到的目标电压；</p></li>
+<li><p>当实际采样电压与目标电压偏差超过设定阈值，例如 <strong>100mv</strong>，即判定为 VBAT 电压报错。</p></li>
+</ul>
+<section id="id8">
+<h3><span class="section-number">2.6.4.1. </span>VBAT 电压报错常见原因<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>烧写器 USB_VCC 输出偏差</strong><br/>
+烧写器 USB_VCC 通过电位器调节，实际输出电压与设定值可能存在一定偏差。同一台烧写器的 8 个通道共用一个电压参考源，理想情况下各通道输出电压应一致，但受器件差异和电位器调节影响，实际偏差通常在 <strong>30mv 以内</strong>。</p></li>
+<li><p><strong>USB 连接线及顶针接触阻抗分压</strong><br/>
+样机与烧写器之间的 USB 连接线阻抗、治具顶针与样机焊盘的接触阻抗都会产生压降。烧录时样机功耗一般为 <strong>6–7mA</strong>，若线阻与接触阻抗合计约为 <strong>10Ω</strong>，则分压约为 <strong>60mv</strong>。这也是同一台样机本次烧录失败，重新压治具后又能正常通过的主要原因。</p></li>
+<li><p><strong>USB_GND 回路及采样误差</strong><br/>
+烧写器 USB_GND 线路中包含一个固定 <strong>1Ω</strong> 电阻，同时烧录接线及地回路交叉也会带来一定影响。样机采样本身可能存在轻微偏差，但通常可以忽略不计。</p></li>
+</ol>
+</section>
+<section id="usb">
+<h3><span class="section-number">2.6.4.2. </span>USB 供电调节配置说明<a class="headerlink" href="#usb" title="Permalink to this heading"></a></h3>
+<p>为抵消烧写器硬件输出偏差及治具接触阻抗带来的压降，可在烧写器部署界面使用 <strong>【USB供电调节（-1000~+1000）】</strong> 配置项进行补偿。</p>
+<p>观察烧录进度条打印的 5 个电压档位，例如：</p>
+<p>若进度条显示为：
+<strong>VCC: 3320 3400, VCC: 3412 3500, VCC: 3526 3600, VCC: 3738 3800, VCC: 4134 4200</strong> ，该样机烧录时实际采样电压整体比目标电压偏低约 <strong>70mv</strong>，<br/>可将 5 个编辑框统一填入 <strong>70</strong>，也可按每个电压档位的差值分别填入对应编辑框。其中，第一个编辑框对应 <strong>3400mv</strong> 档位，后续依次对应更高电压档位，<br/>第五个编辑框对应 <strong>4200mv</strong> 档位。</p>
+<p>若进度条显示为：
+<strong>VCC: 3520 3400, VCC: 3512 3500, VCC: 3626 3600, VCC: 3838 3800, VCC: 4234 4200</strong>，该样机烧录时实际采样电压整体比目标电压偏高约 <strong>20mv</strong>，<br/>可将 5 个编辑框统一填入 <strong>-20</strong>，也可按差值分别填入。</p>
+</section>
+<section id="id9">
+<h3><span class="section-number">2.6.4.3. </span>调节原则<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>实际采样电压普遍 <strong>偏低</strong> 时，可适当提高补偿值，通常增加 <strong>10–30mv</strong>；</p></li>
+<li><p>实际采样电压普遍 <strong>偏高</strong> 时，可适当降低补偿值，通常减少 <strong>10–30mv</strong>；</p></li>
+<li><p>电压偏低通常与 USB 线阻、顶针接触阻抗分压有关；</p></li>
+<li><p>电压偏高通常与烧写器 USB_VCC 实际输出高于设定值有关。</p></li>
+</ul>
+</section>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="config_opt.html" class="btn btn-neutral float-left" title="2.5. 各型号芯片PC端烧录配置项介绍" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="pc_err.html" class="btn btn-neutral float-right" title="2.7. PC界面报错提示说明和处理" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo8/status_errors.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo8/status_errors.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

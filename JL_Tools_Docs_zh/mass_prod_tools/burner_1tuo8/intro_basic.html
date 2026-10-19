@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.1. 烧录器简要介绍 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>2. 杰理科技一拖八烧录器用户手册</a><ul>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>2.1. 烧录器简要介绍</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.1.1. 功能描述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2.1.2. 烧录器清单</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4"><button class="toctree-expand" title="Open/close menu" type="button"></button>2.1.3. 烧录器主机介绍</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">2.1.3.1. 不同版本烧录器差异</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#v1-2">2.1.3.2. V1.2硬件版本烧录器</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#v2-0">2.1.3.3. V2.0硬件版本烧录器</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id6"><button class="toctree-expand" title="Open/close menu" type="button"></button>2.1.4. 样机烧录接线说明</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">2.1.4.1. 样机芯片烧录接线</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#demo">2.1.4.2. demo板和上层板烧录接线</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">2.1.4.3. 部分样机芯片烧录特殊接线</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">2.1.5. 烧录器使用流程说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">2.1.6. 名词解释</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html">2.2. 手动烧录、校验、查空芯片操作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html">2.3. 机台自动烧录操作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html">2.4. 远程升级烧录器固件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html">2.5. 各型号芯片PC端烧录配置项介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html">2.6. 状态指示和报错提示说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pc_err.html">2.7. PC界面报错提示说明和处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="change_board_interval.html">2.8. 换板时间设置及使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="burn_vol.html">2.9. 不同芯片烧录电压说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html">2.10. 授权烧录次数限制功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html">2.11. 第三方数据（认证码）烧录功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html">2.12. 蓝牙地址及名字自增功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_curr_test.html">2.13. 电流功耗测试功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_battery.html">2.14. 样机带电池烧录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freq_bias.html">2.15. 频偏校准功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mic_test.html">2.16. MIC 测试功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usual_uart_update.html">2.17. 样机带电池自定义IO单双线串口升级功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extern_flash_burn.html">2.18. 同时升级内置flash和外挂flash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="erase.html">2.19. 非全片擦除功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html">2.20. 其它常见功能配置和使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faqs.html">2.21. 常见错误处理</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">2. </span>杰理科技一拖八烧录器用户手册</a> »</li>
+<li><span class="section-number">2.1. </span>烧录器简要介绍</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/mass_prod_tools/burner_1tuo8/intro_basic.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">2.1. </span>烧录器简要介绍<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">2.1.1. </span>功能描述<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>杰理科技一拖八烧录器（通常也叫烧写器，编程器）主要用于离线烧录（烧录过程不需连接PC计算机）已贴片的样机芯片程序。</p>
+<p>支持开发过程使用一台烧录器对1~8个样机芯片进行程序烧录，量产配合烧录治具实现对N台烧录器的N*8个样机芯片同时进行手动或者自动烧录程序。</p>
+<p>一拖八烧录器主要有以下功能：</p>
+<ul class="simple">
+<li><p>程序烧录（支持烧录内置/外置flash，支持带电池烧录升级）</p></li>
+<li><p>程序校验</p></li>
+<li><p>芯片查空</p></li>
+<li><p>授权烧录次数限制</p></li>
+<li><p>蓝牙地址自增</p></li>
+<li><p>认证码等第三方数据烧录</p></li>
+<li><p>自定义资源文件烧录</p></li>
+<li><p>芯片性能测试</p></li>
+<li><p>频偏校准、MIC测试</p></li>
+<li><p>特殊功能定制</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>烧录器功能和各个功能相关配置的详细使用说明请参考对应章节内容！！！</p>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">2.1.2. </span>烧录器清单<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>编号</strong></p></th>
+<th class="head"><p><strong>模块类型</strong></p></th>
+<th class="head"><p><strong>包含部分</strong></p></th>
+<th class="head"><p><strong>说明</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>烧录器主机</p></td>
+<td><p>主控板部分</p></td>
+<td><p>用于控制烧录器工作</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>9V电源供电口</p></td>
+<td><p>烧录器总电源供电端口</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>电源指示灯</p></td>
+<td><p>供电并打开总电源开关后亮灯</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>控制总电源的钮子开关</p></td>
+<td><p>控制总电源开启与关闭</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>控制USB端口电源的钮子开关</p></td>
+<td><p>控制USB端口电源的开启与关闭</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>模式设置拨码开关</p></td>
+<td><p>用于设置烧录、校验、<br/>查空等工作模式</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>USB烧录端口电压设置拨码开关</p></td>
+<td><p>用于设置USB烧录端口输出电压<br/>（V1.2硬件版本烧录器）</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>更新程序用的USB接口</p></td>
+<td><p>用于升级烧录器固件程序和<br/>更新待烧录的目标芯片程序到烧录器</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>8路USB烧录接口</p></td>
+<td><p>8个烧录通道，用于烧录器与样机芯<br/>进行USB连接后通信，实现程序烧录</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>8路自动烧录控制接口</p></td>
+<td><p>机台可通过IO信号控制样机芯片<br/>程序自动烧录（V2.0硬件版本烧录器）</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>8路烧录状态指示灯</p></td>
+<td><p>指示各个通道的烧录状态</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>LCD显示屏</p></td>
+<td><p>显示烧录信息、烧录状态，<br/>报错提示信息等</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>散热风扇</p></td>
+<td><p>主控散热（V2.0硬件版本烧录器）</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>电位计</p></td>
+<td><p>调节电流测试模块的基准源</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>USB数据线</p></td>
+<td><p></p></td>
+<td><p>用于烧录器和PC电脑连接，<br/>升级烧录器固件或更新目标芯片程序</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>电源适配器</p></td>
+<td><p></p></td>
+<td><p>请使用9.0V、2.0A以上规格电源</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="id4">
+<h2><span class="section-number">2.1.3. </span>烧录器主机介绍<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<section id="id5">
+<h3><span class="section-number">2.1.3.1. </span>不同版本烧录器差异<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<p>本文档以常用的V1.2硬件版本烧录器和V2.0硬件版本烧录器进行介绍，这两个不同的硬件版本的烧录器基本功能一致，主要差异如下：</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>硬件版本</strong></p></th>
+<th class="head"><p><strong>差异说明</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>V1.2</p></td>
+<td><p>USB烧录端口输出电压由拨码开关设置，支持4.2V,5.0V 电压档位设置</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>更新程序用的USB接口使用的是USB micro接口</p></td>
+</tr>
+<tr class="row-even"><td><p>V2.0</p></td>
+<td><p>USB烧录端口输出电压由PC端配置</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>更新程序用的USB接口使用的是USB TYPE-C接口、USB母头</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>增加机台自动烧录控制接口</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>增加了主控散热风扇，修改了部分硬件模块</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="v1-2">
+<h3><span class="section-number">2.1.3.2. </span>V1.2硬件版本烧录器<a class="headerlink" href="#v1-2" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>V1.2硬件版本烧录器主机正面如<a class="reference internal" href="#img-v12-board-main"><span class="std std-ref">V1.2版本烧录器主机正面</span></a>所示。</p>
+<figure class="align-default" id="img-v12-board-main">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image3.png"/>
+<figcaption>
+<p><span class="caption-text">V1.2版本烧录器主机正面</span><a class="headerlink" href="#img-v12-board-main" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>V1.2硬件版本烧录器主机背面如<a class="reference internal" href="#img-v12-board-back"><span class="std std-ref">V1.2版本烧录器主机背面</span></a>所示。</p>
+<figure class="align-default" id="img-v12-board-back">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image4.png"/>
+<figcaption>
+<p><span class="caption-text">V1.2版本烧录器主机背面</span><a class="headerlink" href="#img-v12-board-back" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+</section>
+<section id="v2-0">
+<h3><span class="section-number">2.1.3.3. </span>V2.0硬件版本烧录器<a class="headerlink" href="#v2-0" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>V2.0硬件版本烧录器主机正面如<a class="reference internal" href="#img-v20-board-front"><span class="std std-ref">V2.0版本烧录器主机正面</span></a>所示。</p>
+<figure class="align-default" id="img-v20-board-front">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image5.png"/>
+<figcaption>
+<p><span class="caption-text">V2.0版本烧录器主机正面</span><a class="headerlink" href="#img-v20-board-front" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>V2.0硬件版本烧录器主机背面如<a class="reference internal" href="#img-v20-board-back"><span class="std std-ref">V2.0 版本烧录器主机背面</span></a>所示。</p>
+<figure class="align-default" id="img-v20-board-back">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image6.png"/>
+<figcaption>
+<p><span class="caption-text">V2.0 版本烧录器主机背面</span><a class="headerlink" href="#img-v20-board-back" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+</section>
+</section>
+<section id="id6">
+<h2><span class="section-number">2.1.4. </span>样机烧录接线说明<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
+<section id="id7">
+<h3><span class="section-number">2.1.4.1. </span>样机芯片烧录接线<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
+<p>样机芯片烧录需要用到的引脚有VBAT,DM,DP,GND,这些引脚焊接通信线（量产时样机预留这些引脚的烧录点，通过治具探针接触这些引脚）连接到对应的USB公头上，插入一拖八烧录器USB母头烧录接口，即可实现样机芯片程序的烧录。
+如<a class="reference internal" href="#img-pcba-burn-conn"><span class="std std-ref">样机芯片烧录接线</span></a>和<a class="reference internal" href="#img-pcba-res-burn-conn"><span class="std std-ref">样机预留接触点用于量产烧录</span></a>所示。</p>
+<figure class="align-default" id="img-pcba-burn-conn">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image7.png"/>
+<figcaption>
+<p><span class="caption-text">样机芯片烧录接线</span><a class="headerlink" href="#img-pcba-burn-conn" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="img-pcba-res-burn-conn">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image8.png"/>
+<figcaption>
+<p><span class="caption-text">样机预留接触点用于量产烧录</span><a class="headerlink" href="#img-pcba-res-burn-conn" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="demo">
+<h3><span class="section-number">2.1.4.2. </span>demo板和上层板烧录接线<a class="headerlink" href="#demo" title="Permalink to this heading"></a></h3>
+<p>demo板也是一台样机，一般引有USB接口出来，只要用USB线进行demo板和烧录USB接口连接，即可实现芯片程序的烧录。</p>
+<p>当有通过一拖八烧录器烧录裸片的需求时，可通过带有socket座对应芯片的demo板子进行烧录，也可用芯片对应的一拖二烧录器的上层板进行烧录。通过上层板烧录的接线方法如<a class="reference internal" href="#img-upper-board-conn"><span class="std std-ref">上层板烧录接线</span></a>所示。</p>
+<figure class="align-default" id="img-upper-board-conn">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image9.png"/>
+<figcaption>
+<p><span class="caption-text">上层板烧录接线</span><a class="headerlink" href="#img-upper-board-conn" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id8">
+<h3><span class="section-number">2.1.4.3. </span>部分样机芯片烧录特殊接线<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>AD15N烧录接线,如<a class="reference internal" href="#img-ad15n-conn"><span class="std std-ref">AD15N烧录接线</span></a>所示</p>
+<figure class="align-default" id="img-ad15n-conn">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image10.png"/>
+<figcaption>
+<p><span class="caption-text">AD15N烧录接线</span><a class="headerlink" href="#img-ad15n-conn" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+</section>
+</section>
+<section id="id9">
+<h2><span class="section-number">2.1.5. </span>烧录器使用流程说明<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>烧录器使用流程</p>
+<p>烧录器使用流程大致如<a class="reference internal" href="#img-use-process-1tuo8"><span class="std std-ref">烧录器使用流程图</span></a>所示。</p>
+<figure class="align-default" id="img-use-process-1tuo8">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo8_image11.png"/>
+<figcaption>
+<p><span class="caption-text">烧录器使用流程图</span><a class="headerlink" href="#img-use-process-1tuo8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>使用流程说明</p>
+<p>以下通过表格的方式，对使用流程进行介绍说明。</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>使用流程</strong></p></th>
+<th class="head"><p><strong>说明</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>烧录器上电开机</p></td>
+<td><p>烧录器出货前已经烧录有烧录器固件程序，<br/>拿到烧录器后即可上电开机</p></td>
+</tr>
+<tr class="row-odd"><td><p>确认或更新烧录器固件</p></td>
+<td><p>烧录器固件指控制整个烧录器工作的主控芯片固件程序，<br/>烧录目标芯片程序前务必确认当前烧录器固件版本是否是最新，<br/>不是最新请通过远程升级方式更新最新版本<br/>烧录器固件程序（特殊情况除外），<br/>否则可能出现一些烧录问题。</p></td>
+</tr>
+<tr class="row-even"><td><p>确认或更新目标芯片程序</p></td>
+<td><p>目标芯片程序指fw文件，ufw文件，key文件；<br/>需把文件更新到烧录器存起来，烧录时才能把对应数据烧录到<br/>目标芯片，或实现校验和查空功能；<br/>更新目标芯片程序时还需对烧录配置项进行配置，<br/>实现资源烧录、芯片性能测试等功能</p></td>
+</tr>
+<tr class="row-odd"><td><p>确认或设置烧录器工作模式</p></td>
+<td><p>工作模式指烧录、校验、查空，电流测试等工作模式；<br/>务必确认好烧录器当前的工作模式，以防出现一些烧录问题</p></td>
+</tr>
+<tr class="row-even"><td><p>手动或自动烧录样机芯片程序</p></td>
+<td><p>手动烧录指通过手动拔插样机，或过治具按压接触样机的方式进行<br/>烧录方式；自动烧录指通过自动烧录机台控制样机芯片烧录</p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+</ol>
+</section>
+<section id="id10">
+<h2><span class="section-number">2.1.6. </span>名词解释<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><p><strong>烧录器</strong>：又称烧写器，编程器。用于向可编程集成电路（如单片机，存储器flash,otp等）写入数据的工具‌。杰理相关文档，工具界面，显示屏等看到<code class="docutils literal notranslate"><span class="pre">烧录</span></code>，<code class="docutils literal notranslate"><span class="pre">烧写</span></code>都是同一个意思。</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>空片</strong>：指出厂后没有经过烧录的芯片，通常指芯片的flash，硬件存储介质等为空数据状态！</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>烧录器固件</strong>：用于控制整个烧录器工作的烧录器固件程序。</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>目标芯片程序</strong>：指sdk（软件开发工具包）编译生产的fw文件，ufw文件等可执行文件，可以通过烧录器烧录到芯片运行，控制整个产品工作。</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>离线烧录</strong>：不需要使用PC电脑进行烧录。一拖八烧录器是先通过PC电脑把目标芯片程序部署到烧录器存储器存储起来，再实现离线烧录芯片。</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>fw文件</strong>：指目标芯片可执行程序，常用于烧录空片</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>ufw文件</strong>：指目标芯片可执行程序，主要用于对可以运行的样机芯片执行程序的二次更新升级，如使用测试盒，SD卡，U盘升级等。也支持通过烧录器进行升级。</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>key文件</strong>: 为一个秘钥文件，下载目录download.bat配置key文件后实现对生成的fw/ufw文件数据的加密，烧录fw/ufw文件数据时，key文件数据会被烧录到芯片硬件存储介质，芯片运行时通过硬件解密程序数据实现程序运行！客户烧录器key文件具有唯一性，每个客户都各自有属于自己的key文件，fw文件的key文件与烧录器的key文件一致才能烧录！只有量产烧录器支持烧录key文件！支持单独烧录key文件后再通过其他烧录工具烧带key文件的fw文件！</p>
+</div></blockquote>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="index.html" class="btn btn-neutral float-left" title="2. 杰理科技一拖八烧录器用户手册" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="basic_usage.html" class="btn btn-neutral float-right" title="2.2. 手动烧录、校验、查空芯片操作流程" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo8/intro_basic.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo8/intro_basic.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

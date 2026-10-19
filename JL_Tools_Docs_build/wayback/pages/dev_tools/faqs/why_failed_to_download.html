@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7.6. 为什么无法下载程序 &mdash; JL Project Documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://doc.zh-jieli.com/static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="https://doc.zh-jieli.com/static/js/custom.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="7.7. 如何修改临时目录" href="howto_change_tmp_dir.html" />
+    <link rel="prev" title="7.5. 为什么编译得到的文件不一致" href="why_build_result_mismatched.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> JieLi_Tools
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">7. 其它常见问题以及处理方法</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="howto_convert_cbp.html">7.1. 如何将 Code::Blocks 工程转换为 make/VSCode 工程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_convert_sdk_to_lib.html">7.2. 在已经有了标准 SDK 工程的情况下，如何获得编译库的工程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_add_3rd_libs.html">7.3. 如何给 SDK 工程添加第三方库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="why_build_slow.html">7.4. 为什么有些 SDK 编译很慢</a></li>
+<li class="toctree-l2"><a class="reference internal" href="why_build_result_mismatched.html">7.5. 为什么编译得到的文件不一致</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.6. 为什么无法下载程序</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#download-bat">7.6.1. 下载脚本 download.bat 编码错误</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">7.6.2. 设备不在线</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">7.6.2.1. 为什么有时候设备只能下载一次代码</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#key">7.6.3. KEY文件与芯片不匹配</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usb-flash">7.6.4. USB 连线不稳或者 FLASH 损坏</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usb">7.6.5. USB 连线不稳或者芯片本身损坏</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">7.6.6. 未正确设置虚拟串口</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">7.6.7. 其它可能的原因</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="howto_change_tmp_dir.html">7.7. 如何修改临时目录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antivirus_misreport.html">7.8. 关于工具（误）报毒问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_find_downloadbat.html">7.9. 如何确认当前工程使用的下载脚本 <code class="docutils literal notranslate"><span class="pre">download.bat</span></code> 是哪个</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_formatall.html">7.10. 如何在下载前对芯片进行全擦除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_reboot_afterdownload.html">7.11. 如何在下载后自动复位芯片</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_read_flashid.html">7.12. 如何读取芯片的 FLASH ID</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">JieLi_Tools</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">7. </span>其它常见问题以及处理方法</a> &raquo;</li>
+      <li><span class="section-number">7.6. </span>为什么无法下载程序</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1><span class="section-number">7.6. </span>为什么无法下载程序<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<p>有些时候，会出现编译后，无法将固件文件下载到设备中的情况。
+可以通过下面的步骤来排除情况：</p>
+<section id="download-bat">
+<h2><span class="section-number">7.6.1. </span>下载脚本 download.bat 编码错误<a class="headerlink" href="#download-bat" title="Permalink to this heading"></a></h2>
+<p>Windows 运行<code class="docutils literal notranslate"><span class="pre">bat</span></code>批处理文件的时候，要求文件的编码是本地编码。中文系统一般就是<code class="docutils literal notranslate"><span class="pre">gbk</span></code>编码。
+如果<code class="docutils literal notranslate"><span class="pre">download.bat</span></code>的编码是<code class="docutils literal notranslate"><span class="pre">utf-8</span></code>的时候，则会报类似<code class="docutils literal notranslate"><span class="pre">不是内部或外部命令，也不是可运行的程序</span></code>之类的错误，如下图：</p>
+<p><img alt="" src="../../_images/why_failed_to_download_invalid_encoding.jpg" /></p>
+<p>这个时候，可以考虑通过<code class="docutils literal notranslate"><span class="pre">Notepad++</span></code>之类的工具将文件编码修改为<code class="docutils literal notranslate"><span class="pre">gbk</span></code>，或者把文件中的中文都去掉。这样就会相当于是<code class="docutils literal notranslate"><span class="pre">ANSI</span></code>编码的文件。</p>
+</section>
+<section id="id2">
+<h2><span class="section-number">7.6.2. </span>设备不在线<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>检查 Code::Blocks 的 build log 日志，是否有<code class="docutils literal notranslate"><span class="pre">Device</span> <span class="pre">Offline</span></code>之类的报错，如下图所示：</p>
+<p><img alt="" src="../../_images/why_failed_to_download_build_log.jpg" /></p>
+<p>如果有，则表明设备未连接电脑，或者设备未进入下载模式。可能有下面几种原因：</p>
+<ol class="arabic simple">
+<li><p>未正确插入样机、USB 线松动等，设备管理器中未能查看到（见下面的说明）</p></li>
+<li><p>插入了错误的样机、芯片的型号不匹配。</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>正确连接下载模式的设备后，我的电脑打开后，应当会多了一个隐藏磁盘（确认当前文件浏览器可以查看隐藏文件或设备）。</p>
+<p>此外，【我的电脑】-【设备管理】-【磁盘驱动器】下，应该会有一个带有 <code class="docutils literal notranslate"><span class="pre">br**uboot1.0</span></code>、<code class="docutils literal notranslate"><span class="pre">bd**uboot1.0</span></code> 或者 <code class="docutils literal notranslate"><span class="pre">dv**uboot1.0</span></code> 的磁盘设备。</p>
+<p>更详细步骤，参考：<a class="reference internal" href="../forced_upgrade/upgrade_and_download.html"><span class="doc std std-doc">升级与下载说明</span></a></p>
+<p>如果设备管理器中已经有对应的设备，但是仍然有<code class="docutils literal notranslate"><span class="pre">Device</span> <span class="pre">Offline</span></code>的提示，依次尝试下面的方法：</p>
+<ol class="arabic simple">
+<li><p>尝试用管理员权限进行下载。即，用管理员权限打开 Code::Blocks，打开工程后再编译下载。 下载工具需要操作物理设备，有些情况下可能会被 Windows 拒绝。例如远程登录的情况下</p></li>
+<li><p>确认电脑是否有安装杀毒软件、权限控制软件等，当前用户是否有允许操作 USB 设备的权限（下载工具需要读写 USB 设备，一些电脑为了安全保密可能被设置成了无法操作 USB 设备）。</p></li>
+<li><p>如果上述都不行，尝试更换其它电脑。</p></li>
+</ol>
+</div>
+<section id="id3">
+<h3><span class="section-number">7.6.2.1. </span>为什么有时候设备只能下载一次代码<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<p>一种常见的错误是，板子设计的时候，没有留烧录的脚。烧录过一次之后，固件会跑起来，就不在烧录状态了。
+最常见的表现是：<strong>空片烧录正常，之后再也无法进入下载模式</strong>。
+具体请联系代理商或者提供 SDK 的人，咨询板子应该如何设计，烧录脚如何设计。</p>
+</section>
+</section>
+<section id="key">
+<h2><span class="section-number">7.6.3. </span>KEY文件与芯片不匹配<a class="headerlink" href="#key" title="Permalink to this heading"></a></h2>
+<p>提示<code class="docutils literal notranslate"><span class="pre">key</span> <span class="pre">mismatch</span></code>或者<code class="docutils literal notranslate"><span class="pre">不匹配</span></code>之类的错误。这个错误表示<strong>key文件和芯片不匹配</strong>。需要检查下载脚本<code class="docutils literal notranslate"><span class="pre">download.bat</span></code>中调用<code class="docutils literal notranslate"><span class="pre">isd_download.exe</span></code>的参数：</p>
+<ul class="simple">
+<li><p>如果芯片是<strong>空片</strong>，则下载时候<strong>无需</strong>指定<code class="docutils literal notranslate"><span class="pre">-key</span> <span class="pre">xxxxx</span></code>的参数，请移除。空片不需要添加 key 文件。</p></li>
+<li><p>如果芯片<strong>不是空片</strong>，则下载时需要指定对应的<code class="docutils literal notranslate"><span class="pre">-key</span> <span class="pre">xxxxx</span></code>，其中<code class="docutils literal notranslate"><span class="pre">xxxxx</span></code>就是和芯片匹配的key文件。<strong>这个文件需要找代理商获取</strong>。</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果确认芯片不是空片，而且下载的时候指定了 KEY 文件但是还是报不匹配错误。</p>
+<p>这说明你指定的 KEY 文件和当前的芯片不匹配。
+也就是说，这个芯片已经烧录了别的 key 文件（而不是你当前指定的这个 KEY 文件）。
+可能是你拿到了被错误烧录的芯片，或者是你拿到了错误的 KEY 文件。</p>
+<p><strong>芯片与 KEY 文件必须一一对应，已经烧录过其它 KEY 的芯片的 KEY 不能被修改，也不能被其它 KEY 文件烧录</strong></p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>注意，<code class="docutils literal notranslate"><span class="pre">download.bat</span></code>脚本，可能会引用别的 bat 脚本。所以建议<strong>整个 SDK 工程全局搜索</strong> <code class="docutils literal notranslate"><span class="pre">isd_download.exe</span></code> 关键字。</p>
+<p><img alt="" src="../../_images/global_search_step1.jpg" />
+<img alt="" src="../../_images/global_search_step2.jpg" /></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>如果你的 KEY 文件名字中有空格。建议去掉空格。或者用双引号 “” 括起来，例如 “key file with space.key”。</p></li>
+<li><p>为了防止问题，建议key文件名不要有任何空格。</p></li>
+</ol>
+</div>
+</section>
+<section id="usb-flash">
+<h2><span class="section-number">7.6.4. </span>USB 连线不稳或者 FLASH 损坏<a class="headerlink" href="#usb-flash" title="Permalink to this heading"></a></h2>
+<p>提示 <code class="docutils literal notranslate"><span class="pre">错误信息:ERR_CRCCMP</span></code>。这个错误表示，在完成下载后，比对<strong>FLASH</strong>内容的时候，出现内容不匹配。如下图所示：</p>
+<p><img alt="" src="../../_images/download_err_crccmp.png" /></p>
+<p>这个可能是：</p>
+<ul class="simple">
+<li><p>样机（设备）和电脑连接不稳定，导致偶现失败。可以考虑重新接稳USB连线后重试。</p></li>
+<li><p>样机（设备）的 FLASH 受到了损坏，导致部分区域无法正确写入。可以考虑更换样机（设备）后重试。</p></li>
+</ul>
+</section>
+<section id="usb">
+<h2><span class="section-number">7.6.5. </span>USB 连线不稳或者芯片本身损坏<a class="headerlink" href="#usb" title="Permalink to this heading"></a></h2>
+<p>提示 <code class="docutils literal notranslate"><span class="pre">错误：分析设备信息失败</span></code>。这个错误表示，解析设备信息的时候出错：</p>
+<p><img alt="" src="../../_images/err_failed_to_parse_device.jpg" /></p>
+<p>这个可能是：</p>
+<ul class="simple">
+<li><p>样机（设备）和电脑连接不稳定，导致偶现失败。可以考虑重新接稳USB连线后重试。</p></li>
+<li><p>样机（设备）芯片本身损坏，导致与 PC 工具通讯异常。</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2><span class="section-number">7.6.6. </span>未正确设置虚拟串口<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>提示<code class="docutils literal notranslate"><span class="pre">打开设备(JLVirtualtagSerial)失败</span></code>。这个错误表示无法打开虚拟串口设备。这个可能是因为没有设置虚拟串口。参考<a class="reference internal" href="../forced_upgrade/upgrade_and_download.html#target-forceupgrade-serial-update"><span class="std std-ref">串口升级</span></a>。</p>
+</section>
+<section id="id5">
+<h2><span class="section-number">7.6.7. </span>其它可能的原因<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<p>如果出现其它情况，可以尝试下面的步骤：</p>
+<ul class="simple">
+<li><p>更换电脑后，重新下载</p></li>
+<li><p>更换样机后，重新下载</p></li>
+</ul>
+<p>这样来确定，不能下载的现象是与电脑还是与样机有关。</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="why_build_result_mismatched.html" class="btn btn-neutral float-left" title="7.5. 为什么编译得到的文件不一致" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="howto_change_tmp_dir.html" class="btn btn-neutral float-right" title="7.7. 如何修改临时目录" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2010-2022, 杰理科技股份有限公司.
+      <span class="lastupdated">Last updated on Aug 18, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

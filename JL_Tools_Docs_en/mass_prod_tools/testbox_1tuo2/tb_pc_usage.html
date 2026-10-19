@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3.2. PC Tool Configuration and Use — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>3. Jieli 1-to-2 Bluetooth Test Box User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_base_introduction.html">3.1. Test Box Overview</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>3.2. PC Tool Configuration and Use</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.2.1. Opening and using the PC tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3.2.2. Common function settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">3.2.3. Configuring a fixed device name for wireless connection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">3.2.4. Test time settings (normally no need to change)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">3.2.5. Enabling the Bluetooth connection prompt tone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pp">3.2.6. Enabling test item switching with the PP button</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tws">3.2.7. Switch for TWS connection support in classic Bluetooth tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dut">3.2.8. Putting earphones into DUT mode in UART mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">3.2.9. Using the battery level threshold check for upgrades</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">3.2.10. Configuring the button action recognition test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">3.2.11. Configuring in-ear detection calibration and testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">3.2.12. Configuring TWS pairing and testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trim">3.2.13. Configuring and using the out-of-case in-ear trim function for earphones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">3.2.14. Language option</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">3.2.15. Configuring the calibration signal transmission mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tb_upgrade.html">3.3. Test Box Firmware Upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wireless_upgrade.html">3.4. Wireless Upgrade of Bluetooth Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wired_upgrade.html">3.5. Wired Upgrade of Bluetooth Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_test_process.html">3.6. Bluetooth Device Test Procedure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mass_production.html">3.7. Test Box Batch Upgrade and Test Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ear_storage.html">3.8. Using Earphone Storage Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_transparent.html">3.9. PC Passthrough Commands and Custom Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mes_log.html">3.10. Test Box MES Log Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_view_bt_info.html">3.11. Viewing Bluetooth Device Information (SDK Version/Battery Level/Checksum)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ufw_crc_compare.html">3.12. Test Box UFW File Checksum Matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_error_status.html">3.13. Status Indicators and Error Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_fixture_install.html">3.14. Connecting the Test Box to a Fixture over UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_function.html">3.15. Other Common Features: Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_problem.html">3.16. Frequently Asked Questions (FAQ)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_version_info.html">3.17. Version Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">3. </span>Jieli 1-to-2 Bluetooth Test Box User Manual</a> »</li>
+<li><span class="section-number">3.2. </span>PC Tool Configuration and Use</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/testbox_1tuo2/tb_pc_usage.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">3.2. </span>PC Tool Configuration and Use<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">3.2.1. </span>Opening and using the PC tool<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Power on the test box, connect it to the PC with a USB data cable and put the test box into <code class="docutils literal notranslate"> <span class="pre">LOADING</span></code> mode, as shown in the figure <a class="reference internal" href="#img-loding-image"><span class="std std-ref">Test box entering LOADING mode</span></a><br/> [1] Power the test box with a 9V power adapter</p>
+<p>[2] Plug in the PC slave cable</p>
+<p>[3] Set the toggle switch that controls the main power to <code class="docutils literal notranslate"><span class="pre">ON</span></code></p>
+<p>[4] <code class="docutils literal notranslate"><span class="pre">**Press</span> <span class="pre">and</span> <span class="pre">hold**</span> <span class="pre">the</span> <span class="pre">rightmost</span> <span class="pre">function</span> <span class="pre">button</span> <span class="pre">on</span> <span class="pre">the</span> <span class="pre">test</span> <span class="pre">box</span></code> to enter <code class="docutils literal notranslate"> <span class="pre">LOADING</span></code> mode, i.e. PC mode<br/></p>
+</li>
+</ol>
+<figure class="align-default" id="img-loding-image">
+<img alt="" data-action="zoom" src="../../_images/pc_usage_loding_image1.png"/>
+<figcaption>
+<p><span class="caption-text">Test box entering <code class="docutils literal notranslate"> <span class="pre">LOADING</span></code> mode</span><a class="headerlink" href="#img-loding-image" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic" start="2">
+<li><p>Open My Computer, find the CD drive shown below and click it to open it</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image3.png"/></p>
+</li>
+<li><p>When you open the CD drive, the window shown below appears. Double-click bt_test_box.exe to open it. <code class="docutils literal notranslate"><span class="pre">You</span> <span class="pre">can</span> <span class="pre">also</span> <span class="pre">copy</span> <span class="pre">this</span> <span class="pre">tool</span> <span class="pre">and</span> <span class="pre">the</span> <span class="pre">documents</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">PC</span> <span class="pre">and</span> <span class="pre">run</span> <span class="pre">it</span> <span class="pre">from</span> <span class="pre">there</span></code>.</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image4.png"/></p>
+</li>
+<li><p>The window below appears. [1] First click "Read settings from test box" (从测试盒读取设置); [2] then configure the settings, click "Save to test box" (保存到测试盒) and unplug the PC slave cable</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image5.png"/></p>
+</li>
+<li><p>Users often change the following 3 items:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Minimum searchable signal strength (可搜索最小信号强度): adjusts the distance within which devices are searched for; the smaller the number, the wider the range.</p></li>
+<li><p>You can also set the name of the devices under test so that the test box connects only to them, making testing as fast as possible;</p></li>
+<li><p>Change the maximum test power (测试最大功率): some devices connect more easily with a lower power.</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2><span class="section-number">3.2.2. </span>Common function settings<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><p>1. Host MAC address (主机MAC地址): the Bluetooth address of this test box</p>
+</div></blockquote>
+<blockquote>
+<div><p>2. Target MAC address (目标MAC地址): in fixed-address connection mode, the address of the Bluetooth device under test</p>
+</div></blockquote>
+<blockquote>
+<div><p>3. Upgrade battery threshold (升级电量门限): the device is not upgraded if its battery level is below the set percentage</p>
+</div></blockquote>
+<blockquote>
+<div><p>4. Fixed address connection enable (固定地址连接使能): when enabled, Bluetooth connects using a fixed address</p>
+</div></blockquote>
+<blockquote>
+<div><p>5. Fixed device name connection enable (固定设备名连接使能): when enabled, Bluetooth connects using a fixed name</p>
+</div></blockquote>
+<blockquote>
+<div><p>6. Match target device name prefix only (目标设备名仅匹配前缀): when enabled, Bluetooth devices whose names have the same prefix but different suffixes are matched</p>
+</div></blockquote>
+<blockquote>
+<div><p>7. Automatic frequency offset correction enable (频偏自动校正使能): after the frequency offset is tested, the frequency offset of the target device is adjusted automatically</p>
+</div></blockquote>
+<blockquote>
+<div><p>8. Maximum search power (搜索最大功率) setting</p>
+</div></blockquote>
+<blockquote>
+<div><p>9. Maximum search sensitivity (搜索最大灵敏度) setting</p>
+</div></blockquote>
+<blockquote>
+<div><p>10. Minimum searchable signal strength (可搜索最小信号强度), in db: controls the distance within which nearby devices are searched for</p>
+</div></blockquote>
+<blockquote>
+<div><p>11. Maximum test power (测试最大功率) setting</p>
+</div></blockquote>
+<blockquote>
+<div><p>12. Maximum frequency offset alert (最大频偏提醒): if the frequency offset of the tested device is greater than this value, the test box speaker sounds an alarm</p>
+</div></blockquote>
+<blockquote>
+<div><p>13. Frequency correction (频率校正): the correction range. For example, if it is set to 10, the correction is complete when the frequency offset has been corrected to within -10k to +10k</p>
+</div></blockquote>
+<p>If it is not within this range, a prompt tone alerts you</p>
+<blockquote>
+<div><p>14. Channel 1 frequency offset (通道1频偏): the test box itself has a frequency offset, which must be entered here manually. For example, if channel 1 has a frequency offset of +2, enter 2 here; if it is -2, enter -2</p>
+</div></blockquote>
+<blockquote>
+<div><p>15. Channel 2 frequency offset (通道2频偏): the test box itself has a frequency offset, which must be entered here manually. For example, if channel 2 has a frequency offset of +2, enter 2 here; if it is -2, enter -2</p>
+</div></blockquote>
+</section>
+<section id="id4">
+<h2><span class="section-number">3.2.3. </span>Configuring a fixed device name for wireless connection<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Fixed device name connection configuration</p></li>
+</ul>
+</div></blockquote>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_dev_name_connect1.png"/></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Version V1.2.5.b and later add the "Match target device name prefix only" (目标设备名仅匹配前缀) option</p></li>
+</ul>
+</div></blockquote>
+<p>This supports a different device name suffix for each device under test (for example, when the suffix consists of some characters of the MAC address)</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_dev_name_connect2.png"/></p>
+</section>
+<section id="id5">
+<h2><span class="section-number">3.2.4. </span>Test time settings (normally no need to change)<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>A2DP playback time (A2DP播放时间): the duration of the advanced audio test. For example, if it is set to 5s, the box moves on to the next test mode 5s after advanced audio playback starts, ending the advanced audio test (range 0-255s; 0: switch manually)</p></li>
+<li><p>Dialing ringtone time (拨号铃声时间):</p>
+<p>During the call test, this is the simulated phone dialing time; when the set time expires, dialing ends and the call is simulated as connected (range 0-255s; 0: no dialing)</p>
+</li>
+<li><p>Auto-answer time (自动接听时间):</p>
+<p>During the call test, this is the time for which the test box sends call test audio to the Bluetooth device; it then stops sending audio and starts the MIC test (range 0-255s; 0: no audio is sent and the MIC is tested directly)</p>
+</li>
+<li><p>MIC test time (mic测试时间):</p>
+<p>During the call test, this is the MIC test duration; when the time expires, the MIC test ends (range 0-255s; 0: the MIC test does not end automatically and you must switch manually).</p>
+</li>
+</ol>
+</section>
+<section id="id6">
+<h2><span class="section-number">3.2.5. </span>Enabling the Bluetooth connection prompt tone<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
+<p>When this option is 1, prompt tones are enabled: the test box plays the "connected" prompt tone when the Bluetooth connection succeeds and the "disconnected" prompt tone when Bluetooth disconnects. (The loaded default configuration is 1.)</p>
+<p>When this option is 0, no prompt tone is played on connection or disconnection.</p>
+</section>
+<section id="pp">
+<h2><span class="section-number">3.2.6. </span>Enabling test item switching with the PP button<a class="headerlink" href="#pp" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>This option takes effect when the test box is connected to the target device for a classic Bluetooth test. Versions before V122 do not have this option. It is enabled by default.</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>When set to 1, pressing the PP button on the target device switches the test item (for example, from music playback to call, and from call to disconnect).</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>When set to 0, pressing the PP button on the target device during the music playback test only pauses and resumes playback and does not switch to the next test item. To switch to the next test item, press the corresponding button on the test box.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="tws">
+<h2><span class="section-number">3.2.7. </span>Switch for TWS connection support in classic Bluetooth tests<a class="headerlink" href="#tws" title="Permalink to this heading"></a></h2>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image1.png"/></p>
+<p>When this option is 0 and the test box connects to TWS earbuds, the connection between the TWS earbuds is broken by default. This setting is generally used when the MIC/speaker functions of each TWS earbud need to be tested individually.</p>
+<p>When set to "1" and the test box connects to TWS earbuds, the connection between the TWS earbuds is kept by default; this setting lets you test the earphone functions while the TWS earbuds are connected. (Requires support in the corresponding SDK.)</p>
+</section>
+<section id="dut">
+<h2><span class="section-number">3.2.8. </span>Putting earphones into DUT mode in UART mode<a class="headerlink" href="#dut" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>TWS pair DUT mode enable (对耳进入DUT模式使能)</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>When this option is "1", it is mutually exclusive with "TWS pair test enable" (对耳测试使能), "TWS pair upgrade enable" (对耳升级使能) and "TWS pairing enable" (对耳配对使能); these options must be set to 0.</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>When set to 1, the test box periodically sends the enter-DUT command. If the target device firmware supports this command, the device enters DUT test mode when it receives the command, which speeds up searching and connection by the test instrument.</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>When set to 0, this function is disabled.</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>For usage instructions, see the section "<a class="reference internal" href="tb_mass_production.html#target-mass-fast-test"><span class="std std-ref">Quick test method for TWS earphones in mass production</span></a>"</p></li>
+</ol>
+</section>
+<section id="id7">
+<h2><span class="section-number">3.2.9. </span>Using the battery level threshold check for upgrades<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h2>
+<p><strong>Supports an upgrade battery level threshold check</strong></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image2.png"/></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>This option supports the battery level check for UART upgrades and classic Bluetooth upgrades. The default threshold is 0 (i.e. no threshold check).</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>For example, if this option is set to 50% and the target device's battery level is below 50% when the upgrade starts, the error "Err: battery level below setting" (Err:电量低于设定) is reported.</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>You can configure a threshold of 0-70% as needed. 100% is intended for testing the error message.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id8">
+<h2><span class="section-number">3.2.10. </span>Configuring the button action recognition test<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h2>
+<p><strong>Version V124f adds the button action recognition test option</strong></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image3.png"/></p>
+<ol class="arabic simple">
+<li><p>When set to "1", after the test box connects to the device under test over classic Bluetooth, it enters the button action recognition test after the frequency offset test (if enabled) and the in-ear detection test (if enabled);</p></li>
+<li><p>The tester must press or release the button as prompted on the test box screen ("Press" (按下) or "Release" (抬起));</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>When the LCD first shows "Press" (按下), the tester must press the button under test (defined by the software of the device under test) within 8s and hold it for at least 2s. When the press is detected, the LCD shows "√". If the button is released before "Release" (抬起) is shown, the LCD shows "Error" (错误).</p></li>
+<li><p>Within 2s after the LCD shows "Release" (抬起), the tester must release the button. When this is detected, the LCD shows "√"; then make no new press for 2s. Perform the corresponding action again only after the LCD shows "Press" (按下) again.</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>Pass condition: the test passes when the "Press" (按下) and "Release" (抬起) actions have been completed twice as prompted on the LCD, and the box automatically switches to the next test item (such as the music playback test).</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>Timeout definition: if there is no action within 8s after "Press" (按下) is first shown, a timeout error is reported; after the first press is recognized, each subsequent prompted action must be completed within 2s, otherwise a timeout error is also reported;</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>When set to "0", this test item is disabled. The default value is "0".</p></li>
+</ol>
+</section>
+<section id="id9">
+<h2><span class="section-number">3.2.11. </span>Configuring in-ear detection calibration and testing<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h2>
+<p><strong>Version V1.2.4.f adds the in-ear detection calibration and test option</strong></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image4.png"/></p>
+<ol class="arabic simple">
+<li><p>When set to "1", after the test box connects to the device under test over classic Bluetooth, it enters in-ear detection calibration and test mode once the frequency offset test (if enabled) is complete; the tester must perform the actions prompted on the LCD screen;</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>The LCD shows "In-ear detection trim:" (入耳检测trim:). If the calibration success command is received within 8s, "√" is shown; on failure, "Error" (错误) is shown. (Note: during calibration, keep the earphone in an insulated environment and do not touch the touch pad.)</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>The LCD shows "In-ear detection:" (入耳检测:). Within 5s, put the earphone in the ear and then keep still for 2s so that the calibration parameters can be checked. If everything is correct, "√" is shown; if "Error" (错误) is shown, there may have been a problem with the calibration, so calibrate again.</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>The LCD shows "Out-of-ear detection:" (出耳检测:). Within 5s, take the earphone out of the ear and keep it out for 2s for detection, so that the calibration parameters can be checked. If everything is correct, "√" is shown; if "Error" (错误) is shown, there may have been a problem with the calibration, so calibrate again.</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>Timeout definition: if calibration is not completed within 8s after "In-ear detection trim:" (入耳检测trim:) is first shown, a timeout error is reported; if there is no corresponding action within 5s after "In-ear detection:" (入耳检测:) or "Out-of-ear detection:" (出耳检测:) is shown, a timeout error is reported;</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>When set to "0", this test item is disabled. The default value is "0".</p></li>
+</ol>
+</section>
+<section id="id10">
+<h2><span class="section-number">3.2.12. </span>Configuring TWS pairing and testing<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h2>
+<ul>
+<li><p>Version V130 adds a TWS pairing and test flow: after the earbud pair has been paired, the earbuds are automatically put into test mode.</p></li>
+<li><p>To enable this function, turn on "Classic Bluetooth test supports TWS connection" (经典蓝牙测试支持TWS连接), "TWS pairing enable" (对耳配对使能) and "Test enable" (测试使能) together in the PC tool.</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image12.png"/></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image13.png"/></p>
+</li>
+</ul>
+</section>
+<section id="trim">
+<h2><span class="section-number">3.2.13. </span>Configuring and using the out-of-case in-ear trim function for earphones<a class="headerlink" href="#trim" title="Permalink to this heading"></a></h2>
+<p><strong>Version V1.2.6 adds the out-of-case in-ear trim function</strong></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image10.png"/></p>
+<p>Set to 1 to enable this function; in-ear trim is then performed. This requires support in the corresponding SDK.</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image11.png"/></p>
+<p>Set to 1 to enable this function; after pairing is complete, the earphones power off automatically when taken out of the charging case. This also requires support in the corresponding SDK.</p>
+</section>
+<section id="id11">
+<h2><span class="section-number">3.2.14. </span>Language option<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h2>
+<p><strong>Version V124f adds the language option</strong></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_usage_image5.png"/></p>
+<p>When the tool is opened, this feature automatically detects the system language setting (Regional format) and displays the PC tool's interface in that language.</p>
+<p>You can also select "Chinese" (中文) or "English" from the "Language" (语言) menu in the interface. If you then click "update config" (保存配置到测试盒) in the PC interface, the test box LCD also switches to the corresponding display language.</p>
+</section>
+<section id="id12">
+<h2><span class="section-number">3.2.15. </span>Configuring the calibration signal transmission mode<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h2>
+<p><strong>Version V1.2.5 adds the option for setting the calibration signal frequency point</strong></p>
+<p>This function requires the test box to be used together with the 1-to-8 programmer. For details, see the section "<a class="reference internal" href="tb_mass_production.html#target-bt-trim-mode"><span class="std std-ref">Batch frequency offset calibration during programming</span></a>"</p>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="tb_base_introduction.html" class="btn btn-neutral float-left" title="3.1. Test Box Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="tb_upgrade.html" class="btn btn-neutral float-right" title="3.3. Test Box Firmware Upgrade" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_pc_usage.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_pc_usage.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

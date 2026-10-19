@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.1. Programmer Overview — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>1. Jieli 1-to-2 Programmer User Manual</a><ul>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.1. Programmer Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1.1.1. Functional description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">1.1.2. Programmer package contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#target-1tuo2-hosts-info"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.1.3. Introduction to the programmer main unit</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">1.1.3.1. Differences between programmer versions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#v3-1">1.1.3.2. V3.1 hardware version programmer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#v5-0">1.1.3.3. V5.0 hardware version programmer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">1.1.3.4. Back of the programmer</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id7"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.1.4. Introduction to the main control board</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">1.1.4.1. Differences between main control board versions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">1.1.4.2. Main control board photos</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#target-1tuo2-board-install">1.1.5. Top board introduction and installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#target-introduction-and-installation-pinboard">1.1.6. Adapter board introduction and installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">1.1.7. Programmer usage workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">1.1.8. Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html">1.2. Manual Programming, Verification and Blank Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html">1.3. Automated Programming with a Handler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote_update.html">1.4. Remote Upgrade of the Programmer Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html">1.5. PC-Side Programming Options for Each Chip Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html">1.6. Status Indicators and Error Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html">1.7. Authorized Programming Count Limit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html">1.8. Programming Third-Party Data (Authentication Codes)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html">1.9. Bluetooth Address and Name Auto-Increment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_burn.html">1.10. Chip Programming Wiring and Power Supply</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html">1.11. Other Common Features: Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faqs.html">1.12. Troubleshooting Common Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">1. </span>Jieli 1-to-2 Programmer User Manual</a> »</li>
+<li><span class="section-number">1.1. </span>Programmer Overview</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/burner_1tuo2/intro_basic.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">1.1. </span>Programmer Overview<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">1.1.1. </span>Functional description<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>The Jieli Technology 1-to-2 programmer (also commonly called a writer or programming device) is mainly used for offline programming (no PC connection is needed during programming) of firmware into the various Jieli chip series. It is suitable for scenarios in which bare chips are programmed first and then surface-mounted onto boards.</p>
+<p>It can program 2 target chips at the same time. It supports manual programming of target chips during development, and automatic programming of target chips together with an automatic programming handler in mass production.</p>
+<p>Manual programming of bare chips requires a top board, and automatic programming of bare chips requires an adapter board. The 1-to-2 programmer mainly provides the following functions:</p>
+<ul class="simple">
+<li><p>Firmware programming</p></li>
+<li><p>Firmware verification</p></li>
+<li><p>Chip blank check</p></li>
+<li><p>Authorized programming count limit</p></li>
+<li><p>Bluetooth address auto-increment</p></li>
+<li><p>Programming of third-party data such as authentication codes</p></li>
+<li><p>Programming of custom resource files</p></li>
+<li><p>Chip performance test</p></li>
+<li><p>Customization of special functions</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>For detailed instructions on the programmer's functions and the configuration related to each function, see the corresponding sections!</p>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">1.1.2. </span>Programmer package contents<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>No.</strong></p></th>
+<th class="head"><p><strong>Module type</strong></p></th>
+<th class="head"><p><strong>Components</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Programmer main unit</p></td>
+<td><p>Main control board</p></td>
+<td><p>Controls the operation of the programmer</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>9V power input</p></td>
+<td><p>Main power supply port</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>Power indicator light</p></td>
+<td><p>Lights up when powered on</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>Latching power switch</p></td>
+<td><p>Turns the main power on and off</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>DIP switch</p></td>
+<td><p>Sets the working mode</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>Standalone button (mode selection)</p></td>
+<td><p>Forces an update of the programmer firmware<br/> or sets the working mode</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>USB port</p></td>
+<td><p>For upgrading the programmer firmware<br/> and updating the target chip firmware</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>Debug serial port</p></td>
+<td><p>Helps engineers debug when the programmer has problems</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>Channel 1 programming socket connector</p></td>
+<td><p>Connects to a top board or an adapter board</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>Channel 2 programming socket connector</p></td>
+<td><p>Connects to a top board or an adapter board</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>Channel 1 Start button</p></td>
+<td><p>Press the Start button to program manually</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>Channel 2 Start button</p></td>
+<td><p>Press the Start button to program manually</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>Channel 1 Start button indicator light</p></td>
+<td><p>Indicates the programming status</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>Channel 2 Start button indicator light</p></td>
+<td><p>Indicates the programming status</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>Working mode status indicator light</p></td>
+<td><p>Indicates the programming, verification, blank check and mute modes</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>OLED display</p></td>
+<td><p>Displays programming status information</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>Buzzer</p></td>
+<td><p>Audible programming status alerts</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Top board</p></td>
+<td><p></p></td>
+<td><p>The socket board that holds the chip during manual programming: a minimum chip system board used with the programmer<br/> for manual programming</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Adapter board</p></td>
+<td><p></p></td>
+<td><p>Standardizes the interface; for automatic programming it connects the adapter socket board<br/> and the automatic programming signal lines</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Adapter socket board</p></td>
+<td><p></p></td>
+<td><p>The socket board that holds the chip during automatic programming: a minimum chip system board used with the programmer<br/> for programming on a handler</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>USB data cable</p></td>
+<td><p></p></td>
+<td><p>Connects the programmer to the PC,<br/> for upgrading the programmer firmware or updating the target chip firmware</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>Power adapter</p></td>
+<td><p></p></td>
+<td><p>Use a power supply rated 9.0V, 2.0A or above</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="target-1tuo2-hosts-info">
+<span id="id4"></span><h2><span class="section-number">1.1.3. </span>Introduction to the programmer main unit<a class="headerlink" href="#target-1tuo2-hosts-info" title="Permalink to this heading"></a></h2>
+<section id="id5">
+<h3><span class="section-number">1.1.3.1. </span>Differences between programmer versions<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<p>This document describes the commonly used V3.1 and V5.0 hardware versions of the programmer. These two hardware versions have the same functions and differ mainly in how the working mode is set. The differences are as follows:</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Hardware version</strong></p></th>
+<th class="head"><p><strong>Differences</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>V3.1</p></td>
+<td><p>The programming, verification and blank check working modes are set with the DIP switch</p></td>
+</tr>
+<tr class="row-odd"><td><p>V5.0</p></td>
+<td><p>The programming, verification and blank check working modes are set with a standalone button; there is no DIP switch</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="v3-1">
+<h3><span class="section-number">1.1.3.2. </span>V3.1 hardware version programmer<a class="headerlink" href="#v3-1" title="Permalink to this heading"></a></h3>
+<p>The V3.1 hardware version programmer is shown in <a class="reference internal" href="#v31-hardware-1tuo2"><span class="std std-ref">Front of the V3.0 main unit</span></a>.</p>
+<figure class="align-default" id="v31-hardware-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image3.png"/>
+<figcaption>
+<p><span class="caption-text">Front of the V3.0 main unit</span><a class="headerlink" href="#v31-hardware-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="v5-0">
+<h3><span class="section-number">1.1.3.3. </span>V5.0 hardware version programmer<a class="headerlink" href="#v5-0" title="Permalink to this heading"></a></h3>
+<p>The V5.0 hardware version programmer is shown in <a class="reference internal" href="#v50-hardware-1tuo2"><span class="std std-ref">Front of the V5.0 main unit</span></a>.</p>
+<figure class="align-default" id="v50-hardware-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image4.png"/>
+<figcaption>
+<p><span class="caption-text">Front of the V5.0 main unit</span><a class="headerlink" href="#v50-hardware-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id6">
+<h3><span class="section-number">1.1.3.4. </span>Back of the programmer<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<p>The back of the programmer main unit is shown in <a class="reference internal" href="#hardware-back-1tuo2"><span class="std std-ref">Back of the main unit</span></a>.</p>
+<figure class="align-default" id="hardware-back-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image5.png"/>
+<figcaption>
+<p><span class="caption-text">Back of the main unit</span><a class="headerlink" href="#hardware-back-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="id7">
+<h2><span class="section-number">1.1.4. </span>Introduction to the main control board<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h2>
+<section id="id8">
+<h3><span class="section-number">1.1.4.1. </span>Differences between main control board versions<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+<p>Two hardware versions of the main control board are currently available: the V3.0 main control board and the V5.0 main control board. The differences between them are as follows:</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Hardware version</strong></p></th>
+<th class="head"><p><strong>Differences</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>V3.0</p></td>
+<td><p>Without the authorized programming count limit function</p></td>
+</tr>
+<tr class="row-odd"><td><p>V5.0</p></td>
+<td><p>With the authorized programming count limit function</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="id9">
+<h3><span class="section-number">1.1.4.2. </span>Main control board photos<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+<p>The main control boards of the different versions are shown in <a class="reference internal" href="#diff-ver-hardware"><span class="std std-ref">Main control boards of different versions</span></a></p>
+<figure class="align-default" id="diff-ver-hardware">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image6.png"/>
+<figcaption>
+<p><span class="caption-text">Main control boards of different versions</span><a class="headerlink" href="#diff-ver-hardware" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="target-1tuo2-board-install">
+<span id="id10"></span><h2><span class="section-number">1.1.5. </span>Top board introduction and installation<a class="headerlink" href="#target-1tuo2-board-install" title="Permalink to this heading"></a></h2>
+<p>Manual programming requires a top board that matches the chip package and model. The top board holds the chip to be programmed and communicates with the programmer to program the chip.</p>
+<p>You can also program semi-finished PCBAs without a soldered battery, devices, development boards, sockets and minimum chip systems directly by wiring them up. For the programming wiring, see "<a class="reference internal" href="pcba_burn.html"><span class="doc std std-doc">Chip Programming Wiring and Power Supply</span></a>".</p>
+<ol class="arabic simple">
+<li><p>A top board installed on the programmer is shown in <a class="reference internal" href="#img-install-upper-board"><span class="std std-ref">Top board installation</span></a>. Simply insert the top board, facing the same direction as the front of the programmer, into the <code class="docutils literal notranslate"><span class="pre">channel</span> <span class="pre">1</span> <span class="pre">programming</span> <span class="pre">socket</span> <span class="pre">connector</span></code> or the <code class="docutils literal notranslate"><span class="pre">channel</span> <span class="pre">2</span> <span class="pre">programming</span> <span class="pre">socket</span> <span class="pre">connector</span></code>.</p></li>
+</ol>
+<figure class="align-default" id="img-install-upper-board">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image7.png"/>
+<figcaption>
+<p><span class="caption-text">Top board installation</span><a class="headerlink" href="#img-install-upper-board" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic" start="2">
+<li><p>Installation notes</p>
+<p>The connector between the programmer and the top board has two rows (upper and lower): the upper row is 20P and the lower row is 22P,<br/> whereas on the programmer's top plate the upper row is 20P and the lower row is also 20P.<br/> When installing the top board, <strong>align the lower row to the right, so on some top boards the leftmost column of pins in the lower row is left unused</strong>.</p>
+</li>
+</ol>
+</section>
+<section id="target-introduction-and-installation-pinboard">
+<span id="id11"></span><h2><span class="section-number">1.1.6. </span>Adapter board introduction and installation<a class="headerlink" href="#target-introduction-and-installation-pinboard" title="Permalink to this heading"></a></h2>
+<p>Automated programming with a handler requires an adapter board to connect the automatic programming control signal lines. The adapter board is also connected to a dedicated socket that matches the package and model of the chip programmed by the handler.</p>
+<ol class="arabic simple">
+<li><p>An adapter board connected to a socket and installed on the programmer is shown in <a class="reference internal" href="#img-install-convert-board"><span class="std std-ref">Adapter board installation</span></a></p></li>
+</ol>
+<p>Installing the adapter board:</p>
+<ul class="simple">
+<li><p>Simply insert it, facing the same direction as the front of the programmer, into the channel 1 or channel 2 programming socket connector;</p></li>
+</ul>
+<p>Installing the socket in which the robotic arm places the chips:</p>
+<ul class="simple">
+<li><p>First, fasten the socket to the automated handler with screws;</p></li>
+<li><p>Use the corresponding ribbon cable to connect the <code class="docutils literal notranslate"><span class="pre">socket</span> <span class="pre">connector</span></code> to the <code class="docutils literal notranslate"><span class="pre">socket</span> <span class="pre">connection</span> <span class="pre">port</span></code> on the adapter board;</p></li>
+<li><p>Use the corresponding ribbon cable to connect the <code class="docutils literal notranslate"><span class="pre">handler's</span> <span class="pre">automatic</span> <span class="pre">programming</span> <span class="pre">IO</span> <span class="pre">control</span> <span class="pre">signal</span> <span class="pre">lines</span></code> to the <code class="docutils literal notranslate"><span class="pre">automatic</span> <span class="pre">programming</span> <span class="pre">IO</span> <span class="pre">control</span> <span class="pre">signal</span> <span class="pre">line</span></code> connector on the adapter board;</p></li>
+</ul>
+<figure class="align-default" id="img-install-convert-board">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image8.png"/>
+<figcaption>
+<p><span class="caption-text">Adapter board installation</span><a class="headerlink" href="#img-install-convert-board" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ol class="arabic simple">
+<li><p>The "Automatic programming IO control signal lines" (自动烧录IO控制信号线) connector has the <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">signal</span> <span class="pre">line</span></code>, <code class="docutils literal notranslate"><span class="pre">Busy</span> <span class="pre">signal</span> <span class="pre">line</span></code>, <code class="docutils literal notranslate"><span class="pre">Ok</span> <span class="pre">signal</span> <span class="pre">line</span></code>, <code class="docutils literal notranslate"><span class="pre">V3.3V</span></code> and <code class="docutils literal notranslate"><span class="pre">GND</span></code> signal pins</p></li>
+<li><p>For the principle of automatic programming control, see "<a class="reference internal" href="autoburn.html"><span class="doc std std-doc">Automated Programming with a Handler</span></a>"</p></li>
+</ol>
+</div>
+<ol class="arabic" start="2">
+<li><p>Installation notes</p>
+<p>Same as the top board installation</p>
+</li>
+</ol>
+</section>
+<section id="id12">
+<h2><span class="section-number">1.1.7. </span>Programmer usage workflow<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Programmer workflow</p>
+<p>The general workflow for using the programmer is shown in <a class="reference internal" href="#img-use-process"><span class="std std-ref">Programmer workflow diagram</span></a>.</p>
+<figure class="align-default" id="img-use-process">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image9.png"/>
+<figcaption>
+<p><span class="caption-text">Programmer workflow diagram</span><a class="headerlink" href="#img-use-process" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Workflow description</p>
+<p>The following table describes the workflow.</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Workflow</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Power on the programmer</p></td>
+<td><p>The programmer firmware is already programmed before shipment,<br/> so you can power on the programmer as soon as you receive it</p></td>
+</tr>
+<tr class="row-odd"><td><p>Check or update the programmer firmware</p></td>
+<td><p>The programmer firmware is the firmware of the main control chip that controls the operation of the whole programmer.<br/> Before programming target chip firmware, be sure to check whether the current programmer firmware is the latest version.<br/> If it is not, update the programmer firmware to the latest version through remote upgrade<br/> (except in special cases); otherwise some programming problems may occur.</p></td>
+</tr>
+<tr class="row-even"><td><p>Check or update the target chip firmware</p></td>
+<td><p>The target chip firmware is the fw file, ufw file or key file generated by building the SDK project.<br/> The file must be updated to and stored in the programmer<br/> so that the corresponding data can be programmed into the target chip, or used for verification and blank check.<br/> When updating the target chip firmware, you also need to configure the programming configuration items<br/> to enable functions such as resource programming and chip performance testing</p></td>
+</tr>
+<tr class="row-odd"><td><p>Check or set the programmer working mode</p></td>
+<td><p>The working modes are programming, verification, blank check, etc.<br/> Be sure to check the current working mode of the programmer to avoid programming problems</p></td>
+</tr>
+<tr class="row-even"><td><p>Program the chip firmware manually or automatically</p></td>
+<td><p>Manual programming means programming chips by hand using a top board;<br/> automatic programming means programming automatically through an adapter board under the control of an automatic programming handler</p></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+</ol>
+</section>
+<section id="id13">
+<h2><span class="section-number">1.1.8. </span>Glossary<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><p><strong>Programmer</strong>: also called a writer or programming device. A tool used to write data into programmable integrated circuits (such as microcontrollers, flash memory, OTP, etc.). In Jieli documents, tool interfaces, displays and so on, the terms <code class="docutils literal notranslate"><span class="pre">burn</span></code> (烧录) and <code class="docutils literal notranslate"><span class="pre">write</span></code> (烧写) mean the same thing (programming).</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Top board</strong>: the socket board that holds the chip during manual programming, that is, the minimum chip system board used with the programmer for manual programming. It converts the vpp 6.5v voltage output by the programmer into the voltages needed to program the chip, such as 4.2v, and brings out the programming lines that connect to the programmer. To program development boards or devices with already-mounted chips directly, see the "Chip Programming Wiring and Power Supply" section.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Adapter board</strong>: mainly converts the programmer's pin header signal lines into a general-purpose interface, used to connect the adapter socket board and the automatic programming signal lines during automatic programming.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Adapter socket board</strong>: the socket board in which the robotic arm conveniently places the chips during automatic programming, that is, the minimum chip system board used with the programmer for programming on a handler. Like the top board, it can also be used for manual programming.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Bare chip</strong>: generally, a chip that has not yet been mounted on a device.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Blank chip</strong>: a chip that has not been programmed since leaving the factory; usually this means that the chip's flash, hardware storage media, etc. contain no data.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Programmer firmware</strong>: the firmware that controls the operation of the whole programmer.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Target chip firmware</strong>: executable files such as fw and ufw files generated by building the SDK (software development kit). They can be programmed into the chip with the programmer, where they run and control the operation of the whole product.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Offline programming</strong>: programming without a PC. With the 1-to-2 programmer, the target chip firmware is first deployed from a PC to the programmer's memory and stored there, and the chips are then programmed offline.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>fw file</strong>: an executable program for the target chip, commonly used to program blank chips.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>ufw file</strong>: an executable program for the target chip, mainly used to update or upgrade the program of a device chip that can already run, for example via a test box, an SD card or a USB flash drive. Upgrading with the programmer is also supported.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>key file</strong>: a key file. Once the key file is configured in download.bat in the download directory, the data of the generated fw/ufw files is encrypted. When the fw/ufw file data is programmed, the key file data is programmed into the chip's hardware storage medium, and when the chip runs, the hardware decrypts the program data so that the program can run. Each customer's programmer key file is unique: every customer has their own key file, and programming is possible only if the key file of the fw file matches the key file of the programmer. Only mass-production programmers support programming key files. You can also program the key file on its own first, and then program an fw file with the key file using other programming tools.</p>
+</div></blockquote>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="index.html" class="btn btn-neutral float-left" title="1. Jieli 1-to-2 Programmer User Manual" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="basic_usage.html" class="btn btn-neutral float-right" title="1.2. Manual Programming, Verification and Blank Check" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/intro_basic.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/intro_basic.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

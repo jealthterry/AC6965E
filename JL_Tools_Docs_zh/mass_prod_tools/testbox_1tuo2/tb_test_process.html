@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3.6. 蓝牙设备测试流程使用说明 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>3. 杰理科技一拖二蓝牙测试盒用户手册</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_base_introduction.html">3.1. 测试盒简要介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html">3.2. 上位机功能配置和使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_upgrade.html">3.3. 测试盒固件升级</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wireless_upgrade.html">3.4. 蓝牙设备无线升级流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wired_upgrade.html">3.5. 蓝牙设备有线升级流程</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>3.6. 蓝牙设备测试流程使用说明</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.6.1. 经典蓝牙设备测试流程说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3.6.2. 快速测试流程说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ble">3.6.3. BLE测试流程说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">3.6.4. 对耳有线测试说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">3.6.5. 内置触摸灵敏度测试说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">3.6.6. 无线麦测试模式使用说明</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mass_production.html">3.7. 测试盒批量升级、测试用例介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ear_storage.html">3.8. 耳机仓储模式使用方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_transparent.html">3.9. PC透传命令、自定义命令使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mes_log.html">3.10. 测试盒MES LOG输出功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_view_bt_info.html">3.11. 蓝牙设备信息（sdk 版本/电量/校验码）查看方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ufw_crc_compare.html">3.12. 测试盒ufw文件校验码匹配</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_error_status.html">3.13. 状态指示和报错提示说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_fixture_install.html">3.14. 测试盒串口连接治具介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_function.html">3.15. 其它常见功能配置和使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_problem.html">3.16. 常见问题（FAQ）处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_version_info.html">3.17. 版本信息</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">3. </span>杰理科技一拖二蓝牙测试盒用户手册</a> »</li>
+<li><span class="section-number">3.6. </span>蓝牙设备测试流程使用说明</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/mass_prod_tools/testbox_1tuo2/tb_test_process.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">3.6. </span>蓝牙设备测试流程使用说明<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">3.6.1. </span>经典蓝牙设备测试流程说明<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>1、根据实际需求使能各类测试功能，设置好拨码开关功能，是否要测试通话、频偏</p>
+<p>2、测试盒可以同时连接两个样机进行测试，建议待测试样机可以同时开启4以上个样机等待连接</p>
+<p>3、连接上样机后1显示测试状态（音频图片表示测试播歌，电话图片表示测试通话），2显示样机名字，3显示样机频偏，4显示上下曲暂停音量加减按键</p>
+<p>4、播歌测试完毕后，可以按样机暂停按键，然后进入通话测试，对样机麦说话进行通话测试，测试完毕按挂电话按键即可断开搜索下一个样机</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image6.png"/></p>
+</section>
+<section id="id3">
+<h2><span class="section-number">3.6.2. </span>快速测试流程说明<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>1.拨码开关打开快速测试功能</p>
+<p>2.同时开启4以上个样机等待连接</p>
+<p>3.测试盒连接上样机后发命令给样机进入快速测试模式，客户在该模式要进入灯闪烁
+提示</p>
+<p>4.样机开启麦扩音功能，对面麦喊话，样机喇叭出声音</p>
+<p>5.按样机按键发出按键音</p>
+<p>6.测试完毕，关闭样机</p>
+</section>
+<section id="ble">
+<h2><span class="section-number">3.6.3. </span>BLE测试流程说明<a class="headerlink" href="#ble" title="Permalink to this heading"></a></h2>
+<p>1.拨码开关打开BLE测试功能，选择要测试主机还是从机（具体拨码开关选择
+参考《 <a class="reference internal" href="tb_base_introduction.html#target-dip-switch-description"><span class="std std-ref">拨码开关功能说明</span></a> 》章节）</p>
+<p>2.如果需要进行频偏自动校正就打开频偏校正拨码开关</p>
+<p>3.测试盒连上样机后发命令给样机进入BLE测试模式，连上之后默认进行频偏测试</p>
+<p>4.频偏测试完成后，测试盒显示蓝牙名称（主机测试仅显示主机MAC地址）及频偏值（如果开启频偏自动校正功能，则频偏校准后会显示校准后的频偏）</p>
+<p>5.按样机的按键测试盒会显示按键号</p>
+<p>6.测试完毕后按测试盒对应通道的测试按键，断开样机连接，等待连接下一台样机</p>
+</section>
+<section id="id4">
+<h2><span class="section-number">3.6.4. </span>对耳有线测试说明<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<ul>
+<li><p><strong>使用条件</strong></p>
+<p>1.测试盒硬件版本为v2.2以上，且固件版本为v2.1.6以上,可以支持对耳测试接口。</p>
+<p>2.对耳LDO引脚支持串口通讯（串口IO合绑）且LDOIN电容需小于103的样机，可以通过测试盒串口转接板与TWS样机连接。</p>
+</li>
+<li><p><strong>功能支持</strong></p>
+<ol class="arabic simple">
+<li><p>支持对耳在线快速配对</p></li>
+<li><p>支持对耳快速连接及测试</p></li>
+</ol>
+</li>
+<li><p><strong>使用说明</strong></p>
+<ol class="arabic">
+<li><p>通过pc界面打开对耳配对或对耳测试开关，点击“保存到测试盒”，然后重启测试盒，测试盒进入“对耳搜索”界面。</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image31.png"/></p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image32.png"/></p>
+</li>
+<li><p>如果仅打开“对耳配对使能”开关，则TWS配对成功后不进行连接测试，界面如下所示。</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image33.png"/></p>
+</li>
+<li><p>当仅打开“对耳测试使能”开关时，不进行TWS配对，只进行连接测试。</p></li>
+<li><p>当同时打开“对耳配对使能”和“对耳测试使能”时，在进行连接测试的过程中同时进行配对。如果配对成功，在连接的过程中会出现“对耳已配对”的显示。</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image34.png"/></p>
+</li>
+</ol>
+</li>
+<li><p><strong>对耳配对判断</strong></p>
+<ol class="arabic simple">
+<li><p>该配置需在“对耳配对使能”为1时有效。</p></li>
+<li><p>当配置为1时，若tws sdk版本支持配返回配对信息时，在成功配对并返回正确配对信息时才可配对成功；返回错误配对信息时，会报错（报错界面如下图，仅开对耳配对显示界面如图a所示；对耳配对与对耳测试使能显示界面如图b所示）。</p></li>
+<li><p>当配置为0时，对耳配对时，不会返回配对信息进行判断。</p></li>
+</ol>
+</li>
+</ul>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image34_1.png"/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果耳机sdk版本还不支持返回配对信息，需将该配置配置0，否则无法进行对耳配对会报错，报错界面如下图，仅开对耳配对显示界面如图c所示；对耳配对与对耳测试使能显示界面如图d所示。</p>
+</div>
+<ul class="simple">
+<li><p><strong>对耳配对蓝牙名匹配使能</strong></p>
+<ol class="arabic simple">
+<li><p>该配置需在“对耳配对使能”为1时有效。</p></li>
+<li><p>当配置为1时，若tws sdk版本支持蓝牙名匹配时，则左右耳机蓝牙名一致才可成功配对；出现左右耳蓝牙名不一致，会报错（报错界面如下图，仅开对耳配对显示界面如图a所示；对耳配对与对耳测试使能显示界面如图b所示）。</p></li>
+<li><p>当配置为0时，对耳配对时，不会左右耳蓝牙名进行判断。</p></li>
+</ol>
+</li>
+</ul>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image34_2.png"/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果耳机sdk版本还不支持蓝牙名匹配，需将该配置配置0，否则无法进行对耳配对。</p>
+</div>
+<ul class="simple">
+<li><p><strong>对耳离仓蓝牙断开使能</strong></p>
+<ol class="arabic simple">
+<li><p>该配置需在“对耳测试使能”为1时为效。</p></li>
+<li><p>当配置为1时，耳机与测试盒建立蓝牙连接之后，从仓内取出时，测试盒会主动断开蓝牙连接。</p></li>
+<li><p>当配置为0时，耳机与测试盒建立蓝牙连接之后，从仓内取出时，会保持蓝牙连接 。</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="id5">
+<h2><span class="section-number">3.6.5. </span>内置触摸灵敏度测试说明<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>V1.2.6.d添加内置触摸灵敏度测试使能配置项</strong>（<code class="docutils literal notranslate"><span class="pre">该配置需sdk支持</span></code>）</p></li>
+</ol>
+<p><img alt="" data-action="zoom" src="../../_images/tb_test_process_image1.png"/></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>当“内置触摸灵敏度测试使能”配置为0时，该测试项不使能。</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>当“内置触摸灵敏度测试使能”配置为1时，在测试盒建立经典蓝牙连接时，测试盒LCD界面会提醒进行对应操作，进行内置触摸灵敏度测试。</p></li>
+</ul>
+</div></blockquote>
+<p>2.测试使用流程</p>
+<ul class="simple">
+<li><p>测试场景一：将“有线串口模式配置”下的“测试使能”为1，利用串口通信建立经典蓝牙连接。</p></li>
+</ul>
+<p>【1】当建立蓝牙连接后，显示“请出仓”，此时取出放在串口通信仓内耳机。</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_test_process_image2.png"/></p>
+<p>【2】取出耳机后，测试盒LCD提示“请双击”，此时要在5s内进行一次双击操作，当识别到双击动作时，测试会显示测试结果“√”；</p>
+<p>若识别失败则会返回错误或者超时，测试盒显示“超时”或“错误”提示，并伴有“滴”一声提示。测试的结果有对应测试参数显示（第一数值为触摸变化量，第二数值为变化量百分比）</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_test_process_image3.png"/></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_test_process_image4.png"/></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_test_process_image5.png"/></p>
+<ul class="simple">
+<li><p>测试场景二：将“有线串口模式配置”下的“测试使能”为0，通过空中无线搜索建立经典蓝牙连接。蓝牙连接建立后，测试过程如测试场景一中第2步所示。</p></li>
+</ul>
+</section>
+<section id="id6">
+<h2><span class="section-number">3.6.6. </span>无线麦测试模式使用说明<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>V1.2.6.e添加无线麦测试模式使能配置项</strong>（<code class="docutils literal notranslate"><span class="pre">该配置需sdk支持</span></code>）</p></li>
+</ol>
+<p><img alt="" data-action="zoom" src="../../_images/tb_test_process_image6.png"/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>采用adapter系列sdk开发的无线麦方案，由于采用非标准蓝牙连接，无法直接与测试盒建立连接进行频偏测试及无线升级，故增加该配置项;</p>
+<p>根据sdk的应用形态，选择对应的模式，每一种模式都与sdk具体配置相关，需要正确选择与sdk配置一致的模式，才能与测试盒建立无线连接。</p>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>配置项介绍</p></li>
+</ol>
+<p>默认值为“WIRELESS_MIC_MODE_NONE”，即不启动无线麦测试模式。其他配置选项需对应sdk相应配置，具体对应关系如下表所示：</p>
+<div class="wy-table-responsive"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>配置选项</p></th>
+<th class="head"><p>CONFIG_ADATER_APP_SEL</p></th>
+<th class="head"><p>CONFIG_ADAPTER_WIRELESS_ROLE_SEL</p></th>
+<th class="head"><p>WIRELESS_MIC_BT_MODE</p></th>
+<th class="head"><p>config_rf_oob</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>WIRELESS_MIC_1T1_TX_BT_MODE_1_OOB_1</p></td>
+<td><p>CONFIG_ADAPTER_APP_WIRELESS_MIC_1T1</p></td>
+<td><p>tx_1t1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>WIRELESS_MIC_1T1_RX_BT_MODE_1_OOB_1</p></td>
+<td><p>CONFIG_ADAPTER_APP_WIRELESS_MIC_1T1</p></td>
+<td><p>rx_1t1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>WIRELESS_MIC_1T1_TX_BT_MODE_1_OOB_0</p></td>
+<td><p>CONFIG_ADAPTER_APP_WIRELESS_MIC_1T1</p></td>
+<td><p>tx_1t1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>WIRELESS_MIC_1T1_RX_BT_MODE_1_OOB_0</p></td>
+<td><p>CONFIG_ADAPTER_APP_WIRELESS_MIC_1T1</p></td>
+<td><p>rx_1t1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>WIRELESS_MIC_2T1_TX_BT_MODE_0_OOB_0</p></td>
+<td><p>CONFIG_ADAPTER_APP_WIRELESS_MIC_2T1</p></td>
+<td><p>tx_2t1</p></td>
+<td><p>当配置ENABLE时，<br/>需要将WIRELESS_24G_CODE_ID<br/>配置到2.4G接入码配置(十六进制);<br/>为DISABLE时，2.4G接入码配置为0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>WIRELESS_MIC_2T1_RX_BT_MODE_0_OOB_0</p></td>
+<td><p>CONFIG_ADAPTER_APP_WIRELESS_MIC_2T1</p></td>
+<td><p>rx_2t1</p></td>
+<td><p>当配置ENABLE时，<br/>需要将WIRELESS_24G_CODE_ID<br/>配置到2.4G接入码配置(十六进制);<br/>为DISABLE时，2.4G接入码配置为0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>WIRELESS_MIC_DUPLEX_DONGLE</p></td>
+<td><p>CONFIG_ADAPTER_APP_WIRELESS_DUPLEX</p></td>
+<td><p>duplex_dongle</p></td>
+<td><p>当配置ENABLE时，<br/>需要将WIRELESS_24G_CODE_ID<br/>配置到2.4G接入码配置(十六进制);<br/>为DISABLE时，2.4G接入码配置为0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>WIRELESS_MIC_DUPLEX_EARPHONE</p></td>
+<td><p>CONFIG_ADAPTER_APP_WIRELESS_DUPLEX</p></td>
+<td><p>duplex_earphone</p></td>
+<td><p>当配置ENABLE时，<br/>需要将WIRELESS_24G_CODE_ID<br/>配置到2.4G接入码配置(十六进制);<br/>为DISABLE时，2.4G接入码配置为0</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="tb_wired_upgrade.html" class="btn btn-neutral float-left" title="3.5. 蓝牙设备有线升级流程" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="tb_mass_production.html" class="btn btn-neutral float-right" title="3.7. 测试盒批量升级、测试用例介绍" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_test_process.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_test_process.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

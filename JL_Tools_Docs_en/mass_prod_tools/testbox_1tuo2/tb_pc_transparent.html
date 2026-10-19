@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3.9. PC Passthrough Commands and Custom Commands — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>3. Jieli 1-to-2 Bluetooth Test Box User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_base_introduction.html">3.1. Test Box Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html">3.2. PC Tool Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_upgrade.html">3.3. Test Box Firmware Upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wireless_upgrade.html">3.4. Wireless Upgrade of Bluetooth Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wired_upgrade.html">3.5. Wired Upgrade of Bluetooth Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_test_process.html">3.6. Bluetooth Device Test Procedure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mass_production.html">3.7. Test Box Batch Upgrade and Test Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ear_storage.html">3.8. Using Earphone Storage Mode</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>3.9. PC Passthrough Commands and Custom Commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1"><button class="toctree-expand" title="Open/close menu" type="button"></button>3.9.1. Using PC passthrough commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">3.9.1.1. Feature overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">3.9.1.2. Operation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">3.9.2. Using custom UART commands in UART mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">3.9.3. Using custom command send mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mes_log.html">3.10. Test Box MES Log Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_view_bt_info.html">3.11. Viewing Bluetooth Device Information (SDK Version/Battery Level/Checksum)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ufw_crc_compare.html">3.12. Test Box UFW File Checksum Matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_error_status.html">3.13. Status Indicators and Error Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_fixture_install.html">3.14. Connecting the Test Box to a Fixture over UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_function.html">3.15. Other Common Features: Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_problem.html">3.16. Frequently Asked Questions (FAQ)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_version_info.html">3.17. Version Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">3. </span>Jieli 1-to-2 Bluetooth Test Box User Manual</a> »</li>
+<li><span class="section-number">3.9. </span>PC Passthrough Commands and Custom Commands</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/testbox_1tuo2/tb_pc_transparent.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="pc">
+<h1><span class="section-number">3.9. </span>PC Passthrough Commands and Custom Commands<a class="headerlink" href="#pc" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2><span class="section-number">3.9.1. </span>Using PC passthrough commands<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<section id="id2">
+<h3><span class="section-number">3.9.1.1. </span>Feature overview<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<p>This feature makes it easier to connect the test box to an MES system.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Supports reading the Bluetooth address of earphones connected over UART</p></li>
+<li><p>Supports passthrough of custom commands</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id3">
+<h3><span class="section-number">3.9.1.2. </span>Operation<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Test box PC tool settings</p></li>
+</ol>
+<p>[1] Connect the test box to the PC and press and hold the rightmost button on the test box to enter PC configuration mode; the test box shows "LOADING";</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_mass_image1.png"/></p>
+<p>[2] Open the PC tool and, under "Wired UART mode configuration" (有线串口模式配置), set "DUT command mode enable" (DUT命令模式使能) to 1.</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_tran_image1.png"/></p>
+<ol class="arabic simple" start="2">
+<li><p>Test box hardware setup</p></li>
+</ol>
+<p>[1] DIP switch configuration: this mode does not depend on the DIP switch positions.</p>
+<p>[2] Connect the UART port of the test box to the fixture; see "<a class="reference internal" href="tb_fixture_install.html#target-fixture-install"><span class="std std-ref">Connecting the Test Box to a Fixture over UART</span></a>".</p>
+<ol class="arabic simple" start="3">
+<li><p>Procedure</p></li>
+</ol>
+<p>[1] Press and hold the rightmost button on the test box to enter PC mode</p>
+<p>[2] On the PC, open the PC tool from the command line. To get the available parameters, run bluetooth_test_box.exe –console -h.</p>
+<p>[3] When testing is complete, put the earphones into a normal charging case to restore normal mode</p>
+</section>
+</section>
+<section id="id4">
+<h2><span class="section-number">3.9.2. </span>Using custom UART commands in UART mode<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Custom UART command configuration in DUT command mode</p></li>
+</ul>
+</div></blockquote>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_tran_image2.png"/></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>When DUT command mode is enabled and the "UART command configuration" (串口命令配置) is empty, the test box sends the original CMD_BOX_ENTER_DUT(0x04) command. By default, the SDK responds to this command by entering the DUT test state and waiting for a connection.</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>If the UART command configuration contains custom content (up to 31 bytes of hexadecimal values), the test box sends a command starting with CMD_BOX_CUSTOM_CODE(0xF0); for example, if you enter 00, the test box sends the command F0 00, which the SDK by default handles by entering quick self-test mode. You can change the content of the command configuration and add a response to the command in the SDK to implement specific functions.</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>DUT command mode is mutually exclusive with upgrade, pairing and testing in UART mode; they cannot be used at the same time.</p>
+</div>
+</section>
+<section id="id5">
+<h2><span class="section-number">3.9.3. </span>Using custom command send mode<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>V1.2.6.f added the custom command send mode configuration option (<code class="docutils literal notranslate"><span class="pre">this</span> <span class="pre">option</span> <span class="pre">requires</span> <span class="pre">SDK</span> <span class="pre">support</span></code>)</p></li>
+</ol>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_tran_image3.png"/></p>
+<p>In BLE slave test mode (DIP switch 1 OFF, DIP switch 6 ON), this mode sends a sequence of custom commands to the device under test at a specified interval, so that the device under test can be switched between different working states for automated testing.</p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_tran_image4.png"/></p>
+<p><img alt="" data-action="zoom" src="../../_images/tb_pc_tran_image5.png"/></p>
+<p>2. Usage</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>When "Custom command send mode" (自定义命令发送模式) is set to 1, custom command content can be configured in the "Custom command configuration" (自定义命令配置) area.</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>When "Custom command send mode" (自定义命令发送模式) is set to 0, the "Custom command configuration" (自定义命令配置) area cannot be edited.</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>In the "Custom command configuration" (自定义命令配置) area, the interval can be set from 1 to 255, in units of 100ms; for example, a setting of 10 sends one command every second.</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>In the "Custom command configuration" (自定义命令配置) area, if "Auto loop send" (自动循环发送) is checked ("√"), all enabled commands are sent repeatedly in a loop; if it is not checked, they are sent only once.</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>In the "Custom command configuration" (自定义命令配置) area, command data can be entered in hexadecimal or character form, selected with the "HEX" checkbox after each command. The enable box in front of the command data must be checked ("√") for the command to be used when sending; if it is not checked, the command is only stored in the test box and is not sent.</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>After configuring the settings above, click "Save settings to test box" (保存设置到测试盒). After the settings are saved successfully, reset the test box for this configuration to take effect.</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>Once a BLE connection with the device under test is established, press the control button of the corresponding channel on the test box (the left button for CH1, the middle button for CH2) to enter or exit "Custom command send mode" (自定义命令发送模式). In custom command send mode, the test box displays "TX CMD MODE"; when you exit, it displays the original frequency offset or address information again.</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="tb_ear_storage.html" class="btn btn-neutral float-left" title="3.8. Using Earphone Storage Mode" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="tb_mes_log.html" class="btn btn-neutral float-right" title="3.10. Test Box MES Log Output" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_pc_transparent.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_pc_transparent.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

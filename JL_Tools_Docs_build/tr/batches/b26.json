@@ -1,0 +1,1012 @@
+{
+ "batch": "b26",
+ "pages": [
+  {
+   "page": "mass_prod_tools/multi_auth/authrun-tmpl-list.html",
+   "page_title": "4.5. 支持的芯片型号和授权执行文件工程模板",
+   "units": [
+    {
+     "id": "u62a83ee768",
+     "role": "p",
+     "zh": "点击 Code::Blocks 中的重新编译，生成得到 ⟦1⟧.authrun⟦/1⟧ 文件"
+    },
+    {
+     "id": "u65e7e0f567",
+     "role": "p",
+     "zh": "在 ⟦1⟧output⟦/1⟧ 目录下，找到对应的 ⟦2⟧.authrun⟦/2⟧ 文件"
+    },
+    {
+     "id": "u39d12977e6",
+     "role": "p",
+     "zh": "上传 ⟦1⟧.authrun⟦/1⟧ 文件到杰理服务器，用以后续售出"
+    },
+    {
+     "id": "u2d988b1acf",
+     "role": "p",
+     "zh": "注意："
+    },
+    {
+     "id": "u3fcd37aa22",
+     "role": "p",
+     "zh": "一般情况下，不要直接将 ⟦1⟧.authrun⟦/1⟧ 文件直接发给客户"
+    }
+   ]
+  },
+  {
+   "page": "mass_prod_tools/multi_auth/add_authrun_to_fw.html",
+   "page_title": "4.6. 如何生成只有包含授权执行文件的FW",
+   "units": [
+    {
+     "id": "u1081f3d503",
+     "role": "p",
+     "zh": "当前文档，只是适用于特殊的情况。请不要直接把 ⟦1⟧.authrun⟦/1⟧ 文件直接发给客户。这样会导致该文件泄露。"
+    },
+    {
+     "id": "u4d715cbdca",
+     "role": "p",
+     "zh": "一般情况下，请参考 ⟦1⟧算法提供商需要做的事情⟦/1⟧ 中的流程。"
+    },
+    {
+     "id": "uf26d6072aa",
+     "role": "p",
+     "zh": "如果是算法商需要自行烧录，为了省略授权过程，可以使用当前页面的步骤。"
+    },
+    {
+     "id": "uc81c95d49d",
+     "role": "p",
+     "zh": "请不要将 ⟦1⟧.authrun⟦/1⟧ 文件直接发给客户"
+    },
+    {
+     "id": "u2b58adf2ef",
+     "role": "p",
+     "zh": "本文以AC696X耳机SDK v0.3.1为例说明如何生成只有包含授权执行文件的FW。"
+    },
+    {
+     "id": "u051815acd3",
+     "role": "p",
+     "zh": "这种方式生成的 FW 文件，可以给算法商自己先行烧录授权数据（而不需要烧录程序），适合于算法商先行授权再出货芯片的情况。"
+    },
+    {
+     "id": "u6f39567b8a",
+     "role": "p",
+     "zh": "其他AC696X SDK和AC695X的SDK要生成只有包含授权执行文件的FW，可以参照以下步骤操作。"
+    },
+    {
+     "id": "u64edc6aeb7",
+     "role": "h2",
+     "zh": "拷贝烧录时授权执行文件⟦1⟧.authrun⟦/1⟧到FW生成目录"
+    },
+    {
+     "id": "ub263f0d0f8",
+     "role": "p",
+     "zh": "生成好烧录时授权执行文件⟦1⟧.authrun⟦/1⟧后，将⟦2⟧.authrun⟦/2⟧文件拷贝到SDK生成FW文件的目录，。如下图：⟦3/⟧ ⟦4/⟧"
+    },
+    {
+     "id": "u6d3cc238c9",
+     "role": "h2",
+     "zh": "生成新的ini文件"
+    },
+    {
+     "id": "u0d67797205",
+     "role": "p",
+     "zh": "将FW文件生成目录下isd_config.ini拷贝一份，并命名为isd_config_authrun.ini。如下图：⟦1/⟧ ⟦2/⟧"
+    },
+    {
+     "id": "uc5c7255292",
+     "role": "p",
+     "zh": "将⟦1⟧.authrun⟦/1⟧添加到FW_ADDITIONAL/FILE_LIST中;同时添加[BURNER_PASSTHROUGH_CFG]DOWNLOAD_ONLY_AUTHRUN=YES;如下图：⟦2/⟧ ⟦3/⟧"
+    },
+    {
+     "id": "uef21ef9c89",
+     "role": "p",
+     "zh": "请不要将 ⟦1⟧.authrun⟦/1⟧ 文件直接发给客户⟦2/⟧ 客户的下载目录isd_config.ini文件也务必要添加如下段(用于识别该fw要支持多算法以便烧录器烧录flash配置信息到芯片)："
+    },
+    {
+     "id": "u19015a0ae0",
+     "role": "h2",
+     "zh": "生成新的bat脚本"
+    },
+    {
+     "id": "ue739080cb9",
+     "role": "p",
+     "zh": "将FW文件生成目录下idownload.bat拷贝一份，并命名为download_authrun.bat。如下图：⟦1/⟧ ⟦2/⟧"
+    },
+    {
+     "id": "u8cb35cd235",
+     "role": "p",
+     "zh": "将download_authrun.bat中除isd_download.exe之外的命令全部删除。⟦1/⟧ 将isd_download.exe后的-uboot,-app,-res参数全删除。⟦2/⟧ 然后将isd_config_authrun.ini加到isd_download.exe后。⟦3/⟧ 如下图：⟦4/⟧ ⟦5/⟧"
+    },
+    {
+     "id": "u5ccc5bc20f",
+     "role": "h2",
+     "zh": "更新FW文件生成目录下工具"
+    },
+    {
+     "id": "ud6f8583639",
+     "role": "p",
+     "zh": "运行FW文件生成目录下的⟦1⟧下载目录工具更新.jlxproj⟦/1⟧，更新工具。需要保证isd_download.exe的版本号为⟦2⟧4.2.39⟦/2⟧或者更高。如下图：⟦3/⟧ ⟦4/⟧"
+    },
+    {
+     "id": "u6a247f1f6d",
+     "role": "p",
+     "zh": "如何更新工具，详见：⟦1⟧如何更新工具⟦/1⟧"
+    },
+    {
+     "id": "u42802c7afb",
+     "role": "h2",
+     "zh": "生成FW文件"
+    },
+    {
+     "id": "ud76aee68d5",
+     "role": "p",
+     "zh": "运行⟦1⟧download_authrun.bat⟦/1⟧，就可以生成只包含⟦2⟧.authrun⟦/2⟧的FW文件。如下图：⟦3/⟧ ⟦4/⟧ ⟦5/⟧"
+    }
+   ]
+  },
+  {
+   "page": "mass_prod_tools/private_data_auth/index.html",
+   "page_title": "5. 私有数据授权使用说明",
+   "units": [
+    {
+     "id": "u6a9df0852d",
+     "role": "p",
+     "zh": "私有数据授权是指将私有授权数据写入到FLASH特定区域中，以完成对私有算法授权的行为。"
+    },
+    {
+     "id": "u77f3e674b5",
+     "role": "p",
+     "zh": "私有数据可以通过以下方式写入芯片FLASH中："
+    },
+    {
+     "id": "ue009efbe7c",
+     "role": "p",
+     "zh": "在样机中运行特定固件， 特定固件通过特定的SDK的接口写入。"
+    },
+    {
+     "id": "ubbdb05c96f",
+     "role": "p",
+     "zh": "使用RPC版本的烧录器，通过RPC接口将私有数据写入。"
+    },
+    {
+     "id": "ub5e15c9ceb",
+     "role": "p",
+     "zh": "注意：必须通过SDK接口或者PRC接口将私有数据写入FLASH"
+    },
+    {
+     "id": "u2694ddad68",
+     "role": "p",
+     "zh": "在这种使用场景下，有两种角色："
+    },
+    {
+     "id": "ubaec217842",
+     "role": "p",
+     "zh": "算法提供商：提供算法库，并负责将私有数据写入芯片FLASH中。"
+    },
+    {
+     "id": "u65fcbebdee",
+     "role": "p",
+     "zh": "方案商：方案具体开发者，将所有算法提供商的算法集成到方案中。"
+    },
+    {
+     "id": "uae711aff57",
+     "role": "p",
+     "zh": "如果您使用的SDK不支持私有数据授权，那么请联系杰理科技获取相关补丁，并参照以下说明修改SDK。"
+    },
+    {
+     "id": "uff293d9625",
+     "role": "li",
+     "zh": "5.1. SDK修改"
+    },
+    {
+     "id": "u2d66fb41e2",
+     "role": "li",
+     "zh": "5.1.1. 工具更新"
+    },
+    {
+     "id": "u99173506a9",
+     "role": "li",
+     "zh": "5.1.2. isd_config.ini文件修改"
+    },
+    {
+     "id": "u684e82899a",
+     "role": "li",
+     "zh": "5.1.3. download.bat文件修改"
+    },
+    {
+     "id": "ubf91746768",
+     "role": "li",
+     "zh": "5.2. 秘钥使用示例"
+    },
+    {
+     "id": "u042177370e",
+     "role": "li",
+     "zh": "5.2.1. 具体的接口使用方式"
+    }
+   ]
+  },
+  {
+   "page": "mass_prod_tools/private_data_auth/tools_modification_section.html",
+   "page_title": "5.1. SDK修改",
+   "units": [
+    {
+     "id": "ua24418b0ed",
+     "role": "p",
+     "zh": "如果SDK需要支持私有数据授权，请按以下说明更新SDK。"
+    },
+    {
+     "id": "u5412be5338",
+     "role": "h2",
+     "zh": "工具更新"
+    },
+    {
+     "id": "u903b642ac3",
+     "role": "p",
+     "zh": "SDK需要支持私有数据授权，相关工具需要更新到以下版本(或之后版本)。"
+    },
+    {
+     "id": "u0099cb0acd",
+     "role": "h2",
+     "zh": "isd_config.ini文件修改"
+    },
+    {
+     "id": "u29aa6ec55c",
+     "role": "p",
+     "zh": "如果您当前使用的SDK中的isd_config.ini是由isd_config_rule.c文件生成，那么请修改isd_config_rule.c生成配置数据"
+    },
+    {
+     "id": "ua9c400d1e9",
+     "role": "p",
+     "zh": "在isd_config.ini的⟦1⟧EXTRA_CFG_PARAM⟦/1⟧配置段中增加以下配置⟦2/⟧"
+    },
+    {
+     "id": "u8c25cc10c4",
+     "role": "p",
+     "zh": "FLASH_SIZE：FLASH容量大小请填写方案开发者使用芯片FLASH实际大小⟦1/⟧ PRIV_DATA_CFG_SIZE：私有授权数据需要占用大小，配置的大小需要是4K的整数倍"
+    },
+    {
+     "id": "uf2a0084350",
+     "role": "p",
+     "zh": "如下图：⟦1/⟧ ⟦2/⟧"
+    },
+    {
+     "id": "u3bc408bcb7",
+     "role": "h2",
+     "zh": "download.bat文件修改"
+    },
+    {
+     "id": "u96f0dde4d0",
+     "role": "p",
+     "zh": "如果您正在开发的SDK中的download.bat是由download.c文件生成，那么请修改download.c生成download.bat"
+    },
+    {
+     "id": "u6e955ae230",
+     "role": "p",
+     "zh": "启用私有数据授权后，固件文件系统格式将升级为新格式。⟦1/⟧ fw_add.exe/ufw_maker.exe将无法识别的。⟦2/⟧ 如果download.bat是通过fw_add.exe/ufw_maker.exe生成最终的FW/UFW文件，⟦3/⟧ 那么需要删除download.bat中的fw_add.exe/ufw_maker.exe相关语句。⟦4/⟧"
+    },
+    {
+     "id": "u1c2410395c",
+     "role": "p",
+     "zh": "删除fw_add.exe/ufw_maker.exe相关语句后，在isd_download.exe后增加-output-fw和-output-ufw参数，生成最终的FW/UFW文件。⟦1/⟧ 如下图：⟦2/⟧ ⟦3/⟧"
+    },
+    {
+     "id": "udd3d12d267",
+     "role": "p",
+     "zh": "如果当前SDK有通过fw_add.exe将文件添加到FW文件中，请修改为isd_config.ini的方式将文件添加到FW中。如下图：⟦1/⟧ ⟦2/⟧"
+    }
+   ]
+  },
+  {
+   "page": "mass_prod_tools/private_data_auth/secure_key.html",
+   "page_title": "5.2. 秘钥使用示例",
+   "units": [
+    {
+     "id": "u7e22656ca8",
+     "role": "p",
+     "zh": "目前支持私有数据的sdk补丁如下： （如果未能找到你需要的芯片型号或者需要写功能支持，请联系杰理公司）"
+    },
+    {
+     "id": "udb704a4e49",
+     "role": "cell",
+     "zh": "701N 补丁下载（点击此处下载）(2024/03/27)"
+    },
+    {
+     "id": "u601b0ba164",
+     "role": "cell",
+     "zh": "AD14N 补丁下载（点击此处下载）(2024/03/27)"
+    },
+    {
+     "id": "u7bfbbdc738",
+     "role": "cell",
+     "zh": "AC695N_LARGE 补丁下载（点击此处下载）(2024/03/27)"
+    },
+    {
+     "id": "u3b9e10da0c",
+     "role": "cell",
+     "zh": "AC707N 补丁下载（点击此处下载）(2025/01/10)"
+    },
+    {
+     "id": "u86e4936a93",
+     "role": "p",
+     "zh": "补丁使用方式：找到对应sdk 的xxx\\xxx\\liba(例如：cpu\\br28\\liba、include_lib\\liba\\sh54)目录下，改名为secure_key.a(或者AD14N:secure_key_lib.a)并添加上。"
+    },
+    {
+     "id": "ufbe1b2b230",
+     "role": "p",
+     "zh": "codeblocks 里面添加上对应的库文件 如下图：⟦1/⟧ ⟦2/⟧"
+    },
+    {
+     "id": "u29ab53d9ba",
+     "role": "h2",
+     "zh": "具体的接口使用方式"
+    },
+    {
+     "id": "u292af3092f",
+     "role": "code",
+     "zh": "注意，示例代码, 前提是区域是FF才能使用写功能。\n返回值：\ntypedef enum {\n    SK_RV_OK = 0, // 0, 成功返回值\n    SK_RV_OPEN_ERROR, //1, 打开加密区域失败, 检查INI文件是否配置好以及工具是否更新\n    SK_RV_WRITE_ERROR, //2, 写入失败， 检查CPU库是否正确\n    SK_RV_READ_ERROR, //3, 读出错, 无效返回 \n    SK_RV_INIT_ERROR, //4, 初始化出错, 无效返回\n    SK_PWD_MISMATCH, //5, page key 和传入 key不匹配, 当前page头的key不对或者为空\n    SK_PWD_CHIP_VERSION_MISMATCH, //6  芯片版本不匹配, 芯片chip id不对应\n    SK_PWD_INVALID, //7, 无效的passwd, 检查秘钥是否正确\n    SK_FF_CHECK_ERROR, //8, 全FF检查出错，1、初始化时有脏数据不是全FF， 2、读出来是全FF 3、写入的时候不是全FF\n    SK_RV_WRITE_NOTSUPPORT,  //9, 不支持写功能， 检查拿到的库是否支持写功能\n    SK_PWD_VERSION_MISMATCH,  //10, passwd版本不匹配\n    SK_RV_EMPTY,  //11, 空page, 第一次读检查是否为空page\n    SK_RV_UNKNOWN\n} SK_RETVAL_T;\n\n调试过程中可能出现的问题：\n1,使用只读库跑写入接口，会报错SK_RV_WRITE_ERROR。\n2,已经写过的page，再一次去写，报SK_FF_CHECK_ERROR错误，表示非FF去写。\n3,读page时候使用ID和page不对应、或者password不对应，会报错SK_PWD_MISMATCH。\n4,page为空时候，第一次去读，会报空错误出来 SK_RV_EMPTY。\n5,烧录器报错：固件未被添加key,请在download.bat中使用-key参数给固件添加KEY。 解决方法：使用2023/11/23后提供的私有数据授权读写的库生成的EW既可\n"
+    },
+    {
+     "id": "uc19b968bd4",
+     "role": "p",
+     "zh": "如没有拿到请联系杰理科技获取"
+    },
+    {
+     "id": "u02cf907772",
+     "role": "code",
+     "zh": "///////////////////////////////////烧录器识别说明事项///////////////////////////////////////////\n***此结构体必须在代码中实现，不然会烧录器报错。***\nstruct _SK_MPAD {\n    u8 magic_start[16];\n    u8 owner_passwd[16];\n    u8 magic_end[16];\n};\n\n填充示例,需要在自己的代码中定义上面的结构体，必须保持一致，下面定义的名字也必须要是priv_pad，便于库中调用.\nvolatile const struct _SK_MPAD priv_pad = {\n    .magic_start = {0x50,0x52,0x49,0x56,0x17,0xeb,0x4a,0x47,0xae,0x47,0x8c,0x93,0xc2,0x17,0xa5,0x9e},\n    .owner_passwd = { 0x94, 0x44, 0x15, 0x16, 0x28, 0xae, ...... }, //具体的秘钥向杰理拿取,\n    .magic_end = {0x44,0x41,0x54,0x41,0x96,0xa3,0x41,0x97,0xa9,0x1f,0x2e,0x5e,0x18,0x3c,0xf4,0x98}\n};\n//////////////////////////////////////////////////////////////////////////////////////////\n"
+    },
+    {
+     "id": "ub122fca8e3",
+     "role": "code",
+     "zh": "//写key进去",
+     "ctx": "    int secure_key_write(int page_id, const void *passwd, const void *key); //写key进去"
+    },
+    {
+     "id": "u8160424edd",
+     "role": "code",
+     "zh": "//读 key",
+     "ctx": "    int secure_key_read(int page_id, const void *passwd, void *key); //读 key"
+    },
+    {
+     "id": "ua639294b66",
+     "role": "code",
+     "zh": "//获取map地址",
+     "ctx": "    void *secure_map_key_to_memory(int page_id, const void *passwd);//获取map地址"
+    },
+    {
+     "id": "u7a8b5d60c8",
+     "role": "code",
+     "zh": "//////////////////////////////////测试demo///////////////////////////////////////////"
+    },
+    {
+     "id": "u9eb695e899",
+     "role": "code",
+     "zh": "//具体的秘钥向杰理拿取",
+     "ctx": "        static char passwd[] = { 0x94, 0x44, 0x15, 0x16, 0x28, 0xae, ...... }; //具体的秘钥向杰理拿取"
+    }
+   ]
+  },
+  {
+   "page": "mass_prod_tools/common_function/index.html",
+   "page_title": "6. 通用功能配置和使用说明",
+   "units": [
+    {
+     "id": "u0b18c50fe9",
+     "role": "p",
+     "zh": "本章介绍量产工具和，以及配套工具相关的功能配置和使用说明！"
+    },
+    {
+     "id": "u33cfdcdfd4",
+     "role": "li",
+     "zh": "6.1. 常见isd_config.ini配置和烧录相关功能使用说明"
+    },
+    {
+     "id": "ud25a79b56b",
+     "role": "li",
+     "zh": "6.1.1. flash的SPI参数配置"
+    },
+    {
+     "id": "uc9a66b7d30",
+     "role": "li",
+     "zh": "6.1.2. 自定义资源文件烧录配置"
+    },
+    {
+     "id": "uf6fee37dfc",
+     "role": "li",
+     "zh": "6.1.3. flash参数烧录和保护参数生效测试配置"
+    },
+    {
+     "id": "ue96b852364",
+     "role": "li",
+     "zh": "6.1.4. 256和4096对齐文件生成配置"
+    },
+    {
+     "id": "u347983ce5a",
+     "role": "li",
+     "zh": "6.1.5. 文件透传如efuse.bin烧录配置"
+    },
+    {
+     "id": "ue64f25b3a2",
+     "role": "li",
+     "zh": "6.1.6. lrc校准值烧录入flash配置"
+    },
+    {
+     "id": "u62f6dac359",
+     "role": "li",
+     "zh": "6.1.7. 烧录器与SDK配置的芯片版本匹配"
+    },
+    {
+     "id": "ucdda3a030a",
+     "role": "li",
+     "zh": "6.2. 如何在生成烧录文件时设置专家选项"
+    },
+    {
+     "id": "ub458cd5658",
+     "role": "li",
+     "zh": "6.2.1. 如何修改 INI 专家配置选项"
+    },
+    {
+     "id": "u56666ee080",
+     "role": "li",
+     "zh": "6.2.2. 能用 INI 配置的专家配置项有哪些"
+    },
+    {
+     "id": "u4ff288f7be",
+     "role": "li",
+     "zh": "6.3. 如何在生成烧录文件时设置烧录选项"
+    },
+    {
+     "id": "u73917697c6",
+     "role": "li",
+     "zh": "6.3.1. 如何修改 INI 指定烧录选项"
+    },
+    {
+     "id": "ufa970b9257",
+     "role": "li",
+     "zh": "6.3.2. 如何生成仅包含烧录选项和KEY的烧录文件（不包含FLASH 烧录信息）"
+    },
+    {
+     "id": "ub920fb0bf4",
+     "role": "li",
+     "zh": "6.3.3. 能用 INI 配置的烧录选项有哪些"
+    }
+   ]
+  },
+  {
+   "page": "mass_prod_tools/common_function/common_isd_config_ini.html",
+   "page_title": "6.1. 常见isd_config.ini配置和烧录相关功能使用说明",
+   "units": [
+    {
+     "id": "u26c7ec546c",
+     "role": "p",
+     "zh": "更多详细的isd_config.ini 配置文件说明请参考: ⟦1⟧isd_config.ini 配置文件说明⟦/1⟧"
+    },
+    {
+     "id": "u8812597c31",
+     "role": "p",
+     "zh": "isd_config.ini支持配置flash的spi参数配置，配置如下："
+    },
+    {
+     "id": "u60dc55bf6c",
+     "role": "p",
+     "zh": "X0，表示spi的线宽，根据flash实际封装情况配置,一般默认就好：⟦1/⟧ 0: 表示spi使用1线模式，写数据和读数据都是使用同一IO0/SO根线⟦2/⟧ 1：表示spi使用标准双线模式，写数据使用IO0/SO线，读数据使用IO1/SI线⟦3/⟧ 2：表示spi使用2线模式，写数据使用IO0/SO线，读数据使用IO0/SO和IO1/SI线⟦4/⟧ 4：表示spi使用4线模式，写数据使用IO0/SO线，读数据使用IO0/SO、IO1/SI线、IO2(flash的WP)、IO3(flash的HOLD)线⟦5/⟧"
+    },
+    {
+     "id": "u720f9ac23d",
+     "role": "p",
+     "zh": "X1，表示SPI CLK的分配值,如芯片系统时钟跑48M，配置3，SPI的时钟则为48/(3+1)=12M："
+    },
+    {
+     "id": "u307cae98b1",
+     "role": "p",
+     "zh": "X2,表示flash读数据使用的命令,一般默认配置就好，具体参考对应芯片flash的使用手册:⟦1/⟧ 0：FAST_READ_OUTPUT_MODE⟦2/⟧ 1：FAST_READ_IO_MODE⟦3/⟧ 2：FAST_READ_IO_CONTINUOUS_READ_MODE⟦4/⟧"
+    },
+    {
+     "id": "u9cfdd694f1",
+     "role": "p",
+     "zh": "X3,使用哪组SPI的IO口⟦1/⟧ 0：使用第一组⟦2/⟧ 1：使用第二组⟦3/⟧"
+    },
+    {
+     "id": "uaaee461565",
+     "role": "p",
+     "zh": "部分芯片不支持4线，或者不支持FAST_READ_IO_MODE读模式；"
+    },
+    {
+     "id": "u2454bec9a0",
+     "role": "p",
+     "zh": "如果烧录过程报烧录失败，或者校验失败，可以检查一下对应的SPI配置是否正确！"
+    },
+    {
+     "id": "udf41b71f9b",
+     "role": "h2",
+     "zh": "自定义资源文件烧录配置"
+    },
+    {
+     "id": "ua57fc8da00",
+     "role": "p",
+     "zh": "要把isd_config.ini同级目录下的文件“anc_coeff.bin”，”anc_gains.bin”通过烧录器烧录到芯片flash指定位置, 参考如图配置如⟦1⟧自定义资源文件烧录配置⟦/1⟧所示。"
+    },
+    {
+     "id": "u82f04cb7f5",
+     "role": "p",
+     "zh": "如果[RESERVED_CONFIG]段的资源超过6个，点击批处理后会报错！ 把资源文件放置[RESERVED_EXPAND_CONFIG]段； 参考如图配置如⟦1⟧超过6个自定义资源文件烧录配置⟦/1⟧所示。"
+    },
+    {
+     "id": "u79304d65fb",
+     "role": "caption",
+     "zh": "超过6个自定义资源文件烧录配置"
+    },
+    {
+     "id": "udd039019c2",
+     "role": "p",
+     "zh": "每个资源文件可用引用同一个文件名的文件；但是XXX_FILE的文件名不能相同！"
+    },
+    {
+     "id": "u6823144961",
+     "role": "p",
+     "zh": "可以修改如ANC0_ADR=AUTO;自动地址，[RESERVED_CONFIG]段选项详细说明,请参考《⟦1⟧[RESERVED_CONFIG]段选项说明⟦/1⟧》小节"
+    },
+    {
+     "id": "u26e29ab7e8",
+     "role": "p",
+     "zh": "1.工具版本更新 SDK需要支持支持OTP_CFG配置，相关工具需要更新到以下版本(或之后版本)。"
+    },
+    {
+     "id": "u57d12ea6db",
+     "role": "p",
+     "zh": "2.烧录器支持的型号和isd_config.ini配置"
+    },
+    {
+     "id": "u156d62baaf",
+     "role": "p",
+     "zh": "如下芯片，需要在isd_config.ini的[BURNER_PASSTHROUGH_CFG]配置段中增加⟦1⟧FLASH_WRITE_PROTECT=YES⟦/1⟧配置，烧录时把flash写保护参数烧到指定区域，以及进行保护的有效性测试。"
+    },
+    {
+     "id": "u9055ea2a72",
+     "role": "p",
+     "zh": "不进行flash参数烧录和有效性测试，则可删除⟦1⟧FLASH_WRITE_PROTECT⟦/1⟧字段，或者在isd_config.ini的[BURNER_PASSTHROUGH_CFG]配置段中增加⟦2⟧FLASH_WRITE_PROTECT=NO⟦/2⟧配置。"
+    },
+    {
+     "id": "u89289a1c58",
+     "role": "cell",
+     "zh": "isd_config.ini需要的配置"
+    },
+    {
+     "id": "u75304bdde9",
+     "role": "cell",
+     "zh": "AC695X、AC635N、AC6083、AE695N"
+    },
+    {
+     "id": "uac12465ac1",
+     "role": "cell",
+     "zh": "AC696X、AC636N、AC608N"
+    },
+    {
+     "id": "ueb9e01adc6",
+     "role": "cell",
+     "zh": "AD14N、AC104N"
+    },
+    {
+     "id": "ubc99ef3a1b",
+     "role": "cell",
+     "zh": "AC700N、JL700N"
+    },
+    {
+     "id": "u5d2de78ed1",
+     "role": "cell",
+     "zh": "AC701N、JL701N"
+    },
+    {
+     "id": "u8dfeec5628",
+     "role": "p",
+     "zh": "如下芯片，需要在isd_config.ini的[EXTRA_CFG_PARAM]配置段中增加OTP_CFG_SIZE=512;配置，烧录时才写保护参数到flash和进行生效测试，否则烧录会报错；"
+    },
+    {
+     "id": "ue967ff1825",
+     "role": "cell",
+     "zh": "AC82N，AD18N"
+    },
+    {
+     "id": "ua59d607449",
+     "role": "cell",
+     "zh": "JL709N、AC689N"
+    },
+    {
+     "id": "uc54c7ba2b5",
+     "role": "cell",
+     "zh": "AC707N、AW34N"
+    },
+    {
+     "id": "ubc4f38f372",
+     "role": "p",
+     "zh": "OTP_CFG_SIZE=512；中512的值是可以变化的，具体依赖于当前使用的flash参数的配置信息大小；"
+    },
+    {
+     "id": "u171b556ed3",
+     "role": "p",
+     "zh": "AC707N、AW34N 、AC710N、AD24N型号芯片最小的值建议配置128;"
+    },
+    {
+     "id": "u26b1b63a6a",
+     "role": "p",
+     "zh": "其它型号最小值建议配置256;一般使用公版SDK默认配置的值即可；"
+    },
+    {
+     "id": "u896eb65274",
+     "role": "p",
+     "zh": "3.烧录生成的.fw文件到芯片，写保护生效测试"
+    },
+    {
+     "id": "u139dd55fad",
+     "role": "p",
+     "zh": "把配置好带flash参数烧录功能的fw文件通过一拖二烧录器或一拖八烧录器烧录到芯片flash，"
+    },
+    {
+     "id": "u21d8686c46",
+     "role": "p",
+     "zh": "烧录过程烧录器对芯片flash的写保护功能进行一次写保护生效测试，测试通过才会允许烧录程序数据到芯片"
+    },
+    {
+     "id": "ud081f5b28c",
+     "role": "p",
+     "zh": "烧录成功后，如SDK开启了打印，会打印如下图所示写保护功能生效的信息： ⟦1/⟧"
+    },
+    {
+     "id": "ua058a77c85",
+     "role": "p",
+     "zh": "5.开发阶段启用flash写保护功能"
+    },
+    {
+     "id": "u929bc237b2",
+     "role": "p",
+     "zh": "如果需要在开发调试阶段启动FLASH写保护功能，请参考《⟦1⟧开启使用写保护功能，DTR功能，多算法授权功能⟦/1⟧》"
+    },
+    {
+     "id": "ub44eb9c69d",
+     "role": "h2",
+     "zh": "256和4096对齐文件生成配置"
+    },
+    {
+     "id": "u41aba46170",
+     "role": "p",
+     "zh": "1.256和4096对齐文件介绍 市面上所有的norflash支持4K字节擦除的操作，但是有一部分还支持256字节擦除；所以我们的烧录文件在组织过程中支持按4K字节对齐或者256字节对齐；"
+    },
+    {
+     "id": "u54ef9be039",
+     "role": "p",
+     "zh": "烧录统一产品，可能芯片存在不同对齐方式的芯片；在下载固件过程中，下载工具会根据样机的FLASH支持的最小擦除单元，实时选择对齐方式组织FLASH数据，这个功能是可以关闭的。 其中，⟦1/⟧"
+    },
+    {
+     "id": "u8c1e1b8ecb",
+     "role": "p",
+     "zh": "（1）256k对齐：节省flash空间 （2）如果方案需要支持在线升级，那么升级前后的烧录文件对齐方式应保持一致"
+    },
+    {
+     "id": "ubefa34f504",
+     "role": "p",
+     "zh": "2.生成FW只包含4096的烧录文件ini配置。如红色框住所示"
+    },
+    {
+     "id": "u213c9221fb",
+     "role": "p",
+     "zh": "3.生成FW只包含256对齐烧录文件ini配置，如红色框住所示, 然后强制升级工具插入一个支持256擦除的Flash芯片型号，识别到之后再点击批处理生成即可。"
+    },
+    {
+     "id": "u7f34af9c84",
+     "role": "p",
+     "zh": "4.如何强制生成256字节对齐的FLASH BIN 添加“SPECIAL_OPT=0”以及“AREA_ALIGN=1”配置项；不建议使用该方式！"
+    },
+    {
+     "id": "udcb8b715c9",
+     "role": "code",
+     "zh": "// 此配置项离线时有效,即编译下载时不连接样机",
+     "ctx": "AREA_ALIGN=1;        // 此配置项离线时有效,即编译下载时不连接样机"
+    },
+    {
+     "id": "u7f9d6ff83e",
+     "role": "code",
+     "zh": "// 如果有,必须注释掉这个配置",
+     "ctx": "#FORCE_4K_ALIGN=YES; // 如果有,必须注释掉这个配置"
+    },
+    {
+     "id": "u53f8ed0d82",
+     "role": "p",
+     "zh": "5.生成FW包含256和4096对齐烧录文件，去掉如下部分点击批处理生成即可。"
+    },
+    {
+     "id": "u07a0ef210c",
+     "role": "code",
+     "zh": "#FORCE_4K_ALIGN=YES; # 如果有，必须注释掉这个配置"
+    },
+    {
+     "id": "uf38721876d",
+     "role": "h2",
+     "zh": "文件透传如efuse.bin烧录配置"
+    },
+    {
+     "id": "ub220beec64",
+     "role": "p",
+     "zh": "isd_config.ini按如下添加需要烧录的“efuse.bin”文件，”efuse.bin存在isd_config.ini文件同级目录"
+    },
+    {
+     "id": "u3dce72443b",
+     "role": "p",
+     "zh": "如图所示： ⟦1/⟧"
+    },
+    {
+     "id": "u3667b22c8e",
+     "role": "p",
+     "zh": "FILE_LIST支持多个文件，如：FILE_LIST=(file=ota.bin:type=100),(file=efuse.bin:type=0xee)"
+    },
+    {
+     "id": "u0d4d98d570",
+     "role": "p",
+     "zh": "AC702N、AC704N、AC705N、AC129N、AD12N需要配置FLASH模式还是ROM模式,配置如下所示："
+    },
+    {
+     "id": "u1881ec6642",
+     "role": "h2",
+     "zh": "lrc校准值烧录入flash配置"
+    },
+    {
+     "id": "u46e27cebb5",
+     "role": "p",
+     "zh": "免晶振方案的芯片，配置lrc校准值写入FLASH UBOOT区域(只有LRC时钟偏差超过千分之五才写入)，参考如下"
+    },
+    {
+     "id": "ua3e91ae402",
+     "role": "code",
+     "zh": "//配置，lrc校准值写入flash ",
+     "ctx": "LRC=-1;        //配置，lrc校准值写入flash "
+    },
+    {
+     "id": "uac0089023e",
+     "role": "h2",
+     "zh": "烧录器与SDK配置的芯片版本匹配"
+    },
+    {
+     "id": "u37306abe64",
+     "role": "p",
+     "zh": "isd_config.ini按如图方式添加要支持的芯片版本（A~P版本）"
+    },
+    {
+     "id": "uc5ff83d901",
+     "role": "p",
+     "zh": "如果烧录器烧录报对应版本的错误，原因可能：⟦1/⟧ 1、可能是上述段没有添加支持该芯片版本⟦2/⟧"
+    },
+    {
+     "id": "u9d80a47068",
+     "role": "p",
+     "zh": "2、或者烧录器不允许该版本烧录⟦1/⟧ 如需修改请联系杰理工程师 ⟦2⟧根据SDK实际情况支持该版本烧录⟦3/⟧⟦/2⟧"
+    },
+    {
+     "id": "u196b3d7b4b",
+     "role": "p",
+     "zh": "更多解释颗参考《 ⟦1⟧版本不匹配错误⟦/1⟧》"
+    }
+   ]
+  },
+  {
+   "page": "mass_prod_tools/common_function/set_burn_tool_master_option.html",
+   "page_title": "6.2. 如何在生成烧录文件时设置专家选项",
+   "units": [
+    {
+     "id": "ue1164a42b5",
+     "role": "h2",
+     "zh": "如何修改 INI 专家配置选项"
+    },
+    {
+     "id": "u20a88578f0",
+     "role": "p",
+     "zh": "要设置指定的烧录选项，可以在INI配置文件中设置指定的烧录选项值。"
+    },
+    {
+     "id": "u394aa5c07d",
+     "role": "p",
+     "zh": "下载目录的ISD_DOWNLOAD.EXE版本必须更新到4.2.53或之后版本。"
+    },
+    {
+     "id": "u27ed60d373",
+     "role": "p",
+     "zh": "打开SDK下载目录中的 ⟦1⟧isd_config.ini⟦/1⟧ 文件，增加配置段⟦2⟧[MASTER_CONFIG_OPTIONS]⟦/2⟧。"
+    },
+    {
+     "id": "uab25d128d2",
+     "role": "p",
+     "zh": "注意：在一些 SDK 中，⟦1⟧isd_config.ini⟦/1⟧ 文件是通过 ⟦2⟧isd_config.c⟦/2⟧ 预处理生成的。"
+    },
+    {
+     "id": "u1c0e87dbc2",
+     "role": "p",
+     "zh": "如果直接改 ⟦1⟧isd_config.ini⟦/1⟧ 后重新编译，可能会发现 ⟦2⟧isd_config.ini⟦/2⟧ 又被改了回去。 请注意观察你当前使用的 SDK，是否是属于这种情况。如果发现确实出现了这种情况，则说明你需要去修改 ⟦3⟧isd_config.c⟦/3⟧。"
+    },
+    {
+     "id": "u4d1bfe385a",
+     "role": "p",
+     "zh": "为了表述方便，下文还是继续使用 ⟦1⟧isd_config.ini⟦/1⟧ 文件作为例子。"
+    },
+    {
+     "id": "uee3fccdf8d",
+     "role": "p",
+     "zh": "根据实际需求，配置指定烧录选项的默认值。以⟦1⟧LVD_LEVEL⟦/1⟧配置和⟦2⟧LVD_RST_EN⟦/2⟧使能为例， 如下图："
+    },
+    {
+     "id": "u2c4eb286e8",
+     "role": "p",
+     "zh": "同时，每款芯片的专家模式配置项都有不同的关联配置项，关联配置项必须同时配置，不然会出现错误。⟦1/⟧ 以AD17N芯片为例，关联配置项为⟦2⟧LVD_RST_EN, LVD_LEVEL, MAIN_IOVDD_LEVEL, WEAK_IOVDD_LEVEL⟦/2⟧，若需要配置关联配置中若干项时，其余项也必须配置。"
+    },
+    {
+     "id": "u1726e658cb",
+     "role": "p",
+     "zh": "配置值错误也会发生错误，使能类配置使用⟦1⟧TRUE⟦/1⟧或⟦2⟧FALSE⟦/2⟧配置，电压类填写需要配置的电压值。配置的电压值需要注意芯片支持的电压挡位，不可错配。"
+    },
+    {
+     "id": "u006f2d8fec",
+     "role": "p",
+     "zh": "对于较旧的 SDK，需要额外增加下面的步骤：（⟦1⟧新的 SDK 只需要修改 ⟦2⟧isd_config.ini⟦/2⟧ 即可⟦/1⟧）"
+    },
+    {
+     "id": "u73c0be90cf",
+     "role": "p",
+     "zh": "AC690X，AC691X，AC692X SDK V1，AC61N，AC62N，AC64N，AC81N的SDK需要使用 ⟦1⟧fw_add.exe（1.0.15及之后版本）⟦/1⟧ 将 ⟦2⟧isd_config.ini⟦/2⟧ 文件添加到fw文件中。命令示例如下:"
+    },
+    {
+     "id": "u164ac1bde5",
+     "role": "p",
+     "zh": "⟦1⟧fw_add.exe -fw <原始.fw> -out <修改后输出.fw> -add isd_config.ini -type 0x34⟦/1⟧"
+    },
+    {
+     "id": "uc57832b97d",
+     "role": "p",
+     "zh": "AC13N的SDK需要通过 ⟦1⟧bin_to_fw_v2.exe（2.0.8及之后版本）⟦/1⟧ 的-ini参数将 ⟦2⟧isd_config.ini⟦/2⟧ 文件添加的FW文件中。命令示例如下："
+    },
+    {
+     "id": "u09d9d4a887",
+     "role": "p",
+     "zh": "⟦1⟧bin_to_fw_v2.exe -flash <bin文件.bin> -key <key文件.key> -log info.log -chip AD13N -out <输出的文件.fw> -ini isd_config.ini⟦/1⟧"
+    },
+    {
+     "id": "u8c6fd94401",
+     "role": "p",
+     "zh": "目前暂时不支持AC1X系列，AC3X系列芯片"
+    },
+    {
+     "id": "u0fbf2277e2",
+     "role": "h2",
+     "zh": "能用 INI 配置的专家配置项有哪些"
+    },
+    {
+     "id": "u1d4e5b0c73",
+     "role": "p",
+     "zh": "专家模式为专家级别的工程师配置，具体参考IC提供的EFUSE文档说明；每个芯片型号的支持的专家配置选项和选项可选值请参考下面对应芯片的配置说明。"
+    },
+    {
+     "id": "u2b2dbd485c",
+     "role": "p",
+     "zh": "TRUE ：即界面勾选，efuse对应bit烧为1"
+    },
+    {
+     "id": "u5ee3be7b39",
+     "role": "p",
+     "zh": "FALSE：界面不勾选，efuse对应bit烧为0"
+    },
+    {
+     "id": "uc9d521b88e",
+     "role": "p",
+     "zh": "lvd和iovdd档位配置对应的具体电压值"
+    },
+    {
+     "id": "u4409759b7f",
+     "role": "p",
+     "zh": "PINR：对应长按复位，MCLR对应短按复位"
+    },
+    {
+     "id": "uea52d5ccd0",
+     "role": "p",
+     "zh": "一般要配置EN_ACT=FALSE;其他位配置才能生效"
+    },
+    {
+     "id": "u944fbe4c6e",
+     "role": "p",
+     "zh": "⟦1/⟧注意： ⟦2/⟧1、配置项在INI中的配置项ID和配置值区分大小写 ⟦3/⟧2、请更新isd_download.exe到4.2.56版本以上，最好更新到最新 ⟦4/⟧3、存储介质为一次性烧录，烧录为FALSE后不能烧回TRUE；杰理工程师务必确认核对好efuse参考文档再配置。"
+    },
+    {
+     "id": "uf2d6faf3da",
+     "role": "p",
+     "zh": "⟦1/⟧4、一般EN_ACT，LVD_RST_EN，IOVDD_LEVEL为关联项，配置了[MASTER_CONFIG_OPTIONS]段其它配置项则配置需包括关联项； 如没有配置MASTER_CONFIG_OPTIONS]段，fw文件部署界面“配置“界面，可选择对应的lvd电压档位进行烧录； ⟦2/⟧5、部分型号并不需要配置关联项，如JL708N的芯片，其LVD_LEVEL和IOVDD_LEVEL有对应的LVD_ACT,IOV_ACT激活使能位的 ⟦3/⟧ ⟦4/⟧6、关闭LVD复位功能配置方法参考如下（EN_ACT和LVD_RST_EN要配置为FALSE）：⟦5/⟧ [MASTER_CONFIG_OPTIONS]⟦6/⟧ EN_ACT=FALSE ⟦7/⟧ LVD_RST_EN=FALSE⟦8/⟧ LVD_LEVEL=2.5v ⟦9/⟧ IOVDD_LEVEL=3.0v ⟦10/⟧"
+    },
+    {
+     "id": "ubc6ca51fdb",
+     "role": "p",
+     "zh": "如下是各个芯片系列支持的专家模式配置字段："
+    },
+    {
+     "id": "u0726bc7e72",
+     "role": "code",
+     "zh": "#设置具体卡值",
+     "ctx": "ICHARGE_CURRENT_MIN=75   #设置具体卡值"
+    },
+    {
+     "id": "uae0fc95325",
+     "role": "code",
+     "zh": "#可配置自动识别,双脚,单脚：auto,double,single",
+     "ctx": "XOSC_PIN_MODE=auto;#可配置自动识别,双脚,单脚：auto,double,single"
+    },
+    {
+     "id": "u807a5e4331",
+     "role": "code",
+     "zh": "#MASKROM_SOFTWARE_USE1=TRUE;（不配，参考文档判断是否烧录）"
+    },
+    {
+     "id": "u53364cc486",
+     "role": "code",
+     "zh": "#XOSC_INIT_MODE=TRUE;（不配，参考文档判断是否烧录）"
+    },
+    {
+     "id": "uadf0f4f2e9",
+     "role": "code",
+     "zh": "#XOSC_PIN_MODE=TRUE;（不配，参考文档判断是否烧录）"
+    },
+    {
+     "id": "u2ea092f9c8",
+     "role": "code",
+     "zh": "#single 或者 double ;不烧efuse",
+     "ctx": "XOSC_PIN_MODE=single;   #single 或者 double ;不烧efuse"
+    },
+    {
+     "id": "uaaab668d23",
+     "role": "code",
+     "zh": "#TRUE，失能短按复位；FALSE:使能短按复位",
+     "ctx": "MCLR_EN_DIS=TRUE; #TRUE，失能短按复位；FALSE:使能短按复位"
+    },
+    {
+     "id": "u6d321e3439",
+     "role": "code",
+     "zh": "#TRUE，使能长按复位；FALSE:失能短按复位",
+     "ctx": "PINR_RESET_EN=TRUE;#TRUE，使能长按复位；FALSE:失能短按复位"
+    }
+   ]
+  },
+  {
+   "page": "mass_prod_tools/common_function/set_burn_tool_option.html",
+   "page_title": "6.3. 如何在生成烧录文件时设置烧录选项",
+   "units": [
+    {
+     "id": "u072b03931b",
+     "role": "h2",
+     "zh": "如何修改 INI 指定烧录选项"
+    },
+    {
+     "id": "u314814a92f",
+     "role": "p",
+     "zh": "下载目录的ISD_DOWNLOAD.EXE版本必须更新到4.0.17或之后版本。"
+    },
+    {
+     "id": "u9bacd1b1a1",
+     "role": "p",
+     "zh": "打开SDK下载目录中的 ⟦1⟧isd_config.ini⟦/1⟧ 文件，增加配置段⟦2⟧[BURNER_OPTIONS]⟦/2⟧。"
+    },
+    {
+     "id": "u44bbfaba6f",
+     "role": "p",
+     "zh": "根据实际需求，配置指定烧录选项的默认值。以LVD电压为例， 如下图："
+    },
+    {
+     "id": "ua94f0c8007",
+     "role": "p",
+     "zh": "如果不允许工厂烧录时修改设置的烧录选项值，可以在⟦1⟧[BURNER_OPTIONS]⟦/1⟧段中增加设置项⟦2⟧GUI_DISABLED=TRUE⟦/2⟧，如下图："
+    }
+   ]
+  },
+  {
+   "page": "mass_prod_tools/common_function/set_burn_tool_option.html",
+   "page_title": "6.3. 如何在生成烧录文件时设置烧录选项",
+   "units": [
+    {
+     "id": "u46ceab6d1d",
+     "role": "h2",
+     "zh": "如何生成仅包含烧录选项和KEY的烧录文件（不包含FLASH 烧录信息）"
+    }
+   ]
+  }
+ ]
+}

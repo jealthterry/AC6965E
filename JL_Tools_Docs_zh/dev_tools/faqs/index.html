@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7. 其它常见问题以及处理方法 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>7. 其它常见问题以及处理方法</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="howto_convert_cbp.html">7.1. 如何将 Code::Blocks 工程转换为 make/VSCode 工程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_convert_sdk_to_lib.html">7.2. 在已经有了标准 SDK 工程的情况下，如何获得编译库的工程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_add_3rd_libs.html">7.3. 如何给 SDK 工程添加第三方库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="why_build_slow.html">7.4. 为什么有些 SDK 编译很慢</a></li>
+<li class="toctree-l2"><a class="reference internal" href="why_build_result_mismatched.html">7.5. 为什么编译得到的文件不一致</a></li>
+<li class="toctree-l2"><a class="reference internal" href="why_failed_to_download.html">7.6. 为什么无法下载程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_change_tmp_dir.html">7.7. 如何修改临时目录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antivirus_misreport.html">7.8. 关于工具（误）报毒问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_find_downloadbat.html">7.9. 如何确认当前工程使用的下载脚本 <code class="docutils literal notranslate"><span class="pre">download.bat</span></code> 是哪个</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_formatall.html">7.10. 如何在下载前对芯片进行全擦除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_reboot_afterdownload.html">7.11. 如何在下载后自动复位芯片</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_read_flashid.html">7.12. 如何读取芯片的 FLASH ID</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/testbox_1tuo2/index.html">3. 杰理科技一拖二蓝牙测试盒用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mass_prod_tools/faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><span class="section-number">7. </span>其它常见问题以及处理方法</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/dev_tools/faqs/index.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">7. </span>其它常见问题以及处理方法<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="howto_convert_cbp.html">7.1. 如何将 Code::Blocks 工程转换为 make/VSCode 工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto_convert_sdk_to_lib.html">7.2. 在已经有了标准 SDK 工程的情况下，如何获得编译库的工程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="howto_convert_sdk_to_lib.html#id1">7.2.1. 如何修改库工程的名称</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_convert_sdk_to_lib.html#vscode-makefile">7.2.2. 如何生成 VSCode, Makefile 工程</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="howto_add_3rd_libs.html">7.3. 如何给 SDK 工程添加第三方库</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="howto_add_3rd_libs.html#id1">7.3.1. 第三方库包含的文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_add_3rd_libs.html#id2">7.3.2. 添加第三方库前需要确认的事情</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_add_3rd_libs.html#id3">7.3.3. 添加第三方库需要修改的地方</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="why_build_slow.html">7.4. 为什么有些 SDK 编译很慢</a></li>
+<li class="toctree-l1"><a class="reference internal" href="why_build_result_mismatched.html">7.5. 为什么编译得到的文件不一致</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="why_build_result_mismatched.html#id2">7.5.1. 同一个工程编译出来的文件不一致</a></li>
+<li class="toctree-l2"><a class="reference internal" href="why_build_result_mismatched.html#cbp-makefile-vscode">7.5.2. cbp 工程与 Makefile（VSCode） 工程编译出来的结果不一致</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="why_failed_to_download.html">7.6. 为什么无法下载程序</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="why_failed_to_download.html#download-bat">7.6.1. 下载脚本 download.bat 编码错误</a></li>
+<li class="toctree-l2"><a class="reference internal" href="why_failed_to_download.html#id2">7.6.2. 设备不在线</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="why_failed_to_download.html#id3">7.6.2.1. 为什么有时候设备只能下载一次代码</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="why_failed_to_download.html#key">7.6.3. KEY文件与芯片不匹配</a></li>
+<li class="toctree-l2"><a class="reference internal" href="why_failed_to_download.html#usb-flash">7.6.4. USB 连线不稳或者 FLASH 损坏</a></li>
+<li class="toctree-l2"><a class="reference internal" href="why_failed_to_download.html#usb">7.6.5. USB 连线不稳或者芯片本身损坏</a></li>
+<li class="toctree-l2"><a class="reference internal" href="why_failed_to_download.html#id4">7.6.6. 未正确设置虚拟串口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="why_failed_to_download.html#id5">7.6.7. 其它可能的原因</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="howto_change_tmp_dir.html">7.7. 如何修改临时目录</a></li>
+<li class="toctree-l1"><a class="reference internal" href="antivirus_misreport.html">7.8. 关于工具（误）报毒问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto_find_downloadbat.html">7.9. 如何确认当前工程使用的下载脚本 <code class="docutils literal notranslate"><span class="pre">download.bat</span></code> 是哪个</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="howto_find_downloadbat.html#code-blocks">7.9.1. Code::Blocks 工程确认下载脚本的方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_find_downloadbat.html#makefile-vscode">7.9.2. Makefile/VSCode 工程确认下载脚本的方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto_find_downloadbat.html#id1">7.9.3. 注意事项</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="howto_formatall.html">7.10. 如何在下载前对芯片进行全擦除</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto_reboot_afterdownload.html">7.11. 如何在下载后自动复位芯片</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto_read_flashid.html">7.12. 如何读取芯片的 FLASH ID</a></li>
+</ul>
+</div>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="../forced_upgrade/virtual_serial.html" class="btn btn-neutral float-left" title="6.5. 虚拟串口" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="howto_convert_cbp.html" class="btn btn-neutral float-right" title="7.1. 如何将 Code::Blocks 工程转换为 make/VSCode 工程" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 09, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/faqs/index.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/faqs/index.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.4. Remote Upgrade of the Programmer Firmware — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. Download Directory Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>1. Jieli 1-to-2 Programmer User Manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_basic.html">1.1. Programmer Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_usage.html">1.2. Manual Programming, Verification and Blank Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoburn.html">1.3. Automated Programming with a Handler</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.4. Remote Upgrade of the Programmer Firmware</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1.4.1. Upgrade notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#target-remote-update-burn-tool"><button class="toctree-expand" title="Open/close menu" type="button"></button>1.4.2. Upgrading to official release firmware</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pc1">1.4.2.1. Method 1: one PC can upgrade only 1 programmer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pc6">1.4.2.2. Method 2: one PC can upgrade 6 programmers at the same time</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">1.4.3. Upgrading to special version firmware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">1.4.4. Handling upgrade errors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="config_opt.html">1.5. PC-Side Programming Options for Each Chip Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_errors.html">1.6. Status Indicators and Error Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dongle.html">1.7. Authorized Programming Count Limit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_data.html">1.8. Programming Third-Party Data (Authentication Codes)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="btname_addr.html">1.9. Bluetooth Address and Name Auto-Increment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcba_burn.html">1.10. Chip Programming Wiring and Power Supply</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commom_funcs.html">1.11. Other Common Features: Configuration and Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faqs.html">1.12. Troubleshooting Common Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">1. </span>Jieli 1-to-2 Programmer User Manual</a> »</li>
+<li><span class="section-number">1.4. </span>Remote Upgrade of the Programmer Firmware</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_zh/mass_prod_tools/burner_1tuo2/remote_update.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">1.4. </span>Remote Upgrade of the Programmer Firmware<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">1.4.1. </span>Upgrade notes<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>The 1-to-2 programmer firmware is the firmware of the main control chip that controls the operation of the whole programmer.</p>
+<p>The programmer firmware can be upgraded remotely with the PC tool <code class="docutils literal notranslate"><span class="pre">burn_tool.exe</span></code>.</p>
+<p>The upgrade tool lets you choose one of the 3 latest official release firmware versions for the upgrade. It also supports upgrading to special programmer firmware versions made for specific applications and customer requirements.</p>
+<p>The programmer firmware is optimized and upgraded from time to time as needed, to add features, improve performance, fix problems, etc. Under normal circumstances, be sure to upgrade to the latest version promptly; otherwise, programming problems may occur.</p>
+</section>
+<section id="target-remote-update-burn-tool">
+<span id="id3"></span><h2><span class="section-number">1.4.2. </span>Upgrading to official release firmware<a class="headerlink" href="#target-remote-update-burn-tool" title="Permalink to this heading"></a></h2>
+<p>Open the remote upgrade control panel. There are two ways to open it.</p>
+<ul class="simple">
+<li><p>Method 1: one PC can upgrade only 1 programmer</p></li>
+<li><p>Method 2: one PC can upgrade 6 programmers at the same time</p></li>
+</ul>
+<section id="pc1">
+<h3><span class="section-number">1.4.2.1. </span>Method 1: one PC can upgrade only 1 programmer<a class="headerlink" href="#pc1" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Following the "<a class="reference internal" href="basic_usage.html#target-deploy-fw-file-to-1tuo2-open-ui"><span class="std std-ref">Opening the deployment program interface</span></a>" section, open the firmware update window, then proceed as shown in <a class="reference internal" href="#img-open-remote-update-1tuo2"><span class="std std-ref">Steps to open the remote upgrade window</span></a>:</p>
+<ul class="simple">
+<li><p>[1] Click "Device" (设备);</p></li>
+<li><p>[2] Click "Remote upgrade" (远程升级) to open the remote upgrade control panel. The remote upgrade window shown in <a class="reference internal" href="#img-method1-remote-update-1tuo2"><span class="std std-ref">Method 1 remote upgrade operation</span></a> appears;</p></li>
+</ul>
+<figure class="align-default" id="img-open-remote-update-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image28.png"/>
+<figcaption>
+<p><span class="caption-text">Steps to open the remote upgrade window</span><a class="headerlink" href="#img-open-remote-update-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>As shown in <a class="reference internal" href="#img-method1-remote-update-1tuo2"><span class="std std-ref">Method 1 remote upgrade operation</span></a>:</p>
+<ul class="simple">
+<li><p>[1] Select the programmer firmware version to upgrade to</p></li>
+<li><p>[2] Click "Upgrade" (升级)</p></li>
+<li><p>[3] After the upgrade succeeds, power-cycle the programmer (unplug the USB cable at the programmer end, then press the "Main power switch" (电源总开关) to turn it off and press it again to turn it on);</p></li>
+<li><p>[4] After the power-cycle, the display shows "No programming file!" (无烧写文件!). Deploy the .fw, .ufw or .key file generated by the SDK build to the programmer as described in "<a class="reference internal" href="basic_usage.html#target-deploy-fw-file-to-1tuo2"><span class="std std-ref">Deploying the target chip firmware to the programmer</span></a>"; you can then program chips offline;</p></li>
+</ul>
+<figure class="align-default" id="img-method1-remote-update-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image29.png"/>
+<figcaption>
+<p><span class="caption-text">Method 1 remote upgrade operation</span><a class="headerlink" href="#img-method1-remote-update-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+</section>
+<section id="pc6">
+<h3><span class="section-number">1.4.2.2. </span>Method 2: one PC can upgrade 6 programmers at the same time<a class="headerlink" href="#pc6" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Perform <strong>step [3] (right-click the "CD Drive" to open it)</strong> of the "<a class="reference internal" href="basic_usage.html#target-deploy-fw-file-to-1tuo2-open-ui"><span class="std std-ref">Opening the deployment program interface</span></a>" section: you will see the <code class="docutils literal notranslate"><span class="pre">burn_tool.exe</span></code> executable. Copy <strong>only</strong> the <code class="docutils literal notranslate"><span class="pre">burn_tool.exe</span></code> executable to another location on the PC as a backup</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note: copy <strong>only</strong> <code class="docutils literal notranslate"><span class="pre">burn_tool.exe</span></code>. Do not copy any other files; otherwise, the upgrade may fail</p>
+</div>
+</li>
+<li><p>After powering on the programmer, connect the programmer to the PC with a USB cable (you can also connect the USB cable directly without powering it on) so that the programmer enters "PC mode" (PC模式). One PC can connect to 6 programmers at the same time through different USB ports; if there are not enough USB ports, use a USB hub;</p></li>
+<li><p>Double-click the backed-up <code class="docutils literal notranslate"><span class="pre">burn_tool.exe</span></code> to open the remote upgrade control panel, as shown in <a class="reference internal" href="#img-method2-remote-update-1tuo2"><span class="std std-ref">Method 2 remote upgrade operation</span></a>:</p>
+<ul class="simple">
+<li><p>[1] Select the programmer firmware version to upgrade to</p></li>
+<li><p>[2] For each channel on which <strong>a connected programmer has been detected</strong>, click "Upgrade" (升级) (up to 6 connected programmers can be upgraded at the same time)</p></li>
+</ul>
+<figure class="align-default" id="img-method2-remote-update-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image30.png"/>
+<figcaption>
+<p><span class="caption-text">Method 2 remote upgrade operation</span><a class="headerlink" href="#img-method2-remote-update-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>After all channels being upgraded have been upgraded successfully, power-cycle the programmers (unplug the USB cable at the programmer end, then press the "Main power switch" (电源总开关) to turn it off and press it again to turn it on);</p></li>
+<li><p>After the power-cycle, the display shows "No programming file!" (无烧写文件!). Deploy the .fw, .ufw or .key file generated by the SDK build to the programmer as described in "<a class="reference internal" href="basic_usage.html#target-deploy-fw-file-to-1tuo2"><span class="std std-ref">Deploying the target chip firmware to the programmer</span></a>"; you can then program chips offline;</p></li>
+</ol>
+</section>
+</section>
+<section id="id4">
+<h2><span class="section-number">1.4.3. </span>Upgrading to special version firmware<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>Upgrading to a special version follows basically the same procedure as the official release upgrade in "<a class="reference internal" href="#target-remote-update-burn-tool"><span class="std std-ref">Upgrading to official release firmware</span></a>". The main difference is that a special version upgrade <strong>requires you to enter the special version serial number</strong>.</p>
+<p>As shown in <a class="reference internal" href="#img-spec-remote-update-1tuo2"><span class="std std-ref">Remote upgrade to a special version</span></a>:</p>
+<ul class="simple">
+<li><p>[1] Enter the serial number of the special version to upgrade to;</p></li>
+<li><p>[2] Click "Query" (查询) to find the corresponding special version;</p></li>
+<li><p>[3] Click "Upgrade" (升级). After the upgrade succeeds, power-cycle the programmer (unplug the USB cable at the programmer end, then press the "Main power switch" (电源总开关) to turn it off and press it again to turn it on);</p></li>
+<li><p>[4] After the power-cycle, the display shows "No programming file!" (无烧写文件!). Deploy the .fw, .ufw or .key file generated by the SDK build to the programmer as described in "<a class="reference internal" href="basic_usage.html#target-deploy-fw-file-to-1tuo2"><span class="std std-ref">Deploying the target chip firmware to the programmer</span></a>"; you can then program chips offline;</p></li>
+</ul>
+<figure class="align-default" id="img-spec-remote-update-1tuo2">
+<img alt="" data-action="zoom" src="../../_images/burner_1tuo2_image31.png"/>
+<figcaption>
+<p><span class="caption-text">Remote upgrade to a special version</span><a class="headerlink" href="#img-spec-remote-update-1tuo2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id5">
+<h2><span class="section-number">1.4.4. </span>Handling upgrade errors<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>If the upgrade fails because the USB connection works loose or for a similar reason, power-cycle the programmer, plug in the USB cable again and repeat the normal upgrade procedure</p></li>
+<li><p>If the remote upgrade tool never detects the programmer being connected, try the following:</p>
+<ul class="simple">
+<li><p>[1] With the programmer unpowered, press and hold the "<strong>standalone button</strong>" on the programmer (see the pictures in <a class="reference internal" href="intro_basic.html#target-1tuo2-hosts-info"><span class="std std-ref">Introduction to the programmer main unit</span></a>)</p></li>
+<li><p>[2] Plug the USB cable into the programmer and connect it to the PC</p></li>
+<li><p>[3] Release the standalone button. The remote upgrade tool can now usually detect the programmer again. Upgrade with the previously backed-up <code class="docutils literal notranslate"><span class="pre">burn_tool.exe</span></code> using Method 2 in "<a class="reference internal" href="#target-remote-update-burn-tool"><span class="std std-ref">Upgrading to official release firmware</span></a>", following the normal upgrade procedure;</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="autoburn.html" class="btn btn-neutral float-left" title="1.3. Automated Programming with a Handler" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="config_opt.html" class="btn btn-neutral float-right" title="1.5. PC-Side Programming Options for Each Chip Model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/remote_update.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/burner_1tuo2/remote_update.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

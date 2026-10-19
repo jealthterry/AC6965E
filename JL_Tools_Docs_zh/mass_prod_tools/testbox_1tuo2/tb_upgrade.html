@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3.3. 测试盒固件升级 — JL Project Documentation</title>
+<link rel="stylesheet" href="../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../index.html"><img id="jl-logo" src="../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+          <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">程序开发相关工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/dev_env/index.html">1. 开发环境安装说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/build_download/index.html">2. SDK 编译以及下载</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/codeblocks/index.html">3. Code::Blocks 使用说明以及常见问题处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/toolchains/index.html">4. 工具链相关说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/post_build/index.html">5. 下载目录工具说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/forced_upgrade/index.html">6. 杰理科技强制升级工具4.0使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools/faqs/index.html">7. 其它常见问题以及处理方法</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">固件文件处理工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware_tools/index.html">1. 固件文件相关工具</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">量产相关工具</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo2/index.html">1. 杰理科技一拖二烧录器用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../burner_1tuo8/index.html">2. 杰理科技一拖八烧录器用户手册</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>3. 杰理科技一拖二蓝牙测试盒用户手册</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tb_base_introduction.html">3.1. 测试盒简要介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_usage.html">3.2. 上位机功能配置和使用</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>3.3. 测试盒固件升级</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.3.1. 远程升级</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3.3.2. 本地升级</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wireless_upgrade.html">3.4. 蓝牙设备无线升级流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_wired_upgrade.html">3.5. 蓝牙设备有线升级流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_test_process.html">3.6. 蓝牙设备测试流程使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mass_production.html">3.7. 测试盒批量升级、测试用例介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ear_storage.html">3.8. 耳机仓储模式使用方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_pc_transparent.html">3.9. PC透传命令、自定义命令使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_mes_log.html">3.10. 测试盒MES LOG输出功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_view_bt_info.html">3.11. 蓝牙设备信息（sdk 版本/电量/校验码）查看方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_ufw_crc_compare.html">3.12. 测试盒ufw文件校验码匹配</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_error_status.html">3.13. 状态指示和报错提示说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_fixture_install.html">3.14. 测试盒串口连接治具介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_function.html">3.15. 其它常见功能配置和使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_common_problem.html">3.16. 常见问题（FAQ）处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tb_version_info.html">3.17. 版本信息</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../multi_auth/index.html">4. 多算法授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../private_data_auth/index.html">5. 私有数据授权使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_function/index.html">6. 通用功能配置和使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faqs/index.html">7. 常见错误处理方式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/tws_mac_tool/index.html">1. TWS配对地址分析工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/pc_config_update_tool/index.html">2. 相关配置（蓝牙名、蓝牙地址、SN码）扫码更新工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_tools/findmy_tool/index.html">3. FindMy 产测工具套件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">其它信息</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html">1. 工具最新版本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id6">2. 文档链接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other_info/index.html#id7">3. 常见问题</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="index.html"><span class="section-number">3. </span>杰理科技一拖二蓝牙测试盒用户手册</a> »</li>
+<li><span class="section-number">3.3. </span>测试盒固件升级</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../JL_Tools_Docs_en/mass_prod_tools/testbox_1tuo2/tb_upgrade.html" title="查看英文译文">English</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="id1">
+<h1><span class="section-number">3.3. </span>测试盒固件升级<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">3.3.1. </span>远程升级<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p><font color="red" face="黑体" size="4">测试盒V122版本</font>开始支持测试盒固件远程升级，在测试盒PC界面选择“测试盒升级”-&gt;“远程升级”即可进入远程升级界面，具体操作如下图所示：</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image27.png"/></p>
+<p>若出现需要强制升级的情况（升级意外中断或断电情况），仍可按照本地升级中方法2中利用USB强制升级工具和跳线的方式逐一升级测试盒上三颗芯片的固件。同样，先选择固件版本，然后点击升级，PC工具会自动识别测试盒主从机芯片更新对应固件。</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">3.3.2. </span>本地升级<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>测试盒的固件升级<font color="red" face="黑体" size="5">首选方法1</font> ，当通过方法1升级遇到异常时，才采用方法2进行升级。</p>
+<p><font color="red" face="黑体" size="5">方法 1：</font><br/></p>
+<p>通过bt_test_box.exe软件升级，不需要跳线，直接插入usb口进行pc一拖二升级。(即测试盒跑的程序是AC690x_1T2测试盒V1.0.1及以上才支持此方法进行升级)，工具有读取版本号，如下图所示。</p>
+<ol class="arabic simple">
+<li><p>此种方法升级需测试盒正常跑起来，插入MiniUSB线并长按[按键4]（拨码开关左边）进入升级模式。</p></li>
+</ol>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image21.png"/>
+<img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image22.png"/></p>
+<ol class="arabic simple" start="2">
+<li><p>把AC690x_1T2测试盒bin_V1.0.1\jl_690x.bin拖入从机</p></li>
+</ol>
+<p>把AC690x_1T2测试盒bin_V1.0.1\jl_690x_master.bin拖入主机。（打开文件后，<code class="docutils literal notranslate"><span class="pre">点击升级测试盒</span></code>,<strong>升级过程请勿断电</strong>），升级完100%之后重启测试盒，显示屏两个通道显示<code class="docutils literal notranslate"><span class="pre">搜索中</span></code>表示主从升级跑起来正常运行。</p>
+<ol class="arabic simple" start="3">
+<li><p>升级异常处理：
+如果有通道显示初始化中表示从机升级异常，屏不显示表示主机升级异常。此时需要通过方法2的小工具和跳线进行一拖二测试盒强制固件升级。</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>测试盒固件用方法1从V1.0.1\V1.0.2升级到V1.0.3，升完之后，主机跑的有问题，从机是正常的，</p>
+<p>所以需要用方法2进行再次升级主机，从机不用再重复升级了</p>
+</div>
+<p><font color="red" face="黑体" size="5">方法 2：</font><br/></p>
+<p>通过USB升级工具进行一拖二测试盒固件升级，测试盒有三个芯片，固件更新升级需要更新升级三个芯片，两个从机（同一个程序）、一个主机。</p>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image23.png"/></p>
+<p>其中：</p>
+<p>AC690x_1T2测试盒_从机Vx.x.x.exe 从机固件升级代码包</p>
+<p>AC690x_1T2测试盒_主机Vx.x.x.exe 主机固件升级代码包</p>
+<ol class="arabic simple">
+<li><p>升级主机，接好usb升级工具，插入usb口，点击AC690x_1T2测试盒_主机Vx.x.x.exe下载。</p></li>
+</ol>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image24.png"/></p>
+<ol class="arabic simple" start="2">
+<li><p>分别升级两个从机，需要先拆除测试盒电路板背面的6个电阻（下图圈出的电阻均需拆除），然后通过杜邦线连接usb口(DM对从机1DM或DM2，DP对从机1DP或DP2接线)，测试盒背面接线(<code class="docutils literal notranslate"><span class="pre">分别下载从机1、从机2</span></code>)如下图所示，接好usb升级工具，插入usb口，点击AC690x_1T2测试盒_从机Vx.x.x.exe下载。（<code class="docutils literal notranslate"><span class="pre">三个芯片都升级完成后焊接上6个电阻</span></code>）</p></li>
+</ol>
+<p><img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image25.png"/>
+<img alt="" data-action="zoom" src="../../_images/testbox_1tuo2_image26.png"/></p>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="tb_pc_usage.html" class="btn btn-neutral float-left" title="3.2. 上位机功能配置和使用" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+            <a href="tb_wireless_upgrade.html" class="btn btn-neutral float-right" title="3.4. 蓝牙设备无线升级流程" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, 杰理科技股份有限公司. <span class="lastupdated">Last updated on Oct 14, 2026.</span></p>
+            <p class="offline-source">在线原文: <a href="https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_upgrade.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/mass_prod_tools/testbox_1tuo2/tb_upgrade.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../_static/offline.js"></script>
+</body>
+</html>

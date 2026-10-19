@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5.2. FLASH Parameters — JL Project Documentation</title>
+<link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/jl/custom.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/jl/custom.light.css" type="text/css">
+<link rel="stylesheet" href="../../../_static/offline.css" type="text/css">
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+  <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a id="jl-logo-link" href="../../../index.html"><img id="jl-logo" src="../../../_static/jl/logo.png" alt="JieLi"></a>
+        <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+          <input type="text" name="q" placeholder="Search docs" aria-label="Search docs">
+        </form>
+      </div>
+      <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="Navigation menu">
+<p class="caption" role="heading"><span class="caption-text">Development Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../dev_env/index.html">1. Development Environment Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../build_download/index.html">2. Building and Downloading the SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../codeblocks/index.html">3. Code::Blocks Usage and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolchains/index.html">4. About the Toolchain</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html"><button class="toctree-expand" title="Open/close menu" type="button"></button>5. Download Directory Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fat_image_tool/index.html">5.1. The fat_image_tool Utility</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="#"><button class="toctree-expand" title="Open/close menu" type="button"></button>5.2. FLASH Parameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">5.2.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">5.2.2. FLASH parameter versions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sdkflash">5.2.3. How to set the FLASH parameter file in the SDK</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0flash">5.2.4. Enabling FLASH write protection on V0 chip models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v1-v3flash">5.2.5. Enabling FLASH write protection on V1/V3 chip models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">5.2.6. Enabling the remote FLASH parameter feature</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../forced_upgrade/index.html">6. Jieli Forced Upgrade Tool 4.0 User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faqs/index.html">7. Other Common Issues and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Firmware File Processing Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../firmware_tools/index.html">1. Firmware File Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Mass Production Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/burner_1tuo2/index.html">1. Jieli 1-to-2 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/burner_1tuo8/index.html">2. Jieli 1-to-8 Programmer User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/testbox_1tuo2/index.html">3. Jieli 1-to-2 Bluetooth Test Box User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/multi_auth/index.html">4. Multi-Algorithm Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/private_data_auth/index.html">5. Private Data Authorization Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/common_function/index.html">6. General Features: Configuration and Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mass_prod_tools/faqs/index.html">7. Common Errors and Solutions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_tools/tws_mac_tool/index.html">1. TWS Pairing Address Analysis Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_tools/pc_config_update_tool/index.html">2. Barcode-Scan Configuration Update Tool (Bluetooth Name, Bluetooth Address, SN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_tools/findmy_tool/index.html">3. FindMy Production Test Tool Suite</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_info/index.html">1. Latest Tool Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_info/index.html#id6">2. Document links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../other_info/index.html#id7">3. Common issues</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+  <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+      <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+      <a href="../../../index.html">JieLi_Tools</a>
+    </nav>
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        <div role="navigation" aria-label="Page navigation">
+          <ul class="wy-breadcrumbs">
+<li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a> »</li>
+<li><a href="../index.html"><span class="section-number">5. </span>Download Directory Tools</a> »</li>
+<li><span class="section-number">5.2. </span>FLASH Parameters</li>
+<li class="wy-breadcrumbs-aside"><a class="lang-switch" href="../../../../JL_Tools_Docs_zh/dev_tools/post_build/flash_params/index.html" title="View the original Chinese page">中文原文</a></li>
+          </ul>
+          <hr>
+        </div>
+        <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          <div itemprop="articleBody">
+<section id="flash">
+<h1><span class="section-number">5.2. </span>FLASH Parameters<a class="headerlink" href="#flash" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2><span class="section-number">5.2.1. </span>Introduction<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>The FLASH parameters are a set of parameters that the SDK uses to enable the FLASH write protection feature and multi-algorithm authorization.</p>
+<p>If the SDK supports FLASH write protection and multi-algorithm authorization, the FLASH parameters that correspond to the chip's FLASH ID must be configured before FLASH write protection and multi-algorithm authorization can be enabled.</p>
+<p>Normally, the FLASH parameters are written into the chip's FLASH by the programmer.</p>
+<p>However, during development and debugging you may need to do the following:</p>
+<ol class="arabic simple">
+<li><p>Enable the FLASH write protection parameter feature<br/></p></li>
+<li><p>Reactivate the multi-algorithm authorization feature (for example, when multi-algorithm authorization stops working after the programmer has programmed the multi-algorithm authorization data)</p></li>
+</ol>
+<p>You can specify the FLASH parameter file with the -flash-params option of isd_download.exe.</p>
+<p>The commonly used FLASH parameters are all stored in the FLASH parameter files, which can be obtained from the following links:</p>
+<p><a class="reference external" href="https://pkgman.jieliapp.com/s/flash_params_v1" rel="noopener" target="_blank">V0_V1 FLASH parameter file (click here to download)</a><br/> <a class="reference external" href="https://pkgman.jieliapp.com/s/flash_params_v3" rel="noopener" target="_blank">V3 FLASH parameter file (click here to download)</a><br/></p>
+<p>If you find a FLASH ID model that is not supported, contact a Jieli engineer.</p>
+</section>
+<section id="id2">
+<h2><span class="section-number">5.2.2. </span>FLASH parameter versions<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>By default, the FLASH parameter versions that apply to the SDKs of the various chip models are as follows:</p>
+<div class="wy-table-responsive"><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>FLASH parameter version</p></th>
+<th class="head"><p>SDKs of applicable chip models</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>V0</p></td>
+<td><p>AC695X, AC635N, AC6083, AE695N <br/> AC696X, AC636N, AC608N <br/> AC104N, AD14N <br/> AD15N, AE15N <br/> AD17N</p></td>
+</tr>
+<tr class="row-odd"><td><p>V1</p></td>
+<td><p>JL703N <br/> AC701N, JL701N <br/> AC706N <br/> JL708N <br/> JL709N, AC689N <br/> AC710N, JL710N, AW36N <br/> AW31N <br/> AW30N, AE30N <br/> AW32N <br/> AC704N <br/> AC705N <br/> AC82N, AD18N <br/> AC680N <br/> AC112N</p></td>
+</tr>
+<tr class="row-even"><td><p>V3</p></td>
+<td><p>AC707N, AW34N <br/> AD24N <br/> AD23N <br/> AD21N, AC75N</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="sdkflash">
+<h2><span class="section-number">5.2.3. </span>How to set the FLASH parameter file in the SDK<a class="headerlink" href="#sdkflash" title="Permalink to this heading"></a></h2>
+<p>After downloading the FLASH parameter file, find the download.bat file in the SDK and add the -flash-params option after isd_download.exe, as shown below:</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If your download.bat file is generated from a download.c or download_bat.c file,<br/> add the -flash-params option in download.c or download_bat.c instead<br/></p>
+</div>
+<p><img alt="" data-action="zoom" src="../../../_images/batch_set_flash_params.png"/></p>
+</section>
+<section id="v0flash">
+<h2><span class="section-number">5.2.4. </span>Enabling FLASH write protection on V0 chip models<a class="headerlink" href="#v0flash" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>For V0, you only need to add the following setting to isd_config.ini</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>[BURNER_PASSTHROUGH_CFG]<br/>
+FLASH_WRITE_PROTECT=YES</p>
+</div>
+<p>As shown below:<br/> <img alt="" data-action="zoom" src="../../../_images/config_flash_write_protect.png"/></p>
+</li>
+</ol>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>SDKs that use V0 FLASH parameters to enable FLASH write protection do not need to configure OTP_CFG_SIZE.</p>
+</div>
+</section>
+<section id="v1-v3flash">
+<h2><span class="section-number">5.2.5. </span>Enabling FLASH write protection on V1/V3 chip models<a class="headerlink" href="#v1-v3flash" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Add the following settings to isd_config.ini</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>[BURNER_PASSTHROUGH_CFG]<br/>
+FLASH_WRITE_PROTECT=YES</p>
+</div>
+<p>As shown below:<br/> <img alt="" data-action="zoom" src="../../../_images/config_flash_write_protect.png"/></p>
+</li>
+<li><p>Add the <code class="docutils literal notranslate"><span class="pre">OTP_CFG_SIZE=512</span></code> setting to the <code class="docutils literal notranslate"><span class="pre">EXTRA_CFG_PARAM</span></code> section of isd_config.ini<br/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>[EXTRA_CFG_PARAM]<br/>
+OTP_CFG_SIZE=512</p>
+</div>
+<p>As shown below:<br/> <img alt="" data-action="zoom" src="../../../_images/config_otp_cfg_size.png"/></p>
+</li>
+</ol>
+</section>
+<section id="id3">
+<h2><span class="section-number">5.2.6. </span>Enabling the remote FLASH parameter feature<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>If you want the SDK to download the FLASH parameter file from the server and add it to the SDK automatically:</p>
+<p>You can add the <code class="docutils literal notranslate"><span class="pre">REMOTE_FLASH_PARAMS=YES</span></code> setting to the <code class="docutils literal notranslate"><span class="pre">EXTRA_CFG_PARAM</span></code> section of isd_config.ini<br/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>[EXTRA_CFG_PARAM]<br/>
+REMOTE_FLASH_PARAMS=YES</p>
+</div>
+<p>As shown below:<br/> <img alt="" data-action="zoom" src="../../../_images/config_remote_flash_params.png"/></p>
+<p>The minimum version of isd_download.exe that supports the <code class="docutils literal notranslate"><span class="pre">REMOTE_FLASH_PARAMS</span></code> setting is as follows:</p>
+<div class="wy-table-responsive"><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tool</p></th>
+<th class="head"><p>Minimum version</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>isd_download.exe</p></td>
+<td><p>4.2.76</p></td>
+<td><p><a class="reference external" href="../../../other_info/index.html">How to update: click here</a></p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+</section>
+          </div>
+        </div>
+        <footer>
+          <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+            <a href="../fat_image_tool/index.html" class="btn btn-neutral float-left" title="5.1. The fat_image_tool Utility" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+            <a href="../../forced_upgrade/index.html" class="btn btn-neutral float-right" title="6. Jieli Forced Upgrade Tool 4.0 User Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          </div>
+          <hr>
+          <div role="contentinfo">
+            <p>© Copyright 2010-2022, Jieli Technology Co., Ltd. <span class="lastupdated">Last updated on Oct 09, 2026.</span></p>
+            <p class="offline-source">Online original (Chinese): <a href="https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/post_build/flash_params/index.html" target="_blank" rel="noopener">https://doc.zh-jieli.com/Tools/zh-cn/dev_tools/post_build/flash_params/index.html</a></p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../../_static/offline.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+# Store every file byte-for-byte (no line-ending conversion), so the .mhtml saves and the sites stay intact.
+* -text
+# Large binaries are stored with Git LFS.
+*.zip filter=lfs diff=lfs merge=lfs -text
+*.exe filter=lfs diff=lfs merge=lfs -text
+*.xz filter=lfs diff=lfs merge=lfs -text

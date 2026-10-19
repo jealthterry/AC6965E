@@ -1,0 +1,457 @@
+﻿//定义芯片名称，版本，语言
+//=======================================
+// 固件开发人员修改以下SDK版本信息即可,
+// 注意对应版本需要在对应目录上传文档,形成对应
+//=======================================
+var sdkList = [];
+var AC79 = {
+	name: "AC79",
+    title: "AC791",
+	lang: [ "zh-cn" ],
+	version: [
+		"release_v1.2.0",
+		"release_v1.1.0",
+		"release_v1.0.3",
+		"master",
+	],
+	pdf: []
+}
+sdkList.push(AC79);
+var AC792 = {
+    name: "AC792",
+    title: "AC792",
+    lang: ["zh-cn"],
+    version: [
+        "wifi_video_master"
+    ],
+    pdf: []
+}
+sdkList.push(AC792);
+
+var AC63 = {
+	name: "AC63",
+    title: "AC63",
+	lang: [ "zh-cn" ],
+	version: [
+		"master",
+		"release_v2.2.1",
+		"release_v2.3.0"
+	],
+	pdf: []
+}
+sdkList.push(AC63);
+
+var GPMCU = {
+	name: "GPMCU",
+    title: "GPMCU",
+	lang: [ "zh-cn" ],
+	version: [
+		"master"
+	],
+	pdf: []
+}
+sdkList.push(GPMCU);
+
+var AD14 = {
+	name: "AD14",
+    title: "AD14/15/17/18/AC104",
+	lang: ["zh-cn"],
+	version: [ "master"],
+	pdf: []
+}
+sdkList.push(AD14);
+var AD15 = {
+	name: "AD15",
+    title: "AD15",
+	lang: ["zh-cn"],
+	version: [ "master"],
+	pdf: []
+}
+//sdkList.push(AD15);
+var AC104 = {
+	name: "AC104",
+    title: "AC104",
+	lang: ["zh-cn"],
+	version: [ "master"],
+	pdf: []
+}
+//sdkList.push(AC104);
+var AD16 = {
+	name: "AD16",
+	title: "AD16",
+	lang: ["zh-cn"],
+	version: [ "master"],
+	pdf: []
+}
+sdkList.push(AD16);
+var AD23 = {
+    name: "AD23",
+    title: "AD23",
+    lang: ["zh-cn"],
+    version: ["master"],
+    pdf: []
+}
+sdkList.push(AD23);
+var AD24 = {
+    name: "AD24",
+    title: "AD24",
+    lang: ["zh-cn"],
+    version: ["master"],
+    pdf: []
+}
+sdkList.push(AD24);
+
+var AC82 = {
+	name: "AC82",
+	title: "AC82",
+	lang: ["zh-cn"],
+	version: [ 
+        "master",
+        "release_v1.0.0",
+        "release_v1.1.0",
+        "release_v1.2.0"
+    ],
+    pdf: []
+}
+sdkList.push(AC82);
+
+var AW30 = {
+	name: "AW30",
+	title: "AW30",
+	lang: ["zh-cn"],
+	version: [ "master"],
+	pdf: []
+}
+sdkList.push(AW30);
+
+var AW31 = {
+	name: "AW31",
+	title: "AW31",
+	lang: ["zh-cn"],
+	version: [ "master"],
+	pdf: []
+}
+sdkList.push(AW31);
+
+var AW33 = {
+	name: "AW33",
+	title: "AW33",
+	lang: ["zh-cn"],
+	version: [ "master"],
+	pdf: []
+}
+sdkList.push(AW33);
+
+var MIDI = {
+	name: "MIDI",
+	title: "MIDI应用开发",
+	lang: ["zh-cn"],
+	version: [ "master"],
+	pdf: []
+}
+sdkList.push(MIDI);
+
+var GUI = {
+	name: "JLGuiBuilder",
+	title: "UI设计工具",
+	lang: ["zh-cn"],
+	version: [ "master"],
+	pdf: []
+}
+sdkList.push(GUI);
+//=====================================================================
+
+//以下是插件部分
+var HOST = "https://doc.zh-jieli.com";
+var script = document.createElement("script");
+script.src = HOST + "/static/js/jquery.js";
+script.type = "text/javascript";
+document.getElementsByTagName('head')[0].appendChild(script);
+
+window.onload = function(){
+    var origin = window.location.origin;
+    console.log(origin);
+    if(origin == "file://" || origin != HOST) { //如果是本地离线文档
+        navHomeLocal();
+    }else{
+        navHomeServer();
+    }
+    setPictureShow();
+    setPageMode();
+    setVideoShow();
+    setJLChatbot();
+}
+    
+
+
+//文档本地预览
+function navHomeLocal(){
+    var searchUrl = $("#rtd-search-form").attr('action');
+    var html = `
+            <div role="search">
+                <a id="jl-logo-link" href="">
+                    <img id="jl-logo" style=""/>
+                </a>
+                <form id="rtd-search-form" class="wy-form" action="search.html" method="get" style="margin-top: 5px;">
+                    <input type="text" name="q" placeholder="Search docs" style="border-radius: 5px; margin-top: 10px; border-color: #CCC; height: 35px;">
+                    <input type="hidden" name="check_keywords" value="yes">
+                    <input type="hidden" name="area" value="default">
+                </form>
+            </div>
+            `;
+    $("[role=search]").html(html);
+    $("#rtd-search-form").attr('action', searchUrl);
+    return ;
+}
+//文档服务器部署
+function navHomeServer(){
+    //获取当前URL 分离出 sdkname、lang、version
+    var path = window.location.pathname;
+    var strList = path.split('/');
+    if(strList.length <=3) {
+        console.log("地址栏错误");
+        return ;
+    }
+    var sdkname = strList[1];
+    var language = strList[2] || "zh-cn";
+    var version = strList[3];
+    var searchUrl = $("#rtd-search-form").attr('action');
+	var html = `
+		<div role="search">
+            <a id="jl-logo-link" href="">
+		        <img id="jl-logo" style=""/>
+            </a>
+            <div class="selectors"	style="margin-top: 5px; display: flex;">
+		        <select id="sdkname-id" style="width: 45%; margin-top: 5px; border-radius: 5px;"></select>
+                <span style="color: black; display: flex; align-items: center;">&nbsp;-&nbsp;</span>
+                <select id="version-id" style="width: 52%; margin-top: 5px; border-radius: 5px;"></select>
+            </div>
+                <form id="rtd-search-form" class="wy-form" action="search.html" method="get" style="margin-top: 5px;">
+		            <input type="text" name="q" placeholder="Search docs" style="border-radius: 5px; margin-top: 10px; border-color: #CCC; height: 35px;">
+                    <input type="hidden" name="check_keywords" value="yes">
+                    <input type="hidden" name="area" value="default">
+                </form>
+		</div>
+		`;
+	//console.log(html);
+    $("[role=search]").html(html);
+    $("#rtd-search-form").attr('action', searchUrl);
+	$("#sdkname-id").html("");
+	$("#version-id").html("");
+	$("#sdkname-id").append("<option value=''>请选择系列...</option>");
+	for(var i=0; i<sdkList.length; i++){
+		$("#sdkname-id").append("<option value='"+sdkList[i].name+"'>"+sdkList[i].title+"</option>");
+		if(sdkList[i].name == sdkname){
+			var list = sdkList[i].version;
+			$("#version-id").append("<option value=''>请选择版本...</option>");
+			for(var j=0; j<list.length; j++){
+				$("#version-id").append("<option value='"+list[j]+"'>"+list[j]+"</option>");
+			}
+		}
+	}
+	$("#sdkname-id").val(sdkname);
+	$("#version-id").val(version);
+	$("#sdkname-id").bind('change', function(){
+        var sdkname = $("#sdkname-id").val();
+        //直接切换到新系列
+        for(var i=0; i<sdkList.length; i++) {
+            if(sdkList[i].name == sdkname) {
+                var list = sdkList[i].version;
+                for(var j=0; j<list.length; j++){
+                    var url = "/" + sdkname + "/" + language + "/" + list[j] + "/index.html";
+                    window.location.href = url;
+			    }
+			}
+        }
+	});
+
+	$("#version-id").bind('change', function(){
+        var sdkname = $("#sdkname-id").val();
+        var version = $("#version-id").val();
+        if(version == ""){ return ; }
+        var url = "/" + sdkname + "/" + language + "/" + version + "/index.html";
+        window.location.href = url;
+    });
+
+    var isPdf = false;
+	for(var i=0; i<sdkList.length; i++){
+		if(sdkList[i].name == sdkname){
+            var list = sdkList[i].pdf;
+            for(var j=0; j<list.length; j++){
+                if(list[j] == version){
+                    isPdf = true;
+                }
+            }
+		}
+	}
+    //PDF 下载
+    if(isPdf == true){
+        var pdf = "/" + sdkname + "/pdf/" + sdkname + "-" + language + "-" + version + ".pdf";
+        var html = `<a class='reference internal' href=`+pdf+` download style="padding:0">
+        <img id="download" title="下载离线文档(PDF)" src="/static/image/download.png" style="width: 24px; height: 24px; display: flex; align-items: center; cursor: pointer;"></img>
+        </a>`
+        $(".wy-breadcrumbs-aside").html(html)
+    }else{
+        $(".wy-breadcrumbs-aside").html('')
+    }
+}
+
+
+//加载图片预览插件
+function setPictureShow(){
+    $("<link>").attr({ rel: "stylesheet", type: "text/css", href: HOST + "/static/css/zoom.css" }).appendTo("head");
+    $("<script></script>").attr({src: HOST + '/static/js/zoom.js', type: "text/javascript"}).appendTo("head");
+    $("<script></script>").attr({src: HOST + '/static/js/transition.js', type: "text/javascript"}).appendTo("head");
+    $("figure > a").attr('href', "");
+    $("figure > a").click(function(e){e.preventDefault();});
+    $("figure > a").css('cursor', 'default');
+    $("figure img").attr('data-action', 'zoom');
+    $("p > img").attr('data-action', 'zoom');
+    $("div > img").attr('data-action', 'zoom');
+    $("section > img").attr('data-action', 'zoom');
+}
+//加载视频插件
+function setVideoShow(){
+    $("<link>").attr({ rel: "stylesheet", type: "text/css", href: HOST + "/static/css/video-js.css" }).appendTo("head");
+    $.ajaxSetup({
+        cache: true
+    });
+    jQuery.getScript(HOST + "/static/js/video.min.js", function(){
+        var sel = document.querySelector(".video-js");
+        if(sel == null){
+            return ;
+        }
+    	videojs(sel, {
+            controls: true,
+            autoplay: false,
+            preload: false,
+            playbackRates: [0.5, 1, 1.5, 2, 3, 5, 10]
+        });
+    })
+}
+var isSide = false;
+function setPageMode(){
+    var side = `
+        <div id="floatButton" style="position: fixed; top: 220px; left: 289px; z-index: 201;">
+        <button id='floatBtn' style='background-color: #E1595D; border: none; border-radius: 5px; cursor: pointer; outline: none; font-size: 16px; color: #003eff;'>&lt;</button>
+        </div>
+    `;
+    $("body").append(side);
+    var html = `
+        <img id="mode-img" title="切换模式" style="width: 24px; height: 24px; display: flex; align-items: center; cursor: pointer; margin-left: 5px"></img>
+        <img id="full-img" title="切换宽屏" style="width: 24px; height: 24px; display: flex; align-items: center; cursor: pointer; margin-left: 5px"></img>
+        <img id="user-img" title="退出账号" style="width: 24px; height: 24px; display: flex; align-items: center; cursor: pointer; margin-left: 5px"></img>
+    `;
+    $(".wy-breadcrumbs-aside").append(html);
+    //根据session判断mode = [dark, light]
+    var mode = localStorage.getItem('mode') || "light";
+    setMode(mode);
+    $("#mode-img").bind('click', function(){
+       var mode = $("#mode-img").attr('mode'); 
+       if(mode == "light"){
+           mode = "dark";
+       }else{
+           mode = "light";
+       }
+       setMode(mode);
+    });
+    var full = localStorage.getItem('full') || "no";
+    setFull(full);
+    $("#full-img").bind('click', function(){
+       var full = $("#full-img").attr('full'); 
+       if(full == "no"){
+           full = "yes";
+       }else{
+           full = "no";
+       }
+       setFull(full);
+    });
+    $("#user-img").attr('src', HOST + '/static/image/user.png');
+    $("#user-img").bind('click', function(){
+        clearCookie();
+    });
+    $("#floatButton").bind('click', function(){
+        setSide();
+    });
+
+    //图标
+    var href = $(".icon.icon-home").attr('href');
+    $($(".icon.icon-home")[0]).hide();
+	$("#jl-logo").attr('src', HOST + "/static/image/logo.png");
+    $("#jl-logo-link").attr("href", href);
+}
+//设置模式
+function setMode(mode) {
+    if(mode == "light"){
+        $("<link>").attr({ rel: "stylesheet", type: "text/css", href: HOST + "/static/css/custom.light.css" }).appendTo("head");
+        $("#mode-img").attr('src', HOST + '/static/image/dark.png')
+        $("#mode-img").attr('mode', 'light');
+        localStorage.setItem('mode', 'light');
+    }else{
+        $("<link>").attr({ rel: "stylesheet", type: "text/css", href: HOST + "/static/css/custom.dark.css" }).appendTo("head");
+        $("#mode-img").attr('src', HOST + '/static/image/light.png')
+        $("#mode-img").attr('mode', 'dark');
+        localStorage.setItem('mode', 'dark');
+    }
+}
+//设置宽度
+function setFull(full) {
+    if(full == "no"){
+        $("#full-img").attr('src', HOST + '/static/image/open.png')
+        $("#full-img").attr('full', 'no');
+        $(".wy-nav-content").attr('style', 'max-width:800px');
+        localStorage.setItem('full', 'no');
+    }else{
+        $("#full-img").attr('src', HOST + '/static/image/close.png')
+        $("#full-img").attr('full', 'yes');
+        $(".wy-nav-content").attr('style', 'max-width:none');
+        localStorage.setItem('full', 'yes');
+    }
+}
+//设置side
+function setSide(){
+    if(isSide == false){
+        //隐藏
+        $(".wy-nav-side").hide();
+        $(".wy-nav-content-wrap").css('margin-left', '0px');
+        $("#floatButton").css('left', '0px')
+        $("#floatBtn").text('>');
+    }else{
+        $(".wy-nav-side").show();
+        $(".wy-nav-content-wrap").css('margin-left', '300px');
+        $("#floatButton").css('left', '290px')
+        $("#floatBtn").text('<');
+    }
+    isSide = !isSide;
+}
+//清理Cookie
+function clearCookie(){
+    deleteCookie('jwt-token');
+    location.reload();
+}
+function deleteCookie(cookieName) {
+    document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
+
+//增加对话助手
+function setJLChatbot(){
+    /*
+    window.JLChatbotConfig = {
+        url: 'https://dify.jieliapp.com/chatbot/webapp',
+        inputs: {},
+        containerProps: {},
+        draggable: true,
+        dynamic: false
+    }
+    */
+    var left = window.document.body.clientWidth - 100;
+    const style = document.createElement('style')
+    const textNode = document.createTextNode(`body{--dify-chatbot-bubble-button-bottom: 50px; --dify-chatbot-bubble-button-left: ${left}px}`);
+    style.appendChild(textNode);
+    document.head.appendChild(style)
+
+    const dom = document.createElement('script')
+    //dom.src = "https://dify.jieliapp.com/chatbot/webapp/static/embed.min.js"
+    dom.src = "https://dify.jieliapp.com/embed.min.js"
+    document.head.appendChild(dom)
+}
